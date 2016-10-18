@@ -45,31 +45,44 @@ extern "C" {
 #define mode_1 PORTDbits.RD7
 #define chorus PORTCbits.RC4
 
+#define relay_delay   20  //milliseconds
+#define debounce_limit  25
 
 
-extern uint8_t bypass_state = 0;
-extern uint8_t mode1_state = 0;
-extern uint8_t mode2_state = 0;
-extern uint8_t blink_state = 1;
+volatile long timer = 0;
+volatile long sub_timer = 0;
+volatile uint16_t feedback_timer = 0;
 
-extern uint8_t suspend_blink = 1; // 0;  //Stop the tap blink for debugging
+uint16_t long_press_limit = 1000; 
+volatile long baseline_delay_time = 2000;
 
-extern uint8_t preset_programmning_on = 0;
-extern uint8_t preset_blink = 0;
+uint8_t feedback_start = 0;
+uint8_t mode1_state = 0;
+uint8_t mode2_state = 0;
+uint8_t blink_state = 1;
 
-extern int blink_delay = 100;
+volatile uint8_t suspend_blink =  0;  //Stop the tap blink for debugging
 
-volatile uint8_t top_push_state = 6;
-extern uint8_t bottom_push_state = 6;
+uint8_t preset_programmning_on = 0;
+uint8_t preset_blink = 0;
+
+int blink_delay = 100;
+
+int top_push_state = 6;
+int bottom_push_state = 6;
 
 uint16_t myBuf[ERASE_FLASH_BLOCKSIZE];
 
 int delay_time_changed = 1;
 
-extern long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-extern int debounce_count = 0;
-extern int debounce_bypass = 0;
-extern int debounce_mode1 = 0;
-extern int debounce_mode2 = 0;
+int debounce_count = 0;
+int debounce_bypass = 0;
+int debounce_mode1 = 0;
+int debounce_mode2 = 0;
 
+volatile long tap_timer;
+
+uint8_t switchBypass_state = -1; //initialize to an invalid value so the initialize will run.
+uint8_t switchTap_state = -1; //initialize to an invalid value so the initialize will run.

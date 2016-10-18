@@ -49,3 +49,7 @@ void saveState(void);
 
 void getCurrentLEDState(void);
 void restoreLEDState(void);
+void updateSwitchBypassState(int);
+int getSwitchBypassState(void);
+void updateSwitchTapState(int);
+int getSwitchTapState(void);

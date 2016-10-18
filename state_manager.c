@@ -92,3 +92,36 @@ void restoreLEDState(void) {
     LED_tap_B = ledState.tap_B;
     LED_bypass_B = ledState.bypass_B;
 }
+
+void updateSwitchBypassState(int state) {
+    /*if (state != 1) {state = 0;}
+    
+    pedalState.bypass = state;
+    saveState();*/
+}
+
+int getSwitchBypassState() {
+    /*if (!isInitialized) {
+        initStateManager();
+    }
+    return pedalState.bypass;*/
+    return 0;
+    
+}
+
+
+void updateSwitchTapState(int state) {
+    /*if (state != 1) {state = 0;}
+    
+    pedalState.tap = state;
+    saveState();*/
+}
+
+int getSwitchTapState() {
+    /*if (!isInitialized) {
+        initStateManager();
+    }
+    return pedalState.tap;*/
+    return 0;
+    
+}

@@ -27,29 +27,34 @@ void interrupt isr(void) {
     extern volatile long mod_timer;
     extern volatile long baseline_delay_time;
     extern volatile long delay_time;
-    extern volatile uint8_t top_push_state;
+    extern  int top_push_state;
+    extern uint8_t feedback_start;
        
     if (INTCONbits.TMR0IF == 1) {
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
+        if (feedback_start == 1) {
+            feedback_timer++;
+            if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
+        }
         INTCONbits.TMR0IF = 0;
     }
 
     if (timer >= baseline_delay_time) { //delay_time
-        if (suspend_blink == 0) {
+        //if (suspend_blink == 0) {
             LATBbits.LATB4 = 1; //TODO: turned off tap blink for testing
-        }
+        //}
         timer = 0;
     }
 
     if (timer >= 20) { //delay_time
-        if (suspend_blink == 0) {
+        //if (suspend_blink == 0) {
             LATBbits.LATB4 = 0;
-        }
+        //}
     }
-    
+  
     if (sub_timer >= delay_time) { //sub_delay_time
         if (suspend_blink == 0) {
             set_leds_top(top_push_state, 1);
@@ -84,6 +89,6 @@ void interrupt isr(void) {
         }
         
     }
-    
+
 }
 

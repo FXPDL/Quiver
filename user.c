@@ -184,8 +184,8 @@ void ReadSavedSettings(void) {
     bottom_push_state = FLASH_ReadWord(0x1F82);
 
     //load startup conditions
-    Relay_1 = !bypass_state;
-    Relay_2 = bypass_state;
+    Relay_1 = !switchBypass_state;
+    Relay_2 = switchBypass_state;
     LED_bypass_A = 0; //bypass_state; //TODO: turned off tap blink for testing
     LED_bypass_B = 0; //!bypass_state; //TODO: turned off tap blink for testing
 

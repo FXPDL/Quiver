@@ -12,6 +12,8 @@
       <itemPath>tactiles.h</itemPath>
       <itemPath>constants.h</itemPath>
       <itemPath>state_manager.h</itemPath>
+      <itemPath>SwitchBypass.h</itemPath>
+      <itemPath>SwitchTap.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -25,6 +27,8 @@
       <itemPath>LEDs.c</itemPath>
       <itemPath>tactiles.c</itemPath>
       <itemPath>state_manager.c</itemPath>
+      <itemPath>SwitchBypass.c</itemPath>
+      <itemPath>SwitchTap.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -440,7 +444,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -458,7 +461,7 @@
         <property key="memories.programmemory.partition2.start"
                   value="${memories.programmemory.partition2.start.value}"/>
         <property key="memories.programmemory.start" value="0x0"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

@@ -4915,32 +4915,44 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 50 "constants.h"
-extern uint8_t bypass_state = 0;
-extern uint8_t mode1_state = 0;
-extern uint8_t mode2_state = 0;
-extern uint8_t blink_state = 1;
+# 52 "constants.h"
+volatile long timer = 0;
+volatile long sub_timer = 0;
+volatile uint16_t feedback_timer = 0;
 
-extern uint8_t suspend_blink = 1;
+uint16_t long_press_limit = 1000;
+volatile long baseline_delay_time = 2000;
 
-extern uint8_t preset_programmning_on = 0;
-extern uint8_t preset_blink = 0;
+uint8_t feedback_start = 0;
+uint8_t mode1_state = 0;
+uint8_t mode2_state = 0;
+uint8_t blink_state = 1;
 
-extern int blink_delay = 100;
+volatile uint8_t suspend_blink = 0;
 
-volatile uint8_t top_push_state = 6;
-extern uint8_t bottom_push_state = 6;
+uint8_t preset_programmning_on = 0;
+uint8_t preset_blink = 0;
+
+int blink_delay = 100;
+
+int top_push_state = 6;
+int bottom_push_state = 6;
 
 uint16_t myBuf[32];
 
 int delay_time_changed = 1;
 
-extern long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-extern int debounce_count = 0;
-extern int debounce_bypass = 0;
-extern int debounce_mode1 = 0;
-extern int debounce_mode2 = 0;
+int debounce_count = 0;
+int debounce_bypass = 0;
+int debounce_mode1 = 0;
+int debounce_mode2 = 0;
+
+volatile long tap_timer;
+
+uint8_t switchBypass_state = -1;
+uint8_t switchTap_state = -1;
 
 # 23 "user.c"
 void InitApp(void) {
@@ -5104,8 +5116,8 @@ top_push_state = FLASH_ReadWord(0x1F81);
 bottom_push_state = FLASH_ReadWord(0x1F82);
 
 
-LATGbits.LATG1 = !bypass_state;
-LATGbits.LATG2 = bypass_state;
+LATGbits.LATG1 = !switchBypass_state;
+LATGbits.LATG2 = switchBypass_state;
 LATBbits.LATB2 = 0;
 LATBbits.LATB3 = 0;
 

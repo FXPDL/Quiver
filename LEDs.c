@@ -119,7 +119,7 @@ void showBootSequence(void) {
     solidring_tactiles();
   
     
-    //suspend_blink = 0;
+    suspend_blink = 0;
     restoreLEDState();
 }
 
@@ -130,7 +130,7 @@ void showSave(void) {
     ring_tactiles();
     solidring_tactiles();
     solidring_tactiles();
-    //suspend_blink = 0;
+    suspend_blink = 0;
 }
 
 void showError_Alternating(void) {
@@ -148,7 +148,7 @@ void showError_Alternating(void) {
         wait_ms(blink_rate);
     }
     restoreLEDState(); 
-    //suspend_blink = 0;
+    suspend_blink = 0;
 }
 
 
@@ -168,7 +168,7 @@ void show_error(void) {
         wait_ms(blink_rate);
     }
     restoreLEDState();
-    //suspend_blink = 0;
+    suspend_blink = 0;
 }
 
 
@@ -187,7 +187,7 @@ void show_cancel(void) {
         wait_ms(blink_rate);
     }
     restoreLEDState();  
-    //suspend_blink = 0;
+    suspend_blink = 0;
 }
 
 

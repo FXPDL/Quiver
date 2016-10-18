@@ -1,4 +1,7 @@
  build/Todd/debug/user.d  \
  build/Todd/debug/user.p1:  \
  user.c  \
-user.h 
+memory.h  \
+user.h  \
+system.h  \
+constants.h 

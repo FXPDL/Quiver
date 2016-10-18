@@ -11,9 +11,7 @@
 #include "tactiles.h"
 #include "LEDs.h"
 
-
-
-
+ 
 
 void read_bottom_tactile(void) {
     //read bottom tactile-----------------------------
@@ -23,12 +21,12 @@ void read_bottom_tactile(void) {
     //  4) freeze program until button released
     //------------------------------------------------
     if (bottom_tactile == 0) { //read bottom tactile
-        bottom_push_state++;
-        if (bottom_push_state >= 7) {
+        bottom_push_state = bottom_push_state + 1;
+        if (bottom_push_state > 6) {
             bottom_push_state = 1;
         }
         set_leds_bottom(bottom_push_state);
-        FLASH_WriteWord(0x1F82, myBuf, bottom_push_state);
+       // FLASH_WriteWord(0x1F82, myBuf, bottom_push_state);
         while (bottom_tactile == 0) { //wait for release
         }
         wait_ms(20);
@@ -50,7 +48,7 @@ void read_top_tactile(void) {
         }
         set_leds_top(top_push_state, 1);
         delay_time_changed = 1;
-        FLASH_WriteWord(0x1F81, myBuf, top_push_state);
+        //FLASH_WriteWord(0x1F81, myBuf, top_push_state);
         while (top_tactile == 0) {
         }
         wait_ms(20);
@@ -76,12 +74,12 @@ void update_mode(void) {
                     LED_tap_Aux = 0;
                     break;
                 case 1:
-                    LED_bypass_Aux = 1;
-                    LED_tap_Aux = 0;
-                    break;
-                case 2:
                     LED_bypass_Aux = 0;
                     LED_tap_Aux = 1;
+                    break;
+                case 2:
+                    LED_bypass_Aux = 1;
+                    LED_tap_Aux = 0;
                     break;
             }
             while (mode_2 == 0) {
