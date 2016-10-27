@@ -4911,6 +4911,7 @@ int modulation(signed int, signed int);
 void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
+void setFeedbackState(int);
 
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
@@ -4940,23 +4941,27 @@ void FLASH_EraseBlock(uint16_t startAddr);
 # 52 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
+volatile uint16_t feedback_timer = 0;
+volatile uint16_t longTap_timer = 0;
 
-
+uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
+uint8_t feedback_start = 0;
+uint8_t longTap_start = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
 
-uint8_t suspend_blink = 1;
+volatile uint8_t suspend_blink = 0;
 
 uint8_t preset_programmning_on = 0;
 uint8_t preset_blink = 0;
 
 int blink_delay = 100;
 
-volatile uint8_t top_push_state = 6;
-volatile uint8_t bottom_push_state = 6;
+int top_push_state = 6;
+int bottom_push_state = 6;
 
 uint16_t myBuf[32];
 
@@ -4973,11 +4978,19 @@ volatile long tap_timer;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
+volatile uint8_t longTap_state = -1;
 
 # 18 "SwitchBypass.c"
+int feedback_state = -1;
+
 int switchBypass_pressed = 0;
 int switchBypass_up = 1;
 int switchBypass_toggle = 0;
+
+
+uint8_t bypass_turning_on = 0;
+
+
 
 void initSwitchBypass() {
 int initState = getSwitchBypassState();
@@ -4986,7 +4999,7 @@ setSwitchBypassState(initState);
 
 void updateSwitchBypass(void) {
 
-# 34
+# 41
 if (PORTEbits.RE1 == 0) {
 if (switchBypass_pressed > 0) {
 switchBypass_pressed--;
@@ -4995,27 +5008,51 @@ switchBypass_pressed--;
 switchBypass_pressed++;
 }
 
-# 46
+# 53
 if (switchBypass_pressed == 0) {
 
+
+if (feedback_start == 0) {
+feedback_start = 1;
+feedback_timer = 0;
+}
 if (switchBypass_state == 1) {
 
 if (switchBypass_up == 1) {
 switchBypass_toggle = 1;
 }
+
+
+
+
+if (feedback_timer >= long_press_limit && feedback_state == 0 && bypass_turning_on == 0) {
+
+LATBbits.LATB2 = 0;
+setFeedbackState(1);
+}
 } else {
 
+bypass_turning_on = 1;
 switchBypass_toggle = 0;
 setSwitchBypassState(1);
+feedback_state = 0;
+feedback_start = 0;
 }
 
 switchBypass_up = 0;
 } else if (switchBypass_pressed >= 25) {
-if (switchBypass_toggle == 1) {
+if (switchBypass_toggle == 1 && feedback_state == 0) {
 setSwitchBypassState(0);
 }
+LATBbits.LATB2 = switchBypass_state;
+
+setFeedbackState(0);
+
+feedback_start = 0;
+bypass_turning_on = 0;
 switchBypass_toggle = 0;
 switchBypass_up = 1;
+
 switchBypass_pressed = 25;
 }
 
@@ -5027,7 +5064,7 @@ void setSwitchBypassState(int f_state) {
 if (switchBypass_state == f_state) {return;}
 switchBypass_state = f_state;
 LATBbits.LATB2 = f_state;
-
+LATBbits.LATB3 = 0;
 LATGbits.LATG2 = f_state;
 LATGbits.LATG1 = !f_state;
 
@@ -5039,3 +5076,21 @@ LATGbits.LATG1 = 0;
 updateSwitchBypassState(switchBypass_state);
 wait_ms(20);
 }
+
+void setFeedbackState(int f_state) {
+if (feedback_state == f_state) {return;}
+feedback_state = f_state;
+LATBbits.LATB3 = f_state;
+
+LATGbits.LATG2 = f_state;
+LATGbits.LATG1 = !f_state;
+
+wait_ms(20);
+
+LATGbits.LATG2 = 0;
+LATGbits.LATG1 = 0;
+
+wait_ms(20);
+
+}
+

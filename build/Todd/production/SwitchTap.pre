@@ -4897,11 +4897,6 @@ int getSwitchBypassState(void);
 void updateSwitchTapState(int);
 int getSwitchTapState(void);
 
-# 24 "SwitchTap.h"
-void initSwitchTap(void);
-void updateSwitchTap(void);
-void setSwitchTapState(int);
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
 
@@ -4931,11 +4926,14 @@ void FLASH_EraseBlock(uint16_t startAddr);
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
+volatile uint16_t longTap_timer = 0;
 
 uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
 uint8_t feedback_start = 0;
+uint8_t longTap_start = 0;
+volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
@@ -4965,26 +4963,40 @@ volatile long tap_timer;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
+volatile uint8_t longTap_state = -1;
+volatile uint8_t feedback_state = -1;
 
-# 28 "SwitchTap.c"
+# 24 "SwitchTap.h"
+void initSwitchTap(void);
+void updateSwitchTap(void);
+void setSwitchTapState(int);
+void setLongTapState(int);
+
+# 25 "preset_programming.h"
+void setDoublePressState(int);
+
+# 29 "SwitchTap.c"
 int tap_iteration = 1;
 long tap_total = 0;
-int num_taps = 4;
+uint8_t num_taps = 4;
 long tap_history [5];
 
-int switchTap_pressed = 0;
-int switchTap_up = 1;
-int switchTap_toggle = 0;
+
+
+uint8_t switchTap_pressed = 0;
+uint8_t switchTap_down = 0;
+
 
 void initSwitchTap() {
 int initState = getSwitchTapState();
-setSwitchTapState(initState);
+
 }
 
+# 59
 void updateSwitchTap(void) {
-uint8_t iCnt;
+uint8_t iCnt = 0;
 
-# 49
+# 66
 if (PORTEbits.RE0 == 0) {
 if (switchTap_pressed > 0) {
 switchTap_pressed--;
@@ -4993,13 +5005,13 @@ switchTap_pressed--;
 switchTap_pressed++;
 }
 
-# 62
+# 78
 if (switchTap_pressed == 0) {
 
 
-setSwitchTapState(1);
 
 if (tap_timer >= 1563) {
+switchTap_down = 1;
 tap_timer = 0;
 tap_iteration = 1;
 tap_total = 0;
@@ -5009,8 +5021,27 @@ for (iCnt = 1; iCnt <= num_taps; iCnt++) {
 tap_history[iCnt] = 0;
 }
 
-} else if (tap_timer < 1563) {
 
+if (longTap_start == 0) {
+longTap_start = 1;
+longTap_state = 0;
+longTap_timer = 0;
+}
+
+
+
+if (longTap_timer >= long_press_limit && longTap_state == 0) {
+longTap_timer = long_press_limit;
+LATBbits.LATB4 = 0;
+
+if (feedback_start != 1) {
+setLongTapState(1);
+} else {
+setDoublePressState(1);
+}
+}
+
+} else if (tap_timer < 1563 && longTap_state == 0 && switchTap_down != 1) {
 if (tap_iteration <= 4) {
 if (tap_timer >= 1172) {
 tap_timer = 1172;
@@ -5031,22 +5062,28 @@ tap_total += tap_timer;
 }
 
 
+baseline_delay_time = tap_total / tapCntDivisor;
+
 delay_time_changed = 1;
+
 tap_timer = 0;
+
 tap_iteration++;
 }
+}
 
-switchTap_up = 0;
-}
 } else if (switchTap_pressed >= 25) {
-if (switchTap_toggle == 1) {
-setSwitchTapState(0);
-}
-switchTap_toggle = 0;
-switchTap_up = 1;
+switchTap_down = 0;
+switchTap_state = 0;
+
+# 152
+setLongTapState(0);
+
+longTap_timer = 0;
+longTap_start = 0;
+
 switchTap_pressed = 25;
 }
-
 
 }
 
@@ -5056,14 +5093,14 @@ if (switchTap_state == f_state) {return;}
 switchTap_state = f_state;
 
 
-LATGbits.LATG2 = f_state;
-LATGbits.LATG1 = !f_state;
-
-wait_ms(20);
-
-LATGbits.LATG2 = 0;
-LATGbits.LATG1 = 0;
 
 updateSwitchTapState(switchTap_state);
-wait_ms(20);
+}
+
+void setLongTapState(int f_state) {
+if (longTap_state == f_state) {return;}
+longTap_state = f_state;
+LATBbits.LATB5 = f_state;
+
+
 }

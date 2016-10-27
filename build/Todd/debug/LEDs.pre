@@ -4926,23 +4926,27 @@ void FLASH_EraseBlock(uint16_t startAddr);
 # 52 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
+volatile uint16_t feedback_timer = 0;
+volatile uint16_t longTap_timer = 0;
 
-
+uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
+uint8_t feedback_start = 0;
+uint8_t longTap_start = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
 
-uint8_t suspend_blink = 1;
+volatile uint8_t suspend_blink = 0;
 
 uint8_t preset_programmning_on = 0;
 uint8_t preset_blink = 0;
 
 int blink_delay = 100;
 
-volatile uint8_t top_push_state = 6;
-volatile uint8_t bottom_push_state = 6;
+int top_push_state = 6;
+int bottom_push_state = 6;
 
 uint16_t myBuf[32];
 
@@ -4959,6 +4963,7 @@ volatile long tap_timer;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
+volatile uint8_t longTap_state = -1;
 
 # 28 "state_manager.h"
 typedef struct {
@@ -5051,7 +5056,7 @@ break;
 
 void showBootSequence(void) {
 getCurrentLEDState();
-suspend_blink = 0;
+suspend_blink = 1;
 
 LATBbits.LATB4 = 0;
 LATBbits.LATB2 = 0;
@@ -5070,7 +5075,7 @@ solidring_tactiles();
 solidring_tactiles();
 
 
-
+suspend_blink = 0;
 restoreLEDState();
 }
 
@@ -5081,7 +5086,7 @@ ring_tactiles();
 ring_tactiles();
 solidring_tactiles();
 solidring_tactiles();
-
+suspend_blink = 0;
 }
 
 void showError_Alternating(void) {
@@ -5099,7 +5104,7 @@ LATBbits.LATB3 = 1;
 wait_ms(blink_rate);
 }
 restoreLEDState();
-
+suspend_blink = 0;
 }
 
 
@@ -5119,7 +5124,7 @@ LATBbits.LATB3 = 0;
 wait_ms(blink_rate);
 }
 restoreLEDState();
-
+suspend_blink = 0;
 }
 
 
@@ -5138,7 +5143,7 @@ LATBbits.LATB2 = 0;
 wait_ms(blink_rate);
 }
 restoreLEDState();
-
+suspend_blink = 0;
 }
 
 

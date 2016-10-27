@@ -24,3 +24,4 @@ extern "C" {
 void initSwitchTap(void);
 void updateSwitchTap(void);
 void setSwitchTapState(int);
+void setLongTapState(int);

@@ -3656,88 +3656,106 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 [; ;constants.h: 54: volatile uint16_t feedback_timer = 0;
-"56
+"55
+[v _longTap_timer `Vui ~T0 @X0 1 e ]
+[i _longTap_timer
+-> -> 0 `i `ui
+]
+[; ;constants.h: 55: volatile uint16_t longTap_timer = 0;
+"57
 [v _long_press_limit `ui ~T0 @X0 1 e ]
 [i _long_press_limit
 -> -> 1000 `i `ui
 ]
-[; ;constants.h: 56: uint16_t long_press_limit = 1000;
-"57
+[; ;constants.h: 57: uint16_t long_press_limit = 1000;
+"58
 [v _baseline_delay_time `Vl ~T0 @X0 1 e ]
 [i _baseline_delay_time
 -> -> 2000 `i `l
 ]
-[; ;constants.h: 57: volatile long baseline_delay_time = 2000;
-"59
+[; ;constants.h: 58: volatile long baseline_delay_time = 2000;
+"60
 [v _feedback_start `uc ~T0 @X0 1 e ]
 [i _feedback_start
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 59: uint8_t feedback_start = 0;
-"60
+[; ;constants.h: 60: uint8_t feedback_start = 0;
+"61
+[v _longTap_start `uc ~T0 @X0 1 e ]
+[i _longTap_start
+-> -> 0 `i `uc
+]
+[; ;constants.h: 61: uint8_t longTap_start = 0;
+"62
+[v _doubleTap_state `Vuc ~T0 @X0 1 e ]
+[i _doubleTap_state
+-> -> 0 `i `uc
+]
+[; ;constants.h: 62: volatile uint8_t doubleTap_state = 0;
+"63
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 60: uint8_t mode1_state = 0;
-"61
+[; ;constants.h: 63: uint8_t mode1_state = 0;
+"64
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 61: uint8_t mode2_state = 0;
-"62
+[; ;constants.h: 64: uint8_t mode2_state = 0;
+"65
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 62: uint8_t blink_state = 1;
-"64
+[; ;constants.h: 65: uint8_t blink_state = 1;
+"67
 [v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 64: volatile uint8_t suspend_blink = 0;
-"66
+[; ;constants.h: 67: volatile uint8_t suspend_blink = 0;
+"69
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: uint8_t preset_programmning_on = 0;
-"67
+[; ;constants.h: 69: uint8_t preset_programmning_on = 0;
+"70
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 67: uint8_t preset_blink = 0;
-"69
+[; ;constants.h: 70: uint8_t preset_blink = 0;
+"72
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 69: int blink_delay = 100;
-"71
+[; ;constants.h: 72: int blink_delay = 100;
+"74
 [v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
 -> 6 `i
 ]
-[; ;constants.h: 71: int top_push_state = 6;
-"72
+[; ;constants.h: 74: int top_push_state = 6;
+"75
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
 -> 6 `i
 ]
-[; ;constants.h: 72: int bottom_push_state = 6;
-"74
+[; ;constants.h: 75: int bottom_push_state = 6;
+"77
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 74: uint16_t myBuf[32];
-"76
+[; ;constants.h: 77: uint16_t myBuf[32];
+"79
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 76: int delay_time_changed = 1;
-"78
+[; ;constants.h: 79: int delay_time_changed = 1;
+"81
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3754,46 +3772,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 78: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"80
+[; ;constants.h: 81: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"83
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 80: int debounce_count = 0;
-"81
+[; ;constants.h: 83: int debounce_count = 0;
+"84
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 81: int debounce_bypass = 0;
-"82
+[; ;constants.h: 84: int debounce_bypass = 0;
+"85
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 82: int debounce_mode1 = 0;
-"83
+[; ;constants.h: 85: int debounce_mode1 = 0;
+"86
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 83: int debounce_mode2 = 0;
-"85
+[; ;constants.h: 86: int debounce_mode2 = 0;
+"88
 [v _tap_timer `Vl ~T0 @X0 1 e ]
-[; ;constants.h: 85: volatile long tap_timer;
-"87
+[; ;constants.h: 88: volatile long tap_timer;
+"90
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 87: uint8_t switchBypass_state = -1;
-"88
+[; ;constants.h: 90: uint8_t switchBypass_state = -1;
+"91
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 88: uint8_t switchTap_state = -1;
+[; ;constants.h: 91: uint8_t switchTap_state = -1;
+"92
+[v _longTap_state `Vuc ~T0 @X0 1 e ]
+[i _longTap_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 92: volatile uint8_t longTap_state = -1;
+"93
+[v _feedback_state `Vuc ~T0 @X0 1 e ]
+[i _feedback_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 93: volatile uint8_t feedback_state = -1;
 [; ;user.h: 13: void InitApp(void);
 [; ;user.h: 14: void init_adc(void);
 [; ;user.h: 15: void init_pwm(void);
@@ -3801,9 +3831,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 17: void init_timer0(void);
 [; ;user.h: 18: void InitializeTaps(void);
 [; ;user.h: 19: void ReadSavedSettings(void);
-[v F3593 `(v ~T0 @X0 1 tf ]
+[v F3598 `(v ~T0 @X0 1 tf ]
 "23 interrupts.c
-[v _isr `IF3593 ~T0 @X0 1 e ]
+[v _isr `IF3598 ~T0 @X0 1 e ]
 {
 [; ;interrupts.c: 23: void interrupt isr(void) {
 [e :U _isr ]
@@ -3860,142 +3890,172 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 462 ]
 [; ;interrupts.c: 41: }
-[; ;interrupts.c: 42: INTCONbits.TMR0IF = 0;
+[; ;interrupts.c: 42: if (longTap_start == 1) {
 "42
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[e $ ! == -> _longTap_start `i -> 1 `i 464  ]
+{
+[; ;interrupts.c: 43: longTap_timer++;
 "43
-}
-[e :U 461 ]
-[; ;interrupts.c: 43: }
-[; ;interrupts.c: 45: if (timer >= baseline_delay_time) {
+[e ++ _longTap_timer -> -> 1 `i `ui ]
+[; ;interrupts.c: 44: if (longTap_timer > long_press_limit) {
+"44
+[e $ ! > _longTap_timer _long_press_limit 465  ]
+{
+[; ;interrupts.c: 45: longTap_timer = long_press_limit;
 "45
-[e $ ! >= _timer _baseline_delay_time 464  ]
-{
-[; ;interrupts.c: 47: LATBbits.LATB4 = 1;
-"47
-[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
-[; ;interrupts.c: 49: timer = 0;
-"49
-[e = _timer -> -> 0 `i `l ]
-"50
-}
-[e :U 464 ]
-[; ;interrupts.c: 50: }
-[; ;interrupts.c: 52: if (timer >= 20) {
-"52
-[e $ ! >= _timer -> -> 20 `i `l 465  ]
-{
-[; ;interrupts.c: 54: LATBbits.LATB4 = 0;
-"54
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-"56
+[e = _longTap_timer _long_press_limit ]
+"46
 }
 [e :U 465 ]
-[; ;interrupts.c: 56: }
-[; ;interrupts.c: 58: if (sub_timer >= delay_time) {
-"58
-[e $ ! >= _sub_timer _delay_time 466  ]
+"47
+}
+[e :U 464 ]
+[; ;interrupts.c: 46: }
+[; ;interrupts.c: 47: }
+[; ;interrupts.c: 49: INTCONbits.TMR0IF = 0;
+"49
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"50
+}
+[e :U 461 ]
+[; ;interrupts.c: 50: }
+[; ;interrupts.c: 54: if (longTap_state < 1 && doubleTap_state < 1) {
+"54
+[e $ ! && < -> _longTap_state `i -> 1 `i < -> _doubleTap_state `i -> 1 `i 466  ]
 {
-[; ;interrupts.c: 59: if (suspend_blink == 0) {
+[; ;interrupts.c: 56: if (timer >= baseline_delay_time) {
+"56
+[e $ ! >= _timer _baseline_delay_time 467  ]
+{
+[; ;interrupts.c: 59: LATBbits.LATB4 = 1;
 "59
-[e $ ! == -> _suspend_blink `i -> 0 `i 467  ]
-{
-[; ;interrupts.c: 60: set_leds_top(top_push_state, 1);
-"60
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;interrupts.c: 61: timer = 0;
 "61
+[e = _timer -> -> 0 `i `l ]
+"62
 }
 [e :U 467 ]
-[; ;interrupts.c: 61: }
-[; ;interrupts.c: 62: sub_timer = 0;
-"62
-[e = _sub_timer -> -> 0 `i `l ]
-"63
-}
-[e :U 466 ]
-[; ;interrupts.c: 63: }
-[; ;interrupts.c: 65: if (sub_timer >= 20) {
-"65
-[e $ ! >= _sub_timer -> -> 20 `i `l 468  ]
+[; ;interrupts.c: 62: }
+[; ;interrupts.c: 64: if (timer >= 20) {
+"64
+[e $ ! >= _timer -> -> 20 `i `l 468  ]
 {
-[; ;interrupts.c: 66: if (suspend_blink == 0) {
+[; ;interrupts.c: 66: LATBbits.LATB4 = 0;
 "66
-[e $ ! == -> _suspend_blink `i -> 0 `i 469  ]
-{
-[; ;interrupts.c: 67: set_leds_top(top_push_state, 0);
-"67
-[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
 "68
 }
-[e :U 469 ]
+[e :U 468 ]
 "69
 }
-[e :U 468 ]
+[e :U 466 ]
 [; ;interrupts.c: 68: }
 [; ;interrupts.c: 69: }
-[; ;interrupts.c: 72: if (preset_programmning_on == 1) {
+[; ;interrupts.c: 72: if (sub_timer >= delay_time) {
 "72
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 470  ]
+[e $ ! >= _sub_timer _delay_time 469  ]
 {
-[; ;interrupts.c: 73: preset_blink++;
+[; ;interrupts.c: 73: if (suspend_blink == 0) {
 "73
-[e ++ _preset_blink -> -> 1 `i `uc ]
-[; ;interrupts.c: 75: if (preset_blink >= blink_delay) {
+[e $ ! == -> _suspend_blink `i -> 0 `i 470  ]
+{
+[; ;interrupts.c: 74: set_leds_top(top_push_state, 1);
+"74
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
 "75
-[e $ ! >= -> _preset_blink `i _blink_delay 471  ]
-{
-[; ;interrupts.c: 76: LATBbits.LATB1 = 1;
+}
+[e :U 470 ]
+[; ;interrupts.c: 75: }
+[; ;interrupts.c: 76: sub_timer = 0;
 "76
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 77: if (preset_blink > blink_delay*2) {
+[e = _sub_timer -> -> 0 `i `l ]
 "77
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 472  ]
-{
-[; ;interrupts.c: 78: preset_blink = 0;
-"78
-[e = _preset_blink -> -> 0 `i `uc ]
+}
+[e :U 469 ]
+[; ;interrupts.c: 77: }
+[; ;interrupts.c: 79: if (sub_timer >= 20) {
 "79
+[e $ ! >= _sub_timer -> -> 20 `i `l 471  ]
+{
+[; ;interrupts.c: 80: if (suspend_blink == 0) {
+"80
+[e $ ! == -> _suspend_blink `i -> 0 `i 472  ]
+{
+[; ;interrupts.c: 81: set_leds_top(top_push_state, 0);
+"81
+[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
+"82
 }
 [e :U 472 ]
-"81
-}
-[; ;interrupts.c: 79: }
-[; ;interrupts.c: 81: } else {
-[e $U 473  ]
-[e :U 471 ]
-{
-[; ;interrupts.c: 82: LATBbits.LATB1 = 0;
-"82
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "83
 }
-[e :U 473 ]
-"85
-}
+[e :U 471 ]
+[; ;interrupts.c: 82: }
 [; ;interrupts.c: 83: }
-[; ;interrupts.c: 85: } else {
-[e $U 474  ]
-[e :U 470 ]
-{
-[; ;interrupts.c: 86: if (preset_blink > 0) {
+[; ;interrupts.c: 86: if (preset_programmning_on == 1) {
 "86
-[e $ ! > -> _preset_blink `i -> 0 `i 475  ]
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 473  ]
 {
-[; ;interrupts.c: 87: preset_blink = 0;
+[; ;interrupts.c: 87: preset_blink++;
 "87
-[e = _preset_blink -> -> 0 `i `uc ]
-[; ;interrupts.c: 88: LATBbits.LATB1 = 0;
-"88
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[e ++ _preset_blink -> -> 1 `i `uc ]
+[; ;interrupts.c: 89: if (preset_blink >= blink_delay) {
 "89
+[e $ ! >= -> _preset_blink `i _blink_delay 474  ]
+{
+[; ;interrupts.c: 90: LATBbits.LATB1 = 1;
+"90
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[; ;interrupts.c: 91: if (preset_blink > blink_delay*2) {
+"91
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 475  ]
+{
+[; ;interrupts.c: 92: preset_blink = 0;
+"92
+[e = _preset_blink -> -> 0 `i `uc ]
+"93
 }
 [e :U 475 ]
-"91
+"95
 }
-[e :U 474 ]
-[; ;interrupts.c: 89: }
-[; ;interrupts.c: 91: }
 [; ;interrupts.c: 93: }
-"93
+[; ;interrupts.c: 95: } else {
+[e $U 476  ]
+[e :U 474 ]
+{
+[; ;interrupts.c: 96: LATBbits.LATB1 = 0;
+"96
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"97
+}
+[e :U 476 ]
+"99
+}
+[; ;interrupts.c: 97: }
+[; ;interrupts.c: 99: } else {
+[e $U 477  ]
+[e :U 473 ]
+{
+[; ;interrupts.c: 100: if (preset_blink > 0) {
+"100
+[e $ ! > -> _preset_blink `i -> 0 `i 478  ]
+{
+[; ;interrupts.c: 101: preset_blink = 0;
+"101
+[e = _preset_blink -> -> 0 `i `uc ]
+[; ;interrupts.c: 102: LATBbits.LATB1 = 0;
+"102
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"103
+}
+[e :U 478 ]
+"105
+}
+[e :U 477 ]
+[; ;interrupts.c: 103: }
+[; ;interrupts.c: 105: }
+[; ;interrupts.c: 107: }
+"107
 [e :UE 460 ]
 }

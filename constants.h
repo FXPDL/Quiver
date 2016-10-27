@@ -52,11 +52,14 @@ extern "C" {
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
+volatile uint16_t longTap_timer = 0;
 
 uint16_t long_press_limit = 1000; 
 volatile long baseline_delay_time = 2000;
 
 uint8_t feedback_start = 0;
+uint8_t longTap_start = 0;
+volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
@@ -86,3 +89,5 @@ volatile long tap_timer;
 
 uint8_t switchBypass_state = -1; //initialize to an invalid value so the initialize will run.
 uint8_t switchTap_state = -1; //initialize to an invalid value so the initialize will run.
+volatile uint8_t longTap_state = -1; //initialize to an invalid value so the initialize will run.
+volatile uint8_t feedback_state = -1; //initialize to an invalid value so the initialize will run.

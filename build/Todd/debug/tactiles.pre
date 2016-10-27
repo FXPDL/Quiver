@@ -4919,23 +4919,27 @@ void FLASH_EraseBlock(uint16_t startAddr);
 # 52 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
+volatile uint16_t feedback_timer = 0;
+volatile uint16_t longTap_timer = 0;
 
-
+uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
+uint8_t feedback_start = 0;
+uint8_t longTap_start = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
 
-uint8_t suspend_blink = 1;
+volatile uint8_t suspend_blink = 0;
 
 uint8_t preset_programmning_on = 0;
 uint8_t preset_blink = 0;
 
 int blink_delay = 100;
 
-volatile uint8_t top_push_state = 6;
-volatile uint8_t bottom_push_state = 6;
+int top_push_state = 6;
+int bottom_push_state = 6;
 
 uint16_t myBuf[32];
 
@@ -4952,6 +4956,7 @@ volatile long tap_timer;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
+volatile uint8_t longTap_state = -1;
 
 # 24 "tactiles.h"
 void read_bottom_tactile(void);
@@ -4965,17 +4970,17 @@ void solidring_tactiles(void);
 void showSave(void);
 void showBootSequence(void);
 
-# 18 "tactiles.c"
+# 16 "tactiles.c"
 void read_bottom_tactile(void) {
 
-# 25
+# 23
 if (PORTDbits.RD6 == 0) {
 bottom_push_state = bottom_push_state + 1;
 if (bottom_push_state > 6) {
 bottom_push_state = 1;
 }
 set_leds_bottom(bottom_push_state);
-FLASH_WriteWord(0x1F82, myBuf, bottom_push_state);
+
 while (PORTDbits.RD6 == 0) {
 }
 wait_ms(20);
@@ -4984,7 +4989,7 @@ wait_ms(20);
 
 void read_top_tactile(void) {
 
-# 46
+# 44
 if (PORTDbits.RD5 == 0) {
 top_push_state = top_push_state + 1;
 if (top_push_state >= 7) {
@@ -4992,7 +4997,7 @@ top_push_state = 1;
 }
 set_leds_top(top_push_state, 1);
 delay_time_changed = 1;
-FLASH_WriteWord(0x1F81, myBuf, top_push_state);
+
 while (PORTDbits.RD5 == 0) {
 }
 wait_ms(20);
@@ -5018,12 +5023,12 @@ LATBbits.LATB1 = 0;
 LATBbits.LATB0 = 0;
 break;
 case 1:
-LATBbits.LATB1 = 1;
-LATBbits.LATB0 = 0;
-break;
-case 2:
 LATBbits.LATB1 = 0;
 LATBbits.LATB0 = 1;
+break;
+case 2:
+LATBbits.LATB1 = 1;
+LATBbits.LATB0 = 0;
 break;
 }
 while (PORTCbits.RC0 == 0) {

@@ -21,6 +21,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
 "31 SwitchBypass.h
 [v _setFeedbackState `(v ~T0 @X0 0 ef1`i ]
+"25 preset_programming.h
+[v _setDoublePressState `(v ~T0 @X0 0 ef1`i ]
 "6144 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S311 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S311 . LATG0 LATG1 LATG2 LATG3 LATG4 ]
@@ -3642,18 +3644,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;state_manager.h: 53: int getSwitchBypassState(void);
 [; ;state_manager.h: 54: void updateSwitchTapState(int);
 [; ;state_manager.h: 55: int getSwitchTapState(void);
-[; ;system.h: 19: void ConfigureOscillator(void);
-[; ;system.h: 20: void wait_ms(uint16_t);
-[; ;system.h: 21: void set_leds_bottom(int);
-[; ;system.h: 22: void set_leds_top(int, int);
-[; ;system.h: 23: uint16_t adc_convert(uint8_t);
-[; ;system.h: 24: float map(float, float, float, float, float);
-[; ;system.h: 25: int set_subdivision(int,int);
-[; ;system.h: 26: int modulation(signed int, signed int);
-[; ;SwitchBypass.h: 28: void initSwitchBypass(void);
-[; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
-[; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
-[; ;SwitchBypass.h: 31: void setFeedbackState(int);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
@@ -3685,88 +3675,106 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 [; ;constants.h: 54: volatile uint16_t feedback_timer = 0;
-"56
+"55
+[v _longTap_timer `Vui ~T0 @X0 1 e ]
+[i _longTap_timer
+-> -> 0 `i `ui
+]
+[; ;constants.h: 55: volatile uint16_t longTap_timer = 0;
+"57
 [v _long_press_limit `ui ~T0 @X0 1 e ]
 [i _long_press_limit
 -> -> 1000 `i `ui
 ]
-[; ;constants.h: 56: uint16_t long_press_limit = 1000;
-"57
+[; ;constants.h: 57: uint16_t long_press_limit = 1000;
+"58
 [v _baseline_delay_time `Vl ~T0 @X0 1 e ]
 [i _baseline_delay_time
 -> -> 2000 `i `l
 ]
-[; ;constants.h: 57: volatile long baseline_delay_time = 2000;
-"59
+[; ;constants.h: 58: volatile long baseline_delay_time = 2000;
+"60
 [v _feedback_start `uc ~T0 @X0 1 e ]
 [i _feedback_start
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 59: uint8_t feedback_start = 0;
-"60
+[; ;constants.h: 60: uint8_t feedback_start = 0;
+"61
+[v _longTap_start `uc ~T0 @X0 1 e ]
+[i _longTap_start
+-> -> 0 `i `uc
+]
+[; ;constants.h: 61: uint8_t longTap_start = 0;
+"62
+[v _doubleTap_state `Vuc ~T0 @X0 1 e ]
+[i _doubleTap_state
+-> -> 0 `i `uc
+]
+[; ;constants.h: 62: volatile uint8_t doubleTap_state = 0;
+"63
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 60: uint8_t mode1_state = 0;
-"61
+[; ;constants.h: 63: uint8_t mode1_state = 0;
+"64
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 61: uint8_t mode2_state = 0;
-"62
+[; ;constants.h: 64: uint8_t mode2_state = 0;
+"65
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 62: uint8_t blink_state = 1;
-"64
+[; ;constants.h: 65: uint8_t blink_state = 1;
+"67
 [v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 64: volatile uint8_t suspend_blink = 0;
-"66
+[; ;constants.h: 67: volatile uint8_t suspend_blink = 0;
+"69
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: uint8_t preset_programmning_on = 0;
-"67
+[; ;constants.h: 69: uint8_t preset_programmning_on = 0;
+"70
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 67: uint8_t preset_blink = 0;
-"69
+[; ;constants.h: 70: uint8_t preset_blink = 0;
+"72
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 69: int blink_delay = 100;
-"71
+[; ;constants.h: 72: int blink_delay = 100;
+"74
 [v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
 -> 6 `i
 ]
-[; ;constants.h: 71: int top_push_state = 6;
-"72
+[; ;constants.h: 74: int top_push_state = 6;
+"75
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
 -> 6 `i
 ]
-[; ;constants.h: 72: int bottom_push_state = 6;
-"74
+[; ;constants.h: 75: int bottom_push_state = 6;
+"77
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 74: uint16_t myBuf[32];
-"76
+[; ;constants.h: 77: uint16_t myBuf[32];
+"79
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 76: int delay_time_changed = 1;
-"78
+[; ;constants.h: 79: int delay_time_changed = 1;
+"81
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3783,52 +3791,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 78: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"80
+[; ;constants.h: 81: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"83
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 80: int debounce_count = 0;
-"81
+[; ;constants.h: 83: int debounce_count = 0;
+"84
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 81: int debounce_bypass = 0;
-"82
+[; ;constants.h: 84: int debounce_bypass = 0;
+"85
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 82: int debounce_mode1 = 0;
-"83
+[; ;constants.h: 85: int debounce_mode1 = 0;
+"86
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 83: int debounce_mode2 = 0;
-"85
+[; ;constants.h: 86: int debounce_mode2 = 0;
+"88
 [v _tap_timer `Vl ~T0 @X0 1 e ]
-[; ;constants.h: 85: volatile long tap_timer;
-"87
+[; ;constants.h: 88: volatile long tap_timer;
+"90
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 87: uint8_t switchBypass_state = -1;
-"88
+[; ;constants.h: 90: uint8_t switchBypass_state = -1;
+"91
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 88: uint8_t switchTap_state = -1;
-"18 SwitchBypass.c
-[v _feedback_state `i ~T0 @X0 1 e ]
-[i _feedback_state
--U -> 1 `i
+[; ;constants.h: 91: uint8_t switchTap_state = -1;
+"92
+[v _longTap_state `Vuc ~T0 @X0 1 e ]
+[i _longTap_state
+-> -U -> 1 `i `uc
 ]
-[; ;SwitchBypass.c: 18: int feedback_state = -1;
+[; ;constants.h: 92: volatile uint8_t longTap_state = -1;
+"93
+[v _feedback_state `Vuc ~T0 @X0 1 e ]
+[i _feedback_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 93: volatile uint8_t feedback_state = -1;
+[; ;preset_programming.h: 25: void setDoublePressState(int);
+[; ;system.h: 19: void ConfigureOscillator(void);
+[; ;system.h: 20: void wait_ms(uint16_t);
+[; ;system.h: 21: void set_leds_bottom(int);
+[; ;system.h: 22: void set_leds_top(int, int);
+[; ;system.h: 23: uint16_t adc_convert(uint8_t);
+[; ;system.h: 24: float map(float, float, float, float, float);
+[; ;system.h: 25: int set_subdivision(int,int);
+[; ;system.h: 26: int modulation(signed int, signed int);
+[; ;SwitchBypass.h: 28: void initSwitchBypass(void);
+[; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
+[; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
+[; ;SwitchBypass.h: 31: void setFeedbackState(int);
+"19 SwitchBypass.c
+[v _currentBypassState `uc ~T0 @X0 1 e ]
+[i _currentBypassState
+-> -U -> 1 `i `uc
+]
+[; ;SwitchBypass.c: 19: uint8_t currentBypassState = -1;
 "20
 [v _switchBypass_pressed `i ~T0 @X0 1 e ]
 [i _switchBypass_pressed
@@ -3924,198 +3957,244 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 468 ]
 [; ;SwitchBypass.c: 59: }
-[; ;SwitchBypass.c: 60: if (switchBypass_state == 1) {
-"60
-[e $ ! == -> _switchBypass_state `i -> 1 `i 469  ]
+[; ;SwitchBypass.c: 61: if (feedback_timer >= long_press_limit && feedback_state == 0 && doubleTap_state == 0) {
+"61
+[e $ ! && && >= _feedback_timer _long_press_limit == -> _feedback_state `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 469  ]
 {
-[; ;SwitchBypass.c: 62: if (switchBypass_up == 1) {
-"62
-[e $ ! == _switchBypass_up -> 1 `i 470  ]
-{
-[; ;SwitchBypass.c: 63: switchBypass_toggle = 1;
-"63
-[e = _switchBypass_toggle -> 1 `i ]
+[; ;SwitchBypass.c: 64: LATBbits.LATB2 = 0;
 "64
-}
-[e :U 470 ]
-[; ;SwitchBypass.c: 64: }
-[; ;SwitchBypass.c: 69: if (feedback_timer >= long_press_limit && feedback_state == 0 && bypass_turning_on == 0) {
-"69
-[e $ ! && && >= _feedback_timer _long_press_limit == _feedback_state -> 0 `i == -> _bypass_turning_on `i -> 0 `i 471  ]
-{
-[; ;SwitchBypass.c: 71: LATBbits.LATB2 = 0;
-"71
 [e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 72: setFeedbackState(1);
-"72
+[; ;SwitchBypass.c: 65: if (longTap_start != 1) {
+"65
+[e $ ! != -> _longTap_start `i -> 1 `i 470  ]
+{
+[; ;SwitchBypass.c: 66: setFeedbackState(1);
+"66
 [e ( _setFeedbackState (1 -> 1 `i ]
-"73
+"67
+}
+[; ;SwitchBypass.c: 67: } else {
+[e $U 471  ]
+[e :U 470 ]
+{
+[; ;SwitchBypass.c: 68: setDoublePressState(1);
+"68
+[e ( _setDoublePressState (1 -> 1 `i ]
+"69
 }
 [e :U 471 ]
-"74
+"70
 }
-[; ;SwitchBypass.c: 73: }
-[; ;SwitchBypass.c: 74: } else {
-[e $U 472  ]
 [e :U 469 ]
+[; ;SwitchBypass.c: 69: }
+[; ;SwitchBypass.c: 70: }
+[; ;SwitchBypass.c: 72: if (doubleTap_state == 0 && feedback_state == 0) {
+"72
+[e $ ! && == -> _doubleTap_state `i -> 0 `i == -> _feedback_state `i -> 0 `i 472  ]
 {
-[; ;SwitchBypass.c: 76: bypass_turning_on = 1;
+[; ;SwitchBypass.c: 73: if (switchBypass_state == 1) {
+"73
+[e $ ! == -> _switchBypass_state `i -> 1 `i 473  ]
+{
+[; ;SwitchBypass.c: 75: if (switchBypass_up == 1) {
+"75
+[e $ ! == _switchBypass_up -> 1 `i 474  ]
+{
+[; ;SwitchBypass.c: 76: currentBypassState = 1;
 "76
-[e = _bypass_turning_on -> -> 1 `i `uc ]
-[; ;SwitchBypass.c: 77: switchBypass_toggle = 0;
+[e = _currentBypassState -> -> 1 `i `uc ]
+[; ;SwitchBypass.c: 77: switchBypass_toggle = 1;
 "77
-[e = _switchBypass_toggle -> 0 `i ]
-[; ;SwitchBypass.c: 78: setSwitchBypassState(1);
+[e = _switchBypass_toggle -> 1 `i ]
 "78
-[e ( _setSwitchBypassState (1 -> 1 `i ]
-[; ;SwitchBypass.c: 79: feedback_state = 0;
-"79
-[e = _feedback_state -> 0 `i ]
-[; ;SwitchBypass.c: 80: feedback_start = 0;
-"80
-[e = _feedback_start -> -> 0 `i `uc ]
-"81
-}
-[e :U 472 ]
-[; ;SwitchBypass.c: 81: }
-[; ;SwitchBypass.c: 83: switchBypass_up = 0;
-"83
-[e = _switchBypass_up -> 0 `i ]
-"84
-}
-[; ;SwitchBypass.c: 84: } else if (switchBypass_pressed >= 25) {
-[e $U 473  ]
-[e :U 467 ]
-[e $ ! >= _switchBypass_pressed -> 25 `i 474  ]
-{
-[; ;SwitchBypass.c: 85: if (switchBypass_toggle == 1 && feedback_state == 0) {
-"85
-[e $ ! && == _switchBypass_toggle -> 1 `i == _feedback_state -> 0 `i 475  ]
-{
-[; ;SwitchBypass.c: 86: setSwitchBypassState(0);
-"86
-[e ( _setSwitchBypassState (1 -> 0 `i ]
-"87
-}
-[e :U 475 ]
-[; ;SwitchBypass.c: 87: }
-[; ;SwitchBypass.c: 88: LATBbits.LATB2 = switchBypass_state;
-"88
-[e = . . _LATBbits 0 2 _switchBypass_state ]
-[; ;SwitchBypass.c: 90: setFeedbackState(0);
-"90
-[e ( _setFeedbackState (1 -> 0 `i ]
-[; ;SwitchBypass.c: 92: feedback_start = 0;
-"92
-[e = _feedback_start -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 93: bypass_turning_on = 0;
-"93
-[e = _bypass_turning_on -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 94: switchBypass_toggle = 0;
-"94
-[e = _switchBypass_toggle -> 0 `i ]
-[; ;SwitchBypass.c: 95: switchBypass_up = 1;
-"95
-[e = _switchBypass_up -> 1 `i ]
-[; ;SwitchBypass.c: 97: switchBypass_pressed = 25;
-"97
-[e = _switchBypass_pressed -> 25 `i ]
-"98
 }
 [e :U 474 ]
-"101
+"93
+}
+[; ;SwitchBypass.c: 78: }
+[; ;SwitchBypass.c: 93: } else {
+[e $U 475  ]
 [e :U 473 ]
-[; ;SwitchBypass.c: 98: }
-[; ;SwitchBypass.c: 101: }
+{
+[; ;SwitchBypass.c: 94: if (bypass_turning_on != 1) {
+"94
+[e $ ! != -> _bypass_turning_on `i -> 1 `i 476  ]
+{
+[; ;SwitchBypass.c: 96: currentBypassState = 0;
+"96
+[e = _currentBypassState -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 98: bypass_turning_on = 1;
+"98
+[e = _bypass_turning_on -> -> 1 `i `uc ]
+[; ;SwitchBypass.c: 99: switchBypass_toggle = 0;
+"99
+[e = _switchBypass_toggle -> 0 `i ]
+[; ;SwitchBypass.c: 101: feedback_state = 0;
+"101
+[e = _feedback_state -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 102: feedback_start = 0;
+"102
+[e = _feedback_start -> -> 0 `i `uc ]
+"103
+}
+[e :U 476 ]
+"104
+}
+[e :U 475 ]
+"106
+}
+[e :U 472 ]
+[; ;SwitchBypass.c: 103: }
+[; ;SwitchBypass.c: 104: }
+[; ;SwitchBypass.c: 106: }
+[; ;SwitchBypass.c: 107: switchBypass_up = 0;
+"107
+[e = _switchBypass_up -> 0 `i ]
+"108
+}
+[; ;SwitchBypass.c: 108: } else if (switchBypass_pressed >= 25) {
+[e $U 477  ]
+[e :U 467 ]
+[e $ ! >= _switchBypass_pressed -> 25 `i 478  ]
+{
+[; ;SwitchBypass.c: 109: if (doubleTap_state == 1) {
+"109
+[e $ ! == -> _doubleTap_state `i -> 1 `i 479  ]
+{
+[; ;SwitchBypass.c: 110: setSwitchBypassState(currentBypassState);
+"110
+[e ( _setSwitchBypassState (1 -> _currentBypassState `i ]
+"111
+}
+[; ;SwitchBypass.c: 111: } else if (bypass_turning_on == 1 || feedback_state == 1) {
+[e $U 480  ]
+[e :U 479 ]
+[e $ ! || == -> _bypass_turning_on `i -> 1 `i == -> _feedback_state `i -> 1 `i 481  ]
+{
+[; ;SwitchBypass.c: 112: setSwitchBypassState(1);
+"112
+[e ( _setSwitchBypassState (1 -> 1 `i ]
+"113
+}
+[; ;SwitchBypass.c: 113: } else if (switchBypass_toggle == 1 && feedback_state == 0 && doubleTap_state == 0) {
+[e $U 482  ]
+[e :U 481 ]
+[e $ ! && && == _switchBypass_toggle -> 1 `i == -> _feedback_state `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 483  ]
+{
+[; ;SwitchBypass.c: 114: setSwitchBypassState(0);
+"114
+[e ( _setSwitchBypassState (1 -> 0 `i ]
+"115
+}
+[e :U 483 ]
+"118
+[e :U 482 ]
+[e :U 480 ]
+[; ;SwitchBypass.c: 115: }
+[; ;SwitchBypass.c: 118: LATBbits.LATB2 = switchBypass_state;
+[e = . . _LATBbits 0 2 _switchBypass_state ]
+[; ;SwitchBypass.c: 120: setFeedbackState(0);
+"120
+[e ( _setFeedbackState (1 -> 0 `i ]
+[; ;SwitchBypass.c: 121: setDoublePressState(0);
+"121
+[e ( _setDoublePressState (1 -> 0 `i ]
+[; ;SwitchBypass.c: 122: feedback_start = 0;
+"122
+[e = _feedback_start -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 123: bypass_turning_on = 0;
+"123
+[e = _bypass_turning_on -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 124: switchBypass_toggle = 0;
+"124
+[e = _switchBypass_toggle -> 0 `i ]
+[; ;SwitchBypass.c: 125: switchBypass_up = 1;
+"125
+[e = _switchBypass_up -> 1 `i ]
+[; ;SwitchBypass.c: 127: switchBypass_pressed = 25;
+"127
+[e = _switchBypass_pressed -> 25 `i ]
+"128
+}
+[e :U 478 ]
+"131
+[e :U 477 ]
+[; ;SwitchBypass.c: 128: }
+[; ;SwitchBypass.c: 131: }
 [e :UE 462 ]
 }
-"104
+"134
 [v _setSwitchBypassState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchBypass.c: 104: void setSwitchBypassState(int f_state) {
+[; ;SwitchBypass.c: 134: void setSwitchBypassState(int f_state) {
 [e :U _setSwitchBypassState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchBypass.c: 105: if (switchBypass_state == f_state) {return;}
-"105
-[e $ ! == -> _switchBypass_state `i _f_state 477  ]
+[; ;SwitchBypass.c: 135: if (switchBypass_state == f_state) {return;}
+"135
+[e $ ! == -> _switchBypass_state `i _f_state 485  ]
 {
-[e $UE 476  ]
+[e $UE 484  ]
 }
-[e :U 477 ]
-[; ;SwitchBypass.c: 106: switchBypass_state = f_state;
-"106
+[e :U 485 ]
+[; ;SwitchBypass.c: 136: switchBypass_state = f_state;
+"136
 [e = _switchBypass_state -> _f_state `uc ]
-[; ;SwitchBypass.c: 107: LATBbits.LATB2 = f_state;
-"107
+[; ;SwitchBypass.c: 137: LATBbits.LATB2 = f_state;
+"137
 [e = . . _LATBbits 0 2 -> _f_state `uc ]
-[; ;SwitchBypass.c: 108: LATBbits.LATB3 = 0;
-"108
+[; ;SwitchBypass.c: 138: LATBbits.LATB3 = 0;
+"138
 [e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 109: LATGbits.LATG2 = f_state;
-"109
+[; ;SwitchBypass.c: 139: LATGbits.LATG2 = f_state;
+"139
 [e = . . _LATGbits 0 2 -> _f_state `uc ]
-[; ;SwitchBypass.c: 110: LATGbits.LATG1 = !f_state;
-"110
+[; ;SwitchBypass.c: 140: LATGbits.LATG1 = !f_state;
+"140
 [e = . . _LATGbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;SwitchBypass.c: 112: wait_ms(20);
-"112
+[; ;SwitchBypass.c: 142: wait_ms(20);
+"142
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 114: LATGbits.LATG2 = 0;
-"114
+[; ;SwitchBypass.c: 144: LATGbits.LATG2 = 0;
+"144
 [e = . . _LATGbits 0 2 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 115: LATGbits.LATG1 = 0;
-"115
+[; ;SwitchBypass.c: 145: LATGbits.LATG1 = 0;
+"145
 [e = . . _LATGbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 117: updateSwitchBypassState(switchBypass_state);
-"117
+[; ;SwitchBypass.c: 147: updateSwitchBypassState(switchBypass_state);
+"147
 [e ( _updateSwitchBypassState (1 -> _switchBypass_state `i ]
-[; ;SwitchBypass.c: 118: wait_ms(20);
-"118
+[; ;SwitchBypass.c: 148: wait_ms(20);
+"148
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 119: }
-"119
-[e :UE 476 ]
+[; ;SwitchBypass.c: 149: }
+"149
+[e :UE 484 ]
 }
-"121
+"151
 [v _setFeedbackState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchBypass.c: 121: void setFeedbackState(int f_state) {
+[; ;SwitchBypass.c: 151: void setFeedbackState(int f_state) {
 [e :U _setFeedbackState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchBypass.c: 122: if (feedback_state == f_state) {return;}
-"122
-[e $ ! == _feedback_state _f_state 479  ]
+[; ;SwitchBypass.c: 152: if (feedback_state == f_state) {return;}
+"152
+[e $ ! == -> _feedback_state `i _f_state 487  ]
 {
-[e $UE 478  ]
+[e $UE 486  ]
 }
-[e :U 479 ]
-[; ;SwitchBypass.c: 123: feedback_state = f_state;
-"123
-[e = _feedback_state _f_state ]
-[; ;SwitchBypass.c: 124: LATBbits.LATB3 = f_state;
-"124
+[e :U 487 ]
+[; ;SwitchBypass.c: 153: feedback_state = f_state;
+"153
+[e = _feedback_state -> _f_state `uc ]
+[; ;SwitchBypass.c: 154: LATBbits.LATB3 = f_state;
+"154
 [e = . . _LATBbits 0 3 -> _f_state `uc ]
-[; ;SwitchBypass.c: 126: LATGbits.LATG2 = f_state;
-"126
-[e = . . _LATGbits 0 2 -> _f_state `uc ]
-[; ;SwitchBypass.c: 127: LATGbits.LATG1 = !f_state;
-"127
-[e = . . _LATGbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;SwitchBypass.c: 129: wait_ms(20);
-"129
+[; ;SwitchBypass.c: 156: wait_ms(20);
+"156
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 131: LATGbits.LATG2 = 0;
-"131
-[e = . . _LATGbits 0 2 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 132: LATGbits.LATG1 = 0;
-"132
-[e = . . _LATGbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 134: wait_ms(20);
-"134
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 136: }
-"136
-[e :UE 478 ]
+[; ;SwitchBypass.c: 158: }
+"158
+[e :UE 486 ]
 }

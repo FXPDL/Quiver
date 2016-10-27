@@ -3,6 +3,7 @@
  SwitchBypass.c  \
 SwitchBypass.h  \
 memory.h  \
+preset_programming.h  \
 state_manager.h  \
 system.h  \
 constants.h 

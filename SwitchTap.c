@@ -11,8 +11,9 @@
 
 
 #include "state_manager.h"
-#include "SwitchTap.h"
 #include "constants.h"
+#include "SwitchTap.h"
+#include "preset_programming.h"
 
 
 /*long tap1 = 0;
@@ -27,20 +28,36 @@ long tap9 = 0;
 long tap10 = 0;*/
 int tap_iteration = 1;
 long tap_total = 0;
-int num_taps = 4;
+uint8_t num_taps = 4;
 long tap_history [5];
 
-int switchTap_pressed = 0;  
-int switchTap_up = 1;  
-int switchTap_toggle = 0;
+
+
+uint8_t switchTap_pressed = 0;   
+uint8_t switchTap_down = 0;
+
 
 void initSwitchTap() {
     int initState = getSwitchTapState();
-    setSwitchTapState(initState);
+   // setSwitchTapState(initState);
 }
 
+
+//tap button ------------------------------------
+//  1) look to see if x sec has passed between switches
+//  1a) if condition is met then reset the counter to zero and reset matrix, timer
+//  1b) delay until button released
+//  2) if timing is less then x sec then store time to matrix
+//  3) add all entry's to matrix and divide by number of iterations
+//  4) subroutine to apply subdivisions to the newly tapped tempo
+//  5) calculate new modulation interval for timing
+//  6) reset tap timer
+//  7) iterate the tap counter
+//  8) delay until button release
+//-----------------------------------------------
+
 void updateSwitchTap(void) {
-    uint8_t iCnt;
+    uint8_t iCnt = 0;
     //http://www.kennethkuhn.com/electronics/debounce.c
     /* Step 1: Update the integrator based on the input signal.  Note that the 
     integrator follows the input, decreasing or increasing towards the limits as 
@@ -58,29 +75,47 @@ void updateSwitchTap(void) {
     output will only change states if the integrator has reached a limit, either
     0 or MAXIMUM. */
 
-    
     if (switchTap_pressed == 0) {
         //switch is down
-            //switchTap was off, so turn it on
-            setSwitchTapState(1);
 
+                 
         if (tap_timer >= 1563) {
-            tap_timer = 0;
+            switchTap_down = 1;
+            tap_timer = 0;           
             tap_iteration = 1;
             tap_total = 0;
             delay_time_changed = 0;
-            
+ 
             for (iCnt = 1; iCnt <= num_taps; iCnt++) {
                 tap_history[iCnt] = 0;
             }
+
+
+            if (longTap_start == 0) {
+                longTap_start = 1;
+                longTap_state = 0;
+                longTap_timer = 0;
+            }
             
-        } else if (tap_timer < 1563) {
-            
+
+           //Switch was on, so if it is long press then kick in superTap.  If it is short, then turn off the fuzz
+            if (longTap_timer >= long_press_limit && longTap_state == 0) {
+                longTap_timer = long_press_limit; //try and prevent overflow
+                LED_tap_A = 0;
+                
+                if (feedback_start != 1) {
+                    setLongTapState(1);
+                } else {
+                    setDoublePressState(1);
+                }
+            }
+                
+        } else if (tap_timer < 1563 && longTap_state == 0  && switchTap_down != 1) {
             if (tap_iteration <= 4) {
                 if (tap_timer >= 1172) {
                     tap_timer = 1172;
                 }
-                int tapCntDivisor = num_taps;
+                int tapCntDivisor = num_taps;   
                 if (tap_iteration <= num_taps) {
                     tap_total += tap_timer;
                     tap_history[tap_iteration] = tap_timer;
@@ -95,23 +130,32 @@ void updateSwitchTap(void) {
                     tap_total += tap_timer;
                 }
 
-              //  baseline_delay_time = tap_total / tapCntDivisor;
-                delay_time_changed = 1;
+                //if (tap_iteration > 3) {         
+                    baseline_delay_time = tap_total / tapCntDivisor;
+
+                    delay_time_changed = 1;
+                //}
                 tap_timer = 0;
+
                 tap_iteration++;
-            }            
-            
-            switchTap_up = 0;
+            }
         }
+
     } else if (switchTap_pressed >= debounce_limit) {
-        if (switchTap_toggle == 1) {
-            setSwitchTapState(0);
-        }
-        switchTap_toggle = 0;
-        switchTap_up = 1;
+        switchTap_down = 0;
+        switchTap_state = 0;
+
+        //LED_tap_B = 0;
+
+       // longTap_state = 0;
+        //when the switch is up, longTap is definitely off.  If the toggle for tap is true, then turn the tap off.
+        setLongTapState(0);
+        //setDoublePressState(0);
+        longTap_timer = 0;
+        longTap_start = 0;
+
         switchTap_pressed = debounce_limit; /* defensive code if integrator got corrupted */
     }    
-    
     
 }
 
@@ -121,14 +165,14 @@ void setSwitchTapState(int f_state) {
     switchTap_state = f_state;
     //LED_tap_A = f_state;
     //LED_tap_B = 0;
-    Relay_2 = f_state;
-    Relay_1 = !f_state;
-
-    wait_ms(relay_delay);
-
-    Relay_2 = 0;
-    Relay_1 = 0;
 
     updateSwitchTapState(switchTap_state);  
-    wait_ms(relay_delay);
+}
+
+void setLongTapState(int f_state) {
+    if (longTap_state == f_state) {return;}
+    longTap_state = f_state;
+    LED_tap_B = f_state;
+   
+    
 }

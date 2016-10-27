@@ -39,21 +39,35 @@ void interrupt isr(void) {
             feedback_timer++;
             if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
         }
+        if (longTap_start == 1) {
+            longTap_timer++;
+            if (longTap_timer > long_press_limit) {
+                longTap_timer = long_press_limit;
+            }
+        }
+        
         INTCONbits.TMR0IF = 0;
     }
 
-    if (timer >= baseline_delay_time) { //delay_time
-        //if (suspend_blink == 0) {
-            LATBbits.LATB4 = 1; //TODO: turned off tap blink for testing
-        //}
-        timer = 0;
-    }
+    
+    
+    if (longTap_state < 1 && doubleTap_state < 1) {
+        //Don't blink the tap if the tap is held down
+        if (timer >= baseline_delay_time) { //delay_time
 
-    if (timer >= 20) { //delay_time
-        //if (suspend_blink == 0) {
-            LATBbits.LATB4 = 0;
-        //}
-    }
+            //if (suspend_blink == 0) {
+                LATBbits.LATB4 = 1; //TODO: turned off tap blink for testing
+            //}
+            timer = 0;
+        }
+
+        if (timer >= 20) { //delay_time
+            //if (suspend_blink == 0) {
+                LATBbits.LATB4 = 0;
+            //}
+        }
+    } 
+
   
     if (sub_timer >= delay_time) { //sub_delay_time
         if (suspend_blink == 0) {

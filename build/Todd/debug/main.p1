@@ -28,14 +28,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _showBootSequence `(v ~T0 @X0 0 ef ]
 "29 SwitchBypass.h
 [v _updateSwitchBypass `(v ~T0 @X0 0 ef ]
-"664 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S38 . RE0 RE1 RE2 RE3 RE4 RE5 RE6 RE7 ]
-"663
-[u S37 `S38 1 ]
-[n S37 . . ]
-"675
-[v _PORTEbits `VS37 ~T0 @X0 0 e@16 ]
+"25 SwitchTap.h
+[v _updateSwitchTap `(v ~T0 @X0 0 ef ]
 "23 system.h
 [v _adc_convert `(ui ~T0 @X0 0 ef1`uc ]
 "24
@@ -3694,76 +3688,106 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ]
 [; ;constants.h: 53: volatile long sub_timer = 0;
-"56
+"54
+[v _feedback_timer `Vui ~T0 @X0 1 e ]
+[i _feedback_timer
+-> -> 0 `i `ui
+]
+[; ;constants.h: 54: volatile uint16_t feedback_timer = 0;
+"55
+[v _longTap_timer `Vui ~T0 @X0 1 e ]
+[i _longTap_timer
+-> -> 0 `i `ui
+]
+[; ;constants.h: 55: volatile uint16_t longTap_timer = 0;
+"57
+[v _long_press_limit `ui ~T0 @X0 1 e ]
+[i _long_press_limit
+-> -> 1000 `i `ui
+]
+[; ;constants.h: 57: uint16_t long_press_limit = 1000;
+"58
 [v _baseline_delay_time `Vl ~T0 @X0 1 e ]
 [i _baseline_delay_time
 -> -> 2000 `i `l
 ]
-[; ;constants.h: 56: volatile long baseline_delay_time = 2000;
-"58
+[; ;constants.h: 58: volatile long baseline_delay_time = 2000;
+"60
+[v _feedback_start `uc ~T0 @X0 1 e ]
+[i _feedback_start
+-> -> 0 `i `uc
+]
+[; ;constants.h: 60: uint8_t feedback_start = 0;
+"61
+[v _longTap_start `uc ~T0 @X0 1 e ]
+[i _longTap_start
+-> -> 0 `i `uc
+]
+[; ;constants.h: 61: uint8_t longTap_start = 0;
+"62
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 58: uint8_t mode1_state = 0;
-"59
+[; ;constants.h: 62: uint8_t mode1_state = 0;
+"63
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 59: uint8_t mode2_state = 0;
-"60
+[; ;constants.h: 63: uint8_t mode2_state = 0;
+"64
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 60: uint8_t blink_state = 1;
-"62
-[v _suspend_blink `uc ~T0 @X0 1 e ]
+[; ;constants.h: 64: uint8_t blink_state = 1;
+"66
+[v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
--> -> 1 `i `uc
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 62: uint8_t suspend_blink = 1;
-"64
+[; ;constants.h: 66: volatile uint8_t suspend_blink = 0;
+"68
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 64: uint8_t preset_programmning_on = 0;
-"65
+[; ;constants.h: 68: uint8_t preset_programmning_on = 0;
+"69
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 65: uint8_t preset_blink = 0;
-"67
+[; ;constants.h: 69: uint8_t preset_blink = 0;
+"71
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 67: int blink_delay = 100;
-"69
-[v _top_push_state `Vuc ~T0 @X0 1 e ]
+[; ;constants.h: 71: int blink_delay = 100;
+"73
+[v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
--> -> 6 `i `uc
+-> 6 `i
 ]
-[; ;constants.h: 69: volatile uint8_t top_push_state = 6;
-"70
-[v _bottom_push_state `Vuc ~T0 @X0 1 e ]
-[i _bottom_push_state
--> -> 6 `i `uc
-]
-[; ;constants.h: 70: volatile uint8_t bottom_push_state = 6;
-"72
-[v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 72: uint16_t myBuf[32];
+[; ;constants.h: 73: int top_push_state = 6;
 "74
+[v _bottom_push_state `i ~T0 @X0 1 e ]
+[i _bottom_push_state
+-> 6 `i
+]
+[; ;constants.h: 74: int bottom_push_state = 6;
+"76
+[v _myBuf `ui ~T0 @X0 -> 32 `i e ]
+[; ;constants.h: 76: uint16_t myBuf[32];
+"78
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 74: int delay_time_changed = 1;
-"76
+[; ;constants.h: 78: int delay_time_changed = 1;
+"80
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3780,46 +3804,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 76: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"78
+[; ;constants.h: 80: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"82
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 78: int debounce_count = 0;
-"79
+[; ;constants.h: 82: int debounce_count = 0;
+"83
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 79: int debounce_bypass = 0;
-"80
+[; ;constants.h: 83: int debounce_bypass = 0;
+"84
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 80: int debounce_mode1 = 0;
-"81
+[; ;constants.h: 84: int debounce_mode1 = 0;
+"85
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 81: int debounce_mode2 = 0;
-"83
+[; ;constants.h: 85: int debounce_mode2 = 0;
+"87
 [v _tap_timer `Vl ~T0 @X0 1 e ]
-[; ;constants.h: 83: volatile long tap_timer;
-"85
+[; ;constants.h: 87: volatile long tap_timer;
+"89
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 85: uint8_t switchBypass_state = -1;
-"86
+[; ;constants.h: 89: uint8_t switchBypass_state = -1;
+"90
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 86: uint8_t switchTap_state = -1;
+[; ;constants.h: 90: uint8_t switchTap_state = -1;
+"91
+[v _longTap_state `Vuc ~T0 @X0 1 e ]
+[i _longTap_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 91: volatile uint8_t longTap_state = -1;
 [; ;user.h: 13: void InitApp(void);
 [; ;user.h: 14: void init_adc(void);
 [; ;user.h: 15: void init_pwm(void);
@@ -4058,9 +4088,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.h: 28: void initSwitchBypass(void);
 [; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
 [; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
+[; ;SwitchBypass.h: 31: void setFeedbackState(int);
 [; ;SwitchTap.h: 24: void initSwitchTap(void);
 [; ;SwitchTap.h: 25: void updateSwitchTap(void);
 [; ;SwitchTap.h: 26: void setSwitchTapState(int);
+[; ;SwitchTap.h: 27: void setLongTapState(int);
 "35 main.c
 [v _mod_timer `Vl ~T0 @X0 1 e ]
 [i _mod_timer
@@ -4169,45 +4201,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 2000 `i
 ]
 [; ;main.c: 58: int knob5_prev = 2000;
-"61
-[v _tap_iteration `i ~T0 @X0 1 e ]
-[i _tap_iteration
--> 1 `i
-]
-[; ;main.c: 61: int tap_iteration = 1;
-"62
-[v _tap_total `l ~T0 @X0 1 e ]
-[i _tap_total
--> -> 0 `i `l
-]
-[; ;main.c: 62: long tap_total = 0;
-"63
-[v _num_taps `i ~T0 @X0 1 e ]
-[i _num_taps
--> 4 `i
-]
-[; ;main.c: 63: int num_taps = 4;
-"64
-[v _tap_history `l ~T0 @X0 -> 5 `i e ]
-[; ;main.c: 64: long tap_history [5];
-"66
-[v _switchTap_pressed `i ~T0 @X0 1 e ]
-[i _switchTap_pressed
--> 0 `i
-]
-[; ;main.c: 66: int switchTap_pressed = 0;
-"67
-[v _switchTap_up `i ~T0 @X0 1 e ]
-[i _switchTap_up
--> 1 `i
-]
-[; ;main.c: 67: int switchTap_up = 1;
-"68
-[v _switchTap_toggle `i ~T0 @X0 1 e ]
-[i _switchTap_toggle
--> 0 `i
-]
-[; ;main.c: 68: int switchTap_toggle = 0;
 "70
 [v _iCnt `uc ~T0 @X0 1 e ]
 [; ;main.c: 70: uint8_t iCnt;
@@ -4592,254 +4585,67 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [e :U 462 ]
 {
-[; ;main.c: 95: read_bottom_tactile();
-"95
-[e ( _read_bottom_tactile ..  ]
-[; ;main.c: 96: read_top_tactile();
+[; ;main.c: 96: read_bottom_tactile();
 "96
+[e ( _read_bottom_tactile ..  ]
+[; ;main.c: 97: read_top_tactile();
+"97
 [e ( _read_top_tactile ..  ]
-[; ;main.c: 99: update_mode();
-"99
+[; ;main.c: 100: update_mode();
+"100
 [e ( _update_mode ..  ]
-[; ;main.c: 101: if (PORTDbits.RD7 == 0) {
-"101
+[; ;main.c: 102: if (PORTDbits.RD7 == 0) {
+"102
 [e $ ! == -> . . _PORTDbits 0 7 `i -> 0 `i 464  ]
 {
-[; ;main.c: 102: debounce_mode1++;
-"102
-[e ++ _debounce_mode1 -> 1 `i ]
-[; ;main.c: 103: if (debounce_mode1 > 25) {
+[; ;main.c: 103: debounce_mode1++;
 "103
+[e ++ _debounce_mode1 -> 1 `i ]
+[; ;main.c: 104: if (debounce_mode1 > 25) {
+"104
 [e $ ! > _debounce_mode1 -> 25 `i 465  ]
 {
-[; ;main.c: 104: debounce_mode1 = 25;
-"104
+[; ;main.c: 105: debounce_mode1 = 25;
+"105
 [e = _debounce_mode1 -> 25 `i ]
-[; ;main.c: 108: showBootSequence();
-"108
+[; ;main.c: 109: showBootSequence();
+"109
 [e ( _showBootSequence ..  ]
-[; ;main.c: 111: while (PORTDbits.RD7 == 0) {
-"111
+[; ;main.c: 112: while (PORTDbits.RD7 == 0) {
+"112
 [e $U 466  ]
 [e :U 467 ]
 {
-"112
-}
-[e :U 466 ]
-"111
-[e $ == -> . . _PORTDbits 0 7 `i -> 0 `i 467  ]
-[e :U 468 ]
 "113
 }
-[e :U 465 ]
+[e :U 466 ]
+"112
+[e $ == -> . . _PORTDbits 0 7 `i -> 0 `i 467  ]
+[e :U 468 ]
 "114
 }
-[; ;main.c: 112: }
+[e :U 465 ]
+"115
+}
 [; ;main.c: 113: }
-[; ;main.c: 114: } else {
+[; ;main.c: 114: }
+[; ;main.c: 115: } else {
 [e $U 469  ]
 [e :U 464 ]
 {
-[; ;main.c: 115: debounce_mode1 = 0;
-"115
-[e = _debounce_mode1 -> 0 `i ]
+[; ;main.c: 116: debounce_mode1 = 0;
 "116
+[e = _debounce_mode1 -> 0 `i ]
+"117
 }
 [e :U 469 ]
-[; ;main.c: 116: }
-[; ;main.c: 118: updateSwitchBypass();
-"118
+[; ;main.c: 117: }
+[; ;main.c: 119: updateSwitchBypass();
+"119
 [e ( _updateSwitchBypass ..  ]
-[; ;main.c: 157: if (PORTEbits.RE0 == 0) {
-"157
-[e $ ! == -> . . _PORTEbits 0 0 `i -> 0 `i 470  ]
-{
-[; ;main.c: 158: debounce_count++;
-"158
-[e ++ _debounce_count -> 1 `i ]
-[; ;main.c: 159: if (debounce_count > 25) {
-"159
-[e $ ! > _debounce_count -> 25 `i 471  ]
-{
-[; ;main.c: 160: if (tap_timer >= 1563) {
-"160
-[e $ ! >= _tap_timer -> -> 1563 `i `l 472  ]
-{
-[; ;main.c: 161: tap_timer = 0;
-"161
-[e = _tap_timer -> -> 0 `i `l ]
-[; ;main.c: 162: tap_iteration = 1;
-"162
-[e = _tap_iteration -> 1 `i ]
-[; ;main.c: 163: tap_total = 0;
-"163
-[e = _tap_total -> -> 0 `i `l ]
-[; ;main.c: 164: delay_time_changed = 0;
-"164
-[e = _delay_time_changed -> 0 `i ]
-[; ;main.c: 167: for (iCnt = 1; iCnt <= num_taps; iCnt++) {
-"167
-{
-[e = _iCnt -> -> 1 `i `uc ]
-[e $U 476  ]
-[e :U 473 ]
-{
-[; ;main.c: 168: tap_history[iCnt] = 0;
-"168
-[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux -> -> 0 `i `l ]
-"169
-}
-"167
-[e ++ _iCnt -> -> 1 `i `uc ]
-[e :U 476 ]
-[e $ <= -> _iCnt `i _num_taps 473  ]
-[e :U 474 ]
-"169
-}
-[; ;main.c: 169: }
-[; ;main.c: 170: while (PORTEbits.RE0 == 0) {
-"170
-[e $U 477  ]
-[e :U 478 ]
-{
-"171
-}
-[e :U 477 ]
-"170
-[e $ == -> . . _PORTEbits 0 0 `i -> 0 `i 478  ]
-[e :U 479 ]
-"172
-}
-[; ;main.c: 171: }
-[; ;main.c: 172: } else if (tap_timer < 1563) {
-[e $U 480  ]
-[e :U 472 ]
-[e $ ! < _tap_timer -> -> 1563 `i `l 481  ]
-{
-[; ;main.c: 173: if (tap_iteration <= 4) {
-"173
-[e $ ! <= _tap_iteration -> 4 `i 482  ]
-{
-[; ;main.c: 174: if (tap_timer >= 1172) {
-"174
-[e $ ! >= _tap_timer -> -> 1172 `i `l 483  ]
-{
-[; ;main.c: 175: tap_timer = 1172;
-"175
-[e = _tap_timer -> -> 1172 `i `l ]
-"176
-}
-[e :U 483 ]
-"177
-[v _tapCntDivisor `i ~T0 @X0 1 a ]
-[; ;main.c: 176: }
-[; ;main.c: 177: int tapCntDivisor = num_taps;
-[e = _tapCntDivisor _num_taps ]
-[; ;main.c: 178: if (tap_iteration <= num_taps) {
-"178
-[e $ ! <= _tap_iteration _num_taps 484  ]
-{
-[; ;main.c: 179: tap_total += tap_timer;
-"179
-[e =+ _tap_total _tap_timer ]
-[; ;main.c: 180: tap_history[tap_iteration] = tap_timer;
-"180
-[e = *U + &U _tap_history * -> -> _tap_iteration `ui `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;main.c: 181: tapCntDivisor = tap_iteration;
-"181
-[e = _tapCntDivisor _tap_iteration ]
-"182
-}
-[; ;main.c: 182: } else {
-[e $U 485  ]
-[e :U 484 ]
-{
-[; ;main.c: 183: tap_total = 0;
-"183
-[e = _tap_total -> -> 0 `i `l ]
-[; ;main.c: 184: for (iCnt = 1; iCnt < num_taps; iCnt++) {
-"184
-{
-[e = _iCnt -> -> 1 `i `uc ]
-[e $U 489  ]
-[e :U 486 ]
-{
-[; ;main.c: 185: tap_history[iCnt] = tap_history[iCnt + 1];
-"185
-[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux *U + &U _tap_history * -> -> + -> _iCnt `i -> 1 `i `ui `ux -> -> # *U &U _tap_history `ui `ux ]
-[; ;main.c: 186: tap_total += tap_history[iCnt];
-"186
-[e =+ _tap_total *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux ]
-"187
-}
-"184
-[e ++ _iCnt -> -> 1 `i `uc ]
-[e :U 489 ]
-[e $ < -> _iCnt `i _num_taps 486  ]
-[e :U 487 ]
-"187
-}
-[; ;main.c: 187: }
-[; ;main.c: 188: tap_history[num_taps] = tap_timer;
-"188
-[e = *U + &U _tap_history * -> -> _num_taps `ui `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;main.c: 189: tap_total += tap_timer;
-"189
-[e =+ _tap_total _tap_timer ]
-"190
-}
-[e :U 485 ]
-[; ;main.c: 190: }
-[; ;main.c: 192: baseline_delay_time = tap_total / tapCntDivisor;
-"192
-[e = _baseline_delay_time / _tap_total -> _tapCntDivisor `l ]
-[; ;main.c: 193: delay_time_changed = 1;
-"193
-[e = _delay_time_changed -> 1 `i ]
-[; ;main.c: 194: tap_timer = 0;
-"194
-[e = _tap_timer -> -> 0 `i `l ]
-[; ;main.c: 196: tap_iteration++;
-"196
-[e ++ _tap_iteration -> 1 `i ]
-"197
-}
-[e :U 482 ]
-[; ;main.c: 197: }
-[; ;main.c: 198: while (PORTEbits.RE0 == 0) {
-"198
-[e $U 490  ]
-[e :U 491 ]
-{
-"199
-}
-[e :U 490 ]
-"198
-[e $ == -> . . _PORTEbits 0 0 `i -> 0 `i 491  ]
-[e :U 492 ]
-"200
-}
-[e :U 481 ]
-"201
-[e :U 480 ]
-}
-[e :U 471 ]
-"202
-}
-[; ;main.c: 199: }
-[; ;main.c: 200: }
-[; ;main.c: 201: }
-[; ;main.c: 202: } else {
-[e $U 493  ]
-[e :U 470 ]
-{
-[; ;main.c: 203: debounce_count = 0;
-"203
-[e = _debounce_count -> 0 `i ]
-"204
-}
-[e :U 493 ]
-[; ;main.c: 204: }
+[; ;main.c: 120: updateSwitchTap();
+"120
+[e ( _updateSwitchTap ..  ]
 [; ;main.c: 209: knob_1_pos = adc_convert(0);
 "209
 [e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
@@ -4857,15 +4663,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
 [; ;main.c: 226: if (knob_1_pos - knob1_prev >= 4 || knob_1_pos - knob1_prev <= -4) {
 "226
-[e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 494  ]
+[e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 470  ]
 {
 [; ;main.c: 227: knob1_prev = knob_1_pos;
 "227
 [e = _knob1_prev _knob_1_pos ]
-"228
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 228: int i = map(knob1_prev, 0, 1023, 0, 255);
-[e = _i -> ( _map (4 , , , , -> _knob1_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 0 `i `f -> -> 255 `i `f `i ]
 [; ;main.c: 229: baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
 "229
 [e = _baseline_delay_time -> ( _map (4 , , , , -> _knob1_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1172 `i `f -> -> 200 `i `f `l ]
@@ -4874,11 +4676,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _delay_time_changed -> 1 `i ]
 "231
 }
-[e :U 494 ]
+[e :U 470 ]
 [; ;main.c: 231: }
 [; ;main.c: 240: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 "240
-[e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 495  ]
+[e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 471  ]
 {
 [; ;main.c: 241: knob2_prev = knob_2_pos;
 "241
@@ -4895,11 +4697,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _CCPR3 -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `us ]
 "245
 }
-[e :U 495 ]
+[e :U 471 ]
 [; ;main.c: 245: }
 [; ;main.c: 255: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 "255
-[e $ ! || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i 496  ]
+[e $ ! || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i 472  ]
 {
 [; ;main.c: 256: knob3_prev = knob_3_pos;
 "256
@@ -4916,11 +4718,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _CCPR5 -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `us ]
 "260
 }
-[e :U 496 ]
+[e :U 472 ]
 [; ;main.c: 260: }
 [; ;main.c: 270: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 "270
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 497  ]
+[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 473  ]
 {
 [; ;main.c: 271: knob4_prev = knob_4_pos;
 "271
@@ -4930,22 +4732,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 60 `i `f -> -> 1000 `i `f `i ]
 "273
 }
-[e :U 497 ]
+[e :U 473 ]
 [; ;main.c: 273: }
 [; ;main.c: 281: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 "281
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 498  ]
+[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 474  ]
 {
 [; ;main.c: 282: knob5_prev = knob_5_pos;
 "282
 [e = _knob5_prev _knob_5_pos ]
 "283
 }
-[e :U 498 ]
+[e :U 474 ]
 [; ;main.c: 283: }
 [; ;main.c: 296: if (mod_timer >= mod_delay_time) {
 "296
-[e $ ! >= _mod_timer -> _mod_delay_time `l 499  ]
+[e $ ! >= _mod_timer -> _mod_delay_time `l 475  ]
 {
 [; ;main.c: 298: mod_counter = mod_counter + 1;
 "298
@@ -4955,38 +4757,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mod_timer -> -> 0 `i `l ]
 [; ;main.c: 301: if (bottom_push_state == 1 || bottom_push_state == 5) {
 "301
-[e $ ! || == -> _bottom_push_state `i -> 1 `i == -> _bottom_push_state `i -> 5 `i 500  ]
+[e $ ! || == _bottom_push_state -> 1 `i == _bottom_push_state -> 5 `i 476  ]
 {
 [; ;main.c: 302: if (mod_counter >= 61) {
 "302
-[e $ ! >= _mod_counter -> 61 `i 501  ]
+[e $ ! >= _mod_counter -> 61 `i 477  ]
 {
 [; ;main.c: 303: mod_counter = 0;
 "303
 [e = _mod_counter -> 0 `i ]
 "304
 }
-[e :U 501 ]
+[e :U 477 ]
 "305
 }
 [; ;main.c: 304: }
 [; ;main.c: 305: } else {
-[e $U 502  ]
-[e :U 500 ]
+[e $U 478  ]
+[e :U 476 ]
 {
 [; ;main.c: 306: if (mod_counter > 31) {
 "306
-[e $ ! > _mod_counter -> 31 `i 503  ]
+[e $ ! > _mod_counter -> 31 `i 479  ]
 {
 [; ;main.c: 307: mod_counter = 0;
 "307
 [e = _mod_counter -> 0 `i ]
 "308
 }
-[e :U 503 ]
+[e :U 479 ]
 "309
 }
-[e :U 502 ]
+[e :U 478 ]
 "312
 [v _adjusted_pot_value `i ~T0 @X0 1 a ]
 [; ;main.c: 308: }
@@ -4995,11 +4797,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
 [; ;main.c: 313: switch (bottom_push_state) {
 "313
-[e $U 505  ]
+[e $U 481  ]
 {
 [; ;main.c: 314: case 1:
 "314
-[e :U 506 ]
+[e :U 482 ]
 [; ;main.c: 315: mod_value = mod5[mod_counter];
 "315
 [e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
@@ -5008,10 +4810,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
 [; ;main.c: 317: break;
 "317
-[e $U 504  ]
+[e $U 480  ]
 [; ;main.c: 318: case 2:
 "318
-[e :U 507 ]
+[e :U 483 ]
 [; ;main.c: 319: mod_value = mod2[mod_counter];
 "319
 [e = _mod_value *U + &U _mod2 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod2 `ui `ux ]
@@ -5020,10 +4822,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
 [; ;main.c: 321: break;
 "321
-[e $U 504  ]
+[e $U 480  ]
 [; ;main.c: 322: case 3:
 "322
-[e :U 508 ]
+[e :U 484 ]
 [; ;main.c: 323: mod_value = mod3[mod_counter];
 "323
 [e = _mod_value *U + &U _mod3 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod3 `ui `ux ]
@@ -5032,10 +4834,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
 [; ;main.c: 325: break;
 "325
-[e $U 504  ]
+[e $U 480  ]
 [; ;main.c: 326: case 4:
 "326
-[e :U 509 ]
+[e :U 485 ]
 [; ;main.c: 327: mod_value = mod4[mod_counter];
 "327
 [e = _mod_value *U + &U _mod4 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod4 `ui `ux ]
@@ -5044,10 +4846,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
 [; ;main.c: 329: break;
 "329
-[e $U 504  ]
+[e $U 480  ]
 [; ;main.c: 330: case 5:
 "330
-[e :U 510 ]
+[e :U 486 ]
 [; ;main.c: 331: mod_value = mod5[mod_counter];
 "331
 [e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
@@ -5059,10 +4861,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 1 `i `uc ]
 [; ;main.c: 334: break;
 "334
-[e $U 504  ]
+[e $U 480  ]
 [; ;main.c: 335: case 6:
 "335
-[e :U 511 ]
+[e :U 487 ]
 [; ;main.c: 336: mod_value = 0;
 "336
 [e = _mod_value -> 0 `i ]
@@ -5071,22 +4873,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
 [; ;main.c: 338: break;
 "338
-[e $U 504  ]
+[e $U 480  ]
 "339
 }
 [; ;main.c: 339: }
-[e $U 504  ]
+[e $U 480  ]
 "313
-[e :U 505 ]
-[e [\ _bottom_push_state , $ -> -> 1 `i `uc 506
- , $ -> -> 2 `i `uc 507
- , $ -> -> 3 `i `uc 508
- , $ -> -> 4 `i `uc 509
- , $ -> -> 5 `i `uc 510
- , $ -> -> 6 `i `uc 511
- 504 ]
+[e :U 481 ]
+[e [\ _bottom_push_state , $ -> 1 `i 482
+ , $ -> 2 `i 483
+ , $ -> 3 `i 484
+ , $ -> 4 `i 485
+ , $ -> 5 `i 486
+ , $ -> 6 `i 487
+ 480 ]
 "339
-[e :U 504 ]
+[e :U 480 ]
 [; ;main.c: 340: mod_value = modulation(mod_value, adjusted_pot_value);
 "340
 [e = _mod_value ( _modulation (2 , _mod_value _adjusted_pot_value ]
@@ -5098,18 +4900,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mod_timer -> -> 0 `i `l ]
 "343
 }
-[e :U 499 ]
+[e :U 475 ]
 [; ;main.c: 343: }
 [; ;main.c: 348: if (delay_time_changed == 1) {
 "348
-[e $ ! == _delay_time_changed -> 1 `i 512  ]
+[e $ ! == _delay_time_changed -> 1 `i 488  ]
 {
 [; ;main.c: 349: delay_time = baseline_delay_time;
 "349
 [e = _delay_time _baseline_delay_time ]
 [; ;main.c: 350: delay_time = set_subdivision(baseline_delay_time, top_push_state);
 "350
-[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i -> _top_push_state `i `l ]
+[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
 [; ;main.c: 351: delayfound = 0;
 "351
 [e = _delayfound -> 0 `i ]
@@ -5118,12 +4920,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _delay_counter -> 0 `i ]
 [; ;main.c: 353: while (delayfound == 0) {
 "353
-[e $U 513  ]
-[e :U 514 ]
+[e $U 489  ]
+[e :U 490 ]
 {
 [; ;main.c: 354: if (delay[delay_counter] <= delay_time * 2) {
 "354
-[e $ ! <= -> *U + &U _delay * -> -> _delay_counter `ui `ux -> -> # *U &U _delay `ui `ux `l * _delay_time -> -> 2 `i `l 516  ]
+[e $ ! <= -> *U + &U _delay * -> -> _delay_counter `ui `ux -> -> # *U &U _delay `ui `ux `l * _delay_time -> -> 2 `i `l 492  ]
 {
 [; ;main.c: 355: delayfound = 1;
 "355
@@ -5134,21 +4936,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "357
 }
 [; ;main.c: 357: } else {
-[e $U 517  ]
-[e :U 516 ]
+[e $U 493  ]
+[e :U 492 ]
 {
 [; ;main.c: 358: delay_counter++;
 "358
 [e ++ _delay_counter -> 1 `i ]
 "359
 }
-[e :U 517 ]
+[e :U 493 ]
 "360
 }
-[e :U 513 ]
+[e :U 489 ]
 "353
-[e $ == _delayfound -> 0 `i 514  ]
-[e :U 515 ]
+[e $ == _delayfound -> 0 `i 490  ]
+[e :U 491 ]
 [; ;main.c: 359: }
 [; ;main.c: 360: }
 [; ;main.c: 361: mod_delay_time = delay_time / 7.5;
@@ -5159,7 +4961,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _delay_time_changed -> 0 `i ]
 "364
 }
-[e :U 512 ]
+[e :U 488 ]
 "366
 }
 [e :U 461 ]
