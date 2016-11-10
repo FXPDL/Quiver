@@ -3681,69 +3681,75 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 61: uint8_t longTap_start = 0;
 "62
+[v _doubleTap_state `Vuc ~T0 @X0 1 e ]
+[i _doubleTap_state
+-> -> 0 `i `uc
+]
+[; ;constants.h: 62: volatile uint8_t doubleTap_state = 0;
+"63
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 62: uint8_t mode1_state = 0;
-"63
+[; ;constants.h: 63: uint8_t mode1_state = 0;
+"64
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 63: uint8_t mode2_state = 0;
-"64
+[; ;constants.h: 64: uint8_t mode2_state = 0;
+"65
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 64: uint8_t blink_state = 1;
-"66
+[; ;constants.h: 65: uint8_t blink_state = 1;
+"67
 [v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: volatile uint8_t suspend_blink = 0;
-"68
+[; ;constants.h: 67: volatile uint8_t suspend_blink = 0;
+"69
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 68: uint8_t preset_programmning_on = 0;
-"69
+[; ;constants.h: 69: uint8_t preset_programmning_on = 0;
+"70
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 69: uint8_t preset_blink = 0;
-"71
+[; ;constants.h: 70: uint8_t preset_blink = 0;
+"72
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 71: int blink_delay = 100;
-"73
+[; ;constants.h: 72: int blink_delay = 100;
+"74
 [v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
 -> 6 `i
 ]
-[; ;constants.h: 73: int top_push_state = 6;
-"74
+[; ;constants.h: 74: int top_push_state = 6;
+"75
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
 -> 6 `i
 ]
-[; ;constants.h: 74: int bottom_push_state = 6;
-"76
+[; ;constants.h: 75: int bottom_push_state = 6;
+"77
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 76: uint16_t myBuf[32];
-"78
+[; ;constants.h: 77: uint16_t myBuf[32];
+"79
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 78: int delay_time_changed = 1;
-"80
+[; ;constants.h: 79: int delay_time_changed = 1;
+"81
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3760,52 +3766,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 80: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"82
+[; ;constants.h: 81: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"83
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 82: int debounce_count = 0;
-"83
+[; ;constants.h: 83: int debounce_count = 0;
+"84
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 83: int debounce_bypass = 0;
-"84
+[; ;constants.h: 84: int debounce_bypass = 0;
+"85
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 84: int debounce_mode1 = 0;
-"85
+[; ;constants.h: 85: int debounce_mode1 = 0;
+"86
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 85: int debounce_mode2 = 0;
-"87
+[; ;constants.h: 86: int debounce_mode2 = 0;
+"88
 [v _tap_timer `Vl ~T0 @X0 1 e ]
-[; ;constants.h: 87: volatile long tap_timer;
-"89
+[; ;constants.h: 88: volatile long tap_timer;
+"90
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 89: uint8_t switchBypass_state = -1;
-"90
+[; ;constants.h: 90: uint8_t switchBypass_state = -1;
+"91
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 90: uint8_t switchTap_state = -1;
-"91
+[; ;constants.h: 91: uint8_t switchTap_state = -1;
+"92
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 91: volatile uint8_t longTap_state = -1;
+[; ;constants.h: 92: volatile uint8_t longTap_state = -1;
+"93
+[v _feedback_state `Vuc ~T0 @X0 1 e ]
+[i _feedback_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 93: volatile uint8_t feedback_state = -1;
 "16 state_manager.c
 [v _ledState `S460 ~T0 @X0 1 e ]
 [i _ledState

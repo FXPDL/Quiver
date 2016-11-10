@@ -4927,6 +4927,7 @@ volatile long baseline_delay_time = 2000;
 
 uint8_t feedback_start = 0;
 uint8_t longTap_start = 0;
+volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
@@ -4957,6 +4958,7 @@ volatile long tap_timer;
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
 volatile uint8_t longTap_state = -1;
+volatile uint8_t feedback_state = -1;
 
 # 13 "user.h"
 void InitApp(void);
@@ -5045,6 +5047,12 @@ void main(void) {
 ConfigureOscillator();
 InitApp();
 
+PORTEbits.RE0 = 1;
+PORTEbits.RE1 = 1;
+PORTDbits.RD6 = 1;
+PORTDbits.RD5 = 1;
+PORTCbits.RC0 = 1;
+PORTDbits.RD7 = 1;
 
 InitializeTaps();
 initSwitchBypass();
@@ -5081,22 +5089,21 @@ debounce_mode1 = 0;
 updateSwitchBypass();
 updateSwitchTap();
 
-# 209
+# 215
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 226
+# 232
 if (knob_1_pos - knob1_prev >= 4 || knob_1_pos - knob1_prev <= -4) {
 knob1_prev = knob_1_pos;
-
 baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
 delay_time_changed = 1;
 }
 
-# 240
+# 245
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 int i = map(knob2_prev, 0, 1023, 0, 39);
@@ -5104,7 +5111,7 @@ CCPR2 = iB25k[i];
 CCPR3 = B25k[i];
 }
 
-# 255
+# 260
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 int i = map(knob3_prev, 0, 1023, 16, 0);
@@ -5112,18 +5119,18 @@ CCPR4 = iB25k[i];
 CCPR5 = B25k[i];
 }
 
-# 270
+# 275
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);
 }
 
-# 281
+# 286
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
 }
 
-# 296
+# 301
 if (mod_timer >= mod_delay_time) {
 
 mod_counter = mod_counter + 1;

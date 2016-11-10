@@ -24,17 +24,19 @@ void interrupt isr(void) {
     extern volatile long timer;
     extern volatile long sub_timer;
     extern volatile long tap_timer;
-    extern volatile long mod_timer;
+
     extern volatile long baseline_delay_time;
-    extern volatile long delay_time;
+
     extern  int top_push_state;
     extern uint8_t feedback_start;
-       
+    extern volatile long mod_timer;    
+    extern volatile long delay_time;       
     if (INTCONbits.TMR0IF == 1) {
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
+        test_timer++;
         if (feedback_start == 1) {
             feedback_timer++;
             if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
@@ -49,18 +51,27 @@ void interrupt isr(void) {
         INTCONbits.TMR0IF = 0;
     }
 
+   
+    /*if (test_timer >= (tap_reset-10)) {  
+        LATDbits.LATD2 = 1;
+        test_timer = 0;
+    } 
     
+    if (test_timer >= 20) {  
+        LATDbits.LATD2 = 0;
+    }
+     */
     
     if (longTap_state < 1 && doubleTap_state < 1) {
         //Don't blink the tap if the tap is held down
         if (timer >= baseline_delay_time) { //delay_time
 
             //if (suspend_blink == 0) {
-                LATBbits.LATB4 = 1; //TODO: turned off tap blink for testing
+                LATBbits.LATB4 = 1;  
             //}
             timer = 0;
         }
-
+        
         if (timer >= 20) { //delay_time
             //if (suspend_blink == 0) {
                 LATBbits.LATB4 = 0;

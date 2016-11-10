@@ -4934,6 +4934,7 @@ volatile long baseline_delay_time = 2000;
 
 uint8_t feedback_start = 0;
 uint8_t longTap_start = 0;
+volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
 uint8_t mode2_state = 0;
 uint8_t blink_state = 1;
@@ -4964,6 +4965,7 @@ volatile long tap_timer;
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
 volatile uint8_t longTap_state = -1;
+volatile uint8_t feedback_state = -1;
 
 # 28 "state_manager.h"
 typedef struct {

@@ -51,11 +51,11 @@ int knob_2_pos = 0;
 int knob_3_pos = 0;
 int knob_4_pos = 0;
 int knob_5_pos = 0;
-int knob1_prev = 2000;
-int knob2_prev = 2000;
-int knob3_prev = 2000;
-int knob4_prev = 2000;
-int knob5_prev = 2000;
+volatile int knob1_prev = 2000;
+volatile int knob2_prev = 2000;
+volatile int knob3_prev = 2000;
+volatile int knob4_prev = 2000;
+volatile int knob5_prev = 2000;
 
 /*
 int tap_iteration = 1;
@@ -83,6 +83,12 @@ void main(void) {
     ConfigureOscillator();
     InitApp();
 
+    switch_tap = 1;
+    switch_bypass = 1;
+    bottom_tactile = 1;
+    top_tactile = 1;
+    mode_2 = 1;
+    mode_1 = 1;
     
     InitializeTaps();
     initSwitchBypass();
@@ -206,7 +212,7 @@ void main(void) {
 
 
         //read pots---------------------------------------
-        knob_1_pos = adc_convert(0);
+        knob_1_pos = adc_convert(0); //  adc_convert(0);
         knob_2_pos = adc_convert(1);
         knob_3_pos = adc_convert(2);
         knob_4_pos = adc_convert(3);
@@ -223,14 +229,31 @@ void main(void) {
         //  5) recalculate mod timer
         //  6) set output of dthelay
         //--------------------------------------------------
-        if (knob_1_pos - knob1_prev >= 4 || knob_1_pos - knob1_prev <= -4) {
+ 
+        /*if(knob1_prev < 500 && knob1_prev > 480) {
+            LATDbits.LATD0 = 1;
+        } else {
+            LATDbits.LATD0 = 0;
+        }
+ 
+        if(knob_1_pos < 500 && knob_1_pos > 480) {
+            LATDbits.LATD2 = 1;
+        } else {
+            LATDbits.LATD2 = 0;
+        }*/
+        
+        //Depth
+        if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
-        //    int i = map(knob1_prev, 0, 1023, 0, 255);
             baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
             delay_time_changed = 1;
+            LATDbits.LATD0 = 1;
+        } else {
+            LATDbits.LATD0 = 0;  
         }
 
 
+        //Mix
         //knob 2 action ----------------------------------
         //Delay MIX U8 U7 PWM2 PWM3
         //  1) Look to see if knob has changed by more then 0.2%
@@ -245,7 +268,7 @@ void main(void) {
         }
 
 
-
+        //Feedback
         //knob 3 action ----------------------------------
         //Delay FB U9 U10 PWM4 PWM5
         //  1) Look to see if knob has changed by more then 0.2%
@@ -260,7 +283,7 @@ void main(void) {
         }
 
 
-
+        //Rate
         //knob 4 action ----------------------------------
         //Delay MOD SPEED U11 U12 PWM6 PWM7
         //  1) Look to see if knob has changed by more then 0.2%
@@ -269,7 +292,7 @@ void main(void) {
         //------------------------------------------------
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
-            mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);
+            mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
         }
 
 
@@ -280,6 +303,9 @@ void main(void) {
         //------------------------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
+            LATDbits.LATD2 = 1;
+        } else {
+            LATDbits.LATD2 = 0;            
         }
 
         //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -361,7 +387,7 @@ void main(void) {
             mod_delay_time = delay_time / 7.5;
 
             delay_time_changed = 0;
-        }
+        } 
  
     }
 }

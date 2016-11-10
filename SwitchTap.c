@@ -15,22 +15,11 @@
 #include "SwitchTap.h"
 #include "preset_programming.h"
 
-
-/*long tap1 = 0;
-long tap2 = 0;
-long tap3 = 0;
-long tap4 = 0;
-long tap5 = 0;
-long tap6 = 0;
-long tap7 = 0;
-long tap8 = 0;
-long tap9 = 0;
-long tap10 = 0;*/
 int tap_iteration = 1;
 long tap_total = 0;
 uint8_t num_taps = 4;
 long tap_history [5];
-
+extern volatile long tap_timer;
 
 
 uint8_t switchTap_pressed = 0;   
@@ -63,6 +52,8 @@ void updateSwitchTap(void) {
     integrator follows the input, decreasing or increasing towards the limits as 
     determined by the input state (0 or 1). */
 
+ 
+    
     if (switch_tap == 0) {
         if (switchTap_pressed > 0) {
             switchTap_pressed--;
@@ -77,14 +68,17 @@ void updateSwitchTap(void) {
 
     if (switchTap_pressed == 0) {
         //switch is down
-
+        
                  
-        if (tap_timer >= 1563) {
+        if (tap_timer >= tap_reset) {
+            //This is a first tap.
+ 
             switchTap_down = 1;
             tap_timer = 0;           
             tap_iteration = 1;
             tap_total = 0;
             delay_time_changed = 0;
+            LATDbits.LATD0 = 0;
  
             for (iCnt = 1; iCnt <= num_taps; iCnt++) {
                 tap_history[iCnt] = 0;
@@ -98,8 +92,9 @@ void updateSwitchTap(void) {
             }
             
 
-           //Switch was on, so if it is long press then kick in superTap.  If it is short, then turn off the fuzz
+           //Switch was on, so if it is long press then ignore the tap.  If it is short, then record the tap
             if (longTap_timer >= long_press_limit && longTap_state == 0) {
+                //Long press
                 longTap_timer = long_press_limit; //try and prevent overflow
                 LED_tap_A = 0;
                 
@@ -110,41 +105,39 @@ void updateSwitchTap(void) {
                 }
             }
                 
-        } else if (tap_timer < 1563 && longTap_state == 0  && switchTap_down != 1) {
-            if (tap_iteration <= 4) {
-                if (tap_timer >= 1172) {
-                    tap_timer = 1172;
-                }
-                int tapCntDivisor = num_taps;   
-                if (tap_iteration <= num_taps) {
-                    tap_total += tap_timer;
-                    tap_history[tap_iteration] = tap_timer;
-                    tapCntDivisor = tap_iteration;
-                } else {
-                    tap_total = 0;
-                    for (iCnt = 1; iCnt < num_taps; iCnt++) {
-                        tap_history[iCnt] = tap_history[iCnt + 1];
-                        tap_total += tap_history[iCnt];
-                    }
-                    tap_history[num_taps] = tap_timer;
-                    tap_total += tap_timer;
-                }
-
-                //if (tap_iteration > 3) {         
-                    baseline_delay_time = tap_total / tapCntDivisor;
-
-                    delay_time_changed = 1;
-                //}
-                tap_timer = 0;
-
-                tap_iteration++;
+        } else if (tap_timer < tap_reset && longTap_state == 0  && switchTap_down != 1) {
+            //additional taps (in series)
+            switchTap_down = 1;
+            if (tap_timer >= tap_reset-10) { //1172) {
+                tap_timer = tap_reset-10; //1172;
             }
+                
+            int tapCntDivisor = num_taps;   
+            if (tap_iteration <= num_taps) {
+                tap_total += tap_timer;
+                tap_history[tap_iteration] = tap_timer;
+                tapCntDivisor = tap_iteration;
+            } else {
+                tap_total = 0;
+                for (iCnt = 1; iCnt < num_taps; iCnt++) {
+                    tap_history[iCnt] = tap_history[iCnt + 1];
+                    tap_total += tap_history[iCnt];
+                }
+                tap_history[num_taps] = tap_timer;
+                tap_total += tap_timer;
+            }
+
+            baseline_delay_time = tap_total / tapCntDivisor;
+            delay_time_changed = 1;
+            tap_timer = 0;
+            
+            tap_iteration++;
         }
 
     } else if (switchTap_pressed >= debounce_limit) {
         switchTap_down = 0;
         switchTap_state = 0;
-
+ 
         //LED_tap_B = 0;
 
        // longTap_state = 0;

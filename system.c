@@ -20,9 +20,9 @@ void ConfigureOscillator(void)
     OSCCONbits.SCS = 0b00; 
 }
 
-void wait_ms(uint16_t time)
+void wait_ms(uint16_t timeSec)
 {
-    static long timel = 0;
-    timel = time * 1000l;
-    for( ; timel; timel--);// no initial condition, while time is >0, decrement time each loop
+    long timemsl = 0;
+    timemsl = timeSec * 1000l;
+    for( ; timemsl; timemsl--);// no initial condition, while time is >0, decrement time each loop
 }

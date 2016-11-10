@@ -40,13 +40,14 @@ extern "C" {
 #define Relay_2 LATGbits.LATG2
 #define switch_bypass PORTEbits.RE1
 #define switch_tap PORTEbits.RE0
-#define exp_mode PORTAbits.RA4
+#define exp_mode PORTAbits.RA4 
 #define mode_2 PORTCbits.RC0
 #define mode_1 PORTDbits.RD7
 #define chorus PORTCbits.RC4
 
 #define relay_delay   20  //milliseconds
 #define debounce_limit  25
+#define tap_reset  1563
 
 
 volatile long timer = 0;
@@ -85,7 +86,8 @@ int debounce_bypass = 0;
 int debounce_mode1 = 0;
 int debounce_mode2 = 0;
 
-volatile long tap_timer;
+volatile long tap_timer = 0;
+volatile long test_timer = 0;
 
 uint8_t switchBypass_state = -1; //initialize to an invalid value so the initialize will run.
 uint8_t switchTap_state = -1; //initialize to an invalid value so the initialize will run.

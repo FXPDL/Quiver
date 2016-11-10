@@ -4916,7 +4916,7 @@ float map(float, float, float, float, float);
 int set_subdivision(int,int);
 int modulation(signed int, signed int);
 
-# 52 "constants.h"
+# 53 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4953,7 +4953,8 @@ int debounce_bypass = 0;
 int debounce_mode1 = 0;
 int debounce_mode2 = 0;
 
-volatile long tap_timer;
+volatile long tap_timer = 0;
+volatile long test_timer = 0;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
@@ -5030,11 +5031,11 @@ int knob_2_pos = 0;
 int knob_3_pos = 0;
 int knob_4_pos = 0;
 int knob_5_pos = 0;
-int knob1_prev = 2000;
-int knob2_prev = 2000;
-int knob3_prev = 2000;
-int knob4_prev = 2000;
-int knob5_prev = 2000;
+volatile int knob1_prev = 2000;
+volatile int knob2_prev = 2000;
+volatile int knob3_prev = 2000;
+volatile int knob4_prev = 2000;
+volatile int knob5_prev = 2000;
 
 # 70
 uint8_t iCnt;
@@ -5047,6 +5048,12 @@ void main(void) {
 ConfigureOscillator();
 InitApp();
 
+PORTEbits.RE0 = 1;
+PORTEbits.RE1 = 1;
+PORTDbits.RD6 = 1;
+PORTDbits.RD5 = 1;
+PORTCbits.RC0 = 1;
+PORTDbits.RD7 = 1;
 
 InitializeTaps();
 initSwitchBypass();
@@ -5083,22 +5090,24 @@ debounce_mode1 = 0;
 updateSwitchBypass();
 updateSwitchTap();
 
-# 209
+# 215
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 226
-if (knob_1_pos - knob1_prev >= 4 || knob_1_pos - knob1_prev <= -4) {
+# 246
+if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
-
 baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
 delay_time_changed = 1;
+LATDbits.LATD0 = 1;
+} else {
+LATDbits.LATD0 = 0;
 }
 
-# 240
+# 263
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 int i = map(knob2_prev, 0, 1023, 0, 39);
@@ -5106,7 +5115,7 @@ CCPR2 = iB25k[i];
 CCPR3 = B25k[i];
 }
 
-# 255
+# 278
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 int i = map(knob3_prev, 0, 1023, 16, 0);
@@ -5114,18 +5123,21 @@ CCPR4 = iB25k[i];
 CCPR5 = B25k[i];
 }
 
-# 270
+# 293
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);
 }
 
-# 281
+# 304
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
+LATDbits.LATD2 = 1;
+} else {
+LATDbits.LATD2 = 0;
 }
 
-# 296
+# 322
 if (mod_timer >= mod_delay_time) {
 
 mod_counter = mod_counter + 1;

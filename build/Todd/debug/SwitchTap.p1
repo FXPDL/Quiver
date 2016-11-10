@@ -19,6 +19,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
 "27 SwitchTap.h
 [v _setLongTapState `(v ~T0 @X0 0 ef1`i ]
+"25 preset_programming.h
+[v _setDoublePressState `(v ~T0 @X0 0 ef1`i ]
+"20 system.h
+[v _wait_ms `(v ~T0 @X0 0 ef1`ui ]
 "54 state_manager.h
 [v _updateSwitchTapState `(v ~T0 @X0 0 ef1`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3630,10 +3634,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;state_manager.h: 53: int getSwitchBypassState(void);
 [; ;state_manager.h: 54: void updateSwitchTapState(int);
 [; ;state_manager.h: 55: int getSwitchTapState(void);
-[; ;SwitchTap.h: 24: void initSwitchTap(void);
-[; ;SwitchTap.h: 25: void updateSwitchTap(void);
-[; ;SwitchTap.h: 26: void setSwitchTapState(int);
-[; ;SwitchTap.h: 27: void setLongTapState(int);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
@@ -3696,69 +3696,75 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 61: uint8_t longTap_start = 0;
 "62
+[v _doubleTap_state `Vuc ~T0 @X0 1 e ]
+[i _doubleTap_state
+-> -> 0 `i `uc
+]
+[; ;constants.h: 62: volatile uint8_t doubleTap_state = 0;
+"63
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 62: uint8_t mode1_state = 0;
-"63
+[; ;constants.h: 63: uint8_t mode1_state = 0;
+"64
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 63: uint8_t mode2_state = 0;
-"64
+[; ;constants.h: 64: uint8_t mode2_state = 0;
+"65
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 64: uint8_t blink_state = 1;
-"66
+[; ;constants.h: 65: uint8_t blink_state = 1;
+"67
 [v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: volatile uint8_t suspend_blink = 0;
-"68
+[; ;constants.h: 67: volatile uint8_t suspend_blink = 0;
+"69
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 68: uint8_t preset_programmning_on = 0;
-"69
+[; ;constants.h: 69: uint8_t preset_programmning_on = 0;
+"70
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 69: uint8_t preset_blink = 0;
-"71
+[; ;constants.h: 70: uint8_t preset_blink = 0;
+"72
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 71: int blink_delay = 100;
-"73
+[; ;constants.h: 72: int blink_delay = 100;
+"74
 [v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
 -> 6 `i
 ]
-[; ;constants.h: 73: int top_push_state = 6;
-"74
+[; ;constants.h: 74: int top_push_state = 6;
+"75
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
 -> 6 `i
 ]
-[; ;constants.h: 74: int bottom_push_state = 6;
-"76
+[; ;constants.h: 75: int bottom_push_state = 6;
+"77
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 76: uint16_t myBuf[32];
-"78
+[; ;constants.h: 77: uint16_t myBuf[32];
+"79
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 78: int delay_time_changed = 1;
-"80
+[; ;constants.h: 79: int delay_time_changed = 1;
+"81
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3775,435 +3781,420 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 80: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"82
+[; ;constants.h: 81: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"83
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 82: int debounce_count = 0;
-"83
+[; ;constants.h: 83: int debounce_count = 0;
+"84
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 83: int debounce_bypass = 0;
-"84
+[; ;constants.h: 84: int debounce_bypass = 0;
+"85
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 84: int debounce_mode1 = 0;
-"85
+[; ;constants.h: 85: int debounce_mode1 = 0;
+"86
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 85: int debounce_mode2 = 0;
-"87
+[; ;constants.h: 86: int debounce_mode2 = 0;
+"88
 [v _tap_timer `Vl ~T0 @X0 1 e ]
-[; ;constants.h: 87: volatile long tap_timer;
-"89
+[; ;constants.h: 88: volatile long tap_timer;
+"90
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 89: uint8_t switchBypass_state = -1;
-"90
+[; ;constants.h: 90: uint8_t switchBypass_state = -1;
+"91
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 90: uint8_t switchTap_state = -1;
-"91
+[; ;constants.h: 91: uint8_t switchTap_state = -1;
+"92
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 91: volatile uint8_t longTap_state = -1;
-"28 SwitchTap.c
+[; ;constants.h: 92: volatile uint8_t longTap_state = -1;
+"93
+[v _feedback_state `Vuc ~T0 @X0 1 e ]
+[i _feedback_state
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 93: volatile uint8_t feedback_state = -1;
+[; ;SwitchTap.h: 24: void initSwitchTap(void);
+[; ;SwitchTap.h: 25: void updateSwitchTap(void);
+[; ;SwitchTap.h: 26: void setSwitchTapState(int);
+[; ;SwitchTap.h: 27: void setLongTapState(int);
+[; ;preset_programming.h: 25: void setDoublePressState(int);
+"18 SwitchTap.c
 [v _tap_iteration `i ~T0 @X0 1 e ]
 [i _tap_iteration
 -> 1 `i
 ]
-[; ;SwitchTap.c: 28: int tap_iteration = 1;
-"29
+[; ;SwitchTap.c: 18: int tap_iteration = 1;
+"19
 [v _tap_total `l ~T0 @X0 1 e ]
 [i _tap_total
 -> -> 0 `i `l
 ]
-[; ;SwitchTap.c: 29: long tap_total = 0;
-"30
+[; ;SwitchTap.c: 19: long tap_total = 0;
+"20
 [v _num_taps `uc ~T0 @X0 1 e ]
 [i _num_taps
 -> -> 4 `i `uc
 ]
-[; ;SwitchTap.c: 30: uint8_t num_taps = 4;
-"31
+[; ;SwitchTap.c: 20: uint8_t num_taps = 4;
+"21
 [v _tap_history `l ~T0 @X0 -> 5 `i e ]
-[; ;SwitchTap.c: 31: long tap_history [5];
-"35
+[; ;SwitchTap.c: 21: long tap_history [5];
+"25
 [v _switchTap_pressed `uc ~T0 @X0 1 e ]
 [i _switchTap_pressed
 -> -> 0 `i `uc
 ]
-[; ;SwitchTap.c: 35: uint8_t switchTap_pressed = 0;
-"36
-[v _switchTap_toggle `uc ~T0 @X0 1 e ]
-[i _switchTap_toggle
+[; ;SwitchTap.c: 25: uint8_t switchTap_pressed = 0;
+"26
+[v _switchTap_down `uc ~T0 @X0 1 e ]
+[i _switchTap_down
 -> -> 0 `i `uc
 ]
-[; ;SwitchTap.c: 36: uint8_t switchTap_toggle = 0;
-"39
+[; ;SwitchTap.c: 26: uint8_t switchTap_down = 0;
+"29
 [v _initSwitchTap `(v ~T0 @X0 1 ef ]
 {
-[; ;SwitchTap.c: 39: void initSwitchTap() {
+[; ;SwitchTap.c: 29: void initSwitchTap() {
 [e :U _initSwitchTap ]
 [f ]
-"40
+"30
 [v _initState `i ~T0 @X0 1 a ]
-[; ;SwitchTap.c: 40: int initState = getSwitchTapState();
+[; ;SwitchTap.c: 30: int initState = getSwitchTapState();
 [e = _initState ( _getSwitchTapState ..  ]
-[; ;SwitchTap.c: 42: }
-"42
+[; ;SwitchTap.c: 32: }
+"32
 [e :UE 461 ]
 }
-"58
+"48
 [v _updateSwitchTap `(v ~T0 @X0 1 ef ]
 {
-[; ;SwitchTap.c: 58: void updateSwitchTap(void) {
+[; ;SwitchTap.c: 48: void updateSwitchTap(void) {
 [e :U _updateSwitchTap ]
 [f ]
-"59
+"49
 [v _iCnt `uc ~T0 @X0 1 a ]
-[; ;SwitchTap.c: 59: uint8_t iCnt = 0;
+[; ;SwitchTap.c: 49: uint8_t iCnt = 0;
 [e = _iCnt -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 65: if (PORTEbits.RE0 == 0) {
-"65
+[; ;SwitchTap.c: 55: if (PORTEbits.RE0 == 0) {
+"55
 [e $ ! == -> . . _PORTEbits 0 0 `i -> 0 `i 463  ]
 {
-[; ;SwitchTap.c: 66: if (switchTap_pressed > 0) {
-"66
+[; ;SwitchTap.c: 56: if (switchTap_pressed > 0) {
+"56
 [e $ ! > -> _switchTap_pressed `i -> 0 `i 464  ]
 {
-[; ;SwitchTap.c: 67: switchTap_pressed--;
-"67
+[; ;SwitchTap.c: 57: switchTap_pressed--;
+"57
 [e -- _switchTap_pressed -> -> 1 `i `uc ]
-"68
+"58
 }
 [e :U 464 ]
-"69
+"59
 }
-[; ;SwitchTap.c: 68: }
-[; ;SwitchTap.c: 69: } else if (switchTap_pressed < 25) {
+[; ;SwitchTap.c: 58: }
+[; ;SwitchTap.c: 59: } else if (switchTap_pressed < 1) {
 [e $U 465  ]
 [e :U 463 ]
-[e $ ! < -> _switchTap_pressed `i -> 25 `i 466  ]
+[e $ ! < -> _switchTap_pressed `i -> 1 `i 466  ]
 {
-[; ;SwitchTap.c: 70: switchTap_pressed++;
-"70
+[; ;SwitchTap.c: 60: switchTap_pressed++;
+"60
 [e ++ _switchTap_pressed -> -> 1 `i `uc ]
-"71
+"61
 }
 [e :U 466 ]
-"77
+"67
 [e :U 465 ]
-[; ;SwitchTap.c: 71: }
-[; ;SwitchTap.c: 77: if (switchTap_pressed == 0) {
+[; ;SwitchTap.c: 61: }
+[; ;SwitchTap.c: 67: if (switchTap_pressed == 0) {
 [e $ ! == -> _switchTap_pressed `i -> 0 `i 467  ]
 {
-[; ;SwitchTap.c: 79: LATBbits.LATB0 = 0;
-"79
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 82: if (longTap_timer >= long_press_limit && longTap_state == 0) {
-"82
-[e $ ! && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i 468  ]
+[; ;SwitchTap.c: 71: if (tap_timer >= 1563) {
+"71
+[e $ ! >= _tap_timer -> -> 1563 `i `l 468  ]
 {
-[; ;SwitchTap.c: 83: longTap_timer = long_press_limit;
-"83
-[e = _longTap_timer _long_press_limit ]
-[; ;SwitchTap.c: 84: LATBbits.LATB4 = 0;
-"84
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 85: setLongTapState(1);
-"85
-[e ( _setLongTapState (1 -> 1 `i ]
-"86
-}
-[e :U 468 ]
-[; ;SwitchTap.c: 86: }
-[; ;SwitchTap.c: 89: if (tap_timer >= 1563) {
-"89
-[e $ ! >= _tap_timer -> -> 1563 `i `l 469  ]
-{
-[; ;SwitchTap.c: 90: LATBbits.LATB1 = 0;
-"90
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 91: tap_timer = 0;
-"91
+[; ;SwitchTap.c: 74: switchTap_down = 1;
+"74
+[e = _switchTap_down -> -> 1 `i `uc ]
+[; ;SwitchTap.c: 75: tap_timer = 0;
+"75
 [e = _tap_timer -> -> 0 `i `l ]
-[; ;SwitchTap.c: 92: tap_iteration = 1;
-"92
+[; ;SwitchTap.c: 76: tap_iteration = 1;
+"76
 [e = _tap_iteration -> 1 `i ]
-[; ;SwitchTap.c: 93: tap_total = 0;
-"93
+[; ;SwitchTap.c: 77: tap_total = 0;
+"77
 [e = _tap_total -> -> 0 `i `l ]
-[; ;SwitchTap.c: 94: delay_time_changed = 0;
-"94
+[; ;SwitchTap.c: 78: delay_time_changed = 0;
+"78
 [e = _delay_time_changed -> 0 `i ]
-[; ;SwitchTap.c: 96: for (iCnt = 1; iCnt <= num_taps; iCnt++) {
-"96
+[; ;SwitchTap.c: 80: for (iCnt = 1; iCnt <= num_taps; iCnt++) {
+"80
 {
 [e = _iCnt -> -> 1 `i `uc ]
-[e $U 473  ]
-[e :U 470 ]
+[e $U 472  ]
+[e :U 469 ]
 {
-[; ;SwitchTap.c: 97: tap_history[iCnt] = 0;
-"97
+[; ;SwitchTap.c: 81: tap_history[iCnt] = 0;
+"81
 [e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux -> -> 0 `i `l ]
-"98
+"82
 }
-"96
+"80
 [e ++ _iCnt -> -> 1 `i `uc ]
-[e :U 473 ]
-[e $ <= -> _iCnt `i -> _num_taps `i 470  ]
-[e :U 471 ]
-"98
+[e :U 472 ]
+[e $ <= -> _iCnt `i -> _num_taps `i 469  ]
+[e :U 470 ]
+"82
 }
-[; ;SwitchTap.c: 98: }
-[; ;SwitchTap.c: 101: if (longTap_start == 0) {
-"101
-[e $ ! == -> _longTap_start `i -> 0 `i 474  ]
+[; ;SwitchTap.c: 82: }
+[; ;SwitchTap.c: 85: if (longTap_start == 0) {
+"85
+[e $ ! == -> _longTap_start `i -> 0 `i 473  ]
 {
-[; ;SwitchTap.c: 102: longTap_start = 1;
-"102
+[; ;SwitchTap.c: 86: longTap_start = 1;
+"86
 [e = _longTap_start -> -> 1 `i `uc ]
-[; ;SwitchTap.c: 103: longTap_state = 0;
-"103
+[; ;SwitchTap.c: 87: longTap_state = 0;
+"87
 [e = _longTap_state -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 104: longTap_timer = 0;
-"104
+[; ;SwitchTap.c: 88: longTap_timer = 0;
+"88
 [e = _longTap_timer -> -> 0 `i `ui ]
-"105
+"89
+}
+[e :U 473 ]
+[; ;SwitchTap.c: 89: }
+[; ;SwitchTap.c: 93: if (longTap_timer >= long_press_limit && longTap_state == 0) {
+"93
+[e $ ! && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i 474  ]
+{
+[; ;SwitchTap.c: 95: longTap_timer = long_press_limit;
+"95
+[e = _longTap_timer _long_press_limit ]
+[; ;SwitchTap.c: 96: LATBbits.LATB4 = 0;
+"96
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;SwitchTap.c: 98: if (feedback_start != 1) {
+"98
+[e $ ! != -> _feedback_start `i -> 1 `i 475  ]
+{
+[; ;SwitchTap.c: 99: setLongTapState(1);
+"99
+[e ( _setLongTapState (1 -> 1 `i ]
+"100
+}
+[; ;SwitchTap.c: 100: } else {
+[e $U 476  ]
+[e :U 475 ]
+{
+[; ;SwitchTap.c: 101: setDoublePressState(1);
+"101
+[e ( _setDoublePressState (1 -> 1 `i ]
+"102
+}
+[e :U 476 ]
+"103
 }
 [e :U 474 ]
-[; ;SwitchTap.c: 105: }
-[; ;SwitchTap.c: 109: if (longTap_timer >= long_press_limit && longTap_state == 0) {
+"105
+}
+[; ;SwitchTap.c: 102: }
+[; ;SwitchTap.c: 103: }
+[; ;SwitchTap.c: 105: } else if (tap_timer < 1563 && longTap_state == 0 && switchTap_down != 1) {
+[e $U 477  ]
+[e :U 468 ]
+[e $ ! && && < _tap_timer -> -> 1563 `i `l == -> _longTap_state `i -> 0 `i != -> _switchTap_down `i -> 1 `i 478  ]
+{
+[; ;SwitchTap.c: 109: if (tap_timer >= 1172) {
 "109
-[e $ ! && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i 475  ]
-{
-[; ;SwitchTap.c: 110: longTap_timer = long_press_limit;
-"110
-[e = _longTap_timer _long_press_limit ]
-[; ;SwitchTap.c: 111: LATBbits.LATB4 = 0;
-"111
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 112: setLongTapState(1);
-"112
-[e ( _setLongTapState (1 -> 1 `i ]
-[; ;SwitchTap.c: 113: LATBbits.LATB0 = 1;
-"113
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-"114
-}
-[e :U 475 ]
-"116
-}
-[; ;SwitchTap.c: 114: }
-[; ;SwitchTap.c: 116: } else if (tap_timer < 1563 && longTap_start == 0) {
-[e $U 476  ]
-[e :U 469 ]
-[e $ ! && < _tap_timer -> -> 1563 `i `l == -> _longTap_start `i -> 0 `i 477  ]
-{
-[; ;SwitchTap.c: 117: LATBbits.LATB1 = 1;
-"117
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;SwitchTap.c: 118: if (tap_iteration <= 4) {
-"118
-[e $ ! <= _tap_iteration -> 4 `i 478  ]
-{
-[; ;SwitchTap.c: 119: if (tap_timer >= 1172) {
-"119
 [e $ ! >= _tap_timer -> -> 1172 `i `l 479  ]
 {
-[; ;SwitchTap.c: 120: tap_timer = 1172;
-"120
+[; ;SwitchTap.c: 110: tap_timer = 1172;
+"110
 [e = _tap_timer -> -> 1172 `i `l ]
-"121
+"111
 }
 [e :U 479 ]
-"122
+"112
 [v _tapCntDivisor `i ~T0 @X0 1 a ]
-[; ;SwitchTap.c: 121: }
-[; ;SwitchTap.c: 122: int tapCntDivisor = num_taps;
+[; ;SwitchTap.c: 111: }
+[; ;SwitchTap.c: 112: int tapCntDivisor = num_taps;
 [e = _tapCntDivisor -> _num_taps `i ]
-[; ;SwitchTap.c: 123: if (tap_iteration <= num_taps) {
-"123
+[; ;SwitchTap.c: 113: if (tap_iteration <= num_taps) {
+"113
 [e $ ! <= _tap_iteration -> _num_taps `i 480  ]
 {
-[; ;SwitchTap.c: 124: tap_total += tap_timer;
-"124
+[; ;SwitchTap.c: 114: tap_total += tap_timer;
+"114
 [e =+ _tap_total _tap_timer ]
-[; ;SwitchTap.c: 125: tap_history[tap_iteration] = tap_timer;
-"125
+[; ;SwitchTap.c: 115: tap_history[tap_iteration] = tap_timer;
+"115
 [e = *U + &U _tap_history * -> -> _tap_iteration `ui `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;SwitchTap.c: 126: tapCntDivisor = tap_iteration;
-"126
+[; ;SwitchTap.c: 116: tapCntDivisor = tap_iteration;
+"116
 [e = _tapCntDivisor _tap_iteration ]
-"127
+"117
 }
-[; ;SwitchTap.c: 127: } else {
+[; ;SwitchTap.c: 117: } else {
 [e $U 481  ]
 [e :U 480 ]
 {
-[; ;SwitchTap.c: 128: tap_total = 0;
-"128
+[; ;SwitchTap.c: 118: tap_total = 0;
+"118
 [e = _tap_total -> -> 0 `i `l ]
-[; ;SwitchTap.c: 129: for (iCnt = 1; iCnt < num_taps; iCnt++) {
-"129
+[; ;SwitchTap.c: 119: for (iCnt = 1; iCnt < num_taps; iCnt++) {
+"119
 {
 [e = _iCnt -> -> 1 `i `uc ]
 [e $U 485  ]
 [e :U 482 ]
 {
-[; ;SwitchTap.c: 130: tap_history[iCnt] = tap_history[iCnt + 1];
-"130
+[; ;SwitchTap.c: 120: tap_history[iCnt] = tap_history[iCnt + 1];
+"120
 [e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux *U + &U _tap_history * -> -> + -> _iCnt `i -> 1 `i `ui `ux -> -> # *U &U _tap_history `ui `ux ]
-[; ;SwitchTap.c: 131: tap_total += tap_history[iCnt];
-"131
+[; ;SwitchTap.c: 121: tap_total += tap_history[iCnt];
+"121
 [e =+ _tap_total *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux ]
-"132
+"122
 }
-"129
+"119
 [e ++ _iCnt -> -> 1 `i `uc ]
 [e :U 485 ]
 [e $ < -> _iCnt `i -> _num_taps `i 482  ]
 [e :U 483 ]
-"132
+"122
 }
-[; ;SwitchTap.c: 132: }
-[; ;SwitchTap.c: 133: tap_history[num_taps] = tap_timer;
-"133
+[; ;SwitchTap.c: 122: }
+[; ;SwitchTap.c: 123: tap_history[num_taps] = tap_timer;
+"123
 [e = *U + &U _tap_history * -> _num_taps `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;SwitchTap.c: 134: tap_total += tap_timer;
-"134
+[; ;SwitchTap.c: 124: tap_total += tap_timer;
+"124
 [e =+ _tap_total _tap_timer ]
-"135
+"125
 }
 [e :U 481 ]
-[; ;SwitchTap.c: 135: }
-[; ;SwitchTap.c: 137: baseline_delay_time = tap_total / tapCntDivisor;
-"137
+[; ;SwitchTap.c: 125: }
+[; ;SwitchTap.c: 129: baseline_delay_time = tap_total / tapCntDivisor;
+"129
 [e = _baseline_delay_time / _tap_total -> _tapCntDivisor `l ]
-[; ;SwitchTap.c: 138: delay_time_changed = 1;
-"138
+[; ;SwitchTap.c: 130: delay_time_changed = 1;
+"130
 [e = _delay_time_changed -> 1 `i ]
-[; ;SwitchTap.c: 139: tap_timer = 0;
-"139
+[; ;SwitchTap.c: 132: tap_timer = 0;
+"132
 [e = _tap_timer -> -> 0 `i `l ]
-[; ;SwitchTap.c: 141: tap_iteration++;
-"141
+[; ;SwitchTap.c: 133: wait_ms(20/2);
+"133
+[e ( _wait_ms (1 -> / -> 20 `i -> 2 `i `ui ]
+[; ;SwitchTap.c: 137: tap_iteration++;
+"137
 [e ++ _tap_iteration -> 1 `i ]
-"142
+"139
 }
 [e :U 478 ]
-"143
-}
+"141
 [e :U 477 ]
-"145
-[e :U 476 ]
 }
-[; ;SwitchTap.c: 142: }
-[; ;SwitchTap.c: 143: }
-[; ;SwitchTap.c: 145: } else if (switchTap_pressed >= 25) {
+[; ;SwitchTap.c: 139: }
+[; ;SwitchTap.c: 141: } else if (switchTap_pressed >= 1) {
 [e $U 486  ]
 [e :U 467 ]
-[e $ ! >= -> _switchTap_pressed `i -> 25 `i 487  ]
+[e $ ! >= -> _switchTap_pressed `i -> 1 `i 487  ]
 {
-[; ;SwitchTap.c: 146: switchTap_state = 0;
-"146
+[; ;SwitchTap.c: 142: switchTap_down = 0;
+"142
+[e = _switchTap_down -> -> 0 `i `uc ]
+[; ;SwitchTap.c: 143: switchTap_state = 0;
+"143
 [e = _switchTap_state -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 148: LATBbits.LATB5 = 0;
-"148
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 149: LATBbits.LATB0 = 1;
+[; ;SwitchTap.c: 149: setLongTapState(0);
 "149
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;SwitchTap.c: 150: LATBbits.LATB1 = 0;
-"150
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 152: longTap_state = 0;
-"152
-[e = _longTap_state -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 154: setLongTapState(0);
-"154
 [e ( _setLongTapState (1 -> 0 `i ]
-[; ;SwitchTap.c: 155: longTap_timer = 0;
-"155
+[; ;SwitchTap.c: 151: longTap_timer = 0;
+"151
 [e = _longTap_timer -> -> 0 `i `ui ]
-[; ;SwitchTap.c: 156: longTap_start = 0;
-"156
+[; ;SwitchTap.c: 152: longTap_start = 0;
+"152
 [e = _longTap_start -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 157: switchTap_toggle = 0;
-"157
-[e = _switchTap_toggle -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 158: switchTap_pressed = 25;
-"158
-[e = _switchTap_pressed -> -> 25 `i `uc ]
-"159
+[; ;SwitchTap.c: 154: switchTap_pressed = 1;
+"154
+[e = _switchTap_pressed -> -> 1 `i `uc ]
+"155
 }
 [e :U 487 ]
-"161
+"157
 [e :U 486 ]
-[; ;SwitchTap.c: 159: }
-[; ;SwitchTap.c: 161: }
+[; ;SwitchTap.c: 155: }
+[; ;SwitchTap.c: 157: }
 [e :UE 462 ]
 }
-"164
+"160
 [v _setSwitchTapState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchTap.c: 164: void setSwitchTapState(int f_state) {
+[; ;SwitchTap.c: 160: void setSwitchTapState(int f_state) {
 [e :U _setSwitchTapState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchTap.c: 165: if (switchTap_state == f_state) {return;}
-"165
+[; ;SwitchTap.c: 161: if (switchTap_state == f_state) {return;}
+"161
 [e $ ! == -> _switchTap_state `i _f_state 489  ]
 {
 [e $UE 488  ]
 }
 [e :U 489 ]
-[; ;SwitchTap.c: 166: switchTap_state = f_state;
-"166
+[; ;SwitchTap.c: 162: switchTap_state = f_state;
+"162
 [e = _switchTap_state -> _f_state `uc ]
-[; ;SwitchTap.c: 170: updateSwitchTapState(switchTap_state);
-"170
+[; ;SwitchTap.c: 166: updateSwitchTapState(switchTap_state);
+"166
 [e ( _updateSwitchTapState (1 -> _switchTap_state `i ]
-[; ;SwitchTap.c: 171: }
-"171
+[; ;SwitchTap.c: 167: }
+"167
 [e :UE 488 ]
 }
-"173
+"169
 [v _setLongTapState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchTap.c: 173: void setLongTapState(int f_state) {
+[; ;SwitchTap.c: 169: void setLongTapState(int f_state) {
 [e :U _setLongTapState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchTap.c: 174: if (longTap_state == f_state) {return;}
-"174
+[; ;SwitchTap.c: 170: if (longTap_state == f_state) {return;}
+"170
 [e $ ! == -> _longTap_state `i _f_state 491  ]
 {
 [e $UE 490  ]
 }
 [e :U 491 ]
-[; ;SwitchTap.c: 175: longTap_state = f_state;
-"175
+[; ;SwitchTap.c: 171: longTap_state = f_state;
+"171
 [e = _longTap_state -> _f_state `uc ]
-[; ;SwitchTap.c: 176: LATBbits.LATB5 = f_state;
-"176
+[; ;SwitchTap.c: 172: LATBbits.LATB5 = f_state;
+"172
 [e = . . _LATBbits 0 5 -> _f_state `uc ]
-[; ;SwitchTap.c: 179: }
-"179
+[; ;SwitchTap.c: 175: }
+"175
 [e :UE 490 ]
 }

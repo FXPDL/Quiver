@@ -4922,7 +4922,7 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 53 "constants.h"
+# 52 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4959,8 +4959,7 @@ int debounce_bypass = 0;
 int debounce_mode1 = 0;
 int debounce_mode2 = 0;
 
-volatile long tap_timer = 0;
-volatile long test_timer = 0;
+volatile long tap_timer;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;

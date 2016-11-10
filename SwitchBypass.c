@@ -145,7 +145,7 @@ void setSwitchBypassState(int f_state) {
     Relay_1 = 0;
 
     updateSwitchBypassState(switchBypass_state);  
-    wait_ms(relay_delay);
+    wait_ms(relay_delay); 
 }
 
 void setFeedbackState(int f_state) {
@@ -153,7 +153,7 @@ void setFeedbackState(int f_state) {
     feedback_state = f_state;
     LED_bypass_B = f_state;
         
-    wait_ms(relay_delay);
+   // wait_ms(relay_delay);
     
 }
  
