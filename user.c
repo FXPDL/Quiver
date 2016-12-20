@@ -166,6 +166,12 @@ float map(float x, float in_min, float in_max, float out_min, float out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
+
+float scalePotValue(float x, float out_min, float out_max) {
+    //The pots have a raw value of 0 to 1023.
+    return x * (out_max - out_min) / 1023 + out_min;
+}
+
 int modulation(signed int x, signed int y) {
     //modulation(mod_value, adjusted_pot_value);
     x = (127500 + (y * x)) / 1000;

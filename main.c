@@ -22,6 +22,7 @@
 #include "modulation.h"    /* Modulation constants*/
 #include "SwitchBypass.h"    /* Bypass switch control */
 #include "SwitchTap.h"    /* Bypass switch control */
+//#include "Switch1.h"    /* Bypass switch control */
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
@@ -60,9 +61,10 @@ volatile int knob5_prev = 2000;
 /*
 int tap_iteration = 1;
 long tap_total = 0;
-int num_taps = 4;
+int num_tapsMAIN = 4;
 long tap_history [5];
-
+*/
+/*
 int switchTap_pressed = 0;  
 int switchTap_up = 1;  
 int switchTap_toggle = 0;
@@ -124,6 +126,9 @@ void main(void) {
 
         updateSwitchBypass();
         updateSwitchTap();
+        
+        //updateSwitch1();
+        
         //bypass button ------------------------------------
         //  1) toggle state
         //  2) toggle relay pins
@@ -162,6 +167,7 @@ void main(void) {
         //-----------------------------------------------
 /*
         if (switch_tap == 0) {
+         
             debounce_count++;
             if (debounce_count > 25) {
                 if (tap_timer >= 1563) {
@@ -170,7 +176,7 @@ void main(void) {
                     tap_total = 0;
                     delay_time_changed = 0;
 
-                    for (iCnt = 1; iCnt <= num_taps; iCnt++) {
+                    for (iCnt = 1; iCnt <= num_tapsMAIN; iCnt++) {
                         tap_history[iCnt] = 0;
                     }
                     while (switch_tap == 0) {
@@ -180,18 +186,18 @@ void main(void) {
                         if (tap_timer >= 1172) {
                             tap_timer = 1172;
                         }
-                        int tapCntDivisor = num_taps;   
-                        if (tap_iteration <= num_taps) {
+                        int tapCntDivisor = num_tapsMAIN;   
+                        if (tap_iteration <= num_tapsMAIN) {
                             tap_total += tap_timer;
                             tap_history[tap_iteration] = tap_timer;
                             tapCntDivisor = tap_iteration;
                         } else {
                             tap_total = 0;
-                            for (iCnt = 1; iCnt < num_taps; iCnt++) {
+                            for (iCnt = 1; iCnt < num_tapsMAIN; iCnt++) {
                                 tap_history[iCnt] = tap_history[iCnt + 1];
                                 tap_total += tap_history[iCnt];
                             }
-                            tap_history[num_taps] = tap_timer;
+                            tap_history[num_tapsMAIN] = tap_timer;
                             tap_total += tap_timer;
                         }
 
@@ -207,6 +213,7 @@ void main(void) {
             }
         } else {
             debounce_count = 0;
+        
         }
 */
 
@@ -247,10 +254,7 @@ void main(void) {
             knob1_prev = knob_1_pos;
             baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
             delay_time_changed = 1;
-            LATDbits.LATD0 = 1;
-        } else {
-            LATDbits.LATD0 = 0;  
-        }
+        } 
 
 
         //Mix
@@ -302,10 +306,7 @@ void main(void) {
         //  1) Look to see if knob has changed by more then 0.2%
         //------------------------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-            knob5_prev = knob_5_pos;
-            LATDbits.LATD2 = 1;
-        } else {
-            LATDbits.LATD2 = 0;            
+            knob5_prev = knob_5_pos;           
         }
 
         //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

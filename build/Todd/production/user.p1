@@ -4541,99 +4541,116 @@ Version 3.2 HI-TECH Software Intermediate Code
 "167
 [e :UE 478 ]
 }
-"169
-[v _modulation `(i ~T0 @X0 1 ef2`i`i ]
+"170
+[v _scalePotValue `(f ~T0 @X0 1 ef3`f`f`f ]
 {
-[; ;user.c: 169: int modulation(signed int x, signed int y) {
-[e :U _modulation ]
-[v _x `i ~T0 @X0 1 r1 ]
-[v _y `i ~T0 @X0 1 r2 ]
+[; ;user.c: 170: float scalePotValue(float x, float out_min, float out_max) {
+[e :U _scalePotValue ]
+[v _x `f ~T0 @X0 1 r1 ]
+[v _out_min `f ~T0 @X0 1 r2 ]
+[v _out_max `f ~T0 @X0 1 r3 ]
 [f ]
-[; ;user.c: 171: x = (127500 + (y * x)) / 1000;
-"171
-[e = _x -> / + -> 127500 `l -> * _y _x `l -> -> 1000 `i `l `i ]
-[; ;user.c: 172: return x;
+[; ;user.c: 172: return x * (out_max - out_min) / 1023 + out_min;
 "172
-[e ) _x ]
+[e ) + / * _x - _out_max _out_min -> -> 1023 `i `f _out_min ]
 [e $UE 479  ]
 [; ;user.c: 173: }
 "173
 [e :UE 479 ]
 }
 "175
-[v _InitializeTaps `(v ~T0 @X0 1 ef ]
+[v _modulation `(i ~T0 @X0 1 ef2`i`i ]
 {
-[; ;user.c: 175: void InitializeTaps(void) {
-[e :U _InitializeTaps ]
+[; ;user.c: 175: int modulation(signed int x, signed int y) {
+[e :U _modulation ]
+[v _x `i ~T0 @X0 1 r1 ]
+[v _y `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 176: for (int itap = 0; itap < 12; itap++) {
-"176
-{
-[v _itap `i ~T0 @X0 1 a ]
-[e = _itap -> 0 `i ]
-[e $ < _itap -> 12 `i 481  ]
-[e $U 482  ]
-[e :U 481 ]
-{
-[; ;user.c: 177: tap[itap] = 0;
+[; ;user.c: 177: x = (127500 + (y * x)) / 1000;
 "177
-[e = *U + &U _tap * -> -> _itap `ui `ux -> -> # *U &U _tap `ui `ux -> -> 0 `i `l ]
+[e = _x -> / + -> 127500 `l -> * _y _x `l -> -> 1000 `i `l `i ]
+[; ;user.c: 178: return x;
 "178
-}
-"176
-[e ++ _itap -> 1 `i ]
-[e $ < _itap -> 12 `i 481  ]
-[e :U 482 ]
-"178
-}
-[; ;user.c: 178: }
+[e ) _x ]
+[e $UE 480  ]
 [; ;user.c: 179: }
 "179
 [e :UE 480 ]
 }
 "181
+[v _InitializeTaps `(v ~T0 @X0 1 ef ]
+{
+[; ;user.c: 181: void InitializeTaps(void) {
+[e :U _InitializeTaps ]
+[f ]
+[; ;user.c: 182: for (int itap = 0; itap < 12; itap++) {
+"182
+{
+[v _itap `i ~T0 @X0 1 a ]
+[e = _itap -> 0 `i ]
+[e $ < _itap -> 12 `i 482  ]
+[e $U 483  ]
+[e :U 482 ]
+{
+[; ;user.c: 183: tap[itap] = 0;
+"183
+[e = *U + &U _tap * -> -> _itap `ui `ux -> -> # *U &U _tap `ui `ux -> -> 0 `i `l ]
+"184
+}
+"182
+[e ++ _itap -> 1 `i ]
+[e $ < _itap -> 12 `i 482  ]
+[e :U 483 ]
+"184
+}
+[; ;user.c: 184: }
+[; ;user.c: 185: }
+"185
+[e :UE 481 ]
+}
+"187
 [v _ReadSavedSettings `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 181: void ReadSavedSettings(void) {
+[; ;user.c: 187: void ReadSavedSettings(void) {
 [e :U _ReadSavedSettings ]
 [f ]
-[; ;user.c: 183: top_push_state = FLASH_ReadWord(0x1F81);
-"183
-[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
-[; ;user.c: 184: bottom_push_state = FLASH_ReadWord(0x1F82);
-"184
-[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 187: LATGbits.LATG1 = !switchBypass_state;
-"187
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 188: LATGbits.LATG2 = switchBypass_state;
-"188
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 189: LATBbits.LATB2 = 0;
+[; ;user.c: 189: top_push_state = FLASH_ReadWord(0x1F81);
 "189
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 190: LATBbits.LATB3 = 0;
+[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
+[; ;user.c: 190: bottom_push_state = FLASH_ReadWord(0x1F82);
 "190
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 192: LATBbits.LATB4 = 0;
-"192
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 193: LATBbits.LATB5 = 0;
+[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
+[; ;user.c: 193: LATGbits.LATG1 = !switchBypass_state;
 "193
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 195: LATBbits.LATB1 = 0;
+[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;user.c: 194: LATGbits.LATG2 = switchBypass_state;
+"194
+[e = . . _LATGbits 0 2 _switchBypass_state ]
+[; ;user.c: 195: LATBbits.LATB2 = 0;
 "195
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 196: LATBbits.LATB0 = 0;
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 196: LATBbits.LATB3 = 0;
 "196
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 199: set_leds_top(top_push_state, 1);
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 198: LATBbits.LATB4 = 0;
+"198
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 199: LATBbits.LATB5 = 0;
 "199
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 200: set_leds_bottom(bottom_push_state);
-"200
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 201: }
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 201: LATBbits.LATB1 = 0;
 "201
-[e :UE 484 ]
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 202: LATBbits.LATB0 = 0;
+"202
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 205: set_leds_top(top_push_state, 1);
+"205
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;user.c: 206: set_leds_bottom(bottom_push_state);
+"206
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;user.c: 207: }
+"207
+[e :UE 485 ]
 }

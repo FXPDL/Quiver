@@ -12,7 +12,7 @@
 
 #include "state_manager.h"
 #include "constants.h"
-#include "SwitchTap.h"
+#include "Switch1.h"
 #include "preset_programming.h"
 
 int tap_iteration = 1;
@@ -26,7 +26,7 @@ uint8_t switchTap_pressed = 0;
 uint8_t switchTap_down = 0;
 
 
-void initSwitchTap() {
+void initSwitch1() {
     int initState = getSwitchTapState();
    // setSwitchTapState(initState);
 }
@@ -45,7 +45,7 @@ void initSwitchTap() {
 //  8) delay until button release
 //-----------------------------------------------
 
-void updateSwitchTap(void) {
+void updateSwitch1(void) {
     uint8_t iCnt = 0;
     //http://www.kennethkuhn.com/electronics/debounce.c
     /* Step 1: Update the integrator based on the input signal.  Note that the 
@@ -65,47 +65,26 @@ void updateSwitchTap(void) {
     /* Step 2: Update the output state based on the integrator.  Note that the
     output will only change states if the integrator has reached a limit, either
     0 or MAXIMUM. */
-
+longTap_state=0;
+LED_bypass_Aux = 0;
+LED_tap_Aux = 0;
     if (switchTap_pressed == 0) {
         //switch is down
         
                  
-        if (tap_timer >= tap_reset) {
+        if (tap_timer >= tap_reset   && switchTap_down != 1) {
             //This is a first tap.
  
-            if (switchTap_down != 1) {
-                //Only reset the delay if the switch is changing state
-                switchTap_down = 1;
-                tap_timer = 0;           
-                tap_iteration = 1;
-                tap_total = 0;
-                delay_time_changed = 0;
-                LATDbits.LATD0 = 0;
-
-                for (iCnt = 1; iCnt <= num_taps; iCnt++) {
-                    tap_history[iCnt] = 0;
-                }
-            }
-
-
-            if (longTap_start == 0) {
-                longTap_start = 1;
-                longTap_state = 0;
-                longTap_timer = 0;
-            }
-            
-
-           //Switch was on, so if it is long press then ignore the tap.  If it is short, then record the tap
-            if (longTap_timer >= long_press_limit && longTap_state == 0) {
-                //Long press
-                longTap_timer = long_press_limit; //try and prevent overflow
-                LED_tap_A = 0;
-                
-                if (feedback_start != 1) {
-                    setLongTapState(1);
-                } else {
-                    setDoublePressState(1);
-                }
+            switchTap_down = 1;
+            tap_timer = 0;           
+            tap_iteration = 1;
+            tap_total = 0;
+            delay_time_changed = 0;
+            LED_bypass_Aux = 1;
+            LED_tap_Aux = 1;
+ 
+            for (iCnt = 1; iCnt <= num_taps; iCnt++) {
+                tap_history[iCnt] = 0;
             }
                 
         } else if (tap_timer < tap_reset && longTap_state == 0  && switchTap_down != 1) {
@@ -130,6 +109,7 @@ void updateSwitchTap(void) {
                 tap_total += tap_timer;
             }
 
+            LED_bypass_Aux = 1;
             baseline_delay_time = tap_total / tapCntDivisor;
             delay_time_changed = 1;
             tap_timer = 0;
@@ -138,25 +118,17 @@ void updateSwitchTap(void) {
         }
 
     } else if (switchTap_pressed >= debounce_limit) {
+        
         switchTap_down = 0;
         switchTap_state = 0;
- 
-        //LED_tap_B = 0;
-
-       // longTap_state = 0;
         //when the switch is up, longTap is definitely off.  If the toggle for tap is true, then turn the tap off.
-        setLongTapState(0);
-        //setDoublePressState(0);
-        longTap_timer = 0;
-        longTap_start = 0;
-
         switchTap_pressed = debounce_limit; /* defensive code if integrator got corrupted */
     }    
     
 }
 
 
-void setSwitchTapState(int f_state) {
+void setSwitch1State(int f_state) {
     if (switchTap_state == f_state) {return;}
     switchTap_state = f_state;
     //LED_tap_A = f_state;
@@ -165,7 +137,7 @@ void setSwitchTapState(int f_state) {
     updateSwitchTapState(switchTap_state);  
 }
 
-void setLongTapState(int f_state) {
+void setLong1State(int f_state) {
     if (longTap_state == f_state) {return;}
     longTap_state = f_state;
     LED_tap_B = f_state;

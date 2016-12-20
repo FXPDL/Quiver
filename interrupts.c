@@ -32,6 +32,7 @@ void interrupt isr(void) {
     extern volatile long mod_timer;    
     extern volatile long delay_time;       
     if (INTCONbits.TMR0IF == 1) {
+
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
@@ -47,34 +48,40 @@ void interrupt isr(void) {
                 longTap_timer = long_press_limit;
             }
         }
-        
-        INTCONbits.TMR0IF = 0;
+         INTCONbits.TMR0IF = 0;       
     }
 
-   
-    /*if (test_timer >= (tap_reset-10)) {  
-        LATDbits.LATD2 = 1;
+   /*
+    if (test_timer >= 750) {  
+        LED_tap_Aux = 1;
         test_timer = 0;
     } 
     
-    if (test_timer >= 20) {  
-        LATDbits.LATD2 = 0;
+    if (test_timer >= 5) {  
+        LED_tap_Aux = 0;
     }
-     */
+    */
     
     if (longTap_state < 1 && doubleTap_state < 1) {
+
+        if (baseline_delay_time == 750) {  
+            LED_bypass_Aux = 1;
+        } else {  
+            LED_bypass_Aux = 0;
+        }
+        
         //Don't blink the tap if the tap is held down
         if (timer >= baseline_delay_time) { //delay_time
 
             //if (suspend_blink == 0) {
-                LATBbits.LATB4 = 1;  
+                LED_tap_A = 1;  
             //}
             timer = 0;
         }
         
         if (timer >= 20) { //delay_time
             //if (suspend_blink == 0) {
-                LATBbits.LATB4 = 0;
+                LED_tap_A = 0;
             //}
         }
     } 
