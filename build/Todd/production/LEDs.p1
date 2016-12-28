@@ -3778,7 +3778,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 1 `i
 ]
 [; ;constants.h: 80: int delay_time_changed = 1;
+"81
+[v _reset_sub_delay `i ~T0 @X0 1 e ]
+[i _reset_sub_delay
+-> 0 `i
+]
+[; ;constants.h: 81: int reset_sub_delay = 0;
 "82
+[v _adjust_sub_delay `i ~T0 @X0 1 e ]
+[i _adjust_sub_delay
+-> 0 `i
+]
+[; ;constants.h: 82: int adjust_sub_delay = 0;
+"84
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3795,67 +3807,67 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 82: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"84
+[; ;constants.h: 84: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"86
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 84: int debounce_count = 0;
-"85
+[; ;constants.h: 86: int debounce_count = 0;
+"87
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 85: int debounce_bypass = 0;
-"86
+[; ;constants.h: 87: int debounce_bypass = 0;
+"88
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 86: int debounce_mode1 = 0;
-"87
+[; ;constants.h: 88: int debounce_mode1 = 0;
+"89
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 87: int debounce_mode2 = 0;
-"89
+[; ;constants.h: 89: int debounce_mode2 = 0;
+"91
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 89: volatile long tap_timer = 0;
-"90
+[; ;constants.h: 91: volatile long tap_timer = 0;
+"92
 [v _test_timer `Vl ~T0 @X0 1 e ]
 [i _test_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 90: volatile long test_timer = 0;
-"92
+[; ;constants.h: 92: volatile long test_timer = 0;
+"94
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 92: uint8_t switchBypass_state = -1;
-"93
+[; ;constants.h: 94: uint8_t switchBypass_state = -1;
+"95
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 93: uint8_t switchTap_state = -1;
-"94
+[; ;constants.h: 95: uint8_t switchTap_state = -1;
+"96
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 94: volatile uint8_t longTap_state = -1;
-"95
+[; ;constants.h: 96: volatile uint8_t longTap_state = -1;
+"97
 [v _feedback_state `Vuc ~T0 @X0 1 e ]
 [i _feedback_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 95: volatile uint8_t feedback_state = -1;
+[; ;constants.h: 97: volatile uint8_t feedback_state = -1;
 [; ;state_manager.h: 28: typedef struct {
 [; ;state_manager.h: 29: unsigned uint8_t tap_A;
 [; ;state_manager.h: 30: unsigned uint8_t tap_B;

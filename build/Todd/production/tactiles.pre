@@ -4945,6 +4945,8 @@ int bottom_push_state = 6;
 uint16_t myBuf[32];
 
 int delay_time_changed = 1;
+int reset_sub_delay = 0;
+int adjust_sub_delay = 0;
 
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -4973,11 +4975,23 @@ void solidring_tactiles(void);
 void showSave(void);
 void showBootSequence(void);
 
-# 16 "tactiles.c"
+# 14 "tactiles.c"
+uint8_t topTactile_pressed = 0;
+uint8_t bottomTactile_pressed = 0;
+
 void read_bottom_tactile(void) {
 
-# 23
+# 25
 if (PORTDbits.RD6 == 0) {
+if (bottomTactile_pressed > 0) {
+bottomTactile_pressed--;
+}
+} else if (bottomTactile_pressed < 25) {
+bottomTactile_pressed++;
+}
+
+
+if (bottomTactile_pressed == 0) {
 bottom_push_state = bottom_push_state + 1;
 if (bottom_push_state > 6) {
 bottom_push_state = 1;
@@ -4992,14 +5006,26 @@ wait_ms(20);
 
 void read_top_tactile(void) {
 
-# 44
+# 56
 if (PORTDbits.RD5 == 0) {
+if (topTactile_pressed > 0) {
+topTactile_pressed--;
+}
+} else if (topTactile_pressed < 25) {
+topTactile_pressed++;
+}
+
+
+
+
+if (topTactile_pressed == 0) {
 top_push_state = top_push_state + 1;
 if (top_push_state >= 7) {
 top_push_state = 1;
 }
 set_leds_top(top_push_state, 1);
 delay_time_changed = 1;
+
 
 while (PORTDbits.RD5 == 0) {
 }

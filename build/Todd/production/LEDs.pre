@@ -4952,6 +4952,8 @@ int bottom_push_state = 6;
 uint16_t myBuf[32];
 
 int delay_time_changed = 1;
+int reset_sub_delay = 0;
+int adjust_sub_delay = 0;
 
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 

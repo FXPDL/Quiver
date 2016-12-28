@@ -11,7 +11,8 @@
 #include "tactiles.h"
 #include "LEDs.h"
 
- 
+ uint8_t topTactile_pressed = 0;  
+ uint8_t bottomTactile_pressed = 0;  
 
 void read_bottom_tactile(void) {
     //read bottom tactile-----------------------------
@@ -20,7 +21,17 @@ void read_bottom_tactile(void) {
     //  3) store state for possible brownout
     //  4) freeze program until button released
     //------------------------------------------------
-    if (bottom_tactile == 0) { //read bottom tactile
+
+    if (bottom_tactile == 0) {
+        if (bottomTactile_pressed > 0) {
+            bottomTactile_pressed--;
+        }
+    } else if (bottomTactile_pressed < debounce_limit) {
+        bottomTactile_pressed++;
+    }
+    
+    
+    if (bottomTactile_pressed == 0) { //read bottom tactile
         bottom_push_state = bottom_push_state + 1;
         if (bottom_push_state > 6) {
             bottom_push_state = 1;
@@ -41,13 +52,26 @@ void read_top_tactile(void) {
     //  4) store state for possible brownout
     //  5) freeze program until button released
     //------------------------------------------------
+    
     if (top_tactile == 0) {
+        if (topTactile_pressed > 0) {
+            topTactile_pressed--;
+        }
+    } else if (topTactile_pressed < debounce_limit) {
+        topTactile_pressed++;
+    }
+    
+    
+    
+    
+    if (topTactile_pressed == 0) {
         top_push_state = top_push_state + 1;
         if (top_push_state >= 7) {
             top_push_state = 1;
         }
         set_leds_top(top_push_state, 1);
         delay_time_changed = 1;
+        
         //FLASH_WriteWord(0x1F81, myBuf, top_push_state);
         while (top_tactile == 0) {
         }

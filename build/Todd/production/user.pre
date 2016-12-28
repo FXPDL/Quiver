@@ -4944,6 +4944,8 @@ int bottom_push_state = 6;
 uint16_t myBuf[32];
 
 int delay_time_changed = 1;
+int reset_sub_delay = 0;
+int adjust_sub_delay = 0;
 
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -5013,28 +5015,34 @@ INTCONbits.TMR0IF = 0b0;
 
 
 int set_subdivision(int x, int y) {
+adjust_sub_delay = 0;
+int tmpX = x;
+float scalar = 1.0;
 
 
 switch (y) {
 case 1:
-x = x * .75;
+scalar = 0.75;
 break;
 case 2:
-x = x * .66666;
+scalar = 0.6666;
 break;
 case 3:
-x = x * .5;
+scalar = .5;
 break;
 case 4:
-x = x * .3333;
+scalar = 0.3333;
 break;
 case 5:
-x = x * .25;
+scalar = 0.25;
 break;
 case 6:
 x = x;
 break;
 }
+
+x = x * scalar;
+if ((x /scalar) != tmpX) {adjust_sub_delay = 1;}
 return x;
 }
 

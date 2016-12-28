@@ -21,6 +21,7 @@
 /******************************************************************************/
 
 void interrupt isr(void) {
+    int tmpSubDelay;
     extern volatile long timer;
     extern volatile long sub_timer;
     extern volatile long tap_timer;
@@ -32,7 +33,7 @@ void interrupt isr(void) {
     extern volatile long mod_timer;    
     extern volatile long delay_time;       
     if (INTCONbits.TMR0IF == 1) {
-
+        tmpSubDelay = delay_time;
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
@@ -49,6 +50,12 @@ void interrupt isr(void) {
             }
         }
          INTCONbits.TMR0IF = 0;       
+         
+         if (adjust_sub_delay == 1) {
+             if ((sub_timer >= delay_time) && ((baseline_delay_time - timer) < 4)) {
+                 tmpSubDelay = sub_timer + (baseline_delay_time- timer);
+             }
+         }
     }
 
    /*
@@ -63,13 +70,7 @@ void interrupt isr(void) {
     */
     
     if (longTap_state < 1 && doubleTap_state < 1) {
-
-        if (baseline_delay_time == 750) {  
-            LED_bypass_Aux = 1;
-        } else {  
-            LED_bypass_Aux = 0;
-        }
-        
+       
         //Don't blink the tap if the tap is held down
         if (timer >= baseline_delay_time) { //delay_time
 
@@ -77,20 +78,25 @@ void interrupt isr(void) {
                 LED_tap_A = 1;  
             //}
             timer = 0;
+            if (reset_sub_delay == 1) {
+                reset_sub_delay = 0;
+                sub_timer = delay_time;
+            }
         }
         
-        if (timer >= 20) { //delay_time
+        if (timer >= 30) { //delay_time
             //if (suspend_blink == 0) {
-                LED_tap_A = 0;
+                LED_tap_A = 0; 
             //}
         }
     } 
 
   
-    if (sub_timer >= delay_time) { //sub_delay_time
+    if (sub_timer >= tmpSubDelay) { //sub_delay_time
         if (suspend_blink == 0) {
             set_leds_top(top_push_state, 1);
         }
+        tmpSubDelay = delay_time;
         sub_timer = 0;
     }
 

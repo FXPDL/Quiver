@@ -46,7 +46,7 @@ int delay_counter = 0;
 
 
 
-
+int mod_delay_time_bak = 0;
 int knob_1_pos = 0;
 int knob_2_pos = 0;
 int knob_3_pos = 0;
@@ -250,10 +250,12 @@ void main(void) {
         }*/
         
         //Depth
+        LED_bypass_Aux = 0;
         if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
             baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
             delay_time_changed = 1;
+LED_bypass_Aux = 1;
         } 
 
 
@@ -309,6 +311,13 @@ void main(void) {
             knob5_prev = knob_5_pos;           
         }
 
+       if (mod_delay_time < 100) {
+           LED_tap_Aux = 1;
+       } else {
+           LED_tap_Aux = 0;
+       }
+       
+        
         //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //increment modulation -----------------------------
@@ -321,7 +330,12 @@ void main(void) {
         //  6) reset timer
         //--------------------------------------------------
         if (mod_timer >= mod_delay_time) {
-            //LED_RJ45_Yellow = !LED_RJ45_Yellow;
+            
+            if (mod_delay_time_bak != mod_delay_time) {
+                mod_delay_time_bak = mod_delay_time;
+                
+            }
+            
             mod_counter = mod_counter + 1;
             mod_timer = 0;
 
@@ -375,6 +389,7 @@ void main(void) {
         if (delay_time_changed == 1) {
             delay_time = baseline_delay_time;
             delay_time = set_subdivision(baseline_delay_time, top_push_state);
+            reset_sub_delay = 1;
             delayfound = 0;
             delay_counter = 0;
             while (delayfound == 0) {
@@ -385,9 +400,12 @@ void main(void) {
                     delay_counter++;
                 }
             }
+            
+            
             mod_delay_time = delay_time / 7.5;
 
             delay_time_changed = 0;
+
         } 
  
     }

@@ -75,28 +75,34 @@ void InitApp(void) {
 
 
 int set_subdivision(int x, int y) {
+    adjust_sub_delay = 0;
+    int tmpX = x;
+    float scalar = 1.0;
     //x = delay time
     //y = state
     switch (y) {
         case 1:
-            x = x * .75; // dotted eight
+            scalar = 0.75; // dotted eight
             break;
         case 2:
-            x = x * .66666; //quarter triplet
+            scalar = 0.6666; //quarter triplet
             break;
         case 3:
-            x = x * .5; //eight 
+            scalar = .5; //eight 
             break;
         case 4:
-            x = x * .3333; //eight triplet
+            scalar = 0.3333; //eight triplet
             break;
         case 5:
-            x = x * .25; //16th
+            scalar = 0.25; //16th
             break;
         case 6:
             x = x; // 1:1 ratio
             break;
     }
+    
+    x = x * scalar;
+    if ((x /scalar) != tmpX) {adjust_sub_delay = 1;}
     return x;
 }
 
