@@ -101,9 +101,9 @@ int set_subdivision(int x, int y) {
             break;
     }
     
-    x = x * scalar;
-    if ((x /scalar) != tmpX) {adjust_sub_delay = 1;}
-    return x;
+    tmpX = tmpX * scalar;
+    if ((tmpX /scalar) != x) {adjust_sub_delay = 1;}
+    return tmpX;
 }
 
 void init_adc(void) {

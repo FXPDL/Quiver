@@ -3635,30 +3635,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _wait_ms `(v ~T0 @X0 1 ef1`ui ]
 "24
 {
-[; ;system.c: 23: void wait_ms(uint16_t time)
+[; ;system.c: 23: void wait_ms(uint16_t timeSec)
 [; ;system.c: 24: {
 [e :U _wait_ms ]
 "23
-[v _time `ui ~T0 @X0 1 r1 ]
+[v _timeSec `ui ~T0 @X0 1 r1 ]
 "24
 [f ]
 "25
-[v F3528 `l ~T0 @X0 1 s timel ]
-[i F3528
--> -> 0 `i `l
-]
-[; ;system.c: 25: static long timel = 0;
-[; ;system.c: 26: timel = time * 1000l;
+[v _timemsl `l ~T0 @X0 1 a ]
+[; ;system.c: 25: long timemsl = 0;
+[e = _timemsl -> -> 0 `i `l ]
+[; ;system.c: 26: timemsl = timeSec * 1000l;
 "26
-[e = F3528 * -> _time `l -> 1000 `l ]
-[; ;system.c: 27: for( ; timel; timel--);
+[e = _timemsl * -> _timeSec `l -> 1000 `l ]
+[; ;system.c: 27: for( ; timemsl; timemsl--);
 "27
 {
 [e $U 465  ]
 [e :U 462 ]
-[e -- F3528 -> -> 1 `i `l ]
+[e -- _timemsl -> -> 1 `i `l ]
 [e :U 465 ]
-[e $ != F3528 -> -> 0 `i `l 462  ]
+[e $ != _timemsl -> -> 0 `i `l 462  ]
 [e :U 463 ]
 }
 [; ;system.c: 28: }

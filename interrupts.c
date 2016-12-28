@@ -79,6 +79,7 @@ void interrupt isr(void) {
             //}
             timer = 0;
             if (reset_sub_delay == 1) {
+                CCPR1 = delay_counter;
                 reset_sub_delay = 0;
                 sub_timer = delay_time;
             }
