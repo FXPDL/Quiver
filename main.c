@@ -19,7 +19,7 @@
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "LEDs.h"          /* LED controlling functions */
 #include "tactiles.h"          /* LED controlling functions */
-#include "modulation.h"    /* Modulation constants*/
+
 #include "SwitchBypass.h"    /* Bypass switch control */
 #include "SwitchTap.h"    /* Bypass switch control */
 //#include "Switch1.h"    /* Bypass switch control */
@@ -34,18 +34,16 @@
 
 
 volatile long mod_timer = 0;
-int mod_counter = 0;
-
-volatile long delay_time = 2000;
+signed int adjusted_pot_value;
 int mod_delay_time = 2000;
 
-signed int mod_value = 0;
-int SPI_Value = 0;
+volatile long delay_time = 2000;
+
 int delayfound = 0;
 //int delay_counter = 0;
 
 
-int mod_delay_time_bak = 0;
+
 int knob_1_pos = 0;
 int knob_2_pos = 0;
 int knob_3_pos = 0;
@@ -57,7 +55,7 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-signed int adjusted_pot_value;
+
 /*
 int tap_iteration = 1;
 long tap_total = 0;
@@ -71,9 +69,9 @@ int switchTap_toggle = 0;
 */
 uint8_t iCnt;
 int B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
-int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 37, 39, 42, 45, 48, 51, 55, 60, 66, 72, 80, 91, 103, 120, 142, 174, 223, 255, 255, 255};
+//int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 37, 39, 42, 45, 48, 51, 55, 60, 66, 72, 80, 91, 103, 120, 142, 174, 223, 255, 255, 255};
 
-
+int B25kLength = 0;
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -81,7 +79,7 @@ int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 /******************************************************************************/
 
 void main(void) {
-    
+    B25kLength = sizeof(B25k)/sizeof(B25k[0]);
     ConfigureOscillator();
     InitApp();
 
@@ -253,7 +251,7 @@ void main(void) {
             knob1_prev = knob_1_pos;
             baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
             delay_time_changed = 1;
-LED_bypass_Aux = 1;
+            LED_bypass_Aux = 1;
         } 
 
 
@@ -267,7 +265,7 @@ LED_bypass_Aux = 1;
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
             int i = map(knob2_prev, 0, 1023, 0, 39);
-            CCPR2 = iB25k[i];
+            CCPR2 = B25k[B25kLength - 1 - i]; //iB25k[i];
             CCPR3 = B25k[i];
         }
 
@@ -282,7 +280,7 @@ LED_bypass_Aux = 1;
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
             int i = map(knob3_prev, 0, 1023, 16, 0);
-            CCPR4 = iB25k[i];  //this is the inverse of B25k
+            CCPR4 = B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
             CCPR5 = B25k[i];
         }
 
@@ -307,6 +305,7 @@ LED_bypass_Aux = 1;
         //------------------------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
+            adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
             
         }
 
@@ -322,7 +321,7 @@ LED_bypass_Aux = 1;
         //  5) write CCP value U14 CCPR9
         //  6) reset timer
         //--------------------------------------------------
-         LED_tap_Aux = 0;        
+         /*LED_tap_Aux = 0;        
          if (mod_timer >= mod_delay_time) {
             LED_tap_Aux = 1;           
             mod_counter = mod_counter + 1;
@@ -379,21 +378,10 @@ LED_bypass_Aux = 1;
             mod_timer = 0;
 
 
-           /* if (adjusted_pot_value == 1275) {
-                LATDbits.LATD2 = 1;
-            } else {
-                LATDbits.LATD2 = 0;
-            } 
-
-            if (mod_value > 250 && mod_value < 500) {
-                LATDbits.LATD3 = 1;
-            } else {
-                LATDbits.LATD3 = 0;
-            }*/
             
         }
 
-
+*/
 
          
 
