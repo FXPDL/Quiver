@@ -178,10 +178,10 @@ float scalePotValue(float x, float out_min, float out_max) {
     return x * (out_max - out_min) / 1023 + out_min;
 }
 
-int modulation(signed int x, signed int y) {
+long modulation(long x, long y) {
     //modulation(mod_value, adjusted_pot_value);
-    x = (127500 + (y * x)) / 1000;
-    return x;
+     
+    return (127500 + (y * x)) / 1000;
 }
 
 void InitializeTaps(void) {
@@ -195,6 +195,15 @@ void ReadSavedSettings(void) {
     top_push_state = FLASH_ReadWord(0x1F81);
     bottom_push_state = FLASH_ReadWord(0x1F82);
 
+    if (top_push_state > 6) {
+        //Limit to acceptable values
+        top_push_state = 6;
+    }
+    if (bottom_push_state > 6) {
+        //Limit to acceptable values
+        bottom_push_state = 6;
+    }
+    
     //load startup conditions
     Relay_1 = !switchBypass_state;
     Relay_2 = switchBypass_state;

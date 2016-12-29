@@ -23,8 +23,6 @@
 [v ___ftneg __ftneg `(f  1 e 3 0 ]
 "44 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "23 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
@@ -42,7 +40,7 @@
 [v _ring_tactiles ring_tactiles `(v  1 e 1 0 ]
 "223
 [v _solidring_tactiles solidring_tactiles `(v  1 e 1 0 ]
-"82 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
+"83 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "58 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
@@ -103,7 +101,7 @@
 "171
 [v _map map `(f  1 e 3 0 ]
 "181
-[v _modulation modulation `(i  1 e 2 0 ]
+[v _modulation modulation `(l  1 e 4 0 ]
 "187
 [v _InitializeTaps InitializeTaps `(v  1 e 1 0 ]
 "193
@@ -653,9 +651,11 @@
 [v _knob4_prev knob4_prev `VEi  1 e 2 0 ]
 "58
 [v _knob5_prev knob5_prev `VEi  1 e 2 0 ]
-"72
-[v _B25k B25k `[40]i  1 e 80 0 ]
+"60
+[v _adjusted_pot_value adjusted_pot_value `i  1 e 2 0 ]
 "73
+[v _B25k B25k `[40]i  1 e 80 0 ]
+"74
 [v _iB25k iB25k `[40]i  1 e 80 0 ]
 "25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\modulation.h
 [v _mod2 mod2 `[31]i  1 e 62 0 ]
@@ -694,16 +694,14 @@
 [v _topTactile_pressed topTactile_pressed `uc  1 e 1 0 ]
 "15
 [v _bottomTactile_pressed bottomTactile_pressed `uc  1 e 1 0 ]
-"82 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
+"83 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"344
-[v main@adjusted_pot_value adjusted_pot_value `i  1 a 2 0 ]
-"282
-[v main@i_378 i `i  1 a 2 4 ]
-"267
-[v main@i i `i  1 a 2 2 ]
-"424
+"284
+[v main@i_379 i `i  1 a 2 2 ]
+"269
+[v main@i i `i  1 a 2 0 ]
+"441
 } 0
 "82 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\tactiles.c
 [v _update_mode update_mode `(v  1 e 1 0 ]
@@ -714,9 +712,9 @@
 [v _updateSwitchTap updateSwitchTap `(v  1 e 1 0 ]
 {
 "118
-[v updateSwitchTap@tapCntDivisor tapCntDivisor `i  1 a 2 30 ]
+[v updateSwitchTap@tapCntDivisor tapCntDivisor `i  1 a 2 35 ]
 "49
-[v updateSwitchTap@iCnt iCnt `uc  1 a 1 32 ]
+[v updateSwitchTap@iCnt iCnt `uc  1 a 1 37 ]
 "156
 } 0
 "168
@@ -821,33 +819,23 @@
 "45
 } 0
 "181 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-[v _modulation modulation `(i  1 e 2 0 ]
+[v _modulation modulation `(l  1 e 4 0 ]
 {
-[v modulation@x x `i  1 p 2 23 ]
-[v modulation@y y `i  1 p 2 25 ]
+[v modulation@x x `l  1 p 4 29 ]
+[v modulation@y y `l  1 p 4 33 ]
 "185
-} 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 6 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
-"53
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 {
 "11
-[v ___aldiv@quotient quotient `l  1 a 4 19 ]
+[v ___aldiv@quotient quotient `l  1 a 4 25 ]
 "12
-[v ___aldiv@sign sign `uc  1 a 1 18 ]
-[v ___aldiv@counter counter `uc  1 a 1 17 ]
+[v ___aldiv@sign sign `uc  1 a 1 24 ]
+[v ___aldiv@counter counter `uc  1 a 1 23 ]
 "6
-[v ___aldiv@divisor divisor `l  1 p 4 8 ]
-[v ___aldiv@dividend dividend `l  1 p 4 12 ]
+[v ___aldiv@divisor divisor `l  1 p 4 14 ]
+[v ___aldiv@dividend dividend `l  1 p 4 18 ]
 "42
 } 0
 "171 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
@@ -991,7 +979,7 @@
 "193 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 [v _ReadSavedSettings ReadSavedSettings `(v  1 e 1 0 ]
 {
-"213
+"222
 } 0
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 [v _set_leds_top set_leds_top `(v  1 e 1 0 ]

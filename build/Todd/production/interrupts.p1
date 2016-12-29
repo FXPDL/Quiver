@@ -3627,7 +3627,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;system.h: 26: int modulation(signed int, signed int);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3635,7 +3634,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;system.h: 26: int modulation(signed int, signed int);
 [; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
@@ -4122,9 +4120,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 17: void init_timer0(void);
 [; ;user.h: 18: void InitializeTaps(void);
 [; ;user.h: 19: void ReadSavedSettings(void);
-[v F3603 `(v ~T0 @X0 1 tf ]
+[; ;user.h: 20: long modulation(long, long);
+[v F3601 `(v ~T0 @X0 1 tf ]
 "23 interrupts.c
-[v _isr `IF3603 ~T0 @X0 1 e ]
+[v _isr `IF3601 ~T0 @X0 1 e ]
 {
 [; ;interrupts.c: 23: void interrupt isr(void) {
 [e :U _isr ]

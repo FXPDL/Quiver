@@ -57,6 +57,7 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
+signed int adjusted_pot_value;
 /*
 int tap_iteration = 1;
 long tap_total = 0;
@@ -80,6 +81,7 @@ int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 /******************************************************************************/
 
 void main(void) {
+    
     ConfigureOscillator();
     InitApp();
 
@@ -304,16 +306,11 @@ LED_bypass_Aux = 1;
         //  1) Look to see if knob has changed by more then 0.2%
         //------------------------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-            knob5_prev = knob_5_pos;           
+            knob5_prev = knob_5_pos;
+            
         }
 
-       /*if (mod_delay_time < 100) {
-           LED_tap_Aux = 1;
-       } else {
-           LED_tap_Aux = 0;
-       }*/
-       
-         LED_tap_Aux = 0;
+
         //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //increment modulation -----------------------------
@@ -325,7 +322,8 @@ LED_bypass_Aux = 1;
         //  5) write CCP value U14 CCPR9
         //  6) reset timer
         //--------------------------------------------------
-        if (mod_timer >= mod_delay_time) {
+         LED_tap_Aux = 0;        
+         if (mod_timer >= mod_delay_time) {
             LED_tap_Aux = 1;           
             mod_counter = mod_counter + 1;
             mod_timer = 0;
@@ -335,13 +333,14 @@ LED_bypass_Aux = 1;
                     mod_counter = 0;
                }                
             } else {
-                if (mod_counter > 31) {
+                if (mod_counter >= 31) {
                     mod_counter = 0;
                 }
-            } 
+            }
 
+            
 
-            signed int adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+            adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
             switch (bottom_push_state) {
                 case 1:
                     mod_value = mod5[mod_counter];
@@ -361,7 +360,7 @@ LED_bypass_Aux = 1;
                     break;
                 case 5:
                     mod_value = mod5[mod_counter];
-                    adjusted_pot_value = 1275;
+                    //adjusted_pot_value = 1275;
                     chorus = 1;
                     break;
                 case 6:
@@ -369,11 +368,29 @@ LED_bypass_Aux = 1;
                     chorus = 0;
                     break;
             }
+
+
+
+
+            
             
             mod_value = modulation(mod_value, adjusted_pot_value);
             CCPR9 = mod_value / 2;
             mod_timer = 0;
 
+
+           /* if (adjusted_pot_value == 1275) {
+                LATDbits.LATD2 = 1;
+            } else {
+                LATDbits.LATD2 = 0;
+            } 
+
+            if (mod_value > 250 && mod_value < 500) {
+                LATDbits.LATD3 = 1;
+            } else {
+                LATDbits.LATD3 = 0;
+            }*/
+            
         }
 
 

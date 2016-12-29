@@ -4892,7 +4892,6 @@ void set_leds_top(int, int);
 uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
-int modulation(signed int, signed int);
 
 # 99 "memory.h"
 uint16_t FLASH_ReadWord(uint16_t flashAddr);
@@ -4914,7 +4913,6 @@ void set_leds_top(int, int);
 uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
-int modulation(signed int, signed int);
 
 # 53 "constants.h"
 volatile long timer = 0;
@@ -4975,6 +4973,7 @@ void init_timer2(void);
 void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
+long modulation(long, long);
 
 # 24 "LEDs.h"
 void star_tactiles(uint8_t);
@@ -5003,7 +5002,6 @@ void set_leds_top(int, int);
 uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
-int modulation(signed int, signed int);
 
 # 28 "SwitchBypass.h"
 void initSwitchBypass(void);
@@ -5042,13 +5040,19 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-# 71
+signed int adjusted_pot_value;
+
+# 72
 uint8_t iCnt;
 int B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
 int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 37, 39, 42, 45, 48, 51, 55, 60, 66, 72, 80, 91, 103, 120, 142, 174, 223, 255, 255, 255};
 
-# 82
+# 83
 void main(void) {
+long tmpX = (127500 + ((long)100 * (long)(1275)))/1000;
+int xxx = modulation(100, 1275);
+
+
 ConfigureOscillator();
 InitApp();
 
@@ -5064,12 +5068,6 @@ initSwitchBypass();
 
 
 ReadSavedSettings();
-
-int x = mod1[1];
-x = mod2[0];
-x = mod3[0];
-x = mod4[0];
-x = mod5[0];
 
 while (1) {
 read_bottom_tactile();
@@ -5098,14 +5096,14 @@ debounce_mode1 = 0;
 updateSwitchBypass();
 updateSwitchTap();
 
-# 224
+# 223
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 255
+# 254
 LATBbits.LATB1 = 0;
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
@@ -5114,7 +5112,7 @@ delay_time_changed = 1;
 LATBbits.LATB1 = 1;
 }
 
-# 271
+# 270
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 int i = map(knob2_prev, 0, 1023, 0, 39);
@@ -5122,7 +5120,7 @@ CCPR2 = iB25k[i];
 CCPR3 = B25k[i];
 }
 
-# 286
+# 285
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 int i = map(knob3_prev, 0, 1023, 16, 0);
@@ -5130,21 +5128,20 @@ CCPR4 = iB25k[i];
 CCPR5 = B25k[i];
 }
 
-# 301
+# 300
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);
 }
 
-# 312
+# 311
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
+adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
 }
 
-# 322
+# 328
 LATBbits.LATB0 = 0;
-
-# 334
 if (mod_timer >= mod_delay_time) {
 LATBbits.LATB0 = 1;
 mod_counter = mod_counter + 1;
@@ -5161,7 +5158,7 @@ mod_counter = 0;
 }
 
 
-signed int adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+
 switch (bottom_push_state) {
 case 1:
 mod_value = mod5[mod_counter];
@@ -5190,31 +5187,35 @@ PORTCbits.RC4 = 0;
 break;
 }
 
-if (mod_value > 80) {
-LATDbits.LATD1 = 1;
+
+if (mod_value > 90 && mod_value < 101) {
+LATDbits.LATD2 = 1;
 } else {
-LATDbits.LATD1 = 0;
+LATDbits.LATD2 = 0;
 }
-if (adjusted_pot_value > 1150) {
-LATDbits.LATD3 = 1;
-} else {
-LATDbits.LATD3 = 0;
-}
+
+
 
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR9 = mod_value / 2;
 mod_timer = 0;
 
 
-if (mod_value > 100) {
-LATDbits.LATD2 = 1;
+if (adjusted_pot_value > 1260 && adjusted_pot_value < 1280) {
+LATDbits.LATD4 = 1;
 } else {
-LATDbits.LATD2 = 0;
+LATDbits.LATD4 = 0;
+}
+
+if (mod_value > 175 && mod_value < 500) {
+LATDbits.LATD3 = 1;
+} else {
+LATDbits.LATD3 = 0;
 }
 
 }
 
-# 408
+# 407
 if (delay_time_changed == 1) {
 delay_time = baseline_delay_time;
 delay_time = set_subdivision(baseline_delay_time, top_push_state);
@@ -5234,7 +5235,7 @@ delay_counter++;
 }
 }
 
-# 441
+# 440
 mod_delay_time = delay_time / 7.5;
 
 delay_time_changed = 0;

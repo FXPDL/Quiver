@@ -23,5 +23,5 @@ void set_leds_top(int, int);
 uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
-int modulation(signed int, signed int);
+
 //int covert_BPM(int);

@@ -3905,6 +3905,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 17: void init_timer0(void);
 [; ;user.h: 18: void InitializeTaps(void);
 [; ;user.h: 19: void ReadSavedSettings(void);
+[; ;user.h: 20: long modulation(long, long);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3912,7 +3913,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;system.h: 26: int modulation(signed int, signed int);
 [; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
@@ -4860,19 +4860,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 480 ]
 }
 "181
-[v _modulation `(i ~T0 @X0 1 ef2`i`i ]
+[v _modulation `(l ~T0 @X0 1 ef2`l`l ]
 {
-[; ;user.c: 181: int modulation(signed int x, signed int y) {
+[; ;user.c: 181: long modulation(long x, long y) {
 [e :U _modulation ]
-[v _x `i ~T0 @X0 1 r1 ]
-[v _y `i ~T0 @X0 1 r2 ]
+[v _x `l ~T0 @X0 1 r1 ]
+[v _y `l ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 183: x = (127500 + (y * x)) / 1000;
-"183
-[e = _x -> / + -> 127500 `l -> * _y _x `l -> -> 1000 `i `l `i ]
-[; ;user.c: 184: return x;
+[; ;user.c: 184: return (127500 + (y * x)) / 1000;
 "184
-[e ) _x ]
+[e ) / + -> 127500 `l * _y _x -> -> 1000 `i `l ]
 [e $UE 481  ]
 [; ;user.c: 185: }
 "185
@@ -4921,37 +4918,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 196: bottom_push_state = FLASH_ReadWord(0x1F82);
 "196
 [e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 199: LATGbits.LATG1 = !switchBypass_state;
-"199
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 200: LATGbits.LATG2 = switchBypass_state;
+[; ;user.c: 198: if (top_push_state > 6) {
+"198
+[e $ ! > _top_push_state -> 6 `i 487  ]
+{
+[; ;user.c: 200: top_push_state = 6;
 "200
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 201: LATBbits.LATB2 = 0;
+[e = _top_push_state -> 6 `i ]
 "201
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 202: LATBbits.LATB3 = 0;
+}
+[e :U 487 ]
+[; ;user.c: 201: }
+[; ;user.c: 202: if (bottom_push_state > 6) {
 "202
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 204: LATBbits.LATB4 = 0;
+[e $ ! > _bottom_push_state -> 6 `i 488  ]
+{
+[; ;user.c: 204: bottom_push_state = 6;
 "204
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 205: LATBbits.LATB5 = 0;
+[e = _bottom_push_state -> 6 `i ]
 "205
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 207: LATBbits.LATB1 = 0;
-"207
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 208: LATBbits.LATB0 = 0;
+}
+[e :U 488 ]
+[; ;user.c: 205: }
+[; ;user.c: 208: LATGbits.LATG1 = !switchBypass_state;
 "208
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 211: set_leds_top(top_push_state, 1);
+[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;user.c: 209: LATGbits.LATG2 = switchBypass_state;
+"209
+[e = . . _LATGbits 0 2 _switchBypass_state ]
+[; ;user.c: 210: LATBbits.LATB2 = 0;
+"210
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 211: LATBbits.LATB3 = 0;
 "211
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 212: set_leds_bottom(bottom_push_state);
-"212
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 213: }
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 213: LATBbits.LATB4 = 0;
 "213
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 214: LATBbits.LATB5 = 0;
+"214
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 216: LATBbits.LATB1 = 0;
+"216
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 217: LATBbits.LATB0 = 0;
+"217
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 220: set_leds_top(top_push_state, 1);
+"220
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;user.c: 221: set_leds_bottom(bottom_push_state);
+"221
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;user.c: 222: }
+"222
 [e :UE 486 ]
 }

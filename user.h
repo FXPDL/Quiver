@@ -17,3 +17,4 @@ void init_timer2(void);
 void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
+long modulation(long, long);

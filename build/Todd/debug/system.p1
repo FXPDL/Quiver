@@ -3615,7 +3615,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;system.h: 26: int modulation(signed int, signed int);
 "18 system.c
 [v _ConfigureOscillator `(v ~T0 @X0 1 ef ]
 "19

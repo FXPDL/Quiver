@@ -4892,6 +4892,7 @@ void init_timer2(void);
 void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
+long modulation(long, long);
 
 # 19 "system.h"
 void ConfigureOscillator(void);
@@ -4901,7 +4902,6 @@ void set_leds_top(int, int);
 uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
-int modulation(signed int, signed int);
 
 # 99 "memory.h"
 uint16_t FLASH_ReadWord(uint16_t flashAddr);
@@ -5122,10 +5122,10 @@ float scalePotValue(float x, float out_min, float out_max) {
 return x * (out_max - out_min) / 1023 + out_min;
 }
 
-int modulation(signed int x, signed int y) {
+long modulation(long x, long y) {
 
-x = (127500 + (y * x)) / 1000;
-return x;
+
+return (127500 + (y * x)) / 1000;
 }
 
 void InitializeTaps(void) {
@@ -5138,6 +5138,15 @@ void ReadSavedSettings(void) {
 
 top_push_state = FLASH_ReadWord(0x1F81);
 bottom_push_state = FLASH_ReadWord(0x1F82);
+
+if (top_push_state > 6) {
+
+top_push_state = 6;
+}
+if (bottom_push_state > 6) {
+
+bottom_push_state = 6;
+}
 
 
 LATGbits.LATG1 = !switchBypass_state;
