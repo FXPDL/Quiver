@@ -80,7 +80,6 @@ void updateSwitchTap(void) {
                 tap_iteration = 1;
                 tap_total = 0;
                 delay_time_changed = 0;
-                LATDbits.LATD0 = 0;
 
                 for (iCnt = 1; iCnt <= num_taps; iCnt++) {
                     tap_history[iCnt] = 0;

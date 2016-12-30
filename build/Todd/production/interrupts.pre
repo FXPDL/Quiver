@@ -5072,11 +5072,8 @@ set_leds_top(top_push_state, 0);
 }
 }
 
-# 130
-LATBbits.LATB0 = 0;
+# 131
 if (mod_timer >= mod_delay_time) {
-LATBbits.LATB0 = 1;
-
 mod_timer = 0;
 
 if (bottom_push_state == 1 || bottom_push_state == 5) {
@@ -5110,6 +5107,7 @@ case 5:
 mod_value = mod5[mod_counter];
 
 PORTCbits.RC4 = 1;
+
 break;
 case 6:
 mod_value = 0;
@@ -5117,16 +5115,23 @@ PORTCbits.RC4 = 0;
 break;
 }
 
-# 181
+
+if (mod_counter < 5) {
+LATBbits.LATB0 = 1;
+} else {
+LATBbits.LATB0 = 0;
+}
+
+# 187
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR9 = mod_value / 2;
 mod_timer = 0;
 mod_counter = mod_counter + 1;
 
-# 198
+# 204
 }
 
-# 223
+# 229
 if (preset_programmning_on == 1) {
 preset_blink++;
 

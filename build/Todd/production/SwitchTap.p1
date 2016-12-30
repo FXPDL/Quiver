@@ -9,17 +9,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S37 . . ]
 "675
 [v _PORTEbits `VS37 ~T0 @X0 0 e@16 ]
-"2571
-[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S120 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"2581
-[s S121 :8 `uc 1 ]
-[n S121 . LATD ]
-"2570
-[u S119 `S120 1 `S121 1 ]
-[n S119 . . . ]
-"2585
-[v _LATDbits `VS119 ~T0 @X0 0 e@271 ]
 "2449
 [s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S116 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -4250,260 +4239,257 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchTap.c: 82: delay_time_changed = 0;
 "82
 [e = _delay_time_changed -> 0 `i ]
-[; ;SwitchTap.c: 83: LATDbits.LATD0 = 0;
-"83
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 85: for (iCnt = 1; iCnt <= num_taps; iCnt++) {
-"85
+[; ;SwitchTap.c: 84: for (iCnt = 1; iCnt <= num_taps; iCnt++) {
+"84
 {
 [e = _iCnt -> -> 1 `i `uc ]
 [e $U 473  ]
 [e :U 470 ]
 {
-[; ;SwitchTap.c: 86: tap_history[iCnt] = 0;
-"86
-[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux -> -> 0 `i `l ]
-"87
-}
+[; ;SwitchTap.c: 85: tap_history[iCnt] = 0;
 "85
+[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux -> -> 0 `i `l ]
+"86
+}
+"84
 [e ++ _iCnt -> -> 1 `i `uc ]
 [e :U 473 ]
 [e $ <= -> _iCnt `i -> _num_taps `i 470  ]
 [e :U 471 ]
+"86
+}
 "87
 }
-"88
-}
 [e :U 469 ]
+[; ;SwitchTap.c: 86: }
 [; ;SwitchTap.c: 87: }
-[; ;SwitchTap.c: 88: }
-[; ;SwitchTap.c: 91: if (longTap_start == 0) {
-"91
+[; ;SwitchTap.c: 90: if (longTap_start == 0) {
+"90
 [e $ ! == -> _longTap_start `i -> 0 `i 474  ]
 {
-[; ;SwitchTap.c: 92: longTap_start = 1;
-"92
+[; ;SwitchTap.c: 91: longTap_start = 1;
+"91
 [e = _longTap_start -> -> 1 `i `uc ]
-[; ;SwitchTap.c: 93: longTap_state = 0;
-"93
+[; ;SwitchTap.c: 92: longTap_state = 0;
+"92
 [e = _longTap_state -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 94: longTap_timer = 0;
-"94
+[; ;SwitchTap.c: 93: longTap_timer = 0;
+"93
 [e = _longTap_timer -> -> 0 `i `ui ]
-"95
+"94
 }
 [e :U 474 ]
-[; ;SwitchTap.c: 95: }
-[; ;SwitchTap.c: 99: if (longTap_timer >= long_press_limit && longTap_state == 0) {
-"99
+[; ;SwitchTap.c: 94: }
+[; ;SwitchTap.c: 98: if (longTap_timer >= long_press_limit && longTap_state == 0) {
+"98
 [e $ ! && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i 475  ]
 {
-[; ;SwitchTap.c: 101: longTap_timer = long_press_limit;
-"101
+[; ;SwitchTap.c: 100: longTap_timer = long_press_limit;
+"100
 [e = _longTap_timer _long_press_limit ]
-[; ;SwitchTap.c: 102: LATBbits.LATB4 = 0;
-"102
+[; ;SwitchTap.c: 101: LATBbits.LATB4 = 0;
+"101
 [e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 104: if (feedback_start != 1) {
-"104
+[; ;SwitchTap.c: 103: if (feedback_start != 1) {
+"103
 [e $ ! != -> _feedback_start `i -> 1 `i 476  ]
 {
-[; ;SwitchTap.c: 105: setLongTapState(1);
-"105
+[; ;SwitchTap.c: 104: setLongTapState(1);
+"104
 [e ( _setLongTapState (1 -> 1 `i ]
-"106
+"105
 }
-[; ;SwitchTap.c: 106: } else {
+[; ;SwitchTap.c: 105: } else {
 [e $U 477  ]
 [e :U 476 ]
 {
-[; ;SwitchTap.c: 107: setDoublePressState(1);
-"107
+[; ;SwitchTap.c: 106: setDoublePressState(1);
+"106
 [e ( _setDoublePressState (1 -> 1 `i ]
-"108
+"107
 }
 [e :U 477 ]
-"109
+"108
 }
 [e :U 475 ]
-"111
+"110
 }
+[; ;SwitchTap.c: 107: }
 [; ;SwitchTap.c: 108: }
-[; ;SwitchTap.c: 109: }
-[; ;SwitchTap.c: 111: } else if (tap_timer < 1563 && longTap_state == 0 && switchTap_down != 1) {
+[; ;SwitchTap.c: 110: } else if (tap_timer < 1563 && longTap_state == 0 && switchTap_down != 1) {
 [e $U 478  ]
 [e :U 468 ]
 [e $ ! && && < _tap_timer -> -> 1563 `i `l == -> _longTap_state `i -> 0 `i != -> _switchTap_down `i -> 1 `i 479  ]
 {
-[; ;SwitchTap.c: 113: switchTap_down = 1;
-"113
+[; ;SwitchTap.c: 112: switchTap_down = 1;
+"112
 [e = _switchTap_down -> -> 1 `i `uc ]
-[; ;SwitchTap.c: 114: if (tap_timer >= 1172) {
-"114
+[; ;SwitchTap.c: 113: if (tap_timer >= 1172) {
+"113
 [e $ ! >= _tap_timer -> -> 1172 `i `l 480  ]
 {
-[; ;SwitchTap.c: 115: tap_timer = 1172;
-"115
+[; ;SwitchTap.c: 114: tap_timer = 1172;
+"114
 [e = _tap_timer -> -> 1172 `i `l ]
-"116
+"115
 }
 [e :U 480 ]
-"118
+"117
 [v _tapCntDivisor `i ~T0 @X0 1 a ]
-[; ;SwitchTap.c: 116: }
-[; ;SwitchTap.c: 118: int tapCntDivisor = num_taps;
+[; ;SwitchTap.c: 115: }
+[; ;SwitchTap.c: 117: int tapCntDivisor = num_taps;
 [e = _tapCntDivisor -> _num_taps `i ]
-[; ;SwitchTap.c: 119: if (tap_iteration <= num_taps) {
-"119
+[; ;SwitchTap.c: 118: if (tap_iteration <= num_taps) {
+"118
 [e $ ! <= _tap_iteration -> _num_taps `i 481  ]
 {
-[; ;SwitchTap.c: 120: tap_total += tap_timer;
-"120
+[; ;SwitchTap.c: 119: tap_total += tap_timer;
+"119
 [e =+ _tap_total _tap_timer ]
-[; ;SwitchTap.c: 121: tap_history[tap_iteration] = tap_timer;
-"121
+[; ;SwitchTap.c: 120: tap_history[tap_iteration] = tap_timer;
+"120
 [e = *U + &U _tap_history * -> -> _tap_iteration `ui `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;SwitchTap.c: 122: tapCntDivisor = tap_iteration;
-"122
+[; ;SwitchTap.c: 121: tapCntDivisor = tap_iteration;
+"121
 [e = _tapCntDivisor _tap_iteration ]
-"123
+"122
 }
-[; ;SwitchTap.c: 123: } else {
+[; ;SwitchTap.c: 122: } else {
 [e $U 482  ]
 [e :U 481 ]
 {
-[; ;SwitchTap.c: 124: tap_total = 0;
-"124
+[; ;SwitchTap.c: 123: tap_total = 0;
+"123
 [e = _tap_total -> -> 0 `i `l ]
-[; ;SwitchTap.c: 125: for (iCnt = 1; iCnt < num_taps; iCnt++) {
-"125
+[; ;SwitchTap.c: 124: for (iCnt = 1; iCnt < num_taps; iCnt++) {
+"124
 {
 [e = _iCnt -> -> 1 `i `uc ]
 [e $U 486  ]
 [e :U 483 ]
 {
-[; ;SwitchTap.c: 126: tap_history[iCnt] = tap_history[iCnt + 1];
-"126
-[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux *U + &U _tap_history * -> -> + -> _iCnt `i -> 1 `i `ui `ux -> -> # *U &U _tap_history `ui `ux ]
-[; ;SwitchTap.c: 127: tap_total += tap_history[iCnt];
-"127
-[e =+ _tap_total *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux ]
-"128
-}
+[; ;SwitchTap.c: 125: tap_history[iCnt] = tap_history[iCnt + 1];
 "125
+[e = *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux *U + &U _tap_history * -> -> + -> _iCnt `i -> 1 `i `ui `ux -> -> # *U &U _tap_history `ui `ux ]
+[; ;SwitchTap.c: 126: tap_total += tap_history[iCnt];
+"126
+[e =+ _tap_total *U + &U _tap_history * -> _iCnt `ux -> -> # *U &U _tap_history `ui `ux ]
+"127
+}
+"124
 [e ++ _iCnt -> -> 1 `i `uc ]
 [e :U 486 ]
 [e $ < -> _iCnt `i -> _num_taps `i 483  ]
 [e :U 484 ]
-"128
+"127
 }
-[; ;SwitchTap.c: 128: }
-[; ;SwitchTap.c: 129: tap_history[num_taps] = tap_timer;
-"129
+[; ;SwitchTap.c: 127: }
+[; ;SwitchTap.c: 128: tap_history[num_taps] = tap_timer;
+"128
 [e = *U + &U _tap_history * -> _num_taps `ux -> -> # *U &U _tap_history `ui `ux _tap_timer ]
-[; ;SwitchTap.c: 130: tap_total += tap_timer;
-"130
+[; ;SwitchTap.c: 129: tap_total += tap_timer;
+"129
 [e =+ _tap_total _tap_timer ]
-"131
+"130
 }
 [e :U 482 ]
-[; ;SwitchTap.c: 131: }
-[; ;SwitchTap.c: 133: baseline_delay_time = tap_total / tapCntDivisor;
-"133
+[; ;SwitchTap.c: 130: }
+[; ;SwitchTap.c: 132: baseline_delay_time = tap_total / tapCntDivisor;
+"132
 [e = _baseline_delay_time / _tap_total -> _tapCntDivisor `l ]
-[; ;SwitchTap.c: 134: delay_time_changed = 1;
-"134
+[; ;SwitchTap.c: 133: delay_time_changed = 1;
+"133
 [e = _delay_time_changed -> 1 `i ]
-[; ;SwitchTap.c: 135: tap_timer = 0;
-"135
+[; ;SwitchTap.c: 134: tap_timer = 0;
+"134
 [e = _tap_timer -> -> 0 `i `l ]
-[; ;SwitchTap.c: 137: tap_iteration++;
-"137
+[; ;SwitchTap.c: 136: tap_iteration++;
+"136
 [e ++ _tap_iteration -> 1 `i ]
-"138
+"137
 }
 [e :U 479 ]
-"140
+"139
 [e :U 478 ]
 }
-[; ;SwitchTap.c: 138: }
-[; ;SwitchTap.c: 140: } else if (switchTap_pressed >= 25) {
+[; ;SwitchTap.c: 137: }
+[; ;SwitchTap.c: 139: } else if (switchTap_pressed >= 25) {
 [e $U 487  ]
 [e :U 467 ]
 [e $ ! >= -> _switchTap_pressed `i -> 25 `i 488  ]
 {
-[; ;SwitchTap.c: 141: switchTap_down = 0;
-"141
+[; ;SwitchTap.c: 140: switchTap_down = 0;
+"140
 [e = _switchTap_down -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 142: switchTap_state = 0;
-"142
+[; ;SwitchTap.c: 141: switchTap_state = 0;
+"141
 [e = _switchTap_state -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 148: setLongTapState(0);
-"148
+[; ;SwitchTap.c: 147: setLongTapState(0);
+"147
 [e ( _setLongTapState (1 -> 0 `i ]
-[; ;SwitchTap.c: 150: longTap_timer = 0;
-"150
+[; ;SwitchTap.c: 149: longTap_timer = 0;
+"149
 [e = _longTap_timer -> -> 0 `i `ui ]
-[; ;SwitchTap.c: 151: longTap_start = 0;
-"151
+[; ;SwitchTap.c: 150: longTap_start = 0;
+"150
 [e = _longTap_start -> -> 0 `i `uc ]
-[; ;SwitchTap.c: 153: switchTap_pressed = 25;
-"153
+[; ;SwitchTap.c: 152: switchTap_pressed = 25;
+"152
 [e = _switchTap_pressed -> -> 25 `i `uc ]
-"154
+"153
 }
 [e :U 488 ]
-"156
+"155
 [e :U 487 ]
-[; ;SwitchTap.c: 154: }
-[; ;SwitchTap.c: 156: }
+[; ;SwitchTap.c: 153: }
+[; ;SwitchTap.c: 155: }
 [e :UE 462 ]
 }
-"159
+"158
 [v _setSwitchTapState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchTap.c: 159: void setSwitchTapState(int f_state) {
+[; ;SwitchTap.c: 158: void setSwitchTapState(int f_state) {
 [e :U _setSwitchTapState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchTap.c: 160: if (switchTap_state == f_state) {return;}
-"160
+[; ;SwitchTap.c: 159: if (switchTap_state == f_state) {return;}
+"159
 [e $ ! == -> _switchTap_state `i _f_state 490  ]
 {
 [e $UE 489  ]
 }
 [e :U 490 ]
-[; ;SwitchTap.c: 161: switchTap_state = f_state;
-"161
+[; ;SwitchTap.c: 160: switchTap_state = f_state;
+"160
 [e = _switchTap_state -> _f_state `uc ]
-[; ;SwitchTap.c: 165: updateSwitchTapState(switchTap_state);
-"165
+[; ;SwitchTap.c: 164: updateSwitchTapState(switchTap_state);
+"164
 [e ( _updateSwitchTapState (1 -> _switchTap_state `i ]
-[; ;SwitchTap.c: 166: }
-"166
+[; ;SwitchTap.c: 165: }
+"165
 [e :UE 489 ]
 }
-"168
+"167
 [v _setLongTapState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchTap.c: 168: void setLongTapState(int f_state) {
+[; ;SwitchTap.c: 167: void setLongTapState(int f_state) {
 [e :U _setLongTapState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchTap.c: 169: if (longTap_state == f_state) {return;}
-"169
+[; ;SwitchTap.c: 168: if (longTap_state == f_state) {return;}
+"168
 [e $ ! == -> _longTap_state `i _f_state 492  ]
 {
 [e $UE 491  ]
 }
 [e :U 492 ]
-[; ;SwitchTap.c: 170: longTap_state = f_state;
-"170
+[; ;SwitchTap.c: 169: longTap_state = f_state;
+"169
 [e = _longTap_state -> _f_state `uc ]
-[; ;SwitchTap.c: 171: LATBbits.LATB5 = f_state;
-"171
+[; ;SwitchTap.c: 170: LATBbits.LATB5 = f_state;
+"170
 [e = . . _LATBbits 0 5 -> _f_state `uc ]
-[; ;SwitchTap.c: 174: }
-"174
+[; ;SwitchTap.c: 173: }
+"173
 [e :UE 491 ]
 }

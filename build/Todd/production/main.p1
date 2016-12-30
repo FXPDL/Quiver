@@ -4527,96 +4527,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 296: knob4_prev = knob_4_pos;
 "296
 [e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 297: mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);
-"297
-[e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 60 `i `f -> -> 1000 `i `f `i ]
+[; ;main.c: 298: mod_delay_time = map(knob4_prev, 0, 1023, 3, 47);
 "298
+[e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
+"299
 }
 [e :U 473 ]
-[; ;main.c: 298: }
-[; ;main.c: 306: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"306
+[; ;main.c: 299: }
+[; ;main.c: 307: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"307
 [e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 474  ]
 {
-[; ;main.c: 307: knob5_prev = knob_5_pos;
-"307
-[e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 308: adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+[; ;main.c: 308: knob5_prev = knob_5_pos;
 "308
+[e = _knob5_prev _knob_5_pos ]
+[; ;main.c: 309: adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+"309
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"310
+"311
 }
 [e :U 474 ]
-[; ;main.c: 310: }
-[; ;main.c: 389: if (delay_time_changed == 1) {
-"389
+[; ;main.c: 311: }
+[; ;main.c: 390: if (delay_time_changed == 1) {
+"390
 [e $ ! == _delay_time_changed -> 1 `i 475  ]
 {
-[; ;main.c: 390: delay_time = baseline_delay_time;
-"390
-[e = _delay_time _baseline_delay_time ]
-[; ;main.c: 391: delay_time = set_subdivision(baseline_delay_time, top_push_state);
+[; ;main.c: 391: delay_time = baseline_delay_time;
 "391
-[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
-[; ;main.c: 392: reset_sub_delay = 1;
+[e = _delay_time _baseline_delay_time ]
+[; ;main.c: 392: delay_time = set_subdivision(baseline_delay_time, top_push_state);
 "392
-[e = _reset_sub_delay -> 1 `i ]
-[; ;main.c: 393: delayfound = 0;
+[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
+[; ;main.c: 393: reset_sub_delay = 1;
 "393
-[e = _delayfound -> 0 `i ]
-[; ;main.c: 394: delay_counter = 0;
+[e = _reset_sub_delay -> 1 `i ]
+[; ;main.c: 394: delayfound = 0;
 "394
+[e = _delayfound -> 0 `i ]
+[; ;main.c: 395: delay_counter = 0;
+"395
 [e = _delay_counter -> 0 `i ]
-[; ;main.c: 396: while (delayfound == 0) {
-"396
+[; ;main.c: 397: while (delayfound == 0) {
+"397
 [e $U 476  ]
 [e :U 477 ]
 {
-[; ;main.c: 397: if (delayArray[delay_counter] <= delay_time * 2) {
-"397
+[; ;main.c: 398: if (delayArray[delay_counter] <= delay_time * 2) {
+"398
 [e $ ! <= -> *U + &U _delayArray * -> -> _delay_counter `ui `ux -> -> # *U &U _delayArray `ui `ux `l * _delay_time -> -> 2 `i `l 479  ]
 {
-[; ;main.c: 398: delayfound = 1;
-"398
+[; ;main.c: 399: delayfound = 1;
+"399
 [e = _delayfound -> 1 `i ]
-"402
+"403
 }
-[; ;main.c: 402: } else {
+[; ;main.c: 403: } else {
 [e $U 480  ]
 [e :U 479 ]
 {
-[; ;main.c: 403: delay_counter++;
-"403
+[; ;main.c: 404: delay_counter++;
+"404
 [e ++ _delay_counter -> 1 `i ]
-"405
-}
-[e :U 480 ]
 "406
 }
+[e :U 480 ]
+"407
+}
 [e :U 476 ]
-"396
+"397
 [e $ == _delayfound -> 0 `i 477  ]
 [e :U 478 ]
-[; ;main.c: 405: }
 [; ;main.c: 406: }
-[; ;main.c: 422: mod_delay_time = delay_time / 7.5;
-"422
-[e = _mod_delay_time -> / -> _delay_time `d .7.5 `i ]
-[; ;main.c: 424: delay_time_changed = 0;
-"424
-[e = _delay_time_changed -> 0 `i ]
+[; ;main.c: 407: }
+[; ;main.c: 426: delay_time_changed = 0;
 "426
+[e = _delay_time_changed -> 0 `i ]
+"428
 }
 [e :U 475 ]
-"428
+"430
 }
 [e :U 461 ]
 "99
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 426: }
 [; ;main.c: 428: }
-[; ;main.c: 429: }
-"429
+[; ;main.c: 430: }
+[; ;main.c: 431: }
+"431
 [e :UE 460 ]
 }

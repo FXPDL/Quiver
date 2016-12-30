@@ -294,7 +294,8 @@ void main(void) {
         //------------------------------------------------
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
-            mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
+           // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
+            mod_delay_time = map(knob4_prev, 0, 1023, 3, 47);          
         }
 
 
@@ -419,7 +420,8 @@ void main(void) {
             }
             */
             
-            mod_delay_time = delay_time / 7.5;
+            //Per Todd on 12/29/16 dont allow delay to override the modulation rate.
+            //mod_delay_time = delay_time / 7.5;
 
             delay_time_changed = 0;
 

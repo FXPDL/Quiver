@@ -4587,136 +4587,130 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 474 ]
 [; ;interrupts.c: 118: }
 [; ;interrupts.c: 119: }
-[; ;interrupts.c: 130: LATBbits.LATB0 = 0;
-"130
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
 [; ;interrupts.c: 131: if (mod_timer >= mod_delay_time) {
 "131
 [e $ ! >= _mod_timer -> _mod_delay_time `l 476  ]
 {
-[; ;interrupts.c: 132: LATBbits.LATB0 = 1;
+[; ;interrupts.c: 132: mod_timer = 0;
 "132
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 134: mod_timer = 0;
-"134
 [e = _mod_timer -> -> 0 `i `l ]
-[; ;interrupts.c: 136: if (bottom_push_state == 1 || bottom_push_state == 5) {
-"136
+[; ;interrupts.c: 134: if (bottom_push_state == 1 || bottom_push_state == 5) {
+"134
 [e $ ! || == _bottom_push_state -> 1 `i == _bottom_push_state -> 5 `i 477  ]
 {
-[; ;interrupts.c: 137: if (mod_counter >= 61) {
-"137
+[; ;interrupts.c: 135: if (mod_counter >= 61) {
+"135
 [e $ ! >= _mod_counter -> 61 `i 478  ]
 {
-[; ;interrupts.c: 138: mod_counter = 0;
-"138
+[; ;interrupts.c: 136: mod_counter = 0;
+"136
 [e = _mod_counter -> 0 `i ]
-"139
+"137
 }
 [e :U 478 ]
-"140
+"138
 }
-[; ;interrupts.c: 139: }
-[; ;interrupts.c: 140: } else {
+[; ;interrupts.c: 137: }
+[; ;interrupts.c: 138: } else {
 [e $U 479  ]
 [e :U 477 ]
 {
-[; ;interrupts.c: 141: if (mod_counter >= 31) {
-"141
+[; ;interrupts.c: 139: if (mod_counter >= 31) {
+"139
 [e $ ! >= _mod_counter -> 31 `i 480  ]
 {
-[; ;interrupts.c: 142: mod_counter = 0;
-"142
+[; ;interrupts.c: 140: mod_counter = 0;
+"140
 [e = _mod_counter -> 0 `i ]
-"143
+"141
 }
 [e :U 480 ]
-"144
+"142
 }
 [e :U 479 ]
-[; ;interrupts.c: 143: }
-[; ;interrupts.c: 144: }
-[; ;interrupts.c: 146: switch (bottom_push_state) {
-"146
+[; ;interrupts.c: 141: }
+[; ;interrupts.c: 142: }
+[; ;interrupts.c: 144: switch (bottom_push_state) {
+"144
 [e $U 482  ]
 {
-[; ;interrupts.c: 147: case 1:
-"147
+[; ;interrupts.c: 145: case 1:
+"145
 [e :U 483 ]
-[; ;interrupts.c: 148: mod_value = mod5[mod_counter];
-"148
-[e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
-[; ;interrupts.c: 149: PORTCbits.RC4 = 0;
-"149
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 150: break;
-"150
-[e $U 481  ]
-[; ;interrupts.c: 151: case 2:
-"151
-[e :U 484 ]
-[; ;interrupts.c: 152: mod_value = mod2[mod_counter];
-"152
-[e = _mod_value *U + &U _mod2 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod2 `ui `ux ]
-[; ;interrupts.c: 153: PORTCbits.RC4 = 0;
-"153
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 154: break;
-"154
-[e $U 481  ]
-[; ;interrupts.c: 155: case 3:
-"155
-[e :U 485 ]
-[; ;interrupts.c: 156: mod_value = mod3[mod_counter];
-"156
-[e = _mod_value *U + &U _mod3 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod3 `ui `ux ]
-[; ;interrupts.c: 157: PORTCbits.RC4 = 0;
-"157
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 158: break;
-"158
-[e $U 481  ]
-[; ;interrupts.c: 159: case 4:
-"159
-[e :U 486 ]
-[; ;interrupts.c: 160: mod_value = mod4[mod_counter];
-"160
-[e = _mod_value *U + &U _mod4 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod4 `ui `ux ]
-[; ;interrupts.c: 161: PORTCbits.RC4 = 0;
-"161
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 162: break;
-"162
-[e $U 481  ]
-[; ;interrupts.c: 163: case 5:
-"163
-[e :U 487 ]
-[; ;interrupts.c: 164: mod_value = mod5[mod_counter];
-"164
-[e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
-[; ;interrupts.c: 166: PORTCbits.RC4 = 1;
-"166
-[e = . . _PORTCbits 0 4 -> -> 1 `i `uc ]
-[; ;interrupts.c: 167: break;
-"167
-[e $U 481  ]
-[; ;interrupts.c: 168: case 6:
-"168
-[e :U 488 ]
-[; ;interrupts.c: 169: mod_value = 0;
-"169
-[e = _mod_value -> 0 `i ]
-[; ;interrupts.c: 170: PORTCbits.RC4 = 0;
-"170
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 171: break;
-"171
-[e $U 481  ]
-"172
-}
-[; ;interrupts.c: 172: }
-[e $U 481  ]
+[; ;interrupts.c: 146: mod_value = mod5[mod_counter];
 "146
+[e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
+[; ;interrupts.c: 147: PORTCbits.RC4 = 0;
+"147
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 148: break;
+"148
+[e $U 481  ]
+[; ;interrupts.c: 149: case 2:
+"149
+[e :U 484 ]
+[; ;interrupts.c: 150: mod_value = mod2[mod_counter];
+"150
+[e = _mod_value *U + &U _mod2 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod2 `ui `ux ]
+[; ;interrupts.c: 151: PORTCbits.RC4 = 0;
+"151
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 152: break;
+"152
+[e $U 481  ]
+[; ;interrupts.c: 153: case 3:
+"153
+[e :U 485 ]
+[; ;interrupts.c: 154: mod_value = mod3[mod_counter];
+"154
+[e = _mod_value *U + &U _mod3 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod3 `ui `ux ]
+[; ;interrupts.c: 155: PORTCbits.RC4 = 0;
+"155
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 156: break;
+"156
+[e $U 481  ]
+[; ;interrupts.c: 157: case 4:
+"157
+[e :U 486 ]
+[; ;interrupts.c: 158: mod_value = mod4[mod_counter];
+"158
+[e = _mod_value *U + &U _mod4 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod4 `ui `ux ]
+[; ;interrupts.c: 159: PORTCbits.RC4 = 0;
+"159
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 160: break;
+"160
+[e $U 481  ]
+[; ;interrupts.c: 161: case 5:
+"161
+[e :U 487 ]
+[; ;interrupts.c: 162: mod_value = mod5[mod_counter];
+"162
+[e = _mod_value *U + &U _mod5 * -> -> _mod_counter `ui `ux -> -> # *U &U _mod5 `ui `ux ]
+[; ;interrupts.c: 164: PORTCbits.RC4 = 1;
+"164
+[e = . . _PORTCbits 0 4 -> -> 1 `i `uc ]
+[; ;interrupts.c: 166: break;
+"166
+[e $U 481  ]
+[; ;interrupts.c: 167: case 6:
+"167
+[e :U 488 ]
+[; ;interrupts.c: 168: mod_value = 0;
+"168
+[e = _mod_value -> 0 `i ]
+[; ;interrupts.c: 169: PORTCbits.RC4 = 0;
+"169
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 170: break;
+"170
+[e $U 481  ]
+"171
+}
+[; ;interrupts.c: 171: }
+[e $U 481  ]
+"144
 [e :U 482 ]
 [e [\ _bottom_push_state , $ -> 1 `i 483
  , $ -> 2 `i 484
@@ -4725,75 +4719,75 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> 5 `i 487
  , $ -> 6 `i 488
  481 ]
-"172
+"171
 [e :U 481 ]
-[; ;interrupts.c: 181: mod_value = modulation(mod_value, adjusted_pot_value);
-"181
-[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
-[; ;interrupts.c: 182: CCPR9 = mod_value / 2;
-"182
-[e = _CCPR9 -> / _mod_value -> 2 `i `us ]
-[; ;interrupts.c: 183: mod_timer = 0;
-"183
-[e = _mod_timer -> -> 0 `i `l ]
-[; ;interrupts.c: 184: mod_counter = mod_counter + 1;
-"184
-[e = _mod_counter + _mod_counter -> 1 `i ]
-"198
-}
-[e :U 476 ]
-[; ;interrupts.c: 198: }
-[; ;interrupts.c: 223: if (preset_programmning_on == 1) {
-"223
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 489  ]
+[; ;interrupts.c: 174: if (mod_counter < 5) {
+"174
+[e $ ! < _mod_counter -> 5 `i 489  ]
 {
-[; ;interrupts.c: 224: preset_blink++;
-"224
-[e ++ _preset_blink -> -> 1 `i `uc ]
-[; ;interrupts.c: 226: if (preset_blink >= blink_delay) {
-"226
-[e $ ! >= -> _preset_blink `i _blink_delay 490  ]
-{
-[; ;interrupts.c: 227: LATBbits.LATB1 = 1;
-"227
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 228: if (preset_blink > blink_delay*2) {
-"228
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 491  ]
-{
-[; ;interrupts.c: 229: preset_blink = 0;
-"229
-[e = _preset_blink -> -> 0 `i `uc ]
-"230
+[; ;interrupts.c: 175: LATBbits.LATB0 = 1;
+"175
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+"176
 }
-[e :U 491 ]
-"232
-}
-[; ;interrupts.c: 230: }
-[; ;interrupts.c: 232: } else {
-[e $U 492  ]
-[e :U 490 ]
-{
-[; ;interrupts.c: 233: LATBbits.LATB1 = 0;
-"233
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"234
-}
-[e :U 492 ]
-"236
-}
-[; ;interrupts.c: 234: }
-[; ;interrupts.c: 236: } else {
-[e $U 493  ]
+[; ;interrupts.c: 176: } else {
+[e $U 490  ]
 [e :U 489 ]
 {
-[; ;interrupts.c: 237: if (preset_blink > 0) {
-"237
-[e $ ! > -> _preset_blink `i -> 0 `i 494  ]
+[; ;interrupts.c: 177: LATBbits.LATB0 = 0;
+"177
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+"178
+}
+[e :U 490 ]
+[; ;interrupts.c: 178: }
+[; ;interrupts.c: 187: mod_value = modulation(mod_value, adjusted_pot_value);
+"187
+[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
+[; ;interrupts.c: 188: CCPR9 = mod_value / 2;
+"188
+[e = _CCPR9 -> / _mod_value -> 2 `i `us ]
+[; ;interrupts.c: 189: mod_timer = 0;
+"189
+[e = _mod_timer -> -> 0 `i `l ]
+[; ;interrupts.c: 190: mod_counter = mod_counter + 1;
+"190
+[e = _mod_counter + _mod_counter -> 1 `i ]
+"204
+}
+[e :U 476 ]
+[; ;interrupts.c: 204: }
+[; ;interrupts.c: 229: if (preset_programmning_on == 1) {
+"229
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 491  ]
 {
-[; ;interrupts.c: 238: preset_blink = 0;
-"238
+[; ;interrupts.c: 230: preset_blink++;
+"230
+[e ++ _preset_blink -> -> 1 `i `uc ]
+[; ;interrupts.c: 232: if (preset_blink >= blink_delay) {
+"232
+[e $ ! >= -> _preset_blink `i _blink_delay 492  ]
+{
+[; ;interrupts.c: 233: LATBbits.LATB1 = 1;
+"233
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[; ;interrupts.c: 234: if (preset_blink > blink_delay*2) {
+"234
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 493  ]
+{
+[; ;interrupts.c: 235: preset_blink = 0;
+"235
 [e = _preset_blink -> -> 0 `i `uc ]
+"236
+}
+[e :U 493 ]
+"238
+}
+[; ;interrupts.c: 236: }
+[; ;interrupts.c: 238: } else {
+[e $U 494  ]
+[e :U 492 ]
+{
 [; ;interrupts.c: 239: LATBbits.LATB1 = 0;
 "239
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
@@ -4802,10 +4796,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 494 ]
 "242
 }
-[e :U 493 ]
 [; ;interrupts.c: 240: }
-[; ;interrupts.c: 242: }
-[; ;interrupts.c: 244: }
+[; ;interrupts.c: 242: } else {
+[e $U 495  ]
+[e :U 491 ]
+{
+[; ;interrupts.c: 243: if (preset_blink > 0) {
+"243
+[e $ ! > -> _preset_blink `i -> 0 `i 496  ]
+{
+[; ;interrupts.c: 244: preset_blink = 0;
 "244
+[e = _preset_blink -> -> 0 `i `uc ]
+[; ;interrupts.c: 245: LATBbits.LATB1 = 0;
+"245
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"246
+}
+[e :U 496 ]
+"248
+}
+[e :U 495 ]
+[; ;interrupts.c: 246: }
+[; ;interrupts.c: 248: }
+[; ;interrupts.c: 250: }
+"250
 [e :UE 460 ]
 }

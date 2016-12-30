@@ -127,10 +127,8 @@ void interrupt isr(void) {
     //  5) write CCP value U14 CCPR9
     //  6) reset timer
     //--------------------------------------------------
-    LED_tap_Aux = 0;        
-    if (mod_timer >= mod_delay_time) {
-       LED_tap_Aux = 1;           
-       
+
+    if (mod_timer >= mod_delay_time) {        
        mod_timer = 0;
 
         if (bottom_push_state == 1 || bottom_push_state == 5) {
@@ -162,8 +160,9 @@ void interrupt isr(void) {
                 break;
             case 5:
                 mod_value = mod5[mod_counter];
-                //adjusted_pot_value = 1275;
+                //adjusted_pot_value = 1275; dont override the depth
                 chorus = 1;
+                
                 break;
             case 6:
                 mod_value = 0;
@@ -171,6 +170,13 @@ void interrupt isr(void) {
                 break;
         }
 
+        
+        if (mod_counter < 5) {
+            LED_tap_Aux = 1;
+        } else {
+            LED_tap_Aux = 0;
+        }
+        
        /* if (mod_counter == 0) {
             LATDbits.LATD1 = 1;
         } else {
