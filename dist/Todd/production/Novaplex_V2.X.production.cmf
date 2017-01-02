@@ -19,7 +19,7 @@ text3 CODE 0 802 802 1A 2
 text4 CODE 0 1654 1654 82 2
 text5 CODE 0 A33 A33 EB 2
 text6 CODE 0 1E4D 1E4D 1A 2
-text7 CODE 0 100D 100D 35 2
+text7 CODE 0 1010 1010 32 2
 text8 CODE 0 1F14 1F14 2B 2
 text9 CODE 0 14ED 14ED 6F 2
 text10 CODE 0 116E 116E 40 2
@@ -34,17 +34,17 @@ text18 CODE 0 1EA4 1EA4 22 2
 text19 CODE 0 1395 1395 50 2
 text20 CODE 0 1271 1271 47 2
 text21 CODE 0 16D6 16D6 8B 2
-text22 CODE 0 1DCA 1DCA 9 2
+text22 CODE 0 1DCD 1DCD 9 2
 text23 CODE 0 8C5 8C5 B4 2
 text24 CODE 0 81C 81C A9 2
 text25 CODE 0 B1E B1E F6 2
 text26 CODE 0 1488 1488 65 2
-text27 CODE 0 1E00 1E00 F 2
+text27 CODE 0 1001 1001 F 2
 text28 CODE 0 1300 1300 4A 2
 text29 CODE 0 1FCE 1FCE 32 2
 text30 CODE 0 1F9E 1F9E 30 2
 text31 CODE 0 7FF 7FF 1 2
-text32 CODE 0 1DB6 1DB6 4 2
+text32 CODE 0 1DB9 1DB9 4 2
 text33 CODE 0 1E21 1E21 13 2
 text34 CODE 0 155C 155C 76 2
 text35 CODE 0 7AA 7AA 54 2
@@ -53,10 +53,10 @@ text37 CODE 0 1E84 1E84 20 2
 text38 CODE 0 1EC6 1EC6 26 2
 text39 CODE 0 1F6E 1F6E 30 2
 text40 CODE 0 11EF 11EF 41 2
-text41 CODE 0 1DC1 1DC1 9 2
-text42 CODE 0 1DBA 1DBA 7 2
-text43 CODE 0 1DD3 1DD3 A 2
-text44 CODE 0 1DB2 1DB2 4 2
+text41 CODE 0 1DC4 1DC4 9 2
+text42 CODE 0 1DBD 1DBD 7 2
+text43 CODE 0 1DD6 1DD6 A 2
+text44 CODE 0 1DB5 1DB5 4 2
 text46 CODE 0 12B8 12B8 48 2
 text47 CODE 0 11AE 11AE 41 2
 text48 CODE 0 1F3F 1F3F 2F 2
@@ -71,7 +71,7 @@ cstackBANK0 BANK0 1 20 20 25 1
 cstackBANK1 BANK1 1 A0 A0 50 1
 cstackBANK2 BANK2 1 120 120 26 1
 cstackBANK4 BANK4 1 248 248 F 1
-inittext CODE 0 1DE8 1DE8 C 2
+inittext CODE 0 1DEB 1DEB C 2
 intentry CODE 0 4 4 2DD 2
 bssBANK0 BANK0 1 45 45 13 1
 bssBANK2 BANK2 1 146 146 14 1
@@ -79,8 +79,8 @@ bssBANK3 BANK3 1 1A0 1A0 41 1
 bssBANK5 BANK5 1 2A0 2A0 2C 1
 bssBANK9 BANK9 1 4A0 4A0 40 1
 idataBANK0 CODE 0 1E0F 1E0F 12 2
-idataBANK2 CODE 0 1001 1001 C 2
-idataBANK3 CODE 0 1DDD 1DDD B 2
+idataBANK2 CODE 0 1E03 1E03 C 2
+idataBANK3 CODE 0 1DE0 1DE0 B 2
 idataBANK4 CODE 0 1EEC 1EEC 28 2
 idataBANK6 CODE 0 1131 1131 3D 2
 idataBANK7 CODE 0 10F4 10F4 3D 2
@@ -93,8 +93,8 @@ dataBANK6 BANK6 1 320 320 3D 1
 dataBANK7 BANK7 1 3A0 3A0 3D 1
 dataBANK8 BANK8 1 420 420 3D 1
 dataCOMMON COMMON 1 7D 7D 1 1
-clrtext CODE 0 1DF4 1DF4 C 2
-$C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+clrtext CODE 0 1DF7 1DF7 C 2
+$C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 2E1 2E1 2 2
 config CONFIG 0 8007 8007 2 2
@@ -128,12 +128,12 @@ BANK9 4E0-4EF 1
 CONST 2-3 2
 CONST 800-801 2
 CONST 1000-1000 2
-CONST 1800-1DB1 2
+CONST 1800-1DB4 2
 CONST 2000-3FFF 2
 ENTRY 2-3 2
 ENTRY 800-801 2
 ENTRY 1000-1000 2
-ENTRY 1800-1DB1 2
+ENTRY 1800-1DB4 2
 ENTRY 2000-3FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
@@ -162,7 +162,7 @@ STACK 2310-23E7 1
 CODE 2-3 2
 CODE 800-801 2
 CODE 1000-1000 2
-CODE 1800-1DB1 2
+CODE 1800-1DB4 2
 CODE 2000-3FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -181,12 +181,12 @@ BIGRAM 2000-25EF 1
 STRCODE 2-3 2
 STRCODE 800-801 2
 STRCODE 1000-1000 2
-STRCODE 1800-1DB1 2
+STRCODE 1800-1DB4 2
 STRCODE 2000-3FFF 2
 STRING 2-3 2
 STRING 800-801 2
 STRING 1000-1000 2
-STRING 1800-1DB1 2
+STRING 1800-1DB4 2
 STRING 2000-3FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -202,155 +202,155 @@ STRING 2000-3FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/Todd/production\Novaplex_V2.X.production.obj
-2E3 cinit CODE >6829:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E3 cinit CODE >6832:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E3 cinit CODE >7187:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E4 cinit CODE >7188:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E5 cinit CODE >7189:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E6 cinit CODE >7190:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E7 cinit CODE >7191:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E8 cinit CODE >7192:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2E9 cinit CODE >7193:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2EA cinit CODE >7194:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2EB cinit CODE >7195:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2EE cinit CODE >7199:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2EF cinit CODE >7200:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F0 cinit CODE >7201:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F1 cinit CODE >7202:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F2 cinit CODE >7203:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F3 cinit CODE >7204:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F4 cinit CODE >7205:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F5 cinit CODE >7206:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F6 cinit CODE >7207:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2F9 cinit CODE >7211:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FA cinit CODE >7212:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FB cinit CODE >7213:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FC cinit CODE >7214:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FD cinit CODE >7215:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FE cinit CODE >7216:C:\Users\Nancy\AppData\Local\Temp\sgs.
-2FF cinit CODE >7217:C:\Users\Nancy\AppData\Local\Temp\sgs.
-300 cinit CODE >7218:C:\Users\Nancy\AppData\Local\Temp\sgs.
-301 cinit CODE >7219:C:\Users\Nancy\AppData\Local\Temp\sgs.
-304 cinit CODE >7223:C:\Users\Nancy\AppData\Local\Temp\sgs.
-305 cinit CODE >7224:C:\Users\Nancy\AppData\Local\Temp\sgs.
-306 cinit CODE >7225:C:\Users\Nancy\AppData\Local\Temp\sgs.
-307 cinit CODE >7226:C:\Users\Nancy\AppData\Local\Temp\sgs.
-308 cinit CODE >7227:C:\Users\Nancy\AppData\Local\Temp\sgs.
-309 cinit CODE >7228:C:\Users\Nancy\AppData\Local\Temp\sgs.
-30A cinit CODE >7229:C:\Users\Nancy\AppData\Local\Temp\sgs.
-30B cinit CODE >7230:C:\Users\Nancy\AppData\Local\Temp\sgs.
-30C cinit CODE >7231:C:\Users\Nancy\AppData\Local\Temp\sgs.
-30F cinit CODE >7235:C:\Users\Nancy\AppData\Local\Temp\sgs.
-310 cinit CODE >7236:C:\Users\Nancy\AppData\Local\Temp\sgs.
-311 cinit CODE >7237:C:\Users\Nancy\AppData\Local\Temp\sgs.
-312 cinit CODE >7238:C:\Users\Nancy\AppData\Local\Temp\sgs.
-313 cinit CODE >7239:C:\Users\Nancy\AppData\Local\Temp\sgs.
-314 cinit CODE >7240:C:\Users\Nancy\AppData\Local\Temp\sgs.
-315 cinit CODE >7241:C:\Users\Nancy\AppData\Local\Temp\sgs.
-316 cinit CODE >7242:C:\Users\Nancy\AppData\Local\Temp\sgs.
-317 cinit CODE >7243:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31A cinit CODE >7264:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31B cinit CODE >7265:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31C cinit CODE >7266:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31D cinit CODE >7267:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31E cinit CODE >7268:C:\Users\Nancy\AppData\Local\Temp\sgs.
-31F cinit CODE >7269:C:\Users\Nancy\AppData\Local\Temp\sgs.
-320 cinit CODE >7270:C:\Users\Nancy\AppData\Local\Temp\sgs.
-321 cinit CODE >7271:C:\Users\Nancy\AppData\Local\Temp\sgs.
-322 cinit CODE >7272:C:\Users\Nancy\AppData\Local\Temp\sgs.
-323 cinit CODE >7273:C:\Users\Nancy\AppData\Local\Temp\sgs.
-324 cinit CODE >7274:C:\Users\Nancy\AppData\Local\Temp\sgs.
-325 cinit CODE >7275:C:\Users\Nancy\AppData\Local\Temp\sgs.
-328 cinit CODE >7279:C:\Users\Nancy\AppData\Local\Temp\sgs.
-32B cinit CODE >7280:C:\Users\Nancy\AppData\Local\Temp\sgs.
-32C cinit CODE >7284:C:\Users\Nancy\AppData\Local\Temp\sgs.
-32D cinit CODE >7285:C:\Users\Nancy\AppData\Local\Temp\sgs.
-32E cinit CODE >7286:C:\Users\Nancy\AppData\Local\Temp\sgs.
-32F cinit CODE >7287:C:\Users\Nancy\AppData\Local\Temp\sgs.
-330 cinit CODE >7288:C:\Users\Nancy\AppData\Local\Temp\sgs.
-331 cinit CODE >7289:C:\Users\Nancy\AppData\Local\Temp\sgs.
-332 cinit CODE >7290:C:\Users\Nancy\AppData\Local\Temp\sgs.
-333 cinit CODE >7291:C:\Users\Nancy\AppData\Local\Temp\sgs.
-334 cinit CODE >7292:C:\Users\Nancy\AppData\Local\Temp\sgs.
-335 cinit CODE >7293:C:\Users\Nancy\AppData\Local\Temp\sgs.
-336 cinit CODE >7294:C:\Users\Nancy\AppData\Local\Temp\sgs.
-337 cinit CODE >7295:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33A cinit CODE >7299:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33B cinit CODE >7300:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33C cinit CODE >7301:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33D cinit CODE >7302:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33E cinit CODE >7303:C:\Users\Nancy\AppData\Local\Temp\sgs.
-33F cinit CODE >7304:C:\Users\Nancy\AppData\Local\Temp\sgs.
-340 cinit CODE >7305:C:\Users\Nancy\AppData\Local\Temp\sgs.
-341 cinit CODE >7306:C:\Users\Nancy\AppData\Local\Temp\sgs.
-342 cinit CODE >7307:C:\Users\Nancy\AppData\Local\Temp\sgs.
-343 cinit CODE >7308:C:\Users\Nancy\AppData\Local\Temp\sgs.
-344 cinit CODE >7309:C:\Users\Nancy\AppData\Local\Temp\sgs.
-345 cinit CODE >7310:C:\Users\Nancy\AppData\Local\Temp\sgs.
-348 cinit CODE >7314:C:\Users\Nancy\AppData\Local\Temp\sgs.
-349 cinit CODE >7315:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34A cinit CODE >7316:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34B cinit CODE >7317:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34C cinit CODE >7318:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34D cinit CODE >7319:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34E cinit CODE >7320:C:\Users\Nancy\AppData\Local\Temp\sgs.
-34F cinit CODE >7321:C:\Users\Nancy\AppData\Local\Temp\sgs.
-350 cinit CODE >7322:C:\Users\Nancy\AppData\Local\Temp\sgs.
-351 cinit CODE >7323:C:\Users\Nancy\AppData\Local\Temp\sgs.
-352 cinit CODE >7324:C:\Users\Nancy\AppData\Local\Temp\sgs.
-353 cinit CODE >7325:C:\Users\Nancy\AppData\Local\Temp\sgs.
-356 cinit CODE >7329:C:\Users\Nancy\AppData\Local\Temp\sgs.
-357 cinit CODE >7330:C:\Users\Nancy\AppData\Local\Temp\sgs.
-358 cinit CODE >7331:C:\Users\Nancy\AppData\Local\Temp\sgs.
-359 cinit CODE >7332:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35A cinit CODE >7333:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35B cinit CODE >7334:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35C cinit CODE >7335:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35D cinit CODE >7336:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35E cinit CODE >7337:C:\Users\Nancy\AppData\Local\Temp\sgs.
-35F cinit CODE >7338:C:\Users\Nancy\AppData\Local\Temp\sgs.
-360 cinit CODE >7339:C:\Users\Nancy\AppData\Local\Temp\sgs.
-361 cinit CODE >7340:C:\Users\Nancy\AppData\Local\Temp\sgs.
-364 cinit CODE >7344:C:\Users\Nancy\AppData\Local\Temp\sgs.
-365 cinit CODE >7345:C:\Users\Nancy\AppData\Local\Temp\sgs.
-366 cinit CODE >7346:C:\Users\Nancy\AppData\Local\Temp\sgs.
-367 cinit CODE >7347:C:\Users\Nancy\AppData\Local\Temp\sgs.
-368 cinit CODE >7348:C:\Users\Nancy\AppData\Local\Temp\sgs.
-369 cinit CODE >7349:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36A cinit CODE >7350:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36B cinit CODE >7351:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36C cinit CODE >7352:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36D cinit CODE >7353:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36E cinit CODE >7354:C:\Users\Nancy\AppData\Local\Temp\sgs.
-36F cinit CODE >7355:C:\Users\Nancy\AppData\Local\Temp\sgs.
-372 cinit CODE >7359:C:\Users\Nancy\AppData\Local\Temp\sgs.
-373 cinit CODE >7360:C:\Users\Nancy\AppData\Local\Temp\sgs.
-374 cinit CODE >7361:C:\Users\Nancy\AppData\Local\Temp\sgs.
-375 cinit CODE >7362:C:\Users\Nancy\AppData\Local\Temp\sgs.
-376 cinit CODE >7363:C:\Users\Nancy\AppData\Local\Temp\sgs.
-377 cinit CODE >7364:C:\Users\Nancy\AppData\Local\Temp\sgs.
-378 cinit CODE >7365:C:\Users\Nancy\AppData\Local\Temp\sgs.
-379 cinit CODE >7366:C:\Users\Nancy\AppData\Local\Temp\sgs.
-37A cinit CODE >7367:C:\Users\Nancy\AppData\Local\Temp\sgs.
-37B cinit CODE >7368:C:\Users\Nancy\AppData\Local\Temp\sgs.
-37C cinit CODE >7369:C:\Users\Nancy\AppData\Local\Temp\sgs.
-37D cinit CODE >7370:C:\Users\Nancy\AppData\Local\Temp\sgs.
-380 cinit CODE >7374:C:\Users\Nancy\AppData\Local\Temp\sgs.
-381 cinit CODE >7375:C:\Users\Nancy\AppData\Local\Temp\sgs.
-382 cinit CODE >7376:C:\Users\Nancy\AppData\Local\Temp\sgs.
-383 cinit CODE >7377:C:\Users\Nancy\AppData\Local\Temp\sgs.
-384 cinit CODE >7378:C:\Users\Nancy\AppData\Local\Temp\sgs.
-385 cinit CODE >7379:C:\Users\Nancy\AppData\Local\Temp\sgs.
-386 cinit CODE >7380:C:\Users\Nancy\AppData\Local\Temp\sgs.
-387 cinit CODE >7381:C:\Users\Nancy\AppData\Local\Temp\sgs.
-388 cinit CODE >7382:C:\Users\Nancy\AppData\Local\Temp\sgs.
-389 cinit CODE >7383:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38A cinit CODE >7384:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38B cinit CODE >7385:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38D cinit CODE >7391:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38D cinit CODE >7393:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38E cinit CODE >7394:C:\Users\Nancy\AppData\Local\Temp\sgs.
-38F cinit CODE >7395:C:\Users\Nancy\AppData\Local\Temp\sgs.
+2E3 cinit CODE >6829:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E3 cinit CODE >6832:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E3 cinit CODE >7187:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E4 cinit CODE >7188:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E5 cinit CODE >7189:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E6 cinit CODE >7190:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E7 cinit CODE >7191:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E8 cinit CODE >7192:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2E9 cinit CODE >7193:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2EA cinit CODE >7194:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2EB cinit CODE >7195:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2EE cinit CODE >7199:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2EF cinit CODE >7200:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F0 cinit CODE >7201:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F1 cinit CODE >7202:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F2 cinit CODE >7203:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F3 cinit CODE >7204:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F4 cinit CODE >7205:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F5 cinit CODE >7206:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F6 cinit CODE >7207:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2F9 cinit CODE >7211:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FA cinit CODE >7212:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FB cinit CODE >7213:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FC cinit CODE >7214:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FD cinit CODE >7215:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FE cinit CODE >7216:C:\Users\Nancy\AppData\Local\Temp\se6o.
+2FF cinit CODE >7217:C:\Users\Nancy\AppData\Local\Temp\se6o.
+300 cinit CODE >7218:C:\Users\Nancy\AppData\Local\Temp\se6o.
+301 cinit CODE >7219:C:\Users\Nancy\AppData\Local\Temp\se6o.
+304 cinit CODE >7223:C:\Users\Nancy\AppData\Local\Temp\se6o.
+305 cinit CODE >7224:C:\Users\Nancy\AppData\Local\Temp\se6o.
+306 cinit CODE >7225:C:\Users\Nancy\AppData\Local\Temp\se6o.
+307 cinit CODE >7226:C:\Users\Nancy\AppData\Local\Temp\se6o.
+308 cinit CODE >7227:C:\Users\Nancy\AppData\Local\Temp\se6o.
+309 cinit CODE >7228:C:\Users\Nancy\AppData\Local\Temp\se6o.
+30A cinit CODE >7229:C:\Users\Nancy\AppData\Local\Temp\se6o.
+30B cinit CODE >7230:C:\Users\Nancy\AppData\Local\Temp\se6o.
+30C cinit CODE >7231:C:\Users\Nancy\AppData\Local\Temp\se6o.
+30F cinit CODE >7235:C:\Users\Nancy\AppData\Local\Temp\se6o.
+310 cinit CODE >7236:C:\Users\Nancy\AppData\Local\Temp\se6o.
+311 cinit CODE >7237:C:\Users\Nancy\AppData\Local\Temp\se6o.
+312 cinit CODE >7238:C:\Users\Nancy\AppData\Local\Temp\se6o.
+313 cinit CODE >7239:C:\Users\Nancy\AppData\Local\Temp\se6o.
+314 cinit CODE >7240:C:\Users\Nancy\AppData\Local\Temp\se6o.
+315 cinit CODE >7241:C:\Users\Nancy\AppData\Local\Temp\se6o.
+316 cinit CODE >7242:C:\Users\Nancy\AppData\Local\Temp\se6o.
+317 cinit CODE >7243:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31A cinit CODE >7264:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31B cinit CODE >7265:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31C cinit CODE >7266:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31D cinit CODE >7267:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31E cinit CODE >7268:C:\Users\Nancy\AppData\Local\Temp\se6o.
+31F cinit CODE >7269:C:\Users\Nancy\AppData\Local\Temp\se6o.
+320 cinit CODE >7270:C:\Users\Nancy\AppData\Local\Temp\se6o.
+321 cinit CODE >7271:C:\Users\Nancy\AppData\Local\Temp\se6o.
+322 cinit CODE >7272:C:\Users\Nancy\AppData\Local\Temp\se6o.
+323 cinit CODE >7273:C:\Users\Nancy\AppData\Local\Temp\se6o.
+324 cinit CODE >7274:C:\Users\Nancy\AppData\Local\Temp\se6o.
+325 cinit CODE >7275:C:\Users\Nancy\AppData\Local\Temp\se6o.
+328 cinit CODE >7279:C:\Users\Nancy\AppData\Local\Temp\se6o.
+32B cinit CODE >7280:C:\Users\Nancy\AppData\Local\Temp\se6o.
+32C cinit CODE >7284:C:\Users\Nancy\AppData\Local\Temp\se6o.
+32D cinit CODE >7285:C:\Users\Nancy\AppData\Local\Temp\se6o.
+32E cinit CODE >7286:C:\Users\Nancy\AppData\Local\Temp\se6o.
+32F cinit CODE >7287:C:\Users\Nancy\AppData\Local\Temp\se6o.
+330 cinit CODE >7288:C:\Users\Nancy\AppData\Local\Temp\se6o.
+331 cinit CODE >7289:C:\Users\Nancy\AppData\Local\Temp\se6o.
+332 cinit CODE >7290:C:\Users\Nancy\AppData\Local\Temp\se6o.
+333 cinit CODE >7291:C:\Users\Nancy\AppData\Local\Temp\se6o.
+334 cinit CODE >7292:C:\Users\Nancy\AppData\Local\Temp\se6o.
+335 cinit CODE >7293:C:\Users\Nancy\AppData\Local\Temp\se6o.
+336 cinit CODE >7294:C:\Users\Nancy\AppData\Local\Temp\se6o.
+337 cinit CODE >7295:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33A cinit CODE >7299:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33B cinit CODE >7300:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33C cinit CODE >7301:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33D cinit CODE >7302:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33E cinit CODE >7303:C:\Users\Nancy\AppData\Local\Temp\se6o.
+33F cinit CODE >7304:C:\Users\Nancy\AppData\Local\Temp\se6o.
+340 cinit CODE >7305:C:\Users\Nancy\AppData\Local\Temp\se6o.
+341 cinit CODE >7306:C:\Users\Nancy\AppData\Local\Temp\se6o.
+342 cinit CODE >7307:C:\Users\Nancy\AppData\Local\Temp\se6o.
+343 cinit CODE >7308:C:\Users\Nancy\AppData\Local\Temp\se6o.
+344 cinit CODE >7309:C:\Users\Nancy\AppData\Local\Temp\se6o.
+345 cinit CODE >7310:C:\Users\Nancy\AppData\Local\Temp\se6o.
+348 cinit CODE >7314:C:\Users\Nancy\AppData\Local\Temp\se6o.
+349 cinit CODE >7315:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34A cinit CODE >7316:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34B cinit CODE >7317:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34C cinit CODE >7318:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34D cinit CODE >7319:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34E cinit CODE >7320:C:\Users\Nancy\AppData\Local\Temp\se6o.
+34F cinit CODE >7321:C:\Users\Nancy\AppData\Local\Temp\se6o.
+350 cinit CODE >7322:C:\Users\Nancy\AppData\Local\Temp\se6o.
+351 cinit CODE >7323:C:\Users\Nancy\AppData\Local\Temp\se6o.
+352 cinit CODE >7324:C:\Users\Nancy\AppData\Local\Temp\se6o.
+353 cinit CODE >7325:C:\Users\Nancy\AppData\Local\Temp\se6o.
+356 cinit CODE >7329:C:\Users\Nancy\AppData\Local\Temp\se6o.
+357 cinit CODE >7330:C:\Users\Nancy\AppData\Local\Temp\se6o.
+358 cinit CODE >7331:C:\Users\Nancy\AppData\Local\Temp\se6o.
+359 cinit CODE >7332:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35A cinit CODE >7333:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35B cinit CODE >7334:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35C cinit CODE >7335:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35D cinit CODE >7336:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35E cinit CODE >7337:C:\Users\Nancy\AppData\Local\Temp\se6o.
+35F cinit CODE >7338:C:\Users\Nancy\AppData\Local\Temp\se6o.
+360 cinit CODE >7339:C:\Users\Nancy\AppData\Local\Temp\se6o.
+361 cinit CODE >7340:C:\Users\Nancy\AppData\Local\Temp\se6o.
+364 cinit CODE >7344:C:\Users\Nancy\AppData\Local\Temp\se6o.
+365 cinit CODE >7345:C:\Users\Nancy\AppData\Local\Temp\se6o.
+366 cinit CODE >7346:C:\Users\Nancy\AppData\Local\Temp\se6o.
+367 cinit CODE >7347:C:\Users\Nancy\AppData\Local\Temp\se6o.
+368 cinit CODE >7348:C:\Users\Nancy\AppData\Local\Temp\se6o.
+369 cinit CODE >7349:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36A cinit CODE >7350:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36B cinit CODE >7351:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36C cinit CODE >7352:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36D cinit CODE >7353:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36E cinit CODE >7354:C:\Users\Nancy\AppData\Local\Temp\se6o.
+36F cinit CODE >7355:C:\Users\Nancy\AppData\Local\Temp\se6o.
+372 cinit CODE >7359:C:\Users\Nancy\AppData\Local\Temp\se6o.
+373 cinit CODE >7360:C:\Users\Nancy\AppData\Local\Temp\se6o.
+374 cinit CODE >7361:C:\Users\Nancy\AppData\Local\Temp\se6o.
+375 cinit CODE >7362:C:\Users\Nancy\AppData\Local\Temp\se6o.
+376 cinit CODE >7363:C:\Users\Nancy\AppData\Local\Temp\se6o.
+377 cinit CODE >7364:C:\Users\Nancy\AppData\Local\Temp\se6o.
+378 cinit CODE >7365:C:\Users\Nancy\AppData\Local\Temp\se6o.
+379 cinit CODE >7366:C:\Users\Nancy\AppData\Local\Temp\se6o.
+37A cinit CODE >7367:C:\Users\Nancy\AppData\Local\Temp\se6o.
+37B cinit CODE >7368:C:\Users\Nancy\AppData\Local\Temp\se6o.
+37C cinit CODE >7369:C:\Users\Nancy\AppData\Local\Temp\se6o.
+37D cinit CODE >7370:C:\Users\Nancy\AppData\Local\Temp\se6o.
+380 cinit CODE >7374:C:\Users\Nancy\AppData\Local\Temp\se6o.
+381 cinit CODE >7375:C:\Users\Nancy\AppData\Local\Temp\se6o.
+382 cinit CODE >7376:C:\Users\Nancy\AppData\Local\Temp\se6o.
+383 cinit CODE >7377:C:\Users\Nancy\AppData\Local\Temp\se6o.
+384 cinit CODE >7378:C:\Users\Nancy\AppData\Local\Temp\se6o.
+385 cinit CODE >7379:C:\Users\Nancy\AppData\Local\Temp\se6o.
+386 cinit CODE >7380:C:\Users\Nancy\AppData\Local\Temp\se6o.
+387 cinit CODE >7381:C:\Users\Nancy\AppData\Local\Temp\se6o.
+388 cinit CODE >7382:C:\Users\Nancy\AppData\Local\Temp\se6o.
+389 cinit CODE >7383:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38A cinit CODE >7384:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38B cinit CODE >7385:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38D cinit CODE >7391:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38D cinit CODE >7393:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38E cinit CODE >7394:C:\Users\Nancy\AppData\Local\Temp\se6o.
+38F cinit CODE >7395:C:\Users\Nancy\AppData\Local\Temp\se6o.
 4 intentry CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
 9 intentry CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
 B intentry CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
@@ -512,28 +512,28 @@ C2 intentry CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Cod
 12E2 text46 CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 12E3 text46 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 12FF text46 CODE >48:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
-1DB2 text44 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
-1DB2 text44 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
-1DB5 text44 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
-1DD3 text43 CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DD3 text43 CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DD5 text43 CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DD9 text43 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DDB text43 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DDC text43 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBA text42 CODE >169:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBA text42 CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBC text42 CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBD text42 CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBE text42 CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DBF text42 CODE >174:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC0 text42 CODE >175:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC1 text41 CODE >162:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC1 text41 CODE >163:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC4 text41 CODE >164:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC6 text41 CODE >165:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC8 text41 CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DC9 text41 CODE >167:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DB5 text44 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
+1DB5 text44 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
+1DB8 text44 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\system.c
+1DD6 text43 CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DD6 text43 CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DD8 text43 CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DDC text43 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DDE text43 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DDF text43 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DBD text42 CODE >169:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DBD text42 CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DBF text42 CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC0 text42 CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC1 text42 CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC2 text42 CODE >174:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC3 text42 CODE >175:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC4 text41 CODE >162:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC4 text41 CODE >163:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC7 text41 CODE >164:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DC9 text41 CODE >165:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DCB text41 CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
+1DCC text41 CODE >167:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 11EF text40 CODE >129:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 11EF text40 CODE >130:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 11F1 text40 CODE >131:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
@@ -702,8 +702,8 @@ C2 intentry CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Cod
 1E2C text33 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 1E2D text33 CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 1E2F text33 CODE >126:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
-1DB6 text32 CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
-1DB6 text32 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
+1DB9 text32 CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
+1DB9 text32 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
 7FF text31 CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
 7FF text31 CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
 1F9E text30 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
@@ -731,10 +731,10 @@ C2 intentry CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Cod
 1336 text28 CODE >147:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 1342 text28 CODE >148:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 1349 text28 CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
-1E00 text27 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
-1E00 text27 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
-1E08 text27 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
-1E0E text27 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
+1001 text27 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
+1001 text27 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
+1009 text27 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
+100F text27 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 1488 text26 CODE >62:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 1488 text26 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 1491 text26 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
@@ -846,9 +846,9 @@ BFC text25 CODE >146:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\f
 957 text23 CODE >148:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
 95D text23 CODE >149:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
 961 text23 CODE >156:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
-1DCA text22 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-1DCA text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-1DD0 text22 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+1DCD text22 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+1DCD text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+1DD3 text22 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
 16D6 text21 CODE >177:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 16D6 text21 CODE >178:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\user.c
 1271 text20 CODE >17:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\tactiles.c
@@ -1003,20 +1003,18 @@ A2D text13 CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Cod
 1F3A text8 CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 1F3C text8 CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 1F3E text8 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
-100D text7 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-100D text7 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-101A text7 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-101F text7 CODE >23:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1024 text7 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1026 text7 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1027 text7 CODE >26:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1028 text7 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1029 text7 CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-102B text7 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-102C text7 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1033 text7 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-103A text7 CODE >35:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
-1041 text7 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1010 text7 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1010 text7 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+101D text7 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1022 text7 CODE >23:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1027 text7 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1029 text7 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+102A text7 CODE >26:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+102B text7 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+102C text7 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1033 text7 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+103A text7 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
+1041 text7 CODE >35:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\preset_programming.c
 1E4D text6 CODE >151:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 1E4D text6 CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 1E5A text6 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
@@ -1245,34 +1243,34 @@ DF7 text2 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code
 7A6 maintext CODE >400:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
 7A7 maintext CODE >429:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
 7A9 maintext CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
-1DE8 inittext CODE >7247:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DE8 inittext CODE >7248:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DE9 inittext CODE >7249:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DE9 inittext CODE >7250:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DEA inittext CODE >7251:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DEB inittext CODE >7252:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DEC inittext CODE >7253:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DED inittext CODE >7254:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DEE inittext CODE >7255:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DEF inittext CODE >7256:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF0 inittext CODE >7257:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF1 inittext CODE >7258:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF2 inittext CODE >7260:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF3 inittext CODE >7259:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF4 clrtext CODE >7170:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF4 clrtext CODE >7171:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF5 clrtext CODE >7172:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF5 clrtext CODE >7173:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF6 clrtext CODE >7174:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF7 clrtext CODE >7175:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF8 clrtext CODE >7176:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DF9 clrtext CODE >7177:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFA clrtext CODE >7178:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFB clrtext CODE >7179:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFC clrtext CODE >7180:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFD clrtext CODE >7181:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFE clrtext CODE >7183:C:\Users\Nancy\AppData\Local\Temp\sgs.
-1DFF clrtext CODE >7182:C:\Users\Nancy\AppData\Local\Temp\sgs.
+1DEB inittext CODE >7247:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DEB inittext CODE >7248:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DEC inittext CODE >7249:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DEC inittext CODE >7250:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DED inittext CODE >7251:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DEE inittext CODE >7252:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DEF inittext CODE >7253:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF0 inittext CODE >7254:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF1 inittext CODE >7255:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF2 inittext CODE >7256:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF3 inittext CODE >7257:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF4 inittext CODE >7258:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF5 inittext CODE >7260:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF6 inittext CODE >7259:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF7 clrtext CODE >7170:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF7 clrtext CODE >7171:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF8 clrtext CODE >7172:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF8 clrtext CODE >7173:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DF9 clrtext CODE >7174:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFA clrtext CODE >7175:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFB clrtext CODE >7176:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFC clrtext CODE >7177:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFD clrtext CODE >7178:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFE clrtext CODE >7179:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1DFF clrtext CODE >7180:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1E00 clrtext CODE >7181:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1E01 clrtext CODE >7183:C:\Users\Nancy\AppData\Local\Temp\se6o.
+1E02 clrtext CODE >7182:C:\Users\Nancy\AppData\Local\Temp\se6o.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1330,7 +1328,7 @@ ltemp3 80 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 main@i 142 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
 _B25k 220 0 BANK4 1 dataBANK4 dist/Todd/production\Novaplex_V2.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+___sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 _main 722 0 CODE 0 maintext dist/Todd/production\Novaplex_V2.X.production.obj
 _mod1 320 0 BANK6 1 dataBANK6 dist/Todd/production\Novaplex_V2.X.production.obj
 _mod2 3A0 0 BANK7 1 dataBANK7 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1341,7 +1339,7 @@ __end_of_FLASH_ReadWord 3D48 0 CODE 0 text37 dist/Todd/production\Novaplex_V2.X.
 map@x D5 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftadd@f1 A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftadd@f2 AB 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
-start 5C2 0 CODE 0 init C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+start 5C2 0 CODE 0 init C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 ttemp 7E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 wtemp 7E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __size_of___aldiv 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1367,7 +1365,7 @@ ___ftdiv@f2 C5 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.producti
 ___ftdiv@f3 D0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 ?_FLASH_ReadWord A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 _switchBypass_toggle 1DE 0 BANK3 1 bssBANK3 dist/Todd/production\Novaplex_V2.X.production.obj
-_setDoublePressState 201A 0 CODE 0 text7 dist/Todd/production\Novaplex_V2.X.production.obj
+_setDoublePressState 2020 0 CODE 0 text7 dist/Todd/production\Novaplex_V2.X.production.obj
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __LidataBANK2 0 0 ABS 0 idataBANK2 -
 __LidataBANK3 0 0 ABS 0 idataBANK3 -
@@ -1380,7 +1378,7 @@ __size_of_init_timer2 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.
 __Hpowerup 0 0 CODE 0 powerup -
 _set_leds_bottom 20F8 0 CODE 0 text36 dist/Todd/production\Novaplex_V2.X.production.obj
 _test_timer 1C0 0 BANK3 1 bssBANK3 dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of_ConfigureOscillator 3B6C 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_ConfigureOscillator 3B72 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
 _modulation 235C 0 CODE 0 text47 dist/Todd/production\Novaplex_V2.X.production.obj
 _bottom_push_state 60 0 BANK0 1 dataBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 ttemp0 7E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1390,21 +1388,21 @@ ttemp3 87 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 ttemp4 7F 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
 __end_ofi1_set_leds_top 2600 0 CODE 0 text46 dist/Todd/production\Novaplex_V2.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 set_subdivision@tmpX 140 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 _InitApp 3EDC 0 CODE 0 text39 dist/Todd/production\Novaplex_V2.X.production.obj
-_init_adc 3BA6 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
+_init_adc 3BAC 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
 _init_pwm 23DE 0 CODE 0 text40 dist/Todd/production\Novaplex_V2.X.production.obj
 ___aldiv@divisor A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 _OSCCONbits 99 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 updateSwitchBypassState@state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 updateSwitchTap@iCnt BE 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of_initSwitchBypass 3C1E 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_initSwitchBypass 2020 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 wtemp1 80 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 wtemp2 82 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1421,7 +1419,7 @@ ___aldiv@sign AA 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.produc
 __pidataBIGRAM 1BF0 0 CODE 0 idataBIGRAM dist/Todd/production\Novaplex_V2.X.production.obj
 ___awdiv@sign 76 0 COMMON 1 cstackCOMMON dist/Todd/production\Novaplex_V2.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
-__end_of_init_adc 3BBA 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_init_adc 3BC0 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of_init_pwm 2460 0 CODE 0 text40 dist/Todd/production\Novaplex_V2.X.production.obj
 __size_of_initSwitchBypass 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __pidataCOMMON FFC 0 CODE 0 idataCOMMON dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1463,7 +1461,7 @@ __end_of___awdiv 286C 0 CODE 0 text50 dist/Todd/production\Novaplex_V2.X.product
 __end_of___ftadd 1828 0 CODE 0 text25 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___ftdiv 118A 0 CODE 0 text24 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___ftmul 12F2 0 CODE 0 text23 dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of___ftneg 3BA6 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of___ftneg 3BAC 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___fttol 3000 0 CODE 0 text16 dist/Todd/production\Novaplex_V2.X.production.obj
 updateSwitchTap@tapCntDivisor BC 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 _updateSwitchBypass 1466 0 CODE 0 text5 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1507,9 +1505,9 @@ _CCP10CONbits 61F 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___altoft 272A 0 CODE 0 text17 dist/Todd/production\Novaplex_V2.X.production.obj
 setSwitchBypassState@f_state B2 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 setFeedbackState@f_state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
-_getSwitchBypassState 3B6C 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
+_getSwitchBypassState 3B72 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___awtoft 3D8C 0 CODE 0 text18 dist/Todd/production\Novaplex_V2.X.production.obj
-clear_ram0 3BE8 0 CODE 0 clrtext dist/Todd/production\Novaplex_V2.X.production.obj
+clear_ram0 3BEE 0 CODE 0 clrtext dist/Todd/production\Novaplex_V2.X.production.obj
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 __pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 __pcstackBANK2 120 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1525,7 +1523,7 @@ _showBootSequence 3E28 0 CODE 0 text8 dist/Todd/production\Novaplex_V2.X.product
 _sub_timer 45 0 BANK0 1 bssBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftpack@arg A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftpack@exp A3 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 i1___lmul 3E7E 0 CODE 0 text48 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of___ftpack 29DA 0 CODE 0 text26 dist/Todd/production\Novaplex_V2.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
@@ -1594,8 +1592,8 @@ _switchTap_state 165 0 BANK2 1 dataBANK2 dist/Todd/production\Novaplex_V2.X.prod
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10012 0 CONFIG 0 config -
 __end_ofi1___lmul 3EDC 0 CODE 0 text48 dist/Todd/production\Novaplex_V2.X.production.obj
-_init_timer0 3B74 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
-_init_timer2 3B82 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
+_init_timer0 3B7A 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
+_init_timer2 3B88 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
 _switchTap_pressed 57 0 BANK0 1 bssBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 setLongTapState@f_state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 _set_subdivision 12F2 0 CODE 0 text13 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1638,7 +1636,7 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-init_ram 3BD0 0 CODE 0 inittext dist/Todd/production\Novaplex_V2.X.production.obj
+init_ram 3BD6 0 CODE 0 inittext dist/Todd/production\Novaplex_V2.X.production.obj
 __size_of_setSwitchBypassState 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _solidring_tactiles 22DC 0 CODE 0 text10 dist/Todd/production\Novaplex_V2.X.production.obj
 __Linittext 0 0 ABS 0 inittext -
@@ -1719,7 +1717,7 @@ __end_of_adc_convert 3C68 0 CODE 0 text33 dist/Todd/production\Novaplex_V2.X.pro
 __HnvBANK3 0 0 ABS 0 nvBANK3 -
 __Lintentry 8 0 CODE 0 intentry -
 _knob4_prev 160 0 BANK2 1 dataBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 __size_ofi1_set_leds_top 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __size_of_modulation 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _knob5_prev 162 0 BANK2 1 dataBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1761,17 +1759,17 @@ __ptext18 3D48 0 CODE 0 text18 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext19 272A 0 CODE 0 text19 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext20 24E2 0 CODE 0 text20 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext21 2DAC 0 CODE 0 text21 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext22 3B94 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext22 3B9A 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext23 118A 0 CODE 0 text23 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext24 1038 0 CODE 0 text24 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext25 163C 0 CODE 0 text25 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext26 2910 0 CODE 0 text26 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext27 3C00 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext27 2002 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext28 2600 0 CODE 0 text28 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext29 3F9C 0 CODE 0 text29 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext30 3F3C 0 CODE 0 text30 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext31 FFE 0 CODE 0 text31 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext32 3B6C 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext32 3B72 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext33 3C42 0 CODE 0 text33 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext34 2AB8 0 CODE 0 text34 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext35 F54 0 CODE 0 text35 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1780,10 +1778,10 @@ __ptext37 3D08 0 CODE 0 text37 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext38 3D8C 0 CODE 0 text38 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext39 3EDC 0 CODE 0 text39 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext40 23DE 0 CODE 0 text40 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext41 3B82 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext42 3B74 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext43 3BA6 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext44 3B64 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext41 3B88 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext42 3B7A 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext43 3BAC 0 CODE 0 text43 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext44 3B6A 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext46 2570 0 CODE 0 text46 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext47 235C 0 CODE 0 text47 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext48 3E7E 0 CODE 0 text48 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1794,7 +1792,7 @@ ___awdiv 27CA 0 CODE 0 text50 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftadd 163C 0 CODE 0 text25 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftdiv 1038 0 CODE 0 text24 dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftmul 118A 0 CODE 0 text23 dist/Todd/production\Novaplex_V2.X.production.obj
-___ftneg 3B94 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
+___ftneg 3B9A 0 CODE 0 text22 dist/Todd/production\Novaplex_V2.X.production.obj
 ___fttol 2EC2 0 CODE 0 text16 dist/Todd/production\Novaplex_V2.X.production.obj
 __Lbank10 0 0 ABS 0 bank10 -
 __Lbank11 0 0 ABS 0 bank11 -
@@ -1855,8 +1853,8 @@ _tap_iteration 1E9 0 BANK3 1 dataBANK3 dist/Todd/production\Novaplex_V2.X.produc
 _top_push_state 64 0 BANK0 1 dataBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 _CCP5CONbits 31E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __CFG_VCAPEN$OFF 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
-stackhi 23E7 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\sgs.obj
-stacklo 2310 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\sgs.obj
+stackhi 23E7 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\se6o.obj
+stacklo 2310 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\se6o.obj
 __end_of_set_leds_top FFC 0 CODE 0 text35 dist/Todd/production\Novaplex_V2.X.production.obj
 _ADCON0bits 9D 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _ADCON1bits 9E 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1914,7 +1912,7 @@ __ptext3 1004 0 CODE 0 text3 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext4 2CA8 0 CODE 0 text4 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext5 1466 0 CODE 0 text5 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext6 3C9A 0 CODE 0 text6 dist/Todd/production\Novaplex_V2.X.production.obj
-__ptext7 201A 0 CODE 0 text7 dist/Todd/production\Novaplex_V2.X.production.obj
+__ptext7 2020 0 CODE 0 text7 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext8 3E28 0 CODE 0 text8 dist/Todd/production\Novaplex_V2.X.production.obj
 __ptext9 29DA 0 CODE 0 text9 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of_InitApp 3F3C 0 CODE 0 text39 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1935,8 +1933,8 @@ __size_of_adc_convert 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.
 __CFG_FOSC$HS 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 __size_of_updateSwitchTap 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _CCP3CONbits 313 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of_init_timer0 3B82 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of_init_timer2 3B94 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_init_timer0 3B88 0 CODE 0 text42 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_init_timer2 3B9A 0 CODE 0 text41 dist/Todd/production\Novaplex_V2.X.production.obj
 _switchTap_down 158 0 BANK2 1 bssBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 __CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 ___ftmul@exp BF 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1947,8 +1945,8 @@ _preset_programmning_on 157 0 BANK2 1 bssBANK2 dist/Todd/production\Novaplex_V2.
 frexp@value A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 _wait_ms 3F9C 0 CODE 0 text29 dist/Todd/production\Novaplex_V2.X.production.obj
 __pidataBANK0 3C1E 0 CODE 0 idataBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
-__pidataBANK2 2002 0 CODE 0 idataBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
-__pidataBANK3 3BBA 0 CODE 0 idataBANK3 dist/Todd/production\Novaplex_V2.X.production.obj
+__pidataBANK2 3C06 0 CODE 0 idataBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
+__pidataBANK3 3BC0 0 CODE 0 idataBANK3 dist/Todd/production\Novaplex_V2.X.production.obj
 __pidataBANK4 3DD8 0 CODE 0 idataBANK4 dist/Todd/production\Novaplex_V2.X.production.obj
 __pidataBANK6 2262 0 CODE 0 idataBANK6 dist/Todd/production\Novaplex_V2.X.production.obj
 __pidataBANK7 21E8 0 CODE 0 idataBANK7 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1982,7 +1980,7 @@ _CCPR3 311 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _CCPR4 318 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _CCPR5 31C 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _CCPR9 61A 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
-_ConfigureOscillator 3B64 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
+_ConfigureOscillator 3B6A 0 CODE 0 text44 dist/Todd/production\Novaplex_V2.X.production.obj
 _switchBypass_pressed 150 0 BANK2 1 bssBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of_frexp 20F8 0 CODE 0 text15 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of_trunc 2910 0 CODE 0 text14 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -1994,7 +1992,7 @@ _setSwitchBypassState 2600 0 CODE 0 text28 dist/Todd/production\Novaplex_V2.X.pr
 _timer 4D 0 BANK0 1 bssBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
 _trunc 286C 0 CODE 0 text14 dist/Todd/production\Novaplex_V2.X.production.obj
 _doubleTap_state 53 0 BANK0 1 bssBANK0 dist/Todd/production\Novaplex_V2.X.production.obj
-__end_of_getSwitchBypassState 3B74 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
+__end_of_getSwitchBypassState 3B7A 0 CODE 0 text32 dist/Todd/production\Novaplex_V2.X.production.obj
 __pintentry 8 0 CODE 0 intentry dist/Todd/production\Novaplex_V2.X.production.obj
 ___fttol@sign1 120 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 _knob_1_pos 14A 0 BANK2 1 bssBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
@@ -2027,7 +2025,7 @@ __CFG_WRT$OFF 0 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
 _map$2189 E4 0 BANK1 1 cstackBANK1 dist/Todd/production\Novaplex_V2.X.production.obj
 trunc@i 131 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 trunc@x 12E 0 BANK2 1 cstackBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
-_initSwitchBypass 3C00 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
+_initSwitchBypass 2002 0 CODE 0 text27 dist/Todd/production\Novaplex_V2.X.production.obj
 __end_of_setFeedbackState 3CCE 0 CODE 0 text6 dist/Todd/production\Novaplex_V2.X.production.obj
 _bottomTactile_pressed 152 0 BANK2 1 bssBANK2 dist/Todd/production\Novaplex_V2.X.production.obj
 _CCP1CONbits 293 0 ABS 0 - dist/Todd/production\Novaplex_V2.X.production.obj
@@ -2080,7 +2078,7 @@ text3 0 802 1004 1A 2
 text4 0 1654 2CA8 82 2
 text5 0 A33 1466 EB 2
 text6 0 1E4D 3C9A 1A 2
-text7 0 100D 201A 35 2
+text7 0 1010 2020 32 2
 text8 0 1F14 3E28 2B 2
 text9 0 14ED 29DA 6F 2
 text10 0 116E 22DC 40 2
@@ -2095,16 +2093,16 @@ text18 0 1EA4 3D48 22 2
 text19 0 1395 272A 50 2
 text20 0 1271 24E2 47 2
 text21 0 16D6 2DAC 8B 2
-text22 0 1DCA 3B94 9 2
+text22 0 1DCD 3B9A 9 2
 text23 0 8C5 118A B4 2
 text24 0 81C 1038 A9 2
 text25 0 B1E 163C F6 2
 text26 0 1488 2910 65 2
-text27 0 1E00 3C00 F 2
+text27 0 1001 2002 F 2
 text28 0 1300 2600 4A 2
 text29 0 1FCE 3F9C 32 2
 text30 0 1F9E 3F3C 30 2
-text32 0 1DB6 3B6C 4 2
+text32 0 1DB9 3B72 4 2
 text33 0 1E21 3C42 13 2
 text34 0 155C 2AB8 76 2
 text36 0 107C 20F8 3B 2
@@ -2112,10 +2110,10 @@ text37 0 1E84 3D08 20 2
 text38 0 1EC6 3D8C 26 2
 text39 0 1F6E 3EDC 30 2
 text40 0 11EF 23DE 41 2
-text41 0 1DC1 3B82 9 2
-text42 0 1DBA 3B74 7 2
-text43 0 1DD3 3BA6 A 2
-text44 0 1DB2 3B64 4 2
+text41 0 1DC4 3B88 9 2
+text42 0 1DBD 3B7A 7 2
+text43 0 1DD6 3BAC A 2
+text44 0 1DB5 3B6A 4 2
 text46 0 12B8 2570 48 2
 text47 0 11AE 235C 41 2
 text48 0 1F3F 3E7E 2F 2
@@ -2126,15 +2124,15 @@ cstackCOMMON 1 70 70 E 1
 cstackBANK0 1 20 20 4A 1
 cstackBANK1 1 A0 A0 50 1
 cstackBANK2 1 120 120 46 1
-inittext 0 1DE8 3BD0 C 2
+inittext 0 1DEB 3BD6 C 2
 intentry 0 4 8 7FC 2
 reset_vec 0 0 0 2 2
 bssBANK3 1 1A0 1A0 4E 1
 bssBANK5 1 2A0 2A0 2C 1
 bssBANK9 1 4A0 4A0 40 1
 idataBANK0 0 1E0F 3C1E 12 2
-idataBANK2 0 1001 2002 C 2
-idataBANK3 0 1DDD 3BBA B 2
+idataBANK2 0 1E03 3C06 C 2
+idataBANK3 0 1DE0 3BC0 B 2
 idataBANK4 0 1EEC 3DD8 28 2
 idataBANK6 0 1131 2262 3D 2
 idataBANK7 0 10F4 21E8 3D 2
@@ -2143,5 +2141,5 @@ dataBANK4 1 220 220 37 1
 dataBANK6 1 320 320 3D 1
 dataBANK7 1 3A0 3A0 3D 1
 dataBANK8 1 420 420 3D 1
-clrtext 0 1DF4 3BE8 C 2
+clrtext 0 1DF7 3BEE C 2
 config 0 8007 1000E 2 2

@@ -1,11 +1,11 @@
-_setDoublePressState 100D 0 CODE 0
+_setDoublePressState 1010 0 CODE 0
 ___aldiv@counter A9 0 BANK1 1
 ___awdiv@counter 75 0 COMMON 1
 ___altoft@c 126 0 BANK2 1
 _long_press_limit 62 0 BANK0 1
 _updateSwitchBypass A33 0 CODE 0
 ___awtoft@c A8 0 BANK1 1
-__end_of___ftneg 1DD3 0 CODE 0
+__end_of___ftneg 1DD6 0 CODE 0
 __CFG_WRT$OFF 0 0 ABS 0
 _PR2 1B 0 ABS 0
 __size_of_updateSwitchBypassState 0 0 ABS 0
@@ -36,7 +36,7 @@ ___ftadd@f2 AB 0 BANK1 1
 _B25k 220 0 BANK4 1
 _tap_history 1A0 0 BANK3 1
 map@x D5 0 BANK1 1
-_init_adc 1DD3 0 CODE 0
+_init_adc 1DD6 0 CODE 0
 _debounce_mode1 1CC 0 BANK3 1
 ?_map D5 0 BANK1 1
 _main 391 0 CODE 0
@@ -201,7 +201,7 @@ __end_of_trunc 1488 0 CODE 0
 __HcstackBANK0 0 0 ABS 0
 __LcstackBANK0 0 0 ABS 0
 __size_of_map 0 0 ABS 0
-__end_of_ConfigureOscillator 1DB6 0 CODE 0
+__end_of_ConfigureOscillator 1DB9 0 CODE 0
 __pcstackBANK0 20 0 BANK0 1
 _tap_total 1BC 0 BANK3 1
 stacklo 2310 0 ABS 0
@@ -356,7 +356,7 @@ __ptext4 1654 0 CODE 0
 __size_of_setFeedbackState 0 0 ABS 0
 __ptext5 A33 0 CODE 0
 __ptext6 1E4D 0 CODE 0
-__ptext7 100D 0 CODE 0
+__ptext7 1010 0 CODE 0
 _preset_programmning_on 157 0 BANK2 1
 __HcstackBANK1 0 0 ABS 0
 __LcstackBANK1 0 0 ABS 0
@@ -382,7 +382,7 @@ __HdataBANK4 0 0 ABS 0
 __LdataBANK4 0 0 ABS 0
 __pdataBANK4 220 0 BANK4 1
 _adjust_sub_delay 1C4 0 BANK3 1
-_initSwitchBypass 1E00 0 CODE 0
+_initSwitchBypass 1001 0 CODE 0
 FLASH_ReadWord@flashAddr A0 0 BANK1 1
 __size_of_read_bottom_tactile 0 0 ABS 0
 _delay_time 5C 0 BANK0 1
@@ -416,17 +416,17 @@ __end_ofi1_set_leds_top 1300 0 CODE 0
 __Hidloc 0 0 IDLOC 0
 __Lidloc 0 0 IDLOC 0
 _longTap_timer 14E 0 BANK2 1
-__end_of_init_timer0 1DC1 0 CODE 0
-__end_of_init_timer2 1DCA 0 CODE 0
-__end_of_init_adc 1DDD 0 CODE 0
+__end_of_init_timer0 1DC4 0 CODE 0
+__end_of_init_timer2 1DCD 0 CODE 0
+__end_of_init_adc 1DE0 0 CODE 0
 __Hstack 0 0 STACK 2
 _updateSwitchBypassState 7FF 0 CODE 0
 __Lstack 0 0 STACK 2
-___ftneg 1DCA 0 CODE 0
+___ftneg 1DCD 0 CODE 0
 __Hspace_0 8009 0 ABS 0
 __Lspace_0 0 0 ABS 0
 _InitApp 1F6E 0 CODE 0
-init_ram 1DE8 0 CODE 0
+init_ram 1DEB 0 CODE 0
 __end_of_isr 2E1 0 CODE 0
 __CFG_IESO$ON 0 0 ABS 0
 __HdataBANK6 0 0 ABS 0
@@ -492,7 +492,7 @@ __size_of_init_timer2 0 0 ABS 0
 ___altoft@sign 12D 0 BANK2 1
 _bottomTactile_pressed 152 0 BANK2 1
 ___awtoft@sign AD 0 BANK1 1
-clear_ram0 1DF4 0 CODE 0
+clear_ram0 1DF7 0 CODE 0
 ___ftpack@arg A0 0 BANK1 1
 __HdataBANK8 0 0 ABS 0
 __LdataBANK8 0 0 ABS 0
@@ -536,7 +536,7 @@ _CCPTMRS0 29D 0 ABS 0
 __Hbank15 0 0 ABS 0
 __Lbank15 0 0 ABS 0
 _star_tactiles 14ED 0 CODE 0
-__end_of_initSwitchBypass 1E0F 0 CODE 0
+__end_of_initSwitchBypass 1010 0 CODE 0
 __ptext20 1271 0 CODE 0
 __Hbank25 0 0 BANK25 1
 _test_timer 1C0 0 BANK3 1
@@ -557,21 +557,21 @@ _CCPTMRS2 29F 0 ABS 0
 __Hbank17 0 0 ABS 0
 __Lbank17 0 0 ABS 0
 __HbssBANK2 0 0 ABS 0
-__ptext22 1DCA 0 CODE 0
-__ptext41 1DC1 0 CODE 0
+__ptext22 1DCD 0 CODE 0
+__ptext41 1DC4 0 CODE 0
 __LbssBANK2 0 0 ABS 0
 __Hbank27 0 0 BANK27 1
 __Lbank27 0 0 BANK27 1
 _modulation 11AE 0 CODE 0
 __ptext13 979 0 CODE 0
-__ptext32 1DB6 0 CODE 0
+__ptext32 1DB9 0 CODE 0
 __Hbank18 0 0 ABS 0
 __pbssBANK2 146 0 BANK2 1
 __Lbank18 0 0 ABS 0
 _ADCON0bits 9D 0 ABS 0
 _ADCON1bits 9E 0 ABS 0
 __ptext23 8C5 0 CODE 0
-__ptext42 1DBA 0 CODE 0
+__ptext42 1DBD 0 CODE 0
 __Hbank28 0 0 BANK28 1
 __size_of___awdiv 0 0 ABS 0
 __Lbank28 0 0 BANK28 1
@@ -582,7 +582,7 @@ __Hbank19 0 0 BANK19 1
 __Lbank19 0 0 BANK19 1
 set_subdivision@scalar 13D 0 BANK2 1
 __ptext24 81C 0 CODE 0
-__ptext43 1DD3 0 CODE 0
+__ptext43 1DD6 0 CODE 0
 __Hbank29 0 0 BANK29 1
 __Lbank29 0 0 BANK29 1
 _knob_1_pos 14A 0 BANK2 1
@@ -594,7 +594,7 @@ __end_of_solidring_tactiles 11AE 0 CODE 0
 _longTap_start 55 0 BANK0 1
 _knob_4_pos 1D6 0 BANK3 1
 __ptext25 B1E 0 CODE 0
-__ptext44 1DB2 0 CODE 0
+__ptext44 1DB5 0 CODE 0
 __end_of_updateSwitchTap DF8 0 CODE 0
 _knob_5_pos 1D8 0 BANK3 1
 __end_of_InitializeTaps 1EEC 0 CODE 0
@@ -609,7 +609,7 @@ __ptext17 134A 0 CODE 0
 __ptext36 107C 0 CODE 0
 __pbssBANK3 1A0 0 BANK3 1
 _adc_convert 1E21 0 CODE 0
-__ptext27 1E00 0 CODE 0
+__ptext27 1001 0 CODE 0
 __ptext46 12B8 0 CODE 0
 i1set_leds_top@x 70 0 COMMON 1
 __ptext18 1EA4 0 CODE 0
@@ -636,7 +636,7 @@ __Hend_init 2E3 0 CODE 0
 __Lend_init 2E1 0 CODE 0
 _read_top_tactile 1395 0 CODE 0
 i1set_leds_top@ledState 72 0 COMMON 1
-_init_timer0 1DBA 0 CODE 0
+_init_timer0 1DBD 0 CODE 0
 map@out_max E1 0 BANK1 1
 solidring_tactiles@ring_delay B4 0 BANK1 1
 _knob1_prev 15A 0 BANK2 1
@@ -662,7 +662,7 @@ __Lreset_vec 0 0 CODE 0
 __HidataBANK2 0 0 ABS 0
 __LidataBANK2 0 0 ABS 0
 _restoreLEDState 1E67 0 CODE 0
-__pidataBANK2 1001 0 CODE 0
+__pidataBANK2 1E03 0 CODE 0
 _update_mode 1230 0 CODE 0
 updateSwitchBypassState@state A0 0 BANK1 1
 __end_of_set_leds_top 7FE 0 CODE 0
@@ -679,7 +679,7 @@ intlevel1 0 0 CODE 0
 ___altoft@exp 12C 0 BANK2 1
 intlevel2 0 0 CODE 0
 __end_of___awtoft 1EC6 0 CODE 0
-_init_timer2 1DC1 0 CODE 0
+_init_timer2 1DC4 0 CODE 0
 __size_of_init_pwm 0 0 ABS 0
 intlevel3 0 0 CODE 0
 __size_of___lmul 0 0 ABS 0
@@ -701,7 +701,7 @@ __LidataBANK3 0 0 ABS 0
 __HcstackCOMMON 0 0 ABS 0
 __LcstackCOMMON 0 0 ABS 0
 modulation@x 2E 0 BANK0 1
-__pidataBANK3 1DDD 0 CODE 0
+__pidataBANK3 1DE0 0 CODE 0
 __pcstackCOMMON 70 0 COMMON 1
 __end_of_star_tactiles 155C 0 CODE 0
 start_initialization 2E3 0 CODE 0
@@ -709,7 +709,7 @@ __size_of_modulation 0 0 ABS 0
 __end_of___altoft 1395 0 CODE 0
 ___aldiv@quotient AB 0 BANK1 1
 ___awdiv@quotient 77 0 COMMON 1
-__end_of_getSwitchBypassState 1DBA 0 CODE 0
+__end_of_getSwitchBypassState 1DBD 0 CODE 0
 i1___aldiv@quotient 2A 0 BANK0 1
 __Hmaintext 0 0 ABS 0
 __Lmaintext 0 0 ABS 0
@@ -717,7 +717,7 @@ __pmaintext 391 0 CODE 0
 __CFG_MCLRE$ON 0 0 ABS 0
 __end_of___fttol 1800 0 CODE 0
 _OPTION_REGbits 95 0 ABS 0
-_getSwitchBypassState 1DB6 0 CODE 0
+_getSwitchBypassState 1DB9 0 CODE 0
 _setSwitchBypassState 1300 0 CODE 0
 __size_of_initSwitchBypass 0 0 ABS 0
 __HidataCOMMON 0 0 ABS 0
@@ -751,7 +751,7 @@ _CCP10CONbits 61F 0 ABS 0
 __size_of_setLongTapState 0 0 ABS 0
 __CFG_LVP$OFF 0 0 ABS 0
 __end_of___ftdiv 8C5 0 CODE 0
-_ConfigureOscillator 1DB2 0 CODE 0
+_ConfigureOscillator 1DB5 0 CODE 0
 ___aldiv@dividend A4 0 BANK1 1
 ___awdiv@dividend 72 0 COMMON 1
 %segments
@@ -799,7 +799,7 @@ idataBANK7 21E8 2261 CODE 21E8 0
 idataBANK8 216E 21E7 CODE 216E 0
 text36 20F8 216D CODE 20F8 0
 text15 2084 20F7 CODE 2084 0
-text7 201A 2083 CODE 201A 0
+text7 2020 2083 CODE 2020 0
 text29 3F9C 3FFF CODE 3F9C 0
 text30 3F3C 3F9B CODE 3F3C 0
 text39 3EDC 3F3B CODE 3EDC 0
@@ -815,20 +815,20 @@ text6 3C9A 3CCD CODE 3C9A 0
 text12 3C68 3C99 CODE 3C68 0
 text33 3C42 3C67 CODE 3C42 0
 idataBANK0 3C1E 3C41 CODE 3C1E 0
-text27 3C00 3C1D CODE 3C00 0
-idataBANK2 2002 2019 CODE 2002 0
-clrtext 3BE8 3BFF CODE 3BE8 0
-inittext 3BD0 3BE7 CODE 3BD0 0
-idataBANK3 3BBA 3BCF CODE 3BBA 0
-text43 3BA6 3BB9 CODE 3BA6 0
-text22 3B94 3BA5 CODE 3B94 0
-text41 3B82 3B93 CODE 3B82 0
-text42 3B74 3B81 CODE 3B74 0
-text32 3B6C 3B73 CODE 3B6C 0
-text44 3B64 3B6B CODE 3B64 0
+text27 2002 201F CODE 2002 0
+idataBANK2 3C06 3C1D CODE 3C06 0
+clrtext 3BEE 3C05 CODE 3BEE 0
+inittext 3BD6 3BED CODE 3BD6 0
+idataBANK3 3BC0 3BD5 CODE 3BC0 0
+text43 3BAC 3BBF CODE 3BAC 0
+text22 3B9A 3BAB CODE 3B9A 0
+text41 3B88 3B99 CODE 3B88 0
+text42 3B7A 3B87 CODE 3B7A 0
+text32 3B72 3B79 CODE 3B72 0
+text44 3B6A 3B71 CODE 3B6A 0
 %locals
 dist/Todd/production\Novaplex_V2.X.production.obj
-C:\Users\Nancy\AppData\Local\Temp\sgs.
+C:\Users\Nancy\AppData\Local\Temp\se6o.
 6829 2E3 0 CODE 0
 6832 2E3 0 CODE 0
 7187 2E3 0 CODE 0
@@ -978,34 +978,34 @@ C:\Users\Nancy\AppData\Local\Temp\sgs.
 7393 38D 0 CODE 0
 7394 38E 0 CODE 0
 7395 38F 0 CODE 0
-7170 1DF4 0 CODE 0
-7171 1DF4 0 CODE 0
-7172 1DF5 0 CODE 0
-7173 1DF5 0 CODE 0
-7174 1DF6 0 CODE 0
-7175 1DF7 0 CODE 0
-7176 1DF8 0 CODE 0
-7177 1DF9 0 CODE 0
-7178 1DFA 0 CODE 0
-7179 1DFB 0 CODE 0
-7180 1DFC 0 CODE 0
-7181 1DFD 0 CODE 0
-7183 1DFE 0 CODE 0
-7182 1DFF 0 CODE 0
-7247 1DE8 0 CODE 0
-7248 1DE8 0 CODE 0
-7249 1DE9 0 CODE 0
-7250 1DE9 0 CODE 0
-7251 1DEA 0 CODE 0
-7252 1DEB 0 CODE 0
-7253 1DEC 0 CODE 0
-7254 1DED 0 CODE 0
-7255 1DEE 0 CODE 0
-7256 1DEF 0 CODE 0
-7257 1DF0 0 CODE 0
-7258 1DF1 0 CODE 0
-7260 1DF2 0 CODE 0
-7259 1DF3 0 CODE 0
+7170 1DF7 0 CODE 0
+7171 1DF7 0 CODE 0
+7172 1DF8 0 CODE 0
+7173 1DF8 0 CODE 0
+7174 1DF9 0 CODE 0
+7175 1DFA 0 CODE 0
+7176 1DFB 0 CODE 0
+7177 1DFC 0 CODE 0
+7178 1DFD 0 CODE 0
+7179 1DFE 0 CODE 0
+7180 1DFF 0 CODE 0
+7181 1E00 0 CODE 0
+7183 1E01 0 CODE 0
+7182 1E02 0 CODE 0
+7247 1DEB 0 CODE 0
+7248 1DEB 0 CODE 0
+7249 1DEC 0 CODE 0
+7250 1DEC 0 CODE 0
+7251 1DED 0 CODE 0
+7252 1DEE 0 CODE 0
+7253 1DEF 0 CODE 0
+7254 1DF0 0 CODE 0
+7255 1DF1 0 CODE 0
+7256 1DF2 0 CODE 0
+7257 1DF3 0 CODE 0
+7258 1DF4 0 CODE 0
+7260 1DF5 0 CODE 0
+7259 1DF6 0 CODE 0
 main.c
 83 391 0 CODE 0
 84 391 0 CODE 0
@@ -1240,20 +1240,18 @@ SwitchBypass.c
 154 1E5F 0 CODE 0
 158 1E66 0 CODE 0
 preset_programming.c
-20 100D 0 CODE 0
-21 100D 0 CODE 0
-22 101A 0 CODE 0
-23 101F 0 CODE 0
-24 1024 0 CODE 0
-25 1026 0 CODE 0
-26 1027 0 CODE 0
-27 1028 0 CODE 0
-28 1029 0 CODE 0
-29 102B 0 CODE 0
-32 102C 0 CODE 0
-33 1033 0 CODE 0
-35 103A 0 CODE 0
-37 1041 0 CODE 0
+20 1010 0 CODE 0
+21 1010 0 CODE 0
+22 101D 0 CODE 0
+23 1022 0 CODE 0
+24 1027 0 CODE 0
+25 1029 0 CODE 0
+26 102A 0 CODE 0
+27 102B 0 CODE 0
+30 102C 0 CODE 0
+31 1033 0 CODE 0
+33 103A 0 CODE 0
+35 1041 0 CODE 0
 LEDs.c
 86 1F14 0 CODE 0
 87 1F14 0 CODE 0
@@ -1419,9 +1417,9 @@ user.c
 177 16D6 0 CODE 0
 178 16D6 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-15 1DCA 0 CODE 0
-17 1DCA 0 CODE 0
-18 1DD0 0 CODE 0
+15 1DCD 0 CODE 0
+17 1DCD 0 CODE 0
+18 1DD3 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
 62 8C5 0 CODE 0
 67 8C5 0 CODE 0
@@ -1538,10 +1536,10 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 84 14EB 0 CODE 0
 86 14EC 0 CODE 0
 SwitchBypass.c
-29 1E00 0 CODE 0
-30 1E00 0 CODE 0
-31 1E08 0 CODE 0
-32 1E0E 0 CODE 0
+29 1001 0 CODE 0
+30 1001 0 CODE 0
+31 1009 0 CODE 0
+32 100F 0 CODE 0
 134 1300 0 CODE 0
 135 1300 0 CODE 0
 136 130D 0 CODE 0
@@ -1572,8 +1570,8 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
 state_manager.c
 96 7FF 0 CODE 0
 101 7FF 0 CODE 0
-103 1DB6 0 CODE 0
-108 1DB6 0 CODE 0
+103 1DB9 0 CODE 0
+108 1DB9 0 CODE 0
 user.c
 122 1E21 0 CODE 0
 123 1E23 0 CODE 0
@@ -1746,29 +1744,29 @@ user.c
 158 122A 0 CODE 0
 159 122D 0 CODE 0
 160 122F 0 CODE 0
-162 1DC1 0 CODE 0
-163 1DC1 0 CODE 0
-164 1DC4 0 CODE 0
-165 1DC6 0 CODE 0
-166 1DC8 0 CODE 0
-167 1DC9 0 CODE 0
-169 1DBA 0 CODE 0
-170 1DBA 0 CODE 0
-171 1DBC 0 CODE 0
-172 1DBD 0 CODE 0
-173 1DBE 0 CODE 0
-174 1DBF 0 CODE 0
-175 1DC0 0 CODE 0
-115 1DD3 0 CODE 0
-116 1DD3 0 CODE 0
-117 1DD5 0 CODE 0
-118 1DD9 0 CODE 0
-119 1DDB 0 CODE 0
-120 1DDC 0 CODE 0
+162 1DC4 0 CODE 0
+163 1DC4 0 CODE 0
+164 1DC7 0 CODE 0
+165 1DC9 0 CODE 0
+166 1DCB 0 CODE 0
+167 1DCC 0 CODE 0
+169 1DBD 0 CODE 0
+170 1DBD 0 CODE 0
+171 1DBF 0 CODE 0
+172 1DC0 0 CODE 0
+173 1DC1 0 CODE 0
+174 1DC2 0 CODE 0
+175 1DC3 0 CODE 0
+115 1DD6 0 CODE 0
+116 1DD6 0 CODE 0
+117 1DD8 0 CODE 0
+118 1DDC 0 CODE 0
+119 1DDE 0 CODE 0
+120 1DDF 0 CODE 0
 system.c
-18 1DB2 0 CODE 0
-20 1DB2 0 CODE 0
-21 1DB5 0 CODE 0
+18 1DB5 0 CODE 0
+20 1DB5 0 CODE 0
+21 1DB8 0 CODE 0
 interrupts.c
 25 4 0 CODE 0
 40 9 0 CODE 0

@@ -4139,26 +4139,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;preset_programming.c: 27: LATBbits.LATB3 = 0;
 "27
 [e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;preset_programming.c: 28: longTap_state = 0;
 "28
-[e = _longTap_state -> -> 0 `i `uc ]
-[; ;preset_programming.c: 29: feedback_state = 0;
-"29
-[e = _feedback_state -> -> 0 `i `uc ]
-"30
 }
 [e :U 463 ]
-[; ;preset_programming.c: 30: }
-[; ;preset_programming.c: 32: LATBbits.LATB1 = f_state;
-"32
+[; ;preset_programming.c: 28: }
+[; ;preset_programming.c: 30: LATBbits.LATB1 = f_state;
+"30
 [e = . . _LATBbits 0 1 -> _f_state `uc ]
-[; ;preset_programming.c: 33: LATBbits.LATB0 = f_state;
-"33
+[; ;preset_programming.c: 31: LATBbits.LATB0 = f_state;
+"31
 [e = . . _LATBbits 0 0 -> _f_state `uc ]
-[; ;preset_programming.c: 35: wait_ms(20);
-"35
+[; ;preset_programming.c: 33: wait_ms(20);
+"33
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;preset_programming.c: 37: }
-"37
+[; ;preset_programming.c: 35: }
+"35
 [e :UE 461 ]
 }

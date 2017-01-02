@@ -757,7 +757,7 @@
 [v _setDoublePressState setDoublePressState `(v  1 e 1 0 ]
 {
 [v setDoublePressState@f_state f_state `i  1 p 2 18 ]
-"37
+"35
 } 0
 "86 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 [v _showBootSequence showBootSequence `(v  1 e 1 0 ]
