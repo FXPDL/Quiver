@@ -5026,7 +5026,6 @@ tap_timer = 0;
 tap_iteration = 1;
 tap_total = 0;
 delay_time_changed = 0;
-LATDbits.LATD0 = 0;
 
 for (iCnt = 1; iCnt <= num_taps; iCnt++) {
 tap_history[iCnt] = 0;
@@ -5087,7 +5086,7 @@ tap_iteration++;
 switchTap_down = 0;
 switchTap_state = 0;
 
-# 148
+# 147
 setLongTapState(0);
 
 longTap_timer = 0;

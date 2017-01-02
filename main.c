@@ -12,6 +12,7 @@
 
 #include <stdint.h>        /* For uint8_t definition */      
 #include <stdbool.h>       /* For true/false definition */
+
 #include "system.h"        /* System funct/params, like osc/peripheral config */
 #include "memory.h"
 #include "constants.h"      /* program constants */ 
@@ -23,6 +24,7 @@
 #include "SwitchBypass.h"    /* Bypass switch control */
 #include "SwitchTap.h"    /* Bypass switch control */
 //#include "Switch1.h"    /* Bypass switch control */
+
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
@@ -68,7 +70,7 @@ int switchTap_up = 1;
 int switchTap_toggle = 0;
 */
 uint8_t iCnt;
-int B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
+char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
 //int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 37, 39, 42, 45, 48, 51, 55, 60, 66, 72, 80, 91, 103, 120, 142, 174, 223, 255, 255, 255};
 
 int B25kLength = 0;
@@ -80,6 +82,7 @@ int B25kLength = 0;
 
 void main(void) {
     B25kLength = sizeof(B25k)/sizeof(B25k[0]);
+
     ConfigureOscillator();
     InitApp();
 
@@ -246,12 +249,12 @@ void main(void) {
         }*/
         
         //Depth
-        LED_bypass_Aux = 0;
+        //LED_bypass_Aux = 0;
         if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
-            baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
+            baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
             delay_time_changed = 1;
-            LED_bypass_Aux = 1;
+            //LED_bypass_Aux = 1;
         } 
 
 
@@ -264,9 +267,9 @@ void main(void) {
         //------------------------------------------------
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
-            int i = map(knob2_prev, 0, 1023, 0, 39);
-            CCPR2 = B25k[B25kLength - 1 - i]; //iB25k[i];
-            CCPR3 = B25k[i];
+            int i = (int)map(knob2_prev, 0, 1023, 0, 39);
+            CCPR2 = (int)B25k[B25kLength - 1 - i]; //iB25k[i];
+            CCPR3 = (int)B25k[i];
         }
 
 
@@ -279,9 +282,9 @@ void main(void) {
         //------------------------------------------------
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
-            int i = map(knob3_prev, 0, 1023, 16, 0);
-            CCPR4 = B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
-            CCPR5 = B25k[i];
+            int i = (int)map(knob3_prev, 0, 1023, 16, 0);
+            CCPR4 = (int)B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
+            CCPR5 = (int)B25k[i];
         }
 
 
@@ -295,7 +298,7 @@ void main(void) {
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
            // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
-            mod_delay_time = map(knob4_prev, 0, 1023, 3, 47);          
+            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);          
         }
 
 
@@ -306,7 +309,7 @@ void main(void) {
         //------------------------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
-            adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+            adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
             
         }
 

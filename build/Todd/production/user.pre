@@ -4881,6 +4881,34 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
 
@@ -5019,10 +5047,12 @@ INTCONbits.TMR0IF = 0b0;
 
 
 int set_subdivision(int x, int y) {
+
+
+
 adjust_sub_delay = 0;
 int tmpX = x;
 float scalar = 1.0;
-
 
 switch (y) {
 case 1:
@@ -5046,7 +5076,11 @@ break;
 }
 
 tmpX = tmpX * scalar;
-if ((tmpX /scalar) != x) {adjust_sub_delay = 1;}
+
+if (trunc(tmpX) != tmpX) {
+adjust_sub_delay = 1;
+}
+
 return tmpX;
 }
 

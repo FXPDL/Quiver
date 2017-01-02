@@ -23,6 +23,10 @@ void setDoublePressState(int f_state) {
     if (f_state == 1) {
         LED_tap_A = 0;
         LED_bypass_A = 0;
+        LED_tap_B = 0;
+        LED_bypass_B = 0;
+        longTap_state = 0;
+        feedback_state = 0;
     }
     
     LED_bypass_Aux = f_state;

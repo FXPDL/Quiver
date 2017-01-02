@@ -5008,7 +5008,7 @@ void updateSwitchTap(void);
 void setSwitchTapState(int);
 void setLongTapState(int);
 
-# 36 "main.c"
+# 38 "main.c"
 volatile long mod_timer = 0;
 signed int adjusted_pot_value;
 int mod_delay_time = 2000;
@@ -5031,16 +5031,17 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-# 70
+# 72
 uint8_t iCnt;
-int B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
+char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
 
 
 int B25kLength = 0;
 
-# 81
+# 83
 void main(void) {
 B25kLength = sizeof(B25k)/sizeof(B25k[0]);
+
 ConfigureOscillator();
 InitApp();
 
@@ -5084,53 +5085,52 @@ debounce_mode1 = 0;
 updateSwitchBypass();
 updateSwitchTap();
 
-# 218
+# 221
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 249
-LATBbits.LATB1 = 0;
+# 253
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
-baseline_delay_time = map(knob1_prev, 0, 1023, 1172, 200);
+baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
 delay_time_changed = 1;
-LATBbits.LATB1 = 1;
+
 }
 
-# 265
+# 268
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
-int i = map(knob2_prev, 0, 1023, 0, 39);
-CCPR2 = B25k[B25kLength - 1 - i];
-CCPR3 = B25k[i];
+int i = (int)map(knob2_prev, 0, 1023, 0, 39);
+CCPR2 = (int)B25k[B25kLength - 1 - i];
+CCPR3 = (int)B25k[i];
 }
 
-# 280
+# 283
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
-int i = map(knob3_prev, 0, 1023, 16, 0);
-CCPR4 = B25k[B25kLength - 1 - i];
-CCPR5 = B25k[i];
+int i = (int)map(knob3_prev, 0, 1023, 16, 0);
+CCPR4 = (int)B25k[B25kLength - 1 - i];
+CCPR5 = (int)B25k[i];
 }
 
-# 295
+# 298
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
-mod_delay_time = map(knob4_prev, 0, 1023, 3, 47);
+mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
 }
 
-# 307
+# 310
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
-adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
+adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
 
 }
 
-# 390
+# 393
 if (delay_time_changed == 1) {
 delay_time = baseline_delay_time;
 delay_time = set_subdivision(baseline_delay_time, top_push_state);
@@ -5150,7 +5150,7 @@ delay_counter++;
 }
 }
 
-# 426
+# 429
 delay_time_changed = 0;
 
 }

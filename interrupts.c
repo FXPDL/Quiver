@@ -131,7 +131,12 @@ void interrupt isr(void) {
     if (mod_timer >= mod_delay_time) {        
        mod_timer = 0;
 
-        if (bottom_push_state == 1 || bottom_push_state == 5) {
+       
+       if (mod_counter >= 60) {
+            mod_counter = 0;
+        } 
+       
+       /* if (bottom_push_state == 1 || bottom_push_state == 5) {
             if (mod_counter >= 61) {
                 mod_counter = 0;
             }                
@@ -139,43 +144,47 @@ void interrupt isr(void) {
             if (mod_counter >= 31) {
                 mod_counter = 0;
             }
-        }
+        }*/
 
         switch (bottom_push_state) {
             case 1:
-                mod_value = mod5[mod_counter];
+                mod_value = (int)mod1[mod_counter];
                 chorus = 0;
                 break;
             case 2:
-                mod_value = mod2[mod_counter];
+                mod_value = (int)mod2[mod_counter];
                 chorus = 0;
                 break;
             case 3:
-                mod_value = mod3[mod_counter];
+                mod_value = (int)mod3[mod_counter];
                 chorus = 0;
                 break;
             case 4:
-                mod_value = mod4[mod_counter];
+                if (mod_counter <31) {
+                    mod_value = 100; //mod4[mod_counter];
+                } else {
+                    mod_value = -100;
+                }
                 chorus = 0;
                 break;
             case 5:
-                mod_value = mod5[mod_counter];
+                mod_value = (int)mod1[mod_counter];
                 //adjusted_pot_value = 1275; dont override the depth
                 chorus = 1;
                 
                 break;
-            case 6:
+            default:
                 mod_value = 0;
                 chorus = 0;
                 break;
         }
 
         
-        if (mod_counter < 5) {
+        /*if (mod_counter < 5) {
             LED_tap_Aux = 1;
         } else {
             LED_tap_Aux = 0;
-        }
+        }*/
         
        /* if (mod_counter == 0) {
             LATDbits.LATD1 = 1;
@@ -187,7 +196,7 @@ void interrupt isr(void) {
         mod_value = modulation(mod_value, adjusted_pot_value);
         CCPR9 = mod_value / 2;
         mod_timer = 0;
-        mod_counter = mod_counter + 1;
+        mod_counter++;
 
             /*if (adjusted_pot_value > 1260) {
                 LATDbits.LATD2 = 1;

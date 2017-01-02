@@ -4280,15 +4280,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 474 ]
 [; ;SwitchTap.c: 94: }
-[; ;SwitchTap.c: 98: if (longTap_timer >= long_press_limit && longTap_state == 0) {
+[; ;SwitchTap.c: 98: if (longTap_timer >= long_press_limit && longTap_state == 0 && doubleTap_state == 0) {
 "98
-[e $ ! && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i 475  ]
+[e $ ! && && >= _longTap_timer _long_press_limit == -> _longTap_state `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 475  ]
 {
 [; ;SwitchTap.c: 100: longTap_timer = long_press_limit;
 "100
 [e = _longTap_timer _long_press_limit ]
-[; ;SwitchTap.c: 101: LATBbits.LATB4 = 0;
-"101
+[; ;SwitchTap.c: 102: LATBbits.LATB4 = 0;
+"102
 [e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
 [; ;SwitchTap.c: 103: if (feedback_start != 1) {
 "103

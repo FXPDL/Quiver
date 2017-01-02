@@ -4982,6 +4982,10 @@ doubleTap_state = f_state;
 if (f_state == 1) {
 LATBbits.LATB4 = 0;
 LATBbits.LATB2 = 0;
+LATBbits.LATB5 = 0;
+LATBbits.LATB3 = 0;
+longTap_state = 0;
+feedback_state = 0;
 }
 
 LATBbits.LATB1 = f_state;

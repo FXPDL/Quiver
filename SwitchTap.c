@@ -95,11 +95,11 @@ void updateSwitchTap(void) {
             
 
            //Switch was on, so if it is long press then ignore the tap.  If it is short, then record the tap
-            if (longTap_timer >= long_press_limit && longTap_state == 0) {
+            if (longTap_timer >= long_press_limit && longTap_state == 0 && doubleTap_state == 0) {
                 //Long press
                 longTap_timer = long_press_limit; //try and prevent overflow
-                LED_tap_A = 0;
                 
+                LED_tap_A = 0;
                 if (feedback_start != 1) {
                     setLongTapState(1);
                 } else {

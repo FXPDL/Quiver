@@ -9,7 +9,7 @@
 #endif
 
 #include <stdint.h>         /* For uint8_t definition */ 
-
+#include <math.h>       /* For trunc definition */
 #include <stdbool.h>        /* For true/false definition */
 #include "user.h"
 #include "constants.h"
@@ -75,11 +75,13 @@ void InitApp(void) {
 
 
 int set_subdivision(int x, int y) {
+    //x = delay time
+    //y = state
+    
     adjust_sub_delay = 0;
     int tmpX = x;
     float scalar = 1.0;
-    //x = delay time
-    //y = state
+
     switch (y) {
         case 1:
             scalar = 0.75; // dotted eight
@@ -102,7 +104,11 @@ int set_subdivision(int x, int y) {
     }
     
     tmpX = tmpX * scalar;
-    if ((tmpX /scalar) != x) {adjust_sub_delay = 1;}
+    
+    if (trunc(tmpX) != tmpX) {
+        adjust_sub_delay = 1;
+    }
+
     return tmpX;
 }
 

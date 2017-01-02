@@ -4975,12 +4975,12 @@ void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
 
-# 24 "modulation.h"
-signed int mod1[] = {0, 21, 41, 59, 74, 87, 95, 99, 99, 95, 87, 74, 59, 41, 21, 0, -21, -41, -59, -74, -87, -95, -99, -99, -95, -87, -74, -59, -41, -21, 0};
-signed int mod2[] = {0, 13, 27, 40, 53, 67, 80, 93, 93, 80, 67, 53, 40, 27, 13, 0, -13, -27, -40, -53, -67, -80, -93, -93, -80, -67, -53, -40, -27, -13, 0};
-signed int mod3[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, -100, -93, -87, -80, -73, -67, -60, -53, -47, -40, -33, -27, -20, -13, -7, 0};
-signed int mod4[] = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 100};
-signed int mod5[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
+# 32 "modulation.h"
+signed char mod1[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
+
+signed char mod2[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, 100, 93, 87, 80, 73, 67, 60, 53, 47, 40, 33, 27, 20, 13, 7, 0, -7, -13, -20, -27, -33, -40, -47, -53, -60, -67, -73, -80, -87, -93, -100, -93, -87, -80, -73, -67, -60, -53, -47, -40, -33, -27, -20, -13, -7, 0};
+
+signed char mod3[] = {0, 3, 7, 10, 13, 17, 20, 23, 27, 30, 33, 37, 40, 43, 47, 50, 53, 57, 60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97, 100, -97, -93, -90, -87, -83, -80, -77, -73, -70, -67, -63, -60, -57, -53, -50, -47, -43, -40, -37, -33, -30, -27, -23, -20, -17, -13, -10, -7, -3, 0};
 
 # 22 "interrupts.c"
 signed int mod_value = 0;
@@ -5076,62 +5076,55 @@ set_leds_top(top_push_state, 0);
 if (mod_timer >= mod_delay_time) {
 mod_timer = 0;
 
-if (bottom_push_state == 1 || bottom_push_state == 5) {
-if (mod_counter >= 61) {
+
+if (mod_counter >= 60) {
 mod_counter = 0;
-}
-} else {
-if (mod_counter >= 31) {
-mod_counter = 0;
-}
 }
 
+# 149
 switch (bottom_push_state) {
 case 1:
-mod_value = mod5[mod_counter];
+mod_value = (int)mod1[mod_counter];
 PORTCbits.RC4 = 0;
 break;
 case 2:
-mod_value = mod2[mod_counter];
+mod_value = (int)mod2[mod_counter];
 PORTCbits.RC4 = 0;
 break;
 case 3:
-mod_value = mod3[mod_counter];
+mod_value = (int)mod3[mod_counter];
 PORTCbits.RC4 = 0;
 break;
 case 4:
-mod_value = mod4[mod_counter];
+if (mod_counter <31) {
+mod_value = 100;
+} else {
+mod_value = -100;
+}
 PORTCbits.RC4 = 0;
 break;
 case 5:
-mod_value = mod5[mod_counter];
+mod_value = (int)mod1[mod_counter];
 
 PORTCbits.RC4 = 1;
 
 break;
-case 6:
+default:
 mod_value = 0;
 PORTCbits.RC4 = 0;
 break;
 }
 
-
-if (mod_counter < 5) {
-LATBbits.LATB0 = 1;
-} else {
-LATBbits.LATB0 = 0;
-}
-
-# 187
+# 196
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR9 = mod_value / 2;
 mod_timer = 0;
-mod_counter = mod_counter + 1;
+mod_counter++;
 
-# 204
+# 213
 }
 
-# 229
+# 238
 if (preset_programmning_on == 1) {
 preset_blink++;
 

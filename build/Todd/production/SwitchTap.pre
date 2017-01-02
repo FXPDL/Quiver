@@ -5041,11 +5041,11 @@ longTap_timer = 0;
 
 
 
-if (longTap_timer >= long_press_limit && longTap_state == 0) {
+if (longTap_timer >= long_press_limit && longTap_state == 0 && doubleTap_state == 0) {
 
 longTap_timer = long_press_limit;
-LATBbits.LATB4 = 0;
 
+LATBbits.LATB4 = 0;
 if (feedback_start != 1) {
 setLongTapState(1);
 } else {
