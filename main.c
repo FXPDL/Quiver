@@ -102,8 +102,9 @@ void main(void) {
     while (1) {
         read_bottom_tactile();
         read_top_tactile();
-        
 
+        update_expressSwitchState();
+        
         update_mode();
         
         if (mode_1 == 0) {
@@ -125,100 +126,9 @@ void main(void) {
 
         updateSwitchBypass();
         updateSwitchTap();
-        
-        //updateSwitch1();
-        
-        //bypass button ------------------------------------
-        //  1) toggle state
-        //  2) toggle relay pins
-        //  3) toggle bypass LED
-        //  4) freeze program until button released
-        //--------------------------------------------------
-       /* if (switch_bypass == 0) {
-            debounce_bypass++;
-            if (debounce_bypass > 25) {
-                bypass_state = !bypass_state;
-                Relay_1 = !bypass_state;
-                Relay_2 = bypass_state;
-                LED_bypass_A = bypass_state;
-                LED_bypass_B = !bypass_state;
-                while (switch_bypass == 0) {
-                }
-            }
-        } else {
-            debounce_bypass = 0;
-        }*/
-
-
-
-
-        //tap button ------------------------------------
-        //  1) look to see if x sec has passed between switches
-        //  1a) if condition is met then reset the counter to zero and reset matrix, timer
-        //  1b) delay until button released
-        //  2) if timing is less then x sec then store time to matrix
-        //  3) add all entry's to matrix and divide by number of iterations
-        //  4) subroutine to apply subdivisions to the newly tapped tempo
-        //  5) calculate new modulation interval for timing
-        //  6) reset tap timer
-        //  7) iterate the tap counter
-        //  8) delay until button release
-        //-----------------------------------------------
-/*
-        if (switch_tap == 0) {
-         
-            debounce_count++;
-            if (debounce_count > 25) {
-                if (tap_timer >= 1563) {
-                    tap_timer = 0;
-                    tap_iteration = 1;
-                    tap_total = 0;
-                    delay_time_changed = 0;
-
-                    for (iCnt = 1; iCnt <= num_tapsMAIN; iCnt++) {
-                        tap_history[iCnt] = 0;
-                    }
-                    while (switch_tap == 0) {
-                    }
-                } else if (tap_timer < 1563) {
-                    if (tap_iteration <= 4) {
-                        if (tap_timer >= 1172) {
-                            tap_timer = 1172;
-                        }
-                        int tapCntDivisor = num_tapsMAIN;   
-                        if (tap_iteration <= num_tapsMAIN) {
-                            tap_total += tap_timer;
-                            tap_history[tap_iteration] = tap_timer;
-                            tapCntDivisor = tap_iteration;
-                        } else {
-                            tap_total = 0;
-                            for (iCnt = 1; iCnt < num_tapsMAIN; iCnt++) {
-                                tap_history[iCnt] = tap_history[iCnt + 1];
-                                tap_total += tap_history[iCnt];
-                            }
-                            tap_history[num_tapsMAIN] = tap_timer;
-                            tap_total += tap_timer;
-                        }
-
-                        baseline_delay_time = tap_total / tapCntDivisor;
-                        delay_time_changed = 1;
-                        tap_timer = 0;
-
-                        tap_iteration++;
-                    }
-                    while (switch_tap == 0) {
-                    }
-                }
-            }
-        } else {
-            debounce_count = 0;
-        
-        }
-*/
-
 
         //read pots---------------------------------------
-        knob_1_pos = adc_convert(0); //  adc_convert(0);
+        knob_1_pos = adc_convert(0); //   
         knob_2_pos = adc_convert(1);
         knob_3_pos = adc_convert(2);
         knob_4_pos = adc_convert(3);
@@ -249,12 +159,14 @@ void main(void) {
         }*/
         
         //Depth
-        //LED_bypass_Aux = 0;
-        if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-            knob1_prev = knob_1_pos;
-            baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
-            delay_time_changed = 1;
-            //LED_bypass_Aux = 1;
+       // LED_bypass_Aux = 0;
+        if (bottom_push_state != 5) {
+            if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+                knob1_prev = knob_1_pos;
+                baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
+                delay_time_changed = 1;
+                //LED_bypass_Aux = 1;
+            } 
         } 
 
 
@@ -280,11 +192,22 @@ void main(void) {
         //  2) Map knob to 0-39 for array
         //  3) Set CCP to calibrated value
         //------------------------------------------------
-        if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
-            knob3_prev = knob_3_pos;
-            int i = (int)map(knob3_prev, 0, 1023, 16, 0);
-            CCPR4 = (int)B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
-            CCPR5 = (int)B25k[i];
+        if (bottom_push_state != 5) {
+            if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+                knob3_prev = knob_3_pos;
+                int i = (int)map(knob3_prev, 0, 1023, 16, 0);
+                CCPR4 = (int)B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
+                CCPR5 = (int)B25k[i];
+            }
+        } else {
+            if (knob3_prev != 511) {
+                knob3_prev = 511;
+                //in chorus mode, set the feedback to 50%
+                int i = (int) map(knob3_prev, 0, 1023, 16, 0);
+                CCPR4 = (int) B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
+                CCPR5 = (int) B25k[i];
+            }
+            
         }
 
 
@@ -311,83 +234,7 @@ void main(void) {
             knob5_prev = knob_5_pos;
             adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
             
-        }
-
-
-        //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        //increment modulation -----------------------------
-        //  1) Read counter to see if more then 30 steps
-        //  1a) If > 31, reset counter to zero
-        //  2) based on modulation state, determine which array to reference
-        //  3) call array and map it to the counter to develop a value
-        //  4) subroutine to calculate PWM cycle depending on mod value and depth pot
-        //  5) write CCP value U14 CCPR9
-        //  6) reset timer
-        //--------------------------------------------------
-         /*LED_tap_Aux = 0;        
-         if (mod_timer >= mod_delay_time) {
-            LED_tap_Aux = 1;           
-            mod_counter = mod_counter + 1;
-            mod_timer = 0;
-
-            if (bottom_push_state == 1 || bottom_push_state == 5) {
-                if (mod_counter >= 61) {
-                    mod_counter = 0;
-               }                
-            } else {
-                if (mod_counter >= 31) {
-                    mod_counter = 0;
-                }
-            }
-
-            
-
-            adjusted_pot_value = map(knob5_prev, 0, 1023, 1275, 0);
-            switch (bottom_push_state) {
-                case 1:
-                    mod_value = mod5[mod_counter];
-                    chorus = 0;
-                    break;
-                case 2:
-                    mod_value = mod2[mod_counter];
-                    chorus = 0;
-                    break;
-                case 3:
-                    mod_value = mod3[mod_counter];
-                    chorus = 0;
-                    break;
-                case 4:
-                    mod_value = mod4[mod_counter];
-                    chorus = 0;
-                    break;
-                case 5:
-                    mod_value = mod5[mod_counter];
-                    //adjusted_pot_value = 1275;
-                    chorus = 1;
-                    break;
-                case 6:
-                    mod_value = 0;
-                    chorus = 0;
-                    break;
-            }
-
-
-
-
-            
-            
-            mod_value = modulation(mod_value, adjusted_pot_value);
-            CCPR9 = mod_value / 2;
-            mod_timer = 0;
-
-
-            
-        }
-
-*/
-
-         
+        }        
 
         //subroutine to calculate led interval and PWM value if delay time has changed
         if (delay_time_changed == 1) {

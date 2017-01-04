@@ -1,34 +1,26 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"603 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S36 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"602
-[u S35 `S36 1 ]
-[n S35 . . ]
-"614
-[v _PORTDbits `VS35 ~T0 @X0 0 e@15 ]
-"21 system.h
-[v _set_leds_bottom `(v ~T0 @X0 0 ef1`i ]
-"20
+"420 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[s S30 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S30 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"419
+[u S29 `S30 1 ]
+[n S29 . . ]
+"431
+[v _PORTAbits `VS29 ~T0 @X0 0 e@12 ]
+"25 expressTap.h
+[v _initExpModeState `(v ~T0 @X0 0 ef ]
+"26
+[v _initTapeModeState `(v ~T0 @X0 0 ef ]
+"6394 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[s S322 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S322 . ANSF0 ANSF1 ANSF2 ANSF3 ANSF4 ANSF5 ANSF6 ANSF7 ]
+"6393
+[u S321 `S322 1 ]
+[n S321 . . ]
+"6405
+[v _ANSELFbits `VS321 ~T0 @X0 0 e@1036 ]
+"20 system.h
 [v _wait_ms `(v ~T0 @X0 0 ef1`ui ]
-"22
-[v _set_leds_top `(v ~T0 @X0 0 ef2`i`i ]
-"542 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S34 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"541
-[u S33 `S34 1 ]
-[n S33 . . ]
-"553
-[v _PORTCbits `VS33 ~T0 @X0 0 e@14 ]
-"2449
-[s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S116 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"2448
-[u S115 `S116 1 ]
-[n S115 . . ]
-"2460
-[v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -4126,305 +4118,76 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;constants.h: 105: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
-[; ;tactiles.h: 24: void read_bottom_tactile(void);
-[; ;tactiles.h: 25: void read_top_tactile(void);
-[; ;tactiles.h: 26: void update_mode(void);
-[; ;LEDs.h: 24: void star_tactiles(uint8_t);
-[; ;LEDs.h: 25: void ring_tactiles(void);
-[; ;LEDs.h: 26: void solidring_tactiles(void);
-[; ;LEDs.h: 27: void showSave(void);
-[; ;LEDs.h: 28: void showBootSequence(void);
-"14 tactiles.c
-[v _topTactile_pressed `uc ~T0 @X0 1 e ]
-[i _topTactile_pressed
--> -> 0 `i `uc
-]
-[; ;tactiles.c: 14: uint8_t topTactile_pressed = 0;
-"15
-[v _bottomTactile_pressed `uc ~T0 @X0 1 e ]
-[i _bottomTactile_pressed
--> -> 0 `i `uc
-]
-[; ;tactiles.c: 15: uint8_t bottomTactile_pressed = 0;
-"17
-[v _read_bottom_tactile `(v ~T0 @X0 1 ef ]
+[; ;expressTap.h: 24: void update_expressSwitchState(void);
+[; ;expressTap.h: 25: void initExpModeState(void);
+[; ;expressTap.h: 26: void initTapeModeState(void);
+"13 expressTap.c
+[v _update_expressSwitchState `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 17: void read_bottom_tactile(void) {
-[e :U _read_bottom_tactile ]
+[; ;expressTap.c: 13: void update_expressSwitchState(void) {
+[e :U _update_expressSwitchState ]
 [f ]
-[; ;tactiles.c: 25: if (PORTDbits.RD6 == 0) {
-"25
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 461  ]
+[; ;expressTap.c: 14: if (PORTAbits.RA4 != expSwitchState) {
+"14
+[e $ ! != -> . . _PORTAbits 0 4 `i -> _expSwitchState `i 461  ]
 {
-[; ;tactiles.c: 26: if (bottomTactile_pressed > 0) {
-"26
-[e $ ! > -> _bottomTactile_pressed `i -> 0 `i 462  ]
+[; ;expressTap.c: 16: expSwitchState = PORTAbits.RA4;
+"16
+[e = _expSwitchState . . _PORTAbits 0 4 ]
+[; ;expressTap.c: 17: if (PORTAbits.RA4 == 0) {
+"17
+[e $ ! == -> . . _PORTAbits 0 4 `i -> 0 `i 462  ]
 {
-[; ;tactiles.c: 27: bottomTactile_pressed--;
-"27
-[e -- _bottomTactile_pressed -> -> 1 `i `uc ]
-"28
+[; ;expressTap.c: 18: initExpModeState();
+"18
+[e ( _initExpModeState ..  ]
+"19
 }
-[e :U 462 ]
-"29
-}
-[; ;tactiles.c: 28: }
-[; ;tactiles.c: 29: } else if (bottomTactile_pressed < 25) {
+[; ;expressTap.c: 19: } else {
 [e $U 463  ]
-[e :U 461 ]
-[e $ ! < -> _bottomTactile_pressed `i -> 25 `i 464  ]
+[e :U 462 ]
 {
-[; ;tactiles.c: 30: bottomTactile_pressed++;
-"30
-[e ++ _bottomTactile_pressed -> -> 1 `i `uc ]
-"31
+[; ;expressTap.c: 20: initTapeModeState();
+"20
+[e ( _initTapeModeState ..  ]
+"21
 }
-[e :U 464 ]
-"34
 [e :U 463 ]
-[; ;tactiles.c: 31: }
-[; ;tactiles.c: 34: if (bottomTactile_pressed == 0) {
-[e $ ! == -> _bottomTactile_pressed `i -> 0 `i 465  ]
-{
-[; ;tactiles.c: 35: bottom_push_state = bottom_push_state + 1;
-"35
-[e = _bottom_push_state + _bottom_push_state -> 1 `i ]
-[; ;tactiles.c: 36: if (bottom_push_state > 6) {
-"36
-[e $ ! > _bottom_push_state -> 6 `i 466  ]
-{
-[; ;tactiles.c: 37: bottom_push_state = 1;
-"37
-[e = _bottom_push_state -> 1 `i ]
-"38
+"22
 }
-[e :U 466 ]
-[; ;tactiles.c: 38: }
-[; ;tactiles.c: 39: set_leds_bottom(bottom_push_state);
-"39
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;tactiles.c: 41: while (PORTDbits.RD6 == 0) {
-"41
-[e $U 467  ]
-[e :U 468 ]
-{
-"42
-}
-[e :U 467 ]
-"41
-[e $ == -> . . _PORTDbits 0 6 `i -> 0 `i 468  ]
-[e :U 469 ]
-[; ;tactiles.c: 42: }
-[; ;tactiles.c: 43: wait_ms(20);
-"43
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-"44
-}
-[e :U 465 ]
-[; ;tactiles.c: 44: }
-[; ;tactiles.c: 45: }
-"45
+[e :U 461 ]
+[; ;expressTap.c: 21: }
+[; ;expressTap.c: 22: }
+[; ;expressTap.c: 23: }
+"23
 [e :UE 460 ]
 }
-"47
-[v _read_top_tactile `(v ~T0 @X0 1 ef ]
+"25
+[v _initExpModeState `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 47: void read_top_tactile(void) {
-[e :U _read_top_tactile ]
+[; ;expressTap.c: 25: void initExpModeState(void) {
+[e :U _initExpModeState ]
 [f ]
-[; ;tactiles.c: 56: if (PORTDbits.RD5 == 0) {
-"56
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 471  ]
-{
-[; ;tactiles.c: 57: if (topTactile_pressed > 0) {
-"57
-[e $ ! > -> _topTactile_pressed `i -> 0 `i 472  ]
-{
-[; ;tactiles.c: 58: topTactile_pressed--;
-"58
-[e -- _topTactile_pressed -> -> 1 `i `uc ]
-"59
-}
-[e :U 472 ]
-"60
-}
-[; ;tactiles.c: 59: }
-[; ;tactiles.c: 60: } else if (topTactile_pressed < 25) {
-[e $U 473  ]
-[e :U 471 ]
-[e $ ! < -> _topTactile_pressed `i -> 25 `i 474  ]
-{
-[; ;tactiles.c: 61: topTactile_pressed++;
-"61
-[e ++ _topTactile_pressed -> -> 1 `i `uc ]
-"62
-}
-[e :U 474 ]
-"67
-[e :U 473 ]
-[; ;tactiles.c: 62: }
-[; ;tactiles.c: 67: if (topTactile_pressed == 0) {
-[e $ ! == -> _topTactile_pressed `i -> 0 `i 475  ]
-{
-[; ;tactiles.c: 68: top_push_state = top_push_state + 1;
-"68
-[e = _top_push_state + _top_push_state -> 1 `i ]
-[; ;tactiles.c: 69: if (top_push_state >= 7) {
-"69
-[e $ ! >= _top_push_state -> 7 `i 476  ]
-{
-[; ;tactiles.c: 70: top_push_state = 1;
-"70
-[e = _top_push_state -> 1 `i ]
-"71
-}
-[e :U 476 ]
-[; ;tactiles.c: 71: }
-[; ;tactiles.c: 72: set_leds_top(top_push_state, 1);
-"72
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;tactiles.c: 73: delay_time_changed = 1;
-"73
-[e = _delay_time_changed -> 1 `i ]
-[; ;tactiles.c: 76: while (PORTDbits.RD5 == 0) {
-"76
-[e $U 477  ]
-[e :U 478 ]
-{
-"77
-}
-[e :U 477 ]
-"76
-[e $ == -> . . _PORTDbits 0 5 `i -> 0 `i 478  ]
-[e :U 479 ]
-[; ;tactiles.c: 77: }
-[; ;tactiles.c: 78: wait_ms(20);
-"78
+[; ;expressTap.c: 26: ANSELFbits.ANSF6 = 0;
+"26
+[e = . . _ANSELFbits 0 6 -> -> 0 `i `uc ]
+[; ;expressTap.c: 28: wait_ms(20);
+"28
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-"79
+[; ;expressTap.c: 29: }
+"29
+[e :UE 464 ]
 }
-[e :U 475 ]
-[; ;tactiles.c: 79: }
-[; ;tactiles.c: 80: }
-"80
-[e :UE 470 ]
-}
-"82
-[v _update_mode `(v ~T0 @X0 1 ef ]
+"31
+[v _initTapeModeState `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 82: void update_mode(void) {
-[e :U _update_mode ]
+[; ;expressTap.c: 31: void initTapeModeState(void) {
+[e :U _initTapeModeState ]
 [f ]
-[; ;tactiles.c: 87: if (PORTCbits.RC0 == 0) {
-"87
-[e $ ! == -> . . _PORTCbits 0 0 `i -> 0 `i 481  ]
-{
-[; ;tactiles.c: 88: debounce_mode2++;
-"88
-[e ++ _debounce_mode2 -> 1 `i ]
-[; ;tactiles.c: 89: if (debounce_mode2 > 25) {
-"89
-[e $ ! > _debounce_mode2 -> 25 `i 482  ]
-{
-[; ;tactiles.c: 90: debounce_mode2 = 25;
-"90
-[e = _debounce_mode2 -> 25 `i ]
-[; ;tactiles.c: 91: mode2_state++;
-"91
-[e ++ _mode2_state -> -> 1 `i `uc ]
-[; ;tactiles.c: 92: if (mode2_state > 2) {
-"92
-[e $ ! > -> _mode2_state `i -> 2 `i 483  ]
-{
-[; ;tactiles.c: 93: mode2_state = 0;
-"93
-[e = _mode2_state -> -> 0 `i `uc ]
-"94
-}
-[e :U 483 ]
-[; ;tactiles.c: 94: }
-[; ;tactiles.c: 95: switch(mode2_state) {
-"95
-[e $U 485  ]
-{
-[; ;tactiles.c: 96: case 0:
-"96
-[e :U 486 ]
-[; ;tactiles.c: 97: LATBbits.LATB1 = 0;
-"97
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;tactiles.c: 98: LATBbits.LATB0 = 0;
-"98
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;tactiles.c: 99: break;
-"99
-[e $U 484  ]
-[; ;tactiles.c: 100: case 1:
-"100
-[e :U 487 ]
-[; ;tactiles.c: 101: LATBbits.LATB1 = 0;
-"101
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;tactiles.c: 102: LATBbits.LATB0 = 1;
-"102
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;tactiles.c: 103: break;
-"103
-[e $U 484  ]
-[; ;tactiles.c: 104: case 2:
-"104
-[e :U 488 ]
-[; ;tactiles.c: 105: LATBbits.LATB1 = 1;
-"105
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;tactiles.c: 106: LATBbits.LATB0 = 0;
-"106
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;tactiles.c: 107: break;
-"107
-[e $U 484  ]
-"108
-}
-[; ;tactiles.c: 108: }
-[e $U 484  ]
-"95
-[e :U 485 ]
-[e [\ _mode2_state , $ -> -> 0 `i `uc 486
- , $ -> -> 1 `i `uc 487
- , $ -> -> 2 `i `uc 488
- 484 ]
-"108
-[e :U 484 ]
-[; ;tactiles.c: 109: while (PORTCbits.RC0 == 0) {
-"109
-[e $U 489  ]
-[e :U 490 ]
-{
-"110
-}
-[e :U 489 ]
-"109
-[e $ == -> . . _PORTCbits 0 0 `i -> 0 `i 490  ]
-[e :U 491 ]
-"111
-}
-[e :U 482 ]
-"112
-}
-[; ;tactiles.c: 110: }
-[; ;tactiles.c: 111: }
-[; ;tactiles.c: 112: } else {
-[e $U 492  ]
-[e :U 481 ]
-{
-[; ;tactiles.c: 113: debounce_mode2 = 0;
-"113
-[e = _debounce_mode2 -> 0 `i ]
-"114
-}
-[e :U 492 ]
-[; ;tactiles.c: 114: }
-[; ;tactiles.c: 116: }
-"116
-[e :UE 480 ]
+[; ;expressTap.c: 32: ANSELFbits.ANSF6 = 0;
+"32
+[e = . . _ANSELFbits 0 6 -> -> 0 `i `uc ]
+[; ;expressTap.c: 33: }
+"33
+[e :UE 465 ]
 }

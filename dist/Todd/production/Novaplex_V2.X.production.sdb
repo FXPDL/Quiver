@@ -33,6 +33,12 @@
 "15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 [v i1___lmul __lmul `(ul  1 e 4 0 ]
+"13 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\expressTap.c
+[v _update_expressSwitchState update_expressSwitchState `(i  1 e 2 0 ]
+"25
+[v _initExpModeState initExpModeState `(v  1 e 1 0 ]
+"31
+[v _initTapeModeState initTapeModeState `(v  1 e 1 0 ]
 "25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
@@ -131,6 +137,18 @@
 ]
 [u S33 . 1 `S19 1 . 1 0 `S28 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES33  1 e 1 @11 ]
+[s S1842 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"431
+[u S1851 . 1 `S1842 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES1851  1 e 1 @12 ]
 [s S79 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -143,7 +161,7 @@
 "553
 [u S88 . 1 `S79 1 . 1 0 ]
 [v _PORTCbits PORTCbits `VES88  1 e 1 @14 ]
-[s S213 . 1 `uc 1 RD0 1 0 :1:0 
+[s S214 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -153,9 +171,9 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "614
-[u S222 . 1 `S213 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES222  1 e 1 @15 ]
-[s S192 . 1 `uc 1 RE0 1 0 :1:0 
+[u S223 . 1 `S214 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES223  1 e 1 @15 ]
+[s S193 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
@@ -165,16 +183,16 @@
 `uc 1 RE7 1 0 :1:7 
 ]
 "675
-[u S201 . 1 `S192 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES201  1 e 1 @16 ]
+[u S202 . 1 `S193 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES202  1 e 1 @16 ]
 "1216
 [v _PR2 PR2 `VEuc  1 e 1 @27 ]
-[s S942 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S949 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
 "1256
-[s S946 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S953 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -182,9 +200,9 @@
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[u S954 . 1 `S942 1 . 1 0 `S946 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES954  1 e 1 @28 ]
-[s S413 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S961 . 1 `S949 1 . 1 0 `S953 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES961  1 e 1 @28 ]
+[s S420 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -194,9 +212,9 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "1383
-[u S422 . 1 `S413 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES422  1 e 1 @141 ]
-[s S434 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S429 . 1 `S420 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES429  1 e 1 @141 ]
+[s S441 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -206,9 +224,9 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1444
-[u S443 . 1 `S434 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES443  1 e 1 @142 ]
-[s S455 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S450 . 1 `S441 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES450  1 e 1 @142 ]
+[s S462 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -218,9 +236,9 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "1505
-[u S464 . 1 `S455 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES464  1 e 1 @143 ]
-[s S476 . 1 `uc 1 TRISE0 1 0 :1:0 
+[u S471 . 1 `S462 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES471  1 e 1 @143 ]
+[s S483 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 TRISE3 1 0 :1:3 
@@ -230,9 +248,9 @@
 `uc 1 TRISE7 1 0 :1:7 
 ]
 "1566
-[u S485 . 1 `S476 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES485  1 e 1 @144 ]
-[s S971 . 1 `uc 1 PS 1 0 :3:0 
+[u S492 . 1 `S483 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES492  1 e 1 @144 ]
+[s S978 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
 `uc 1 TMR0CS 1 0 :1:5 
@@ -240,21 +258,21 @@
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1902
-[s S978 . 1 `uc 1 PS0 1 0 :1:0 
+[s S985 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S985 . 1 `S971 1 . 1 0 `S978 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES985  1 e 1 @149 ]
-[s S378 . 1 `uc 1 SCS 1 0 :2:0 
+[u S992 . 1 `S978 1 . 1 0 `S985 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES992  1 e 1 @149 ]
+[s S385 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
 "2096
-[s S382 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S389 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -262,18 +280,18 @@
 `uc 1 IRCF2 1 0 :1:5 
 `uc 1 IRCF3 1 0 :1:6 
 ]
-[u S390 . 1 `S378 1 . 1 0 `S382 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES390  1 e 1 @153 ]
+[u S397 . 1 `S385 1 . 1 0 `S389 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES397  1 e 1 @153 ]
 "2200
 [v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
 "2219
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
-[s S641 . 1 `uc 1 ADON 1 0 :1:0 
+[s S648 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "2263
-[s S645 . 1 `uc 1 . 1 0 :1:0 
+[s S652 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -281,26 +299,26 @@
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S653 . 1 `uc 1 . 1 0 :1:0 
+[s S660 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S656 . 1 `S641 1 . 1 0 `S645 1 . 1 0 `S653 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES656  1 e 1 @157 ]
-[s S613 . 1 `uc 1 ADPREF 1 0 :2:0 
+[u S663 . 1 `S648 1 . 1 0 `S652 1 . 1 0 `S660 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES663  1 e 1 @157 ]
+[s S620 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2338
-[s S618 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[s S625 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS0 1 0 :1:4 
 `uc 1 ADCS1 1 0 :1:5 
 `uc 1 ADCS2 1 0 :1:6 
 ]
-[u S625 . 1 `S613 1 . 1 0 `S618 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES625  1 e 1 @158 ]
+[u S632 . 1 `S620 1 . 1 0 `S625 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES632  1 e 1 @158 ]
 [s S51 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
@@ -313,7 +331,7 @@
 "2460
 [u S60 . 1 `S51 1 . 1 0 ]
 [v _LATBbits LATBbits `VES60  1 e 1 @269 ]
-[s S1315 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S1323 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -323,25 +341,25 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "2585
-[s S1324 . 1 `uc 1 LATD 1 0 :8:0 
+[s S1332 . 1 `uc 1 LATD 1 0 :8:0 
 ]
-[u S1326 . 1 `S1315 1 . 1 0 `S1324 1 . 1 0 ]
-[v _LATDbits LATDbits `VES1326  1 e 1 @271 ]
-[s S678 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+[u S1334 . 1 `S1323 1 . 1 0 `S1332 1 . 1 0 ]
+[v _LATDbits LATDbits `VES1334  1 e 1 @271 ]
+[s S685 . 1 `uc 1 CCP2SEL 1 0 :1:0 
 `uc 1 T3CKISEL 1 0 :1:1 
 ]
 "2796
-[u S681 . 1 `S678 1 . 1 0 ]
-[v _APFCONbits APFCONbits `VES681  1 e 1 @285 ]
-[s S497 . 1 `uc 1 ANSE0 1 0 :1:0 
+[u S688 . 1 `S685 1 . 1 0 ]
+[v _APFCONbits APFCONbits `VES688  1 e 1 @285 ]
+[s S504 . 1 `uc 1 ANSE0 1 0 :1:0 
 `uc 1 ANSE1 1 0 :1:1 
 `uc 1 ANSE2 1 0 :1:2 
 ]
 "2979
-[s S501 . 1 `uc 1 ANSELE 1 0 :3:0 
+[s S508 . 1 `uc 1 ANSELE 1 0 :3:0 
 ]
-[u S503 . 1 `S497 1 . 1 0 `S501 1 . 1 0 ]
-[v _ANSELEbits ANSELEbits `VES503  1 e 1 @400 ]
+[u S510 . 1 `S504 1 . 1 0 `S508 1 . 1 0 ]
+[v _ANSELEbits ANSELEbits `VES510  1 e 1 @400 ]
 "3009
 [v _PMADRL PMADRL `VEuc  1 e 1 @401 ]
 "3028
@@ -350,7 +368,7 @@
 [v _PMDATL PMDATL `VEuc  1 e 1 @403 ]
 "3072
 [v _PMDATH PMDATH `VEuc  1 e 1 @404 ]
-[s S1231 . 1 `uc 1 RD 1 0 :1:0 
+[s S1239 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -359,47 +377,47 @@
 `uc 1 CFGS 1 0 :1:6 
 ]
 "3107
-[u S1239 . 1 `S1231 1 . 1 0 ]
-[v _PMCON1bits PMCON1bits `VES1239  1 e 1 @405 ]
+[u S1247 . 1 `S1239 1 . 1 0 ]
+[v _PMCON1bits PMCON1bits `VES1247  1 e 1 @405 ]
 "3146
 [v _PMCON2 PMCON2 `VEuc  1 e 1 @406 ]
 "5213
 [v _CCPR1 CCPR1 `VEus  1 e 2 @657 ]
-[s S687 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S694 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
 "5276
-[s S690 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S697 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 DC1B0 1 0 :1:4 
 `uc 1 DC1B1 1 0 :1:5 
 ]
-[u S697 . 1 `S687 1 . 1 0 `S690 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES697  1 e 1 @659 ]
+[u S704 . 1 `S694 1 . 1 0 `S697 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES704  1 e 1 @659 ]
 "5320
 [v _CCPR2 CCPR2 `VEus  1 e 2 @664 ]
-[s S711 . 1 `uc 1 CCP2M 1 0 :4:0 
+[s S718 . 1 `uc 1 CCP2M 1 0 :4:0 
 `uc 1 DC2B 1 0 :2:4 
 ]
 "5383
-[s S714 . 1 `uc 1 CCP2M0 1 0 :1:0 
+[s S721 . 1 `uc 1 CCP2M0 1 0 :1:0 
 `uc 1 CCP2M1 1 0 :1:1 
 `uc 1 CCP2M2 1 0 :1:2 
 `uc 1 CCP2M3 1 0 :1:3 
 `uc 1 DC2B0 1 0 :1:4 
 `uc 1 DC2B1 1 0 :1:5 
 ]
-[u S721 . 1 `S711 1 . 1 0 `S714 1 . 1 0 ]
-[v _CCP2CONbits CCP2CONbits `VES721  1 e 1 @666 ]
+[u S728 . 1 `S718 1 . 1 0 `S721 1 . 1 0 ]
+[v _CCP2CONbits CCP2CONbits `VES728  1 e 1 @666 ]
 "5427
 [v _CCPTMRS0 CCPTMRS0 `VEuc  1 e 1 @669 ]
 "5514
 [v _CCPTMRS1 CCPTMRS1 `VEuc  1 e 1 @670 ]
 "5601
 [v _CCPTMRS2 CCPTMRS2 `VEuc  1 e 1 @671 ]
-[s S525 . 1 `uc 1 TRISF0 1 0 :1:0 
+[s S532 . 1 `uc 1 TRISF0 1 0 :1:0 
 `uc 1 TRISF1 1 0 :1:1 
 `uc 1 TRISF2 1 0 :1:2 
 `uc 1 TRISF3 1 0 :1:3 
@@ -409,63 +427,63 @@
 `uc 1 TRISF7 1 0 :1:7 
 ]
 "5669
-[u S534 . 1 `S525 1 . 1 0 ]
-[v _TRISFbits TRISFbits `VES534  1 e 1 @780 ]
-[s S567 . 1 `uc 1 TRISG0 1 0 :1:0 
+[u S541 . 1 `S532 1 . 1 0 ]
+[v _TRISFbits TRISFbits `VES541  1 e 1 @780 ]
+[s S574 . 1 `uc 1 TRISG0 1 0 :1:0 
 `uc 1 TRISG1 1 0 :1:1 
 `uc 1 TRISG2 1 0 :1:2 
 `uc 1 TRISG3 1 0 :1:3 
 `uc 1 TRISG4 1 0 :1:4 
 ]
 "5727
-[u S573 . 1 `S567 1 . 1 0 ]
-[v _TRISGbits TRISGbits `VES573  1 e 1 @781 ]
+[u S580 . 1 `S574 1 . 1 0 ]
+[v _TRISGbits TRISGbits `VES580  1 e 1 @781 ]
 "5756
 [v _CCPR3 CCPR3 `VEus  1 e 2 @785 ]
-[s S735 . 1 `uc 1 CCP3M 1 0 :4:0 
+[s S742 . 1 `uc 1 CCP3M 1 0 :4:0 
 `uc 1 DC3B 1 0 :2:4 
 ]
 "5819
-[s S738 . 1 `uc 1 CCP3M0 1 0 :1:0 
+[s S745 . 1 `uc 1 CCP3M0 1 0 :1:0 
 `uc 1 CCP3M1 1 0 :1:1 
 `uc 1 CCP3M2 1 0 :1:2 
 `uc 1 CCP3M3 1 0 :1:3 
 `uc 1 DC3B0 1 0 :1:4 
 `uc 1 DC3B1 1 0 :1:5 
 ]
-[u S745 . 1 `S735 1 . 1 0 `S738 1 . 1 0 ]
-[v _CCP3CONbits CCP3CONbits `VES745  1 e 1 @787 ]
+[u S752 . 1 `S742 1 . 1 0 `S745 1 . 1 0 ]
+[v _CCP3CONbits CCP3CONbits `VES752  1 e 1 @787 ]
 "5863
 [v _CCPR4 CCPR4 `VEus  1 e 2 @792 ]
-[s S759 . 1 `uc 1 CCP4M 1 0 :4:0 
+[s S766 . 1 `uc 1 CCP4M 1 0 :4:0 
 `uc 1 DC4B 1 0 :2:4 
 ]
 "5926
-[s S762 . 1 `uc 1 CCP4M0 1 0 :1:0 
+[s S769 . 1 `uc 1 CCP4M0 1 0 :1:0 
 `uc 1 CCP4M1 1 0 :1:1 
 `uc 1 CCP4M2 1 0 :1:2 
 `uc 1 CCP4M3 1 0 :1:3 
 `uc 1 DC4B0 1 0 :1:4 
 `uc 1 DC4B1 1 0 :1:5 
 ]
-[u S769 . 1 `S759 1 . 1 0 `S762 1 . 1 0 ]
-[v _CCP4CONbits CCP4CONbits `VES769  1 e 1 @794 ]
+[u S776 . 1 `S766 1 . 1 0 `S769 1 . 1 0 ]
+[v _CCP4CONbits CCP4CONbits `VES776  1 e 1 @794 ]
 "5970
 [v _CCPR5 CCPR5 `VEus  1 e 2 @796 ]
-[s S783 . 1 `uc 1 CCP5M 1 0 :4:0 
+[s S790 . 1 `uc 1 CCP5M 1 0 :4:0 
 `uc 1 DC5B 1 0 :2:4 
 ]
 "6033
-[s S786 . 1 `uc 1 CCP5M0 1 0 :1:0 
+[s S793 . 1 `uc 1 CCP5M0 1 0 :1:0 
 `uc 1 CCP5M1 1 0 :1:1 
 `uc 1 CCP5M2 1 0 :1:2 
 `uc 1 CCP5M3 1 0 :1:3 
 `uc 1 DC5B0 1 0 :1:4 
 `uc 1 DC5B1 1 0 :1:5 
 ]
-[u S793 . 1 `S783 1 . 1 0 `S786 1 . 1 0 ]
-[v _CCP5CONbits CCP5CONbits `VES793  1 e 1 @798 ]
-[s S1294 . 1 `uc 1 LATF0 1 0 :1:0 
+[u S800 . 1 `S790 1 . 1 0 `S793 1 . 1 0 ]
+[v _CCP5CONbits CCP5CONbits `VES800  1 e 1 @798 ]
+[s S1302 . 1 `uc 1 LATF0 1 0 :1:0 
 `uc 1 LATF1 1 0 :1:1 
 `uc 1 LATF2 1 0 :1:2 
 `uc 1 LATF3 1 0 :1:3 
@@ -475,18 +493,18 @@
 `uc 1 LATF7 1 0 :1:7 
 ]
 "6094
-[u S1303 . 1 `S1294 1 . 1 0 ]
-[v _LATFbits LATFbits `VES1303  1 e 1 @908 ]
-[s S1008 . 1 `uc 1 LATG0 1 0 :1:0 
+[u S1311 . 1 `S1302 1 . 1 0 ]
+[v _LATFbits LATFbits `VES1311  1 e 1 @908 ]
+[s S1015 . 1 `uc 1 LATG0 1 0 :1:0 
 `uc 1 LATG1 1 0 :1:1 
 `uc 1 LATG2 1 0 :1:2 
 `uc 1 LATG3 1 0 :1:3 
 `uc 1 LATG4 1 0 :1:4 
 ]
 "6152
-[u S1014 . 1 `S1008 1 . 1 0 ]
-[v _LATGbits LATGbits `VES1014  1 e 1 @909 ]
-[s S546 . 1 `uc 1 ANSF0 1 0 :1:0 
+[u S1021 . 1 `S1015 1 . 1 0 ]
+[v _LATGbits LATGbits `VES1021  1 e 1 @909 ]
+[s S553 . 1 `uc 1 ANSF0 1 0 :1:0 
 `uc 1 ANSF1 1 0 :1:1 
 `uc 1 ANSF2 1 0 :1:2 
 `uc 1 ANSF3 1 0 :1:3 
@@ -496,134 +514,136 @@
 `uc 1 ANSF7 1 0 :1:7 
 ]
 "6405
-[u S555 . 1 `S546 1 . 1 0 ]
-[v _ANSELFbits ANSELFbits `VES555  1 e 1 @1036 ]
-[s S807 . 1 `uc 1 CCP6M 1 0 :4:0 
+[u S562 . 1 `S553 1 . 1 0 ]
+[v _ANSELFbits ANSELFbits `VES562  1 e 1 @1036 ]
+[s S814 . 1 `uc 1 CCP6M 1 0 :4:0 
 `uc 1 DC6B 1 0 :2:4 
 ]
 "7879
-[s S810 . 1 `uc 1 CCP6M0 1 0 :1:0 
+[s S817 . 1 `uc 1 CCP6M0 1 0 :1:0 
 `uc 1 CCP6M1 1 0 :1:1 
 `uc 1 CCP6M2 1 0 :1:2 
 `uc 1 CCP6M3 1 0 :1:3 
 `uc 1 DC6B0 1 0 :1:4 
 `uc 1 DC6B1 1 0 :1:5 
 ]
-[u S817 . 1 `S807 1 . 1 0 `S810 1 . 1 0 ]
-[v _CCP6CONbits CCP6CONbits `VES817  1 e 1 @1555 ]
-[s S831 . 1 `uc 1 CCP7M 1 0 :4:0 
+[u S824 . 1 `S814 1 . 1 0 `S817 1 . 1 0 ]
+[v _CCP6CONbits CCP6CONbits `VES824  1 e 1 @1555 ]
+[s S838 . 1 `uc 1 CCP7M 1 0 :4:0 
 `uc 1 DC7B 1 0 :2:4 
 ]
 "7986
-[s S834 . 1 `uc 1 CCP7M0 1 0 :1:0 
+[s S841 . 1 `uc 1 CCP7M0 1 0 :1:0 
 `uc 1 CCP7M1 1 0 :1:1 
 `uc 1 CCP7M2 1 0 :1:2 
 `uc 1 CCP7M3 1 0 :1:3 
 `uc 1 DC7B0 1 0 :1:4 
 `uc 1 DC7B1 1 0 :1:5 
 ]
-[u S841 . 1 `S831 1 . 1 0 `S834 1 . 1 0 ]
-[v _CCP7CONbits CCP7CONbits `VES841  1 e 1 @1558 ]
-[s S855 . 1 `uc 1 CCP8M 1 0 :4:0 
+[u S848 . 1 `S838 1 . 1 0 `S841 1 . 1 0 ]
+[v _CCP7CONbits CCP7CONbits `VES848  1 e 1 @1558 ]
+[s S862 . 1 `uc 1 CCP8M 1 0 :4:0 
 `uc 1 DC8B 1 0 :2:4 
 ]
 "8093
-[s S858 . 1 `uc 1 CCP8M0 1 0 :1:0 
+[s S865 . 1 `uc 1 CCP8M0 1 0 :1:0 
 `uc 1 CCP8M1 1 0 :1:1 
 `uc 1 CCP8M2 1 0 :1:2 
 `uc 1 CCP8M3 1 0 :1:3 
 `uc 1 DC8B0 1 0 :1:4 
 `uc 1 DC8B1 1 0 :1:5 
 ]
-[u S865 . 1 `S855 1 . 1 0 `S858 1 . 1 0 ]
-[v _CCP8CONbits CCP8CONbits `VES865  1 e 1 @1561 ]
+[u S872 . 1 `S862 1 . 1 0 `S865 1 . 1 0 ]
+[v _CCP8CONbits CCP8CONbits `VES872  1 e 1 @1561 ]
 "8137
 [v _CCPR9 CCPR9 `VEus  1 e 2 @1562 ]
-[s S879 . 1 `uc 1 CCP9M 1 0 :4:0 
+[s S886 . 1 `uc 1 CCP9M 1 0 :4:0 
 `uc 1 DC9B 1 0 :2:4 
 ]
 "8200
-[s S882 . 1 `uc 1 CCP9M0 1 0 :1:0 
+[s S889 . 1 `uc 1 CCP9M0 1 0 :1:0 
 `uc 1 CCP9M1 1 0 :1:1 
 `uc 1 CCP9M2 1 0 :1:2 
 `uc 1 CCP9M3 1 0 :1:3 
 `uc 1 DC9B0 1 0 :1:4 
 `uc 1 DC9B1 1 0 :1:5 
 ]
-[u S889 . 1 `S879 1 . 1 0 `S882 1 . 1 0 ]
-[v _CCP9CONbits CCP9CONbits `VES889  1 e 1 @1564 ]
-[s S903 . 1 `uc 1 CCP10M 1 0 :4:0 
+[u S896 . 1 `S886 1 . 1 0 `S889 1 . 1 0 ]
+[v _CCP9CONbits CCP9CONbits `VES896  1 e 1 @1564 ]
+[s S910 . 1 `uc 1 CCP10M 1 0 :4:0 
 `uc 1 DC10B 1 0 :2:4 
 ]
 "8307
-[s S906 . 1 `uc 1 CCP10M0 1 0 :1:0 
+[s S913 . 1 `uc 1 CCP10M0 1 0 :1:0 
 `uc 1 CCP10M1 1 0 :1:1 
 `uc 1 CCP10M2 1 0 :1:2 
 `uc 1 CCP10M3 1 0 :1:3 
 `uc 1 DC10B0 1 0 :1:4 
 `uc 1 DC10B1 1 0 :1:5 
 ]
-[u S913 . 1 `S903 1 . 1 0 `S906 1 . 1 0 ]
-[v _CCP10CONbits CCP10CONbits `VES913  1 e 1 @1567 ]
-"53 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\constants.h
+[u S920 . 1 `S910 1 . 1 0 `S913 1 . 1 0 ]
+[v _CCP10CONbits CCP10CONbits `VES920  1 e 1 @1567 ]
+"55 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\constants.h
 [v _timer timer `VEl  1 e 4 0 ]
-"54
-[v _sub_timer sub_timer `VEl  1 e 4 0 ]
-"55
-[v _feedback_timer feedback_timer `VEui  1 e 2 0 ]
 "56
-[v _longTap_timer longTap_timer `VEui  1 e 2 0 ]
+[v _sub_timer sub_timer `VEl  1 e 4 0 ]
+"57
+[v _feedback_timer feedback_timer `VEui  1 e 2 0 ]
 "58
-[v _delay_counter delay_counter `VEi  1 e 2 0 ]
+[v _longTap_timer longTap_timer `VEui  1 e 2 0 ]
 "60
+[v _delay_counter delay_counter `VEi  1 e 2 0 ]
+"62
 [v _long_press_limit long_press_limit `ui  1 e 2 0 ]
-"61
-[v _baseline_delay_time baseline_delay_time `VEl  1 e 4 0 ]
 "63
-[v _feedback_start feedback_start `uc  1 e 1 0 ]
-"64
-[v _longTap_start longTap_start `uc  1 e 1 0 ]
+[v _baseline_delay_time baseline_delay_time `VEl  1 e 4 0 ]
 "65
-[v _doubleTap_state doubleTap_state `VEuc  1 e 1 0 ]
+[v _feedback_start feedback_start `uc  1 e 1 0 ]
+"66
+[v _longTap_start longTap_start `uc  1 e 1 0 ]
 "67
+[v _doubleTap_state doubleTap_state `VEuc  1 e 1 0 ]
+"69
 [v _mode2_state mode2_state `uc  1 e 1 0 ]
-"70
-[v _suspend_blink suspend_blink `VEuc  1 e 1 0 ]
 "72
+[v _suspend_blink suspend_blink `VEuc  1 e 1 0 ]
+"74
 [v _preset_programmning_on preset_programmning_on `uc  1 e 1 0 ]
-"73
-[v _preset_blink preset_blink `uc  1 e 1 0 ]
 "75
-[v _blink_delay blink_delay `i  1 e 2 0 ]
+[v _preset_blink preset_blink `uc  1 e 1 0 ]
 "77
+[v _blink_delay blink_delay `i  1 e 2 0 ]
+"79
 [v _top_push_state top_push_state `i  1 e 2 0 ]
-"78
+"80
 [v _bottom_push_state bottom_push_state `i  1 e 2 0 ]
-"82
-[v _delay_time_changed delay_time_changed `i  1 e 2 0 ]
-"83
-[v _reset_sub_delay reset_sub_delay `i  1 e 2 0 ]
 "84
-[v _adjust_sub_delay adjust_sub_delay `i  1 e 2 0 ]
+[v _delay_time_changed delay_time_changed `i  1 e 2 0 ]
+"85
+[v _reset_sub_delay reset_sub_delay `i  1 e 2 0 ]
 "86
+[v _adjust_sub_delay adjust_sub_delay `i  1 e 2 0 ]
+"88
 [v _tap tap `[11]l  1 e 44 0 ]
-"90
+"92
 [v _debounce_mode1 debounce_mode1 `i  1 e 2 0 ]
-"91
-[v _debounce_mode2 debounce_mode2 `i  1 e 2 0 ]
 "93
+[v _debounce_mode2 debounce_mode2 `i  1 e 2 0 ]
+"95
 [v _tap_timer tap_timer `VEl  1 e 4 0 ]
-"94
-[v _test_timer test_timer `VEl  1 e 4 0 ]
 "96
-[v _switchBypass_state switchBypass_state `uc  1 e 1 0 ]
-"97
-[v _switchTap_state switchTap_state `uc  1 e 1 0 ]
+[v _test_timer test_timer `VEl  1 e 4 0 ]
 "98
-[v _longTap_state longTap_state `VEuc  1 e 1 0 ]
+[v _switchBypass_state switchBypass_state `uc  1 e 1 0 ]
 "99
-[v _feedback_state feedback_state `VEuc  1 e 1 0 ]
+[v _switchTap_state switchTap_state `uc  1 e 1 0 ]
+"100
+[v _longTap_state longTap_state `VEuc  1 e 1 0 ]
 "101
+[v _feedback_state feedback_state `VEuc  1 e 1 0 ]
+"103
+[v _expSwitchState expSwitchState `uc  1 e 1 0 ]
+"105
 [v _delayArray delayArray `[260]i  1 e 520 @9192 ]
 "22 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\interrupts.c
 [v _mod_value mod_value `i  1 e 2 0 ]
@@ -671,9 +691,9 @@
 [v _mod2 mod2 `[61]c  1 e 61 0 ]
 "36
 [v _mod3 mod3 `[61]c  1 e 61 0 ]
-[s S1529 . 4 `uc 1 tap_A 1 0 `uc 1 tap_B 1 1 `uc 1 bypass_A 1 2 `uc 1 bypass_B 1 3 ]
+[s S1539 . 4 `uc 1 tap_A 1 0 `uc 1 tap_B 1 1 `uc 1 bypass_A 1 2 `uc 1 bypass_B 1 3 ]
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\state_manager.c
-[v _ledState ledState `S1529  1 e 4 0 ]
+[v _ledState ledState `S1539  1 e 4 0 ]
 "19 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchBypass.c
 [v _currentBypassState currentBypassState `uc  1 e 1 0 ]
 "20
@@ -703,16 +723,33 @@
 "83 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"285
-[v main@i_377 i `i  1 a 2 36 ]
-"270
-[v main@i i `i  1 a 2 34 ]
-"434
+"206
+[v main@i_384 i `i  1 a 2 4 ]
+"198
+[v main@i_383 i `i  1 a 2 2 ]
+"182
+[v main@i i `i  1 a 2 0 ]
+"281
 } 0
 "82 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\tactiles.c
 [v _update_mode update_mode `(v  1 e 1 0 ]
 {
 "116
+} 0
+"13 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\expressTap.c
+[v _update_expressSwitchState update_expressSwitchState `(i  1 e 2 0 ]
+{
+"23
+} 0
+"31
+[v _initTapeModeState initTapeModeState `(v  1 e 1 0 ]
+{
+"33
+} 0
+"25
+[v _initExpModeState initExpModeState `(v  1 e 1 0 ]
+{
+"29
 } 0
 "48 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\SwitchTap.c
 [v _updateSwitchTap updateSwitchTap `(v  1 e 1 0 ]
@@ -769,7 +806,7 @@
 {
 [v star_tactiles@reverse reverse `uc  1 a 1 wreg ]
 "202
-[v star_tactiles@iLed_1444 iLed `i  1 a 2 23 ]
+[v star_tactiles@iLed_1453 iLed `i  1 a 2 23 ]
 "196
 [v star_tactiles@iLed iLed `i  1 a 2 21 ]
 "194
@@ -1049,7 +1086,7 @@
 {
 "26
 [v isr@tmpSubDelay tmpSubDelay `i  1 a 2 35 ]
-"259
+"261
 } 0
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Novaplex V2.X\LEDs.c
 [v i1_set_leds_top set_leds_top `(v  1 e 1 0 ]

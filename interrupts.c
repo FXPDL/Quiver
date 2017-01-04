@@ -118,6 +118,8 @@ void interrupt isr(void) {
         }
     }
 
+            //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     //increment modulation -----------------------------
     //  1) Read counter to see if more then 30 steps
     //  1a) If > 31, reset counter to zero
