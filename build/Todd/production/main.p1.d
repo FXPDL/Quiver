@@ -1,6 +1,7 @@
  build/Todd/production/main.d  \
  build/Todd/production/main.p1:  \
  main.c  \
+usart_pic16.h  \
 SwitchBypass.h  \
 memory.h  \
 tactiles.h  \

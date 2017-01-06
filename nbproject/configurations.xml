@@ -16,6 +16,7 @@
       <itemPath>SwitchTap.h</itemPath>
       <itemPath>preset_programming.h</itemPath>
       <itemPath>expressTap.h</itemPath>
+      <itemPath>usart_pic16.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -33,6 +34,7 @@
       <itemPath>SwitchTap.c</itemPath>
       <itemPath>preset_programming.c</itemPath>
       <itemPath>expressTap.c</itemPath>
+      <itemPath>usart_pic16.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -43,6 +45,9 @@
     <itemPath>legal_disclaimer.txt</itemPath>
     <itemPath>project_information.txt</itemPath>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="PIC16F1527" type="2">
@@ -378,7 +383,7 @@
       </makeCustomizationType>
       <HI-TECH-COMP>
         <property key="asmlist" value="true"/>
-        <property key="define-macros" value=""/>
+        <property key="define-macros" value="_XTAL_FREQ=16000000"/>
         <property key="extra-include-directories" value=""/>
         <property key="identifier-length" value="255"/>
         <property key="operation-mode" value="free"/>
@@ -448,7 +453,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

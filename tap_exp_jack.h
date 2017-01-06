@@ -21,8 +21,6 @@ extern "C" {
 
 #endif	/* TACTILES_H */
 
-void read_bottom_tactile(void);
-void read_top_tactile(void);
-void update_mode(void);
-void update_selectMode(void);
-void setPedalMode(void);
+void readJackMode(void);
+void setExpModeState(void);
+void setTapeModeState(void);

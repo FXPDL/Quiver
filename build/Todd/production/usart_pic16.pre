@@ -1,5 +1,95 @@
 
-# 1 "SwitchBypass.c"
+# 1 "usart_pic16.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4791,338 +4881,204 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 28 "state_manager.h"
-typedef struct {
-unsigned uint8_t tap_A;
-unsigned uint8_t tap_B;
-unsigned uint8_t bypass_A;
-unsigned uint8_t bypass_B;
-} LEDState;
-
-# 50
-void getCurrentLEDState(void);
-void restoreLEDState(void);
-void updateSwitchBypassState(int);
-int getSwitchBypassState(void);
-void updateSwitchTapState(int);
-int getSwitchTapState(void);
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
-typedef unsigned char bool;
-
-# 19 "system.h"
-void ConfigureOscillator(void);
-void wait_ms(uint16_t);
-void set_leds_bottom(int);
-void set_leds_top(int, int);
-uint16_t adc_convert(uint8_t);
-float map(float, float, float, float, float);
-int set_subdivision(int,int);
-
-# 99 "memory.h"
-uint16_t FLASH_ReadWord(uint16_t flashAddr);
-
-# 128
-void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-
-# 164
-int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-
-# 189
-void FLASH_EraseBlock(uint16_t startAddr);
-
-# 56 "constants.h"
-volatile long timer = 0;
-volatile long sub_timer = 0;
-volatile uint16_t feedback_timer = 0;
-volatile uint16_t longTap_timer = 0;
-
-volatile int delay_counter = 0;
-
-uint16_t long_press_limit = 1000;
-volatile long baseline_delay_time = 2000;
-
-uint8_t feedback_start = 0;
-uint8_t longTap_start = 0;
-volatile uint8_t doubleTap_state = 0;
-uint8_t mode1_state = 0;
-uint8_t mode2_state = 0;
-uint8_t blink_state = 1;
-
-volatile uint8_t suspend_blink = 0;
-
-uint8_t preset_programmning_on = 0;
-uint8_t preset_blink = 0;
-
-int blink_delay = 100;
-
-int top_push_state = 6;
-int bottom_push_state = 6;
-
-uint16_t myBuf[32];
-
-int delay_time_changed = 1;
-int reset_sub_delay = 0;
-int adjust_sub_delay = 0;
-
-long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-int debounce_count = 0;
-int debounce_bypass = 0;
-int debounce_mode1 = 0;
-int debounce_mode2 = 0;
-
-volatile long tap_timer = 0;
-volatile long test_timer = 0;
-volatile long double_timer = 0;
-
-char presetSaveMode = 0;
-char presetChannel = 1;
-char expressionChannel = 1;
-
-uint8_t switchBypass_state = -1;
-uint8_t switchTap_state = -1;
-volatile uint8_t longTap_state = -1;
-volatile uint8_t feedback_state = -1;
-
-char expSwitchState = -1;
-
-char presetModeCnst = 1;
-char expressModeCnst = 2;
-
-int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
-
-# 25 "preset_programming.h"
-void setDoublePressState(int);
-void setPresetDisplay(char);
-void setExpressionDisplay(char);
-void resetRingLEDs(void);
-
-# 19 "system.h"
-void ConfigureOscillator(void);
-void wait_ms(uint16_t);
-void set_leds_bottom(int);
-void set_leds_top(int, int);
-uint16_t adc_convert(uint8_t);
-float map(float, float, float, float, float);
-int set_subdivision(int,int);
-
-# 28 "SwitchBypass.h"
-void initSwitchBypass(void);
-void updateSwitchBypass(void);
-void setSwitchBypassState(int);
-void setFeedbackState(int);
-
-# 19 "SwitchBypass.c"
-uint8_t currentBypassState = -1;
-int switchBypass_pressed = 0;
-int switchBypass_up = 1;
-int switchBypass_toggle = 0;
-
-
-uint8_t bypass_turning_on = 0;
-
-
-
-void initSwitchBypass() {
-int initState = getSwitchBypassState();
-setSwitchBypassState(initState);
+# 42 "usart_pic16.h"
+volatile char URBuff[64];
+volatile int8_t UQFront;
+volatile int8_t UQEnd;
+
+void USARTInit(uint16_t baud_rate);
+void USARTWriteChar(char ch);
+void USARTWriteString(const char *str);
+void USARTWriteLine(const char *str);
+void USARTWriteInt(int16_t val, int8_t field_length);
+void USARTHandleRxInt();
+char USARTReadData();
+uint8_t USARTDataAvailable();
+void USARTGotoNewLine();
+void USARTReadBuffer(char *buff,uint16_t len);
+void USARTFlushBuffer();
+
+# 31 "usart_pic16.c"
+void USARTInit(uint16_t baud_rate)
+{
+
+UQFront=UQEnd=-1;
+
+
+switch(baud_rate)
+{
+case 9600:
+SPBRG=103;
+break;
+case 19200:
+SPBRG=51;
+break;
+case 31250:
+SPBRG = 31;
+break;
+case 38400:
+SPBRG=25;
+break;
 }
 
-void updateSwitchBypass(void) {
-
-# 41
-if (PORTEbits.RE1 == 0) {
-if (switchBypass_pressed > 0) {
-switchBypass_pressed--;
-}
-} else if (switchBypass_pressed < 25) {
-switchBypass_pressed++;
-}
-
-# 53
-if (switchBypass_pressed == 0) {
+TXSTAbits.TX9=0;
+TXSTAbits.TXEN=1;
+TXSTAbits.SYNC=0;
+TXSTAbits.BRGH=1;
 
 
-if (feedback_start == 0) {
-feedback_start = 1;
-feedback_timer = 0;
+RCSTAbits.SPEN=1;
+RCSTAbits.RX9=0;
+RCSTAbits.CREN=1;
+RCSTAbits.ADDEN=0;
+
+
+RCIE=1;
+PEIE=1;
+
+(GIE = 1);
 }
 
-if (feedback_timer >= long_press_limit && feedback_state == 0 && doubleTap_state == 0) {
+void USARTWriteChar(char ch)
+{
+while(!PIR1bits.TXIF);
 
+TXREG=ch;
+}
 
-LATBbits.LATB2 = 0;
-if (longTap_start != 1) {
-setFeedbackState(1);
-} else {
-setDoublePressState(1);
+void USARTWriteString(const char *str) {
+while(*str!='\0')
+{
+USARTWriteChar(*str);
+str++;
 }
 }
 
-if (doubleTap_state == 0 && feedback_state == 0) {
-if (switchBypass_state == 1) {
+void USARTWriteLine(const char *str) {
+USARTWriteChar('\r');
+USARTWriteChar('\n');
 
-if (switchBypass_up == 1) {
-currentBypassState = 1;
-switchBypass_toggle = 1;
+USARTWriteString(str);
 }
 
-# 93
-} else {
-if (bypass_turning_on != 1) {
+void USARTHandleRxInt(void) {
+if(RB1==1)
+RB1=0;
+else
+RB1=1;
 
-currentBypassState = 0;
 
-bypass_turning_on = 1;
-switchBypass_toggle = 0;
+char data=RCREG;
 
-feedback_state = 0;
-feedback_start = 0;
-}
-}
 
-}
-switchBypass_up = 0;
-} else if (switchBypass_pressed >= 25) {
-if (doubleTap_state == 1) {
-setSwitchBypassState(currentBypassState);
-} else if (bypass_turning_on == 1 || feedback_state == 1) {
-setSwitchBypassState(1);
-} else if (switchBypass_toggle == 1 && feedback_state == 0 && doubleTap_state == 0) {
-setSwitchBypassState(0);
+if(((UQEnd==64-1) && UQFront==0) || ((UQEnd+1)==UQFront))
+{
+
+UQFront++;
+if(UQFront==64) UQFront=0;
 }
 
+if(UQEnd==64-1)
+UQEnd=0;
+else
+UQEnd++;
 
-LATBbits.LATB2 = switchBypass_state;
+URBuff[UQEnd]=data;
 
-setFeedbackState(0);
-setDoublePressState(0);
-feedback_start = 0;
-bypass_turning_on = 0;
-switchBypass_toggle = 0;
-switchBypass_up = 1;
-
-switchBypass_pressed = 25;
-}
-
+if(UQFront==-1) UQFront=0;
 
 }
 
+char USARTReadData(void) {
+char data;
 
-void setSwitchBypassState(int f_state) {
-if (switchBypass_state == f_state) {return;}
-switchBypass_state = f_state;
-LATBbits.LATB2 = f_state;
-LATBbits.LATB3 = 0;
-LATGbits.LATG2 = f_state;
-LATGbits.LATG1 = !f_state;
 
-wait_ms(20);
+if(UQFront==-1)
+return 0;
 
-LATGbits.LATG2 = 0;
-LATGbits.LATG1 = 0;
+data=URBuff[UQFront];
 
-updateSwitchBypassState(switchBypass_state);
-wait_ms(20);
+if(UQFront==UQEnd)
+{
+
+
+UQFront=UQEnd=-1;
+}
+else
+{
+UQFront++;
+
+if(UQFront==64)
+UQFront=0;
 }
 
-void setFeedbackState(int f_state) {
-if (feedback_state == f_state) {return;}
-feedback_state = f_state;
-LATBbits.LATB3 = f_state;
-
-
-
+return data;
 }
 
+uint8_t USARTDataAvailable(void) {
+if(UQFront==-1) return 0;
+if(UQFront<UQEnd)
+return(UQEnd-UQFront+1);
+else if(UQFront>UQEnd)
+return (64-UQFront+UQEnd+1);
+else
+return 1;
+}
+
+void USARTWriteInt(int16_t val, int8_t field_length) {
+char str[5]={0,0,0,0,0};
+int8_t i=4,j=0;
+
+
+if(val<0)
+{
+USARTWriteChar('-');
+val=val*-1;
+}
+else
+{
+USARTWriteChar(' ');
+}
+
+if(val==0 && field_length<1)
+{
+USARTWriteChar('0');
+return;
+}
+while(val)
+{
+str[i]=val%10;
+val=val/10;
+i--;
+}
+
+if(field_length==-1)
+while(str[j]==0) j++;
+else
+j=5-field_length;
+
+
+for(i=j;i<5;i++)
+{
+USARTWriteChar('0'+str[i]);
+}
+}
+
+void USARTGotoNewLine(void) {
+USARTWriteChar('\r');
+USARTWriteChar('\n');
+}
+
+void USARTReadBuffer(char *buff,uint16_t len) {
+uint16_t i;
+for(i=0;i<len;i++)
+{
+buff[i]=USARTReadData();
+}
+}
+void USARTFlushBuffer(void) {
+while(USARTDataAvailable()>0)
+{
+USARTReadData();
+}
+}

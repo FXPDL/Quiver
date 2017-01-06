@@ -3,6 +3,7 @@
  tactiles.c  \
 memory.h  \
 tactiles.h  \
+preset_programming.h  \
 system.h  \
 constants.h  \
 LEDs.h 

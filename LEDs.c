@@ -93,22 +93,7 @@ void showBootSequence(void) {
     LED_bypass_B = 0; 
     LED_tap_Aux = 0;
     LED_bypass_Aux = 0;
-    
 
-    /*for (uint8_t iFlash = 0; iFlash < 2; iFlash++) {
-        LED_tap_Aux = 1;
-        LED_bypass_Aux = 1;
-        wait_ms(blink_rate );
-        LED_tap_Aux = 0;
-        LED_bypass_Aux = 0;
-        LED_tap_A = 1;
-        LED_bypass_A = 1;
-        wait_ms(blink_rate );
-        LED_tap_A = 0;
-        LED_bypass_A = 0;
-        wait_ms(blink_rate );
-    }*/
-    
     //solidring_tactiles();
     star_tactiles(0); 
     star_tactiles(0); 

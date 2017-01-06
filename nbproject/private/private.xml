@@ -12,18 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/constants.h</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/user.h</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/SwitchTap.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/system.h</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/tactiles.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/LEDs.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/user.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/main.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/modulation.h</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/interrupts.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/SwitchBypass.c</file>
-            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Novaplex%20V2.X/Switch1.c</file>
+            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Quiver.X/main.c</file>
+            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Quiver.X/interrupts.c</file>
+            <file>file:/C:/Users/Nancy/Dropbox%20(Stepframe)/Foxpedal%20Programming/Code/Quiver.X/LEDs.c</file>
         </group>
     </open-files>
 </project-private>

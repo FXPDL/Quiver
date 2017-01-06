@@ -1,55 +1,73 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"46 usart_pic16.h
-[v _USARTInit `(v ~T0 @X0 0 ef1`ui ]
-"19 system.h
-[v _ConfigureOscillator `(v ~T0 @X0 0 ef ]
-"14 user.h
-[v _InitApp `(v ~T0 @X0 0 ef ]
-"664 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S38 . RE0 RE1 RE2 RE3 RE4 RE5 RE6 RE7 ]
-"663
-[u S37 `S38 1 ]
-[n S37 . . ]
-"675
-[v _PORTEbits `VS37 ~T0 @X0 0 e@16 ]
-"603
-[s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S36 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"602
-[u S35 `S36 1 ]
-[n S35 . . ]
-"614
-[v _PORTDbits `VS35 ~T0 @X0 0 e@15 ]
-"542
-[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S34 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"541
-[u S33 `S34 1 ]
-[n S33 . . ]
-"553
-[v _PORTCbits `VS33 ~T0 @X0 0 e@14 ]
-"19 user.h
-[v _InitializeTaps `(v ~T0 @X0 0 ef ]
-"28 SwitchBypass.h
-[v _initSwitchBypass `(v ~T0 @X0 0 ef ]
-"20 user.h
-[v _ReadSavedSettings `(v ~T0 @X0 0 ef ]
-"23 system.h
-[v _adc_convert `(ui ~T0 @X0 0 ef1`uc ]
-"24
-[v _map `(f ~T0 @X0 0 ef5`f`f`f`f`f ]
-"5320 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[v _CCPR2 `Vus ~T0 @X0 0 e@664 ]
-"5756
-[v _CCPR3 `Vus ~T0 @X0 0 e@785 ]
-"5863
-[v _CCPR4 `Vus ~T0 @X0 0 e@792 ]
-"5970
-[v _CCPR5 `Vus ~T0 @X0 0 e@796 ]
-"25 system.h
-[v _set_subdivision `(i ~T0 @X0 0 ef2`i`i ]
+"3302 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[v _SPBRG `Vuc ~T0 @X0 0 e@411 ]
+"3668
+[s S192 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S192 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3667
+[u S191 `S192 1 ]
+[n S191 . . ]
+"3679
+[v _TXSTAbits `VS191 ~T0 @X0 0 e@414 ]
+"3489
+[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S186 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3488
+[u S185 `S186 1 ]
+[n S185 . . ]
+"3500
+[v _RCSTAbits `VS185 ~T0 @X0 0 e@413 ]
+"9174
+[v _RCIE `Vb ~T0 @X0 0 e@1165 ]
+"9108
+[v _PEIE `Vb ~T0 @X0 0 e@94 ]
+"8916
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"725
+[s S40 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S40 . TMR1IF TMR2IF CCP1IF SSP1IF TX1IF RC1IF ADIF TMR1GIF ]
+"735
+[s S41 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S41 . . SSPIF TXIF RCIF ]
+"724
+[u S39 `S40 1 `S41 1 ]
+[n S39 . . . ]
+"742
+[v _PIR1bits `VS39 ~T0 @X0 0 e@17 ]
+"3243
+[v _TXREG `Vuc ~T0 @X0 0 e@410 ]
+"9136
+[v _RB1 `Vb ~T0 @X0 0 e@105 ]
+"3190
+[v _RCREG `Vuc ~T0 @X0 0 e@409 ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3619,603 +3637,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;system.h: 19: void ConfigureOscillator(void);
-[; ;system.h: 20: void wait_ms(uint16_t);
-[; ;system.h: 21: void set_leds_bottom(int);
-[; ;system.h: 22: void set_leds_top(int, int);
-[; ;system.h: 23: uint16_t adc_convert(uint8_t);
-[; ;system.h: 24: float map(float, float, float, float, float);
-[; ;system.h: 25: int set_subdivision(int,int);
-[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
-[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-[; ;system.h: 19: void ConfigureOscillator(void);
-[; ;system.h: 20: void wait_ms(uint16_t);
-[; ;system.h: 21: void set_leds_bottom(int);
-[; ;system.h: 22: void set_leds_top(int, int);
-[; ;system.h: 23: uint16_t adc_convert(uint8_t);
-[; ;system.h: 24: float map(float, float, float, float, float);
-[; ;system.h: 25: int set_subdivision(int,int);
-"56 constants.h
-[v _timer `Vl ~T0 @X0 1 e ]
-[i _timer
--> -> 0 `i `l
-]
-[; ;constants.h: 56: volatile long timer = 0;
-"57
-[v _sub_timer `Vl ~T0 @X0 1 e ]
-[i _sub_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 57: volatile long sub_timer = 0;
-"58
-[v _feedback_timer `Vui ~T0 @X0 1 e ]
-[i _feedback_timer
--> -> 0 `i `ui
-]
-[; ;constants.h: 58: volatile uint16_t feedback_timer = 0;
-"59
-[v _longTap_timer `Vui ~T0 @X0 1 e ]
-[i _longTap_timer
--> -> 0 `i `ui
-]
-[; ;constants.h: 59: volatile uint16_t longTap_timer = 0;
-"61
-[v _delay_counter `Vi ~T0 @X0 1 e ]
-[i _delay_counter
--> 0 `i
-]
-[; ;constants.h: 61: volatile int delay_counter = 0;
-"63
-[v _long_press_limit `ui ~T0 @X0 1 e ]
-[i _long_press_limit
--> -> 1000 `i `ui
-]
-[; ;constants.h: 63: uint16_t long_press_limit = 1000;
-"64
-[v _baseline_delay_time `Vl ~T0 @X0 1 e ]
-[i _baseline_delay_time
--> -> 2000 `i `l
-]
-[; ;constants.h: 64: volatile long baseline_delay_time = 2000;
-"66
-[v _feedback_start `uc ~T0 @X0 1 e ]
-[i _feedback_start
--> -> 0 `i `uc
-]
-[; ;constants.h: 66: uint8_t feedback_start = 0;
-"67
-[v _longTap_start `uc ~T0 @X0 1 e ]
-[i _longTap_start
--> -> 0 `i `uc
-]
-[; ;constants.h: 67: uint8_t longTap_start = 0;
-"68
-[v _doubleTap_state `Vuc ~T0 @X0 1 e ]
-[i _doubleTap_state
--> -> 0 `i `uc
-]
-[; ;constants.h: 68: volatile uint8_t doubleTap_state = 0;
-"69
-[v _mode1_state `uc ~T0 @X0 1 e ]
-[i _mode1_state
--> -> 0 `i `uc
-]
-[; ;constants.h: 69: uint8_t mode1_state = 0;
-"70
-[v _mode2_state `uc ~T0 @X0 1 e ]
-[i _mode2_state
--> -> 0 `i `uc
-]
-[; ;constants.h: 70: uint8_t mode2_state = 0;
-"71
-[v _blink_state `uc ~T0 @X0 1 e ]
-[i _blink_state
--> -> 1 `i `uc
-]
-[; ;constants.h: 71: uint8_t blink_state = 1;
-"73
-[v _suspend_blink `Vuc ~T0 @X0 1 e ]
-[i _suspend_blink
--> -> 0 `i `uc
-]
-[; ;constants.h: 73: volatile uint8_t suspend_blink = 0;
-"75
-[v _preset_programmning_on `uc ~T0 @X0 1 e ]
-[i _preset_programmning_on
--> -> 0 `i `uc
-]
-[; ;constants.h: 75: uint8_t preset_programmning_on = 0;
-"76
-[v _preset_blink `uc ~T0 @X0 1 e ]
-[i _preset_blink
--> -> 0 `i `uc
-]
-[; ;constants.h: 76: uint8_t preset_blink = 0;
-"78
-[v _blink_delay `i ~T0 @X0 1 e ]
-[i _blink_delay
--> 100 `i
-]
-[; ;constants.h: 78: int blink_delay = 100;
-"80
-[v _top_push_state `i ~T0 @X0 1 e ]
-[i _top_push_state
--> 6 `i
-]
-[; ;constants.h: 80: int top_push_state = 6;
-"81
-[v _bottom_push_state `i ~T0 @X0 1 e ]
-[i _bottom_push_state
--> 6 `i
-]
-[; ;constants.h: 81: int bottom_push_state = 6;
-"83
-[v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 83: uint16_t myBuf[32];
-"85
-[v _delay_time_changed `i ~T0 @X0 1 e ]
-[i _delay_time_changed
--> 1 `i
-]
-[; ;constants.h: 85: int delay_time_changed = 1;
-"86
-[v _reset_sub_delay `i ~T0 @X0 1 e ]
-[i _reset_sub_delay
--> 0 `i
-]
-[; ;constants.h: 86: int reset_sub_delay = 0;
-"87
-[v _adjust_sub_delay `i ~T0 @X0 1 e ]
-[i _adjust_sub_delay
--> 0 `i
-]
-[; ;constants.h: 87: int adjust_sub_delay = 0;
-"89
-[v _tap `l ~T0 @X0 -> 11 `i e ]
-[i _tap
-:U ..
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
--> -> 0 `i `l
-..
-]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
-[v _debounce_count `i ~T0 @X0 1 e ]
-[i _debounce_count
--> 0 `i
-]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
-[v _debounce_bypass `i ~T0 @X0 1 e ]
-[i _debounce_bypass
--> 0 `i
-]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
-[v _debounce_mode1 `i ~T0 @X0 1 e ]
-[i _debounce_mode1
--> 0 `i
-]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
-[v _debounce_mode2 `i ~T0 @X0 1 e ]
-[i _debounce_mode2
--> 0 `i
-]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
-[v _tap_timer `Vl ~T0 @X0 1 e ]
-[i _tap_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 97: volatile long test_timer = 0;
-"98
-[v _double_timer `Vl ~T0 @X0 1 e ]
-[i _double_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 98: volatile long double_timer = 0;
-"100
-[v _presetSaveMode `uc ~T0 @X0 1 e ]
-[i _presetSaveMode
--> -> 0 `i `uc
-]
-[; ;constants.h: 100: char presetSaveMode = 0;
-"101
-[v _presetChannel `uc ~T0 @X0 1 e ]
-[i _presetChannel
--> -> 1 `i `uc
-]
-[; ;constants.h: 101: char presetChannel = 1;
-"102
-[v _expressionChannel `uc ~T0 @X0 1 e ]
-[i _expressionChannel
--> -> 1 `i `uc
-]
-[; ;constants.h: 102: char expressionChannel = 1;
-"104
-[v _switchBypass_state `uc ~T0 @X0 1 e ]
-[i _switchBypass_state
--> -U -> 1 `i `uc
-]
-[; ;constants.h: 104: uint8_t switchBypass_state = -1;
-"105
-[v _switchTap_state `uc ~T0 @X0 1 e ]
-[i _switchTap_state
--> -U -> 1 `i `uc
-]
-[; ;constants.h: 105: uint8_t switchTap_state = -1;
-"106
-[v _longTap_state `Vuc ~T0 @X0 1 e ]
-[i _longTap_state
--> -U -> 1 `i `uc
-]
-[; ;constants.h: 106: volatile uint8_t longTap_state = -1;
-"107
-[v _feedback_state `Vuc ~T0 @X0 1 e ]
-[i _feedback_state
--> -U -> 1 `i `uc
-]
-[; ;constants.h: 107: volatile uint8_t feedback_state = -1;
-"109
-[v _expSwitchState `uc ~T0 @X0 1 e ]
-[i _expSwitchState
--> -U -> 1 `i `uc
-]
-[; ;constants.h: 109: char expSwitchState = -1;
-"111
-[v _presetModeCnst `uc ~T0 @X0 1 e ]
-[i _presetModeCnst
--> -> 1 `i `uc
-]
-[; ;constants.h: 111: char presetModeCnst = 1;
-"112
-[v _expressModeCnst `uc ~T0 @X0 1 e ]
-[i _expressModeCnst
--> -> 2 `i `uc
-]
-[; ;constants.h: 112: char expressModeCnst = 2;
-"114
-[v _delayArray `i ~T0 @X0 -> 260 `i e ]
-[i _delayArray
-:U ..
--> 2082 `i
--> 2044 `i
--> 2008 `i
--> 1973 `i
--> 1939 `i
--> 1906 `i
--> 1874 `i
--> 1844 `i
--> 1814 `i
--> 1785 `i
--> 1757 `i
--> 1730 `i
--> 1704 `i
--> 1679 `i
--> 1654 `i
--> 1630 `i
--> 1607 `i
--> 1584 `i
--> 1562 `i
--> 1541 `i
--> 1520 `i
--> 1500 `i
--> 1480 `i
--> 1461 `i
--> 1443 `i
--> 1424 `i
--> 1407 `i
--> 1389 `i
--> 1372 `i
--> 1356 `i
--> 1340 `i
--> 1324 `i
--> 1309 `i
--> 1294 `i
--> 1279 `i
--> 1265 `i
--> 1250 `i
--> 1237 `i
--> 1223 `i
--> 1210 `i
--> 1197 `i
--> 1185 `i
--> 1172 `i
--> 1160 `i
--> 1149 `i
--> 1137 `i
--> 1126 `i
--> 1114 `i
--> 1104 `i
--> 1093 `i
--> 1082 `i
--> 1072 `i
--> 1062 `i
--> 1052 `i
--> 1042 `i
--> 1033 `i
--> 1023 `i
--> 1014 `i
--> 1005 `i
--> 996 `i
--> 988 `i
--> 979 `i
--> 971 `i
--> 962 `i
--> 954 `i
--> 946 `i
--> 938 `i
--> 930 `i
--> 923 `i
--> 915 `i
--> 908 `i
--> 901 `i
--> 894 `i
--> 887 `i
--> 880 `i
--> 873 `i
--> 866 `i
--> 860 `i
--> 853 `i
--> 847 `i
--> 840 `i
--> 834 `i
--> 828 `i
--> 822 `i
--> 816 `i
--> 810 `i
--> 804 `i
--> 799 `i
--> 793 `i
--> 787 `i
--> 782 `i
--> 777 `i
--> 771 `i
--> 766 `i
--> 761 `i
--> 756 `i
--> 751 `i
--> 746 `i
--> 741 `i
--> 736 `i
--> 731 `i
--> 727 `i
--> 722 `i
--> 717 `i
--> 713 `i
--> 708 `i
--> 704 `i
--> 700 `i
--> 695 `i
--> 691 `i
--> 687 `i
--> 683 `i
--> 678 `i
--> 674 `i
--> 670 `i
--> 666 `i
--> 663 `i
--> 659 `i
--> 655 `i
--> 651 `i
--> 647 `i
--> 644 `i
--> 640 `i
--> 636 `i
--> 633 `i
--> 629 `i
--> 626 `i
--> 622 `i
--> 619 `i
--> 615 `i
--> 612 `i
--> 609 `i
--> 606 `i
--> 602 `i
--> 599 `i
--> 596 `i
--> 593 `i
--> 590 `i
--> 587 `i
--> 584 `i
--> 581 `i
--> 578 `i
--> 575 `i
--> 572 `i
--> 569 `i
--> 566 `i
--> 563 `i
--> 560 `i
--> 558 `i
--> 555 `i
--> 552 `i
--> 549 `i
--> 547 `i
--> 544 `i
--> 542 `i
--> 539 `i
--> 536 `i
--> 534 `i
--> 531 `i
--> 529 `i
--> 526 `i
--> 524 `i
--> 522 `i
--> 519 `i
--> 517 `i
--> 514 `i
--> 512 `i
--> 510 `i
--> 507 `i
--> 505 `i
--> 503 `i
--> 501 `i
--> 498 `i
--> 496 `i
--> 494 `i
--> 492 `i
--> 490 `i
--> 488 `i
--> 486 `i
--> 483 `i
--> 481 `i
--> 479 `i
--> 477 `i
--> 475 `i
--> 473 `i
--> 471 `i
--> 469 `i
--> 467 `i
--> 466 `i
--> 464 `i
--> 462 `i
--> 460 `i
--> 458 `i
--> 456 `i
--> 454 `i
--> 452 `i
--> 451 `i
--> 449 `i
--> 447 `i
--> 445 `i
--> 444 `i
--> 442 `i
--> 440 `i
--> 438 `i
--> 437 `i
--> 435 `i
--> 433 `i
--> 432 `i
--> 430 `i
--> 428 `i
--> 427 `i
--> 425 `i
--> 424 `i
--> 422 `i
--> 420 `i
--> 419 `i
--> 417 `i
--> 416 `i
--> 414 `i
--> 413 `i
--> 411 `i
--> 410 `i
--> 408 `i
--> 407 `i
--> 405 `i
--> 404 `i
--> 402 `i
--> 401 `i
--> 400 `i
--> 398 `i
--> 397 `i
--> 395 `i
--> 394 `i
--> 393 `i
--> 391 `i
--> 390 `i
--> 389 `i
--> 387 `i
--> 386 `i
--> 385 `i
--> 383 `i
--> 382 `i
--> 381 `i
--> 379 `i
--> 378 `i
--> 377 `i
--> 376 `i
--> 374 `i
--> 373 `i
--> 372 `i
--> 371 `i
--> 369 `i
--> 368 `i
--> 367 `i
--> 366 `i
-..
-]
-[; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
-[; ;user.h: 14: void InitApp(void);
-[; ;user.h: 15: void init_adc(void);
-[; ;user.h: 16: void init_pwm(void);
-[; ;user.h: 17: void init_timer2(void);
-[; ;user.h: 18: void init_timer0(void);
-[; ;user.h: 19: void InitializeTaps(void);
-[; ;user.h: 20: void ReadSavedSettings(void);
-[; ;user.h: 21: long modulation(long, long);
-[; ;LEDs.h: 24: void star_tactiles(uint8_t);
-[; ;LEDs.h: 25: void ring_tactiles(void);
-[; ;LEDs.h: 26: void solidring_tactiles(void);
-[; ;LEDs.h: 27: void showSave(void);
-[; ;LEDs.h: 28: void showBootSequence(void);
-[; ;tactiles.h: 24: void read_bottom_tactile(void);
-[; ;tactiles.h: 25: void read_top_tactile(void);
-[; ;tactiles.h: 26: void update_mode(void);
-[; ;tactiles.h: 27: void update_selectMode(void);
-[; ;tactiles.h: 28: void setPedalMode(void);
-[; ;system.h: 19: void ConfigureOscillator(void);
-[; ;system.h: 20: void wait_ms(uint16_t);
-[; ;system.h: 21: void set_leds_bottom(int);
-[; ;system.h: 22: void set_leds_top(int, int);
-[; ;system.h: 23: uint16_t adc_convert(uint8_t);
-[; ;system.h: 24: float map(float, float, float, float, float);
-[; ;system.h: 25: int set_subdivision(int,int);
-[; ;SwitchBypass.h: 28: void initSwitchBypass(void);
-[; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
-[; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
-[; ;SwitchBypass.h: 31: void setFeedbackState(int);
-[; ;SwitchTap.h: 24: void initSwitchTap(void);
-[; ;SwitchTap.h: 25: void updateSwitchTap(void);
-[; ;SwitchTap.h: 26: void setSwitchTapState(int);
-[; ;SwitchTap.h: 27: void setLongTapState(int);
 "42 usart_pic16.h
 [v _URBuff `Vuc ~T0 @X0 -> 64 `i e ]
 [; ;usart_pic16.h: 42: volatile char URBuff[64];
@@ -4236,447 +3657,577 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart_pic16.h: 54: void USARTGotoNewLine();
 [; ;usart_pic16.h: 55: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;usart_pic16.h: 56: void USARTFlushBuffer();
-"38 main.c
-[v _mod_timer `Vl ~T0 @X0 1 e ]
-[i _mod_timer
--> -> 0 `i `l
-]
-[; ;main.c: 38: volatile long mod_timer = 0;
-"39
-[v _adjusted_pot_value `i ~T0 @X0 1 e ]
-[; ;main.c: 39: signed int adjusted_pot_value;
-"40
-[v _mod_delay_time `i ~T0 @X0 1 e ]
-[i _mod_delay_time
--> 2000 `i
-]
-[; ;main.c: 40: int mod_delay_time = 2000;
-"42
-[v _delay_time `Vl ~T0 @X0 1 e ]
-[i _delay_time
--> -> 2000 `i `l
-]
-[; ;main.c: 42: volatile long delay_time = 2000;
-"44
-[v _delayfound `i ~T0 @X0 1 e ]
-[i _delayfound
--> 0 `i
-]
-[; ;main.c: 44: int delayfound = 0;
-"49
-[v _knob_1_pos `i ~T0 @X0 1 e ]
-[i _knob_1_pos
--> 0 `i
-]
-[; ;main.c: 49: int knob_1_pos = 0;
-"50
-[v _knob_2_pos `i ~T0 @X0 1 e ]
-[i _knob_2_pos
--> 0 `i
-]
-[; ;main.c: 50: int knob_2_pos = 0;
-"51
-[v _knob_3_pos `i ~T0 @X0 1 e ]
-[i _knob_3_pos
--> 0 `i
-]
-[; ;main.c: 51: int knob_3_pos = 0;
-"52
-[v _knob_4_pos `i ~T0 @X0 1 e ]
-[i _knob_4_pos
--> 0 `i
-]
-[; ;main.c: 52: int knob_4_pos = 0;
-"53
-[v _knob_5_pos `i ~T0 @X0 1 e ]
-[i _knob_5_pos
--> 0 `i
-]
-[; ;main.c: 53: int knob_5_pos = 0;
-"54
-[v _knob1_prev `Vi ~T0 @X0 1 e ]
-[i _knob1_prev
--> 2000 `i
-]
-[; ;main.c: 54: volatile int knob1_prev = 2000;
-"55
-[v _knob2_prev `Vi ~T0 @X0 1 e ]
-[i _knob2_prev
--> 2000 `i
-]
-[; ;main.c: 55: volatile int knob2_prev = 2000;
-"56
-[v _knob3_prev `Vi ~T0 @X0 1 e ]
-[i _knob3_prev
--> 2000 `i
-]
-[; ;main.c: 56: volatile int knob3_prev = 2000;
-"57
-[v _knob4_prev `Vi ~T0 @X0 1 e ]
-[i _knob4_prev
--> 2000 `i
-]
-[; ;main.c: 57: volatile int knob4_prev = 2000;
-"58
-[v _knob5_prev `Vi ~T0 @X0 1 e ]
-[i _knob5_prev
--> 2000 `i
-]
-[; ;main.c: 58: volatile int knob5_prev = 2000;
-"72
-[v _iCnt `uc ~T0 @X0 1 e ]
-[; ;main.c: 72: uint8_t iCnt;
-"73
-[v _B25k `uc ~T0 @X0 -> 0 `x e ]
-[i _B25k
-:U ..
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 223 `i `uc
--> -> 174 `i `uc
--> -> 142 `i `uc
--> -> 120 `i `uc
--> -> 103 `i `uc
--> -> 91 `i `uc
--> -> 80 `i `uc
--> -> 72 `i `uc
--> -> 66 `i `uc
--> -> 60 `i `uc
--> -> 55 `i `uc
--> -> 51 `i `uc
--> -> 48 `i `uc
--> -> 45 `i `uc
--> -> 42 `i `uc
--> -> 39 `i `uc
--> -> 37 `i `uc
--> -> 35 `i `uc
--> -> 33 `i `uc
--> -> 32 `i `uc
--> -> 30 `i `uc
--> -> 29 `i `uc
--> -> 28 `i `uc
--> -> 27 `i `uc
--> -> 26 `i `uc
--> -> 25 `i `uc
--> -> 24 `i `uc
--> -> 23 `i `uc
--> -> 22 `i `uc
--> -> 21 `i `uc
--> -> 21 `i `uc
--> -> 20 `i `uc
--> -> 19 `i `uc
--> -> 15 `i `uc
--> -> 11 `i `uc
--> -> 7 `i `uc
--> -> 7 `i `uc
-..
-]
-[; ;main.c: 73: char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
-"76
-[v _B25kLength `i ~T0 @X0 1 e ]
-[i _B25kLength
--> 0 `i
-]
-[; ;main.c: 76: int B25kLength = 0;
-"77
-[v _feedbackTriggered `uc ~T0 @X0 1 e ]
-[i _feedbackTriggered
--> -> 0 `i `uc
-]
-[; ;main.c: 77: char feedbackTriggered = 0;
-"83
-[v _main `(v ~T0 @X0 1 ef ]
+"31 usart_pic16.c
+[v _USARTInit `(v ~T0 @X0 1 ef1`ui ]
+"32
 {
-[; ;main.c: 83: void main(void) {
-[e :U _main ]
+[; ;usart_pic16.c: 31: void USARTInit(uint16_t baud_rate)
+[; ;usart_pic16.c: 32: {
+[e :U _USARTInit ]
+"31
+[v _baud_rate `ui ~T0 @X0 1 r1 ]
+"32
 [f ]
-[; ;main.c: 84: B25kLength = sizeof(B25k)/sizeof(B25k[0]);
-"84
-[e = _B25kLength -> / -> # _B25k `ui -> # *U + &U _B25k * -> -> -> 0 `i `ui `ux -> -> # *U &U _B25k `ui `ux `ui `i ]
-[; ;main.c: 86: USARTInit(31250);
-"86
-[e ( _USARTInit (1 -> -> 31250 `i `ui ]
-[; ;main.c: 87: ConfigureOscillator();
-"87
-[e ( _ConfigureOscillator ..  ]
-[; ;main.c: 88: InitApp();
-"88
-[e ( _InitApp ..  ]
-[; ;main.c: 90: PORTEbits.RE0 = 1;
-"90
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 91: PORTEbits.RE1 = 1;
-"91
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 92: PORTDbits.RD6 = 1;
-"92
-[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 93: PORTDbits.RD5 = 1;
-"93
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 94: PORTCbits.RC0 = 1;
-"94
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 95: PORTDbits.RD7 = 1;
-"95
-[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 97: InitializeTaps();
-"97
-[e ( _InitializeTaps ..  ]
-[; ;main.c: 98: initSwitchBypass();
-"98
-[e ( _initSwitchBypass ..  ]
-[; ;main.c: 101: ReadSavedSettings();
-"101
-[e ( _ReadSavedSettings ..  ]
-[; ;main.c: 103: while (1) {
-"103
-[e :U 462 ]
+[; ;usart_pic16.c: 34: UQFront=UQEnd=-1;
+"34
+[e = _UQFront = _UQEnd -> -U -> 1 `i `c ]
+[; ;usart_pic16.c: 37: switch(baud_rate)
+"37
+[e $U 462  ]
+[; ;usart_pic16.c: 38: {
+"38
 {
-[; ;main.c: 142: knob_1_pos = adc_convert(0);
-"142
-[e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
-[; ;main.c: 143: knob_2_pos = adc_convert(1);
-"143
-[e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
-[; ;main.c: 144: knob_3_pos = adc_convert(2);
-"144
-[e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
-[; ;main.c: 145: knob_4_pos = adc_convert(3);
-"145
-[e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
-[; ;main.c: 146: knob_5_pos = adc_convert(4);
-"146
-[e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
-[; ;main.c: 174: if (bottom_push_state != 5) {
-"174
-[e $ ! != _bottom_push_state -> 5 `i 464  ]
-{
-[; ;main.c: 175: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-"175
-[e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 465  ]
-{
-[; ;main.c: 176: knob1_prev = knob_1_pos;
-"176
-[e = _knob1_prev _knob_1_pos ]
-[; ;main.c: 177: baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
-"177
-[e = _baseline_delay_time -> -> ( _map (4 , , , , -> _knob1_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1172 `i `f -> -> 200 `i `f `i `l ]
-[; ;main.c: 178: delay_time_changed = 1;
-"178
-[e = _delay_time_changed -> 1 `i ]
-"180
-}
-[e :U 465 ]
-"181
-}
+[; ;usart_pic16.c: 39: case 9600:
+"39
+[e :U 463 ]
+[; ;usart_pic16.c: 40: SPBRG=103;
+"40
+[e = _SPBRG -> -> 103 `i `uc ]
+[; ;usart_pic16.c: 41: break;
+"41
+[e $U 461  ]
+[; ;usart_pic16.c: 42: case 19200:
+"42
 [e :U 464 ]
-[; ;main.c: 180: }
-[; ;main.c: 181: }
-[; ;main.c: 191: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
-"191
-[e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 466  ]
-{
-[; ;main.c: 192: knob2_prev = knob_2_pos;
-"192
-[e = _knob2_prev _knob_2_pos ]
-"193
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 193: int i = (int)map(knob2_prev, 0, 1023, 0, 39);
-[e = _i -> ( _map (4 , , , , -> _knob2_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 0 `i `f -> -> 39 `i `f `i ]
-[; ;main.c: 194: CCPR2 = (int)B25k[B25kLength - 1 - i];
-"194
-[e = _CCPR2 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 195: CCPR3 = (int)B25k[i];
-"195
-[e = _CCPR3 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"196
-}
+[; ;usart_pic16.c: 43: SPBRG=51;
+"43
+[e = _SPBRG -> -> 51 `i `uc ]
+[; ;usart_pic16.c: 44: break;
+"44
+[e $U 461  ]
+[; ;usart_pic16.c: 45: case 31250:
+"45
+[e :U 465 ]
+[; ;usart_pic16.c: 46: SPBRG = 31;
+"46
+[e = _SPBRG -> -> 31 `i `uc ]
+[; ;usart_pic16.c: 47: break;
+"47
+[e $U 461  ]
+[; ;usart_pic16.c: 48: case 38400:
+"48
 [e :U 466 ]
-[; ;main.c: 196: }
-[; ;main.c: 224: if (bottom_push_state == 5) {
-"224
-[e $ ! == _bottom_push_state -> 5 `i 467  ]
-{
-[; ;main.c: 225: if (knob3_prev != 1023) {
-"225
-[e $ ! != _knob3_prev -> 1023 `i 468  ]
-{
-[; ;main.c: 226: knob3_prev = 1023;
-"226
-[e = _knob3_prev -> 1023 `i ]
-"228
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 228: int i = (int) map(knob3_prev, 0, 1023, 16, 0);
-[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 16 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 229: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"229
-[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 230: CCPR5 = (int) B25k[i];
-"230
-[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"231
+[; ;usart_pic16.c: 49: SPBRG=25;
+"49
+[e = _SPBRG -> -> 25 `i `uc ]
+[; ;usart_pic16.c: 50: break;
+"50
+[e $U 461  ]
+"51
 }
+[; ;usart_pic16.c: 51: }
+[e $U 461  ]
+"37
+[e :U 462 ]
+[e [\ _baud_rate , $ -> -> 9600 `i `ui 463
+ , $ -> -> 19200 `i `ui 464
+ , $ -> -> 31250 `i `ui 465
+ , $ -> -> 38400 `l `ui 466
+ 461 ]
+"51
+[e :U 461 ]
+[; ;usart_pic16.c: 53: TXSTAbits.TX9=0;
+"53
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;usart_pic16.c: 54: TXSTAbits.TXEN=1;
+"54
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;usart_pic16.c: 55: TXSTAbits.SYNC=0;
+"55
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;usart_pic16.c: 56: TXSTAbits.BRGH=1;
+"56
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+[; ;usart_pic16.c: 59: RCSTAbits.SPEN=1;
+"59
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;usart_pic16.c: 60: RCSTAbits.RX9=0;
+"60
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;usart_pic16.c: 61: RCSTAbits.CREN=1;
+"61
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;usart_pic16.c: 62: RCSTAbits.ADDEN=0;
+"62
+[e = . . _RCSTAbits 0 3 -> -> 0 `i `uc ]
+[; ;usart_pic16.c: 65: RCIE=1;
+"65
+[e = _RCIE -> -> 1 `i `b ]
+[; ;usart_pic16.c: 66: PEIE=1;
+"66
+[e = _PEIE -> -> 1 `i `b ]
+[; ;usart_pic16.c: 68: (GIE = 1);
+"68
+[e = _GIE -> -> 1 `i `b ]
+[; ;usart_pic16.c: 69: }
+"69
+[e :UE 460 ]
+}
+"71
+[v _USARTWriteChar `(v ~T0 @X0 1 ef1`uc ]
+"72
+{
+[; ;usart_pic16.c: 71: void USARTWriteChar(char ch)
+[; ;usart_pic16.c: 72: {
+[e :U _USARTWriteChar ]
+"71
+[v _ch `uc ~T0 @X0 1 r1 ]
+"72
+[f ]
+[; ;usart_pic16.c: 73: while(!PIR1bits.TXIF);
+"73
+[e $U 468  ]
+[e :U 469 ]
 [e :U 468 ]
-"232
-}
-[; ;main.c: 231: }
-[; ;main.c: 232: } else if (feedback_state == 1) {
-[e $U 469  ]
-[e :U 467 ]
-[e $ ! == -> _feedback_state `i -> 1 `i 470  ]
-{
-[; ;main.c: 233: if (knob3_prev != 0) {
-"233
-[e $ ! != _knob3_prev -> 0 `i 471  ]
-{
-[; ;main.c: 234: knob3_prev = 0;
-"234
-[e = _knob3_prev -> 0 `i ]
-[; ;main.c: 235: feedbackTriggered = 1;
-"235
-[e = _feedbackTriggered -> -> 1 `i `uc ]
-"237
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 237: int i = (int) map(knob3_prev, 0, 1023, 25, 0);
-[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 25 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 238: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"238
-[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 239: CCPR5 = (int) B25k[i];
-"239
-[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"240
-}
-[e :U 471 ]
-"241
-}
-[; ;main.c: 240: }
-[; ;main.c: 241: } else {
-[e $U 472  ]
+[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 469  ]
 [e :U 470 ]
-{
-[; ;main.c: 242: if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
-"242
-[e $ ! || || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i == -> _feedbackTriggered `i -> 1 `i 473  ]
-{
-[; ;main.c: 243: knob3_prev = knob_3_pos;
-"243
-[e = _knob3_prev _knob_3_pos ]
-"244
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 244: int i = (int) map(knob3_prev, 0, 1023, 18, 0);
-[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 18 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 245: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"245
-[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 246: CCPR5 = (int) B25k[i];
-"246
-[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"247
+[; ;usart_pic16.c: 75: TXREG=ch;
+"75
+[e = _TXREG _ch ]
+[; ;usart_pic16.c: 76: }
+"76
+[e :UE 467 ]
 }
+"78
+[v _USARTWriteString `(v ~T0 @X0 1 ef1`*Cuc ]
+{
+[; ;usart_pic16.c: 78: void USARTWriteString(const char *str) {
+[e :U _USARTWriteString ]
+[v _str `*Cuc ~T0 @X0 1 r1 ]
+[f ]
+[; ;usart_pic16.c: 79: while(*str!='\0')
+"79
+[e $U 472  ]
 [e :U 473 ]
-"248
+[; ;usart_pic16.c: 80: {
+"80
+{
+[; ;usart_pic16.c: 81: USARTWriteChar(*str);
+"81
+[e ( _USARTWriteChar (1 *U _str ]
+[; ;usart_pic16.c: 82: str++;
+"82
+[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+"83
 }
 [e :U 472 ]
-[e :U 469 ]
-[; ;main.c: 247: }
-[; ;main.c: 248: }
-[; ;main.c: 259: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"259
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 474  ]
-{
-[; ;main.c: 260: knob4_prev = knob_4_pos;
-"260
-[e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 262: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
-"262
-[e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
-"263
-}
+"79
+[e $ != -> *U _str `ui -> 0 `ui 473  ]
 [e :U 474 ]
-[; ;main.c: 263: }
-[; ;main.c: 271: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"271
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 475  ]
-{
-[; ;main.c: 272: knob5_prev = knob_5_pos;
-"272
-[e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 273: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"273
-[e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"275
+[; ;usart_pic16.c: 83: }
+[; ;usart_pic16.c: 84: }
+"84
+[e :UE 471 ]
 }
-[e :U 475 ]
-[; ;main.c: 275: }
-[; ;main.c: 278: if (delay_time_changed == 1) {
-"278
-[e $ ! == _delay_time_changed -> 1 `i 476  ]
+"86
+[v _USARTWriteLine `(v ~T0 @X0 1 ef1`*Cuc ]
 {
-[; ;main.c: 279: delay_time = baseline_delay_time;
-"279
-[e = _delay_time _baseline_delay_time ]
-[; ;main.c: 280: delay_time = set_subdivision(baseline_delay_time, top_push_state);
-"280
-[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
-[; ;main.c: 281: reset_sub_delay = 1;
-"281
-[e = _reset_sub_delay -> 1 `i ]
-[; ;main.c: 282: delayfound = 0;
-"282
-[e = _delayfound -> 0 `i ]
-[; ;main.c: 283: delay_counter = 0;
-"283
-[e = _delay_counter -> 0 `i ]
-[; ;main.c: 285: while (delayfound == 0) {
-"285
-[e $U 477  ]
-[e :U 478 ]
-{
-[; ;main.c: 286: if (delayArray[delay_counter] <= delay_time * 2) {
-"286
-[e $ ! <= -> *U + &U _delayArray * -> -> _delay_counter `ui `ux -> -> # *U &U _delayArray `ui `ux `l * _delay_time -> -> 2 `i `l 480  ]
-{
-[; ;main.c: 287: delayfound = 1;
-"287
-[e = _delayfound -> 1 `i ]
-"291
+[; ;usart_pic16.c: 86: void USARTWriteLine(const char *str) {
+[e :U _USARTWriteLine ]
+[v _str `*Cuc ~T0 @X0 1 r1 ]
+[f ]
+[; ;usart_pic16.c: 87: USARTWriteChar('\r');
+"87
+[e ( _USARTWriteChar (1 -> -> 13 `ui `uc ]
+[; ;usart_pic16.c: 88: USARTWriteChar('\n');
+"88
+[e ( _USARTWriteChar (1 -> -> 10 `ui `uc ]
+[; ;usart_pic16.c: 90: USARTWriteString(str);
+"90
+[e ( _USARTWriteString (1 _str ]
+[; ;usart_pic16.c: 91: }
+"91
+[e :UE 475 ]
 }
-[; ;main.c: 291: } else {
-[e $U 481  ]
-[e :U 480 ]
+"93
+[v _USARTHandleRxInt `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 292: delay_counter++;
-"292
-[e ++ _delay_counter -> 1 `i ]
-"294
-}
-[e :U 481 ]
-"295
-}
+[; ;usart_pic16.c: 93: void USARTHandleRxInt(void) {
+[e :U _USARTHandleRxInt ]
+[f ]
+[; ;usart_pic16.c: 94: if(RB1==1)
+"94
+[e $ ! == -> _RB1 `i -> 1 `i 477  ]
+[; ;usart_pic16.c: 95: RB1=0;
+"95
+[e = _RB1 -> -> 0 `i `b ]
+[e $U 478  ]
+"96
 [e :U 477 ]
-"285
-[e $ == _delayfound -> 0 `i 478  ]
-[e :U 479 ]
-[; ;main.c: 294: }
-[; ;main.c: 295: }
-[; ;main.c: 314: delay_time_changed = 0;
-"314
-[e = _delay_time_changed -> 0 `i ]
-"316
-}
-[e :U 476 ]
-"318
-}
-[e :U 461 ]
+[; ;usart_pic16.c: 96: else
+[; ;usart_pic16.c: 97: RB1=1;
+"97
+[e = _RB1 -> -> 1 `i `b ]
+[e :U 478 ]
+"100
+[v _data `uc ~T0 @X0 1 a ]
+[; ;usart_pic16.c: 100: char data=RCREG;
+[e = _data _RCREG ]
+[; ;usart_pic16.c: 103: if(((UQEnd==64-1) && UQFront==0) || ((UQEnd+1)==UQFront))
 "103
-[e $U 462  ]
-[e :U 463 ]
-[; ;main.c: 316: }
-[; ;main.c: 318: }
-[; ;main.c: 319: }
-"319
-[e :UE 460 ]
+[e $ ! || && == -> _UQEnd `i - -> 64 `i -> 1 `i == -> _UQFront `i -> 0 `i == + -> _UQEnd `i -> 1 `i -> _UQFront `i 479  ]
+[; ;usart_pic16.c: 104: {
+"104
+{
+[; ;usart_pic16.c: 106: UQFront++;
+"106
+[e ++ _UQFront -> -> 1 `i `c ]
+[; ;usart_pic16.c: 107: if(UQFront==64) UQFront=0;
+"107
+[e $ ! == -> _UQFront `i -> 64 `i 480  ]
+[e = _UQFront -> -> 0 `i `c ]
+[e :U 480 ]
+"108
+}
+[e :U 479 ]
+[; ;usart_pic16.c: 108: }
+[; ;usart_pic16.c: 110: if(UQEnd==64-1)
+"110
+[e $ ! == -> _UQEnd `i - -> 64 `i -> 1 `i 481  ]
+[; ;usart_pic16.c: 111: UQEnd=0;
+"111
+[e = _UQEnd -> -> 0 `i `c ]
+[e $U 482  ]
+"112
+[e :U 481 ]
+[; ;usart_pic16.c: 112: else
+[; ;usart_pic16.c: 113: UQEnd++;
+"113
+[e ++ _UQEnd -> -> 1 `i `c ]
+[e :U 482 ]
+[; ;usart_pic16.c: 115: URBuff[UQEnd]=data;
+"115
+[e = *U + &U _URBuff * -> -> _UQEnd `uc `ux -> -> # *U &U _URBuff `ui `ux _data ]
+[; ;usart_pic16.c: 117: if(UQFront==-1) UQFront=0;
+"117
+[e $ ! == -> _UQFront `i -U -> 1 `i 483  ]
+[e = _UQFront -> -> 0 `i `c ]
+[e :U 483 ]
+[; ;usart_pic16.c: 119: }
+"119
+[e :UE 476 ]
+}
+"121
+[v _USARTReadData `(uc ~T0 @X0 1 ef ]
+{
+[; ;usart_pic16.c: 121: char USARTReadData(void) {
+[e :U _USARTReadData ]
+[f ]
+"122
+[v _data `uc ~T0 @X0 1 a ]
+[; ;usart_pic16.c: 122: char data;
+[; ;usart_pic16.c: 125: if(UQFront==-1)
+"125
+[e $ ! == -> _UQFront `i -U -> 1 `i 485  ]
+[; ;usart_pic16.c: 126: return 0;
+"126
+[e ) -> -> 0 `i `uc ]
+[e $UE 484  ]
+[e :U 485 ]
+[; ;usart_pic16.c: 128: data=URBuff[UQFront];
+"128
+[e = _data *U + &U _URBuff * -> -> _UQFront `uc `ux -> -> # *U &U _URBuff `ui `ux ]
+[; ;usart_pic16.c: 130: if(UQFront==UQEnd)
+"130
+[e $ ! == -> _UQFront `i -> _UQEnd `i 486  ]
+[; ;usart_pic16.c: 131: {
+"131
+{
+[; ;usart_pic16.c: 134: UQFront=UQEnd=-1;
+"134
+[e = _UQFront = _UQEnd -> -U -> 1 `i `c ]
+"135
+}
+[; ;usart_pic16.c: 135: }
+[e $U 487  ]
+"136
+[e :U 486 ]
+[; ;usart_pic16.c: 136: else
+[; ;usart_pic16.c: 137: {
+"137
+{
+[; ;usart_pic16.c: 138: UQFront++;
+"138
+[e ++ _UQFront -> -> 1 `i `c ]
+[; ;usart_pic16.c: 140: if(UQFront==64)
+"140
+[e $ ! == -> _UQFront `i -> 64 `i 488  ]
+[; ;usart_pic16.c: 141: UQFront=0;
+"141
+[e = _UQFront -> -> 0 `i `c ]
+[e :U 488 ]
+"142
+}
+[e :U 487 ]
+[; ;usart_pic16.c: 142: }
+[; ;usart_pic16.c: 144: return data;
+"144
+[e ) _data ]
+[e $UE 484  ]
+[; ;usart_pic16.c: 145: }
+"145
+[e :UE 484 ]
+}
+"147
+[v _USARTDataAvailable `(uc ~T0 @X0 1 ef ]
+{
+[; ;usart_pic16.c: 147: uint8_t USARTDataAvailable(void) {
+[e :U _USARTDataAvailable ]
+[f ]
+[; ;usart_pic16.c: 148: if(UQFront==-1) return 0;
+"148
+[e $ ! == -> _UQFront `i -U -> 1 `i 490  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 489  ]
+[e :U 490 ]
+[; ;usart_pic16.c: 149: if(UQFront<UQEnd)
+"149
+[e $ ! < -> _UQFront `i -> _UQEnd `i 491  ]
+[; ;usart_pic16.c: 150: return(UQEnd-UQFront+1);
+"150
+[e ) -> + - -> _UQEnd `i -> _UQFront `i -> 1 `i `uc ]
+[e $UE 489  ]
+[e $U 492  ]
+"151
+[e :U 491 ]
+[; ;usart_pic16.c: 151: else if(UQFront>UQEnd)
+[e $ ! > -> _UQFront `i -> _UQEnd `i 493  ]
+[; ;usart_pic16.c: 152: return (64-UQFront+UQEnd+1);
+"152
+[e ) -> + + - -> 64 `i -> _UQFront `i -> _UQEnd `i -> 1 `i `uc ]
+[e $UE 489  ]
+[e $U 494  ]
+"153
+[e :U 493 ]
+[; ;usart_pic16.c: 153: else
+[; ;usart_pic16.c: 154: return 1;
+"154
+[e ) -> -> 1 `i `uc ]
+[e $UE 489  ]
+[e :U 494 ]
+[e :U 492 ]
+[; ;usart_pic16.c: 155: }
+"155
+[e :UE 489 ]
+}
+"157
+[v _USARTWriteInt `(v ~T0 @X0 1 ef2`i`c ]
+{
+[; ;usart_pic16.c: 157: void USARTWriteInt(int16_t val, int8_t field_length) {
+[e :U _USARTWriteInt ]
+[v _val `i ~T0 @X0 1 r1 ]
+[v _field_length `c ~T0 @X0 1 r2 ]
+[f ]
+[v F3536 `uc ~T0 @X0 -> 5 `i s ]
+[i F3536
+:U ..
+"158
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[v _str `uc ~T0 @X0 -> 5 `i a ]
+[; ;usart_pic16.c: 158: char str[5]={0,0,0,0,0};
+[e = _str F3536 ]
+"159
+[v _i `c ~T0 @X0 1 a ]
+[; ;usart_pic16.c: 159: int8_t i=4,j=0;
+[e = _i -> -> 4 `i `c ]
+[v _j `c ~T0 @X0 1 a ]
+[e = _j -> -> 0 `i `c ]
+[; ;usart_pic16.c: 162: if(val<0)
+"162
+[e $ ! < _val -> 0 `i 496  ]
+[; ;usart_pic16.c: 163: {
+"163
+{
+[; ;usart_pic16.c: 164: USARTWriteChar('-');
+"164
+[e ( _USARTWriteChar (1 -> -> 45 `ui `uc ]
+[; ;usart_pic16.c: 165: val=val*-1;
+"165
+[e = _val * _val -U -> 1 `i ]
+"166
+}
+[; ;usart_pic16.c: 166: }
+[e $U 497  ]
+"167
+[e :U 496 ]
+[; ;usart_pic16.c: 167: else
+[; ;usart_pic16.c: 168: {
+"168
+{
+[; ;usart_pic16.c: 169: USARTWriteChar(' ');
+"169
+[e ( _USARTWriteChar (1 -> -> 32 `ui `uc ]
+"170
+}
+[e :U 497 ]
+[; ;usart_pic16.c: 170: }
+[; ;usart_pic16.c: 172: if(val==0 && field_length<1)
+"172
+[e $ ! && == _val -> 0 `i < -> _field_length `i -> 1 `i 498  ]
+[; ;usart_pic16.c: 173: {
+"173
+{
+[; ;usart_pic16.c: 174: USARTWriteChar('0');
+"174
+[e ( _USARTWriteChar (1 -> -> 48 `ui `uc ]
+[; ;usart_pic16.c: 175: return;
+"175
+[e $UE 495  ]
+"176
+}
+[e :U 498 ]
+[; ;usart_pic16.c: 176: }
+[; ;usart_pic16.c: 177: while(val)
+"177
+[e $U 499  ]
+[e :U 500 ]
+[; ;usart_pic16.c: 178: {
+"178
+{
+[; ;usart_pic16.c: 179: str[i]=val%10;
+"179
+[e = *U + &U _str * -> -> _i `uc `ux -> -> # *U &U _str `ui `ux -> % _val -> 10 `i `uc ]
+[; ;usart_pic16.c: 180: val=val/10;
+"180
+[e = _val / _val -> 10 `i ]
+[; ;usart_pic16.c: 181: i--;
+"181
+[e -- _i -> -> 1 `i `c ]
+"182
+}
+[e :U 499 ]
+"177
+[e $ != _val -> 0 `i 500  ]
+[e :U 501 ]
+[; ;usart_pic16.c: 182: }
+[; ;usart_pic16.c: 184: if(field_length==-1)
+"184
+[e $ ! == -> _field_length `i -U -> 1 `i 502  ]
+[; ;usart_pic16.c: 185: while(str[j]==0) j++;
+"185
+[e $U 503  ]
+[e :U 504 ]
+[e ++ _j -> -> 1 `i `c ]
+[e :U 503 ]
+[e $ == -> *U + &U _str * -> -> _j `uc `ux -> -> # *U &U _str `ui `ux `i -> 0 `i 504  ]
+[e :U 505 ]
+[e $U 506  ]
+"186
+[e :U 502 ]
+[; ;usart_pic16.c: 186: else
+[; ;usart_pic16.c: 187: j=5-field_length;
+"187
+[e = _j -> - -> 5 `i -> _field_length `i `c ]
+[e :U 506 ]
+[; ;usart_pic16.c: 190: for(i=j;i<5;i++)
+"190
+{
+[e = _i _j ]
+[e $ < -> _i `i -> 5 `i 507  ]
+[e $U 508  ]
+"191
+[e :U 507 ]
+[; ;usart_pic16.c: 191: {
+{
+[; ;usart_pic16.c: 192: USARTWriteChar('0'+str[i]);
+"192
+[e ( _USARTWriteChar (1 -> + -> 48 `ui -> *U + &U _str * -> -> _i `uc `ux -> -> # *U &U _str `ui `ux `ui `uc ]
+"193
+}
+"190
+[e ++ _i -> -> 1 `i `c ]
+[e $ < -> _i `i -> 5 `i 507  ]
+[e :U 508 ]
+"193
+}
+[; ;usart_pic16.c: 193: }
+[; ;usart_pic16.c: 194: }
+"194
+[e :UE 495 ]
+}
+"196
+[v _USARTGotoNewLine `(v ~T0 @X0 1 ef ]
+{
+[; ;usart_pic16.c: 196: void USARTGotoNewLine(void) {
+[e :U _USARTGotoNewLine ]
+[f ]
+[; ;usart_pic16.c: 197: USARTWriteChar('\r');
+"197
+[e ( _USARTWriteChar (1 -> -> 13 `ui `uc ]
+[; ;usart_pic16.c: 198: USARTWriteChar('\n');
+"198
+[e ( _USARTWriteChar (1 -> -> 10 `ui `uc ]
+[; ;usart_pic16.c: 199: }
+"199
+[e :UE 510 ]
+}
+"201
+[v _USARTReadBuffer `(v ~T0 @X0 1 ef2`*uc`ui ]
+{
+[; ;usart_pic16.c: 201: void USARTReadBuffer(char *buff,uint16_t len) {
+[e :U _USARTReadBuffer ]
+[v _buff `*uc ~T0 @X0 1 r1 ]
+[v _len `ui ~T0 @X0 1 r2 ]
+[f ]
+"202
+[v _i `ui ~T0 @X0 1 a ]
+[; ;usart_pic16.c: 202: uint16_t i;
+[; ;usart_pic16.c: 203: for(i=0;i<len;i++)
+"203
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 515  ]
+"204
+[e :U 512 ]
+[; ;usart_pic16.c: 204: {
+{
+[; ;usart_pic16.c: 205: buff[i]=USARTReadData();
+"205
+[e = *U + _buff * -> _i `ux -> -> # *U _buff `ui `ux ( _USARTReadData ..  ]
+"206
+}
+"203
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 515 ]
+[e $ < _i _len 512  ]
+[e :U 513 ]
+"206
+}
+[; ;usart_pic16.c: 206: }
+[; ;usart_pic16.c: 207: }
+"207
+[e :UE 511 ]
+}
+"208
+[v _USARTFlushBuffer `(v ~T0 @X0 1 ef ]
+{
+[; ;usart_pic16.c: 208: void USARTFlushBuffer(void) {
+[e :U _USARTFlushBuffer ]
+[f ]
+[; ;usart_pic16.c: 209: while(USARTDataAvailable()>0)
+"209
+[e $U 517  ]
+[e :U 518 ]
+[; ;usart_pic16.c: 210: {
+"210
+{
+[; ;usart_pic16.c: 211: USARTReadData();
+"211
+[e ( _USARTReadData ..  ]
+"212
+}
+[e :U 517 ]
+"209
+[e $ > -> ( _USARTDataAvailable ..  `i -> 0 `i 518  ]
+[e :U 519 ]
+[; ;usart_pic16.c: 212: }
+[; ;usart_pic16.c: 213: }
+"213
+[e :UE 516 ]
 }

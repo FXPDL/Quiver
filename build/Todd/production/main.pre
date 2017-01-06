@@ -4914,7 +4914,7 @@ uint16_t adc_convert(uint8_t);
 float map(float, float, float, float, float);
 int set_subdivision(int,int);
 
-# 55 "constants.h"
+# 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4957,6 +4957,11 @@ int debounce_mode2 = 0;
 
 volatile long tap_timer = 0;
 volatile long test_timer = 0;
+volatile long double_timer = 0;
+
+char presetSaveMode = 0;
+char presetChannel = 1;
+char expressionChannel = 1;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
@@ -4964,6 +4969,9 @@ volatile uint8_t longTap_state = -1;
 volatile uint8_t feedback_state = -1;
 
 char expSwitchState = -1;
+
+char presetModeCnst = 1;
+char expressModeCnst = 2;
 
 int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
@@ -4988,6 +4996,8 @@ void showBootSequence(void);
 void read_bottom_tactile(void);
 void read_top_tactile(void);
 void update_mode(void);
+void update_selectMode(void);
+void setPedalMode(void);
 
 # 19 "system.h"
 void ConfigureOscillator(void);
@@ -5009,6 +5019,23 @@ void initSwitchTap(void);
 void updateSwitchTap(void);
 void setSwitchTapState(int);
 void setLongTapState(int);
+
+# 42 "usart_pic16.h"
+volatile char URBuff[64];
+volatile int8_t UQFront;
+volatile int8_t UQEnd;
+
+void USARTInit(uint16_t baud_rate);
+void USARTWriteChar(char ch);
+void USARTWriteString(const char *str);
+void USARTWriteLine(const char *str);
+void USARTWriteInt(int16_t val, int8_t field_length);
+void USARTHandleRxInt();
+char USARTReadData();
+uint8_t USARTDataAvailable();
+void USARTGotoNewLine();
+void USARTReadBuffer(char *buff,uint16_t len);
+void USARTFlushBuffer();
 
 # 38 "main.c"
 volatile long mod_timer = 0;
@@ -5039,11 +5066,13 @@ char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 5
 
 
 int B25kLength = 0;
+char feedbackTriggered = 0;
 
 # 83
 void main(void) {
 B25kLength = sizeof(B25k)/sizeof(B25k[0]);
 
+USARTInit(31250);
 ConfigureOscillator();
 InitApp();
 
@@ -5061,41 +5090,15 @@ initSwitchBypass();
 ReadSavedSettings();
 
 while (1) {
-read_bottom_tactile();
-read_top_tactile();
 
-update_expressSwitchState();
-
-update_mode();
-
-if (PORTDbits.RD7 == 0) {
-debounce_mode1++;
-if (debounce_mode1 > 25) {
-debounce_mode1 = 25;
-
-
-
-showBootSequence();
-
-
-while (PORTDbits.RD7 == 0) {
-}
-}
-} else {
-debounce_mode1 = 0;
-}
-
-updateSwitchBypass();
-updateSwitchTap();
-
-
+# 142
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 163
+# 174
 if (bottom_push_state != 5) {
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
@@ -5105,7 +5108,7 @@ delay_time_changed = 1;
 }
 }
 
-# 180
+# 191
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 int i = (int)map(knob2_prev, 0, 1023, 0, 39);
@@ -5113,33 +5116,41 @@ CCPR2 = (int)B25k[B25kLength - 1 - i];
 CCPR3 = (int)B25k[i];
 }
 
-# 195
-if (bottom_push_state != 5) {
-if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
-knob3_prev = knob_3_pos;
-int i = (int)map(knob3_prev, 0, 1023, 16, 0);
-CCPR4 = (int)B25k[B25kLength - 1 - i];
-CCPR5 = (int)B25k[i];
-}
-} else {
-if (knob3_prev != 511) {
-knob3_prev = 511;
+# 224
+if (bottom_push_state == 5) {
+if (knob3_prev != 1023) {
+knob3_prev = 1023;
 
 int i = (int) map(knob3_prev, 0, 1023, 16, 0);
 CCPR4 = (int) B25k[B25kLength - 1 - i];
 CCPR5 = (int) B25k[i];
 }
+} else if (feedback_state == 1) {
+if (knob3_prev != 0) {
+knob3_prev = 0;
+feedbackTriggered = 1;
 
+int i = (int) map(knob3_prev, 0, 1023, 25, 0);
+CCPR4 = (int) B25k[B25kLength - 1 - i];
+CCPR5 = (int) B25k[i];
+}
+} else {
+if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
+knob3_prev = knob_3_pos;
+int i = (int) map(knob3_prev, 0, 1023, 18, 0);
+CCPR4 = (int) B25k[B25kLength - 1 - i];
+CCPR5 = (int) B25k[i];
+}
 }
 
-# 221
+# 259
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
 mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
 }
 
-# 233
+# 271
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
 adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
@@ -5166,7 +5177,7 @@ delay_counter++;
 }
 }
 
-# 276
+# 314
 delay_time_changed = 0;
 
 }

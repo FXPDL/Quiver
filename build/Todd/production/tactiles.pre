@@ -4914,7 +4914,7 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 55 "constants.h"
+# 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4957,6 +4957,11 @@ int debounce_mode2 = 0;
 
 volatile long tap_timer = 0;
 volatile long test_timer = 0;
+volatile long double_timer = 0;
+
+char presetSaveMode = 0;
+char presetChannel = 1;
+char expressionChannel = 1;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
@@ -4965,12 +4970,17 @@ volatile uint8_t feedback_state = -1;
 
 char expSwitchState = -1;
 
+char presetModeCnst = 1;
+char expressModeCnst = 2;
+
 int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
 # 24 "tactiles.h"
 void read_bottom_tactile(void);
 void read_top_tactile(void);
 void update_mode(void);
+void update_selectMode(void);
+void setPedalMode(void);
 
 # 24 "LEDs.h"
 void star_tactiles(uint8_t);
@@ -4979,13 +4989,19 @@ void solidring_tactiles(void);
 void showSave(void);
 void showBootSequence(void);
 
-# 14 "tactiles.c"
+# 25 "preset_programming.h"
+void setDoublePressState(int);
+void setPresetDisplay(char);
+void setExpressionDisplay(char);
+void resetRingLEDs(void);
+
+# 15 "tactiles.c"
 uint8_t topTactile_pressed = 0;
 uint8_t bottomTactile_pressed = 0;
 
 void read_bottom_tactile(void) {
 
-# 25
+# 27
 if (PORTDbits.RD6 == 0) {
 if (bottomTactile_pressed > 0) {
 bottomTactile_pressed--;
@@ -5010,7 +5026,7 @@ wait_ms(20);
 
 void read_top_tactile(void) {
 
-# 56
+# 59
 if (PORTDbits.RD5 == 0) {
 if (topTactile_pressed > 0) {
 topTactile_pressed--;
@@ -5023,6 +5039,7 @@ topTactile_pressed++;
 
 
 if (topTactile_pressed == 0) {
+
 top_push_state = top_push_state + 1;
 if (top_push_state >= 7) {
 top_push_state = 1;
@@ -5043,32 +5060,81 @@ void update_mode(void) {
 
 
 if (PORTCbits.RC0 == 0) {
+
+
 debounce_mode2++;
 if (debounce_mode2 > 25) {
 debounce_mode2 = 25;
+
+if (presetSaveMode == 1) {
+presetSaveMode = 0;
+resetRingLEDs();
+} else {
 mode2_state++;
 if (mode2_state > 2) {
 mode2_state = 0;
 }
-switch(mode2_state) {
-case 0:
-LATBbits.LATB1 = 0;
-LATBbits.LATB0 = 0;
-break;
-case 1:
-LATBbits.LATB1 = 0;
-LATBbits.LATB0 = 1;
-break;
-case 2:
-LATBbits.LATB1 = 1;
-LATBbits.LATB0 = 0;
-break;
 }
+
+setPedalMode();
 while (PORTCbits.RC0 == 0) {
 }
 }
 } else {
 debounce_mode2 = 0;
+}
+
+}
+
+void setPedalMode(void) {
+switch (mode2_state) {
+case 0:
+LATBbits.LATB1 = 0;
+LATBbits.LATB0 = 0;
+resetRingLEDs();
+break;
+case 1:
+LATBbits.LATB1 = 0;
+LATBbits.LATB0 = 1;
+setPresetDisplay(presetChannel);
+break;
+case 2:
+LATBbits.LATB1 = 1;
+LATBbits.LATB0 = 0;
+setExpressionDisplay(expressionChannel);
+break;
+}
+}
+
+void update_selectMode(void) {
+if (mode2_state == 0 && presetSaveMode != 1) {
+
+return;
+}
+if (PORTDbits.RD7 == 0) {
+debounce_mode1++;
+if (debounce_mode1 > 25) {
+debounce_mode1 = 25;
+if (mode2_state == presetModeCnst || presetSaveMode == 1) {
+presetChannel++;
+if (presetChannel > 10) {
+presetChannel = 1;
+}
+setPresetDisplay(presetChannel);
+} else if (mode2_state == expressModeCnst) {
+expressionChannel++;
+if (expressionChannel > 5) {
+expressionChannel = 1;
+}
+setExpressionDisplay(expressionChannel);
+}
+
+# 166
+while (PORTDbits.RD7 == 0) {
+}
+}
+} else {
+debounce_mode1 = 0;
 }
 
 }

@@ -23,3 +23,6 @@ extern "C" {
 
 
 void setDoublePressState(int);
+void setPresetDisplay(char);
+void setExpressionDisplay(char);
+void resetRingLEDs(void);

@@ -14,6 +14,8 @@
 #include "constants.h"          
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "modulation.h"    /* Modulation constants*/
+#include "usart_pic16.h"
+
 
 /******************************************************************************/
 /* Interrupt Routines                                                         */
@@ -36,13 +38,16 @@ void interrupt isr(void) {
     extern  int top_push_state;
     extern uint8_t feedback_start;
     extern volatile long mod_timer;    
-    extern volatile long delay_time;       
+    extern volatile long delay_time;
+    
+    
     if (INTCONbits.TMR0IF == 1) {
         tmpSubDelay = delay_time;
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
+        double_timer++;
         test_timer++;
         if (feedback_start == 1) {
             feedback_timer++;
@@ -63,18 +68,8 @@ void interrupt isr(void) {
          }
     }
 
-   /*
-    if (test_timer >= 750) {  
-        LED_tap_Aux = 1;
-        test_timer = 0;
-    } 
     
-    if (test_timer >= 5) {  
-        LED_tap_Aux = 0;
-    }
-    */
-    
-    if (longTap_state < 1 && doubleTap_state < 1) {
+    if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
        
         //Don't blink the tap if the tap is held down
         if (timer >= baseline_delay_time) { //delay_time
@@ -103,18 +98,34 @@ void interrupt isr(void) {
         }
     } 
 
-  
-    if (sub_timer >= tmpSubDelay) { //sub_delay_time
-        if (suspend_blink == 0) {
-            set_leds_top(top_push_state, 1);
-        }
-        tmpSubDelay = delay_time;
-        sub_timer = 0;
-    }
+    
+    if (presetSaveMode == 1) { 
+       
+        
+        if (double_timer >= 250) {
+            LED_tap_Aux = 1;
+            double_timer = 0;
 
-    if (sub_timer >= 20) { //delay_time
-        if (suspend_blink == 0) {
-            set_leds_top(top_push_state, 0);
+        }
+        if (double_timer >= 30) { 
+            
+            LED_tap_Aux = 0;
+        }    
+    } 
+  
+    if (presetSaveMode < 1 && mode2_state == 0) {
+        if (sub_timer >= tmpSubDelay ) { //sub_delay_time
+            if (suspend_blink == 0) {
+                set_leds_top(top_push_state, 1);
+            }
+            tmpSubDelay = delay_time;
+            sub_timer = 0;
+        }
+
+        if (sub_timer >= 20) { //delay_time
+            if (suspend_blink == 0) {
+                set_leds_top(top_push_state, 0);
+            }
         }
     }
 
@@ -130,6 +141,7 @@ void interrupt isr(void) {
     //  6) reset timer
     //--------------------------------------------------
 
+    
     if (mod_timer >= mod_delay_time) {        
        mod_timer = 0;
 
@@ -137,16 +149,6 @@ void interrupt isr(void) {
        if (mod_counter >= 60) {
             mod_counter = 0;
         } 
-       
-       /* if (bottom_push_state == 1 || bottom_push_state == 5) {
-            if (mod_counter >= 61) {
-                mod_counter = 0;
-            }                
-        } else {
-            if (mod_counter >= 31) {
-                mod_counter = 0;
-            }
-        }*/
 
         switch (bottom_push_state) {
             case 1:
@@ -182,60 +184,14 @@ void interrupt isr(void) {
         }
 
         
-        /*if (mod_counter < 5) {
-            LED_tap_Aux = 1;
-        } else {
-            LED_tap_Aux = 0;
-        }*/
-        
-       /* if (mod_counter == 0) {
-            LATDbits.LATD1 = 1;
-        } else {
-            LATDbits.LATD1 = 0;
-        }*/
-        
-        
         mod_value = modulation(mod_value, adjusted_pot_value);
         CCPR9 = mod_value / 2;
         mod_timer = 0;
         mod_counter++;
 
-            /*if (adjusted_pot_value > 1260) {
-                LATDbits.LATD2 = 1;
-            } else {
-                LATDbits.LATD2 = 0;
-            } 
-
-            if (mod_value > 250 && mod_value < 500) {
-                LATDbits.LATD3 = 1;
-            } else {
-                LATDbits.LATD3 = 0;
-            }*/
-            
     }
 
 
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     if (preset_programmning_on == 1) {
         preset_blink++;
