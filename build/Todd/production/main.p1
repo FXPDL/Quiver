@@ -4451,148 +4451,148 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 110: knob_5_pos = adc_convert(4);
 "110
 [e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
-[; ;main.c: 126: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-"126
+[; ;main.c: 114: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+"114
 [e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 466  ]
 {
-[; ;main.c: 127: knob1_prev = knob_1_pos;
-"127
+[; ;main.c: 115: knob1_prev = knob_1_pos;
+"115
 [e = _knob1_prev _knob_1_pos ]
-[; ;main.c: 128: CCPR2 = scaleA10kPot(knob1_prev);
-"128
+[; ;main.c: 116: CCPR2 = scaleA10kPot(knob1_prev);
+"116
 [e = _CCPR2 -> ( _scaleA10kPot (1 -> _knob1_prev `d `us ]
-[; ;main.c: 129: CCPR3 = scaleiA10kPot(knob1_prev);
-"129
+[; ;main.c: 117: CCPR3 = scaleiA10kPot(knob1_prev);
+"117
 [e = _CCPR3 -> ( _scaleiA10kPot (1 -> _knob1_prev `d `us ]
-"131
+"119
 }
 [e :U 466 ]
-[; ;main.c: 131: }
-[; ;main.c: 141: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
-"141
+[; ;main.c: 119: }
+[; ;main.c: 123: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
+"123
 [e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 467  ]
 {
-[; ;main.c: 142: knob2_prev = knob_2_pos;
-"142
+[; ;main.c: 124: knob2_prev = knob_2_pos;
+"124
 [e = _knob2_prev _knob_2_pos ]
-[; ;main.c: 143: CCPR4 = scaleA100kPot(knob2_prev);
-"143
+[; ;main.c: 125: CCPR4 = scaleA100kPot(knob2_prev);
+"125
 [e = _CCPR4 -> ( _scaleA100kPot (1 -> _knob2_prev `d `us ]
-[; ;main.c: 144: CCPR5 = scaleiA100kPot(knob2_prev);
-"144
+[; ;main.c: 126: CCPR5 = scaleiA100kPot(knob2_prev);
+"126
 [e = _CCPR5 -> ( _scaleiA100kPot (1 -> _knob2_prev `d `us ]
-"145
+"127
 }
 [e :U 467 ]
-[; ;main.c: 145: }
-[; ;main.c: 155: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
-"155
+[; ;main.c: 127: }
+[; ;main.c: 137: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+"137
 [e $ ! || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i 468  ]
 {
-[; ;main.c: 156: knob3_prev = knob_3_pos;
-"156
+[; ;main.c: 138: knob3_prev = knob_3_pos;
+"138
 [e = _knob3_prev _knob_3_pos ]
-[; ;main.c: 157: symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
-"157
+[; ;main.c: 139: symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
+"139
 [e = _symmetry -> -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 0 `i `f -> -> 360 `i `f `i `uc ]
-"159
+"141
 }
 [e :U 468 ]
-[; ;main.c: 159: }
-[; ;main.c: 170: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"170
+[; ;main.c: 141: }
+[; ;main.c: 152: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"152
 [e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 469  ]
 {
-[; ;main.c: 171: knob4_prev = knob_4_pos;
-"171
+[; ;main.c: 153: knob4_prev = knob_4_pos;
+"153
 [e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 173: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
-"173
+[; ;main.c: 155: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
+"155
 [e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
-"174
+"156
 }
 [e :U 469 ]
-[; ;main.c: 174: }
-[; ;main.c: 182: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"182
+[; ;main.c: 156: }
+[; ;main.c: 161: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"161
 [e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 470  ]
 {
-[; ;main.c: 183: knob5_prev = knob_5_pos;
-"183
+[; ;main.c: 162: knob5_prev = knob_5_pos;
+"162
 [e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 184: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"184
+[; ;main.c: 163: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"163
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"186
+"165
 }
 [e :U 470 ]
-[; ;main.c: 186: }
-[; ;main.c: 189: if (delay_time_changed == 1) {
-"189
+[; ;main.c: 165: }
+[; ;main.c: 168: if (delay_time_changed == 1) {
+"168
 [e $ ! == _delay_time_changed -> 1 `i 471  ]
 {
-[; ;main.c: 190: delay_time = baseline_delay_time;
-"190
+[; ;main.c: 169: delay_time = baseline_delay_time;
+"169
 [e = _delay_time _baseline_delay_time ]
-[; ;main.c: 191: delay_time = set_subdivision(baseline_delay_time, top_push_state);
-"191
+[; ;main.c: 170: delay_time = set_subdivision(baseline_delay_time, top_push_state);
+"170
 [e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
-[; ;main.c: 192: reset_sub_delay = 1;
-"192
+[; ;main.c: 171: reset_sub_delay = 1;
+"171
 [e = _reset_sub_delay -> 1 `i ]
-[; ;main.c: 193: delayfound = 0;
-"193
+[; ;main.c: 172: delayfound = 0;
+"172
 [e = _delayfound -> 0 `i ]
-[; ;main.c: 194: delay_counter = 0;
-"194
+[; ;main.c: 173: delay_counter = 0;
+"173
 [e = _delay_counter -> 0 `i ]
-[; ;main.c: 196: while (delayfound == 0) {
-"196
+[; ;main.c: 175: while (delayfound == 0) {
+"175
 [e $U 472  ]
 [e :U 473 ]
 {
-[; ;main.c: 197: if (delayArray[delay_counter] <= delay_time * 2) {
-"197
+[; ;main.c: 176: if (delayArray[delay_counter] <= delay_time * 2) {
+"176
 [e $ ! <= -> *U + &U _delayArray * -> -> _delay_counter `ui `ux -> -> # *U &U _delayArray `ui `ux `l * _delay_time -> -> 2 `i `l 475  ]
 {
-[; ;main.c: 198: delayfound = 1;
-"198
+[; ;main.c: 177: delayfound = 1;
+"177
 [e = _delayfound -> 1 `i ]
-"202
+"181
 }
-[; ;main.c: 202: } else {
+[; ;main.c: 181: } else {
 [e $U 476  ]
 [e :U 475 ]
 {
-[; ;main.c: 203: delay_counter++;
-"203
+[; ;main.c: 182: delay_counter++;
+"182
 [e ++ _delay_counter -> 1 `i ]
-"205
+"184
 }
 [e :U 476 ]
-"206
+"185
 }
 [e :U 472 ]
-"196
+"175
 [e $ == _delayfound -> 0 `i 473  ]
 [e :U 474 ]
-[; ;main.c: 205: }
-[; ;main.c: 206: }
-[; ;main.c: 208: delay_time_changed = 0;
-"208
+[; ;main.c: 184: }
+[; ;main.c: 185: }
+[; ;main.c: 187: delay_time_changed = 0;
+"187
 [e = _delay_time_changed -> 0 `i ]
-"210
+"189
 }
 [e :U 471 ]
-"212
+"191
 }
 [e :U 461 ]
 "88
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 210: }
-[; ;main.c: 212: }
-[; ;main.c: 213: }
-"213
+[; ;main.c: 189: }
+[; ;main.c: 191: }
+[; ;main.c: 192: }
+"192
 [e :UE 460 ]
 }

@@ -109,20 +109,8 @@ void main(void) {
         knob_4_pos = adc_convert(3);
         knob_5_pos = adc_convert(4);
 
-
-
-        //knob 1 action ----------------------------------
-        //Delay Time PWM1 CCPR1
-        //  1) Look to see if knob has changed by more then 0.2%
-        //  2) Map knob to 0-255 PWM range
-        //  3) subroutine to map knob range
-        //  4) subroutine to apply subdivisions
-        //  5) recalculate mod timer
-        //  6) set output of dthelay
-        //--------------------------------------------------
-        
-        //Depth
-       // LED_bypass_Aux = 0;
+       
+        //Volume
         if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
             CCPR2 = scaleA10kPot(knob1_prev);
@@ -131,13 +119,7 @@ void main(void) {
         } 
 
 
-        //Mix
-        //knob 2 action ----------------------------------
-        //Delay MIX U8 U7 PWM2 PWM3
-        //  1) Look to see if knob has changed by more then 0.2%
-        //  2) Map knob to 0-39 for array
-        //  3) Set CCP to calibrated value
-        //------------------------------------------------
+        //Frequency
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
             CCPR4 = scaleA100kPot(knob2_prev);
@@ -170,15 +152,12 @@ void main(void) {
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
            // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
-            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);          
+            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);  
         }
 
 
 
-        //knob 5 action ----------------------------------
-        //Delay MOD DEPTH U13 U14 PWM8 PWM9
-        //  1) Look to see if knob has changed by more then 0.2%
-        //------------------------------------------------
+        //Depth ----------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
             adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
@@ -196,8 +175,6 @@ void main(void) {
             while (delayfound == 0) {
                 if (delayArray[delay_counter] <= delay_time * 2) {
                     delayfound = 1;
-                    //timer = 0;
-                   // CCPR1 = delay_counter;
                     
                 } else {
                     delay_counter++;

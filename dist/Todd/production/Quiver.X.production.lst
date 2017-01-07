@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.37 build -260352376 
-                                                                                               Sat Jan 07 11:25:30 2017
+                                                                                               Sat Jan 07 11:30:11 2017
 
 Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110536
      1                           	processor	16F1527
@@ -5885,7 +5885,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   5874  0451  0023               	movlb	3	; select bank3
   5875  0452  00B4               	movwf	_knob_5_pos^(0+384)
   5876                           
-  5877                           ;main.c: 126: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+  5877                           ;main.c: 114: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
   5878  0453  0022               	movlb	2	; select bank2
   5879  0454  0966               	comf	_knob1_prev^(0+256),w	;volatile
   5880  0455  0023               	movlb	3	; select bank3
@@ -5946,7 +5946,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   5935  048A  2CEC               	goto	l8249
   5936  048B                     l8239:	
   5937                           
-  5938                           ;main.c: 127: knob1_prev = knob_1_pos;
+  5938                           ;main.c: 115: knob1_prev = knob_1_pos;
   5939  048B  0023               	movlb	3	; select bank3
   5940  048C  082D               	movf	(_knob_1_pos+1)^(0+384),w
   5941  048D  0022               	movlb	2	; select bank2
@@ -5956,7 +5956,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   5945  0491  0022               	movlb	2	; select bank2
   5946  0492  00E6               	movwf	_knob1_prev^(0+256)	;volatile
   5947                           
-  5948                           ;main.c: 128: CCPR2 = scaleA10kPot(knob1_prev);
+  5948                           ;main.c: 116: CCPR2 = scaleA10kPot(knob1_prev);
   5949  0493  0867               	movf	(_knob1_prev+1)^(0+256),w	;volatile
   5950  0494  0021               	movlb	1	; select bank1
   5951  0495  00A9               	movwf	(___awtoft@c+1)^(0+128)
@@ -5978,7 +5978,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   5967  04A7  0024               	movlb	4	; select bank4
   5968  04A8  00DB               	movwf	(_main$2651+2)^(0+512)
   5969                           
-  5970                           ;main.c: 128: CCPR2 = scaleA10kPot(knob1_prev);
+  5970                           ;main.c: 116: CCPR2 = scaleA10kPot(knob1_prev);
   5971  04A9  0859               	movf	_main$2651^(0+512),w
   5972  04AA  0022               	movlb	2	; select bank2
   5973  04AB  00D7               	movwf	scaleA10kPot@input^(0+256)
@@ -6000,7 +6000,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   5989  04BD  0025               	movlb	5	; select bank5
   5990  04BE  0098               	movwf	24	;volatile
   5991                           
-  5992                           ;main.c: 129: CCPR3 = scaleiA10kPot(knob1_prev);
+  5992                           ;main.c: 117: CCPR3 = scaleiA10kPot(knob1_prev);
   5993  04BF  0022               	movlb	2	; select bank2
   5994  04C0  0867               	movf	(_knob1_prev+1)^(0+256),w	;volatile
   5995  04C1  0021               	movlb	1	; select bank1
@@ -6023,7 +6023,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6012  04D4  0024               	movlb	4	; select bank4
   6013  04D5  00DE               	movwf	(_main$2652+2)^(0+512)
   6014                           
-  6015                           ;main.c: 129: CCPR3 = scaleiA10kPot(knob1_prev);
+  6015                           ;main.c: 117: CCPR3 = scaleiA10kPot(knob1_prev);
   6016  04D6  085C               	movf	_main$2652^(0+512),w
   6017  04D7  0022               	movlb	2	; select bank2
   6018  04D8  00D7               	movwf	scaleiA10kPot@input^(0+256)
@@ -6046,8 +6046,8 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6035  04EB  0091               	movwf	17	;volatile
   6036  04EC                     l8249:	
   6037                           
-  6038                           ;main.c: 131: }
-  6039                           ;main.c: 141: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
+  6038                           ;main.c: 119: }
+  6039                           ;main.c: 123: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
   6040  04EC  0020               	movlb	0	; select bank0
   6041  04ED  094F               	comf	_knob2_prev,w	;volatile
   6042  04EE  0023               	movlb	3	; select bank3
@@ -6108,7 +6108,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6097  0523  2D85               	goto	l8263
   6098  0524                     l8253:	
   6099                           
-  6100                           ;main.c: 142: knob2_prev = knob_2_pos;
+  6100                           ;main.c: 124: knob2_prev = knob_2_pos;
   6101  0524  0023               	movlb	3	; select bank3
   6102  0525  082F               	movf	(_knob_2_pos+1)^(0+384),w
   6103  0526  0020               	movlb	0	; select bank0
@@ -6118,7 +6118,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6107  052A  0020               	movlb	0	; select bank0
   6108  052B  00CF               	movwf	_knob2_prev	;volatile
   6109                           
-  6110                           ;main.c: 143: CCPR4 = scaleA100kPot(knob2_prev);
+  6110                           ;main.c: 125: CCPR4 = scaleA100kPot(knob2_prev);
   6111  052C  0850               	movf	_knob2_prev+1,w	;volatile
   6112  052D  0021               	movlb	1	; select bank1
   6113  052E  00A9               	movwf	(___awtoft@c+1)^(0+128)
@@ -6140,7 +6140,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6129  0540  0024               	movlb	4	; select bank4
   6130  0541  00E1               	movwf	(_main$2653+2)^(0+512)
   6131                           
-  6132                           ;main.c: 143: CCPR4 = scaleA100kPot(knob2_prev);
+  6132                           ;main.c: 125: CCPR4 = scaleA100kPot(knob2_prev);
   6133  0542  085F               	movf	_main$2653^(0+512),w
   6134  0543  0022               	movlb	2	; select bank2
   6135  0544  00D7               	movwf	scaleA100kPot@input^(0+256)
@@ -6162,7 +6162,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6151  0556  0026               	movlb	6	; select bank6
   6152  0557  0098               	movwf	24	;volatile
   6153                           
-  6154                           ;main.c: 144: CCPR5 = scaleiA100kPot(knob2_prev);
+  6154                           ;main.c: 126: CCPR5 = scaleiA100kPot(knob2_prev);
   6155  0558  0020               	movlb	0	; select bank0
   6156  0559  0850               	movf	_knob2_prev+1,w	;volatile
   6157  055A  0021               	movlb	1	; select bank1
@@ -6185,7 +6185,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6174  056D  0024               	movlb	4	; select bank4
   6175  056E  00E4               	movwf	(_main$2654+2)^(0+512)
   6176                           
-  6177                           ;main.c: 144: CCPR5 = scaleiA100kPot(knob2_prev);
+  6177                           ;main.c: 126: CCPR5 = scaleiA100kPot(knob2_prev);
   6178  056F  0862               	movf	_main$2654^(0+512),w
   6179  0570  0022               	movlb	2	; select bank2
   6180  0571  00D7               	movwf	scaleiA100kPot@input^(0+256)
@@ -6208,8 +6208,8 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6197  0584  009C               	movwf	28	;volatile
   6198  0585                     l8263:	
   6199                           
-  6200                           ;main.c: 145: }
-  6201                           ;main.c: 155: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+  6200                           ;main.c: 127: }
+  6201                           ;main.c: 137: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
   6202  0585  0023               	movlb	3	; select bank3
   6203  0586  094E               	comf	_knob3_prev^(0+384),w	;volatile
   6204  0587  00E1               	movwf	??_main^(0+384)
@@ -6264,14 +6264,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6253  05B6  2DFA               	goto	l8271
   6254  05B7                     l8267:	
   6255                           
-  6256                           ;main.c: 156: knob3_prev = knob_3_pos;
+  6256                           ;main.c: 138: knob3_prev = knob_3_pos;
   6257  05B7  0023               	movlb	3	; select bank3
   6258  05B8  0831               	movf	(_knob_3_pos+1)^(0+384),w
   6259  05B9  00CF               	movwf	(_knob3_prev+1)^(0+384)	;volatile
   6260  05BA  0830               	movf	_knob_3_pos^(0+384),w
   6261  05BB  00CE               	movwf	_knob3_prev^(0+384)	;volatile
   6262                           
-  6263                           ;main.c: 157: symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
+  6263                           ;main.c: 139: symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
   6264  05BC  3000               	movlw	0
   6265  05BD  0021               	movlb	1	; select bank1
   6266  05BE  00E4               	movwf	map@out_max^(0+128)
@@ -6330,8 +6330,8 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6319  05F9  00E0               	movwf	_symmetry^(0+384)
   6320  05FA                     l8271:	
   6321                           
-  6322                           ;main.c: 159: }
-  6323                           ;main.c: 170: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+  6322                           ;main.c: 141: }
+  6323                           ;main.c: 152: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
   6324  05FA  0023               	movlb	3	; select bank3
   6325  05FB  0950               	comf	_knob4_prev^(0+384),w	;volatile
   6326  05FC  00E1               	movwf	??_main^(0+384)
@@ -6386,14 +6386,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6375  062B  2E71               	goto	l8279
   6376  062C                     l8275:	
   6377                           
-  6378                           ;main.c: 171: knob4_prev = knob_4_pos;
+  6378                           ;main.c: 153: knob4_prev = knob_4_pos;
   6379  062C  0023               	movlb	3	; select bank3
   6380  062D  0833               	movf	(_knob_4_pos+1)^(0+384),w
   6381  062E  00D1               	movwf	(_knob4_prev+1)^(0+384)	;volatile
   6382  062F  0832               	movf	_knob_4_pos^(0+384),w
   6383  0630  00D0               	movwf	_knob4_prev^(0+384)	;volatile
   6384                           
-  6385                           ;main.c: 173: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
+  6385                           ;main.c: 155: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
   6386  0631  3000               	movlw	0
   6387  0632  0021               	movlb	1	; select bank1
   6388  0633  00E4               	movwf	map@out_max^(0+128)
@@ -6454,8 +6454,8 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6443  0670  00D4               	movwf	_mod_delay_time^(0+384)
   6444  0671                     l8279:	
   6445                           
-  6446                           ;main.c: 174: }
-  6447                           ;main.c: 182: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+  6446                           ;main.c: 156: }
+  6447                           ;main.c: 161: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
   6448  0671  0023               	movlb	3	; select bank3
   6449  0672  0952               	comf	_knob5_prev^(0+384),w	;volatile
   6450  0673  00E1               	movwf	??_main^(0+384)
@@ -6510,14 +6510,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6499  06A2  2EE8               	goto	l8287
   6500  06A3                     l8283:	
   6501                           
-  6502                           ;main.c: 183: knob5_prev = knob_5_pos;
+  6502                           ;main.c: 162: knob5_prev = knob_5_pos;
   6503  06A3  0023               	movlb	3	; select bank3
   6504  06A4  0835               	movf	(_knob_5_pos+1)^(0+384),w
   6505  06A5  00D3               	movwf	(_knob5_prev+1)^(0+384)	;volatile
   6506  06A6  0834               	movf	_knob_5_pos^(0+384),w
   6507  06A7  00D2               	movwf	_knob5_prev^(0+384)	;volatile
   6508                           
-  6509                           ;main.c: 184: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+  6509                           ;main.c: 163: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
   6510  06A8  3000               	movlw	0
   6511  06A9  0021               	movlb	1	; select bank1
   6512  06AA  00E4               	movwf	map@out_max^(0+128)
@@ -6578,15 +6578,15 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6567  06E7  00C7               	movwf	_adjusted_pot_value^(0+512)
   6568  06E8                     l8287:	
   6569                           
-  6570                           ;main.c: 186: }
-  6571                           ;main.c: 189: if (delay_time_changed == 1) {
+  6570                           ;main.c: 165: }
+  6571                           ;main.c: 168: if (delay_time_changed == 1) {
   6572  06E8  0023               	movlb	3	; select bank3
   6573  06E9  034C               	decf	_delay_time_changed^(0+384),w
   6574  06EA  044D               	iorwf	(_delay_time_changed+1)^(0+384),w
   6575  06EB  1D03               	btfss	3,2
   6576  06EC  2BF8               	goto	l8209
   6577                           
-  6578                           ;main.c: 190: delay_time = baseline_delay_time;
+  6578                           ;main.c: 169: delay_time = baseline_delay_time;
   6579  06ED  0020               	movlb	0	; select bank0
   6580  06EE  0848               	movf	_baseline_delay_time+3,w	;volatile
   6581  06EF  00CC               	movwf	_delay_time+3	;volatile
@@ -6597,7 +6597,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6586  06F4  0845               	movf	_baseline_delay_time,w	;volatile
   6587  06F5  00C9               	movwf	_delay_time	;volatile
   6588                           
-  6589                           ;main.c: 191: delay_time = set_subdivision(baseline_delay_time, top_push_state);
+  6589                           ;main.c: 170: delay_time = set_subdivision(baseline_delay_time, top_push_state);
   6590  06F6  0846               	movf	_baseline_delay_time+1,w	;volatile
   6591  06F7  0022               	movlb	2	; select bank2
   6592  06F8  00B9               	movwf	(set_subdivision@x+1)^(0+256)
@@ -6628,23 +6628,23 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6617  0713  00CB               	movwf	_delay_time+2	;volatile
   6618  0714  00CC               	movwf	_delay_time+3	;volatile
   6619                           
-  6620                           ;main.c: 192: reset_sub_delay = 1;
+  6620                           ;main.c: 171: reset_sub_delay = 1;
   6621  0715  3001               	movlw	1
   6622  0716  0024               	movlb	4	; select bank4
   6623  0717  00D5               	movwf	_reset_sub_delay^(0+512)
   6624  0718  3000               	movlw	0
   6625  0719  00D6               	movwf	(_reset_sub_delay^(0+512)+1)
   6626                           
-  6627                           ;main.c: 193: delayfound = 0;
+  6627                           ;main.c: 172: delayfound = 0;
   6628  071A  01D1               	clrf	_delayfound^(0+512)
   6629  071B  01D2               	clrf	(_delayfound+1)^(0+512)
   6630                           
-  6631                           ;main.c: 194: delay_counter = 0;
+  6631                           ;main.c: 173: delay_counter = 0;
   6632  071C  0023               	movlb	3	; select bank3
   6633  071D  01A8               	clrf	_delay_counter^(0+384)	;volatile
   6634  071E  01A9               	clrf	(_delay_counter+1)^(0+384)	;volatile
   6635  071F                     l8305:	
-  6636                           ;main.c: 196: while (delayfound == 0) {
+  6636                           ;main.c: 175: while (delayfound == 0) {
   6637                           
   6638  071F  0024               	movlb	4	; select bank4
   6639  0720  0851               	movf	_delayfound^(0+512),w
@@ -6652,7 +6652,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6641  0722  1D03               	btfss	3,2
   6642  0723  2F79               	goto	l8307
   6643                           
-  6644                           ;main.c: 197: if (delayArray[delay_counter] <= delay_time * 2) {
+  6644                           ;main.c: 176: if (delayArray[delay_counter] <= delay_time * 2) {
   6645  0724  0023               	movlb	3	; select bank3
   6646  0725  0829               	movf	(_delay_counter+1)^(0+384),w	;volatile
   6647  0726  00E2               	movwf	(??_main^(0+384)+1)
@@ -6729,18 +6729,18 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6718  076B  1C03               	skipc
   6719  076C  2F73               	goto	l8303
   6720                           
-  6721                           ;main.c: 198: delayfound = 1;
+  6721                           ;main.c: 177: delayfound = 1;
   6722  076D  3001               	movlw	1
   6723  076E  0024               	movlb	4	; select bank4
   6724  076F  00D1               	movwf	_delayfound^(0+512)
   6725  0770  3000               	movlw	0
   6726  0771  00D2               	movwf	(_delayfound^(0+512)+1)
   6727                           
-  6728                           ;main.c: 202: } else {
+  6728                           ;main.c: 181: } else {
   6729  0772  2F1F               	goto	l8305
   6730  0773                     l8303:	
   6731                           
-  6732                           ;main.c: 203: delay_counter++;
+  6732                           ;main.c: 182: delay_counter++;
   6733  0773  3001               	movlw	1
   6734  0774  0023               	movlb	3	; select bank3
   6735  0775  07A8               	addwf	_delay_counter^(0+384),f	;volatile
@@ -6749,9 +6749,9 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   6738  0778  2F1F               	goto	l8305
   6739  0779                     l8307:	
   6740                           
-  6741                           ;main.c: 205: }
-  6742                           ;main.c: 206: }
-  6743                           ;main.c: 208: delay_time_changed = 0;
+  6741                           ;main.c: 184: }
+  6742                           ;main.c: 185: }
+  6743                           ;main.c: 187: delay_time_changed = 0;
   6744  0779  0023               	movlb	3	; select bank3
   6745  077A  01CC               	clrf	_delay_time_changed^(0+384)
   6746  077B  01CD               	clrf	(_delay_time_changed+1)^(0+384)
@@ -23665,7 +23665,7 @@ BANK18               0      0       0      43        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.37 build -260352376 
-Symbol Table                                                                                   Sat Jan 07 11:25:30 2017
+Symbol Table                                                                                   Sat Jan 07 11:30:11 2017
 
                      _update_mode 180B                      ___altoft@exp 012E                       __CFG_CP$OFF 0000  
                    ___altoft@sign 012F                  scaleA100kPot@pwm 015A                      ___awdiv@sign 0076  

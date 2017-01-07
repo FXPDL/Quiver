@@ -5113,7 +5113,8 @@ knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 126
+
+
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
 CCPR2 = scaleA10kPot(knob1_prev);
@@ -5121,28 +5122,31 @@ CCPR3 = scaleiA10kPot(knob1_prev);
 
 }
 
-# 141
+
+
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 CCPR4 = scaleA100kPot(knob2_prev);
 CCPR5 = scaleiA100kPot(knob2_prev);
 }
 
-# 155
+# 137
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
 
 }
 
-# 170
+# 152
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
 mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
 }
 
-# 182
+
+
+
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
 adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
