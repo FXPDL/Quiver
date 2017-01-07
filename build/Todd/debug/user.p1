@@ -89,7 +89,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S26 . . . ]
 "360
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
-"2323
+"54 C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h
+[v _trunc `(d ~T0 @X0 0 ef1`d ]
+"2323 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S111 :2 `uc 1 :2 `uc 1 :3 `uc 1 :1 `uc 1 ]
 [n S111 . ADPREF . ADCS ADFM ]
 "2329
@@ -278,6 +280,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S88 . . . ]
 "1902
 [v _OPTION_REGbits `VS88 ~T0 @X0 0 e@149 ]
+"45 C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h
+[v _pow `(d ~T0 @X0 0 ef2`d`d ]
 "99 memory.h
 [v _FLASH_ReadWord `(ui ~T0 @X0 0 ef1`ui ]
 "6144 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
@@ -3897,6 +3901,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
@@ -3906,6 +3936,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 19: void InitializeTaps(void);
 [; ;user.h: 20: void ReadSavedSettings(void);
 [; ;user.h: 21: long modulation(long, long);
+[; ;user.h: 22: int scaleA100kPot(double);
+[; ;user.h: 23: int scaleiA100kPot(double);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3917,142 +3949,142 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"53 constants.h
+"56 constants.h
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 53: volatile long timer = 0;
-"54
+[; ;constants.h: 56: volatile long timer = 0;
+"57
 [v _sub_timer `Vl ~T0 @X0 1 e ]
 [i _sub_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 54: volatile long sub_timer = 0;
-"55
+[; ;constants.h: 57: volatile long sub_timer = 0;
+"58
 [v _feedback_timer `Vui ~T0 @X0 1 e ]
 [i _feedback_timer
 -> -> 0 `i `ui
 ]
-[; ;constants.h: 55: volatile uint16_t feedback_timer = 0;
-"56
+[; ;constants.h: 58: volatile uint16_t feedback_timer = 0;
+"59
 [v _longTap_timer `Vui ~T0 @X0 1 e ]
 [i _longTap_timer
 -> -> 0 `i `ui
 ]
-[; ;constants.h: 56: volatile uint16_t longTap_timer = 0;
-"58
+[; ;constants.h: 59: volatile uint16_t longTap_timer = 0;
+"61
 [v _delay_counter `Vi ~T0 @X0 1 e ]
 [i _delay_counter
 -> 0 `i
 ]
-[; ;constants.h: 58: volatile int delay_counter = 0;
-"60
+[; ;constants.h: 61: volatile int delay_counter = 0;
+"63
 [v _long_press_limit `ui ~T0 @X0 1 e ]
 [i _long_press_limit
 -> -> 1000 `i `ui
 ]
-[; ;constants.h: 60: uint16_t long_press_limit = 1000;
-"61
+[; ;constants.h: 63: uint16_t long_press_limit = 1000;
+"64
 [v _baseline_delay_time `Vl ~T0 @X0 1 e ]
 [i _baseline_delay_time
 -> -> 2000 `i `l
 ]
-[; ;constants.h: 61: volatile long baseline_delay_time = 2000;
-"63
+[; ;constants.h: 64: volatile long baseline_delay_time = 2000;
+"66
 [v _feedback_start `uc ~T0 @X0 1 e ]
 [i _feedback_start
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 63: uint8_t feedback_start = 0;
-"64
+[; ;constants.h: 66: uint8_t feedback_start = 0;
+"67
 [v _longTap_start `uc ~T0 @X0 1 e ]
 [i _longTap_start
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 64: uint8_t longTap_start = 0;
-"65
+[; ;constants.h: 67: uint8_t longTap_start = 0;
+"68
 [v _doubleTap_state `Vuc ~T0 @X0 1 e ]
 [i _doubleTap_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 65: volatile uint8_t doubleTap_state = 0;
-"66
+[; ;constants.h: 68: volatile uint8_t doubleTap_state = 0;
+"69
 [v _mode1_state `uc ~T0 @X0 1 e ]
 [i _mode1_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: uint8_t mode1_state = 0;
-"67
+[; ;constants.h: 69: uint8_t mode1_state = 0;
+"70
 [v _mode2_state `uc ~T0 @X0 1 e ]
 [i _mode2_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 67: uint8_t mode2_state = 0;
-"68
+[; ;constants.h: 70: uint8_t mode2_state = 0;
+"71
 [v _blink_state `uc ~T0 @X0 1 e ]
 [i _blink_state
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 68: uint8_t blink_state = 1;
-"70
+[; ;constants.h: 71: uint8_t blink_state = 1;
+"73
 [v _suspend_blink `Vuc ~T0 @X0 1 e ]
 [i _suspend_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 70: volatile uint8_t suspend_blink = 0;
-"72
+[; ;constants.h: 73: volatile uint8_t suspend_blink = 0;
+"75
 [v _preset_programmning_on `uc ~T0 @X0 1 e ]
 [i _preset_programmning_on
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 72: uint8_t preset_programmning_on = 0;
-"73
+[; ;constants.h: 75: uint8_t preset_programmning_on = 0;
+"76
 [v _preset_blink `uc ~T0 @X0 1 e ]
 [i _preset_blink
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 73: uint8_t preset_blink = 0;
-"75
+[; ;constants.h: 76: uint8_t preset_blink = 0;
+"78
 [v _blink_delay `i ~T0 @X0 1 e ]
 [i _blink_delay
 -> 100 `i
 ]
-[; ;constants.h: 75: int blink_delay = 100;
-"77
+[; ;constants.h: 78: int blink_delay = 100;
+"80
 [v _top_push_state `i ~T0 @X0 1 e ]
 [i _top_push_state
 -> 6 `i
 ]
-[; ;constants.h: 77: int top_push_state = 6;
-"78
+[; ;constants.h: 80: int top_push_state = 6;
+"81
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
 -> 6 `i
 ]
-[; ;constants.h: 78: int bottom_push_state = 6;
-"80
+[; ;constants.h: 81: int bottom_push_state = 6;
+"83
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
-[; ;constants.h: 80: uint16_t myBuf[32];
-"82
+[; ;constants.h: 83: uint16_t myBuf[32];
+"85
 [v _delay_time_changed `i ~T0 @X0 1 e ]
 [i _delay_time_changed
 -> 1 `i
 ]
-[; ;constants.h: 82: int delay_time_changed = 1;
-"83
+[; ;constants.h: 85: int delay_time_changed = 1;
+"86
 [v _reset_sub_delay `i ~T0 @X0 1 e ]
 [i _reset_sub_delay
 -> 0 `i
 ]
-[; ;constants.h: 83: int reset_sub_delay = 0;
-"84
+[; ;constants.h: 86: int reset_sub_delay = 0;
+"87
 [v _adjust_sub_delay `i ~T0 @X0 1 e ]
 [i _adjust_sub_delay
 -> 0 `i
 ]
-[; ;constants.h: 84: int adjust_sub_delay = 0;
-"86
+[; ;constants.h: 87: int adjust_sub_delay = 0;
+"89
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -4069,68 +4101,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 86: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"88
+[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"91
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 88: int debounce_count = 0;
-"89
+[; ;constants.h: 91: int debounce_count = 0;
+"92
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 89: int debounce_bypass = 0;
-"90
+[; ;constants.h: 92: int debounce_bypass = 0;
+"93
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 90: int debounce_mode1 = 0;
-"91
+[; ;constants.h: 93: int debounce_mode1 = 0;
+"94
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_mode2 = 0;
-"93
+[; ;constants.h: 94: int debounce_mode2 = 0;
+"96
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 93: volatile long tap_timer = 0;
-"94
+[; ;constants.h: 96: volatile long tap_timer = 0;
+"97
 [v _test_timer `Vl ~T0 @X0 1 e ]
 [i _test_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 94: volatile long test_timer = 0;
-"96
+[; ;constants.h: 97: volatile long test_timer = 0;
+"98
+[v _double_timer `Vl ~T0 @X0 1 e ]
+[i _double_timer
+-> -> 0 `i `l
+]
+[; ;constants.h: 98: volatile long double_timer = 0;
+"100
+[v _presetSaveMode `uc ~T0 @X0 1 e ]
+[i _presetSaveMode
+-> -> 0 `i `uc
+]
+[; ;constants.h: 100: char presetSaveMode = 0;
+"101
+[v _presetChannel `uc ~T0 @X0 1 e ]
+[i _presetChannel
+-> -> 1 `i `uc
+]
+[; ;constants.h: 101: char presetChannel = 1;
+"102
+[v _expressionChannel `uc ~T0 @X0 1 e ]
+[i _expressionChannel
+-> -> 1 `i `uc
+]
+[; ;constants.h: 102: char expressionChannel = 1;
+"104
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 96: uint8_t switchBypass_state = -1;
-"97
+[; ;constants.h: 104: uint8_t switchBypass_state = -1;
+"105
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 97: uint8_t switchTap_state = -1;
-"98
+[; ;constants.h: 105: uint8_t switchTap_state = -1;
+"106
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 98: volatile uint8_t longTap_state = -1;
-"99
+[; ;constants.h: 106: volatile uint8_t longTap_state = -1;
+"107
 [v _feedback_state `Vuc ~T0 @X0 1 e ]
 [i _feedback_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 99: volatile uint8_t feedback_state = -1;
-"101
+[; ;constants.h: 107: volatile uint8_t feedback_state = -1;
+"109
+[v _expSwitchState `uc ~T0 @X0 1 e ]
+[i _expSwitchState
+-> -U -> 1 `i `uc
+]
+[; ;constants.h: 109: char expSwitchState = -1;
+"111
+[v _presetModeCnst `uc ~T0 @X0 1 e ]
+[i _presetModeCnst
+-> -> 1 `i `uc
+]
+[; ;constants.h: 111: char presetModeCnst = 1;
+"112
+[v _expressModeCnst `uc ~T0 @X0 1 e ]
+[i _expressModeCnst
+-> -> 2 `i `uc
+]
+[; ;constants.h: 112: char expressModeCnst = 2;
+"114
 [v _delayArray `i ~T0 @X0 -> 260 `i e ]
 [i _delayArray
 :U ..
@@ -4391,7 +4465,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 366 `i
 ..
 ]
-[; ;constants.h: 101: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
+[; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
 "23 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
 {
@@ -4524,80 +4598,80 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _x `i ~T0 @X0 1 r1 ]
 [v _y `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 78: adjust_sub_delay = 0;
-"78
+[; ;user.c: 81: adjust_sub_delay = 0;
+"81
 [e = _adjust_sub_delay -> 0 `i ]
-"79
+"82
 [v _tmpX `i ~T0 @X0 1 a ]
-[; ;user.c: 79: int tmpX = x;
+[; ;user.c: 82: int tmpX = x;
 [e = _tmpX _x ]
-"80
-[v _scalar `f ~T0 @X0 1 a ]
-[; ;user.c: 80: float scalar = 1.0;
-[e = _scalar -> .1.0 `f ]
-[; ;user.c: 83: switch (y) {
 "83
+[v _scalar `f ~T0 @X0 1 a ]
+[; ;user.c: 83: float scalar = 1.0;
+[e = _scalar -> .1.0 `f ]
+[; ;user.c: 85: switch (y) {
+"85
 [e $U 463  ]
 {
-[; ;user.c: 84: case 1:
-"84
-[e :U 464 ]
-[; ;user.c: 85: scalar = 0.75;
-"85
-[e = _scalar -> .0.75 `f ]
-[; ;user.c: 86: break;
+[; ;user.c: 86: case 1:
 "86
-[e $U 462  ]
-[; ;user.c: 87: case 2:
+[e :U 464 ]
+[; ;user.c: 87: scalar = 2.0;
 "87
-[e :U 465 ]
-[; ;user.c: 88: scalar = 0.6666;
+[e = _scalar -> .2.0 `f ]
+[; ;user.c: 88: break;
 "88
-[e = _scalar -> .0.6666 `f ]
-[; ;user.c: 89: break;
+[e $U 462  ]
+[; ;user.c: 89: case 2:
 "89
-[e $U 462  ]
-[; ;user.c: 90: case 3:
+[e :U 465 ]
+[; ;user.c: 90: scalar = 0.6666;
 "90
-[e :U 466 ]
-[; ;user.c: 91: scalar = .5;
+[e = _scalar -> .0.6666 `f ]
+[; ;user.c: 91: break;
 "91
-[e = _scalar -> .0.5 `f ]
-[; ;user.c: 92: break;
+[e $U 462  ]
+[; ;user.c: 92: case 3:
 "92
-[e $U 462  ]
-[; ;user.c: 93: case 4:
+[e :U 466 ]
+[; ;user.c: 93: scalar = .5;
 "93
-[e :U 467 ]
-[; ;user.c: 94: scalar = 0.3333;
+[e = _scalar -> .0.5 `f ]
+[; ;user.c: 94: break;
 "94
-[e = _scalar -> .0.3333 `f ]
-[; ;user.c: 95: break;
+[e $U 462  ]
+[; ;user.c: 95: case 4:
 "95
-[e $U 462  ]
-[; ;user.c: 96: case 5:
+[e :U 467 ]
+[; ;user.c: 96: scalar = 0.3333;
 "96
-[e :U 468 ]
-[; ;user.c: 97: scalar = 0.25;
+[e = _scalar -> .0.3333 `f ]
+[; ;user.c: 97: break;
 "97
-[e = _scalar -> .0.25 `f ]
-[; ;user.c: 98: break;
+[e $U 462  ]
+[; ;user.c: 98: case 5:
 "98
-[e $U 462  ]
-[; ;user.c: 99: case 6:
+[e :U 468 ]
+[; ;user.c: 99: scalar = 0.25;
 "99
-[e :U 469 ]
-[; ;user.c: 100: x = x;
+[e = _scalar -> .0.25 `f ]
+[; ;user.c: 100: break;
 "100
-[e = _x _x ]
-[; ;user.c: 101: break;
+[e $U 462  ]
+[; ;user.c: 101: case 6:
 "101
-[e $U 462  ]
+[e :U 469 ]
+[; ;user.c: 102: x = x;
 "102
-}
-[; ;user.c: 102: }
+[e = _x _x ]
+[; ;user.c: 103: break;
+"103
 [e $U 462  ]
-"83
+"104
+}
+[; ;user.c: 104: }
+[e $U 462  ]
+"85
 [e :U 463 ]
 [e [\ _y , $ -> 1 `i 464
  , $ -> 2 `i 465
@@ -4606,227 +4680,231 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> 5 `i 468
  , $ -> 6 `i 469
  462 ]
-"102
-[e :U 462 ]
-[; ;user.c: 104: tmpX = tmpX * scalar;
 "104
+[e :U 462 ]
+[; ;user.c: 106: tmpX = tmpX * scalar;
+"106
 [e = _tmpX -> * -> _tmpX `f _scalar `i ]
-[; ;user.c: 105: if ((tmpX /scalar) != x) {adjust_sub_delay = 1;}
-"105
-[e $ ! != / -> _tmpX `f _scalar -> _x `f 470  ]
+[; ;user.c: 108: if (trunc(tmpX) != tmpX) {
+"108
+[e $ ! != ( _trunc (1 -> _tmpX `d -> _tmpX `d 470  ]
 {
+[; ;user.c: 109: adjust_sub_delay = 1;
+"109
 [e = _adjust_sub_delay -> 1 `i ]
+"110
 }
 [e :U 470 ]
-[; ;user.c: 106: return tmpX;
-"106
+[; ;user.c: 110: }
+[; ;user.c: 112: return tmpX;
+"112
 [e ) _tmpX ]
 [e $UE 461  ]
-[; ;user.c: 107: }
-"107
+[; ;user.c: 113: }
+"113
 [e :UE 461 ]
 }
-"109
+"115
 [v _init_adc `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 109: void init_adc(void) {
+[; ;user.c: 115: void init_adc(void) {
 [e :U _init_adc ]
 [f ]
-[; ;user.c: 110: ADCON1bits.ADFM = 0b1;
-"110
+[; ;user.c: 116: ADCON1bits.ADFM = 0b1;
+"116
 [e = . . _ADCON1bits 0 3 -> -> 1 `i `uc ]
-[; ;user.c: 111: ADCON1bits.ADCS = 0b110;
-"111
+[; ;user.c: 117: ADCON1bits.ADCS = 0b110;
+"117
 [e = . . _ADCON1bits 0 2 -> -> 6 `i `uc ]
-[; ;user.c: 112: ADCON1bits.ADPREF = 0b00;
-"112
+[; ;user.c: 118: ADCON1bits.ADPREF = 0b00;
+"118
 [e = . . _ADCON1bits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 113: ADCON0bits.ADON = 0b1;
-"113
+[; ;user.c: 119: ADCON0bits.ADON = 0b1;
+"119
 [e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-[; ;user.c: 114: }
-"114
+[; ;user.c: 120: }
+"120
 [e :UE 471 ]
 }
-"116
+"122
 [v _adc_convert `(ui ~T0 @X0 1 ef1`uc ]
 {
-[; ;user.c: 116: uint16_t adc_convert(uint8_t channel) {
+[; ;user.c: 122: uint16_t adc_convert(uint8_t channel) {
 [e :U _adc_convert ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;user.c: 117: ADCON0bits.CHS = channel;
-"117
+[; ;user.c: 123: ADCON0bits.CHS = channel;
+"123
 [e = . . _ADCON0bits 0 2 _channel ]
-[; ;user.c: 118: ADCON0bits.GO = 0b1;
-"118
+[; ;user.c: 124: ADCON0bits.GO = 0b1;
+"124
 [e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
-[; ;user.c: 119: while (ADCON0bits.GO_nDONE);
-"119
+[; ;user.c: 125: while (ADCON0bits.GO_nDONE);
+"125
 [e $U 473  ]
 [e :U 474 ]
 [e :U 473 ]
 [e $ != -> . . _ADCON0bits 0 1 `i -> -> -> 0 `i `Vuc `i 474  ]
 [e :U 475 ]
-[; ;user.c: 120: return (ADRESH << 8) | ADRESL;
-"120
+[; ;user.c: 126: return (ADRESH << 8) | ADRESL;
+"126
 [e ) -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 472  ]
-[; ;user.c: 121: }
-"121
+[; ;user.c: 127: }
+"127
 [e :UE 472 ]
 }
-"123
+"129
 [v _init_pwm `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 123: void init_pwm(void) {
+[; ;user.c: 129: void init_pwm(void) {
 [e :U _init_pwm ]
 [f ]
-[; ;user.c: 124: APFCONbits.CCP2SEL = 0;
-"124
-[e = . . _APFCONbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 125: TRISCbits.TRISC2 = 0;
-"125
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 126: TRISCbits.TRISC1 = 0;
-"126
-[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 127: TRISGbits.TRISG0 = 0;
-"127
-[e = . . _TRISGbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 128: TRISGbits.TRISG3 = 0;
-"128
-[e = . . _TRISGbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 129: TRISGbits.TRISG4 = 0;
-"129
-[e = . . _TRISGbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 130: TRISEbits.TRISE6 = 0;
+[; ;user.c: 130: APFCONbits.CCP2SEL = 0;
 "130
-[e = . . _TRISEbits 0 6 -> -> 0 `i `uc ]
-[; ;user.c: 131: TRISEbits.TRISE5 = 0;
+[e = . . _APFCONbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 131: TRISCbits.TRISC2 = 0;
 "131
-[e = . . _TRISEbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 132: TRISEbits.TRISE4 = 0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 132: TRISCbits.TRISC1 = 0;
 "132
-[e = . . _TRISEbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 133: TRISEbits.TRISE3 = 0;
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 133: TRISGbits.TRISG0 = 0;
 "133
-[e = . . _TRISEbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 134: TRISEbits.TRISE2 = 0;
+[e = . . _TRISGbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 134: TRISGbits.TRISG3 = 0;
 "134
-[e = . . _TRISEbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 135: CCP1CONbits.CCP1M = 0b1111;
+[e = . . _TRISGbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 135: TRISGbits.TRISG4 = 0;
 "135
-[e = . . _CCP1CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 136: CCP2CONbits.CCP2M = 0b1111;
+[e = . . _TRISGbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 136: TRISEbits.TRISE6 = 0;
 "136
-[e = . . _CCP2CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 137: CCP3CONbits.CCP3M = 0b1111;
+[e = . . _TRISEbits 0 6 -> -> 0 `i `uc ]
+[; ;user.c: 137: TRISEbits.TRISE5 = 0;
 "137
-[e = . . _CCP3CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 138: CCP4CONbits.CCP4M = 0b1111;
+[e = . . _TRISEbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 138: TRISEbits.TRISE4 = 0;
 "138
-[e = . . _CCP4CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 139: CCP5CONbits.CCP5M = 0b1111;
+[e = . . _TRISEbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 139: TRISEbits.TRISE3 = 0;
 "139
-[e = . . _CCP5CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 140: CCP6CONbits.CCP6M = 0b1111;
+[e = . . _TRISEbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 140: TRISEbits.TRISE2 = 0;
 "140
-[e = . . _CCP6CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 141: CCP7CONbits.CCP7M = 0b1111;
+[e = . . _TRISEbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 141: CCP1CONbits.CCP1M = 0b1111;
 "141
-[e = . . _CCP7CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 142: CCP8CONbits.CCP8M = 0b1111;
+[e = . . _CCP1CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 142: CCP2CONbits.CCP2M = 0b1111;
 "142
-[e = . . _CCP8CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 143: CCP9CONbits.CCP9M = 0b1111;
+[e = . . _CCP2CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 143: CCP3CONbits.CCP3M = 0b1111;
 "143
-[e = . . _CCP9CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 144: CCP10CONbits.CCP10M = 0b1111;
+[e = . . _CCP3CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 144: CCP4CONbits.CCP4M = 0b1111;
 "144
-[e = . . _CCP10CONbits 0 0 -> -> 15 `i `uc ]
-[; ;user.c: 145: CCPTMRS0 = 0b00000000;
+[e = . . _CCP4CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 145: CCP5CONbits.CCP5M = 0b1111;
 "145
-[e = _CCPTMRS0 -> -> 0 `i `uc ]
-[; ;user.c: 146: CCPTMRS1 = 0b00000000;
+[e = . . _CCP5CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 146: CCP6CONbits.CCP6M = 0b1111;
 "146
-[e = _CCPTMRS1 -> -> 0 `i `uc ]
-[; ;user.c: 147: CCPTMRS2 = 0b00000000;
+[e = . . _CCP6CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 147: CCP7CONbits.CCP7M = 0b1111;
 "147
-[e = _CCPTMRS2 -> -> 0 `i `uc ]
-[; ;user.c: 148: CCPR1 = 50;
+[e = . . _CCP7CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 148: CCP8CONbits.CCP8M = 0b1111;
 "148
-[e = _CCPR1 -> -> 50 `i `us ]
-[; ;user.c: 149: CCPR2 = 100;
+[e = . . _CCP8CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 149: CCP9CONbits.CCP9M = 0b1111;
 "149
-[e = _CCPR2 -> -> 100 `i `us ]
-[; ;user.c: 150: CCPR3 = 150;
+[e = . . _CCP9CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 150: CCP10CONbits.CCP10M = 0b1111;
 "150
-[e = _CCPR3 -> -> 150 `i `us ]
-[; ;user.c: 151: CCPR4 = 200;
+[e = . . _CCP10CONbits 0 0 -> -> 15 `i `uc ]
+[; ;user.c: 151: CCPTMRS0 = 0b00000000;
 "151
-[e = _CCPR4 -> -> 200 `i `us ]
-[; ;user.c: 152: init_timer2();
+[e = _CCPTMRS0 -> -> 0 `i `uc ]
+[; ;user.c: 152: CCPTMRS1 = 0b00000000;
 "152
-[e ( _init_timer2 ..  ]
-[; ;user.c: 153: init_timer0();
+[e = _CCPTMRS1 -> -> 0 `i `uc ]
+[; ;user.c: 153: CCPTMRS2 = 0b00000000;
 "153
-[e ( _init_timer0 ..  ]
-[; ;user.c: 154: }
+[e = _CCPTMRS2 -> -> 0 `i `uc ]
+[; ;user.c: 154: CCPR1 = 50;
 "154
+[e = _CCPR1 -> -> 50 `i `us ]
+[; ;user.c: 155: CCPR2 = 100;
+"155
+[e = _CCPR2 -> -> 100 `i `us ]
+[; ;user.c: 156: CCPR3 = 150;
+"156
+[e = _CCPR3 -> -> 150 `i `us ]
+[; ;user.c: 157: CCPR4 = 200;
+"157
+[e = _CCPR4 -> -> 200 `i `us ]
+[; ;user.c: 158: init_timer2();
+"158
+[e ( _init_timer2 ..  ]
+[; ;user.c: 159: init_timer0();
+"159
+[e ( _init_timer0 ..  ]
+[; ;user.c: 160: }
+"160
 [e :UE 476 ]
 }
-"156
+"162
 [v _init_timer2 `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 156: void init_timer2(void) {
+[; ;user.c: 162: void init_timer2(void) {
 [e :U _init_timer2 ]
 [f ]
-[; ;user.c: 157: T2CONbits.T2OUTPS = 0b0000;
-"157
+[; ;user.c: 163: T2CONbits.T2OUTPS = 0b0000;
+"163
 [e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 158: T2CONbits.T2CKPS = 0b00;
-"158
+[; ;user.c: 164: T2CONbits.T2CKPS = 0b00;
+"164
 [e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 159: PR2 = 0xFF;
-"159
+[; ;user.c: 165: PR2 = 0xFF;
+"165
 [e = _PR2 -> -> 255 `i `uc ]
-[; ;user.c: 160: T2CONbits.TMR2ON = 1;
-"160
+[; ;user.c: 166: T2CONbits.TMR2ON = 1;
+"166
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-[; ;user.c: 161: }
-"161
+[; ;user.c: 167: }
+"167
 [e :UE 477 ]
 }
-"163
+"169
 [v _init_timer0 `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 163: void init_timer0(void) {
+[; ;user.c: 169: void init_timer0(void) {
 [e :U _init_timer0 ]
 [f ]
-[; ;user.c: 164: OPTION_REGbits.TMR0CS = 0b0;
-"164
+[; ;user.c: 170: OPTION_REGbits.TMR0CS = 0b0;
+"170
 [e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 165: OPTION_REGbits.PSA = 0b0;
-"165
+[; ;user.c: 171: OPTION_REGbits.PSA = 0b0;
+"171
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 166: OPTION_REGbits.PS0 = 0b0;
-"166
+[; ;user.c: 172: OPTION_REGbits.PS0 = 0b0;
+"172
 [e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
-[; ;user.c: 167: OPTION_REGbits.PS1 = 0b1;
-"167
+[; ;user.c: 173: OPTION_REGbits.PS1 = 0b1;
+"173
 [e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
-[; ;user.c: 168: OPTION_REGbits.PS2 = 0b0;
-"168
+[; ;user.c: 174: OPTION_REGbits.PS2 = 0b0;
+"174
 [e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
-[; ;user.c: 169: }
-"169
+[; ;user.c: 175: }
+"175
 [e :UE 478 ]
 }
-"171
+"177
 [v _map `(f ~T0 @X0 1 ef5`f`f`f`f`f ]
 {
-[; ;user.c: 171: float map(float x, float in_min, float in_max, float out_min, float out_max) {
+[; ;user.c: 177: float map(float x, float in_min, float in_max, float out_min, float out_max) {
 [e :U _map ]
 [v _x `f ~T0 @X0 1 r1 ]
 [v _in_min `f ~T0 @X0 1 r2 ]
@@ -4834,143 +4912,181 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _out_min `f ~T0 @X0 1 r4 ]
 [v _out_max `f ~T0 @X0 1 r5 ]
 [f ]
-[; ;user.c: 172: return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-"172
+[; ;user.c: 178: return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+"178
 [e ) + / * - _x _in_min - _out_max _out_min - _in_max _in_min _out_min ]
 [e $UE 479  ]
-[; ;user.c: 173: }
-"173
+[; ;user.c: 179: }
+"179
 [e :UE 479 ]
 }
-"176
+"182
 [v _scalePotValue `(f ~T0 @X0 1 ef3`f`f`f ]
 {
-[; ;user.c: 176: float scalePotValue(float x, float out_min, float out_max) {
+[; ;user.c: 182: float scalePotValue(float x, float out_min, float out_max) {
 [e :U _scalePotValue ]
 [v _x `f ~T0 @X0 1 r1 ]
 [v _out_min `f ~T0 @X0 1 r2 ]
 [v _out_max `f ~T0 @X0 1 r3 ]
 [f ]
-[; ;user.c: 178: return x * (out_max - out_min) / 1023 + out_min;
-"178
+[; ;user.c: 184: return x * (out_max - out_min) / 1023 + out_min;
+"184
 [e ) + / * _x - _out_max _out_min -> -> 1023 `i `f _out_min ]
 [e $UE 480  ]
-[; ;user.c: 179: }
-"179
+[; ;user.c: 185: }
+"185
 [e :UE 480 ]
 }
-"181
+"187
+[v _scaleA100kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 187: int scaleA100kPot(double input) {
+[e :U _scaleA100kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+"189
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 189: float pwm = 3.6347 * (pow((input/1023.0), -1.112));
+[e = _pwm -> * .3.6347 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 190: return trunc(pwm);
+"190
+[e ) -> ( _trunc (1 -> _pwm `d `i ]
+[e $UE 481  ]
+[; ;user.c: 191: }
+"191
+[e :UE 481 ]
+}
+"193
+[v _scaleiA100kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 193: int scaleiA100kPot(double input) {
+[e :U _scaleiA100kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+"195
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 195: float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
+[e = _pwm -> * .3.5755 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 196: return trunc(pwm);
+"196
+[e ) -> ( _trunc (1 -> _pwm `d `i ]
+[e $UE 482  ]
+[; ;user.c: 197: }
+"197
+[e :UE 482 ]
+}
+"199
 [v _modulation `(l ~T0 @X0 1 ef2`l`l ]
 {
-[; ;user.c: 181: long modulation(long x, long y) {
+[; ;user.c: 199: long modulation(long x, long y) {
 [e :U _modulation ]
 [v _x `l ~T0 @X0 1 r1 ]
 [v _y `l ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 184: return (127500 + (y * x)) / 1000;
-"184
+[; ;user.c: 202: return (127500 + (y * x)) / 1000;
+"202
 [e ) / + -> 127500 `l * _y _x -> -> 1000 `i `l ]
-[e $UE 481  ]
-[; ;user.c: 185: }
-"185
-[e :UE 481 ]
+[e $UE 483  ]
+[; ;user.c: 203: }
+"203
+[e :UE 483 ]
 }
-"187
+"205
 [v _InitializeTaps `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 187: void InitializeTaps(void) {
+[; ;user.c: 205: void InitializeTaps(void) {
 [e :U _InitializeTaps ]
 [f ]
-[; ;user.c: 188: for (int itap = 0; itap < 12; itap++) {
-"188
+[; ;user.c: 206: for (int itap = 0; itap < 12; itap++) {
+"206
 {
 [v _itap `i ~T0 @X0 1 a ]
 [e = _itap -> 0 `i ]
-[e $ < _itap -> 12 `i 483  ]
-[e $U 484  ]
-[e :U 483 ]
+[e $ < _itap -> 12 `i 485  ]
+[e $U 486  ]
+[e :U 485 ]
 {
-[; ;user.c: 189: tap[itap] = 0;
-"189
+[; ;user.c: 207: tap[itap] = 0;
+"207
 [e = *U + &U _tap * -> -> _itap `ui `ux -> -> # *U &U _tap `ui `ux -> -> 0 `i `l ]
-"190
+"208
 }
-"188
+"206
 [e ++ _itap -> 1 `i ]
-[e $ < _itap -> 12 `i 483  ]
-[e :U 484 ]
-"190
+[e $ < _itap -> 12 `i 485  ]
+[e :U 486 ]
+"208
 }
-[; ;user.c: 190: }
-[; ;user.c: 191: }
-"191
-[e :UE 482 ]
+[; ;user.c: 208: }
+[; ;user.c: 209: }
+"209
+[e :UE 484 ]
 }
-"193
+"211
 [v _ReadSavedSettings `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 193: void ReadSavedSettings(void) {
+[; ;user.c: 211: void ReadSavedSettings(void) {
 [e :U _ReadSavedSettings ]
 [f ]
-[; ;user.c: 195: top_push_state = FLASH_ReadWord(0x1F81);
-"195
-[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
-[; ;user.c: 196: bottom_push_state = FLASH_ReadWord(0x1F82);
-"196
-[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 198: if (top_push_state > 6) {
-"198
-[e $ ! > _top_push_state -> 6 `i 487  ]
-{
-[; ;user.c: 200: top_push_state = 6;
-"200
-[e = _top_push_state -> 6 `i ]
-"201
-}
-[e :U 487 ]
-[; ;user.c: 201: }
-[; ;user.c: 202: if (bottom_push_state > 6) {
-"202
-[e $ ! > _bottom_push_state -> 6 `i 488  ]
-{
-[; ;user.c: 204: bottom_push_state = 6;
-"204
-[e = _bottom_push_state -> 6 `i ]
-"205
-}
-[e :U 488 ]
-[; ;user.c: 205: }
-[; ;user.c: 208: LATGbits.LATG1 = !switchBypass_state;
-"208
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 209: LATGbits.LATG2 = switchBypass_state;
-"209
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 210: LATBbits.LATB2 = 0;
-"210
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 211: LATBbits.LATB3 = 0;
-"211
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 213: LATBbits.LATB4 = 0;
+[; ;user.c: 213: top_push_state = FLASH_ReadWord(0x1F81);
 "213
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 214: LATBbits.LATB5 = 0;
+[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
+[; ;user.c: 214: bottom_push_state = FLASH_ReadWord(0x1F82);
 "214
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 216: LATBbits.LATB1 = 0;
+[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
+[; ;user.c: 216: if (top_push_state > 6) {
 "216
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 217: LATBbits.LATB0 = 0;
-"217
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 220: set_leds_top(top_push_state, 1);
+[e $ ! > _top_push_state -> 6 `i 489  ]
+{
+[; ;user.c: 218: top_push_state = 6;
+"218
+[e = _top_push_state -> 6 `i ]
+"219
+}
+[e :U 489 ]
+[; ;user.c: 219: }
+[; ;user.c: 220: if (bottom_push_state > 6) {
 "220
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 221: set_leds_bottom(bottom_push_state);
-"221
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 222: }
+[e $ ! > _bottom_push_state -> 6 `i 490  ]
+{
+[; ;user.c: 222: bottom_push_state = 6;
 "222
-[e :UE 486 ]
+[e = _bottom_push_state -> 6 `i ]
+"223
+}
+[e :U 490 ]
+[; ;user.c: 223: }
+[; ;user.c: 226: LATGbits.LATG1 = !switchBypass_state;
+"226
+[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;user.c: 227: LATGbits.LATG2 = switchBypass_state;
+"227
+[e = . . _LATGbits 0 2 _switchBypass_state ]
+[; ;user.c: 228: LATBbits.LATB2 = 0;
+"228
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 229: LATBbits.LATB3 = 0;
+"229
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 231: LATBbits.LATB4 = 0;
+"231
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 232: LATBbits.LATB5 = 0;
+"232
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 234: LATBbits.LATB1 = 0;
+"234
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 235: LATBbits.LATB0 = 0;
+"235
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 238: set_leds_top(top_push_state, 1);
+"238
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;user.c: 239: set_leds_bottom(bottom_push_state);
+"239
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;user.c: 240: }
+"240
+[e :UE 488 ]
 }

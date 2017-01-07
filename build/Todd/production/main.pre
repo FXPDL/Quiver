@@ -4984,6 +4984,10 @@ void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
+int scaleA100kPot(double);
+int scaleiA100kPot(double);
+int scaleA10kPot(double);
+int scaleiA10kPot(double);
 
 # 24 "LEDs.h"
 void star_tactiles(uint8_t);
@@ -5060,17 +5064,13 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-# 72
+
+
 uint8_t iCnt;
-char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
+uint8_t symmetry = 180;
 
-
-int B25kLength = 0;
-char feedbackTriggered = 0;
-
-# 83
+# 69
 void main(void) {
-B25kLength = sizeof(B25k)/sizeof(B25k[0]);
 
 USARTInit(31250);
 ConfigureOscillator();
@@ -5113,49 +5113,36 @@ knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 141
+# 126
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
-baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
-delay_time_changed = 1;
+CCPR2 = scaleA10kPot(knob1_prev);
+CCPR3 = scaleiA10kPot(knob1_prev);
 
 }
 
-# 156
+# 141
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
-int i = (int)map(knob2_prev, 0, 1023, 0, 39);
-CCPR2 = (int)B25k[B25kLength - 1 - i];
-CCPR3 = (int)B25k[i];
+CCPR4 = scaleA100kPot(knob2_prev);
+CCPR5 = scaleiA100kPot(knob2_prev);
 }
 
-# 172
-if (feedback_state == 1) {
-if (knob3_prev != 0) {
-knob3_prev = 0;
-feedbackTriggered = 1;
-
-int i = (int) map(knob3_prev, 0, 1023, 25, 0);
-CCPR4 = (int) B25k[B25kLength - 1 - i];
-CCPR5 = (int) B25k[i];
-}
-} else {
-if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
+# 155
+if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
-int i = (int) map(knob3_prev, 0, 1023, 18, 0);
-CCPR4 = (int) B25k[B25kLength - 1 - i];
-CCPR5 = (int) B25k[i];
-}
+symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
+
 }
 
-# 199
+# 170
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
 mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
 }
 
-# 211
+# 182
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
 adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);

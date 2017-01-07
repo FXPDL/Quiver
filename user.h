@@ -19,3 +19,7 @@ void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
+int scaleA100kPot(double);
+int scaleiA100kPot(double);
+int scaleA10kPot(double);
+int scaleiA10kPot(double);

@@ -58,31 +58,16 @@ volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
 
-/*
-int tap_iteration = 1;
-long tap_total = 0;
-int num_tapsMAIN = 4;
-long tap_history [5];
-*/
-/*
-int switchTap_pressed = 0;  
-int switchTap_up = 1;  
-int switchTap_toggle = 0;
-*/
-uint8_t iCnt;
-char B25k[] = {255, 255, 255, 223, 174, 142, 120, 103, 91, 80, 72, 66, 60, 55, 51, 48, 45, 42, 39, 37, 35, 33, 32, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 21, 20, 19, 15, 11, 7, 7};
-//int iB25k[] = {7, 7, 11, 15, 19, 20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 37, 39, 42, 45, 48, 51, 55, 60, 66, 72, 80, 91, 103, 120, 142, 174, 223, 255, 255, 255};
 
-int B25kLength = 0;
-char feedbackTriggered = 0;
+uint8_t iCnt;
+uint8_t symmetry = 180;
 /******************************************************************************/
 /* Main Program                                                               */
 
 /******************************************************************************/
 
 void main(void) {
-    B25kLength = sizeof(B25k)/sizeof(B25k[0]);
-
+    
     USARTInit(31250);
     ConfigureOscillator();
     InitApp();
@@ -140,9 +125,9 @@ void main(void) {
        // LED_bypass_Aux = 0;
         if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
-            baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);  
-            delay_time_changed = 1;
-            //LED_bypass_Aux = 1;
+            CCPR2 = scaleA10kPot(knob1_prev);
+            CCPR3 = scaleiA10kPot(knob1_prev);
+            
         } 
 
 
@@ -155,36 +140,22 @@ void main(void) {
         //------------------------------------------------
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
-            int i = (int)map(knob2_prev, 0, 1023, 0, 39);
-            CCPR2 = (int)B25k[B25kLength - 1 - i]; //iB25k[i];
-            CCPR3 = (int)B25k[i];
+            CCPR4 = scaleA100kPot(knob2_prev);
+            CCPR5 = scaleiA100kPot(knob2_prev);
         }
 
 
-        //Feedback
+        //Symmetry
         //knob 3 action ----------------------------------
         //Delay FB U9 U10 PWM4 PWM5
         //  1) Look to see if knob has changed by more then 0.2%
         //  2) Map knob to 0-39 for array
         //  3) Set CCP to calibrated value
         //------------------------------------------------
-
-        if (feedback_state == 1) {
-            if (knob3_prev != 0) {
-                knob3_prev = 0;
-                feedbackTriggered = 1;
-                //in feedback mode, set the feedback to 50%
-                int i = (int) map(knob3_prev, 0, 1023, 25, 0);
-                CCPR4 = (int) B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
-                CCPR5 = (int) B25k[i];
-            }
-        } else {
-            if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
-                knob3_prev = knob_3_pos;
-                int i = (int) map(knob3_prev, 0, 1023, 18, 0);
-                CCPR4 = (int) B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
-                CCPR5 = (int) B25k[i];
-            }
+        if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+            knob3_prev = knob_3_pos;
+            symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
+            
         }
         
         

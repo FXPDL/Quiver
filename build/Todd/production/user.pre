@@ -4921,6 +4921,10 @@ void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
+int scaleA100kPot(double);
+int scaleiA100kPot(double);
+int scaleA10kPot(double);
+int scaleiA10kPot(double);
 
 # 19 "system.h"
 void ConfigureOscillator(void);
@@ -5066,7 +5070,7 @@ float scalar = 1.0;
 
 switch (y) {
 case 1:
-scalar = 0.75;
+scalar = 2.0;
 break;
 case 2:
 scalar = 0.6666;
@@ -5164,6 +5168,32 @@ return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 float scalePotValue(float x, float out_min, float out_max) {
 
 return x * (out_max - out_min) / 1023 + out_min;
+}
+
+int scaleA100kPot(double input) {
+
+float pwm = 3.6347 * (pow((input/1023.0), -1.112));
+return trunc(pwm);
+}
+
+int scaleiA100kPot(double input) {
+
+float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
+return trunc(pwm);
+}
+
+int scaleA10kPot(double input) {
+
+float pwm = 8.7428 * (pow((input/1023.0), -1.222));
+return trunc(pwm);
+}
+
+
+int scaleiA10kPot(double input) {
+
+
+float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
+return trunc(pwm);
 }
 
 long modulation(long x, long y) {

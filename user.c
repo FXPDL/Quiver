@@ -184,6 +184,32 @@ float scalePotValue(float x, float out_min, float out_max) {
     return x * (out_max - out_min) / 1023 + out_min;
 }
 
+int scaleA100kPot(double input) {	
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    float pwm = 3.6347 * (pow((input/1023.0), -1.112));
+    return trunc(pwm);
+}
+
+int scaleiA100kPot(double input) {
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
+    return trunc(pwm);
+}
+
+int scaleA10kPot(double input) {	
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    float pwm = 8.7428 * (pow((input/1023.0), -1.222));
+    return trunc(pwm);
+}
+
+
+int scaleiA10kPot(double input) {	
+    //Reverse the axis for the inverse value
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
+    return trunc(pwm);
+}
+
 long modulation(long x, long y) {
     //modulation(mod_value, adjusted_pot_value);
      

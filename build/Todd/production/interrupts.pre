@@ -4984,8 +4984,12 @@ void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
+int scaleA100kPot(double);
+int scaleiA100kPot(double);
+int scaleA10kPot(double);
+int scaleiA10kPot(double);
 
-# 32 "modulation.h"
+# 26 "modulation.h"
 signed char modSin[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
 
 signed char modTri[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, 100, 93, 87, 80, 73, 67, 60, 53, 47, 40, 33, 27, 20, 13, 7, 0, -7, -13, -20, -27, -33, -40, -47, -53, -60, -67, -73, -80, -87, -93, -100, -93, -87, -80, -73, -67, -60, -53, -47, -40, -33, -27, -20, -13, -7, 0};

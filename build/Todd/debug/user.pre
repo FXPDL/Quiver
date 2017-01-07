@@ -4881,6 +4881,34 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
 
@@ -4893,6 +4921,8 @@ void init_timer0(void);
 void InitializeTaps(void);
 void ReadSavedSettings(void);
 long modulation(long, long);
+int scaleA100kPot(double);
+int scaleiA100kPot(double);
 
 # 19 "system.h"
 void ConfigureOscillator(void);
@@ -4915,7 +4945,7 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 53 "constants.h"
+# 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4958,11 +4988,21 @@ int debounce_mode2 = 0;
 
 volatile long tap_timer = 0;
 volatile long test_timer = 0;
+volatile long double_timer = 0;
+
+char presetSaveMode = 0;
+char presetChannel = 1;
+char expressionChannel = 1;
 
 uint8_t switchBypass_state = -1;
 uint8_t switchTap_state = -1;
 volatile uint8_t longTap_state = -1;
 volatile uint8_t feedback_state = -1;
+
+char expSwitchState = -1;
+
+char presetModeCnst = 1;
+char expressModeCnst = 2;
 
 int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
@@ -5019,14 +5059,16 @@ INTCONbits.TMR0IF = 0b0;
 
 
 int set_subdivision(int x, int y) {
+
+
+
 adjust_sub_delay = 0;
 int tmpX = x;
 float scalar = 1.0;
 
-
 switch (y) {
 case 1:
-scalar = 0.75;
+scalar = 2.0;
 break;
 case 2:
 scalar = 0.6666;
@@ -5046,7 +5088,11 @@ break;
 }
 
 tmpX = tmpX * scalar;
-if ((tmpX /scalar) != x) {adjust_sub_delay = 1;}
+
+if (trunc(tmpX) != tmpX) {
+adjust_sub_delay = 1;
+}
+
 return tmpX;
 }
 
@@ -5120,6 +5166,18 @@ return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 float scalePotValue(float x, float out_min, float out_max) {
 
 return x * (out_max - out_min) / 1023 + out_min;
+}
+
+int scaleA100kPot(double input) {
+
+float pwm = 3.6347 * (pow((input/1023.0), -1.112));
+return trunc(pwm);
+}
+
+int scaleiA100kPot(double input) {
+
+float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
+return trunc(pwm);
 }
 
 long modulation(long x, long y) {
