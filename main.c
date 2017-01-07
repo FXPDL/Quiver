@@ -113,8 +113,8 @@ void main(void) {
         //Volume
         if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
             knob1_prev = knob_1_pos;
-            CCPR2 = scaleA10kPot(knob1_prev);
-            CCPR3 = scaleiA10kPot(knob1_prev);
+            CCPR4 = scaleA10kPot(knob1_prev);
+            CCPR5 = scaleiA10kPot(knob1_prev);
             
         } 
 
@@ -122,8 +122,8 @@ void main(void) {
         //Frequency
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
-            CCPR4 = scaleA100kPot(knob2_prev);
-            CCPR5 = scaleiA100kPot(knob2_prev);
+            CCPR1 = scaleA100kPot(knob2_prev);
+            CCPR2 = scaleA100kPot(knob2_prev);
         }
 
 

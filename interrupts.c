@@ -175,9 +175,8 @@ void interrupt isr(void) {
                 break;
         }
 
-        
         mod_value = modulation(mod_value, adjusted_pot_value);
-        CCPR9 = mod_value / 2;
+        CCPR3 = mod_value / 2;
         mod_timer = 0;
         mod_counter++;
 
