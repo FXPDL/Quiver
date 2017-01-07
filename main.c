@@ -138,13 +138,11 @@ void main(void) {
         
         //Depth
        // LED_bypass_Aux = 0;
-        if (bottom_push_state != 5) {
-            if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-                knob1_prev = knob_1_pos;
-                baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);  
-                delay_time_changed = 1;
-                //LED_bypass_Aux = 1;
-            } 
+        if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+            knob1_prev = knob_1_pos;
+            baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);  
+            delay_time_changed = 1;
+            //LED_bypass_Aux = 1;
         } 
 
 
@@ -171,15 +169,7 @@ void main(void) {
         //  3) Set CCP to calibrated value
         //------------------------------------------------
 
-        if (bottom_push_state == 5) {
-            if (knob3_prev != 1023) {
-                knob3_prev = 1023;
-                //in chorus mode, set the feedback to 0%
-                int i = (int) map(knob3_prev, 0, 1023, 16, 0);
-                CCPR4 = (int) B25k[B25kLength - 1 - i]; //iB25k[i];  //this is the inverse of B25k
-                CCPR5 = (int) B25k[i];
-            }
-        } else if (feedback_state == 1) {
+        if (feedback_state == 1) {
             if (knob3_prev != 0) {
                 knob3_prev = 0;
                 feedbackTriggered = 1;

@@ -36,6 +36,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _initSwitchBypass `(v ~T0 @X0 0 ef ]
 "20 user.h
 [v _ReadSavedSettings `(v ~T0 @X0 0 ef ]
+"26 tactiles.h
+[v _update_mode `(v ~T0 @X0 0 ef ]
+"27
+[v _update_selectMode `(v ~T0 @X0 0 ef ]
+"29 SwitchBypass.h
+[v _updateSwitchBypass `(v ~T0 @X0 0 ef ]
+"25 SwitchTap.h
+[v _updateSwitchTap `(v ~T0 @X0 0 ef ]
+"24 tactiles.h
+[v _read_bottom_tactile `(v ~T0 @X0 0 ef ]
+"25
+[v _read_top_tactile `(v ~T0 @X0 0 ef ]
 "23 system.h
 [v _adc_convert `(ui ~T0 @X0 0 ef1`uc ]
 "24
@@ -4434,249 +4446,246 @@ Version 3.2 HI-TECH Software Intermediate Code
 "103
 [e :U 462 ]
 {
-[; ;main.c: 142: knob_1_pos = adc_convert(0);
-"142
-[e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
-[; ;main.c: 143: knob_2_pos = adc_convert(1);
-"143
-[e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
-[; ;main.c: 144: knob_3_pos = adc_convert(2);
-"144
-[e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
-[; ;main.c: 145: knob_4_pos = adc_convert(3);
-"145
-[e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
-[; ;main.c: 146: knob_5_pos = adc_convert(4);
-"146
-[e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
-[; ;main.c: 174: if (bottom_push_state != 5) {
-"174
-[e $ ! != _bottom_push_state -> 5 `i 464  ]
+[; ;main.c: 106: update_mode();
+"106
+[e ( _update_mode ..  ]
+[; ;main.c: 107: update_selectMode();
+"107
+[e ( _update_selectMode ..  ]
+[; ;main.c: 110: updateSwitchBypass();
+"110
+[e ( _updateSwitchBypass ..  ]
+[; ;main.c: 111: if (presetSaveMode != 1) {
+"111
+[e $ ! != -> _presetSaveMode `i -> 1 `i 464  ]
 {
-[; ;main.c: 175: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-"175
-[e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 465  ]
-{
-[; ;main.c: 176: knob1_prev = knob_1_pos;
-"176
-[e = _knob1_prev _knob_1_pos ]
-[; ;main.c: 177: baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
-"177
-[e = _baseline_delay_time -> -> ( _map (4 , , , , -> _knob1_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1172 `i `f -> -> 200 `i `f `i `l ]
-[; ;main.c: 178: delay_time_changed = 1;
-"178
-[e = _delay_time_changed -> 1 `i ]
-"180
-}
-[e :U 465 ]
-"181
+[; ;main.c: 112: updateSwitchTap();
+"112
+[e ( _updateSwitchTap ..  ]
+"113
 }
 [e :U 464 ]
-[; ;main.c: 180: }
-[; ;main.c: 181: }
-[; ;main.c: 191: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
-"191
-[e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 466  ]
+[; ;main.c: 113: }
+[; ;main.c: 115: if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
+"115
+[e $ ! && != -> _presetSaveMode `i -> 1 `i != -> _mode2_state `i -> _presetModeCnst `i 465  ]
 {
-[; ;main.c: 192: knob2_prev = knob_2_pos;
-"192
-[e = _knob2_prev _knob_2_pos ]
-"193
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 193: int i = (int)map(knob2_prev, 0, 1023, 0, 39);
-[e = _i -> ( _map (4 , , , , -> _knob2_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 0 `i `f -> -> 39 `i `f `i ]
-[; ;main.c: 194: CCPR2 = (int)B25k[B25kLength - 1 - i];
-"194
-[e = _CCPR2 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 195: CCPR3 = (int)B25k[i];
-"195
-[e = _CCPR3 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"196
+[; ;main.c: 116: read_bottom_tactile();
+"116
+[e ( _read_bottom_tactile ..  ]
+[; ;main.c: 117: read_top_tactile();
+"117
+[e ( _read_top_tactile ..  ]
+"118
+}
+[e :U 465 ]
+[; ;main.c: 118: }
+[; ;main.c: 121: knob_1_pos = adc_convert(0);
+"121
+[e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
+[; ;main.c: 122: knob_2_pos = adc_convert(1);
+"122
+[e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
+[; ;main.c: 123: knob_3_pos = adc_convert(2);
+"123
+[e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
+[; ;main.c: 124: knob_4_pos = adc_convert(3);
+"124
+[e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
+[; ;main.c: 125: knob_5_pos = adc_convert(4);
+"125
+[e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
+[; ;main.c: 141: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+"141
+[e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 466  ]
+{
+[; ;main.c: 142: knob1_prev = knob_1_pos;
+"142
+[e = _knob1_prev _knob_1_pos ]
+[; ;main.c: 143: baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
+"143
+[e = _baseline_delay_time -> -> ( _map (4 , , , , -> _knob1_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1172 `i `f -> -> 200 `i `f `i `l ]
+[; ;main.c: 144: delay_time_changed = 1;
+"144
+[e = _delay_time_changed -> 1 `i ]
+"146
 }
 [e :U 466 ]
-[; ;main.c: 196: }
-[; ;main.c: 224: if (bottom_push_state == 5) {
-"224
-[e $ ! == _bottom_push_state -> 5 `i 467  ]
+[; ;main.c: 146: }
+[; ;main.c: 156: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
+"156
+[e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 467  ]
 {
-[; ;main.c: 225: if (knob3_prev != 1023) {
-"225
-[e $ ! != _knob3_prev -> 1023 `i 468  ]
-{
-[; ;main.c: 226: knob3_prev = 1023;
-"226
-[e = _knob3_prev -> 1023 `i ]
-"228
+[; ;main.c: 157: knob2_prev = knob_2_pos;
+"157
+[e = _knob2_prev _knob_2_pos ]
+"158
 [v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 228: int i = (int) map(knob3_prev, 0, 1023, 16, 0);
-[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 16 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 229: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"229
-[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 230: CCPR5 = (int) B25k[i];
-"230
-[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"231
+[; ;main.c: 158: int i = (int)map(knob2_prev, 0, 1023, 0, 39);
+[e = _i -> ( _map (4 , , , , -> _knob2_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 0 `i `f -> -> 39 `i `f `i ]
+[; ;main.c: 159: CCPR2 = (int)B25k[B25kLength - 1 - i];
+"159
+[e = _CCPR2 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
+[; ;main.c: 160: CCPR3 = (int)B25k[i];
+"160
+[e = _CCPR3 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
+"161
 }
-[e :U 468 ]
-"232
-}
-[; ;main.c: 231: }
-[; ;main.c: 232: } else if (feedback_state == 1) {
-[e $U 469  ]
 [e :U 467 ]
-[e $ ! == -> _feedback_state `i -> 1 `i 470  ]
+[; ;main.c: 161: }
+[; ;main.c: 172: if (feedback_state == 1) {
+"172
+[e $ ! == -> _feedback_state `i -> 1 `i 468  ]
 {
-[; ;main.c: 233: if (knob3_prev != 0) {
-"233
-[e $ ! != _knob3_prev -> 0 `i 471  ]
+[; ;main.c: 173: if (knob3_prev != 0) {
+"173
+[e $ ! != _knob3_prev -> 0 `i 469  ]
 {
-[; ;main.c: 234: knob3_prev = 0;
-"234
+[; ;main.c: 174: knob3_prev = 0;
+"174
 [e = _knob3_prev -> 0 `i ]
-[; ;main.c: 235: feedbackTriggered = 1;
-"235
+[; ;main.c: 175: feedbackTriggered = 1;
+"175
 [e = _feedbackTriggered -> -> 1 `i `uc ]
-"237
+"177
 [v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 237: int i = (int) map(knob3_prev, 0, 1023, 25, 0);
+[; ;main.c: 177: int i = (int) map(knob3_prev, 0, 1023, 25, 0);
 [e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 25 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 238: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"238
+[; ;main.c: 178: CCPR4 = (int) B25k[B25kLength - 1 - i];
+"178
 [e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 239: CCPR5 = (int) B25k[i];
-"239
+[; ;main.c: 179: CCPR5 = (int) B25k[i];
+"179
 [e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"240
+"180
+}
+[e :U 469 ]
+"181
+}
+[; ;main.c: 180: }
+[; ;main.c: 181: } else {
+[e $U 470  ]
+[e :U 468 ]
+{
+[; ;main.c: 182: if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
+"182
+[e $ ! || || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i == -> _feedbackTriggered `i -> 1 `i 471  ]
+{
+[; ;main.c: 183: knob3_prev = knob_3_pos;
+"183
+[e = _knob3_prev _knob_3_pos ]
+"184
+[v _i `i ~T0 @X0 1 a ]
+[; ;main.c: 184: int i = (int) map(knob3_prev, 0, 1023, 18, 0);
+[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 18 `i `f -> -> 0 `i `f `i ]
+[; ;main.c: 185: CCPR4 = (int) B25k[B25kLength - 1 - i];
+"185
+[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
+[; ;main.c: 186: CCPR5 = (int) B25k[i];
+"186
+[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
+"187
 }
 [e :U 471 ]
-"241
+"188
 }
-[; ;main.c: 240: }
-[; ;main.c: 241: } else {
-[e $U 472  ]
 [e :U 470 ]
+[; ;main.c: 187: }
+[; ;main.c: 188: }
+[; ;main.c: 199: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"199
+[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 472  ]
 {
-[; ;main.c: 242: if ((knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) || feedbackTriggered == 1) {
-"242
-[e $ ! || || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i == -> _feedbackTriggered `i -> 1 `i 473  ]
-{
-[; ;main.c: 243: knob3_prev = knob_3_pos;
-"243
-[e = _knob3_prev _knob_3_pos ]
-"244
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 244: int i = (int) map(knob3_prev, 0, 1023, 18, 0);
-[e = _i -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 18 `i `f -> -> 0 `i `f `i ]
-[; ;main.c: 245: CCPR4 = (int) B25k[B25kLength - 1 - i];
-"245
-[e = _CCPR4 -> -> *U + &U _B25k * -> -> - - _B25kLength -> 1 `i _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-[; ;main.c: 246: CCPR5 = (int) B25k[i];
-"246
-[e = _CCPR5 -> -> *U + &U _B25k * -> -> _i `ui `ux -> -> # *U &U _B25k `ui `ux `i `us ]
-"247
-}
-[e :U 473 ]
-"248
+[; ;main.c: 200: knob4_prev = knob_4_pos;
+"200
+[e = _knob4_prev _knob_4_pos ]
+[; ;main.c: 202: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
+"202
+[e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
+"203
 }
 [e :U 472 ]
-[e :U 469 ]
-[; ;main.c: 247: }
-[; ;main.c: 248: }
-[; ;main.c: 259: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"259
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 474  ]
+[; ;main.c: 203: }
+[; ;main.c: 211: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"211
+[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 473  ]
 {
-[; ;main.c: 260: knob4_prev = knob_4_pos;
-"260
-[e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 262: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
-"262
-[e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
-"263
-}
-[e :U 474 ]
-[; ;main.c: 263: }
-[; ;main.c: 271: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"271
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 475  ]
-{
-[; ;main.c: 272: knob5_prev = knob_5_pos;
-"272
+[; ;main.c: 212: knob5_prev = knob_5_pos;
+"212
 [e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 273: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"273
+[; ;main.c: 213: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"213
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"275
+"215
 }
-[e :U 475 ]
-[; ;main.c: 275: }
-[; ;main.c: 278: if (delay_time_changed == 1) {
-"278
-[e $ ! == _delay_time_changed -> 1 `i 476  ]
+[e :U 473 ]
+[; ;main.c: 215: }
+[; ;main.c: 218: if (delay_time_changed == 1) {
+"218
+[e $ ! == _delay_time_changed -> 1 `i 474  ]
 {
-[; ;main.c: 279: delay_time = baseline_delay_time;
-"279
+[; ;main.c: 219: delay_time = baseline_delay_time;
+"219
 [e = _delay_time _baseline_delay_time ]
-[; ;main.c: 280: delay_time = set_subdivision(baseline_delay_time, top_push_state);
-"280
+[; ;main.c: 220: delay_time = set_subdivision(baseline_delay_time, top_push_state);
+"220
 [e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
-[; ;main.c: 281: reset_sub_delay = 1;
-"281
+[; ;main.c: 221: reset_sub_delay = 1;
+"221
 [e = _reset_sub_delay -> 1 `i ]
-[; ;main.c: 282: delayfound = 0;
-"282
+[; ;main.c: 222: delayfound = 0;
+"222
 [e = _delayfound -> 0 `i ]
-[; ;main.c: 283: delay_counter = 0;
-"283
+[; ;main.c: 223: delay_counter = 0;
+"223
 [e = _delay_counter -> 0 `i ]
-[; ;main.c: 285: while (delayfound == 0) {
-"285
-[e $U 477  ]
+[; ;main.c: 225: while (delayfound == 0) {
+"225
+[e $U 475  ]
+[e :U 476 ]
+{
+[; ;main.c: 226: if (delayArray[delay_counter] <= delay_time * 2) {
+"226
+[e $ ! <= -> *U + &U _delayArray * -> -> _delay_counter `ui `ux -> -> # *U &U _delayArray `ui `ux `l * _delay_time -> -> 2 `i `l 478  ]
+{
+[; ;main.c: 227: delayfound = 1;
+"227
+[e = _delayfound -> 1 `i ]
+"231
+}
+[; ;main.c: 231: } else {
+[e $U 479  ]
 [e :U 478 ]
 {
-[; ;main.c: 286: if (delayArray[delay_counter] <= delay_time * 2) {
-"286
-[e $ ! <= -> *U + &U _delayArray * -> -> _delay_counter `ui `ux -> -> # *U &U _delayArray `ui `ux `l * _delay_time -> -> 2 `i `l 480  ]
-{
-[; ;main.c: 287: delayfound = 1;
-"287
-[e = _delayfound -> 1 `i ]
-"291
-}
-[; ;main.c: 291: } else {
-[e $U 481  ]
-[e :U 480 ]
-{
-[; ;main.c: 292: delay_counter++;
-"292
+[; ;main.c: 232: delay_counter++;
+"232
 [e ++ _delay_counter -> 1 `i ]
-"294
+"234
 }
-[e :U 481 ]
-"295
-}
-[e :U 477 ]
-"285
-[e $ == _delayfound -> 0 `i 478  ]
 [e :U 479 ]
-[; ;main.c: 294: }
-[; ;main.c: 295: }
-[; ;main.c: 314: delay_time_changed = 0;
-"314
-[e = _delay_time_changed -> 0 `i ]
-"316
+"235
 }
-[e :U 476 ]
-"318
+[e :U 475 ]
+"225
+[e $ == _delayfound -> 0 `i 476  ]
+[e :U 477 ]
+[; ;main.c: 234: }
+[; ;main.c: 235: }
+[; ;main.c: 237: delay_time_changed = 0;
+"237
+[e = _delay_time_changed -> 0 `i ]
+"239
+}
+[e :U 474 ]
+"241
 }
 [e :U 461 ]
 "103
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 316: }
-[; ;main.c: 318: }
-[; ;main.c: 319: }
-"319
+[; ;main.c: 239: }
+[; ;main.c: 241: }
+[; ;main.c: 242: }
+"242
 [e :UE 460 ]
 }

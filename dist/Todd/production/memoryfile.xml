@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/Todd/production\Novaplex_V2.X.production.hex">
+  <executable name="dist/Todd/production\Quiver.X.production.hex">
     <memory name="program">
       <units>words</units>
       <length>16384</length>
-      <used>5676</used>
-      <free>10708</free>
+      <used>7140</used>
+      <free>9244</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>1270</used>
-      <free>266</free>
+      <used>1329</used>
+      <free>207</free>
     </memory>
   </executable>
 </project>

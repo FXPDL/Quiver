@@ -149,37 +149,29 @@ void interrupt isr(void) {
        if (mod_counter >= 60) {
             mod_counter = 0;
         } 
-
+       chorus = 0;
         switch (bottom_push_state) {
-            case 1:
-                mod_value = (int)mod1[mod_counter];
-                chorus = 0;
+            case 1:  //Sin
+                mod_value = (int)modSin[mod_counter];
                 break;
-            case 2:
-                mod_value = (int)mod2[mod_counter];
-                chorus = 0;
+            case 2:  //tri
+                mod_value = (int)modTri[mod_counter];
                 break;
-            case 3:
-                mod_value = (int)mod3[mod_counter];
-                chorus = 0;
-                break;
-            case 4:
-                if (mod_counter <31) {
+            case 3:  //Square
+                if (mod_counter < 31) {
                     mod_value = 100; //mod4[mod_counter];
                 } else {
                     mod_value = -100;
                 }
-                chorus = 0;
                 break;
-            case 5:
-                mod_value = (int)mod1[mod_counter];
-                //adjusted_pot_value = 1275; dont override the depth
-                chorus = 1;
-                
+            case 4: //Saw
+                mod_value = (int) modSaw[mod_counter];
+                break;
+            case 5:  //Reverse Saw
+                mod_value = (int)modRevSaw[mod_counter];              
                 break;
             default:
                 mod_value = 0;
-                chorus = 0;
                 break;
         }
 

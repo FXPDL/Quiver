@@ -1,0 +1,2295 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/Todd/production\Quiver.X.production.obj
+cinit CODE 0 322 322 CE 2
+text1 CODE 0 801 801 59 2
+text2 CODE 0 1E62 1E62 38 2
+text3 CODE 0 5F8 5F8 1E3 2
+text4 CODE 0 1CF7 1CF7 1A 2
+text5 CODE 0 15AB 15AB 82 2
+text6 CODE 0 9C8 9C8 E7 2
+text7 CODE 0 1CDD 1CDD 1A 2
+text8 CODE 0 1050 1050 3E 2
+text9 CODE 0 1C97 1C97 14 2
+nvCOMMON COMMON 1 7D 7D 1 1
+text10 CODE 0 108E 108E 40 2
+text11 CODE 0 1307 1307 50 2
+text12 CODE 0 7DB 7DB 23 2
+text13 CODE 0 1ED4 1ED4 3A 2
+text14 CODE 0 1CAB 1CAB 18 2
+text15 CODE 0 1CC3 1CC3 1A 2
+text16 CODE 0 90E 90E BA 2
+text17 CODE 0 13A8 13A8 52 2
+text18 CODE 0 1E9A 1E9A 3A 2
+text19 CODE 0 16B8 16B8 9F 2
+text20 CODE 0 126C 126C 4B 2
+text21 CODE 0 1D31 1D31 22 2
+text22 CODE 0 12B7 12B7 50 2
+text23 CODE 0 1193 1193 47 2
+text24 CODE 0 162D 162D 8B 2
+text25 CODE 0 1C2E 1C2E 9 2
+text26 CODE 0 85A 85A B4 2
+text27 CODE 0 1757 1757 A9 2
+text28 CODE 0 AAF AAF F6 2
+text29 CODE 0 144E 144E 65 2
+text30 CODE 0 1C75 1C75 F 2
+text31 CODE 0 1222 1222 4A 2
+text32 CODE 0 1E30 1E30 32 2
+text33 CODE 0 1E00 1E00 30 2
+text34 CODE 0 7FE 7FE 1 2
+text35 CODE 0 1C1A 1C1A 4 2
+text36 CODE 0 1C84 1C84 13 2
+text37 CODE 0 1150 1150 43 2
+text38 CODE 0 14B3 14B3 76 2
+text39 CODE 0 13FA 13FA 54 2
+text40 CODE 0 1F0E 1F0E 3B 2
+text41 CODE 0 1D11 1D11 20 2
+text42 CODE 0 1D53 1D53 26 2
+text43 CODE 0 1DD0 1DD0 30 2
+text44 CODE 0 110F 110F 41 2
+text45 CODE 0 1C25 1C25 9 2
+text46 CODE 0 1C1E 1C1E 7 2
+text47 CODE 0 1C37 1C37 A 2
+text48 CODE 0 1C16 1C16 4 2
+text50 CODE 0 11DA 11DA 48 2
+text51 CODE 0 10CE 10CE 41 2
+text52 CODE 0 1DA1 1DA1 2F 2
+text53 CODE 0 1529 1529 82 2
+text54 CODE 0 1357 1357 51 2
+idataBANK10 CODE 0 1F49 1F49 3D 2
+idataBIGRAM CODE 0 3F0 3F0 208 2
+nvBANK0 BANK0 1 69 69 1 1
+nvBANK3 BANK3 1 1EC 1EC 2 1
+maintext CODE 0 BA5 BA5 45B 2
+cstackCOMMON COMMON 1 70 70 D 1
+cstackBANK0 BANK0 1 20 20 25 1
+cstackBANK1 BANK1 1 A0 A0 50 1
+cstackBANK2 BANK2 1 120 120 31 1
+cstackBANK4 BANK4 1 25C 25C 6 1
+inittext CODE 0 1C41 1C41 C 2
+intentry CODE 0 4 4 31C 2
+bssBANK0 BANK0 1 58 58 11 1
+bssBANK2 BANK2 1 151 151 10 1
+bssBANK3 BANK3 1 1A0 1A0 3E 1
+bssBANK4 BANK4 1 248 248 14 1
+bssBANK5 BANK5 1 2A0 2A0 2C 1
+bssBANK6 BANK6 1 320 320 40 1
+idataBANK0 CODE 0 1000 1000 13 2
+idataBANK2 CODE 0 1C67 1C67 E 2
+idataBANK3 CODE 0 1C59 1C59 E 2
+idataBANK4 CODE 0 1D79 1D79 28 2
+idataBANK7 CODE 0 1013 1013 3D 2
+idataBANK8 CODE 0 1FC3 1FC3 3D 2
+idataBANK9 CODE 0 1F86 1F86 3D 2
+dataBANK0 BANK0 1 45 45 13 1
+dataBANK2 BANK2 1 161 161 E 1
+dataBANK3 BANK3 1 1DE 1DE E 1
+dataBANK4 BANK4 1 220 220 28 1
+dataBANK7 BANK7 1 3A0 3A0 3D 1
+dataBANK8 BANK8 1 420 420 3D 1
+dataBANK9 BANK9 1 4A0 4A0 3D 1
+dataBANK10 BANK10 1 520 520 3D 1
+clrtext CODE 0 1C4D 1C4D C 2
+bssBANK11 BANK11 1 5A0 5A0 40 1
+$C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+reset_vec CODE 0 0 0 2 2
+end_init CODE 0 320 320 2 2
+config CONFIG 0 8007 8007 2 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 6A-6F 1
+RAM 16F-16F 1
+RAM 1EE-1EF 1
+RAM 262-26F 1
+RAM 2CC-2EF 1
+RAM 360-36F 1
+RAM 3DD-3EF 1
+RAM 45D-46F 1
+RAM 4DD-4EF 1
+RAM 55D-56F 1
+RAM 5E0-5EF 1
+RAM 620-647 1
+BANK0 6A-6F 1
+BANK2 16F-16F 1
+BANK3 1EE-1EF 1
+BANK4 262-26F 1
+BANK5 2CC-2EF 1
+BANK6 360-36F 1
+BANK7 3DD-3EF 1
+BANK8 45D-46F 1
+BANK9 4DD-4EF 1
+CONST 2-3 2
+CONST 7FF-800 2
+CONST 1800-1C15 2
+CONST 2000-3FFF 2
+ENTRY 2-3 2
+ENTRY 7FF-800 2
+ENTRY 1800-1C15 2
+ENTRY 2000-3FFF 2
+IDLOC 8000-8003 2
+SFR10 500-51F 1
+SFR11 580-59F 1
+SFR12 600-61F 1
+SFR13 680-69F 1
+SFR14 700-71F 1
+SFR15 780-79F 1
+SFR16 800-81F 1
+SFR17 880-89F 1
+SFR18 900-91F 1
+SFR19 980-9EF 1
+SFR20 A00-A6F 1
+SFR21 A80-AEF 1
+SFR22 B00-B6F 1
+SFR23 B80-BEF 1
+SFR24 C00-C6F 1
+SFR25 C80-CEF 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+STACK 23B0-23E7 1
+CODE 2-3 2
+CODE 7FF-800 2
+CODE 1800-1C15 2
+CODE 2000-3FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-11F 1
+SFR3 180-19F 1
+SFR4 200-21F 1
+SFR5 280-29F 1
+SFR6 300-31F 1
+SFR7 380-39F 1
+SFR8 400-41F 1
+SFR9 480-49F 1
+BANK10 55D-56F 1
+BANK11 5E0-5EF 1
+BANK12 620-647 1
+BIGRAM 2000-25EF 1
+STRCODE 2-3 2
+STRCODE 7FF-800 2
+STRCODE 1800-1C15 2
+STRCODE 2000-3FFF 2
+STRING 2-3 2
+STRING 7FF-800 2
+STRING 1800-1C15 2
+STRING 2000-3FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/Todd/production\Quiver.X.production.obj
+322 cinit CODE >7862:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+322 cinit CODE >7865:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+322 cinit CODE >8277:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+323 cinit CODE >8278:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+324 cinit CODE >8279:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+325 cinit CODE >8280:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+326 cinit CODE >8281:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+327 cinit CODE >8282:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+328 cinit CODE >8283:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+329 cinit CODE >8284:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+32A cinit CODE >8285:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+32D cinit CODE >8289:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+32E cinit CODE >8290:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+32F cinit CODE >8291:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+330 cinit CODE >8292:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+331 cinit CODE >8293:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+332 cinit CODE >8294:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+333 cinit CODE >8295:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+334 cinit CODE >8296:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+335 cinit CODE >8297:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+338 cinit CODE >8301:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+339 cinit CODE >8302:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33A cinit CODE >8303:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33B cinit CODE >8304:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33C cinit CODE >8305:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33D cinit CODE >8306:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33E cinit CODE >8307:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+33F cinit CODE >8308:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+340 cinit CODE >8309:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+343 cinit CODE >8313:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+344 cinit CODE >8314:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+345 cinit CODE >8315:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+346 cinit CODE >8316:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+347 cinit CODE >8317:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+348 cinit CODE >8318:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+349 cinit CODE >8319:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+34A cinit CODE >8320:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+34B cinit CODE >8321:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+34E cinit CODE >8325:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+34F cinit CODE >8326:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+350 cinit CODE >8327:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+351 cinit CODE >8328:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+352 cinit CODE >8329:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+353 cinit CODE >8330:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+354 cinit CODE >8331:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+355 cinit CODE >8332:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+356 cinit CODE >8333:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+359 cinit CODE >8337:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35A cinit CODE >8338:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35B cinit CODE >8339:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35C cinit CODE >8340:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35D cinit CODE >8341:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35E cinit CODE >8342:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+35F cinit CODE >8343:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+360 cinit CODE >8344:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+361 cinit CODE >8345:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+364 cinit CODE >8349:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+365 cinit CODE >8350:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+366 cinit CODE >8351:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+367 cinit CODE >8352:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+368 cinit CODE >8353:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+369 cinit CODE >8354:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+36A cinit CODE >8355:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+36B cinit CODE >8356:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+36C cinit CODE >8357:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+36F cinit CODE >8378:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+370 cinit CODE >8379:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+371 cinit CODE >8380:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+372 cinit CODE >8381:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+373 cinit CODE >8382:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+374 cinit CODE >8383:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+375 cinit CODE >8384:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+376 cinit CODE >8385:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+377 cinit CODE >8386:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+378 cinit CODE >8387:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+379 cinit CODE >8388:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+37A cinit CODE >8389:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+37D cinit CODE >8393:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+37E cinit CODE >8394:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+37F cinit CODE >8395:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+380 cinit CODE >8396:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+381 cinit CODE >8397:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+382 cinit CODE >8398:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+383 cinit CODE >8399:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+384 cinit CODE >8400:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+385 cinit CODE >8401:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+386 cinit CODE >8402:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+387 cinit CODE >8403:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+388 cinit CODE >8404:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+38B cinit CODE >8408:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+38C cinit CODE >8409:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+38D cinit CODE >8410:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+38E cinit CODE >8411:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+38F cinit CODE >8412:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+390 cinit CODE >8413:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+391 cinit CODE >8414:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+392 cinit CODE >8415:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+393 cinit CODE >8416:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+394 cinit CODE >8417:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+395 cinit CODE >8418:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+396 cinit CODE >8419:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+399 cinit CODE >8423:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39A cinit CODE >8424:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39B cinit CODE >8425:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39C cinit CODE >8426:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39D cinit CODE >8427:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39E cinit CODE >8428:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+39F cinit CODE >8429:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A0 cinit CODE >8430:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A1 cinit CODE >8431:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A2 cinit CODE >8432:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A3 cinit CODE >8433:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A4 cinit CODE >8434:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A7 cinit CODE >8438:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A8 cinit CODE >8439:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3A9 cinit CODE >8440:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AA cinit CODE >8441:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AB cinit CODE >8442:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AC cinit CODE >8443:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AD cinit CODE >8444:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AE cinit CODE >8445:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3AF cinit CODE >8446:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B0 cinit CODE >8447:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B1 cinit CODE >8448:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B2 cinit CODE >8449:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B5 cinit CODE >8453:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B6 cinit CODE >8454:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B7 cinit CODE >8455:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B8 cinit CODE >8456:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3B9 cinit CODE >8457:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BA cinit CODE >8458:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BB cinit CODE >8459:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BC cinit CODE >8460:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BD cinit CODE >8461:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BE cinit CODE >8462:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3BF cinit CODE >8463:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C0 cinit CODE >8464:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C3 cinit CODE >8468:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C4 cinit CODE >8469:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C5 cinit CODE >8470:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C6 cinit CODE >8471:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C7 cinit CODE >8472:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C8 cinit CODE >8473:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3C9 cinit CODE >8474:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3CA cinit CODE >8475:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3CB cinit CODE >8476:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3CC cinit CODE >8477:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3CD cinit CODE >8478:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3CE cinit CODE >8479:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D1 cinit CODE >8483:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D2 cinit CODE >8484:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D3 cinit CODE >8485:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D4 cinit CODE >8486:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D5 cinit CODE >8487:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D6 cinit CODE >8488:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D7 cinit CODE >8489:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D8 cinit CODE >8490:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3D9 cinit CODE >8491:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3DA cinit CODE >8492:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3DB cinit CODE >8493:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3DC cinit CODE >8494:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3DF cinit CODE >8498:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E0 cinit CODE >8499:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E1 cinit CODE >8500:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E2 cinit CODE >8501:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E3 cinit CODE >8502:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E4 cinit CODE >8503:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E5 cinit CODE >8504:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E6 cinit CODE >8505:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E7 cinit CODE >8506:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E8 cinit CODE >8507:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3E9 cinit CODE >8508:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3EA cinit CODE >8509:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3EC cinit CODE >8515:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3EC cinit CODE >8517:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3ED cinit CODE >8518:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+3EE cinit CODE >8519:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+4 intentry CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+9 intentry CODE >44:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+B intentry CODE >45:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+F intentry CODE >46:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+27 intentry CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+3F intentry CODE >48:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+57 intentry CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+7E intentry CODE >50:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+86 intentry CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+8E intentry CODE >52:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+92 intentry CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+96 intentry CODE >54:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+A8 intentry CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+AC intentry CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+B0 intentry CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+BB intentry CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+C2 intentry CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+C3 intentry CODE >64:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+C8 intentry CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+10B intentry CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+11E intentry CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+11E intentry CODE >72:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+128 intentry CODE >75:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+13C intentry CODE >78:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+13E intentry CODE >80:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+147 intentry CODE >81:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+14C intentry CODE >83:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+154 intentry CODE >86:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+157 intentry CODE >87:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+161 intentry CODE >89:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+163 intentry CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+16C intentry CODE >94:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+17C intentry CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+17E intentry CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+182 intentry CODE >105:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+192 intentry CODE >106:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+194 intentry CODE >107:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+19D intentry CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1AC intentry CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1AE intentry CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1B5 intentry CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1D2 intentry CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1D5 intentry CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1E0 intentry CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1E5 intentry CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1ED intentry CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1FC intentry CODE >126:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1FF intentry CODE >127:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+209 intentry CODE >145:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+233 intentry CODE >146:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+23B intentry CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+249 intentry CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+24C intentry CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+24E intentry CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+24F intentry CODE >155:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+255 intentry CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+259 intentry CODE >161:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+267 intentry CODE >162:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+26C intentry CODE >164:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+271 intentry CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+272 intentry CODE >168:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+278 intentry CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+284 intentry CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+285 intentry CODE >174:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+288 intentry CODE >176:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+289 intentry CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2A0 intentry CODE >179:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2C5 intentry CODE >180:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2D5 intentry CODE >181:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2DE intentry CODE >182:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2E3 intentry CODE >188:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2E7 intentry CODE >189:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2ED intentry CODE >191:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2F8 intentry CODE >192:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+2FA intentry CODE >193:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+311 intentry CODE >194:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+313 intentry CODE >197:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+314 intentry CODE >198:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+316 intentry CODE >202:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+319 intentry CODE >203:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+31A intentry CODE >204:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+31B intentry CODE >209:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+1357 text54 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1357 text54 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1358 text54 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+135A text54 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+135F text54 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1361 text54 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1363 text54 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1368 text54 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+136C text54 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+136E text54 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1372 text54 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1374 text54 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1376 text54 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+137B text54 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+137F text54 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1380 text54 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1385 text54 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+138D text54 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1391 text54 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1392 text54 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1397 text54 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+139B text54 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+139E text54 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+13A3 text54 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+1529 text53 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1529 text53 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+152B text53 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+152D text53 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1538 text53 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+153A text53 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+153A text53 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+153C text53 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1547 text53 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+154B text53 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1553 text53 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1559 text53 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+155B text53 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+155D text53 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1564 text53 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1568 text53 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1569 text53 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1570 text53 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1580 text53 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1588 text53 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1589 text53 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1590 text53 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1594 text53 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1597 text53 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15A2 text53 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1DA1 text52 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DA1 text52 CODE >119:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DA9 text52 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DAB text52 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DB3 text52 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DBA text52 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DC1 text52 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1DC7 text52 CODE >128:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+10CE text51 CODE >187:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+10CE text51 CODE >190:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+11DA text50 CODE >16:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11DA text50 CODE >17:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11DC text50 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11DD text50 CODE >19:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11DE text50 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11DF text50 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11E0 text50 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11E1 text50 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11E6 text50 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11E7 text50 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11EC text50 CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11ED text50 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11F2 text50 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11F3 text50 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11F8 text50 CODE >34:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11F9 text50 CODE >36:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11FE text50 CODE >39:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11FF text50 CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+11FF text50 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1200 text50 CODE >42:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1201 text50 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1202 text50 CODE >44:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1203 text50 CODE >45:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1204 text50 CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1205 text50 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1221 text50 CODE >48:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1C16 text48 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1C16 text48 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1C19 text48 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1C37 text47 CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C37 text47 CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C39 text47 CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C3D text47 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C3F text47 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C40 text47 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C1E text46 CODE >169:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C1E text46 CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C20 text46 CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C21 text46 CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C22 text46 CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C23 text46 CODE >174:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C24 text46 CODE >175:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C25 text45 CODE >162:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C25 text45 CODE >163:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C28 text45 CODE >164:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C2A text45 CODE >165:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C2C text45 CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C2D text45 CODE >167:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+110F text44 CODE >129:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+110F text44 CODE >130:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1111 text44 CODE >131:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1113 text44 CODE >132:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1114 text44 CODE >133:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1116 text44 CODE >134:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1117 text44 CODE >135:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1118 text44 CODE >136:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+111A text44 CODE >137:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+111B text44 CODE >138:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+111C text44 CODE >139:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+111D text44 CODE >140:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+111E text44 CODE >141:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1121 text44 CODE >142:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1123 text44 CODE >143:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1126 text44 CODE >144:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1128 text44 CODE >145:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+112A text44 CODE >146:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+112D text44 CODE >147:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+112F text44 CODE >148:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1131 text44 CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1133 text44 CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1135 text44 CODE >151:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1137 text44 CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1138 text44 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1139 text44 CODE >154:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+113D text44 CODE >155:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1141 text44 CODE >156:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1146 text44 CODE >157:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+114A text44 CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+114D text44 CODE >159:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+114F text44 CODE >160:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD0 text43 CODE >23:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD0 text43 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD2 text43 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD3 text43 CODE >26:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD4 text43 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD5 text43 CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD6 text43 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD7 text43 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD8 text43 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DD9 text43 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDA text43 CODE >36:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDB text43 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDC text43 CODE >38:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDD text43 CODE >39:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDE text43 CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DDF text43 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE0 text43 CODE >42:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE1 text43 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE2 text43 CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE3 text43 CODE >50:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE4 text43 CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE6 text43 CODE >52:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE7 text43 CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DE9 text43 CODE >54:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DEA text43 CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DEC text43 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DED text43 CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DEE text43 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DEF text43 CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF0 text43 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF1 text43 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF2 text43 CODE >63:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF4 text43 CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF6 text43 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DF7 text43 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DFA text43 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DFC text43 CODE >71:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DFD text43 CODE >72:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DFE text43 CODE >73:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1DFF text43 CODE >74:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1D53 text42 CODE >193:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1D53 text42 CODE >194:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1D61 text42 CODE >195:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1D74 text42 CODE >194:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1D11 text41 CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D11 text41 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D16 text41 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D17 text41 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D1A text41 CODE >63:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D1E text41 CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D1F text41 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D20 text41 CODE >67:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D21 text41 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D22 text41 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1D28 text41 CODE >71:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+1F0E text40 CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F0E text40 CODE >52:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F10 text40 CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F11 text40 CODE >54:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F12 text40 CODE >55:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F13 text40 CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F14 text40 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F15 text40 CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F15 text40 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F17 text40 CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F18 text40 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F18 text40 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1A text40 CODE >63:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1B text40 CODE >64:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1B text40 CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1D text40 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1E text40 CODE >67:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F1E text40 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F20 text40 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F21 text40 CODE >70:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F21 text40 CODE >71:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F23 text40 CODE >74:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F24 text40 CODE >75:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F24 text40 CODE >76:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F26 text40 CODE >77:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F27 text40 CODE >78:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F28 text40 CODE >79:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F29 text40 CODE >80:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F2A text40 CODE >82:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F2B text40 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1F48 text40 CODE >83:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FA text39 CODE >16:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FA text39 CODE >17:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FC text39 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FD text39 CODE >19:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FE text39 CODE >20:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+13FF text39 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1400 text39 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1401 text39 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1408 text39 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1409 text39 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1410 text39 CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1411 text39 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1418 text39 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1419 text39 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1420 text39 CODE >34:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1421 text39 CODE >36:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1428 text39 CODE >39:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1429 text39 CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1429 text39 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+142B text39 CODE >42:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+142C text39 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+142D text39 CODE >44:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+142E text39 CODE >45:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+142F text39 CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1430 text39 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+144D text39 CODE >48:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+14B3 text38 CODE >199:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14B3 text38 CODE >201:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14C3 text38 CODE >202:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14D3 text38 CODE >204:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14E0 text38 CODE >206:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14E5 text38 CODE >207:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14E5 text38 CODE >208:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14F3 text38 CODE >210:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+14F8 text38 CODE >214:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1501 text38 CODE >215:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1508 text38 CODE >216:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150A text38 CODE >217:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150B text38 CODE >219:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150C text38 CODE >220:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150D text38 CODE >222:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150E text38 CODE >223:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+150F text38 CODE >226:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+151E text38 CODE >227:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1528 text38 CODE >228:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1150 text37 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1150 text37 CODE >34:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1157 text37 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1158 text37 CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+115A text37 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+115C text37 CODE >46:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+115E text37 CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1161 text37 CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1162 text37 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1185 text37 CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1185 text37 CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1187 text37 CODE >54:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1188 text37 CODE >55:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1189 text37 CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+118A text37 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+118B text37 CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+118C text37 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+118D text37 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+118E text37 CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1190 text37 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1191 text37 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1192 text37 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+1C84 text36 CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C86 text36 CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C8F text36 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C90 text36 CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C92 text36 CODE >126:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1C1A text35 CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+1C1A text35 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+7FE text34 CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+7FE text34 CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+1E00 text33 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E00 text33 CODE >119:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E09 text33 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E0B text33 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E13 text33 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E1A text33 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E21 text33 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E27 text33 CODE >128:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
+1E30 text32 CODE >23:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1E30 text32 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1E39 text32 CODE >26:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1E53 text32 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
+1222 text31 CODE >134:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1222 text31 CODE >135:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+122F text31 CODE >136:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1234 text31 CODE >137:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+123B text31 CODE >138:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+123C text31 CODE >139:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1243 text31 CODE >140:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+124D text31 CODE >142:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1255 text31 CODE >144:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1257 text31 CODE >145:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1258 text31 CODE >147:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1264 text31 CODE >148:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+126B text31 CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1C75 text30 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1C75 text30 CODE >30:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1C7D text30 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1C83 text30 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+144E text29 CODE >62:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+144E text29 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1457 text29 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+145E text29 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1462 text29 CODE >68:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1468 text29 CODE >66:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+146D text29 CODE >71:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1471 text29 CODE >72:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+147B text29 CODE >73:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1481 text29 CODE >70:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1481 text29 CODE >74:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1486 text29 CODE >76:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1488 text29 CODE >77:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+148E text29 CODE >75:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1494 text29 CODE >79:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+1496 text29 CODE >80:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+149C text29 CODE >81:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+149E text29 CODE >82:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+14AE text29 CODE >83:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+14B1 text29 CODE >84:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+14B2 text29 CODE >86:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+AAF text28 CODE >86:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AAF text28 CODE >90:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+ABC text28 CODE >91:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AC8 text28 CODE >92:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AD7 text28 CODE >93:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+ADE text28 CODE >94:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AED text28 CODE >96:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF1 text28 CODE >97:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF2 text28 CODE >98:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF3 text28 CODE >99:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF4 text28 CODE >100:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF5 text28 CODE >101:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AF6 text28 CODE >102:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AFC text28 CODE >103:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+AFD text28 CODE >104:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B03 text28 CODE >106:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B07 text28 CODE >110:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B0D text28 CODE >111:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B0F text28 CODE >112:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B1A text28 CODE >114:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B20 text28 CODE >115:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B24 text28 CODE >113:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B29 text28 CODE >117:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B2D text28 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B33 text28 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B35 text28 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B40 text28 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B46 text28 CODE >126:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B4A text28 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B4E text28 CODE >129:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B50 text28 CODE >131:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B56 text28 CODE >132:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B60 text28 CODE >134:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B62 text28 CODE >136:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B68 text28 CODE >137:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B72 text28 CODE >139:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B73 text28 CODE >140:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B79 text28 CODE >141:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B7B text28 CODE >142:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B81 text28 CODE >143:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B8B text28 CODE >144:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+B8D text28 CODE >146:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
+1757 text27 CODE >56:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+1757 text27 CODE >63:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+1767 text27 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+176E text27 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+177D text27 CODE >66:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+1784 text27 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+178A text27 CODE >68:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+178F text27 CODE >69:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+179F text27 CODE >70:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17AF text27 CODE >71:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17B3 text27 CODE >72:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17B4 text27 CODE >73:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17BA text27 CODE >74:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17BB text27 CODE >75:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17C1 text27 CODE >76:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17C5 text27 CODE >78:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17CB text27 CODE >79:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17D7 text27 CODE >80:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17DD text27 CODE >81:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17DE text27 CODE >83:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17E4 text27 CODE >84:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+17E8 text27 CODE >85:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftdiv.c
+85A text26 CODE >62:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+85A text26 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+86A text26 CODE >68:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+871 text26 CODE >69:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+880 text26 CODE >70:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+887 text26 CODE >71:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+88C text26 CODE >72:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+89C text26 CODE >73:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8AC text26 CODE >74:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8B0 text26 CODE >75:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8B1 text26 CODE >77:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8B2 text26 CODE >78:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8B8 text26 CODE >79:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8BE text26 CODE >134:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8C2 text26 CODE >136:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8C4 text26 CODE >137:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8CA text26 CODE >138:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8D0 text26 CODE >139:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8D6 text26 CODE >140:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8DA text26 CODE >143:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8DE text26 CODE >145:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8E0 text26 CODE >146:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8E6 text26 CODE >147:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8EC text26 CODE >148:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8F2 text26 CODE >149:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+8F6 text26 CODE >156:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
+1C2E text25 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+1C2E text25 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+1C34 text25 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+162D text24 CODE >177:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+162D text24 CODE >178:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1193 text23 CODE >18:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1193 text23 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1196 text23 CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+119A text23 CODE >29:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+119C text23 CODE >31:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11A2 text23 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11A8 text23 CODE >36:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11AB text23 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11B2 text23 CODE >38:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11BF text23 CODE >39:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11C4 text23 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11CF text23 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11CF text23 CODE >44:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+11D2 text23 CODE >45:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12B7 text22 CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12B7 text22 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12BA text22 CODE >60:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12BE text22 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12C0 text22 CODE >63:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12C6 text22 CODE >64:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12CC text22 CODE >70:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12CF text22 CODE >72:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12D6 text22 CODE >73:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12E3 text22 CODE >74:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12E8 text22 CODE >76:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12F7 text22 CODE >77:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12FC text22 CODE >80:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12FC text22 CODE >81:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+12FF text22 CODE >82:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1D31 text21 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+1D31 text21 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+1D33 text21 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+1D35 text21 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+1D3A text21 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+1D3C text21 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
+126C text20 CODE >42:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+126C text20 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+126E text20 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1272 text20 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1274 text20 CODE >48:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+127F text20 CODE >49:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1281 text20 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1285 text20 CODE >53:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+128C text20 CODE >54:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1290 text20 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+1291 text20 CODE >56:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
+16B8 text19 CODE >44:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16B8 text19 CODE >49:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16C9 text19 CODE >50:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16D3 text19 CODE >51:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16E5 text19 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16E7 text19 CODE >53:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16ED text19 CODE >54:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16F9 text19 CODE >55:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16FB text19 CODE >56:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+16FD text19 CODE >57:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1702 text19 CODE >58:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+170C text19 CODE >60:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1714 text19 CODE >61:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+171D text19 CODE >63:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1721 text19 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+172B text19 CODE >66:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1733 text19 CODE >67:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1735 text19 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1735 text19 CODE >68:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1739 text19 CODE >70:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+173C text19 CODE >71:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1747 text19 CODE >72:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
+1E9A text18 CODE >254:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1E9A text18 CODE >256:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1EA0 text18 CODE >257:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1EA7 text18 CODE >258:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1EA8 text18 CODE >261:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1EB6 text18 CODE >262:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1EC4 text18 CODE >263:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1ECE text18 CODE >268:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+1ED2 text18 CODE >269:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\frexp.c
+13A8 text17 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13A8 text17 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13BB text17 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13BE text17 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13C5 text17 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13CC text17 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+13F3 text17 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
+90E text16 CODE >77:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+90E text16 CODE >81:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+911 text16 CODE >82:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+916 text16 CODE >83:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+91C text16 CODE >85:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+91D text16 CODE >87:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+921 text16 CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+925 text16 CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+92B text16 CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+92F text16 CODE >99:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+935 text16 CODE >104:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+936 text16 CODE >85:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+94F text16 CODE >106:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+981 text16 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+9BD text16 CODE >109:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+9C2 text16 CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+9C2 text16 CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+1CC3 text15 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CC3 text15 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CD2 text15 CODE >63:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CDC text15 CODE >64:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CAB text14 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CAD text14 CODE >67:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CBB text14 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CC2 text14 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1ED4 text13 CODE >51:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1ED6 text13 CODE >52:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1EDA text13 CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1EE8 text13 CODE >54:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1EEF text13 CODE >55:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1EF0 text13 CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1EFC text13 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+7DB text12 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7DB text12 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7DC text12 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7DC text12 CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7DE text12 CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7DF text12 CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E1 text12 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E2 text12 CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E2 text12 CODE >126:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E4 text12 CODE >127:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E5 text12 CODE >128:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7E9 text12 CODE >129:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7EA text12 CODE >130:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7EA text12 CODE >131:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7EC text12 CODE >132:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7ED text12 CODE >133:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7F0 text12 CODE >135:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7F1 text12 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+7FD text12 CODE >136:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1307 text11 CODE >196:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1307 text11 CODE >197:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1317 text11 CODE >198:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1323 text11 CODE >199:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+132B text11 CODE >197:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+133B text11 CODE >201:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1342 text11 CODE >202:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1349 text11 CODE >203:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1351 text11 CODE >201:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+108E text10 CODE >208:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+108E text10 CODE >209:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1093 text10 CODE >210:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+109E text10 CODE >211:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+10A6 text10 CODE >212:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+10B1 text10 CODE >214:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+10BC text10 CODE >215:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+10C3 text10 CODE >216:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+10CD text10 CODE >217:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1C97 text9 CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1C97 text9 CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1C9D text9 CODE >114:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1CA0 text9 CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1CA3 text9 CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1CA6 text9 CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1CA8 text9 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1CAA text9 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+1050 text8 CODE >21:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1050 text8 CODE >22:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+105D text8 CODE >23:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1062 text8 CODE >24:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1067 text8 CODE >25:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1069 text8 CODE >27:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+106A text8 CODE >32:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+106E text8 CODE >33:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1071 text8 CODE >34:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1073 text8 CODE >35:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1075 text8 CODE >36:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+107A text8 CODE >37:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+107B text8 CODE >39:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+107D text8 CODE >40:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1080 text8 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1083 text8 CODE >42:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1086 text8 CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+108D text8 CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+1CDD text7 CODE >151:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1CDD text7 CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1CEA text7 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1CEF text7 CODE >154:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+1CF6 text7 CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9C8 text6 CODE >34:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9C8 text6 CODE >41:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9CB text6 CODE >42:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9D9 text6 CODE >43:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9DE text6 CODE >45:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9EC text6 CODE >46:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9F1 text6 CODE >53:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9F6 text6 CODE >56:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9FA text6 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9FC text6 CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+9FE text6 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A11 text6 CODE >64:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A13 text6 CODE >65:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A16 text6 CODE >66:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A1E text6 CODE >67:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A1F text6 CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A27 text6 CODE >72:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A2F text6 CODE >73:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A33 text6 CODE >75:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A38 text6 CODE >76:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A3A text6 CODE >77:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A3E text6 CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A3F text6 CODE >94:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A43 text6 CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A45 text6 CODE >98:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A48 text6 CODE >99:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A4B text6 CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A4D text6 CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A4E text6 CODE >106:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A4E text6 CODE >107:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A51 text6 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A5F text6 CODE >109:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A63 text6 CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A6C text6 CODE >111:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A72 text6 CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A78 text6 CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A85 text6 CODE >114:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A8C text6 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A93 text6 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+A9A text6 CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AA0 text6 CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AA2 text6 CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AA3 text6 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AA6 text6 CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AAA text6 CODE >127:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+AAE text6 CODE >128:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+15AB text5 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15AB text5 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15AD text5 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15AF text5 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15BA text5 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15BC text5 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15BC text5 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15BE text5 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15C9 text5 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15CD text5 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15D5 text5 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15DB text5 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15DD text5 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15DF text5 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15E6 text5 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15EA text5 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15EB text5 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+15F2 text5 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1602 text5 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+160A text5 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+160B text5 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1612 text5 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1616 text5 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1619 text5 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1624 text5 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
+1CF7 text4 CODE >167:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+1CF7 text4 CODE >168:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+1D04 text4 CODE >169:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+1D09 text4 CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+1D10 text4 CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+5F8 text3 CODE >48:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+5F8 text3 CODE >49:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+5FA text3 CODE >57:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+5FD text3 CODE >58:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+600 text3 CODE >59:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+602 text3 CODE >61:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+607 text3 CODE >62:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+60D text3 CODE >69:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+610 text3 CODE >73:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+61E text3 CODE >76:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+622 text3 CODE >78:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+624 text3 CODE >79:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+62D text3 CODE >80:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+632 text3 CODE >81:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+63A text3 CODE >82:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+63C text3 CODE >84:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+644 text3 CODE >85:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+657 text3 CODE >84:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+65C text3 CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+660 text3 CODE >91:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+662 text3 CODE >92:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+664 text3 CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+667 text3 CODE >98:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+67A text3 CODE >100:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+681 text3 CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+682 text3 CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+685 text3 CODE >104:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+68C text3 CODE >105:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+68D text3 CODE >106:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+694 text3 CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6AB text3 CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6AD text3 CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6BC text3 CODE >114:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6C4 text3 CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6C4 text3 CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6CC text3 CODE >118:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6D7 text3 CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6E7 text3 CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+6FD text3 CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+705 text3 CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+706 text3 CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+70F text3 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+718 text3 CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+741 text3 CODE >126:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+756 text3 CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+75C text3 CODE >128:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+773 text3 CODE >129:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+782 text3 CODE >132:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7AE text3 CODE >133:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7B3 text3 CODE >134:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7BC text3 CODE >136:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7C1 text3 CODE >139:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7C7 text3 CODE >140:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7C9 text3 CODE >141:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7CA text3 CODE >147:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7D0 text3 CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7D3 text3 CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7D4 text3 CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+7DA text3 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+1E62 text2 CODE >86:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E62 text2 CODE >91:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E65 text2 CODE >94:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E6A text2 CODE >95:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E77 text2 CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E7C text2 CODE >98:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E80 text2 CODE >99:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E81 text2 CODE >100:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E84 text2 CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E85 text2 CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E8B text2 CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E8E text2 CODE >104:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E8F text2 CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E92 text2 CODE >109:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E92 text2 CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+1E96 text2 CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+801 text1 CODE >138:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+801 text1 CODE >139:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+808 text1 CODE >142:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+808 text1 CODE >143:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+80A text1 CODE >144:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+80F text1 CODE >145:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+81C text1 CODE >146:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+821 text1 CODE >147:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+82B text1 CODE >148:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+831 text1 CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+835 text1 CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+837 text1 CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+83B text1 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+842 text1 CODE >154:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+848 text1 CODE >155:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+84C text1 CODE >156:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+84E text1 CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+852 text1 CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+852 text1 CODE >167:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+856 text1 CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+BA5 maintext CODE >83:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BA5 maintext CODE >84:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BAA maintext CODE >86:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BB2 maintext CODE >87:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BB5 maintext CODE >88:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BB8 maintext CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBA maintext CODE >91:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBB maintext CODE >92:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBC maintext CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBD maintext CODE >94:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBE maintext CODE >95:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BBF maintext CODE >97:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BC2 maintext CODE >98:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BC5 maintext CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BC8 maintext CODE >106:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BCB maintext CODE >107:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BCE maintext CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BD1 maintext CODE >111:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BD5 maintext CODE >112:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BD8 maintext CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BE1 maintext CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BE4 maintext CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BE7 maintext CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BF3 maintext CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+BFF maintext CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+C0B maintext CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+C17 maintext CODE >125:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+C23 maintext CODE >141:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+C5D maintext CODE >142:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+C65 maintext CODE >143:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+CAA maintext CODE >144:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+CAF maintext CODE >156:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+CE9 maintext CODE >157:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+CF1 maintext CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D31 maintext CODE >159:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D46 maintext CODE >160:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D57 maintext CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D5B maintext CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D5F maintext CODE >174:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D61 maintext CODE >175:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+D64 maintext CODE >177:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+DA4 maintext CODE >178:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+DB9 maintext CODE >179:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+DBC maintext CODE >182:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+DFA maintext CODE >183:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+E02 maintext CODE >184:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+E42 maintext CODE >185:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+E57 maintext CODE >186:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+E68 maintext CODE >199:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+EA2 maintext CODE >200:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+EAA maintext CODE >202:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+EEA maintext CODE >211:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F24 maintext CODE >212:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F2C maintext CODE >213:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F6C maintext CODE >218:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F71 maintext CODE >219:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F7A maintext CODE >220:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F99 maintext CODE >221:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+F9E maintext CODE >222:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FA0 maintext CODE >223:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FA3 maintext CODE >225:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FA8 maintext CODE >226:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FF1 maintext CODE >227:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FF6 maintext CODE >231:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FF7 maintext CODE >232:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FFC maintext CODE >225:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FFD maintext CODE >237:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+FFF maintext CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+1C41 inittext CODE >8361:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C41 inittext CODE >8362:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C42 inittext CODE >8363:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C42 inittext CODE >8364:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C43 inittext CODE >8365:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C44 inittext CODE >8366:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C45 inittext CODE >8367:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C46 inittext CODE >8368:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C47 inittext CODE >8369:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C48 inittext CODE >8370:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C49 inittext CODE >8371:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4A inittext CODE >8372:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4B inittext CODE >8374:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4C inittext CODE >8373:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4D clrtext CODE >8260:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4D clrtext CODE >8261:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4E clrtext CODE >8262:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4E clrtext CODE >8263:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C4F clrtext CODE >8264:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C50 clrtext CODE >8265:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C51 clrtext CODE >8266:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C52 clrtext CODE >8267:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C53 clrtext CODE >8268:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C54 clrtext CODE >8269:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C55 clrtext CODE >8270:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C56 clrtext CODE >8271:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C57 clrtext CODE >8273:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+1C58 clrtext CODE >8272:C:\Users\Nancy\AppData\Local\Temp\s3n8.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__size_of_setFeedbackState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___latbits 3 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___awdiv@counter 75 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+__LdataBANK0 0 0 ABS 0 dataBANK0 -
+__LdataBANK2 0 0 ABS 0 dataBANK2 -
+__LdataBANK3 0 0 ABS 0 dataBANK3 -
+__LdataBANK4 0 0 ABS 0 dataBANK4 -
+__LdataBANK7 0 0 ABS 0 dataBANK7 -
+__LdataBANK8 0 0 ABS 0 dataBANK8 -
+__LdataBANK9 0 0 ABS 0 dataBANK9 -
+_updateSwitchBypassState FFC 0 CODE 0 text34 dist/Todd/production\Quiver.X.production.obj
+__size_of_setPedalMode 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_B25kLength 1EC 0 BANK3 1 nvBANK3 dist/Todd/production\Quiver.X.production.obj
+i1_set_leds_top 23B4 0 CODE 0 text50 dist/Todd/production\Quiver.X.production.obj
+__Hspace_0 8009 0 ABS 0 - -
+__Hspace_1 5E0 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__HidataBANK0 0 0 ABS 0 idataBANK0 -
+__HidataBANK2 0 0 ABS 0 idataBANK2 -
+__HidataBANK3 0 0 ABS 0 idataBANK3 -
+__HidataBANK4 0 0 ABS 0 idataBANK4 -
+__HidataBANK7 0 0 ABS 0 idataBANK7 -
+__HidataBANK8 0 0 ABS 0 idataBANK8 -
+__HidataBANK9 0 0 ABS 0 idataBANK9 -
+__size_of_init_adc 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_init_pwm 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_updateSwitchBypassState FFE 0 CODE 0 text34 dist/Todd/production\Quiver.X.production.obj
+_PMCON1bits 195 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+frexp@eptr A3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftdiv@exp D3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+i1set_leds_top@x 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+___awtoft@sign AD 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_mod_counter 157 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+adc_convert@channel A3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_read_top_tactile 256E 0 CODE 0 text22 dist/Todd/production\Quiver.X.production.obj
+ltemp0 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ltemp1 82 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ltemp2 86 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ltemp3 80 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_ring_tactiles 26AE 0 CODE 0 text11 dist/Todd/production\Quiver.X.production.obj
+?_map D5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+main@i 25C 0 BANK4 1 cstackBANK4 dist/Todd/production\Quiver.X.production.obj
+__Hstrings 0 0 ABS 0 strings -
+_B25k 220 0 BANK4 1 dataBANK4 dist/Todd/production\Quiver.X.production.obj
+_PEIE 5E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_RCIE 48D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+_main 174A 0 CODE 0 maintext dist/Todd/production\Quiver.X.production.obj
+btemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__HbssBANK11 0 0 ABS 0 bssBANK11 -
+ltemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_FLASH_ReadWord 3A62 0 CODE 0 text41 dist/Todd/production\Quiver.X.production.obj
+map@x D5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftadd@f1 A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftadd@f2 AB 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+start 640 0 CODE 0 init C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+ttemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___aldiv 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___awdiv 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+set_leds_bottom@x A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of___ftadd 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___ftdiv 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___ftmul 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___ftneg 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of___fttol 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_bypass_turning_on 15A 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__end_of_setPedalMode FFC 0 CODE 0 text12 dist/Todd/production\Quiver.X.production.obj
+set_leds_top@x A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_update_mode 3CC4 0 CODE 0 text2 dist/Todd/production\Quiver.X.production.obj
+_blink_rate 53 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+?___lmul A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_ReadSavedSettings 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+i1___lmul@multiplicand 74 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+_OPTION_REGbits 95 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___ftdiv@f1 C8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftdiv@f2 C5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftdiv@f3 D0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?_FLASH_ReadWord A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_switchBypass_toggle 1D9 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_setDoublePressState 20A0 0 CODE 0 text8 dist/Todd/production\Quiver.X.production.obj
+__LidataBANK0 0 0 ABS 0 idataBANK0 -
+__LidataBANK2 0 0 ABS 0 idataBANK2 -
+__LidataBANK3 0 0 ABS 0 idataBANK3 -
+__LidataBANK4 0 0 ABS 0 idataBANK4 -
+__LidataBANK7 0 0 ABS 0 idataBANK7 -
+__LidataBANK8 0 0 ABS 0 idataBANK8 -
+__LidataBANK9 0 0 ABS 0 idataBANK9 -
+__size_of_init_timer0 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_init_timer2 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Hpowerup 0 0 CODE 0 powerup -
+_set_leds_bottom 3E1C 0 CODE 0 text40 dist/Todd/production\Quiver.X.production.obj
+_test_timer 1B5 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__HdataBANK10 0 0 ABS 0 dataBANK10 -
+__end_of_ConfigureOscillator 3834 0 CODE 0 text48 dist/Todd/production\Quiver.X.production.obj
+_modulation 219C 0 CODE 0 text51 dist/Todd/production\Quiver.X.production.obj
+_bottom_push_state 4D 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+ttemp0 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ttemp1 81 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ttemp2 84 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ttemp3 87 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ttemp4 7F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__LnvCOMMON 0 0 ABS 0 nvCOMMON -
+_presetChannel 56 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+__LbssBANK11 0 0 ABS 0 bssBANK11 -
+_expressModeCnst 1EB 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__end_ofi1_set_leds_top 2444 0 CODE 0 text50 dist/Todd/production\Quiver.X.production.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+set_subdivision@tmpX 140 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_InitApp 3BA0 0 CODE 0 text43 dist/Todd/production\Quiver.X.production.obj
+_init_adc 386E 0 CODE 0 text47 dist/Todd/production\Quiver.X.production.obj
+_init_pwm 221E 0 CODE 0 text44 dist/Todd/production\Quiver.X.production.obj
+___aldiv@divisor A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_OSCCONbits 99 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+updateSwitchBypassState@state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+updateSwitchTap@iCnt C4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_of_initSwitchBypass 3908 0 CODE 0 text30 dist/Todd/production\Quiver.X.production.obj
+wtemp0 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp1 80 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp2 82 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp3 84 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp4 86 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp5 88 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+wtemp6 7F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ledState 1A9 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__Hfunctab 0 0 CODE 0 functab -
+wait_ms@timeSec AC 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+wait_ms@timemsl AE 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_adc_convert 3908 0 CODE 0 text36 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK10 3E92 0 CODE 0 idataBANK10 dist/Todd/production\Quiver.X.production.obj
+___aldiv@sign AA 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__pidataBIGRAM 7E0 0 CODE 0 idataBIGRAM dist/Todd/production\Quiver.X.production.obj
+___awdiv@sign 76 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+__Hclrtext 0 0 ABS 0 clrtext -
+__end_of_init_adc 3882 0 CODE 0 text47 dist/Todd/production\Quiver.X.production.obj
+__end_of_init_pwm 22A0 0 CODE 0 text44 dist/Todd/production\Quiver.X.production.obj
+__size_of_initSwitchBypass 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___ftmul@f1 B5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftmul@f2 B8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_suspend_blink 67 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+_long_press_limit 4F 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+i1___aldiv@quotient 2A 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__end_of_updateSwitchBypass 155E 0 CODE 0 text6 dist/Todd/production\Quiver.X.production.obj
+___ftneg@f1 A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_ADRESH 9C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ADRESL 9B 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_setPresetDisplay 3DA8 0 CODE 0 text13 dist/Todd/production\Quiver.X.production.obj
+__LdataBANK10 0 0 ABS 0 dataBANK10 -
+i1set_leds_top@ledState 72 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+___awdiv@dividend 72 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+FLASH_ReadWord@flashAddr A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of___altoft 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_double_timer 1A5 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__size_of___awtoft 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+set_subdivision@x 136 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+set_subdivision@y 138 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_expressionChannel 16B 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+___altoft@c 126 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+__end_of___lmul 3C60 0 CODE 0 text33 dist/Todd/production\Quiver.X.production.obj
+_delay_time_changed 1E0 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__end_of_read_top_tactile 260E 0 CODE 0 text22 dist/Todd/production\Quiver.X.production.obj
+setDoublePressState@f_state B8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___fttol@f1 E7 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_ofi1___aldiv 2B56 0 CODE 0 text53 dist/Todd/production\Quiver.X.production.obj
+__Lmaintext 0 0 ABS 0 maintext -
+__end_of_USARTInit 2326 0 CODE 0 text37 dist/Todd/production\Quiver.X.production.obj
+__LnvBANK0 0 0 ABS 0 nvBANK0 -
+__LnvBANK3 0 0 ABS 0 nvBANK3 -
+__size_of_read_top_tactile 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___awdiv@divisor 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+__size_ofi1___aldiv 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_modulation 221E 0 CODE 0 text51 dist/Todd/production\Quiver.X.production.obj
+__size_of___ftpack 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_currentBypassState 1E9 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__end_of___aldiv 2C5A 0 CODE 0 text5 dist/Todd/production\Quiver.X.production.obj
+__end_of___awdiv 2750 0 CODE 0 text54 dist/Todd/production\Quiver.X.production.obj
+__size_of_USARTInit 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of___ftadd 174A 0 CODE 0 text28 dist/Todd/production\Quiver.X.production.obj
+__end_of___ftdiv 3000 0 CODE 0 text27 dist/Todd/production\Quiver.X.production.obj
+__end_of___ftmul 121C 0 CODE 0 text26 dist/Todd/production\Quiver.X.production.obj
+__end_of___ftneg 386E 0 CODE 0 text25 dist/Todd/production\Quiver.X.production.obj
+__end_of___fttol 2EAE 0 CODE 0 text19 dist/Todd/production\Quiver.X.production.obj
+updateSwitchTap@tapCntDivisor C2 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_resetRingLEDs 3986 0 CODE 0 text15 dist/Todd/production\Quiver.X.production.obj
+_updateSwitchBypass 1390 0 CODE 0 text6 dist/Todd/production\Quiver.X.production.obj
+_setExpressionDisplay 3956 0 CODE 0 text14 dist/Todd/production\Quiver.X.production.obj
+__LidataBANK10 0 0 ABS 0 idataBANK10 -
+__size_ofi1___lmul 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__LidataBIGRAM 0 0 ABS 0 idataBIGRAM -
+trunc@expon 134 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+i1___aldiv@counter 28 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__size_of_frexp 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_set_leds_bottom 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_setDoublePressState 211C 0 CODE 0 text8 dist/Todd/production\Quiver.X.production.obj
+i1___aldiv 2A52 0 CODE 0 text53 dist/Todd/production\Quiver.X.production.obj
+__size_of_trunc 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_USARTInit 22A0 0 CODE 0 text37 dist/Todd/production\Quiver.X.production.obj
+__HnvCOMMON 0 0 ABS 0 nvCOMMON -
+?_set_subdivision 136 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+i1___lmul@product 78 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+__size_of_wait_ms 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+solidring_tactiles@ring_delay B4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+set_leds_top@ledState A2 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_of_ReadSavedSettings 2A52 0 CODE 0 text38 dist/Todd/production\Quiver.X.production.obj
+start_initialization 644 0 CODE 0 cinit dist/Todd/production\Quiver.X.production.obj
+InitializeTaps@itap A1 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_of_set_subdivision 1390 0 CODE 0 text16 dist/Todd/production\Quiver.X.production.obj
+___altoft 24D8 0 CODE 0 text20 dist/Todd/production\Quiver.X.production.obj
+_APFCONbits 11D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___awtoft 3A62 0 CODE 0 text21 dist/Todd/production\Quiver.X.production.obj
+_PMADRH 192 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PMADRL 191 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PMCON2 196 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PMDATH 194 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PMDATL 193 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TRISBbits 8D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+set_subdivision@scalar 13D 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_TRISCbits 8E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TRISDbits 8F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TRISEbits 90 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___aldiv@quotient AB 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_TRISFbits 30C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TRISGbits 30D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCP10CONbits 61F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+ring_tactiles@iLed B3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_of___altoft 256E 0 CODE 0 text20 dist/Todd/production\Quiver.X.production.obj
+setSwitchBypassState@f_state B2 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+setFeedbackState@f_state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_getSwitchBypassState 3834 0 CODE 0 text35 dist/Todd/production\Quiver.X.production.obj
+__end_of___awtoft 3AA6 0 CODE 0 text21 dist/Todd/production\Quiver.X.production.obj
+clear_ram0 389A 0 CODE 0 clrtext dist/Todd/production\Quiver.X.production.obj
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__pcstackBANK1 A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__pcstackBANK2 120 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+__pcstackBANK4 25C 0 BANK4 1 cstackBANK4 dist/Todd/production\Quiver.X.production.obj
+___fttol@exp1 125 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+___fttol@lval 121 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_switchBypass_state 57 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+_CCP9CONbits 61C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_setPresetDisplay 3E1C 0 CODE 0 text13 dist/Todd/production\Quiver.X.production.obj
+_tap_history 248 0 BANK4 1 bssBANK4 dist/Todd/production\Quiver.X.production.obj
+__end_of_solidring_tactiles 219C 0 CODE 0 text10 dist/Todd/production\Quiver.X.production.obj
+___ftpack 289C 0 CODE 0 text29 dist/Todd/production\Quiver.X.production.obj
+_URBuff 320 0 BANK6 1 bssBANK6 dist/Todd/production\Quiver.X.production.obj
+_sub_timer 58 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+___ftpack@arg A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftpack@exp A3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_setPresetDisplay 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+i1___lmul 3B42 0 CODE 0 text52 dist/Todd/production\Quiver.X.production.obj
+__end_of___ftpack 2966 0 CODE 0 text29 dist/Todd/production\Quiver.X.production.obj
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hbank4 0 0 ABS 0 bank4 -
+__Hbank5 0 0 ABS 0 bank5 -
+__Hbank6 0 0 ABS 0 bank6 -
+__Hbank7 0 0 ABS 0 bank7 -
+__Hbank8 0 0 ABS 0 bank8 -
+__Hbank9 0 0 ABS 0 bank9 -
+__Hcinit 7E0 0 CODE 0 cinit -
+_switchBypass_up 1E4 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__Hidloc 0 0 IDLOC 0 idloc -
+_topTactile_pressed 160 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__Hsfr10 0 0 ABS 0 sfr10 -
+__Hsfr11 0 0 ABS 0 sfr11 -
+__Hsfr12 0 0 ABS 0 sfr12 -
+__Hsfr13 0 0 ABS 0 sfr13 -
+__Hsfr14 0 0 ABS 0 sfr14 -
+__Hsfr15 0 0 ABS 0 sfr15 -
+__Hsfr16 0 0 ABS 0 sfr16 -
+__Hsfr17 0 0 ABS 0 sfr17 -
+__Hsfr18 0 0 ABS 0 sfr18 -
+__Hsfr19 0 0 ABS 0 sfr19 -
+__Hsfr20 0 0 ABS 0 sfr20 -
+__Hsfr21 0 0 ABS 0 sfr21 -
+__Hsfr22 0 0 ABS 0 sfr22 -
+__Hsfr23 0 0 ABS 0 sfr23 -
+__Hsfr24 0 0 ABS 0 sfr24 -
+__Hsfr25 0 0 ABS 0 sfr25 -
+__Hsfr26 0 0 ABS 0 sfr26 -
+__Hsfr27 0 0 ABS 0 sfr27 -
+__Hsfr28 0 0 ABS 0 sfr28 -
+__Hsfr29 0 0 ABS 0 sfr29 -
+__Hsfr30 0 0 ABS 0 sfr30 -
+__Hsfr31 0 0 ABS 0 sfr31 -
+__Hstack 0 0 STACK 2 stack -
+__Hbank10 0 0 ABS 0 bank10 -
+__Hbank11 0 0 ABS 0 bank11 -
+__Hbank12 0 0 ABS 0 bank12 -
+__Hbank13 0 0 ABS 0 bank13 -
+__Hbank14 0 0 ABS 0 bank14 -
+__Hbank15 0 0 ABS 0 bank15 -
+__Hbank16 0 0 ABS 0 bank16 -
+__Hbank17 0 0 ABS 0 bank17 -
+__Hbank18 0 0 ABS 0 bank18 -
+__Hbank19 0 0 BANK19 1 bank19 -
+__Hbank20 0 0 BANK20 1 bank20 -
+__Hbank21 0 0 BANK21 1 bank21 -
+__Hbank22 0 0 BANK22 1 bank22 -
+__Hbank23 0 0 BANK23 1 bank23 -
+__Hbank24 0 0 BANK24 1 bank24 -
+__Hbank25 0 0 BANK25 1 bank25 -
+__Hbank26 0 0 BANK26 1 bank26 -
+__Hbank27 0 0 BANK27 1 bank27 -
+__Hbank28 0 0 BANK28 1 bank28 -
+__Hbank29 0 0 BANK29 1 bank29 -
+__Hbank30 0 0 BANK30 1 bank30 -
+__Hbank31 0 0 BANK31 1 bank31 -
+__Hbigram 0 0 ABS 0 bigram -
+__Hmaintext 0 0 ABS 0 maintext -
+__size_of_InitializeTaps 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_switchTap_state 16E 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 10012 0 CONFIG 0 config -
+__end_ofi1___lmul 3BA0 0 CODE 0 text52 dist/Todd/production\Quiver.X.production.obj
+_init_timer0 383C 0 CODE 0 text46 dist/Todd/production\Quiver.X.production.obj
+_init_timer2 384A 0 CODE 0 text45 dist/Todd/production\Quiver.X.production.obj
+_presetModeCnst 16D 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+_switchTap_pressed 68 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+setLongTapState@f_state A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_set_subdivision 121C 0 CODE 0 text16 dist/Todd/production\Quiver.X.production.obj
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__Lbank4 0 0 ABS 0 bank4 -
+__Lbank5 0 0 ABS 0 bank5 -
+__Lbank6 0 0 ABS 0 bank6 -
+__Lbank7 0 0 ABS 0 bank7 -
+__Lbank8 0 0 ABS 0 bank8 -
+__Lbank9 0 0 ABS 0 bank9 -
+__Lcinit 644 0 CODE 0 cinit -
+_CCP8CONbits 619 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Lidloc 0 0 IDLOC 0 idloc -
+___ftadd@exp1 B4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftadd@exp2 B3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftadd@sign B2 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__Lsfr10 0 0 ABS 0 sfr10 -
+__Lsfr11 0 0 ABS 0 sfr11 -
+__Lsfr12 0 0 ABS 0 sfr12 -
+__Lsfr13 0 0 ABS 0 sfr13 -
+__Lsfr14 0 0 ABS 0 sfr14 -
+__Lsfr15 0 0 ABS 0 sfr15 -
+__Lsfr16 0 0 ABS 0 sfr16 -
+__Lsfr17 0 0 ABS 0 sfr17 -
+__Lsfr18 0 0 ABS 0 sfr18 -
+__Lsfr19 0 0 ABS 0 sfr19 -
+__Lsfr20 0 0 ABS 0 sfr20 -
+__Lsfr21 0 0 ABS 0 sfr21 -
+__Lsfr22 0 0 ABS 0 sfr22 -
+__Lsfr23 0 0 ABS 0 sfr23 -
+__Lsfr24 0 0 ABS 0 sfr24 -
+__Lsfr25 0 0 ABS 0 sfr25 -
+__Lsfr26 0 0 ABS 0 sfr26 -
+__Lsfr27 0 0 ABS 0 sfr27 -
+__Lsfr28 0 0 ABS 0 sfr28 -
+__Lsfr29 0 0 ABS 0 sfr29 -
+__Lsfr30 0 0 ABS 0 sfr30 -
+__Lsfr31 0 0 ABS 0 sfr31 -
+__Lstack 0 0 STACK 2 stack -
+init_ram 3882 0 CODE 0 inittext dist/Todd/production\Quiver.X.production.obj
+ring_tactiles@iLed_1489 B5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_setSwitchBypassState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_solidring_tactiles 211C 0 CODE 0 text10 dist/Todd/production\Quiver.X.production.obj
+__size_of_resetRingLEDs 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Linittext 0 0 ABS 0 inittext -
+_PORTAbits C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PORTCbits E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PORTDbits F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PORTEbits 10 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_INTCONbits B 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hinit 640 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Hsfr4 0 0 ABS 0 sfr4 -
+__Hsfr5 0 0 ABS 0 sfr5 -
+__Hsfr6 0 0 ABS 0 sfr6 -
+__Hsfr7 0 0 ABS 0 sfr7 -
+__Hsfr8 0 0 ABS 0 sfr8 -
+__Hsfr9 0 0 ABS 0 sfr9 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Linit 640 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Lsfr4 0 0 ABS 0 sfr4 -
+__Lsfr5 0 0 ABS 0 sfr5 -
+__Lsfr6 0 0 ABS 0 sfr6 -
+__Lsfr7 0 0 ABS 0 sfr7 -
+__Lsfr8 0 0 ABS 0 sfr8 -
+__Lsfr9 0 0 ABS 0 sfr9 -
+__Ltext 0 0 ABS 0 text -
+__pnvBANK0 69 0 BANK0 1 nvBANK0 dist/Todd/production\Quiver.X.production.obj
+__pnvBANK3 1EC 0 BANK3 1 nvBANK3 dist/Todd/production\Quiver.X.production.obj
+___lmul 3C00 0 CODE 0 text33 dist/Todd/production\Quiver.X.production.obj
+_UQFront 7D 0 COMMON 1 nvCOMMON dist/Todd/production\Quiver.X.production.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 -
+__LcstackBANK2 0 0 ABS 0 cstackBANK2 -
+__LcstackBANK4 0 0 ABS 0 cstackBANK4 -
+int$flags 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_update_mode 3D34 0 CODE 0 text2 dist/Todd/production\Quiver.X.production.obj
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+FLASH_ReadWord@GIEBitValue A2 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_GIE 5F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_PR2 1B 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_RB1 69 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__S0 8009 0 ABS 0 - -
+__S1 5E0 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+_isr 8 0 CODE 0 intentry dist/Todd/production\Quiver.X.production.obj
+_map 2C5A 0 CODE 0 text24 dist/Todd/production\Quiver.X.production.obj
+_tap 2A0 0 BANK5 1 bssBANK5 dist/Todd/production\Quiver.X.production.obj
+i1___lmul@multiplier 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+__end_of_wait_ms 3CC4 0 CODE 0 text32 dist/Todd/production\Quiver.X.production.obj
+__size_of_FLASH_ReadWord 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ReadSavedSettings 2966 0 CODE 0 text38 dist/Todd/production\Quiver.X.production.obj
+__size_of_showSave 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_updateSwitchBypassState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_setSwitchBypassState 24D8 0 CODE 0 text31 dist/Todd/production\Quiver.X.production.obj
+__pnvCOMMON 7D 0 COMMON 1 nvCOMMON dist/Todd/production\Quiver.X.production.obj
+__size_of_update_selectMode 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__HidataBANK10 0 0 ABS 0 idataBANK10 -
+?_getSwitchBypassState A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__HidataBIGRAM 0 0 ABS 0 idataBIGRAM -
+__size_of_read_bottom_tactile 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCP7CONbits 616 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_updateSwitchTap FB6 0 CODE 0 text3 dist/Todd/production\Quiver.X.production.obj
+___awtoft@c A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_set_leds_top 27F4 0 CODE 0 text39 dist/Todd/production\Quiver.X.production.obj
+_knob1_prev 161 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+i1___aldiv@divisor 20 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__end_of_resetRingLEDs 39BA 0 CODE 0 text15 dist/Todd/production\Quiver.X.production.obj
+__end_of_setLongTapState 3A22 0 CODE 0 text4 dist/Todd/production\Quiver.X.production.obj
+_knob2_prev 163 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+__end_of_isr 640 0 CODE 0 intentry dist/Todd/production\Quiver.X.production.obj
+__end_of_map 2D70 0 CODE 0 text24 dist/Todd/production\Quiver.X.production.obj
+__CFG_BOREN$ON 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_knob3_prev 165 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+__end_of_adc_convert 392E 0 CODE 0 text36 dist/Todd/production\Quiver.X.production.obj
+__HnvBANK0 0 0 ABS 0 nvBANK0 -
+__HnvBANK3 0 0 ABS 0 nvBANK3 -
+__Lintentry 8 0 CODE 0 intentry -
+_knob4_prev 167 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+__size_ofi1_set_leds_top 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_modulation 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_knob5_prev 169 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+isr@tmpSubDelay 43 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK0 45 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK2 161 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK3 1DE 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK4 220 0 BANK4 1 dataBANK4 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK7 3A0 0 BANK7 1 dataBANK7 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK8 420 0 BANK8 1 dataBANK8 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK9 4A0 0 BANK9 1 dataBANK9 dist/Todd/production\Quiver.X.production.obj
+__size_of___lmul 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__LbssBANK2 0 0 ABS 0 bssBANK2 -
+__LbssBANK3 0 0 ABS 0 bssBANK3 -
+__LbssBANK4 0 0 ABS 0 bssBANK4 -
+__LbssBANK5 0 0 ABS 0 bssBANK5 -
+__LbssBANK6 0 0 ABS 0 bssBANK6 -
+__CFG_FCMEN$ON 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+?___altoft 126 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_tap_timer 5C 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+_tap_total 1B1 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+?___awtoft A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_InitApp 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_preset_blink 15D 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+?_modulation 2E 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+_modRevSaw 4A0 0 BANK9 1 dataBANK9 dist/Todd/production\Quiver.X.production.obj
+_RCSTAbits 19D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCP6CONbits 613 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___altoft@exp 12C 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_modSaw 520 0 BANK10 1 dataBANK10 dist/Todd/production\Quiver.X.production.obj
+_modSin 3A0 0 BANK7 1 dataBANK7 dist/Todd/production\Quiver.X.production.obj
+_modTri 420 0 BANK8 1 dataBANK8 dist/Todd/production\Quiver.X.production.obj
+__ptext10 211C 0 CODE 0 text10 dist/Todd/production\Quiver.X.production.obj
+__ptext11 260E 0 CODE 0 text11 dist/Todd/production\Quiver.X.production.obj
+__ptext12 FB6 0 CODE 0 text12 dist/Todd/production\Quiver.X.production.obj
+__ptext13 3DA8 0 CODE 0 text13 dist/Todd/production\Quiver.X.production.obj
+__ptext14 3956 0 CODE 0 text14 dist/Todd/production\Quiver.X.production.obj
+__ptext15 3986 0 CODE 0 text15 dist/Todd/production\Quiver.X.production.obj
+__ptext16 121C 0 CODE 0 text16 dist/Todd/production\Quiver.X.production.obj
+__ptext17 2750 0 CODE 0 text17 dist/Todd/production\Quiver.X.production.obj
+__ptext18 3D34 0 CODE 0 text18 dist/Todd/production\Quiver.X.production.obj
+__ptext19 2D70 0 CODE 0 text19 dist/Todd/production\Quiver.X.production.obj
+__ptext20 24D8 0 CODE 0 text20 dist/Todd/production\Quiver.X.production.obj
+__ptext21 3A62 0 CODE 0 text21 dist/Todd/production\Quiver.X.production.obj
+__ptext22 256E 0 CODE 0 text22 dist/Todd/production\Quiver.X.production.obj
+__ptext23 2326 0 CODE 0 text23 dist/Todd/production\Quiver.X.production.obj
+__ptext24 2C5A 0 CODE 0 text24 dist/Todd/production\Quiver.X.production.obj
+__ptext25 385C 0 CODE 0 text25 dist/Todd/production\Quiver.X.production.obj
+__ptext26 10B4 0 CODE 0 text26 dist/Todd/production\Quiver.X.production.obj
+__ptext27 2EAE 0 CODE 0 text27 dist/Todd/production\Quiver.X.production.obj
+__ptext28 155E 0 CODE 0 text28 dist/Todd/production\Quiver.X.production.obj
+__ptext29 289C 0 CODE 0 text29 dist/Todd/production\Quiver.X.production.obj
+__ptext30 38EA 0 CODE 0 text30 dist/Todd/production\Quiver.X.production.obj
+__ptext31 2444 0 CODE 0 text31 dist/Todd/production\Quiver.X.production.obj
+__ptext32 3C60 0 CODE 0 text32 dist/Todd/production\Quiver.X.production.obj
+__ptext33 3C00 0 CODE 0 text33 dist/Todd/production\Quiver.X.production.obj
+__ptext34 FFC 0 CODE 0 text34 dist/Todd/production\Quiver.X.production.obj
+__ptext35 3834 0 CODE 0 text35 dist/Todd/production\Quiver.X.production.obj
+__ptext36 3908 0 CODE 0 text36 dist/Todd/production\Quiver.X.production.obj
+__ptext37 22A0 0 CODE 0 text37 dist/Todd/production\Quiver.X.production.obj
+__ptext38 2966 0 CODE 0 text38 dist/Todd/production\Quiver.X.production.obj
+__ptext39 27F4 0 CODE 0 text39 dist/Todd/production\Quiver.X.production.obj
+__ptext40 3E1C 0 CODE 0 text40 dist/Todd/production\Quiver.X.production.obj
+__ptext41 3A22 0 CODE 0 text41 dist/Todd/production\Quiver.X.production.obj
+__ptext42 3AA6 0 CODE 0 text42 dist/Todd/production\Quiver.X.production.obj
+__ptext43 3BA0 0 CODE 0 text43 dist/Todd/production\Quiver.X.production.obj
+__ptext44 221E 0 CODE 0 text44 dist/Todd/production\Quiver.X.production.obj
+__ptext45 384A 0 CODE 0 text45 dist/Todd/production\Quiver.X.production.obj
+__ptext46 383C 0 CODE 0 text46 dist/Todd/production\Quiver.X.production.obj
+__ptext47 386E 0 CODE 0 text47 dist/Todd/production\Quiver.X.production.obj
+__ptext48 382C 0 CODE 0 text48 dist/Todd/production\Quiver.X.production.obj
+__ptext50 23B4 0 CODE 0 text50 dist/Todd/production\Quiver.X.production.obj
+__ptext51 219C 0 CODE 0 text51 dist/Todd/production\Quiver.X.production.obj
+__ptext52 3B42 0 CODE 0 text52 dist/Todd/production\Quiver.X.production.obj
+__ptext53 2A52 0 CODE 0 text53 dist/Todd/production\Quiver.X.production.obj
+__ptext54 26AE 0 CODE 0 text54 dist/Todd/production\Quiver.X.production.obj
+___aldiv 2B56 0 CODE 0 text5 dist/Todd/production\Quiver.X.production.obj
+___awdiv 26AE 0 CODE 0 text54 dist/Todd/production\Quiver.X.production.obj
+___ftadd 155E 0 CODE 0 text28 dist/Todd/production\Quiver.X.production.obj
+___ftdiv 2EAE 0 CODE 0 text27 dist/Todd/production\Quiver.X.production.obj
+___ftmul 10B4 0 CODE 0 text26 dist/Todd/production\Quiver.X.production.obj
+___ftneg 385C 0 CODE 0 text25 dist/Todd/production\Quiver.X.production.obj
+___fttol 2D70 0 CODE 0 text19 dist/Todd/production\Quiver.X.production.obj
+__Lbank10 0 0 ABS 0 bank10 -
+__Lbank11 0 0 ABS 0 bank11 -
+__Lbank12 0 0 ABS 0 bank12 -
+__Lbank13 0 0 ABS 0 bank13 -
+__Lbank14 0 0 ABS 0 bank14 -
+__Lbank15 0 0 ABS 0 bank15 -
+__Lbank16 0 0 ABS 0 bank16 -
+__Lbank17 0 0 ABS 0 bank17 -
+__Lbank18 0 0 ABS 0 bank18 -
+__Lbank19 0 0 BANK19 1 bank19 -
+__Lbank20 0 0 BANK20 1 bank20 -
+__Lbank21 0 0 BANK21 1 bank21 -
+__Lbank22 0 0 BANK22 1 bank22 -
+__Lbank23 0 0 BANK23 1 bank23 -
+__Lbank24 0 0 BANK24 1 bank24 -
+__Lbank25 0 0 BANK25 1 bank25 -
+__Lbank26 0 0 BANK26 1 bank26 -
+__Lbank27 0 0 BANK27 1 bank27 -
+__Lbank28 0 0 BANK28 1 bank28 -
+__Lbank29 0 0 BANK29 1 bank29 -
+__Lbank30 0 0 BANK30 1 bank30 -
+__Lbank31 0 0 BANK31 1 bank31 -
+__pmaintext 174A 0 CODE 0 maintext dist/Todd/production\Quiver.X.production.obj
+_showSave 392E 0 CODE 0 text9 dist/Todd/production\Quiver.X.production.obj
+_read_bottom_tactile 2326 0 CODE 0 text23 dist/Todd/production\Quiver.X.production.obj
+__Lbigram 0 0 ABS 0 bigram -
+__CFG_BORV$LO 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___lmul@multiplier A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_set_leds_top 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_updateSwitchBypass 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_set_subdivision 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_blink_delay 1DE 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 1000E 0 CONFIG 0 config -
+?___ftpack A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+i1___aldiv@dividend 24 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__CFG_CP$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+USARTInit@baud_rate A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__CFG_IESO$ON 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Hinittext 0 0 ABS 0 inittext -
+_updateSwitchTap BF0 0 CODE 0 text3 dist/Todd/production\Quiver.X.production.obj
+_LATBbits 10D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_feedback_start 15B 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+_feedback_state 16C 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.obj
+_feedback_timer 153 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+_LATDbits 10F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_LATFbits 38C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_LATGbits 38D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+i1___aldiv@sign 29 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__end_of_showSave 3956 0 CODE 0 text9 dist/Todd/production\Quiver.X.production.obj
+_setLongTapState 39EE 0 CODE 0 text4 dist/Todd/production\Quiver.X.production.obj
+main@i_404 25E 0 BANK4 1 cstackBANK4 dist/Todd/production\Quiver.X.production.obj
+main@i_405 260 0 BANK4 1 cstackBANK4 dist/Todd/production\Quiver.X.production.obj
+?i1___lmul 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+map@in_max DB 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+map@in_min D8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_tap_iteration 1E6 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+_top_push_state 51 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+_CCP5CONbits 31E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__CFG_VCAPEN$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+stackhi 23E7 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+stacklo 23B0 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s3n8.obj
+USARTWriteInt@F3536 1A0 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__end_of_set_leds_top 289C 0 CODE 0 text39 dist/Todd/production\Quiver.X.production.obj
+_ADCON0bits 9D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ADCON1bits 9E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_delay_counter 151 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__CFG_LVP$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__pbssBANK11 5A0 0 BANK11 1 bssBANK11 dist/Todd/production\Quiver.X.production.obj
+_mode2_state 65 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+_baseline_delay_time 45 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+___ftmul@cntr C3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftmul@sign C4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 -
+__HcstackBANK2 0 0 ABS 0 cstackBANK2 -
+__HcstackBANK4 0 0 ABS 0 cstackBANK4 -
+_mod_timer 1AD 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_mod_value 1D3 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_PIR1bits 11 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Lend_init 640 0 CODE 0 end_init -
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+end_of_initialization 7D8 0 CODE 0 cinit dist/Todd/production\Quiver.X.production.obj
+__Hintentry 640 0 CODE 0 intentry -
+map@out_max E1 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+map@out_min DE 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_update_selectMode 10B4 0 CODE 0 text1 dist/Todd/production\Quiver.X.production.obj
+__Lstrings 0 0 ABS 0 strings -
+_debounce_mode1 1C1 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_debounce_mode2 1C3 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+___awdiv@quotient 77 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+?___aldiv A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?___awdiv 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+?___ftadd A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?___ftdiv C5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?___ftmul B5 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?___ftneg A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+?___fttol E7 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_update_mode 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCP4CONbits 31A 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__Hreset_vec 4 0 CODE 0 reset_vec -
+modulation@x 2E 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+modulation@y 32 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+_adjusted_pot_value 1BB 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__HbssBANK2 0 0 ABS 0 bssBANK2 -
+__HbssBANK3 0 0 ABS 0 bssBANK3 -
+__HbssBANK4 0 0 ABS 0 bssBANK4 -
+__HbssBANK5 0 0 ABS 0 bssBANK5 -
+__HbssBANK6 0 0 ABS 0 bssBANK6 -
+_adjust_sub_delay 1B9 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+?_adc_convert A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_ring_tactiles 260E 0 CODE 0 text11 dist/Todd/production\Quiver.X.production.obj
+__ptext1 1002 0 CODE 0 text1 dist/Todd/production\Quiver.X.production.obj
+__ptext2 3CC4 0 CODE 0 text2 dist/Todd/production\Quiver.X.production.obj
+__ptext3 BF0 0 CODE 0 text3 dist/Todd/production\Quiver.X.production.obj
+__ptext4 39EE 0 CODE 0 text4 dist/Todd/production\Quiver.X.production.obj
+__ptext5 2B56 0 CODE 0 text5 dist/Todd/production\Quiver.X.production.obj
+__ptext6 1390 0 CODE 0 text6 dist/Todd/production\Quiver.X.production.obj
+__ptext7 39BA 0 CODE 0 text7 dist/Todd/production\Quiver.X.production.obj
+__ptext8 20A0 0 CODE 0 text8 dist/Todd/production\Quiver.X.production.obj
+__ptext9 392E 0 CODE 0 text9 dist/Todd/production\Quiver.X.production.obj
+__end_of_InitApp 3C00 0 CODE 0 text43 dist/Todd/production\Quiver.X.production.obj
+_feedbackTriggered 1DB 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+___aldiv@dividend A4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__Lpowerup 0 0 CODE 0 powerup -
+__size_of_setExpressionDisplay 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+setExpressionDisplay@ledChannel A6 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+_setFeedbackState 39BA 0 CODE 0 text7 dist/Todd/production\Quiver.X.production.obj
+__size_of_ConfigureOscillator 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+initSwitchBypass@initState B6 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec -
+__size_of_solidring_tactiles 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_read_bottom_tactile 23B4 0 CODE 0 text23 dist/Todd/production\Quiver.X.production.obj
+__CFG_LPBOR$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_adc_convert 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+?i1___aldiv 20 0 BANK0 1 cstackBANK0 dist/Todd/production\Quiver.X.production.obj
+__CFG_FOSC$HS 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_updateSwitchTap 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCP3CONbits 313 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_init_timer0 384A 0 CODE 0 text46 dist/Todd/production\Quiver.X.production.obj
+__end_of_init_timer2 385C 0 CODE 0 text45 dist/Todd/production\Quiver.X.production.obj
+_switchTap_down 15F 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+setPresetDisplay@ledChannel A6 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+___ftmul@exp BF 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__end_of__initialization 7D8 0 CODE 0 cinit dist/Todd/production\Quiver.X.production.obj
+__Lfunctab 0 0 CODE 0 functab -
+__size_of_setLongTapState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_setExpressionDisplay 3986 0 CODE 0 text14 dist/Todd/production\Quiver.X.production.obj
+_preset_programmning_on 15E 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+frexp@value A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_wait_ms 3C60 0 CODE 0 text32 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK0 2000 0 CODE 0 idataBANK0 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK2 38CE 0 CODE 0 idataBANK2 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK3 38B2 0 CODE 0 idataBANK3 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK4 3AF2 0 CODE 0 idataBANK4 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK7 2026 0 CODE 0 idataBANK7 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK8 3F86 0 CODE 0 idataBANK8 dist/Todd/production\Quiver.X.production.obj
+__pidataBANK9 3F0C 0 CODE 0 idataBANK9 dist/Todd/production\Quiver.X.production.obj
+?_trunc 12E 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+__Lclrtext 0 0 ABS 0 clrtext -
+___altoft@sign 12D 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+___ftpack@sign A4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___lmul@product A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_expSwitchState 1EA 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+_InitializeTaps 3AA6 0 CODE 0 text42 dist/Todd/production\Quiver.X.production.obj
+___lmul@multiplicand A4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
+___ftdiv@cntr CF 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+___ftdiv@sign D4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+__size_of_getSwitchBypassState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TXSTAbits 19E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_num_taps 55 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+__Hend_init 644 0 CODE 0 end_init -
+___aldiv@counter A9 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+_delayArray 23E8 0 ABS 1 - dist/Todd/production\Quiver.X.production.obj
+_CCPTMRS0 29D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPTMRS1 29E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPTMRS2 29F 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_main 2000 0 CODE 0 maintext dist/Todd/production\Quiver.X.production.obj
+_CCP2CONbits 29A 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_setPedalMode FB6 0 CODE 0 text12 dist/Todd/production\Quiver.X.production.obj
+_delay_time 49 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+_delayfound 1C5 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_CCPR1 291 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPR2 298 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPR3 311 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPR4 318 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPR5 31C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_CCPR9 61A 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ConfigureOscillator 382C 0 CODE 0 text48 dist/Todd/production\Quiver.X.production.obj
+_switchBypass_pressed 1D7 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__end_of_frexp 3DA8 0 CODE 0 text18 dist/Todd/production\Quiver.X.production.obj
+_RCREG 199 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_SPBRG 19B 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_TXREG 19A 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_UQEnd 69 0 BANK0 1 nvBANK0 dist/Todd/production\Quiver.X.production.obj
+__end_of_trunc 27F4 0 CODE 0 text17 dist/Todd/production\Quiver.X.production.obj
+_reset_sub_delay 1D5 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+_frexp 3D34 0 CODE 0 text18 dist/Todd/production\Quiver.X.production.obj
+_presetSaveMode 66 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+_update_selectMode 1002 0 CODE 0 text1 dist/Todd/production\Quiver.X.production.obj
+_setSwitchBypassState 2444 0 CODE 0 text31 dist/Todd/production\Quiver.X.production.obj
+_timer 60 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+_trunc 2750 0 CODE 0 text17 dist/Todd/production\Quiver.X.production.obj
+_doubleTap_state 64 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+__end_of_getSwitchBypassState 383C 0 CODE 0 text35 dist/Todd/production\Quiver.X.production.obj
+__pintentry 8 0 CODE 0 intentry dist/Todd/production\Quiver.X.production.obj
+___fttol@sign1 120 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+_knob_1_pos 1C9 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_knob_2_pos 1CB 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_knob_3_pos 1CD 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_knob_4_pos 1CF 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+_knob_5_pos 1D1 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__size_of_isr 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_map 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__HdataBANK0 0 0 ABS 0 dataBANK0 -
+__HdataBANK2 0 0 ABS 0 dataBANK2 -
+__HdataBANK3 0 0 ABS 0 dataBANK3 -
+__HdataBANK4 0 0 ABS 0 dataBANK4 -
+__HdataBANK7 0 0 ABS 0 dataBANK7 -
+__HdataBANK8 0 0 ABS 0 dataBANK8 -
+__HdataBANK9 0 0 ABS 0 dataBANK9 -
+_FLASH_ReadWord 3A22 0 CODE 0 text41 dist/Todd/production\Quiver.X.production.obj
+_mod_delay_time 1E2 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
+__pdataBANK10 520 0 BANK10 1 dataBANK10 dist/Todd/production\Quiver.X.production.obj
+__pdataBIGRAM 23E8 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__initialization 644 0 CODE 0 cinit dist/Todd/production\Quiver.X.production.obj
+__CFG_PWRTE$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__pbssBANK0 58 0 BANK0 1 bssBANK0 dist/Todd/production\Quiver.X.production.obj
+__pbssBANK2 151 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__pbssBANK3 1A0 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.obj
+__pbssBANK4 248 0 BANK4 1 bssBANK4 dist/Todd/production\Quiver.X.production.obj
+__pbssBANK5 2A0 0 BANK5 1 bssBANK5 dist/Todd/production\Quiver.X.production.obj
+__pbssBANK6 320 0 BANK6 1 bssBANK6 dist/Todd/production\Quiver.X.production.obj
+_T2CONbits 1C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__CFG_WRT$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_map$2558 E4 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+trunc@i 131 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+trunc@x 12E 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
+__size_of_ring_tactiles 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_initSwitchBypass 38EA 0 CODE 0 text30 dist/Todd/production\Quiver.X.production.obj
+__end_of_setFeedbackState 39EE 0 CODE 0 text7 dist/Todd/production\Quiver.X.production.obj
+_bottomTactile_pressed 159 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+_CCP1CONbits 293 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ANSELEbits 190 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+_ANSELFbits 40C 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__size_of_setDoublePressState 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
+__end_of_set_leds_bottom 3E92 0 CODE 0 text40 dist/Todd/production\Quiver.X.production.obj
+_longTap_start 15C 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+_longTap_state 54 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
+_longTap_timer 155 0 BANK2 1 bssBANK2 dist/Todd/production\Quiver.X.production.obj
+__end_of_InitializeTaps 3AF2 0 CODE 0 text42 dist/Todd/production\Quiver.X.production.obj
+___ftmul@f3_as_product C0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+_delayArray 1 23E8 0
+- 1 920 50
+- 1 8A0 50
+- 1 820 50
+- 1 7A0 50
+- 1 720 50
+- 1 6A0 50
+- 1 648 28
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+text1 0 801 1002 59 2
+text2 0 1E62 3CC4 38 2
+text4 0 1CF7 39EE 1A 2
+text5 0 15AB 2B56 82 2
+text6 0 9C8 1390 E7 2
+text7 0 1CDD 39BA 1A 2
+text8 0 1050 20A0 3E 2
+text9 0 1C97 392E 14 2
+text10 0 108E 211C 40 2
+text11 0 1307 260E 50 2
+text13 0 1ED4 3DA8 3A 2
+text14 0 1CAB 3956 18 2
+text15 0 1CC3 3986 1A 2
+text16 0 90E 121C BA 2
+text17 0 13A8 2750 52 2
+text18 0 1E9A 3D34 3A 2
+text19 0 16B8 2D70 9F 2
+text20 0 126C 24D8 4B 2
+text21 0 1D31 3A62 22 2
+text22 0 12B7 256E 50 2
+text23 0 1193 2326 47 2
+text24 0 162D 2C5A 8B 2
+text25 0 1C2E 385C 9 2
+text26 0 85A 10B4 B4 2
+text27 0 1757 2EAE A9 2
+text28 0 AAF 155E F6 2
+text29 0 144E 289C 65 2
+text30 0 1C75 38EA F 2
+text31 0 1222 2444 4A 2
+text32 0 1E30 3C60 32 2
+text33 0 1E00 3C00 30 2
+text35 0 1C1A 3834 4 2
+text36 0 1C84 3908 13 2
+text37 0 1150 22A0 43 2
+text38 0 14B3 2966 76 2
+text39 0 13FA 27F4 54 2
+text40 0 1F0E 3E1C 3B 2
+text41 0 1D11 3A22 20 2
+text42 0 1D53 3AA6 26 2
+text43 0 1DD0 3BA0 30 2
+text44 0 110F 221E 41 2
+text45 0 1C25 384A 9 2
+text46 0 1C1E 383C 7 2
+text47 0 1C37 386E A 2
+text48 0 1C16 382C 4 2
+text50 0 11DA 23B4 48 2
+text51 0 10CE 219C 41 2
+text52 0 1DA1 3B42 2F 2
+text53 0 1529 2A52 82 2
+text54 0 1357 26AE 51 2
+idataBANK10 0 1F49 3E92 3D 2
+maintext 0 BA5 174A 46E 2
+cstackCOMMON 1 70 70 E 1
+cstackBANK0 1 20 20 4A 1
+cstackBANK1 1 A0 A0 50 1
+cstackBANK2 1 120 120 4F 1
+inittext 0 1C41 3882 C 2
+intentry 0 4 8 7FB 2
+reset_vec 0 0 0 2 2
+bssBANK3 1 1A0 1A0 4E 1
+bssBANK5 1 2A0 2A0 2C 1
+bssBANK6 1 320 320 40 1
+idataBANK2 0 1C67 38CE E 2
+idataBANK3 0 1C59 38B2 E 2
+idataBANK4 0 1D79 3AF2 28 2
+idataBANK7 0 1013 2026 3D 2
+idataBANK8 0 1FC3 3F86 3D 2
+idataBANK9 0 1F86 3F0C 3D 2
+dataBANK4 1 220 220 42 1
+dataBANK7 1 3A0 3A0 3D 1
+dataBANK8 1 420 420 3D 1
+dataBANK9 1 4A0 4A0 3D 1
+dataBANK10 1 520 520 3D 1
+clrtext 0 1C4D 389A C 2
+bssBANK11 1 5A0 5A0 40 1
+config 0 8007 1000E 2 2

@@ -5082,7 +5082,7 @@ LATBbits.LATB3 = 0;
 LATBbits.LATB0 = 0;
 LATBbits.LATB1 = 0;
 
-# 113
+
 star_tactiles(0);
 star_tactiles(0);
 star_tactiles(1);

@@ -84,7 +84,7 @@ int set_subdivision(int x, int y) {
 
     switch (y) {
         case 1:
-            scalar = 0.75; // dotted eight
+            scalar = 2.0; // half note
             break;
         case 2:
             scalar = 0.6666; //quarter triplet

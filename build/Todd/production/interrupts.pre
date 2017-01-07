@@ -4986,13 +4986,13 @@ void ReadSavedSettings(void);
 long modulation(long, long);
 
 # 32 "modulation.h"
-signed char mod1[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
+signed char modSin[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
 
+signed char modTri[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, 100, 93, 87, 80, 73, 67, 60, 53, 47, 40, 33, 27, 20, 13, 7, 0, -7, -13, -20, -27, -33, -40, -47, -53, -60, -67, -73, -80, -87, -93, -100, -93, -87, -80, -73, -67, -60, -53, -47, -40, -33, -27, -20, -13, -7, 0};
 
+signed char modRevSaw[] = {0, -3, -7, -10, -13, -17, -20, -23, -27, -30, -33, -37, -40, -43, -47, -50, -53, -57, -60, -63, -67, -70, -73, -77, -80, -83, -87, -90, -93, -97, -100, 97, 93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60, 57, 53, 50, 47, 43, 40, 37, 33, 30, 27, 23, 20, 17, 13, 10, 7, 3, 0};
 
-signed char mod2[] = {0, -3, -7, -10, -13, -17, -20, -23, -27, -30, -33, -37, -40, -43, -47, -50, -53, -57, -60, -63, -67, -70, -73, -77, -80, -83, -87, -90, -93, -97, -100, 97, 93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60, 57, 53, 50, 47, 43, 40, 37, 33, 30, 27, 23, 20, 17, 13, 10, 7, 3, 0};
-
-signed char mod3[] = {0, 3, 7, 10, 13, 17, 20, 23, 27, 30, 33, 37, 40, 43, 47, 50, 53, 57, 60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97, 100, -97, -93, -90, -87, -83, -80, -77, -73, -70, -67, -63, -60, -57, -53, -50, -47, -43, -40, -37, -33, -30, -27, -23, -20, -17, -13, -10, -7, -3, 0};
+signed char modSaw[] = {0, 3, 7, 10, 13, 17, 20, 23, 27, 30, 33, 37, 40, 43, 47, 50, 53, 57, 60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97, 100, -97, -93, -90, -87, -83, -80, -77, -73, -70, -67, -63, -60, -57, -53, -50, -47, -43, -40, -37, -33, -30, -27, -23, -20, -17, -13, -10, -7, -3, 0};
 
 # 42 "usart_pic16.h"
 volatile char URBuff[64];
@@ -5031,14 +5031,6 @@ extern uint8_t feedback_start;
 extern volatile long mod_timer;
 extern volatile long delay_time;
 
-# 48
-if (RCIE && RCIF) {
-
-USARTHandleRxInt();
-
-# 74
-}
-
 
 if (INTCONbits.TMR0IF == 1) {
 tmpSubDelay = delay_time;
@@ -5067,7 +5059,7 @@ tmpSubDelay = sub_timer + (baseline_delay_time- timer);
 }
 }
 
-# 115
+
 if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
 
 
@@ -5128,7 +5120,7 @@ set_leds_top(top_push_state, 0);
 }
 }
 
-# 188
+# 145
 if (mod_timer >= mod_delay_time) {
 mod_timer = 0;
 
@@ -5136,51 +5128,42 @@ mod_timer = 0;
 if (mod_counter >= 60) {
 mod_counter = 0;
 }
-
-# 206
+PORTCbits.RC4 = 0;
 switch (bottom_push_state) {
 case 1:
-mod_value = (int)mod1[mod_counter];
-PORTCbits.RC4 = 0;
+mod_value = (int)modSin[mod_counter];
 break;
 case 2:
-mod_value = (int)mod2[mod_counter];
-PORTCbits.RC4 = 0;
+mod_value = (int)modTri[mod_counter];
 break;
 case 3:
-mod_value = (int)mod3[mod_counter];
-PORTCbits.RC4 = 0;
-break;
-case 4:
-if (mod_counter <31) {
+if (mod_counter < 31) {
 mod_value = 100;
 } else {
 mod_value = -100;
 }
-PORTCbits.RC4 = 0;
+break;
+case 4:
+mod_value = (int) modSaw[mod_counter];
 break;
 case 5:
-mod_value = (int)mod1[mod_counter];
-
-PORTCbits.RC4 = 1;
-
+mod_value = (int)modRevSaw[mod_counter];
 break;
 default:
 mod_value = 0;
-PORTCbits.RC4 = 0;
 break;
 }
 
-# 253
+
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR9 = mod_value / 2;
 mod_timer = 0;
 mod_counter++;
 
-# 270
 }
 
-# 295
+
+
 if (preset_programmning_on == 1) {
 preset_blink++;
 

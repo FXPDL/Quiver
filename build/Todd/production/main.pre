@@ -5091,24 +5091,37 @@ ReadSavedSettings();
 
 while (1) {
 
-# 142
+
+update_mode();
+update_selectMode();
+
+
+updateSwitchBypass();
+if (presetSaveMode != 1) {
+updateSwitchTap();
+}
+
+if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
+read_bottom_tactile();
+read_top_tactile();
+}
+
+
 knob_1_pos = adc_convert(0);
 knob_2_pos = adc_convert(1);
 knob_3_pos = adc_convert(2);
 knob_4_pos = adc_convert(3);
 knob_5_pos = adc_convert(4);
 
-# 174
-if (bottom_push_state != 5) {
+# 141
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
 baseline_delay_time = (int)map(knob1_prev, 0, 1023, 1172, 200);
 delay_time_changed = 1;
 
 }
-}
 
-# 191
+# 156
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
 int i = (int)map(knob2_prev, 0, 1023, 0, 39);
@@ -5116,16 +5129,8 @@ CCPR2 = (int)B25k[B25kLength - 1 - i];
 CCPR3 = (int)B25k[i];
 }
 
-# 224
-if (bottom_push_state == 5) {
-if (knob3_prev != 1023) {
-knob3_prev = 1023;
-
-int i = (int) map(knob3_prev, 0, 1023, 16, 0);
-CCPR4 = (int) B25k[B25kLength - 1 - i];
-CCPR5 = (int) B25k[i];
-}
-} else if (feedback_state == 1) {
+# 172
+if (feedback_state == 1) {
 if (knob3_prev != 0) {
 knob3_prev = 0;
 feedbackTriggered = 1;
@@ -5143,14 +5148,14 @@ CCPR5 = (int) B25k[i];
 }
 }
 
-# 259
+# 199
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
 mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
 }
 
-# 271
+# 211
 if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 knob5_prev = knob_5_pos;
 adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
@@ -5177,7 +5182,6 @@ delay_counter++;
 }
 }
 
-# 314
 delay_time_changed = 0;
 
 }
