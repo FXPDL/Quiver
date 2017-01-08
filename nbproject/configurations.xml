@@ -35,6 +35,7 @@
       <itemPath>preset_programming.c</itemPath>
       <itemPath>expressTap.c</itemPath>
       <itemPath>usart_pic16.c</itemPath>
+      <itemPath>modulation.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

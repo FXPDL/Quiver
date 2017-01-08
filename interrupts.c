@@ -15,7 +15,7 @@
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "modulation.h"    /* Modulation constants*/
 #include "usart_pic16.h"
-
+#include "modulation.h"
 
 /******************************************************************************/
 /* Interrupt Routines                                                         */
@@ -152,23 +152,24 @@ void interrupt isr(void) {
        chorus = 0;
         switch (bottom_push_state) {
             case 1:  //Sin
-                mod_value = (int)modSin[mod_counter];
+                mod_value = modSin(6*mod_counter, symmetry); // (int)modSin[mod_counter];
                 break;
             case 2:  //tri
-                mod_value = (int)modTri[mod_counter];
+                mod_value = modTri(6*mod_counter, symmetry); //(int)modTri[mod_counter];
                 break;
             case 3:  //Square
-                if (mod_counter < 31) {
+                modSquare(6*mod_counter, symmetry);
+                /*if (mod_counter < 31) {
                     mod_value = 100; //mod4[mod_counter];
                 } else {
                     mod_value = -100;
-                }
+                }*/
                 break;
             case 4: //Saw
-                mod_value = (int) modSaw[mod_counter];
+                mod_value =  modSaw(6*mod_counter, symmetry); //(int)modSaw[mod_counter];
                 break;
             case 5:  //Reverse Saw
-                mod_value = (int)modRevSaw[mod_counter];              
+                mod_value = modSawRev(6*mod_counter, symmetry); //(int)modRevSaw[mod_counter];              
                 break;
             default:
                 mod_value = 0;

@@ -4975,6 +4975,8 @@ char expressModeCnst = 2;
 
 int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
+int symmetry = 180;
+
 # 14 "user.h"
 void InitApp(void);
 void init_adc(void);
@@ -5067,9 +5069,8 @@ volatile int knob5_prev = 2000;
 
 
 uint8_t iCnt;
-uint8_t symmetry = 180;
 
-# 69
+# 68
 void main(void) {
 
 USARTInit(31250);
@@ -5117,8 +5118,8 @@ knob_5_pos = adc_convert(4);
 
 if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
 knob1_prev = knob_1_pos;
-CCPR2 = scaleA10kPot(knob1_prev);
-CCPR3 = scaleiA10kPot(knob1_prev);
+CCPR4 = scaleA10kPot(knob1_prev);
+CCPR5 = scaleiA10kPot(knob1_prev);
 
 }
 
@@ -5126,18 +5127,17 @@ CCPR3 = scaleiA10kPot(knob1_prev);
 
 if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
 knob2_prev = knob_2_pos;
-CCPR4 = scaleA100kPot(knob2_prev);
-CCPR5 = scaleiA100kPot(knob2_prev);
+CCPR1 = scaleA100kPot(knob2_prev);
+CCPR2 = scaleA100kPot(knob2_prev);
 }
 
-# 137
+# 136
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
-symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
-
+symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 }
 
-# 152
+# 150
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
@@ -5164,8 +5164,6 @@ delay_counter = 0;
 while (delayfound == 0) {
 if (delayArray[delay_counter] <= delay_time * 2) {
 delayfound = 1;
-
-
 
 } else {
 delay_counter++;

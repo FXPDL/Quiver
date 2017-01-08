@@ -60,7 +60,6 @@ volatile int knob5_prev = 2000;
 
 
 uint8_t iCnt;
-uint8_t symmetry = 180;
 /******************************************************************************/
 /* Main Program                                                               */
 
@@ -136,8 +135,7 @@ void main(void) {
         //------------------------------------------------
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
-            symmetry = (int) map(knob3_prev, 0, 1023, 0, 360);
-            
+            symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
         }
         
         

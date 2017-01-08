@@ -4975,6 +4975,8 @@ char expressModeCnst = 2;
 
 int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
+int symmetry = 180;
+
 # 14 "user.h"
 void InitApp(void);
 void init_adc(void);
@@ -4989,14 +4991,15 @@ int scaleiA100kPot(double);
 int scaleA10kPot(double);
 int scaleiA10kPot(double);
 
-# 26 "modulation.h"
-signed char modSin[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -80, -74, -66, -58, -50, -40, -30, -20, -10, 0};
+# 38 "modulation.h"
+double cot(double);
+int sign(double);
 
-signed char modTri[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, 100, 93, 87, 80, 73, 67, 60, 53, 47, 40, 33, 27, 20, 13, 7, 0, -7, -13, -20, -27, -33, -40, -47, -53, -60, -67, -73, -80, -87, -93, -100, -93, -87, -80, -73, -67, -60, -53, -47, -40, -33, -27, -20, -13, -7, 0};
-
-signed char modRevSaw[] = {0, -3, -7, -10, -13, -17, -20, -23, -27, -30, -33, -37, -40, -43, -47, -50, -53, -57, -60, -63, -67, -70, -73, -77, -80, -83, -87, -90, -93, -97, -100, 97, 93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60, 57, 53, 50, 47, 43, 40, 37, 33, 30, 27, 23, 20, 17, 13, 10, 7, 3, 0};
-
-signed char modSaw[] = {0, 3, 7, 10, 13, 17, 20, 23, 27, 30, 33, 37, 40, 43, 47, 50, 53, 57, 60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97, 100, -97, -93, -90, -87, -83, -80, -77, -73, -70, -67, -63, -60, -57, -53, -50, -47, -43, -40, -37, -33, -30, -27, -23, -20, -17, -13, -10, -7, -3, 0};
+int modSin(double, double);
+int modTri(double, double);
+int modSaw(double, double);
+int modSawRev(double, double);
+int modSquare(double, double);
 
 # 42 "usart_pic16.h"
 volatile char URBuff[64];
@@ -5014,6 +5017,16 @@ uint8_t USARTDataAvailable();
 void USARTGotoNewLine();
 void USARTReadBuffer(char *buff,uint16_t len);
 void USARTFlushBuffer();
+
+# 38 "modulation.h"
+double cot(double);
+int sign(double);
+
+int modSin(double, double);
+int modTri(double, double);
+int modSaw(double, double);
+int modSawRev(double, double);
+int modSquare(double, double);
 
 # 24 "interrupts.c"
 signed int mod_value = 0;
@@ -5135,32 +5148,29 @@ mod_counter = 0;
 PORTCbits.RC4 = 0;
 switch (bottom_push_state) {
 case 1:
-mod_value = (int)modSin[mod_counter];
+mod_value = modSin(6*mod_counter, symmetry);
 break;
 case 2:
-mod_value = (int)modTri[mod_counter];
+mod_value = modTri(6*mod_counter, symmetry);
 break;
 case 3:
-if (mod_counter < 31) {
-mod_value = 100;
-} else {
-mod_value = -100;
-}
+modSquare(6*mod_counter, symmetry);
+
+# 167
 break;
 case 4:
-mod_value = (int) modSaw[mod_counter];
+mod_value = modSaw(6*mod_counter, symmetry);
 break;
 case 5:
-mod_value = (int)modRevSaw[mod_counter];
+mod_value = modSawRev(6*mod_counter, symmetry);
 break;
 default:
 mod_value = 0;
 break;
 }
 
-
 mod_value = modulation(mod_value, adjusted_pot_value);
-CCPR9 = mod_value / 2;
+CCPR3 = mod_value / 2;
 mod_timer = 0;
 mod_counter++;
 

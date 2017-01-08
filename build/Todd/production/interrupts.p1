@@ -30,10 +30,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S33 . . ]
 "553
 [v _PORTCbits `VS33 ~T0 @X0 0 e@14 ]
+"41 modulation.h
+[v _modSin `(i ~T0 @X0 0 ef2`d`d ]
+"42
+[v _modTri `(i ~T0 @X0 0 ef2`d`d ]
+"45
+[v _modSquare `(i ~T0 @X0 0 ef2`d`d ]
+"43
+[v _modSaw `(i ~T0 @X0 0 ef2`d`d ]
+"44
+[v _modSawRev `(i ~T0 @X0 0 ef2`d`d ]
 "21 user.h
 [v _modulation `(l ~T0 @X0 0 ef2`l`l ]
-"8137 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[v _CCPR9 `Vus ~T0 @X0 0 e@1562 ]
+"5756 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[v _CCPR3 `Vus ~T0 @X0 0 e@785 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -4167,6 +4177,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
+"116
+[v _symmetry `i ~T0 @X0 1 e ]
+[i _symmetry
+-> 180 `i
+]
+[; ;constants.h: 116: int symmetry = 180;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4179,278 +4195,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 23: int scaleiA100kPot(double);
 [; ;user.h: 24: int scaleA10kPot(double);
 [; ;user.h: 25: int scaleiA10kPot(double);
-"26 modulation.h
-[v _modSin `c ~T0 @X0 -> 0 `x e ]
-[i _modSin
-:U ..
--> -> 0 `i `c
--> -> 10 `i `c
--> -> 20 `i `c
--> -> 30 `i `c
--> -> 40 `i `c
--> -> 50 `i `c
--> -> 58 `i `c
--> -> 66 `i `c
--> -> 74 `i `c
--> -> 80 `i `c
--> -> 86 `i `c
--> -> 91 `i `c
--> -> 95 `i `c
--> -> 97 `i `c
--> -> 99 `i `c
--> -> 100 `i `c
--> -> 99 `i `c
--> -> 97 `i `c
--> -> 95 `i `c
--> -> 91 `i `c
--> -> 86 `i `c
--> -> 80 `i `c
--> -> 74 `i `c
--> -> 66 `i `c
--> -> 58 `i `c
--> -> 50 `i `c
--> -> 40 `i `c
--> -> 30 `i `c
--> -> 20 `i `c
--> -> 10 `i `c
--> -> 0 `i `c
--> -U -> 10 `i `c
--> -U -> 20 `i `c
--> -U -> 30 `i `c
--> -U -> 40 `i `c
--> -U -> 50 `i `c
--> -U -> 58 `i `c
--> -U -> 66 `i `c
--> -U -> 74 `i `c
--> -U -> 80 `i `c
--> -U -> 86 `i `c
--> -U -> 91 `i `c
--> -U -> 95 `i `c
--> -U -> 97 `i `c
--> -U -> 99 `i `c
--> -U -> 100 `i `c
--> -U -> 99 `i `c
--> -U -> 97 `i `c
--> -U -> 95 `i `c
--> -U -> 91 `i `c
--> -U -> 86 `i `c
--> -U -> 80 `i `c
--> -U -> 74 `i `c
--> -U -> 66 `i `c
--> -U -> 58 `i `c
--> -U -> 50 `i `c
--> -U -> 40 `i `c
--> -U -> 30 `i `c
--> -U -> 20 `i `c
--> -U -> 10 `i `c
--> -> 0 `i `c
-..
-]
-[; ;modulation.h: 26: signed char modSin[] = {0, 10, 20, 30, 40, 50, 58, 66, 74, 80, 86, 91, 95, 97, 99, 100, 99, 97, 95, 91, 86, 80, 74, 66, 58, 50, 40, 30, 20, 10, 0, -10, -20, -30, -40, -50, -58, -66, -74, -80, -86, -91, -95, -97, -99, -100, -99, -97, -95, -91, -86, -8
-"28
-[v _modTri `c ~T0 @X0 -> 0 `x e ]
-[i _modTri
-:U ..
--> -> 0 `i `c
--> -> 7 `i `c
--> -> 13 `i `c
--> -> 20 `i `c
--> -> 27 `i `c
--> -> 33 `i `c
--> -> 40 `i `c
--> -> 47 `i `c
--> -> 53 `i `c
--> -> 60 `i `c
--> -> 67 `i `c
--> -> 73 `i `c
--> -> 80 `i `c
--> -> 87 `i `c
--> -> 93 `i `c
--> -> 100 `i `c
--> -> 93 `i `c
--> -> 87 `i `c
--> -> 80 `i `c
--> -> 73 `i `c
--> -> 67 `i `c
--> -> 60 `i `c
--> -> 53 `i `c
--> -> 47 `i `c
--> -> 40 `i `c
--> -> 33 `i `c
--> -> 27 `i `c
--> -> 20 `i `c
--> -> 13 `i `c
--> -> 7 `i `c
--> -> 0 `i `c
--> -U -> 7 `i `c
--> -U -> 13 `i `c
--> -U -> 20 `i `c
--> -U -> 27 `i `c
--> -U -> 33 `i `c
--> -U -> 40 `i `c
--> -U -> 47 `i `c
--> -U -> 53 `i `c
--> -U -> 60 `i `c
--> -U -> 67 `i `c
--> -U -> 73 `i `c
--> -U -> 80 `i `c
--> -U -> 87 `i `c
--> -U -> 93 `i `c
--> -U -> 100 `i `c
--> -U -> 93 `i `c
--> -U -> 87 `i `c
--> -U -> 80 `i `c
--> -U -> 73 `i `c
--> -U -> 67 `i `c
--> -U -> 60 `i `c
--> -U -> 53 `i `c
--> -U -> 47 `i `c
--> -U -> 40 `i `c
--> -U -> 33 `i `c
--> -U -> 27 `i `c
--> -U -> 20 `i `c
--> -U -> 13 `i `c
--> -U -> 7 `i `c
--> -> 0 `i `c
-..
-]
-[; ;modulation.h: 28: signed char modTri[] = {0, 7, 13, 20, 27, 33, 40, 47, 53, 60, 67, 73, 80, 87, 93, 100, 93, 87, 80, 73, 67, 60, 53, 47, 40, 33, 27, 20, 13, 7, 0, -7, -13, -20, -27, -33, -40, -47, -53, -60, -67, -73, -80, -87, -93, -100, -93, -87, -80, -73, -67, -60, 
-"30
-[v _modRevSaw `c ~T0 @X0 -> 0 `x e ]
-[i _modRevSaw
-:U ..
--> -> 0 `i `c
--> -U -> 3 `i `c
--> -U -> 7 `i `c
--> -U -> 10 `i `c
--> -U -> 13 `i `c
--> -U -> 17 `i `c
--> -U -> 20 `i `c
--> -U -> 23 `i `c
--> -U -> 27 `i `c
--> -U -> 30 `i `c
--> -U -> 33 `i `c
--> -U -> 37 `i `c
--> -U -> 40 `i `c
--> -U -> 43 `i `c
--> -U -> 47 `i `c
--> -U -> 50 `i `c
--> -U -> 53 `i `c
--> -U -> 57 `i `c
--> -U -> 60 `i `c
--> -U -> 63 `i `c
--> -U -> 67 `i `c
--> -U -> 70 `i `c
--> -U -> 73 `i `c
--> -U -> 77 `i `c
--> -U -> 80 `i `c
--> -U -> 83 `i `c
--> -U -> 87 `i `c
--> -U -> 90 `i `c
--> -U -> 93 `i `c
--> -U -> 97 `i `c
--> -U -> 100 `i `c
--> -> 97 `i `c
--> -> 93 `i `c
--> -> 90 `i `c
--> -> 87 `i `c
--> -> 83 `i `c
--> -> 80 `i `c
--> -> 77 `i `c
--> -> 73 `i `c
--> -> 70 `i `c
--> -> 67 `i `c
--> -> 63 `i `c
--> -> 60 `i `c
--> -> 57 `i `c
--> -> 53 `i `c
--> -> 50 `i `c
--> -> 47 `i `c
--> -> 43 `i `c
--> -> 40 `i `c
--> -> 37 `i `c
--> -> 33 `i `c
--> -> 30 `i `c
--> -> 27 `i `c
--> -> 23 `i `c
--> -> 20 `i `c
--> -> 17 `i `c
--> -> 13 `i `c
--> -> 10 `i `c
--> -> 7 `i `c
--> -> 3 `i `c
--> -> 0 `i `c
-..
-]
-[; ;modulation.h: 30: signed char modRevSaw[] = {0, -3, -7, -10, -13, -17, -20, -23, -27, -30, -33, -37, -40, -43, -47, -50, -53, -57, -60, -63, -67, -70, -73, -77, -80, -83, -87, -90, -93, -97, -100, 97, 93, 90, 87, 83, 80, 77, 73, 70, 67, 63, 60, 57, 53, 50, 47, 43, 40,
-"32
-[v _modSaw `c ~T0 @X0 -> 0 `x e ]
-[i _modSaw
-:U ..
--> -> 0 `i `c
--> -> 3 `i `c
--> -> 7 `i `c
--> -> 10 `i `c
--> -> 13 `i `c
--> -> 17 `i `c
--> -> 20 `i `c
--> -> 23 `i `c
--> -> 27 `i `c
--> -> 30 `i `c
--> -> 33 `i `c
--> -> 37 `i `c
--> -> 40 `i `c
--> -> 43 `i `c
--> -> 47 `i `c
--> -> 50 `i `c
--> -> 53 `i `c
--> -> 57 `i `c
--> -> 60 `i `c
--> -> 63 `i `c
--> -> 67 `i `c
--> -> 70 `i `c
--> -> 73 `i `c
--> -> 77 `i `c
--> -> 80 `i `c
--> -> 83 `i `c
--> -> 87 `i `c
--> -> 90 `i `c
--> -> 93 `i `c
--> -> 97 `i `c
--> -> 100 `i `c
--> -U -> 97 `i `c
--> -U -> 93 `i `c
--> -U -> 90 `i `c
--> -U -> 87 `i `c
--> -U -> 83 `i `c
--> -U -> 80 `i `c
--> -U -> 77 `i `c
--> -U -> 73 `i `c
--> -U -> 70 `i `c
--> -U -> 67 `i `c
--> -U -> 63 `i `c
--> -U -> 60 `i `c
--> -U -> 57 `i `c
--> -U -> 53 `i `c
--> -U -> 50 `i `c
--> -U -> 47 `i `c
--> -U -> 43 `i `c
--> -U -> 40 `i `c
--> -U -> 37 `i `c
--> -U -> 33 `i `c
--> -U -> 30 `i `c
--> -U -> 27 `i `c
--> -U -> 23 `i `c
--> -U -> 20 `i `c
--> -U -> 17 `i `c
--> -U -> 13 `i `c
--> -U -> 10 `i `c
--> -U -> 7 `i `c
--> -U -> 3 `i `c
--> -> 0 `i `c
-..
-]
-[; ;modulation.h: 32: signed char modSaw[] = {0, 3, 7, 10, 13, 17, 20, 23, 27, 30, 33, 37, 40, 43, 47, 50, 53, 57, 60, 63, 67, 70, 73, 77, 80, 83, 87, 90, 93, 97, 100, -97, -93, -90, -87, -83, -80, -77, -73, -70, -67, -63, -60, -57, -53, -50, -47, -43, -40, -37, -33, -30,
+[; ;modulation.h: 38: double cot(double);
+[; ;modulation.h: 39: int sign(double);
+[; ;modulation.h: 41: int modSin(double, double);
+[; ;modulation.h: 42: int modTri(double, double);
+[; ;modulation.h: 43: int modSaw(double, double);
+[; ;modulation.h: 44: int modSawRev(double, double);
+[; ;modulation.h: 45: int modSquare(double, double);
 "42 usart_pic16.h
 [v _URBuff `Vuc ~T0 @X0 -> 64 `i e ]
 [; ;usart_pic16.h: 42: volatile char URBuff[64];
@@ -4471,6 +4222,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart_pic16.h: 54: void USARTGotoNewLine();
 [; ;usart_pic16.h: 55: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;usart_pic16.h: 56: void USARTFlushBuffer();
+[; ;modulation.h: 38: double cot(double);
+[; ;modulation.h: 39: int sign(double);
+[; ;modulation.h: 41: int modSin(double, double);
+[; ;modulation.h: 42: int modTri(double, double);
+[; ;modulation.h: 43: int modSaw(double, double);
+[; ;modulation.h: 44: int modSawRev(double, double);
+[; ;modulation.h: 45: int modSquare(double, double);
 "24 interrupts.c
 [v _mod_value `i ~T0 @X0 1 e ]
 [i _mod_value
@@ -4483,9 +4241,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;interrupts.c: 25: int mod_counter = 0;
-[v F3644 `(v ~T0 @X0 1 tf ]
+[v F3672 `(v ~T0 @X0 1 tf ]
 "27
-[v _isr `IF3644 ~T0 @X0 1 e ]
+[v _isr `IF3672 ~T0 @X0 1 e ]
 {
 [; ;interrupts.c: 27: void interrupt isr(void) {
 [e :U _isr ]
@@ -4777,94 +4535,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 154: case 1:
 "154
 [e :U 484 ]
-[; ;interrupts.c: 155: mod_value = (int)modSin[mod_counter];
+[; ;interrupts.c: 155: mod_value = modSin(6*mod_counter, symmetry);
 "155
-[e = _mod_value -> *U + &U _modSin * -> -> _mod_counter `ui `ux -> -> # *U &U _modSin `ui `ux `i ]
+[e = _mod_value ( _modSin (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
 [; ;interrupts.c: 156: break;
 "156
 [e $U 482  ]
 [; ;interrupts.c: 157: case 2:
 "157
 [e :U 485 ]
-[; ;interrupts.c: 158: mod_value = (int)modTri[mod_counter];
+[; ;interrupts.c: 158: mod_value = modTri(6*mod_counter, symmetry);
 "158
-[e = _mod_value -> *U + &U _modTri * -> -> _mod_counter `ui `ux -> -> # *U &U _modTri `ui `ux `i ]
+[e = _mod_value ( _modTri (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
 [; ;interrupts.c: 159: break;
 "159
 [e $U 482  ]
 [; ;interrupts.c: 160: case 3:
 "160
 [e :U 486 ]
-[; ;interrupts.c: 161: if (mod_counter < 31) {
+[; ;interrupts.c: 161: modSquare(6*mod_counter, symmetry);
 "161
-[e $ ! < _mod_counter -> 31 `i 487  ]
-{
-[; ;interrupts.c: 162: mod_value = 100;
-"162
-[e = _mod_value -> 100 `i ]
-"163
-}
-[; ;interrupts.c: 163: } else {
-[e $U 488  ]
-[e :U 487 ]
-{
-[; ;interrupts.c: 164: mod_value = -100;
-"164
-[e = _mod_value -U -> 100 `i ]
-"165
-}
-[e :U 488 ]
-[; ;interrupts.c: 165: }
-[; ;interrupts.c: 166: break;
-"166
-[e $U 482  ]
-[; ;interrupts.c: 167: case 4:
+[e ( _modSquare (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 167: break;
 "167
-[e :U 489 ]
-[; ;interrupts.c: 168: mod_value = (int) modSaw[mod_counter];
+[e $U 482  ]
+[; ;interrupts.c: 168: case 4:
 "168
-[e = _mod_value -> *U + &U _modSaw * -> -> _mod_counter `ui `ux -> -> # *U &U _modSaw `ui `ux `i ]
-[; ;interrupts.c: 169: break;
+[e :U 487 ]
+[; ;interrupts.c: 169: mod_value = modSaw(6*mod_counter, symmetry);
 "169
-[e $U 482  ]
-[; ;interrupts.c: 170: case 5:
+[e = _mod_value ( _modSaw (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 170: break;
 "170
-[e :U 490 ]
-[; ;interrupts.c: 171: mod_value = (int)modRevSaw[mod_counter];
+[e $U 482  ]
+[; ;interrupts.c: 171: case 5:
 "171
-[e = _mod_value -> *U + &U _modRevSaw * -> -> _mod_counter `ui `ux -> -> # *U &U _modRevSaw `ui `ux `i ]
-[; ;interrupts.c: 172: break;
+[e :U 488 ]
+[; ;interrupts.c: 172: mod_value = modSawRev(6*mod_counter, symmetry);
 "172
-[e $U 482  ]
-[; ;interrupts.c: 173: default:
+[e = _mod_value ( _modSawRev (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 173: break;
 "173
-[e :U 491 ]
-[; ;interrupts.c: 174: mod_value = 0;
-"174
-[e = _mod_value -> 0 `i ]
-[; ;interrupts.c: 175: break;
-"175
 [e $U 482  ]
+[; ;interrupts.c: 174: default:
+"174
+[e :U 489 ]
+[; ;interrupts.c: 175: mod_value = 0;
+"175
+[e = _mod_value -> 0 `i ]
+[; ;interrupts.c: 176: break;
 "176
+[e $U 482  ]
+"177
 }
-[; ;interrupts.c: 176: }
+[; ;interrupts.c: 177: }
 [e $U 482  ]
 "153
 [e :U 483 ]
 [e [\ _bottom_push_state , $ -> 1 `i 484
  , $ -> 2 `i 485
  , $ -> 3 `i 486
- , $ -> 4 `i 489
- , $ -> 5 `i 490
- 491 ]
-"176
+ , $ -> 4 `i 487
+ , $ -> 5 `i 488
+ 489 ]
+"177
 [e :U 482 ]
 [; ;interrupts.c: 179: mod_value = modulation(mod_value, adjusted_pot_value);
 "179
 [e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
-[; ;interrupts.c: 180: CCPR9 = mod_value / 2;
+[; ;interrupts.c: 180: CCPR3 = mod_value / 2;
 "180
-[e = _CCPR9 -> / _mod_value -> 2 `i `us ]
+[e = _CCPR3 -> / _mod_value -> 2 `i `us ]
 [; ;interrupts.c: 181: mod_timer = 0;
 "181
 [e = _mod_timer -> -> 0 `i `l ]
@@ -4877,51 +4618,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 184: }
 [; ;interrupts.c: 188: if (preset_programmning_on == 1) {
 "188
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 492  ]
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 490  ]
 {
 [; ;interrupts.c: 189: preset_blink++;
 "189
 [e ++ _preset_blink -> -> 1 `i `uc ]
 [; ;interrupts.c: 191: if (preset_blink >= blink_delay) {
 "191
-[e $ ! >= -> _preset_blink `i _blink_delay 493  ]
+[e $ ! >= -> _preset_blink `i _blink_delay 491  ]
 {
 [; ;interrupts.c: 192: LATBbits.LATB1 = 1;
 "192
 [e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
 [; ;interrupts.c: 193: if (preset_blink > blink_delay*2) {
 "193
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 494  ]
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 492  ]
 {
 [; ;interrupts.c: 194: preset_blink = 0;
 "194
 [e = _preset_blink -> -> 0 `i `uc ]
 "195
 }
-[e :U 494 ]
+[e :U 492 ]
 "197
 }
 [; ;interrupts.c: 195: }
 [; ;interrupts.c: 197: } else {
-[e $U 495  ]
-[e :U 493 ]
+[e $U 493  ]
+[e :U 491 ]
 {
 [; ;interrupts.c: 198: LATBbits.LATB1 = 0;
 "198
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "199
 }
-[e :U 495 ]
+[e :U 493 ]
 "201
 }
 [; ;interrupts.c: 199: }
 [; ;interrupts.c: 201: } else {
-[e $U 496  ]
-[e :U 492 ]
+[e $U 494  ]
+[e :U 490 ]
 {
 [; ;interrupts.c: 202: if (preset_blink > 0) {
 "202
-[e $ ! > -> _preset_blink `i -> 0 `i 497  ]
+[e $ ! > -> _preset_blink `i -> 0 `i 495  ]
 {
 [; ;interrupts.c: 203: preset_blink = 0;
 "203
@@ -4931,10 +4672,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "205
 }
-[e :U 497 ]
+[e :U 495 ]
 "207
 }
-[e :U 496 ]
+[e :U 494 ]
 [; ;interrupts.c: 205: }
 [; ;interrupts.c: 207: }
 [; ;interrupts.c: 209: }
