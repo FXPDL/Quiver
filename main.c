@@ -25,7 +25,7 @@
 #include "SwitchTap.h"    /* Bypass switch control */
 //#include "Switch1.h"    /* Bypass switch control */
 #include "usart_pic16.h"
-
+#include "modulation.h"
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
 /******************************************************************************/
@@ -43,7 +43,7 @@ volatile long delay_time = 2000;
 
 int delayfound = 0;
 //int delay_counter = 0;
-
+int tmpVal = 0;
 
 
 int knob_1_pos = 0;
@@ -66,6 +66,19 @@ uint8_t iCnt;
 /******************************************************************************/
 
 void main(void) {
+
+    //symmetry = 180;
+    calcSinArray();
+    
+    //updateModulationArray(); 
+    
+       
+    /*symmetry = 25;
+    updateModulationArray(); 
+    
+        
+    symmetry = 235;
+    updateModulationArray();*/
     
     USARTInit(31250);
     ConfigureOscillator();
@@ -121,8 +134,8 @@ void main(void) {
         //Frequency
         if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
             knob2_prev = knob_2_pos;
-            CCPR1 = scaleA100kPot(knob2_prev);
-            CCPR2 = scaleA100kPot(knob2_prev);
+            CCPR1 = scaleA100kPot(1023-knob2_prev);  //Invert the direction of the knob, so subtract from max
+            CCPR2 = scaleA100kPot(1023-knob2_prev);
         }
 
 
@@ -135,7 +148,12 @@ void main(void) {
         //------------------------------------------------
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
-            symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
+            symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);    
+            if (symmetry == 180) {
+                LED_bypass_Aux = 1;
+            } else {
+                LED_bypass_Aux = 0;
+            }
         }
         
         
@@ -150,7 +168,8 @@ void main(void) {
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
            // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
-            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);  
+            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47); 
+
         }
 
 
@@ -159,18 +178,19 @@ void main(void) {
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
             adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-            
         }        
 
+        
+        
         //subroutine to calculate led interval and PWM value if delay time has changed
-        if (delay_time_changed == 1) {
+        if (delay_time_changed == 1) {   
             delay_time = baseline_delay_time;
             delay_time = set_subdivision(baseline_delay_time, top_push_state);
             reset_sub_delay = 1;
             delayfound = 0;
             delay_counter = 0;
 
-            while (delayfound == 0) {
+            /*while (delayfound == 0) {
                 if (delayArray[delay_counter] <= delay_time * 2) {
                     delayfound = 1;
                     
@@ -178,11 +198,10 @@ void main(void) {
                     delay_counter++;
                     
                 }
-            }
+            }*/
 
             delay_time_changed = 0;
 
         } 
- 
     }
 }

@@ -3753,31 +3753,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 "81
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
--> 6 `i
+-> 1 `i
 ]
-[; ;constants.h: 81: int bottom_push_state = 6;
+[; ;constants.h: 81: int bottom_push_state = 1;
 "83
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
 [; ;constants.h: 83: uint16_t myBuf[32];
 "85
-[v _delay_time_changed `i ~T0 @X0 1 e ]
-[i _delay_time_changed
--> 1 `i
+[v _modulation_changed `uc ~T0 @X0 1 e ]
+[i _modulation_changed
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 85: int delay_time_changed = 1;
+[; ;constants.h: 85: char modulation_changed = 0;
 "86
-[v _reset_sub_delay `i ~T0 @X0 1 e ]
-[i _reset_sub_delay
--> 0 `i
+[v _delay_time_changed `uc ~T0 @X0 1 e ]
+[i _delay_time_changed
+-> -> 1 `i `uc
 ]
-[; ;constants.h: 86: int reset_sub_delay = 0;
+[; ;constants.h: 86: char delay_time_changed = 1;
 "87
-[v _adjust_sub_delay `i ~T0 @X0 1 e ]
-[i _adjust_sub_delay
--> 0 `i
+[v _reset_sub_delay `uc ~T0 @X0 1 e ]
+[i _reset_sub_delay
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 87: int adjust_sub_delay = 0;
-"89
+[; ;constants.h: 87: char reset_sub_delay = 0;
+"88
+[v _adjust_sub_delay `uc ~T0 @X0 1 e ]
+[i _adjust_sub_delay
+-> -> 0 `i `uc
+]
+[; ;constants.h: 88: char adjust_sub_delay = 0;
+"90
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3794,43 +3800,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
+[; ;constants.h: 90: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"92
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
+[; ;constants.h: 92: int debounce_count = 0;
+"93
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
+[; ;constants.h: 93: int debounce_bypass = 0;
+"94
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
+[; ;constants.h: 94: int debounce_mode1 = 0;
+"95
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
+[; ;constants.h: 95: int debounce_mode2 = 0;
+"97
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 97: volatile long test_timer = 0;
+[; ;constants.h: 97: volatile long tap_timer = 0;
 "98
 [v _double_timer `Vl ~T0 @X0 1 e ]
 [i _double_timer
@@ -3860,25 +3860,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 104: uint8_t switchBypass_state = -1;
+[; ;constants.h: 104: char switchBypass_state = -1;
 "105
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 105: uint8_t switchTap_state = -1;
+[; ;constants.h: 105: char switchTap_state = -1;
 "106
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: volatile uint8_t longTap_state = -1;
+[; ;constants.h: 106: volatile char longTap_state = -1;
 "107
 [v _feedback_state `Vuc ~T0 @X0 1 e ]
 [i _feedback_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: volatile uint8_t feedback_state = -1;
+[; ;constants.h: 107: volatile char feedback_state = -1;
 "109
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
@@ -3897,274 +3897,209 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ]
 [; ;constants.h: 112: char expressModeCnst = 2;
-"114
-[v _delayArray `i ~T0 @X0 -> 260 `i e ]
-[i _delayArray
+"115
+[v _modArray `i ~T0 @X0 -> 0 `x e ]
+[i _modArray
 :U ..
--> 2082 `i
--> 2044 `i
--> 2008 `i
--> 1973 `i
--> 1939 `i
--> 1906 `i
--> 1874 `i
--> 1844 `i
--> 1814 `i
--> 1785 `i
--> 1757 `i
--> 1730 `i
--> 1704 `i
--> 1679 `i
--> 1654 `i
--> 1630 `i
--> 1607 `i
--> 1584 `i
--> 1562 `i
--> 1541 `i
--> 1520 `i
--> 1500 `i
--> 1480 `i
--> 1461 `i
--> 1443 `i
--> 1424 `i
--> 1407 `i
--> 1389 `i
--> 1372 `i
--> 1356 `i
--> 1340 `i
--> 1324 `i
--> 1309 `i
--> 1294 `i
--> 1279 `i
--> 1265 `i
--> 1250 `i
--> 1237 `i
--> 1223 `i
--> 1210 `i
--> 1197 `i
--> 1185 `i
--> 1172 `i
--> 1160 `i
--> 1149 `i
--> 1137 `i
--> 1126 `i
--> 1114 `i
--> 1104 `i
--> 1093 `i
--> 1082 `i
--> 1072 `i
--> 1062 `i
--> 1052 `i
--> 1042 `i
--> 1033 `i
--> 1023 `i
--> 1014 `i
--> 1005 `i
--> 996 `i
--> 988 `i
--> 979 `i
--> 971 `i
--> 962 `i
--> 954 `i
--> 946 `i
--> 938 `i
--> 930 `i
--> 923 `i
--> 915 `i
--> 908 `i
--> 901 `i
--> 894 `i
--> 887 `i
--> 880 `i
--> 873 `i
--> 866 `i
--> 860 `i
--> 853 `i
--> 847 `i
--> 840 `i
--> 834 `i
--> 828 `i
--> 822 `i
--> 816 `i
--> 810 `i
--> 804 `i
--> 799 `i
--> 793 `i
--> 787 `i
--> 782 `i
--> 777 `i
--> 771 `i
--> 766 `i
--> 761 `i
--> 756 `i
--> 751 `i
--> 746 `i
--> 741 `i
--> 736 `i
--> 731 `i
--> 727 `i
--> 722 `i
--> 717 `i
--> 713 `i
--> 708 `i
--> 704 `i
--> 700 `i
--> 695 `i
--> 691 `i
--> 687 `i
--> 683 `i
--> 678 `i
--> 674 `i
--> 670 `i
--> 666 `i
--> 663 `i
--> 659 `i
--> 655 `i
--> 651 `i
--> 647 `i
--> 644 `i
--> 640 `i
--> 636 `i
--> 633 `i
--> 629 `i
--> 626 `i
--> 622 `i
--> 619 `i
--> 615 `i
--> 612 `i
--> 609 `i
--> 606 `i
--> 602 `i
--> 599 `i
--> 596 `i
--> 593 `i
--> 590 `i
--> 587 `i
--> 584 `i
--> 581 `i
--> 578 `i
--> 575 `i
--> 572 `i
--> 569 `i
--> 566 `i
--> 563 `i
--> 560 `i
--> 558 `i
--> 555 `i
--> 552 `i
--> 549 `i
--> 547 `i
--> 544 `i
--> 542 `i
--> 539 `i
--> 536 `i
--> 534 `i
--> 531 `i
--> 529 `i
--> 526 `i
--> 524 `i
--> 522 `i
--> 519 `i
--> 517 `i
--> 514 `i
--> 512 `i
--> 510 `i
--> 507 `i
--> 505 `i
--> 503 `i
--> 501 `i
--> 498 `i
--> 496 `i
--> 494 `i
--> 492 `i
--> 490 `i
--> 488 `i
--> 486 `i
--> 483 `i
--> 481 `i
--> 479 `i
--> 477 `i
--> 475 `i
--> 473 `i
--> 471 `i
--> 469 `i
--> 467 `i
--> 466 `i
--> 464 `i
--> 462 `i
--> 460 `i
--> 458 `i
--> 456 `i
--> 454 `i
--> 452 `i
--> 451 `i
--> 449 `i
--> 447 `i
--> 445 `i
--> 444 `i
--> 442 `i
--> 440 `i
--> 438 `i
--> 437 `i
--> 435 `i
--> 433 `i
--> 432 `i
--> 430 `i
--> 428 `i
--> 427 `i
--> 425 `i
--> 424 `i
--> 422 `i
--> 420 `i
--> 419 `i
--> 417 `i
--> 416 `i
--> 414 `i
--> 413 `i
--> 411 `i
--> 410 `i
--> 408 `i
--> 407 `i
--> 405 `i
--> 404 `i
--> 402 `i
--> 401 `i
--> 400 `i
--> 398 `i
--> 397 `i
--> 395 `i
--> 394 `i
--> 393 `i
--> 391 `i
--> 390 `i
--> 389 `i
--> 387 `i
--> 386 `i
--> 385 `i
--> 383 `i
--> 382 `i
--> 381 `i
--> 379 `i
--> 378 `i
--> 377 `i
--> 376 `i
--> 374 `i
--> 373 `i
--> 372 `i
--> 371 `i
--> 369 `i
--> 368 `i
--> 367 `i
--> 366 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
 ..
 ]
-[; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
+[; ;constants.h: 115: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 "116
+[v _sinArray `d ~T0 @X0 -> 0 `x e ]
+[i _sinArray
+:U ..
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+..
+]
+[; ;constants.h: 116: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"118
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 116: int symmetry = 180;
+[; ;constants.h: 118: int symmetry = 180;
 [; ;preset_programming.h: 25: void setDoublePressState(int);
 [; ;preset_programming.h: 26: void setPresetDisplay(char);
 [; ;preset_programming.h: 27: void setExpressionDisplay(char);

@@ -23,10 +23,12 @@
 /******************************************************************************/
 signed int mod_value = 0;
 int mod_counter = 0;
+long test_timer = 0;
 
 void interrupt isr(void) {
     int tmpSubDelay;
 
+    
     extern volatile long timer;
     extern volatile long sub_timer;
     extern volatile long tap_timer;
@@ -42,13 +44,17 @@ void interrupt isr(void) {
     
     
     if (INTCONbits.TMR0IF == 1) {
+        test_timer++;
         tmpSubDelay = delay_time;
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
         double_timer++;
-        test_timer++;
+
+
+        
+        
         if (feedback_start == 1) {
             feedback_timer++;
             if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
@@ -78,12 +84,14 @@ void interrupt isr(void) {
                 LED_tap_A = 1;  
             //}
             timer = 0;
-            if (reset_sub_delay == 1) {
+            
+            if (reset_sub_delay == 1 || modulation_changed == 1) {
                 //Sync the delay to the led
-                CCPR1 = delay_counter;
+    //            CCPR1 = delay_counter;
                 
                 //Sync the modulation to the delay
                 mod_counter = 0;
+                modulation_changed = 0;
                 mod_timer = mod_delay_time;
                 
                 reset_sub_delay = 0;
@@ -141,46 +149,56 @@ void interrupt isr(void) {
     //  6) reset timer
     //--------------------------------------------------
 
+
     
     if (mod_timer >= mod_delay_time) {        
        mod_timer = 0;
-
+       
+             
        
        if (mod_counter >= 60) {
             mod_counter = 0;
-        } 
+            test_timer = 0;
+            LED_tap_Aux = 1;
+        } else {
+            LED_tap_Aux = 0;
+        }
+       
+
+       
        chorus = 0;
         switch (bottom_push_state) {
             case 1:  //Sin
-                mod_value = modSin(6*mod_counter, symmetry); // (int)modSin[mod_counter];
+                mod_value = modSin(6*mod_counter, symmetry); 
                 break;
             case 2:  //tri
-                mod_value = modTri(6*mod_counter, symmetry); //(int)modTri[mod_counter];
+                mod_value = modTri(6*mod_counter, symmetry); 
                 break;
             case 3:  //Square
-                modSquare(6*mod_counter, symmetry);
-                /*if (mod_counter < 31) {
-                    mod_value = 100; //mod4[mod_counter];
-                } else {
-                    mod_value = -100;
-                }*/
+                mod_value = modSquare(6*mod_counter, symmetry);
                 break;
             case 4: //Saw
-                mod_value =  modSaw(6*mod_counter, symmetry); //(int)modSaw[mod_counter];
+                mod_value =  modSaw(6*mod_counter, symmetry); 
                 break;
             case 5:  //Reverse Saw
-                mod_value = modSawRev(6*mod_counter, symmetry); //(int)modRevSaw[mod_counter];              
+                mod_value = modSawRev(6*mod_counter, symmetry);            
                 break;
             default:
                 mod_value = 0;
                 break;
         }
-
+        /*if (mod_value > 90) {
+            LED_bypass_Aux = 1;
+        } else {
+            LED_bypass_Aux = 0;
+        }*/
+        
         mod_value = modulation(mod_value, adjusted_pot_value);
-        CCPR3 = mod_value / 2;
-        mod_timer = 0;
+        CCPR3 =  mod_value / 2;
         mod_counter++;
 
+        
+        
     }
 
 

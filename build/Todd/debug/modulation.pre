@@ -1,5 +1,5 @@
 
-# 1 "MIDI.c"
+# 1 "modulation.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4884,6 +4884,34 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
 
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h"
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+
 # 19 "system.h"
 void ConfigureOscillator(void);
 void wait_ms(uint16_t);
@@ -4914,7 +4942,7 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 58 "constants.h"
+# 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t feedback_timer = 0;
@@ -4940,13 +4968,14 @@ uint8_t preset_blink = 0;
 int blink_delay = 100;
 
 int top_push_state = 6;
-int bottom_push_state = 6;
+int bottom_push_state = 1;
 
 uint16_t myBuf[32];
 
-int delay_time_changed = 1;
-int reset_sub_delay = 0;
-int adjust_sub_delay = 0;
+char modulation_changed = 0;
+char delay_time_changed = 1;
+char reset_sub_delay = 0;
+char adjust_sub_delay = 0;
 
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -4956,48 +4985,111 @@ int debounce_mode1 = 0;
 int debounce_mode2 = 0;
 
 volatile long tap_timer = 0;
-volatile long test_timer = 0;
 volatile long double_timer = 0;
 
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
 
-uint8_t switchBypass_state = -1;
-uint8_t switchTap_state = -1;
-volatile uint8_t longTap_state = -1;
-volatile uint8_t feedback_state = -1;
+char switchBypass_state = -1;
+char switchTap_state = -1;
+volatile char longTap_state = -1;
+volatile char feedback_state = -1;
 
 char expSwitchState = -1;
 
 char presetModeCnst = 1;
 char expressModeCnst = 2;
 
-int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237, 1223, 1210, 1197, 1185, 1172, 1160, 1149, 1137, 1126, 1114, 1104, 1093, 1082, 1072, 1062, 1052, 1042, 1033, 1023, 1014, 1005, 996, 988, 979, 971, 962, 954, 946, 938, 930, 923, 915, 908, 901, 894, 887, 880, 873, 866, 860, 853, 847, 840, 834, 828, 822, 816, 810, 804, 799, 793, 787, 782, 777, 771, 766, 761, 756, 751, 746, 741, 736, 731, 727, 722, 717, 713, 708, 704, 700, 695, 691, 687, 683, 678, 674, 670, 666, 663, 659, 655, 651, 647, 644, 640, 636, 633, 629, 626, 622, 619, 615, 612, 609, 606, 602, 599, 596, 593, 590, 587, 584, 581, 578, 575, 572, 569, 566, 563, 560, 558, 555, 552, 549, 547, 544, 542, 539, 536, 534, 531, 529, 526, 524, 522, 519, 517, 514, 512, 510, 507, 505, 503, 501, 498, 496, 494, 492, 490, 488, 486, 483, 481, 479, 477, 475, 473, 471, 469, 467, 466, 464, 462, 460, 458, 456, 454, 452, 451, 449, 447, 445, 444, 442, 440, 438, 437, 435, 433, 432, 430, 428, 427, 425, 424, 422, 420, 419, 417, 416, 414, 413, 411, 410, 408, 407, 405, 404, 402, 401, 400, 398, 397, 395, 394, 393, 391, 390, 389, 387, 386, 385, 383, 382, 381, 379, 378, 377, 376, 374, 373, 372, 371, 369, 368, 367, 366};
 
-# 29 "MIDI.h"
-char UART_Init(const long int) ;
-void InitializeMIDI(void);
+int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-# 16 "MIDI.c"
-char UART_Init(const long int baudrate) {
-unsigned int x;
-x = (16000000 - baudrate * 64) / (baudrate * 64);
-if (x > 255)
-{
-x = (16000000 - baudrate * 16) / (baudrate * 16);
-BRGH = 1;
+int symmetry = 180;
+
+# 25 "modulation.h"
+void updateModulationArray(void);
+void calcSinArray(void);
+
+int modSin(double, double);
+int modTri(double, double);
+int modSaw(double, double);
+int modSawRev(double, double);
+int modSquare(double, double);
+
+# 15 "modulation.c"
+void calcSinArray(void) {
+for (char iAngle = 0; iAngle < 120; iAngle++) {
+double tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
+tmpVal = sin(tmpVal);
+sinArray[iAngle] = tmpVal;
 }
-if (x < 256) {
-SPBRG = x;
-SYNC = 0;
-SPEN = 1;
-TRISC7 = 1;
-TRISC6 = 1;
-CREN = 1;
-TXEN = 1;
-return 1;
+char x = 1;
 }
-return 0;
+
+# 52
+int modSin(double angle, double inflection) {
+double period = 1.0;
+double shift = 0.0;
+
+if(angle<=inflection) {
+period = 180.0/inflection;
+} else {
+shift = -(360-inflection*2)*(180/(360-inflection));
+period = 180/(360-inflection);
+
+}
+double tmpVal = (period*angle-shift) /3;
+tmpVal = sinArray[(int)(tmpVal)];
+return (int)(100.0 * tmpVal);
+}
+
+int modTri(double angle, double inflection) {
+double period = 1.0;
+double shift = 0;
+
+if(angle<=inflection) {
+period = 180.0/inflection;
+} else {
+shift = -(360-inflection*2)*(180/(360-inflection));
+period = 180/(360-inflection);
+
+}
+double tmpVal = (period*angle-shift) ;
+if (tmpVal > 270) {
+tmpVal = tmpVal - 360.0;
+} else if (tmpVal > 90) {
+tmpVal = 180 - tmpVal;
+}
+tmpVal = tmpVal * 10/9;
+
+return (int)(tmpVal);
+}
+
+
+int modSaw(double angle, double inflection) {
+double period = 1.0;
+double shift = 0;
+
+if(angle<=inflection) {
+period = 180.0/inflection;
+} else {
+shift = -(360-inflection*2)*(180/(360-inflection)) + 360;
+period = 180/(360-inflection);
+}
+
+
+int mod = (int)((period*angle-shift)*5/9);
+return mod;
+}
+
+int modSawRev(double angle, double inflection) {
+return -1 * modSaw(angle, inflection);
+}
+
+
+
+int modSquare(double angle, double inflection) {
+return (angle <= inflection) ? 100 : -100;
 }
 

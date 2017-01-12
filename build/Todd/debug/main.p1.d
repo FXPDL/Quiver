@@ -5,6 +5,7 @@ usart_pic16.h  \
 SwitchBypass.h  \
 memory.h  \
 tactiles.h  \
+modulation.h  \
 user.h  \
 system.h  \
 constants.h  \

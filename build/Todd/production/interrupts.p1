@@ -18,8 +18,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S115 . . ]
 "2460
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
-"5213
-[v _CCPR1 `Vus ~T0 @X0 0 e@657 ]
 "22 system.h
 [v _set_leds_top `(v ~T0 @X0 0 ef2`i`i ]
 "542 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
@@ -30,15 +28,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S33 . . ]
 "553
 [v _PORTCbits `VS33 ~T0 @X0 0 e@14 ]
-"41 modulation.h
+"28 modulation.h
 [v _modSin `(i ~T0 @X0 0 ef2`d`d ]
-"42
+"29
 [v _modTri `(i ~T0 @X0 0 ef2`d`d ]
-"45
+"32
 [v _modSquare `(i ~T0 @X0 0 ef2`d`d ]
-"43
+"30
 [v _modSaw `(i ~T0 @X0 0 ef2`d`d ]
-"44
+"31
 [v _modSawRev `(i ~T0 @X0 0 ef2`d`d ]
 "21 user.h
 [v _modulation `(l ~T0 @X0 0 ef2`l`l ]
@@ -3771,31 +3769,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 "81
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
--> 6 `i
+-> 1 `i
 ]
-[; ;constants.h: 81: int bottom_push_state = 6;
+[; ;constants.h: 81: int bottom_push_state = 1;
 "83
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
 [; ;constants.h: 83: uint16_t myBuf[32];
 "85
-[v _delay_time_changed `i ~T0 @X0 1 e ]
-[i _delay_time_changed
--> 1 `i
+[v _modulation_changed `uc ~T0 @X0 1 e ]
+[i _modulation_changed
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 85: int delay_time_changed = 1;
+[; ;constants.h: 85: char modulation_changed = 0;
 "86
-[v _reset_sub_delay `i ~T0 @X0 1 e ]
-[i _reset_sub_delay
--> 0 `i
+[v _delay_time_changed `uc ~T0 @X0 1 e ]
+[i _delay_time_changed
+-> -> 1 `i `uc
 ]
-[; ;constants.h: 86: int reset_sub_delay = 0;
+[; ;constants.h: 86: char delay_time_changed = 1;
 "87
-[v _adjust_sub_delay `i ~T0 @X0 1 e ]
-[i _adjust_sub_delay
--> 0 `i
+[v _reset_sub_delay `uc ~T0 @X0 1 e ]
+[i _reset_sub_delay
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 87: int adjust_sub_delay = 0;
-"89
+[; ;constants.h: 87: char reset_sub_delay = 0;
+"88
+[v _adjust_sub_delay `uc ~T0 @X0 1 e ]
+[i _adjust_sub_delay
+-> -> 0 `i `uc
+]
+[; ;constants.h: 88: char adjust_sub_delay = 0;
+"90
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3812,43 +3816,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
+[; ;constants.h: 90: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"92
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
+[; ;constants.h: 92: int debounce_count = 0;
+"93
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
+[; ;constants.h: 93: int debounce_bypass = 0;
+"94
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
+[; ;constants.h: 94: int debounce_mode1 = 0;
+"95
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
+[; ;constants.h: 95: int debounce_mode2 = 0;
+"97
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 97: volatile long test_timer = 0;
+[; ;constants.h: 97: volatile long tap_timer = 0;
 "98
 [v _double_timer `Vl ~T0 @X0 1 e ]
 [i _double_timer
@@ -3878,25 +3876,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 104: uint8_t switchBypass_state = -1;
+[; ;constants.h: 104: char switchBypass_state = -1;
 "105
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 105: uint8_t switchTap_state = -1;
+[; ;constants.h: 105: char switchTap_state = -1;
 "106
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: volatile uint8_t longTap_state = -1;
+[; ;constants.h: 106: volatile char longTap_state = -1;
 "107
 [v _feedback_state `Vuc ~T0 @X0 1 e ]
 [i _feedback_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: volatile uint8_t feedback_state = -1;
+[; ;constants.h: 107: volatile char feedback_state = -1;
 "109
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
@@ -3915,274 +3913,209 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ]
 [; ;constants.h: 112: char expressModeCnst = 2;
-"114
-[v _delayArray `i ~T0 @X0 -> 260 `i e ]
-[i _delayArray
+"115
+[v _modArray `i ~T0 @X0 -> 0 `x e ]
+[i _modArray
 :U ..
--> 2082 `i
--> 2044 `i
--> 2008 `i
--> 1973 `i
--> 1939 `i
--> 1906 `i
--> 1874 `i
--> 1844 `i
--> 1814 `i
--> 1785 `i
--> 1757 `i
--> 1730 `i
--> 1704 `i
--> 1679 `i
--> 1654 `i
--> 1630 `i
--> 1607 `i
--> 1584 `i
--> 1562 `i
--> 1541 `i
--> 1520 `i
--> 1500 `i
--> 1480 `i
--> 1461 `i
--> 1443 `i
--> 1424 `i
--> 1407 `i
--> 1389 `i
--> 1372 `i
--> 1356 `i
--> 1340 `i
--> 1324 `i
--> 1309 `i
--> 1294 `i
--> 1279 `i
--> 1265 `i
--> 1250 `i
--> 1237 `i
--> 1223 `i
--> 1210 `i
--> 1197 `i
--> 1185 `i
--> 1172 `i
--> 1160 `i
--> 1149 `i
--> 1137 `i
--> 1126 `i
--> 1114 `i
--> 1104 `i
--> 1093 `i
--> 1082 `i
--> 1072 `i
--> 1062 `i
--> 1052 `i
--> 1042 `i
--> 1033 `i
--> 1023 `i
--> 1014 `i
--> 1005 `i
--> 996 `i
--> 988 `i
--> 979 `i
--> 971 `i
--> 962 `i
--> 954 `i
--> 946 `i
--> 938 `i
--> 930 `i
--> 923 `i
--> 915 `i
--> 908 `i
--> 901 `i
--> 894 `i
--> 887 `i
--> 880 `i
--> 873 `i
--> 866 `i
--> 860 `i
--> 853 `i
--> 847 `i
--> 840 `i
--> 834 `i
--> 828 `i
--> 822 `i
--> 816 `i
--> 810 `i
--> 804 `i
--> 799 `i
--> 793 `i
--> 787 `i
--> 782 `i
--> 777 `i
--> 771 `i
--> 766 `i
--> 761 `i
--> 756 `i
--> 751 `i
--> 746 `i
--> 741 `i
--> 736 `i
--> 731 `i
--> 727 `i
--> 722 `i
--> 717 `i
--> 713 `i
--> 708 `i
--> 704 `i
--> 700 `i
--> 695 `i
--> 691 `i
--> 687 `i
--> 683 `i
--> 678 `i
--> 674 `i
--> 670 `i
--> 666 `i
--> 663 `i
--> 659 `i
--> 655 `i
--> 651 `i
--> 647 `i
--> 644 `i
--> 640 `i
--> 636 `i
--> 633 `i
--> 629 `i
--> 626 `i
--> 622 `i
--> 619 `i
--> 615 `i
--> 612 `i
--> 609 `i
--> 606 `i
--> 602 `i
--> 599 `i
--> 596 `i
--> 593 `i
--> 590 `i
--> 587 `i
--> 584 `i
--> 581 `i
--> 578 `i
--> 575 `i
--> 572 `i
--> 569 `i
--> 566 `i
--> 563 `i
--> 560 `i
--> 558 `i
--> 555 `i
--> 552 `i
--> 549 `i
--> 547 `i
--> 544 `i
--> 542 `i
--> 539 `i
--> 536 `i
--> 534 `i
--> 531 `i
--> 529 `i
--> 526 `i
--> 524 `i
--> 522 `i
--> 519 `i
--> 517 `i
--> 514 `i
--> 512 `i
--> 510 `i
--> 507 `i
--> 505 `i
--> 503 `i
--> 501 `i
--> 498 `i
--> 496 `i
--> 494 `i
--> 492 `i
--> 490 `i
--> 488 `i
--> 486 `i
--> 483 `i
--> 481 `i
--> 479 `i
--> 477 `i
--> 475 `i
--> 473 `i
--> 471 `i
--> 469 `i
--> 467 `i
--> 466 `i
--> 464 `i
--> 462 `i
--> 460 `i
--> 458 `i
--> 456 `i
--> 454 `i
--> 452 `i
--> 451 `i
--> 449 `i
--> 447 `i
--> 445 `i
--> 444 `i
--> 442 `i
--> 440 `i
--> 438 `i
--> 437 `i
--> 435 `i
--> 433 `i
--> 432 `i
--> 430 `i
--> 428 `i
--> 427 `i
--> 425 `i
--> 424 `i
--> 422 `i
--> 420 `i
--> 419 `i
--> 417 `i
--> 416 `i
--> 414 `i
--> 413 `i
--> 411 `i
--> 410 `i
--> 408 `i
--> 407 `i
--> 405 `i
--> 404 `i
--> 402 `i
--> 401 `i
--> 400 `i
--> 398 `i
--> 397 `i
--> 395 `i
--> 394 `i
--> 393 `i
--> 391 `i
--> 390 `i
--> 389 `i
--> 387 `i
--> 386 `i
--> 385 `i
--> 383 `i
--> 382 `i
--> 381 `i
--> 379 `i
--> 378 `i
--> 377 `i
--> 376 `i
--> 374 `i
--> 373 `i
--> 372 `i
--> 371 `i
--> 369 `i
--> 368 `i
--> 367 `i
--> 366 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
 ..
 ]
-[; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
+[; ;constants.h: 115: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 "116
+[v _sinArray `d ~T0 @X0 -> 0 `x e ]
+[i _sinArray
+:U ..
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+..
+]
+[; ;constants.h: 116: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"118
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 116: int symmetry = 180;
+[; ;constants.h: 118: int symmetry = 180;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4195,13 +4128,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 23: int scaleiA100kPot(double);
 [; ;user.h: 24: int scaleA10kPot(double);
 [; ;user.h: 25: int scaleiA10kPot(double);
-[; ;modulation.h: 38: double cot(double);
-[; ;modulation.h: 39: int sign(double);
-[; ;modulation.h: 41: int modSin(double, double);
-[; ;modulation.h: 42: int modTri(double, double);
-[; ;modulation.h: 43: int modSaw(double, double);
-[; ;modulation.h: 44: int modSawRev(double, double);
-[; ;modulation.h: 45: int modSquare(double, double);
+[; ;modulation.h: 25: void updateModulationArray(void);
+[; ;modulation.h: 26: void calcSinArray(void);
+[; ;modulation.h: 28: int modSin(double, double);
+[; ;modulation.h: 29: int modTri(double, double);
+[; ;modulation.h: 30: int modSaw(double, double);
+[; ;modulation.h: 31: int modSawRev(double, double);
+[; ;modulation.h: 32: int modSquare(double, double);
 "42 usart_pic16.h
 [v _URBuff `Vuc ~T0 @X0 -> 64 `i e ]
 [; ;usart_pic16.h: 42: volatile char URBuff[64];
@@ -4222,13 +4155,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart_pic16.h: 54: void USARTGotoNewLine();
 [; ;usart_pic16.h: 55: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;usart_pic16.h: 56: void USARTFlushBuffer();
-[; ;modulation.h: 38: double cot(double);
-[; ;modulation.h: 39: int sign(double);
-[; ;modulation.h: 41: int modSin(double, double);
-[; ;modulation.h: 42: int modTri(double, double);
-[; ;modulation.h: 43: int modSaw(double, double);
-[; ;modulation.h: 44: int modSawRev(double, double);
-[; ;modulation.h: 45: int modSquare(double, double);
+[; ;modulation.h: 25: void updateModulationArray(void);
+[; ;modulation.h: 26: void calcSinArray(void);
+[; ;modulation.h: 28: int modSin(double, double);
+[; ;modulation.h: 29: int modTri(double, double);
+[; ;modulation.h: 30: int modSaw(double, double);
+[; ;modulation.h: 31: int modSawRev(double, double);
+[; ;modulation.h: 32: int modSquare(double, double);
 "24 interrupts.c
 [v _mod_value `i ~T0 @X0 1 e ]
 [i _mod_value
@@ -4241,444 +4174,462 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;interrupts.c: 25: int mod_counter = 0;
-[v F3672 `(v ~T0 @X0 1 tf ]
-"27
-[v _isr `IF3672 ~T0 @X0 1 e ]
+"26
+[v _test_timer `l ~T0 @X0 1 e ]
+[i _test_timer
+-> -> 0 `i `l
+]
+[; ;interrupts.c: 26: long test_timer = 0;
+[v F3674 `(v ~T0 @X0 1 tf ]
+"28
+[v _isr `IF3674 ~T0 @X0 1 e ]
 {
-[; ;interrupts.c: 27: void interrupt isr(void) {
+[; ;interrupts.c: 28: void interrupt isr(void) {
 [e :U _isr ]
 [f ]
-"28
+"29
 [v _tmpSubDelay `i ~T0 @X0 1 a ]
 [v _timer `Vl ~T0 @X0 0 e ]
 [v _sub_timer `Vl ~T0 @X0 0 e ]
 [v _tap_timer `Vl ~T0 @X0 0 e ]
-"33
+"35
 [v _adjusted_pot_value `i ~T0 @X0 0 e ]
-"34
+"36
 [v _mod_delay_time `i ~T0 @X0 0 e ]
 [v _baseline_delay_time `Vl ~T0 @X0 0 e ]
 [v _top_push_state `i ~T0 @X0 0 e ]
 [v _feedback_start `uc ~T0 @X0 0 e ]
-"40
+"42
 [v _mod_timer `Vl ~T0 @X0 0 e ]
-"41
+"43
 [v _delay_time `Vl ~T0 @X0 0 e ]
-[; ;interrupts.c: 28: int tmpSubDelay;
-[; ;interrupts.c: 30: extern volatile long timer;
-[; ;interrupts.c: 31: extern volatile long sub_timer;
-[; ;interrupts.c: 32: extern volatile long tap_timer;
-[; ;interrupts.c: 33: extern signed int adjusted_pot_value;
-[; ;interrupts.c: 34: extern int mod_delay_time;
-[; ;interrupts.c: 36: extern volatile long baseline_delay_time;
-[; ;interrupts.c: 38: extern int top_push_state;
-[; ;interrupts.c: 39: extern uint8_t feedback_start;
-[; ;interrupts.c: 40: extern volatile long mod_timer;
-[; ;interrupts.c: 41: extern volatile long delay_time;
-[; ;interrupts.c: 44: if (INTCONbits.TMR0IF == 1) {
-"44
+[; ;interrupts.c: 29: int tmpSubDelay;
+[; ;interrupts.c: 32: extern volatile long timer;
+[; ;interrupts.c: 33: extern volatile long sub_timer;
+[; ;interrupts.c: 34: extern volatile long tap_timer;
+[; ;interrupts.c: 35: extern signed int adjusted_pot_value;
+[; ;interrupts.c: 36: extern int mod_delay_time;
+[; ;interrupts.c: 38: extern volatile long baseline_delay_time;
+[; ;interrupts.c: 40: extern int top_push_state;
+[; ;interrupts.c: 41: extern uint8_t feedback_start;
+[; ;interrupts.c: 42: extern volatile long mod_timer;
+[; ;interrupts.c: 43: extern volatile long delay_time;
+[; ;interrupts.c: 46: if (INTCONbits.TMR0IF == 1) {
+"46
 [e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 461  ]
 {
-[; ;interrupts.c: 45: tmpSubDelay = delay_time;
-"45
-[e = _tmpSubDelay -> _delay_time `i ]
-[; ;interrupts.c: 46: timer = timer + 1;
-"46
-[e = _timer + _timer -> -> 1 `i `l ]
-[; ;interrupts.c: 47: sub_timer = sub_timer + 1;
+[; ;interrupts.c: 47: test_timer++;
 "47
-[e = _sub_timer + _sub_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 48: tap_timer = tap_timer + 1;
-"48
-[e = _tap_timer + _tap_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 49: mod_timer = mod_timer + 1;
-"49
-[e = _mod_timer + _mod_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 50: double_timer++;
-"50
-[e ++ _double_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 51: test_timer++;
-"51
 [e ++ _test_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 52: if (feedback_start == 1) {
+[; ;interrupts.c: 48: tmpSubDelay = delay_time;
+"48
+[e = _tmpSubDelay -> _delay_time `i ]
+[; ;interrupts.c: 49: timer = timer + 1;
+"49
+[e = _timer + _timer -> -> 1 `i `l ]
+[; ;interrupts.c: 50: sub_timer = sub_timer + 1;
+"50
+[e = _sub_timer + _sub_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 51: tap_timer = tap_timer + 1;
+"51
+[e = _tap_timer + _tap_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 52: mod_timer = mod_timer + 1;
 "52
+[e = _mod_timer + _mod_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 53: double_timer++;
+"53
+[e ++ _double_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 58: if (feedback_start == 1) {
+"58
 [e $ ! == -> _feedback_start `i -> 1 `i 462  ]
 {
-[; ;interrupts.c: 53: feedback_timer++;
-"53
+[; ;interrupts.c: 59: feedback_timer++;
+"59
 [e ++ _feedback_timer -> -> 1 `i `ui ]
-[; ;interrupts.c: 54: if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
-"54
+[; ;interrupts.c: 60: if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
+"60
 [e $ ! > _feedback_timer _long_press_limit 463  ]
 {
 [e = _feedback_timer _long_press_limit ]
 }
 [e :U 463 ]
-"55
-}
-[e :U 462 ]
-[; ;interrupts.c: 55: }
-[; ;interrupts.c: 56: if (longTap_start == 1) {
-"56
-[e $ ! == -> _longTap_start `i -> 1 `i 464  ]
-{
-[; ;interrupts.c: 57: longTap_timer++;
-"57
-[e ++ _longTap_timer -> -> 1 `i `ui ]
-[; ;interrupts.c: 58: if (longTap_timer > long_press_limit) {
-"58
-[e $ ! > _longTap_timer _long_press_limit 465  ]
-{
-[; ;interrupts.c: 59: longTap_timer = long_press_limit;
-"59
-[e = _longTap_timer _long_press_limit ]
-"60
-}
-[e :U 465 ]
 "61
 }
-[e :U 464 ]
-[; ;interrupts.c: 60: }
+[e :U 462 ]
 [; ;interrupts.c: 61: }
-[; ;interrupts.c: 62: INTCONbits.TMR0IF = 0;
+[; ;interrupts.c: 62: if (longTap_start == 1) {
 "62
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 64: if (adjust_sub_delay == 1) {
+[e $ ! == -> _longTap_start `i -> 1 `i 464  ]
+{
+[; ;interrupts.c: 63: longTap_timer++;
+"63
+[e ++ _longTap_timer -> -> 1 `i `ui ]
+[; ;interrupts.c: 64: if (longTap_timer > long_press_limit) {
 "64
-[e $ ! == _adjust_sub_delay -> 1 `i 466  ]
+[e $ ! > _longTap_timer _long_press_limit 465  ]
 {
-[; ;interrupts.c: 65: if ((sub_timer >= delay_time) && ((baseline_delay_time - timer) < 4)) {
+[; ;interrupts.c: 65: longTap_timer = long_press_limit;
 "65
-[e $ ! && >= _sub_timer _delay_time < - _baseline_delay_time _timer -> -> 4 `i `l 467  ]
-{
-[; ;interrupts.c: 66: tmpSubDelay = sub_timer + (baseline_delay_time- timer);
+[e = _longTap_timer _long_press_limit ]
 "66
-[e = _tmpSubDelay -> + _sub_timer - _baseline_delay_time _timer `i ]
+}
+[e :U 465 ]
 "67
 }
-[e :U 467 ]
+[e :U 464 ]
+[; ;interrupts.c: 66: }
+[; ;interrupts.c: 67: }
+[; ;interrupts.c: 68: INTCONbits.TMR0IF = 0;
 "68
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;interrupts.c: 70: if (adjust_sub_delay == 1) {
+"70
+[e $ ! == -> _adjust_sub_delay `i -> 1 `i 466  ]
+{
+[; ;interrupts.c: 71: if ((sub_timer >= delay_time) && ((baseline_delay_time - timer) < 4)) {
+"71
+[e $ ! && >= _sub_timer _delay_time < - _baseline_delay_time _timer -> -> 4 `i `l 467  ]
+{
+[; ;interrupts.c: 72: tmpSubDelay = sub_timer + (baseline_delay_time- timer);
+"72
+[e = _tmpSubDelay -> + _sub_timer - _baseline_delay_time _timer `i ]
+"73
+}
+[e :U 467 ]
+"74
 }
 [e :U 466 ]
-"69
+"75
 }
 [e :U 461 ]
-[; ;interrupts.c: 67: }
-[; ;interrupts.c: 68: }
-[; ;interrupts.c: 69: }
-[; ;interrupts.c: 72: if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
-"72
+[; ;interrupts.c: 73: }
+[; ;interrupts.c: 74: }
+[; ;interrupts.c: 75: }
+[; ;interrupts.c: 78: if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
+"78
 [e $ ! && && < -> _longTap_state `i -> 1 `i < -> _doubleTap_state `i -> 1 `i < -> _presetSaveMode `i -> 1 `i 468  ]
 {
-[; ;interrupts.c: 75: if (timer >= baseline_delay_time) {
-"75
+[; ;interrupts.c: 81: if (timer >= baseline_delay_time) {
+"81
 [e $ ! >= _timer _baseline_delay_time 469  ]
 {
-[; ;interrupts.c: 78: LATBbits.LATB4 = 1;
-"78
+[; ;interrupts.c: 84: LATBbits.LATB4 = 1;
+"84
 [e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
-[; ;interrupts.c: 80: timer = 0;
-"80
-[e = _timer -> -> 0 `i `l ]
-[; ;interrupts.c: 81: if (reset_sub_delay == 1) {
-"81
-[e $ ! == _reset_sub_delay -> 1 `i 470  ]
-{
-[; ;interrupts.c: 83: CCPR1 = delay_counter;
-"83
-[e = _CCPR1 -> _delay_counter `us ]
-[; ;interrupts.c: 86: mod_counter = 0;
+[; ;interrupts.c: 86: timer = 0;
 "86
-[e = _mod_counter -> 0 `i ]
-[; ;interrupts.c: 87: mod_timer = mod_delay_time;
-"87
-[e = _mod_timer -> _mod_delay_time `l ]
-[; ;interrupts.c: 89: reset_sub_delay = 0;
-"89
-[e = _reset_sub_delay -> 0 `i ]
-[; ;interrupts.c: 90: sub_timer = delay_time;
-"90
-[e = _sub_timer _delay_time ]
-"91
-}
-[e :U 470 ]
-"92
-}
-[e :U 469 ]
-[; ;interrupts.c: 91: }
-[; ;interrupts.c: 92: }
-[; ;interrupts.c: 94: if (timer >= 30) {
-"94
-[e $ ! >= _timer -> -> 30 `i `l 471  ]
+[e = _timer -> -> 0 `i `l ]
+[; ;interrupts.c: 88: if (reset_sub_delay == 1 || modulation_changed == 1) {
+"88
+[e $ ! || == -> _reset_sub_delay `i -> 1 `i == -> _modulation_changed `i -> 1 `i 470  ]
 {
-[; ;interrupts.c: 96: LATBbits.LATB4 = 0;
-"96
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 93: mod_counter = 0;
+"93
+[e = _mod_counter -> 0 `i ]
+[; ;interrupts.c: 94: modulation_changed = 0;
+"94
+[e = _modulation_changed -> -> 0 `i `uc ]
+[; ;interrupts.c: 95: mod_timer = mod_delay_time;
+"95
+[e = _mod_timer -> _mod_delay_time `l ]
+[; ;interrupts.c: 97: reset_sub_delay = 0;
+"97
+[e = _reset_sub_delay -> -> 0 `i `uc ]
+[; ;interrupts.c: 98: sub_timer = delay_time;
 "98
-}
-[e :U 471 ]
+[e = _sub_timer _delay_time ]
 "99
 }
-[e :U 468 ]
-[; ;interrupts.c: 98: }
+[e :U 470 ]
+"100
+}
+[e :U 469 ]
 [; ;interrupts.c: 99: }
-[; ;interrupts.c: 102: if (presetSaveMode == 1) {
+[; ;interrupts.c: 100: }
+[; ;interrupts.c: 102: if (timer >= 30) {
 "102
+[e $ ! >= _timer -> -> 30 `i `l 471  ]
+{
+[; ;interrupts.c: 104: LATBbits.LATB4 = 0;
+"104
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+"106
+}
+[e :U 471 ]
+"107
+}
+[e :U 468 ]
+[; ;interrupts.c: 106: }
+[; ;interrupts.c: 107: }
+[; ;interrupts.c: 110: if (presetSaveMode == 1) {
+"110
 [e $ ! == -> _presetSaveMode `i -> 1 `i 472  ]
 {
-[; ;interrupts.c: 105: if (double_timer >= 250) {
-"105
+[; ;interrupts.c: 113: if (double_timer >= 250) {
+"113
 [e $ ! >= _double_timer -> -> 250 `i `l 473  ]
 {
-[; ;interrupts.c: 106: LATBbits.LATB0 = 1;
-"106
+[; ;interrupts.c: 114: LATBbits.LATB0 = 1;
+"114
 [e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 107: double_timer = 0;
-"107
+[; ;interrupts.c: 115: double_timer = 0;
+"115
 [e = _double_timer -> -> 0 `i `l ]
-"109
+"117
 }
 [e :U 473 ]
-[; ;interrupts.c: 109: }
-[; ;interrupts.c: 110: if (double_timer >= 30) {
-"110
+[; ;interrupts.c: 117: }
+[; ;interrupts.c: 118: if (double_timer >= 30) {
+"118
 [e $ ! >= _double_timer -> -> 30 `i `l 474  ]
 {
-[; ;interrupts.c: 112: LATBbits.LATB0 = 0;
-"112
+[; ;interrupts.c: 120: LATBbits.LATB0 = 0;
+"120
 [e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"113
+"121
 }
 [e :U 474 ]
-"114
+"122
 }
 [e :U 472 ]
-[; ;interrupts.c: 113: }
-[; ;interrupts.c: 114: }
-[; ;interrupts.c: 116: if (presetSaveMode < 1 && mode2_state == 0) {
-"116
+[; ;interrupts.c: 121: }
+[; ;interrupts.c: 122: }
+[; ;interrupts.c: 124: if (presetSaveMode < 1 && mode2_state == 0) {
+"124
 [e $ ! && < -> _presetSaveMode `i -> 1 `i == -> _mode2_state `i -> 0 `i 475  ]
 {
-[; ;interrupts.c: 117: if (sub_timer >= tmpSubDelay ) {
-"117
-[e $ ! >= _sub_timer -> _tmpSubDelay `l 476  ]
-{
-[; ;interrupts.c: 118: if (suspend_blink == 0) {
-"118
-[e $ ! == -> _suspend_blink `i -> 0 `i 477  ]
-{
-[; ;interrupts.c: 119: set_leds_top(top_push_state, 1);
-"119
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-"120
-}
-[e :U 477 ]
-[; ;interrupts.c: 120: }
-[; ;interrupts.c: 121: tmpSubDelay = delay_time;
-"121
-[e = _tmpSubDelay -> _delay_time `i ]
-[; ;interrupts.c: 122: sub_timer = 0;
-"122
-[e = _sub_timer -> -> 0 `i `l ]
-"123
-}
-[e :U 476 ]
-[; ;interrupts.c: 123: }
-[; ;interrupts.c: 125: if (sub_timer >= 20) {
+[; ;interrupts.c: 125: if (sub_timer >= tmpSubDelay ) {
 "125
-[e $ ! >= _sub_timer -> -> 20 `i `l 478  ]
+[e $ ! >= _sub_timer -> _tmpSubDelay `l 476  ]
 {
 [; ;interrupts.c: 126: if (suspend_blink == 0) {
 "126
-[e $ ! == -> _suspend_blink `i -> 0 `i 479  ]
+[e $ ! == -> _suspend_blink `i -> 0 `i 477  ]
 {
-[; ;interrupts.c: 127: set_leds_top(top_push_state, 0);
+[; ;interrupts.c: 127: set_leds_top(top_push_state, 1);
 "127
-[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
 "128
 }
-[e :U 479 ]
+[e :U 477 ]
+[; ;interrupts.c: 128: }
+[; ;interrupts.c: 129: tmpSubDelay = delay_time;
 "129
+[e = _tmpSubDelay -> _delay_time `i ]
+[; ;interrupts.c: 130: sub_timer = 0;
+"130
+[e = _sub_timer -> -> 0 `i `l ]
+"131
+}
+[e :U 476 ]
+[; ;interrupts.c: 131: }
+[; ;interrupts.c: 133: if (sub_timer >= 20) {
+"133
+[e $ ! >= _sub_timer -> -> 20 `i `l 478  ]
+{
+[; ;interrupts.c: 134: if (suspend_blink == 0) {
+"134
+[e $ ! == -> _suspend_blink `i -> 0 `i 479  ]
+{
+[; ;interrupts.c: 135: set_leds_top(top_push_state, 0);
+"135
+[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
+"136
+}
+[e :U 479 ]
+"137
 }
 [e :U 478 ]
-"130
+"138
 }
 [e :U 475 ]
-[; ;interrupts.c: 128: }
-[; ;interrupts.c: 129: }
-[; ;interrupts.c: 130: }
-[; ;interrupts.c: 145: if (mod_timer >= mod_delay_time) {
-"145
+[; ;interrupts.c: 136: }
+[; ;interrupts.c: 137: }
+[; ;interrupts.c: 138: }
+[; ;interrupts.c: 154: if (mod_timer >= mod_delay_time) {
+"154
 [e $ ! >= _mod_timer -> _mod_delay_time `l 480  ]
 {
-[; ;interrupts.c: 146: mod_timer = 0;
-"146
+[; ;interrupts.c: 155: mod_timer = 0;
+"155
 [e = _mod_timer -> -> 0 `i `l ]
-[; ;interrupts.c: 149: if (mod_counter >= 60) {
-"149
+[; ;interrupts.c: 159: if (mod_counter >= 60) {
+"159
 [e $ ! >= _mod_counter -> 60 `i 481  ]
 {
-[; ;interrupts.c: 150: mod_counter = 0;
-"150
-[e = _mod_counter -> 0 `i ]
-"151
-}
-[e :U 481 ]
-[; ;interrupts.c: 151: }
-[; ;interrupts.c: 152: PORTCbits.RC4 = 0;
-"152
-[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 153: switch (bottom_push_state) {
-"153
-[e $U 483  ]
-{
-[; ;interrupts.c: 154: case 1:
-"154
-[e :U 484 ]
-[; ;interrupts.c: 155: mod_value = modSin(6*mod_counter, symmetry);
-"155
-[e = _mod_value ( _modSin (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
-[; ;interrupts.c: 156: break;
-"156
-[e $U 482  ]
-[; ;interrupts.c: 157: case 2:
-"157
-[e :U 485 ]
-[; ;interrupts.c: 158: mod_value = modTri(6*mod_counter, symmetry);
-"158
-[e = _mod_value ( _modTri (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
-[; ;interrupts.c: 159: break;
-"159
-[e $U 482  ]
-[; ;interrupts.c: 160: case 3:
+[; ;interrupts.c: 160: mod_counter = 0;
 "160
-[e :U 486 ]
-[; ;interrupts.c: 161: modSquare(6*mod_counter, symmetry);
+[e = _mod_counter -> 0 `i ]
+[; ;interrupts.c: 161: test_timer = 0;
 "161
-[e ( _modSquare (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
-[; ;interrupts.c: 167: break;
-"167
+[e = _test_timer -> -> 0 `i `l ]
+[; ;interrupts.c: 162: LATBbits.LATB0 = 1;
+"162
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+"163
+}
+[; ;interrupts.c: 163: } else {
 [e $U 482  ]
-[; ;interrupts.c: 168: case 4:
-"168
-[e :U 487 ]
-[; ;interrupts.c: 169: mod_value = modSaw(6*mod_counter, symmetry);
+[e :U 481 ]
+{
+[; ;interrupts.c: 164: LATBbits.LATB0 = 0;
+"164
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+"165
+}
+[e :U 482 ]
+[; ;interrupts.c: 165: }
+[; ;interrupts.c: 169: PORTCbits.RC4 = 0;
 "169
-[e = _mod_value ( _modSaw (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
-[; ;interrupts.c: 170: break;
+[e = . . _PORTCbits 0 4 -> -> 0 `i `uc ]
+[; ;interrupts.c: 170: switch (bottom_push_state) {
 "170
-[e $U 482  ]
-[; ;interrupts.c: 171: case 5:
+[e $U 484  ]
+{
+[; ;interrupts.c: 171: case 1:
 "171
-[e :U 488 ]
-[; ;interrupts.c: 172: mod_value = modSawRev(6*mod_counter, symmetry);
+[e :U 485 ]
+[; ;interrupts.c: 172: mod_value = modSin(6*mod_counter, symmetry);
 "172
-[e = _mod_value ( _modSawRev (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[e = _mod_value ( _modSin (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
 [; ;interrupts.c: 173: break;
 "173
-[e $U 482  ]
-[; ;interrupts.c: 174: default:
+[e $U 483  ]
+[; ;interrupts.c: 174: case 2:
 "174
-[e :U 489 ]
-[; ;interrupts.c: 175: mod_value = 0;
+[e :U 486 ]
+[; ;interrupts.c: 175: mod_value = modTri(6*mod_counter, symmetry);
 "175
-[e = _mod_value -> 0 `i ]
+[e = _mod_value ( _modTri (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
 [; ;interrupts.c: 176: break;
 "176
-[e $U 482  ]
+[e $U 483  ]
+[; ;interrupts.c: 177: case 3:
 "177
-}
-[; ;interrupts.c: 177: }
-[e $U 482  ]
-"153
-[e :U 483 ]
-[e [\ _bottom_push_state , $ -> 1 `i 484
- , $ -> 2 `i 485
- , $ -> 3 `i 486
- , $ -> 4 `i 487
- , $ -> 5 `i 488
- 489 ]
-"177
-[e :U 482 ]
-[; ;interrupts.c: 179: mod_value = modulation(mod_value, adjusted_pot_value);
+[e :U 487 ]
+[; ;interrupts.c: 178: mod_value = modSquare(6*mod_counter, symmetry);
+"178
+[e = _mod_value ( _modSquare (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 179: break;
 "179
-[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
-[; ;interrupts.c: 180: CCPR3 = mod_value / 2;
+[e $U 483  ]
+[; ;interrupts.c: 180: case 4:
 "180
-[e = _CCPR3 -> / _mod_value -> 2 `i `us ]
-[; ;interrupts.c: 181: mod_timer = 0;
+[e :U 488 ]
+[; ;interrupts.c: 181: mod_value = modSaw(6*mod_counter, symmetry);
 "181
-[e = _mod_timer -> -> 0 `i `l ]
-[; ;interrupts.c: 182: mod_counter++;
+[e = _mod_value ( _modSaw (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 182: break;
 "182
-[e ++ _mod_counter -> 1 `i ]
+[e $U 483  ]
+[; ;interrupts.c: 183: case 5:
+"183
+[e :U 489 ]
+[; ;interrupts.c: 184: mod_value = modSawRev(6*mod_counter, symmetry);
 "184
+[e = _mod_value ( _modSawRev (2 , -> * -> 6 `i _mod_counter `d -> _symmetry `d ]
+[; ;interrupts.c: 185: break;
+"185
+[e $U 483  ]
+[; ;interrupts.c: 186: default:
+"186
+[e :U 490 ]
+[; ;interrupts.c: 187: mod_value = 0;
+"187
+[e = _mod_value -> 0 `i ]
+[; ;interrupts.c: 188: break;
+"188
+[e $U 483  ]
+"189
+}
+[; ;interrupts.c: 189: }
+[e $U 483  ]
+"170
+[e :U 484 ]
+[e [\ _bottom_push_state , $ -> 1 `i 485
+ , $ -> 2 `i 486
+ , $ -> 3 `i 487
+ , $ -> 4 `i 488
+ , $ -> 5 `i 489
+ 490 ]
+"189
+[e :U 483 ]
+[; ;interrupts.c: 196: mod_value = modulation(mod_value, adjusted_pot_value);
+"196
+[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
+[; ;interrupts.c: 197: CCPR3 = mod_value / 2;
+"197
+[e = _CCPR3 -> / _mod_value -> 2 `i `us ]
+[; ;interrupts.c: 198: mod_counter++;
+"198
+[e ++ _mod_counter -> 1 `i ]
+"202
 }
 [e :U 480 ]
-[; ;interrupts.c: 184: }
-[; ;interrupts.c: 188: if (preset_programmning_on == 1) {
-"188
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 490  ]
+[; ;interrupts.c: 202: }
+[; ;interrupts.c: 206: if (preset_programmning_on == 1) {
+"206
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 491  ]
 {
-[; ;interrupts.c: 189: preset_blink++;
-"189
+[; ;interrupts.c: 207: preset_blink++;
+"207
 [e ++ _preset_blink -> -> 1 `i `uc ]
-[; ;interrupts.c: 191: if (preset_blink >= blink_delay) {
-"191
-[e $ ! >= -> _preset_blink `i _blink_delay 491  ]
+[; ;interrupts.c: 209: if (preset_blink >= blink_delay) {
+"209
+[e $ ! >= -> _preset_blink `i _blink_delay 492  ]
 {
-[; ;interrupts.c: 192: LATBbits.LATB1 = 1;
-"192
+[; ;interrupts.c: 210: LATBbits.LATB1 = 1;
+"210
 [e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 193: if (preset_blink > blink_delay*2) {
-"193
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 492  ]
+[; ;interrupts.c: 211: if (preset_blink > blink_delay*2) {
+"211
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 493  ]
 {
-[; ;interrupts.c: 194: preset_blink = 0;
-"194
+[; ;interrupts.c: 212: preset_blink = 0;
+"212
 [e = _preset_blink -> -> 0 `i `uc ]
-"195
-}
-[e :U 492 ]
-"197
-}
-[; ;interrupts.c: 195: }
-[; ;interrupts.c: 197: } else {
-[e $U 493  ]
-[e :U 491 ]
-{
-[; ;interrupts.c: 198: LATBbits.LATB1 = 0;
-"198
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"199
+"213
 }
 [e :U 493 ]
-"201
+"215
 }
-[; ;interrupts.c: 199: }
-[; ;interrupts.c: 201: } else {
+[; ;interrupts.c: 213: }
+[; ;interrupts.c: 215: } else {
 [e $U 494  ]
-[e :U 490 ]
+[e :U 492 ]
 {
-[; ;interrupts.c: 202: if (preset_blink > 0) {
-"202
-[e $ ! > -> _preset_blink `i -> 0 `i 495  ]
-{
-[; ;interrupts.c: 203: preset_blink = 0;
-"203
-[e = _preset_blink -> -> 0 `i `uc ]
-[; ;interrupts.c: 204: LATBbits.LATB1 = 0;
-"204
+[; ;interrupts.c: 216: LATBbits.LATB1 = 0;
+"216
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"205
-}
-[e :U 495 ]
-"207
+"217
 }
 [e :U 494 ]
-[; ;interrupts.c: 205: }
-[; ;interrupts.c: 207: }
-[; ;interrupts.c: 209: }
-"209
+"219
+}
+[; ;interrupts.c: 217: }
+[; ;interrupts.c: 219: } else {
+[e $U 495  ]
+[e :U 491 ]
+{
+[; ;interrupts.c: 220: if (preset_blink > 0) {
+"220
+[e $ ! > -> _preset_blink `i -> 0 `i 496  ]
+{
+[; ;interrupts.c: 221: preset_blink = 0;
+"221
+[e = _preset_blink -> -> 0 `i `uc ]
+[; ;interrupts.c: 222: LATBbits.LATB1 = 0;
+"222
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"223
+}
+[e :U 496 ]
+"225
+}
+[e :U 495 ]
+[; ;interrupts.c: 223: }
+[; ;interrupts.c: 225: }
+[; ;interrupts.c: 227: }
+"227
 [e :UE 460 ]
 }

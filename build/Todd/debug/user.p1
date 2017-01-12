@@ -3938,6 +3938,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 21: long modulation(long, long);
 [; ;user.h: 22: int scaleA100kPot(double);
 [; ;user.h: 23: int scaleiA100kPot(double);
+[; ;user.h: 24: int scaleA10kPot(double);
+[; ;user.h: 25: int scaleiA10kPot(double);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -4060,31 +4062,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 "81
 [v _bottom_push_state `i ~T0 @X0 1 e ]
 [i _bottom_push_state
--> 6 `i
+-> 1 `i
 ]
-[; ;constants.h: 81: int bottom_push_state = 6;
+[; ;constants.h: 81: int bottom_push_state = 1;
 "83
 [v _myBuf `ui ~T0 @X0 -> 32 `i e ]
 [; ;constants.h: 83: uint16_t myBuf[32];
 "85
-[v _delay_time_changed `i ~T0 @X0 1 e ]
-[i _delay_time_changed
--> 1 `i
+[v _modulation_changed `uc ~T0 @X0 1 e ]
+[i _modulation_changed
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 85: int delay_time_changed = 1;
+[; ;constants.h: 85: char modulation_changed = 0;
 "86
-[v _reset_sub_delay `i ~T0 @X0 1 e ]
-[i _reset_sub_delay
--> 0 `i
+[v _delay_time_changed `uc ~T0 @X0 1 e ]
+[i _delay_time_changed
+-> -> 1 `i `uc
 ]
-[; ;constants.h: 86: int reset_sub_delay = 0;
+[; ;constants.h: 86: char delay_time_changed = 1;
 "87
-[v _adjust_sub_delay `i ~T0 @X0 1 e ]
-[i _adjust_sub_delay
--> 0 `i
+[v _reset_sub_delay `uc ~T0 @X0 1 e ]
+[i _reset_sub_delay
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 87: int adjust_sub_delay = 0;
-"89
+[; ;constants.h: 87: char reset_sub_delay = 0;
+"88
+[v _adjust_sub_delay `uc ~T0 @X0 1 e ]
+[i _adjust_sub_delay
+-> -> 0 `i `uc
+]
+[; ;constants.h: 88: char adjust_sub_delay = 0;
+"90
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -4101,43 +4109,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
+[; ;constants.h: 90: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"92
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
+[; ;constants.h: 92: int debounce_count = 0;
+"93
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
+[; ;constants.h: 93: int debounce_bypass = 0;
+"94
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
+[; ;constants.h: 94: int debounce_mode1 = 0;
+"95
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
+[; ;constants.h: 95: int debounce_mode2 = 0;
+"97
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
--> -> 0 `i `l
-]
-[; ;constants.h: 97: volatile long test_timer = 0;
+[; ;constants.h: 97: volatile long tap_timer = 0;
 "98
 [v _double_timer `Vl ~T0 @X0 1 e ]
 [i _double_timer
@@ -4167,25 +4169,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 104: uint8_t switchBypass_state = -1;
+[; ;constants.h: 104: char switchBypass_state = -1;
 "105
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 105: uint8_t switchTap_state = -1;
+[; ;constants.h: 105: char switchTap_state = -1;
 "106
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: volatile uint8_t longTap_state = -1;
+[; ;constants.h: 106: volatile char longTap_state = -1;
 "107
 [v _feedback_state `Vuc ~T0 @X0 1 e ]
 [i _feedback_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: volatile uint8_t feedback_state = -1;
+[; ;constants.h: 107: volatile char feedback_state = -1;
 "109
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
@@ -4204,268 +4206,209 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ]
 [; ;constants.h: 112: char expressModeCnst = 2;
-"114
-[v _delayArray `i ~T0 @X0 -> 260 `i e ]
-[i _delayArray
+"115
+[v _modArray `i ~T0 @X0 -> 0 `x e ]
+[i _modArray
 :U ..
--> 2082 `i
--> 2044 `i
--> 2008 `i
--> 1973 `i
--> 1939 `i
--> 1906 `i
--> 1874 `i
--> 1844 `i
--> 1814 `i
--> 1785 `i
--> 1757 `i
--> 1730 `i
--> 1704 `i
--> 1679 `i
--> 1654 `i
--> 1630 `i
--> 1607 `i
--> 1584 `i
--> 1562 `i
--> 1541 `i
--> 1520 `i
--> 1500 `i
--> 1480 `i
--> 1461 `i
--> 1443 `i
--> 1424 `i
--> 1407 `i
--> 1389 `i
--> 1372 `i
--> 1356 `i
--> 1340 `i
--> 1324 `i
--> 1309 `i
--> 1294 `i
--> 1279 `i
--> 1265 `i
--> 1250 `i
--> 1237 `i
--> 1223 `i
--> 1210 `i
--> 1197 `i
--> 1185 `i
--> 1172 `i
--> 1160 `i
--> 1149 `i
--> 1137 `i
--> 1126 `i
--> 1114 `i
--> 1104 `i
--> 1093 `i
--> 1082 `i
--> 1072 `i
--> 1062 `i
--> 1052 `i
--> 1042 `i
--> 1033 `i
--> 1023 `i
--> 1014 `i
--> 1005 `i
--> 996 `i
--> 988 `i
--> 979 `i
--> 971 `i
--> 962 `i
--> 954 `i
--> 946 `i
--> 938 `i
--> 930 `i
--> 923 `i
--> 915 `i
--> 908 `i
--> 901 `i
--> 894 `i
--> 887 `i
--> 880 `i
--> 873 `i
--> 866 `i
--> 860 `i
--> 853 `i
--> 847 `i
--> 840 `i
--> 834 `i
--> 828 `i
--> 822 `i
--> 816 `i
--> 810 `i
--> 804 `i
--> 799 `i
--> 793 `i
--> 787 `i
--> 782 `i
--> 777 `i
--> 771 `i
--> 766 `i
--> 761 `i
--> 756 `i
--> 751 `i
--> 746 `i
--> 741 `i
--> 736 `i
--> 731 `i
--> 727 `i
--> 722 `i
--> 717 `i
--> 713 `i
--> 708 `i
--> 704 `i
--> 700 `i
--> 695 `i
--> 691 `i
--> 687 `i
--> 683 `i
--> 678 `i
--> 674 `i
--> 670 `i
--> 666 `i
--> 663 `i
--> 659 `i
--> 655 `i
--> 651 `i
--> 647 `i
--> 644 `i
--> 640 `i
--> 636 `i
--> 633 `i
--> 629 `i
--> 626 `i
--> 622 `i
--> 619 `i
--> 615 `i
--> 612 `i
--> 609 `i
--> 606 `i
--> 602 `i
--> 599 `i
--> 596 `i
--> 593 `i
--> 590 `i
--> 587 `i
--> 584 `i
--> 581 `i
--> 578 `i
--> 575 `i
--> 572 `i
--> 569 `i
--> 566 `i
--> 563 `i
--> 560 `i
--> 558 `i
--> 555 `i
--> 552 `i
--> 549 `i
--> 547 `i
--> 544 `i
--> 542 `i
--> 539 `i
--> 536 `i
--> 534 `i
--> 531 `i
--> 529 `i
--> 526 `i
--> 524 `i
--> 522 `i
--> 519 `i
--> 517 `i
--> 514 `i
--> 512 `i
--> 510 `i
--> 507 `i
--> 505 `i
--> 503 `i
--> 501 `i
--> 498 `i
--> 496 `i
--> 494 `i
--> 492 `i
--> 490 `i
--> 488 `i
--> 486 `i
--> 483 `i
--> 481 `i
--> 479 `i
--> 477 `i
--> 475 `i
--> 473 `i
--> 471 `i
--> 469 `i
--> 467 `i
--> 466 `i
--> 464 `i
--> 462 `i
--> 460 `i
--> 458 `i
--> 456 `i
--> 454 `i
--> 452 `i
--> 451 `i
--> 449 `i
--> 447 `i
--> 445 `i
--> 444 `i
--> 442 `i
--> 440 `i
--> 438 `i
--> 437 `i
--> 435 `i
--> 433 `i
--> 432 `i
--> 430 `i
--> 428 `i
--> 427 `i
--> 425 `i
--> 424 `i
--> 422 `i
--> 420 `i
--> 419 `i
--> 417 `i
--> 416 `i
--> 414 `i
--> 413 `i
--> 411 `i
--> 410 `i
--> 408 `i
--> 407 `i
--> 405 `i
--> 404 `i
--> 402 `i
--> 401 `i
--> 400 `i
--> 398 `i
--> 397 `i
--> 395 `i
--> 394 `i
--> 393 `i
--> 391 `i
--> 390 `i
--> 389 `i
--> 387 `i
--> 386 `i
--> 385 `i
--> 383 `i
--> 382 `i
--> 381 `i
--> 379 `i
--> 378 `i
--> 377 `i
--> 376 `i
--> 374 `i
--> 373 `i
--> 372 `i
--> 371 `i
--> 369 `i
--> 368 `i
--> 367 `i
--> 366 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
+-> 0 `i
 ..
 ]
-[; ;constants.h: 114: int delayArray[260] = {2082, 2044, 2008, 1973, 1939, 1906, 1874, 1844, 1814, 1785, 1757, 1730, 1704, 1679, 1654, 1630, 1607, 1584, 1562, 1541, 1520, 1500, 1480, 1461, 1443, 1424, 1407, 1389, 1372, 1356, 1340, 1324, 1309, 1294, 1279, 1265, 1250, 1237,
+[; ;constants.h: 115: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"116
+[v _sinArray `d ~T0 @X0 -> 0 `x e ]
+[i _sinArray
+:U ..
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+-> -> 0 `i `d
+..
+]
+[; ;constants.h: 116: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"118
+[v _symmetry `i ~T0 @X0 1 e ]
+[i _symmetry
+-> 180 `i
+]
+[; ;constants.h: 118: int symmetry = 180;
 "23 user.c
 [v _InitApp `(v ~T0 @X0 1 ef ]
 {
@@ -4600,7 +4543,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;user.c: 81: adjust_sub_delay = 0;
 "81
-[e = _adjust_sub_delay -> 0 `i ]
+[e = _adjust_sub_delay -> -> 0 `i `uc ]
 "82
 [v _tmpX `i ~T0 @X0 1 a ]
 [; ;user.c: 82: int tmpX = x;
@@ -4691,7 +4634,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;user.c: 109: adjust_sub_delay = 1;
 "109
-[e = _adjust_sub_delay -> 1 `i ]
+[e = _adjust_sub_delay -> -> 1 `i `uc ]
 "110
 }
 [e :U 470 ]
@@ -4937,156 +4880,240 @@ Version 3.2 HI-TECH Software Intermediate Code
 "185
 [e :UE 480 ]
 }
-"187
+"188
 [v _scaleA100kPot `(i ~T0 @X0 1 ef1`d ]
 {
-[; ;user.c: 187: int scaleA100kPot(double input) {
+[; ;user.c: 188: int scaleA100kPot(double input) {
 [e :U _scaleA100kPot ]
 [v _input `d ~T0 @X0 1 r1 ]
 [f ]
-"189
-[v _pwm `f ~T0 @X0 1 a ]
-[; ;user.c: 189: float pwm = 3.6347 * (pow((input/1023.0), -1.112));
-[e = _pwm -> * .3.6347 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
-[; ;user.c: 190: return trunc(pwm);
+[; ;user.c: 190: if (input == 0.0) {input = 1.0;}
 "190
-[e ) -> ( _trunc (1 -> _pwm `d `i ]
-[e $UE 481  ]
-[; ;user.c: 191: }
+[e $ ! == _input .0.0 482  ]
+{
+[e = _input .1.0 ]
+}
+[e :U 482 ]
 "191
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 191: float pwm = 3.6347 * (pow((input/1023.0), -1.112));
+[e = _pwm -> * .3.6347 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 192: return (int)(pwm);
+"192
+[e ) -> _pwm `i ]
+[e $UE 481  ]
+[; ;user.c: 193: }
+"193
 [e :UE 481 ]
 }
-"193
+"195
 [v _scaleiA100kPot `(i ~T0 @X0 1 ef1`d ]
 {
-[; ;user.c: 193: int scaleiA100kPot(double input) {
+[; ;user.c: 195: int scaleiA100kPot(double input) {
 [e :U _scaleiA100kPot ]
 [v _input `d ~T0 @X0 1 r1 ]
 [f ]
-"195
-[v _pwm `f ~T0 @X0 1 a ]
-[; ;user.c: 195: float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
-[e = _pwm -> * .3.5755 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
-[; ;user.c: 196: return trunc(pwm);
-"196
-[e ) -> ( _trunc (1 -> _pwm `d `i ]
-[e $UE 482  ]
-[; ;user.c: 197: }
+[; ;user.c: 197: if (input == 0.0) {input = 1.0;}
 "197
-[e :UE 482 ]
+[e $ ! == _input .0.0 484  ]
+{
+[e = _input .1.0 ]
 }
+[e :U 484 ]
+"198
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 198: float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
+[e = _pwm -> * .3.5755 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 199: return (int)(pwm);
 "199
+[e ) -> _pwm `i ]
+[e $UE 483  ]
+[; ;user.c: 200: }
+"200
+[e :UE 483 ]
+}
+"202
+[v _scaleA10kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 202: int scaleA10kPot(double input) {
+[e :U _scaleA10kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 204: if (input == 0.0) {return 255;}
+"204
+[e $ ! == _input .0.0 486  ]
+{
+[e ) -> 255 `i ]
+[e $UE 485  ]
+}
+[e :U 486 ]
+[; ;user.c: 205: if (input == 1023.0) {return 0;}
+"205
+[e $ ! == _input .1023.0 487  ]
+{
+[e ) -> 0 `i ]
+[e $UE 485  ]
+}
+[e :U 487 ]
+"206
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 206: float pwm = 8.7428 * (pow((input/1023.0), -1.222));
+[e = _pwm -> * .8.7428 ( _pow (2 , / _input .1023.0 -U .1.222 `f ]
+[; ;user.c: 207: return (int)(pwm);
+"207
+[e ) -> _pwm `i ]
+[e $UE 485  ]
+[; ;user.c: 208: }
+"208
+[e :UE 485 ]
+}
+"211
+[v _scaleiA10kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 211: int scaleiA10kPot(double input) {
+[e :U _scaleiA10kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 214: if (input == 0.0) {return 0;}
+"214
+[e $ ! == _input .0.0 489  ]
+{
+[e ) -> 0 `i ]
+[e $UE 488  ]
+}
+[e :U 489 ]
+[; ;user.c: 216: if (input == 1023.0) {return 255;}
+"216
+[e $ ! == _input .1023.0 490  ]
+{
+[e ) -> 255 `i ]
+[e $UE 488  ]
+}
+[e :U 490 ]
+"218
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 218: float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
+[e = _pwm -> * .8.7428 ( _pow (2 , - -> -> 1 `i `d / _input .1023.0 -U .1.222 `f ]
+[; ;user.c: 219: return (int)(pwm);
+"219
+[e ) -> _pwm `i ]
+[e $UE 488  ]
+[; ;user.c: 220: }
+"220
+[e :UE 488 ]
+}
+"222
 [v _modulation `(l ~T0 @X0 1 ef2`l`l ]
 {
-[; ;user.c: 199: long modulation(long x, long y) {
+[; ;user.c: 222: long modulation(long x, long y) {
 [e :U _modulation ]
 [v _x `l ~T0 @X0 1 r1 ]
 [v _y `l ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 202: return (127500 + (y * x)) / 1000;
-"202
+[; ;user.c: 225: return (127500 + (y * x)) / 1000;
+"225
 [e ) / + -> 127500 `l * _y _x -> -> 1000 `i `l ]
-[e $UE 483  ]
-[; ;user.c: 203: }
-"203
-[e :UE 483 ]
+[e $UE 491  ]
+[; ;user.c: 226: }
+"226
+[e :UE 491 ]
 }
-"205
+"228
 [v _InitializeTaps `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 205: void InitializeTaps(void) {
+[; ;user.c: 228: void InitializeTaps(void) {
 [e :U _InitializeTaps ]
 [f ]
-[; ;user.c: 206: for (int itap = 0; itap < 12; itap++) {
-"206
+[; ;user.c: 229: for (int itap = 0; itap < 12; itap++) {
+"229
 {
 [v _itap `i ~T0 @X0 1 a ]
 [e = _itap -> 0 `i ]
-[e $ < _itap -> 12 `i 485  ]
-[e $U 486  ]
-[e :U 485 ]
+[e $ < _itap -> 12 `i 493  ]
+[e $U 494  ]
+[e :U 493 ]
 {
-[; ;user.c: 207: tap[itap] = 0;
-"207
+[; ;user.c: 230: tap[itap] = 0;
+"230
 [e = *U + &U _tap * -> -> _itap `ui `ux -> -> # *U &U _tap `ui `ux -> -> 0 `i `l ]
-"208
+"231
 }
-"206
+"229
 [e ++ _itap -> 1 `i ]
-[e $ < _itap -> 12 `i 485  ]
-[e :U 486 ]
-"208
+[e $ < _itap -> 12 `i 493  ]
+[e :U 494 ]
+"231
 }
-[; ;user.c: 208: }
-[; ;user.c: 209: }
-"209
-[e :UE 484 ]
+[; ;user.c: 231: }
+[; ;user.c: 232: }
+"232
+[e :UE 492 ]
 }
-"211
+"234
 [v _ReadSavedSettings `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 211: void ReadSavedSettings(void) {
+[; ;user.c: 234: void ReadSavedSettings(void) {
 [e :U _ReadSavedSettings ]
 [f ]
-[; ;user.c: 213: top_push_state = FLASH_ReadWord(0x1F81);
-"213
+[; ;user.c: 236: top_push_state = FLASH_ReadWord(0x1F81);
+"236
 [e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
-[; ;user.c: 214: bottom_push_state = FLASH_ReadWord(0x1F82);
-"214
+[; ;user.c: 237: bottom_push_state = FLASH_ReadWord(0x1F82);
+"237
 [e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 216: if (top_push_state > 6) {
-"216
-[e $ ! > _top_push_state -> 6 `i 489  ]
-{
-[; ;user.c: 218: top_push_state = 6;
-"218
-[e = _top_push_state -> 6 `i ]
-"219
-}
-[e :U 489 ]
-[; ;user.c: 219: }
-[; ;user.c: 220: if (bottom_push_state > 6) {
-"220
-[e $ ! > _bottom_push_state -> 6 `i 490  ]
-{
-[; ;user.c: 222: bottom_push_state = 6;
-"222
-[e = _bottom_push_state -> 6 `i ]
-"223
-}
-[e :U 490 ]
-[; ;user.c: 223: }
-[; ;user.c: 226: LATGbits.LATG1 = !switchBypass_state;
-"226
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 227: LATGbits.LATG2 = switchBypass_state;
-"227
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 228: LATBbits.LATB2 = 0;
-"228
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 229: LATBbits.LATB3 = 0;
-"229
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 231: LATBbits.LATB4 = 0;
-"231
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 232: LATBbits.LATB5 = 0;
-"232
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 234: LATBbits.LATB1 = 0;
-"234
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 235: LATBbits.LATB0 = 0;
-"235
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 238: set_leds_top(top_push_state, 1);
-"238
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 239: set_leds_bottom(bottom_push_state);
+[; ;user.c: 239: if (top_push_state > 6) {
 "239
+[e $ ! > _top_push_state -> 6 `i 497  ]
+{
+[; ;user.c: 241: top_push_state = 6;
+"241
+[e = _top_push_state -> 6 `i ]
+"242
+}
+[e :U 497 ]
+[; ;user.c: 242: }
+[; ;user.c: 243: if (bottom_push_state > 5) {
+"243
+[e $ ! > _bottom_push_state -> 5 `i 498  ]
+{
+[; ;user.c: 245: bottom_push_state = 1;
+"245
+[e = _bottom_push_state -> 1 `i ]
+"246
+}
+[e :U 498 ]
+[; ;user.c: 246: }
+[; ;user.c: 249: LATGbits.LATG1 = !switchBypass_state;
+"249
+[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;user.c: 250: LATGbits.LATG2 = switchBypass_state;
+"250
+[e = . . _LATGbits 0 2 _switchBypass_state ]
+[; ;user.c: 251: LATBbits.LATB2 = 0;
+"251
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 252: LATBbits.LATB3 = 0;
+"252
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 254: LATBbits.LATB4 = 0;
+"254
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 255: LATBbits.LATB5 = 0;
+"255
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 257: LATBbits.LATB1 = 0;
+"257
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 258: LATBbits.LATB0 = 0;
+"258
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 261: set_leds_top(top_push_state, 1);
+"261
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;user.c: 262: set_leds_bottom(bottom_push_state);
+"262
 [e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 240: }
-"240
-[e :UE 488 ]
+[; ;user.c: 263: }
+"263
+[e :UE 496 ]
 }

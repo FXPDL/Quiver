@@ -184,30 +184,39 @@ float scalePotValue(float x, float out_min, float out_max) {
     return x * (out_max - out_min) / 1023 + out_min;
 }
 
+
 int scaleA100kPot(double input) {	
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    if (input == 0.0) {input = 1.0;}  //Don't let it go to zero, it creates a div by zero error;
     float pwm = 3.6347 * (pow((input/1023.0), -1.112));
-    return trunc(pwm);
+    return (int)(pwm);
 }
 
 int scaleiA100kPot(double input) {
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    if (input == 0.0) {input = 1.0;}  //Don't let it go to zero, it creates a div by zero error;
     float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
-    return trunc(pwm);
+    return (int)(pwm);
 }
 
 int scaleA10kPot(double input) {	
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    if (input == 0.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
+    if (input == 1023.0) {return 0;} 
     float pwm = 8.7428 * (pow((input/1023.0), -1.222));
-    return trunc(pwm);
+    return (int)(pwm);
 }
 
 
 int scaleiA10kPot(double input) {	
     //Reverse the axis for the inverse value
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+     if (input == 0.0) {return 0;}  //Don't let it go to zero, it creates a div by zero error;
+
+    if (input == 1023.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
+
     float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
-    return trunc(pwm);
+    return (int)(pwm);
 }
 
 long modulation(long x, long y) {
@@ -231,9 +240,9 @@ void ReadSavedSettings(void) {
         //Limit to acceptable values
         top_push_state = 6;
     }
-    if (bottom_push_state > 6) {
+    if (bottom_push_state > 5) {
         //Limit to acceptable values
-        bottom_push_state = 6;
+        bottom_push_state = 1;
     }
     
     //load startup conditions

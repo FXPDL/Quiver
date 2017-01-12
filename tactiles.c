@@ -35,9 +35,10 @@ void read_bottom_tactile(void) {
     
     if (bottomTactile_pressed == 0) { //read bottom tactile
         bottom_push_state = bottom_push_state + 1;
-        if (bottom_push_state > 6) {
+        if (bottom_push_state > 5) {
             bottom_push_state = 1;
         }
+        modulation_changed = 1;
         set_leds_bottom(bottom_push_state);
        // FLASH_WriteWord(0x1F82, myBuf, bottom_push_state);
         while (bottom_tactile == 0) { //wait for release
