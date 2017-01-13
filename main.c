@@ -148,8 +148,10 @@ void main(void) {
         //------------------------------------------------
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
-            symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);    
-            if (symmetry == 180) {
+            symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);   
+            
+            modulation_changed = 1;
+            if (symmetry > 177 && symmetry < 182) {
                 LED_bypass_Aux = 1;
             } else {
                 LED_bypass_Aux = 0;
@@ -169,7 +171,6 @@ void main(void) {
             knob4_prev = knob_4_pos;
            // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
             mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47); 
-
         }
 
 
@@ -180,7 +181,9 @@ void main(void) {
             adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
         }        
 
-        
+        if (modulation_changed == 1) {
+            updateModulationArray();
+        }
         
         //subroutine to calculate led interval and PWM value if delay time has changed
         if (delay_time_changed == 1) {   

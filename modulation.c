@@ -20,10 +20,9 @@ void calcSinArray(void) {
     }
     char x = 1;
 }
-/*
+
 void updateModulationArray(void) {
-    
-    for (char iAngle = 0; iAngle< 60; iAngle++) {
+    for (char iAngle = 0; iAngle < 60; iAngle++) {
         int thisAngle = 6 * iAngle;
         switch (bottom_push_state) {
             case 1: //Sin
@@ -36,10 +35,10 @@ void updateModulationArray(void) {
                 modArray[iAngle] = modSquare(thisAngle, symmetry);
                 break;
             case 4: //Saw
-                modArray[iAngle] = modTri(thisAngle, symmetry); 
+                modArray[iAngle] = modSaw(thisAngle, symmetry); 
                 break;
             case 5: //Reverse Saw
-                modArray[iAngle] = modTri(thisAngle, symmetry);            
+                modArray[iAngle] = modSawRev(thisAngle, symmetry);            
                 break;
             default:
                 modArray[iAngle] = 0;
@@ -47,7 +46,7 @@ void updateModulationArray(void) {
         }
     }
     char x = 1;
-}*/
+}
 
 int modSin(double angle, double inflection) {
     double period = 1.0;
@@ -112,8 +111,8 @@ int modSawRev(double angle, double inflection) {
 //=SIGN(SIN(F2*RADIANS(H2)-RADIANS(G2)))*100
 int modSquare(double angle, double inflection) {
     int tmpVal = modSin(angle, inflection);
-    return (tmpVal > 0 ? 100 : -100);
-    //return (angle <= inflection) ? 100 : -100;
+    //return (tmpVal > 0 ? 100 : -100);
+    return (angle <= inflection) ? 100 : -100;
 }
 
 

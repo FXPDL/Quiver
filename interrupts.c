@@ -167,26 +167,28 @@ void interrupt isr(void) {
 
        
        chorus = 0;
+       /*int modAngle = 6*mod_counter;
         switch (bottom_push_state) {
             case 1:  //Sin
-                mod_value = modSin(6*mod_counter, symmetry); 
+                mod_value = modSin(modAngle, symmetry); 
                 break;
             case 2:  //tri
-                mod_value = modTri(6*mod_counter, symmetry); 
+                mod_value = modTri(modAngle, symmetry); 
                 break;
             case 3:  //Square
-                mod_value = modSquare(6*mod_counter, symmetry);
+                mod_value = (modAngle <= symmetry) ? 100 : -100; //modSquare(6*mod_counter, symmetry);
                 break;
             case 4: //Saw
-                mod_value =  modSaw(6*mod_counter, symmetry); 
+                mod_value =  modSaw(modAngle, symmetry); 
                 break;
             case 5:  //Reverse Saw
-                mod_value = modSawRev(6*mod_counter, symmetry);            
+                mod_value = modSawRev(modAngle, symmetry);            
                 break;
             default:
                 mod_value = 0;
                 break;
-        }
+        }*/
+       mod_value = modArray[mod_counter];
         /*if (mod_value > 90) {
             LED_bypass_Aux = 1;
         } else {
