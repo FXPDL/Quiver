@@ -4948,10 +4948,9 @@ volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
 volatile uint16_t longTap_timer = 0;
 
-volatile int delay_counter = 0;
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_delay_time = 2000;
+volatile long baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4973,9 +4972,9 @@ int bottom_push_state = 1;
 uint16_t myBuf[32];
 
 char modulation_changed = 0;
-char delay_time_changed = 1;
+char mod_time_changed = 1;
 char reset_sub_delay = 0;
-char adjust_sub_delay = 0;
+char adjust_mod_delay = 0;
 
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -5004,7 +5003,7 @@ char expressModeCnst = 2;
 
 
 
-int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
@@ -5012,6 +5011,8 @@ int symmetry = 180;
 # 25 "modulation.h"
 void updateModulationArray(void);
 void calcSinArray(void);
+int getModulationSubdivision(void);
+void getModulationDelayTime(void);
 
 int modSin(double, double);
 int modTri(double, double);
@@ -5020,22 +5021,45 @@ int modSawRev(double, double);
 int modSquare(double, double);
 
 # 15 "modulation.c"
+extern volatile long delay_time;
+extern int mod_delay_time;
+
 void calcSinArray(void) {
 for (char iAngle = 0; iAngle < 120; iAngle++) {
 double tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
 tmpVal = sin(tmpVal);
 sinArray[iAngle] = tmpVal;
 }
-char x = 1;
+}
+
+int getModulationSubdivision(void) {
+if (delay_time >= 2400) {
+return 120;
+} else if (delay_time >= 600) {
+return 60;
+} else {
+return 30;
+}
+}
+void getModulationDelayTime(void) {
+adjust_mod_delay = 0;
+int subDiv = getModulationSubdivision();
+mod_delay_time = (int)((float)delay_time/(float)subDiv);
+if (mod_delay_time * subDiv != delay_time) {
+adjust_mod_delay = 1;
+}
 }
 
 void updateModulationArray(void) {
-if (modArray[120] == bottom_push_state && modArray[121] == symmetry) {
+int subDiv = getModulationSubdivision();
+if (modArray[120] == bottom_push_state && modArray[121] == symmetry && modArray[122] == subDiv) {
 
 return;
 }
-for (char iAngle = 0; iAngle < 60; iAngle++) {
-int thisAngle = 6 * iAngle;
+
+int angleFactor = 360/subDiv;
+for (char iAngle = 0; iAngle < subDiv; iAngle++) {
+int thisAngle = angleFactor * iAngle;
 switch (bottom_push_state) {
 case 1:
 modArray[iAngle] = modSin(thisAngle, symmetry);
@@ -5059,6 +5083,7 @@ break;
 }
 modArray[120] = bottom_push_state;
 modArray[121] = symmetry;
+modArray[122] = subDiv;
 }
 
 int modSin(double angle, double inflection) {

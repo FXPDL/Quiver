@@ -75,7 +75,7 @@ void read_top_tactile(void) {
             top_push_state = 1;
         }
         set_leds_top(top_push_state, 1);
-        delay_time_changed = 1;
+        mod_time_changed = 1;
 
         //FLASH_WriteWord(0x1F81, myBuf, top_push_state);
         while (top_tactile == 0) {

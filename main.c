@@ -168,11 +168,10 @@ void main(void) {
         //------------------------------------------------
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
-           // mod_delay_time = map(knob4_prev, 0, 1023, 60, 1000);          
-            mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47); 
+            baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);    
+            mod_time_changed = 1;
+           // mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47); 
         }
-
-
 
         //Depth ----------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
@@ -180,30 +179,18 @@ void main(void) {
             adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
         }        
 
-        if (modulation_changed == 1) {
-            updateModulationArray();
-        }
         
         //subroutine to calculate led interval and PWM value if delay time has changed
-        if (delay_time_changed == 1) {   
-            delay_time = baseline_delay_time;
-            delay_time = set_subdivision(baseline_delay_time, top_push_state);
-            reset_sub_delay = 1;
-            delayfound = 0;
-            delay_counter = 0;
-
-            /*while (delayfound == 0) {
-                if (delayArray[delay_counter] <= delay_time * 2) {
-                    delayfound = 1;
-                    
-                } else {
-                    delay_counter++;
-                    
-                }
-            }*/
-
-            delay_time_changed = 0;
+        if (mod_time_changed == 1) {   
+            delay_time = baseline_mod_time;
+            delay_time = set_subdivision(baseline_mod_time, top_push_state);
+            getModulationDelayTime();
+            
 
         } 
+ 
+        if (modulation_changed == 1 || mod_time_changed == 1) {
+            updateModulationArray();
+        }   
     }
 }

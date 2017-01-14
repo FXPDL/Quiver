@@ -78,7 +78,7 @@ int set_subdivision(int x, int y) {
     //x = delay time
     //y = state
     
-    adjust_sub_delay = 0;
+    adjust_mod_delay = 0;
     int tmpX = x;
     float scalar = 1.0;
 
@@ -106,7 +106,7 @@ int set_subdivision(int x, int y) {
     tmpX = tmpX * scalar;
     
     if (trunc(tmpX) != tmpX) {
-        adjust_sub_delay = 1;
+        adjust_mod_delay = 1;
     }
 
     return tmpX;

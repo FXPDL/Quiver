@@ -24,6 +24,8 @@ extern "C" {
 
 void updateModulationArray(void);
 void calcSinArray(void);
+int getModulationSubdivision(void);
+void getModulationDelayTime(void);
 
 int modSin(double, double);
 int modTri(double, double);

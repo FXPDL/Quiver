@@ -79,7 +79,7 @@ void updateSwitchTap(void) {
                 tap_timer = 0;           
                 tap_iteration = 1;
                 tap_total = 0;
-                delay_time_changed = 0;
+                mod_time_changed = 0;
 
                 for (iCnt = 1; iCnt <= num_taps; iCnt++) {
                     tap_history[iCnt] = 0;
@@ -129,8 +129,8 @@ void updateSwitchTap(void) {
                 tap_total += tap_timer;
             }
 
-            baseline_delay_time = tap_total / tapCntDivisor;
-            delay_time_changed = 1;
+            baseline_mod_time = tap_total / tapCntDivisor;
+            mod_time_changed = 1;
             tap_timer = 0;
             
             tap_iteration++;

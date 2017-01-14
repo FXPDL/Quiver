@@ -12,22 +12,45 @@
 #include "constants.h"
 #include "modulation.h"
 
+extern volatile long delay_time;
+extern int mod_delay_time;
+
 void calcSinArray(void) {
     for (char iAngle = 0; iAngle < 120; iAngle++) {
         double tmpVal = 3 * iAngle * M_PI/180.0;
         tmpVal = sin(tmpVal);
         sinArray[iAngle] = tmpVal;
     }
-    char x = 1;
+}
+
+int getModulationSubdivision(void) {
+    if (delay_time >= 2400) {
+        return 120;
+    } else if (delay_time >= 600) {
+        return 60;
+    } else {
+        return 30;
+    }
+}
+void getModulationDelayTime(void) {
+    adjust_mod_delay = 0;
+    int subDiv = getModulationSubdivision();
+    mod_delay_time = (int)((float)delay_time/(float)subDiv);
+    if (mod_delay_time * subDiv != delay_time) {
+        adjust_mod_delay = 1;
+    }
 }
 
 void updateModulationArray(void) {
-    if (modArray[120] == bottom_push_state && modArray[121] == symmetry) {
+    int subDiv = getModulationSubdivision();    
+    if (modArray[120] == bottom_push_state && modArray[121] == symmetry && modArray[122] == subDiv) {
         //array params haven't changed.
         return;
     }
-    for (char iAngle = 0; iAngle < 60; iAngle++) {
-        int thisAngle = 6 * iAngle;
+
+    int angleFactor = 360/subDiv;
+    for (char iAngle = 0; iAngle < subDiv; iAngle++) {
+        int thisAngle = angleFactor * iAngle;
         switch (bottom_push_state) {
             case 1: //Sin
                 modArray[iAngle] = modSin(thisAngle, symmetry); 
@@ -51,6 +74,7 @@ void updateModulationArray(void) {
     }
     modArray[120] = bottom_push_state;
     modArray[121] = symmetry;
+    modArray[122] = subDiv;
 }
 
 int modSin(double angle, double inflection) {
