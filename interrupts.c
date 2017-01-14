@@ -26,7 +26,7 @@ int mod_counter = 0;
 
 
 void interrupt isr(void) {
-    int tmpModDelay;
+    int tmpModDelay = -1;
 
     
     extern volatile long timer;
@@ -50,6 +50,8 @@ void interrupt isr(void) {
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
         double_timer++;
+        
+        char subDiv = getModulationSubdivision();
 
 
         
@@ -66,12 +68,10 @@ void interrupt isr(void) {
         }
              
          
-        //if (adjust_mod_delay == 1) {
-            if ((timer + mod_delay_time) > delay_time) {
-                tmpModDelay = (delay_time - timer);
-            }
-        //}
-        
+
+        if ((mod_counter == subDiv) &&  (mod_delay_time == tmpModDelay)) {
+            tmpModDelay = (delay_time - timer);
+        } 
 
 
     
@@ -87,15 +87,16 @@ void interrupt isr(void) {
                 if (modulation_changed == 1 || mod_time_changed == 1) {
                     //Sync the delay to the led
                     //Sync the modulation to the delay
-                    mod_counter = 0;
+                    /*mod_counter = 0;
                     modulation_changed = 0;
                     mod_time_changed = 0;
                     mod_timer = 0;
+                    tmpModDelay = mod_delay_time;*/
 
                     reset_sub_delay = 0;
                     sub_timer = delay_time;
                 }
-            }
+            } 
 
             if (timer >= 30) { //delay_time
                 //if (suspend_blink == 0) {
@@ -150,7 +151,7 @@ void interrupt isr(void) {
 
 
 
-           if (mod_counter >= getModulationSubdivision()) {
+           if (mod_counter >= subDiv) {
                 mod_counter = 0;
                 LED_tap_Aux = 1;
             } else {
