@@ -4917,7 +4917,7 @@ int set_subdivision(int,int);
 # 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
-volatile uint16_t feedback_timer = 0;
+volatile uint16_t longBypass_timer = 0;
 volatile uint16_t longTap_timer = 0;
 
 volatile int delay_counter = 0;
@@ -4925,7 +4925,7 @@ volatile int delay_counter = 0;
 uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
-uint8_t feedback_start = 0;
+uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
 volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
@@ -4966,7 +4966,7 @@ char expressionChannel = 1;
 char switchBypass_state = -1;
 char switchTap_state = -1;
 volatile char longTap_state = -1;
-volatile char feedback_state = -1;
+volatile char longBypass_state = 0;
 
 char expSwitchState = -1;
 
@@ -5022,7 +5022,7 @@ int set_subdivision(int,int);
 void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
-void setFeedbackState(int);
+void setLongBypassState(int);
 
 # 24 "SwitchTap.h"
 void initSwitchTap(void);
@@ -5087,10 +5087,9 @@ uint8_t iCnt;
 # 68
 void main(void) {
 
-
 calcSinArray();
 
-# 83
+# 82
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5107,7 +5106,7 @@ initSwitchBypass();
 
 
 ReadSavedSettings();
-
+updateModulationArray();
 while (1) {
 
 
@@ -5149,20 +5148,20 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 149
+# 148
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 
 modulation_changed = 1;
-if (symmetry > 177 && symmetry < 182) {
+if (symmetry > 174 && symmetry < 185) {
 LATBbits.LATB1 = 1;
 } else {
 LATBbits.LATB1 = 0;
 }
 }
 
-# 170
+# 169
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
@@ -5189,7 +5188,7 @@ reset_sub_delay = 1;
 delayfound = 0;
 delay_counter = 0;
 
-# 206
+# 205
 delay_time_changed = 0;
 
 }

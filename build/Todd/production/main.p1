@@ -38,6 +38,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _initSwitchBypass `(v ~T0 @X0 0 ef ]
 "20 user.h
 [v _ReadSavedSettings `(v ~T0 @X0 0 ef ]
+"25 modulation.h
+[v _updateModulationArray `(v ~T0 @X0 0 ef ]
 "26 tactiles.h
 [v _update_mode `(v ~T0 @X0 0 ef ]
 "27
@@ -76,8 +78,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S115 . . ]
 "2460
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
-"25 modulation.h
-[v _updateModulationArray `(v ~T0 @X0 0 ef ]
 "25 system.h
 [v _set_subdivision `(i ~T0 @X0 0 ef2`i`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3709,11 +3709,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 57: volatile long sub_timer = 0;
 "58
-[v _feedback_timer `Vui ~T0 @X0 1 e ]
-[i _feedback_timer
+[v _longBypass_timer `Vui ~T0 @X0 1 e ]
+[i _longBypass_timer
 -> -> 0 `i `ui
 ]
-[; ;constants.h: 58: volatile uint16_t feedback_timer = 0;
+[; ;constants.h: 58: volatile uint16_t longBypass_timer = 0;
 "59
 [v _longTap_timer `Vui ~T0 @X0 1 e ]
 [i _longTap_timer
@@ -3739,11 +3739,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 64: volatile long baseline_delay_time = 2000;
 "66
-[v _feedback_start `uc ~T0 @X0 1 e ]
-[i _feedback_start
+[v _longBypass_start `uc ~T0 @X0 1 e ]
+[i _longBypass_start
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 66: uint8_t feedback_start = 0;
+[; ;constants.h: 66: uint8_t longBypass_start = 0;
 "67
 [v _longTap_start `uc ~T0 @X0 1 e ]
 [i _longTap_start
@@ -3928,11 +3928,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 106: volatile char longTap_state = -1;
 "107
-[v _feedback_state `Vuc ~T0 @X0 1 e ]
-[i _feedback_state
--> -U -> 1 `i `uc
+[v _longBypass_state `Vuc ~T0 @X0 1 e ]
+[i _longBypass_state
+-> -> 0 `i `uc
 ]
-[; ;constants.h: 107: volatile char feedback_state = -1;
+[; ;constants.h: 107: volatile char longBypass_state = 0;
 "109
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
@@ -4247,7 +4247,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.h: 28: void initSwitchBypass(void);
 [; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
 [; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
-[; ;SwitchBypass.h: 31: void setFeedbackState(int);
+[; ;SwitchBypass.h: 31: void setLongBypassState(int);
 [; ;SwitchTap.h: 24: void initSwitchTap(void);
 [; ;SwitchTap.h: 25: void updateSwitchTap(void);
 [; ;SwitchTap.h: 26: void setSwitchTapState(int);
@@ -4381,242 +4381,245 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 68: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 71: calcSinArray();
-"71
+[; ;main.c: 70: calcSinArray();
+"70
 [e ( _calcSinArray ..  ]
-[; ;main.c: 83: USARTInit(31250);
-"83
+[; ;main.c: 82: USARTInit(31250);
+"82
 [e ( _USARTInit (1 -> -> 31250 `i `ui ]
-[; ;main.c: 84: ConfigureOscillator();
-"84
+[; ;main.c: 83: ConfigureOscillator();
+"83
 [e ( _ConfigureOscillator ..  ]
-[; ;main.c: 85: InitApp();
-"85
+[; ;main.c: 84: InitApp();
+"84
 [e ( _InitApp ..  ]
-[; ;main.c: 87: PORTEbits.RE0 = 1;
-"87
+[; ;main.c: 86: PORTEbits.RE0 = 1;
+"86
 [e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 88: PORTEbits.RE1 = 1;
-"88
+[; ;main.c: 87: PORTEbits.RE1 = 1;
+"87
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 89: PORTDbits.RD6 = 1;
-"89
+[; ;main.c: 88: PORTDbits.RD6 = 1;
+"88
 [e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 90: PORTDbits.RD5 = 1;
-"90
+[; ;main.c: 89: PORTDbits.RD5 = 1;
+"89
 [e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 91: PORTCbits.RC0 = 1;
-"91
+[; ;main.c: 90: PORTCbits.RC0 = 1;
+"90
 [e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 92: PORTDbits.RD7 = 1;
-"92
+[; ;main.c: 91: PORTDbits.RD7 = 1;
+"91
 [e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 94: InitializeTaps();
-"94
+[; ;main.c: 93: InitializeTaps();
+"93
 [e ( _InitializeTaps ..  ]
-[; ;main.c: 95: initSwitchBypass();
-"95
+[; ;main.c: 94: initSwitchBypass();
+"94
 [e ( _initSwitchBypass ..  ]
-[; ;main.c: 98: ReadSavedSettings();
-"98
+[; ;main.c: 97: ReadSavedSettings();
+"97
 [e ( _ReadSavedSettings ..  ]
-[; ;main.c: 100: while (1) {
-"100
+[; ;main.c: 98: updateModulationArray();
+"98
+[e ( _updateModulationArray ..  ]
+[; ;main.c: 99: while (1) {
+"99
 [e :U 462 ]
 {
-[; ;main.c: 103: update_mode();
-"103
+[; ;main.c: 102: update_mode();
+"102
 [e ( _update_mode ..  ]
-[; ;main.c: 104: update_selectMode();
-"104
+[; ;main.c: 103: update_selectMode();
+"103
 [e ( _update_selectMode ..  ]
-[; ;main.c: 107: updateSwitchBypass();
-"107
+[; ;main.c: 106: updateSwitchBypass();
+"106
 [e ( _updateSwitchBypass ..  ]
-[; ;main.c: 108: if (presetSaveMode != 1) {
-"108
+[; ;main.c: 107: if (presetSaveMode != 1) {
+"107
 [e $ ! != -> _presetSaveMode `i -> 1 `i 464  ]
 {
-[; ;main.c: 109: updateSwitchTap();
-"109
+[; ;main.c: 108: updateSwitchTap();
+"108
 [e ( _updateSwitchTap ..  ]
-"110
+"109
 }
 [e :U 464 ]
-[; ;main.c: 110: }
-[; ;main.c: 112: if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
-"112
+[; ;main.c: 109: }
+[; ;main.c: 111: if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
+"111
 [e $ ! && != -> _presetSaveMode `i -> 1 `i != -> _mode2_state `i -> _presetModeCnst `i 465  ]
 {
-[; ;main.c: 113: read_bottom_tactile();
-"113
+[; ;main.c: 112: read_bottom_tactile();
+"112
 [e ( _read_bottom_tactile ..  ]
-[; ;main.c: 114: read_top_tactile();
-"114
+[; ;main.c: 113: read_top_tactile();
+"113
 [e ( _read_top_tactile ..  ]
-"115
+"114
 }
 [e :U 465 ]
-[; ;main.c: 115: }
-[; ;main.c: 118: knob_1_pos = adc_convert(0);
-"118
+[; ;main.c: 114: }
+[; ;main.c: 117: knob_1_pos = adc_convert(0);
+"117
 [e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
-[; ;main.c: 119: knob_2_pos = adc_convert(1);
-"119
+[; ;main.c: 118: knob_2_pos = adc_convert(1);
+"118
 [e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
-[; ;main.c: 120: knob_3_pos = adc_convert(2);
-"120
+[; ;main.c: 119: knob_3_pos = adc_convert(2);
+"119
 [e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
-[; ;main.c: 121: knob_4_pos = adc_convert(3);
-"121
+[; ;main.c: 120: knob_4_pos = adc_convert(3);
+"120
 [e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
-[; ;main.c: 122: knob_5_pos = adc_convert(4);
-"122
+[; ;main.c: 121: knob_5_pos = adc_convert(4);
+"121
 [e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
-[; ;main.c: 126: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-"126
+[; ;main.c: 125: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+"125
 [e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 466  ]
 {
-[; ;main.c: 127: knob1_prev = knob_1_pos;
-"127
+[; ;main.c: 126: knob1_prev = knob_1_pos;
+"126
 [e = _knob1_prev _knob_1_pos ]
-[; ;main.c: 128: CCPR4 = scaleA10kPot(knob1_prev);
-"128
+[; ;main.c: 127: CCPR4 = scaleA10kPot(knob1_prev);
+"127
 [e = _CCPR4 -> ( _scaleA10kPot (1 -> _knob1_prev `d `us ]
-[; ;main.c: 129: CCPR5 = scaleiA10kPot(knob1_prev);
-"129
+[; ;main.c: 128: CCPR5 = scaleiA10kPot(knob1_prev);
+"128
 [e = _CCPR5 -> ( _scaleiA10kPot (1 -> _knob1_prev `d `us ]
-"131
+"130
 }
 [e :U 466 ]
-[; ;main.c: 131: }
-[; ;main.c: 135: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
-"135
+[; ;main.c: 130: }
+[; ;main.c: 134: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
+"134
 [e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 467  ]
 {
-[; ;main.c: 136: knob2_prev = knob_2_pos;
-"136
+[; ;main.c: 135: knob2_prev = knob_2_pos;
+"135
 [e = _knob2_prev _knob_2_pos ]
-[; ;main.c: 137: CCPR1 = scaleA100kPot(1023-knob2_prev);
-"137
+[; ;main.c: 136: CCPR1 = scaleA100kPot(1023-knob2_prev);
+"136
 [e = _CCPR1 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
-[; ;main.c: 138: CCPR2 = scaleA100kPot(1023-knob2_prev);
-"138
+[; ;main.c: 137: CCPR2 = scaleA100kPot(1023-knob2_prev);
+"137
 [e = _CCPR2 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
-"139
+"138
 }
 [e :U 467 ]
-[; ;main.c: 139: }
-[; ;main.c: 149: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
-"149
+[; ;main.c: 138: }
+[; ;main.c: 148: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+"148
 [e $ ! || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i 468  ]
 {
-[; ;main.c: 150: knob3_prev = knob_3_pos;
-"150
+[; ;main.c: 149: knob3_prev = knob_3_pos;
+"149
 [e = _knob3_prev _knob_3_pos ]
-[; ;main.c: 151: symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
-"151
+[; ;main.c: 150: symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
+"150
 [e = _symmetry -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 45 `i `f -> -> 315 `i `f `i ]
-[; ;main.c: 153: modulation_changed = 1;
-"153
+[; ;main.c: 152: modulation_changed = 1;
+"152
 [e = _modulation_changed -> -> 1 `i `uc ]
-[; ;main.c: 154: if (symmetry > 177 && symmetry < 182) {
-"154
-[e $ ! && > _symmetry -> 177 `i < _symmetry -> 182 `i 469  ]
+[; ;main.c: 153: if (symmetry > 174 && symmetry < 185) {
+"153
+[e $ ! && > _symmetry -> 174 `i < _symmetry -> 185 `i 469  ]
 {
-[; ;main.c: 155: LATBbits.LATB1 = 1;
-"155
+[; ;main.c: 154: LATBbits.LATB1 = 1;
+"154
 [e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-"156
+"155
 }
-[; ;main.c: 156: } else {
+[; ;main.c: 155: } else {
 [e $U 470  ]
 [e :U 469 ]
 {
-[; ;main.c: 157: LATBbits.LATB1 = 0;
-"157
+[; ;main.c: 156: LATBbits.LATB1 = 0;
+"156
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"158
+"157
 }
 [e :U 470 ]
-"159
+"158
 }
 [e :U 468 ]
+[; ;main.c: 157: }
 [; ;main.c: 158: }
-[; ;main.c: 159: }
-[; ;main.c: 170: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"170
+[; ;main.c: 169: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"169
 [e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 471  ]
 {
-[; ;main.c: 171: knob4_prev = knob_4_pos;
-"171
+[; ;main.c: 170: knob4_prev = knob_4_pos;
+"170
 [e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 173: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
-"173
+[; ;main.c: 172: mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
+"172
 [e = _mod_delay_time -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 3 `i `f -> -> 47 `i `f `i ]
-"174
+"173
 }
 [e :U 471 ]
-[; ;main.c: 174: }
-[; ;main.c: 179: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"179
+[; ;main.c: 173: }
+[; ;main.c: 178: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"178
 [e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 472  ]
 {
-[; ;main.c: 180: knob5_prev = knob_5_pos;
-"180
+[; ;main.c: 179: knob5_prev = knob_5_pos;
+"179
 [e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 181: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"181
+[; ;main.c: 180: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"180
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"182
+"181
 }
 [e :U 472 ]
-[; ;main.c: 182: }
-[; ;main.c: 184: if (modulation_changed == 1) {
-"184
+[; ;main.c: 181: }
+[; ;main.c: 183: if (modulation_changed == 1) {
+"183
 [e $ ! == -> _modulation_changed `i -> 1 `i 473  ]
 {
-[; ;main.c: 185: updateModulationArray();
-"185
+[; ;main.c: 184: updateModulationArray();
+"184
 [e ( _updateModulationArray ..  ]
-"186
+"185
 }
 [e :U 473 ]
-[; ;main.c: 186: }
-[; ;main.c: 189: if (delay_time_changed == 1) {
-"189
+[; ;main.c: 185: }
+[; ;main.c: 188: if (delay_time_changed == 1) {
+"188
 [e $ ! == -> _delay_time_changed `i -> 1 `i 474  ]
 {
-[; ;main.c: 190: delay_time = baseline_delay_time;
-"190
+[; ;main.c: 189: delay_time = baseline_delay_time;
+"189
 [e = _delay_time _baseline_delay_time ]
-[; ;main.c: 191: delay_time = set_subdivision(baseline_delay_time, top_push_state);
-"191
+[; ;main.c: 190: delay_time = set_subdivision(baseline_delay_time, top_push_state);
+"190
 [e = _delay_time -> ( _set_subdivision (2 , -> _baseline_delay_time `i _top_push_state `l ]
-[; ;main.c: 192: reset_sub_delay = 1;
-"192
+[; ;main.c: 191: reset_sub_delay = 1;
+"191
 [e = _reset_sub_delay -> -> 1 `i `uc ]
-[; ;main.c: 193: delayfound = 0;
-"193
+[; ;main.c: 192: delayfound = 0;
+"192
 [e = _delayfound -> 0 `i ]
-[; ;main.c: 194: delay_counter = 0;
-"194
+[; ;main.c: 193: delay_counter = 0;
+"193
 [e = _delay_counter -> 0 `i ]
-[; ;main.c: 206: delay_time_changed = 0;
-"206
+[; ;main.c: 205: delay_time_changed = 0;
+"205
 [e = _delay_time_changed -> -> 0 `i `uc ]
-"208
+"207
 }
 [e :U 474 ]
-"209
+"208
 }
 [e :U 461 ]
-"100
+"99
 [e $U 462  ]
 [e :U 463 ]
+[; ;main.c: 207: }
 [; ;main.c: 208: }
 [; ;main.c: 209: }
-[; ;main.c: 210: }
-"210
+"209
 [e :UE 460 ]
 }

@@ -4974,7 +4974,9 @@ char presetModeCnst = 1;
 char expressModeCnst = 2;
 
 
-int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
@@ -5164,32 +5166,11 @@ LATBbits.LATB0 = 0;
 
 
 PORTCbits.RC4 = 0;
-switch (bottom_push_state) {
-case 1:
-mod_value = modSin(6*mod_counter, symmetry);
-break;
-case 2:
-mod_value = modTri(6*mod_counter, symmetry);
-break;
-case 3:
-mod_value = modSquare(6*mod_counter, symmetry);
-break;
-case 4:
-mod_value = modSaw(6*mod_counter, symmetry);
-break;
-case 5:
-mod_value = modSawRev(6*mod_counter, symmetry);
-break;
-default:
-mod_value = 0;
-break;
-}
-if (mod_value > 90) {
-LATBbits.LATB1 = 1;
-} else {
-LATBbits.LATB1 = 0;
-}
 
+# 191
+mod_value = modArray[mod_counter];
+
+# 198
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR3 = mod_value / 2;
 mod_counter++;

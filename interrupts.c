@@ -38,7 +38,7 @@ void interrupt isr(void) {
     extern volatile long baseline_delay_time;
 
     extern  int top_push_state;
-    extern uint8_t feedback_start;
+    extern uint8_t longBypass_start;
     extern volatile long mod_timer;    
     extern volatile long delay_time;
     
@@ -55,9 +55,9 @@ void interrupt isr(void) {
 
         
         
-        if (feedback_start == 1) {
-            feedback_timer++;
-            if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
+        if (longBypass_start == 1) {
+            longBypass_timer++;
+            if (longBypass_timer > long_press_limit) {longBypass_timer = long_press_limit;}
         }
         if (longTap_start == 1) {
             longTap_timer++;
@@ -166,8 +166,8 @@ void interrupt isr(void) {
        
 
        
-       chorus = 0;
-       /*int modAngle = 6*mod_counter;
+       /*chorus = 0;
+       int modAngle = 6*mod_counter;
         switch (bottom_push_state) {
             case 1:  //Sin
                 mod_value = modSin(modAngle, symmetry); 

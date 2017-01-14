@@ -21,7 +21,7 @@ int switchBypass_pressed = 0;
 int switchBypass_up = 1;  
 int switchBypass_toggle = 0;
 
-//int bypass_down = 0;
+char longBypass_down = 0;
 uint8_t bypass_turning_on = 0;
 
 
@@ -53,43 +53,39 @@ void updateSwitchBypass(void) {
     if (switchBypass_pressed == 0) {
         //switch is down
 
-        if (feedback_start == 0) {
-            feedback_start = 1; 
-            feedback_timer = 0;
+        if (longBypass_start == 0) {
+            longBypass_start = 1; 
+            longBypass_timer = 0;
         }
 
-        if (feedback_timer >= long_press_limit && feedback_state == 0 && doubleTap_state == 0) {
+        if (longBypass_timer >= long_press_limit && longBypass_down == 0 && doubleTap_state == 0) {
             //bypass_down = long_press_limit; //try and prevent overflow4
 
             LED_bypass_A = 0;
-            if (longTap_start != 1) {
-                setFeedbackState(1);
+            if (longTap_start != 1 ) {
+                if (switchBypass_state == 1) {
+                    longBypass_down = 1;
+                    if (longBypass_state == 0) {
+                        LED_bypass_A = 0;
+                        setLongBypassState(1);
+                    } else {
+                        setSwitchBypassState(1);    
+                        setLongBypassState(0);
+                        LED_bypass_A = 1;
+                    }
+                }
             } else {
                 setDoublePressState(1);
             }
         }        
         
-        if (doubleTap_state == 0 && feedback_state == 0) {
+        if (doubleTap_state == 0 && longBypass_state == 0) {
             if (switchBypass_state == 1) {
                 //switch was on, so turn it off on release
                 if (switchBypass_up == 1) {
                     currentBypassState = 1;
                     switchBypass_toggle = 1;
                 }
-
-
-
-                //Switch was on, so if it is long press then kick in feedback.  If it is short, then turn off the fuzz
-                /*if (feedback_timer >= long_press_limit && feedback_state == 0 && doubleTap_state == 0 && bypass_turning_on == 0) {
-                    //bypass_down = long_press_limit; //try and prevent overflow
-                    LATDbits.LATD0 = 1;
-                    LED_bypass_A = 0;
-                    if (longTap_start != 1) {
-                        setFeedbackState(1);
-                    } else {
-                        setDoublePressState(1);
-                    }
-                }*/
             } else {
                 if (bypass_turning_on != 1) {
                    
@@ -98,8 +94,8 @@ void updateSwitchBypass(void) {
                     bypass_turning_on = 1;
                     switchBypass_toggle = 0;
                     //setSwitchBypassState(1);
-                    feedback_state = 0;
-                    feedback_start = 0;
+                    longBypass_state = 0;
+                    longBypass_start = 0;
                 }
             }
 
@@ -108,18 +104,19 @@ void updateSwitchBypass(void) {
     } else if (switchBypass_pressed >= debounce_limit) {
         if (doubleTap_state == 1) {
             setSwitchBypassState(currentBypassState);
-        } else if (bypass_turning_on == 1 || feedback_state == 1) {
+        } else if (bypass_turning_on == 1 || longBypass_state == 1) {
             setSwitchBypassState(1);
-        } else if (switchBypass_toggle == 1 && feedback_state == 0 && doubleTap_state == 0) {
+        } else if (switchBypass_toggle == 1 && longBypass_state == 0 && doubleTap_state == 0) {
             setSwitchBypassState(0);
         }
         
-
-        LED_bypass_A = switchBypass_state;
-        //when the switch is up, Feedback is definitely off.  If the toggle for bypass is true, then turn the bypass off.
-        setFeedbackState(0);
+        longBypass_down = 0;
+        if (longBypass_state == 0) {
+            LED_bypass_A = switchBypass_state;
+        }
+        //If the toggle for bypass is true, then turn the bypass off.
         setDoublePressState(0);
-        feedback_start = 0;
+        longBypass_start = 0;
         bypass_turning_on = 0;
         switchBypass_toggle = 0;
         switchBypass_up = 1;
@@ -148,11 +145,11 @@ void setSwitchBypassState(int f_state) {
     wait_ms(relay_delay); 
 }
 
-void setFeedbackState(int f_state) {
-    if (feedback_state == f_state) {return;}
-    feedback_state = f_state;
+void setLongBypassState(int f_state) {
+    if (longBypass_state == f_state) {return;}
+    longBypass_state = f_state;
     LED_bypass_B = f_state;
-        
+    chorus = f_state;
    // wait_ms(relay_delay);
     
 }

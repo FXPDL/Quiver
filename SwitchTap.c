@@ -100,7 +100,7 @@ void updateSwitchTap(void) {
                 longTap_timer = long_press_limit; //try and prevent overflow
                 
                 LED_tap_A = 0;
-                if (feedback_start != 1) {
+                if (longBypass_start != 1) {
                     setLongTapState(1);
                 } else {
                     setDoublePressState(1);

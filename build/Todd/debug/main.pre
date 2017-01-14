@@ -4974,7 +4974,9 @@ char presetModeCnst = 1;
 char expressModeCnst = 2;
 
 
-int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
@@ -5085,18 +5087,12 @@ uint8_t iCnt;
 # 68
 void main(void) {
 
-
 calcSinArray();
 
-
-tmpVal = modSin(48, 180);
-__nop();
-tmpVal = modSin(48, 35);
-__nop();
-tmpVal = modSin(48, 310);
+updateModulationArray();
 __nop();
 
-# 91
+# 82
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5155,20 +5151,24 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 157
+# 148
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 
-# 165
+modulation_changed = 1;
+if (symmetry > 177 && symmetry < 182) {
+LATBbits.LATB1 = 1;
+} else {
+LATBbits.LATB1 = 0;
+}
 }
 
-# 176
+# 169
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 
 mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47);
-
 }
 
 
@@ -5179,7 +5179,9 @@ knob5_prev = knob_5_pos;
 adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
 }
 
-
+if (modulation_changed == 1) {
+updateModulationArray();
+}
 
 
 if (delay_time_changed == 1) {
@@ -5189,7 +5191,7 @@ reset_sub_delay = 1;
 delayfound = 0;
 delay_counter = 0;
 
-# 211
+# 205
 delay_time_changed = 0;
 
 }

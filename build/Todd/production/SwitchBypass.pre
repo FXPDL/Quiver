@@ -4924,7 +4924,7 @@ void FLASH_EraseBlock(uint16_t startAddr);
 # 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
-volatile uint16_t feedback_timer = 0;
+volatile uint16_t longBypass_timer = 0;
 volatile uint16_t longTap_timer = 0;
 
 volatile int delay_counter = 0;
@@ -4932,7 +4932,7 @@ volatile int delay_counter = 0;
 uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
-uint8_t feedback_start = 0;
+uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
 volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
@@ -4973,7 +4973,7 @@ char expressionChannel = 1;
 char switchBypass_state = -1;
 char switchTap_state = -1;
 volatile char longTap_state = -1;
-volatile char feedback_state = -1;
+volatile char longBypass_state = 0;
 
 char expSwitchState = -1;
 
@@ -5007,7 +5007,7 @@ int set_subdivision(int,int);
 void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
-void setFeedbackState(int);
+void setLongBypassState(int);
 
 # 19 "SwitchBypass.c"
 uint8_t currentBypassState = -1;
@@ -5015,7 +5015,7 @@ int switchBypass_pressed = 0;
 int switchBypass_up = 1;
 int switchBypass_toggle = 0;
 
-
+char longBypass_down = 0;
 uint8_t bypass_turning_on = 0;
 
 
@@ -5040,31 +5040,39 @@ switchBypass_pressed++;
 if (switchBypass_pressed == 0) {
 
 
-if (feedback_start == 0) {
-feedback_start = 1;
-feedback_timer = 0;
+if (longBypass_start == 0) {
+longBypass_start = 1;
+longBypass_timer = 0;
 }
 
-if (feedback_timer >= long_press_limit && feedback_state == 0 && doubleTap_state == 0) {
+if (longBypass_timer >= long_press_limit && longBypass_down == 0 && doubleTap_state == 0) {
 
 
 LATBbits.LATB2 = 0;
-if (longTap_start != 1) {
-setFeedbackState(1);
+if (longTap_start != 1 ) {
+if (switchBypass_state == 1) {
+longBypass_down = 1;
+if (longBypass_state == 0) {
+LATBbits.LATB2 = 0;
+setLongBypassState(1);
+} else {
+setSwitchBypassState(1);
+setLongBypassState(0);
+LATBbits.LATB2 = 1;
+}
+}
 } else {
 setDoublePressState(1);
 }
 }
 
-if (doubleTap_state == 0 && feedback_state == 0) {
+if (doubleTap_state == 0 && longBypass_state == 0) {
 if (switchBypass_state == 1) {
 
 if (switchBypass_up == 1) {
 currentBypassState = 1;
 switchBypass_toggle = 1;
 }
-
-# 93
 } else {
 if (bypass_turning_on != 1) {
 
@@ -5073,8 +5081,8 @@ currentBypassState = 0;
 bypass_turning_on = 1;
 switchBypass_toggle = 0;
 
-feedback_state = 0;
-feedback_start = 0;
+longBypass_state = 0;
+longBypass_start = 0;
 }
 }
 
@@ -5083,18 +5091,19 @@ switchBypass_up = 0;
 } else if (switchBypass_pressed >= 25) {
 if (doubleTap_state == 1) {
 setSwitchBypassState(currentBypassState);
-} else if (bypass_turning_on == 1 || feedback_state == 1) {
+} else if (bypass_turning_on == 1 || longBypass_state == 1) {
 setSwitchBypassState(1);
-} else if (switchBypass_toggle == 1 && feedback_state == 0 && doubleTap_state == 0) {
+} else if (switchBypass_toggle == 1 && longBypass_state == 0 && doubleTap_state == 0) {
 setSwitchBypassState(0);
 }
 
-
+longBypass_down = 0;
+if (longBypass_state == 0) {
 LATBbits.LATB2 = switchBypass_state;
+}
 
-setFeedbackState(0);
 setDoublePressState(0);
-feedback_start = 0;
+longBypass_start = 0;
 bypass_turning_on = 0;
 switchBypass_toggle = 0;
 switchBypass_up = 1;
@@ -5123,11 +5132,11 @@ updateSwitchBypassState(switchBypass_state);
 wait_ms(20);
 }
 
-void setFeedbackState(int f_state) {
-if (feedback_state == f_state) {return;}
-feedback_state = f_state;
+void setLongBypassState(int f_state) {
+if (longBypass_state == f_state) {return;}
+longBypass_state = f_state;
 LATBbits.LATB3 = f_state;
-
+PORTCbits.RC4 = f_state;
 
 
 }

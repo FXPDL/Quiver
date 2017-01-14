@@ -67,11 +67,10 @@ uint8_t iCnt;
 
 void main(void) {
 
-    //symmetry = 180;
     calcSinArray();
-    
+
     //updateModulationArray(); 
-    
+    //NOP();
        
     /*symmetry = 25;
     updateModulationArray(); 
@@ -96,7 +95,7 @@ void main(void) {
     
     //showBootSequence();    
     ReadSavedSettings();
-    
+    updateModulationArray(); 
     while (1) {
 
         
@@ -151,7 +150,7 @@ void main(void) {
             symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);   
             
             modulation_changed = 1;
-            if (symmetry > 177 && symmetry < 182) {
+            if (symmetry > 174 && symmetry < 185) {
                 LED_bypass_Aux = 1;
             } else {
                 LED_bypass_Aux = 0;

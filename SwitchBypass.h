@@ -28,4 +28,4 @@ extern "C" {
 void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
-void setFeedbackState(int);
+void setLongBypassState(int);

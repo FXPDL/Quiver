@@ -4917,7 +4917,7 @@ void FLASH_EraseBlock(uint16_t startAddr);
 # 56 "constants.h"
 volatile long timer = 0;
 volatile long sub_timer = 0;
-volatile uint16_t feedback_timer = 0;
+volatile uint16_t longBypass_timer = 0;
 volatile uint16_t longTap_timer = 0;
 
 volatile int delay_counter = 0;
@@ -4925,7 +4925,7 @@ volatile int delay_counter = 0;
 uint16_t long_press_limit = 1000;
 volatile long baseline_delay_time = 2000;
 
-uint8_t feedback_start = 0;
+uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
 volatile uint8_t doubleTap_state = 0;
 uint8_t mode1_state = 0;
@@ -4966,7 +4966,7 @@ char expressionChannel = 1;
 char switchBypass_state = -1;
 char switchTap_state = -1;
 volatile char longTap_state = -1;
-volatile char feedback_state = -1;
+volatile char longBypass_state = 0;
 
 char expSwitchState = -1;
 
@@ -5050,7 +5050,7 @@ extern int mod_delay_time;
 extern volatile long baseline_delay_time;
 
 extern int top_push_state;
-extern uint8_t feedback_start;
+extern uint8_t longBypass_start;
 extern volatile long mod_timer;
 extern volatile long delay_time;
 
@@ -5067,9 +5067,9 @@ double_timer++;
 
 
 
-if (feedback_start == 1) {
-feedback_timer++;
-if (feedback_timer > long_press_limit) {feedback_timer = long_press_limit;}
+if (longBypass_start == 1) {
+longBypass_timer++;
+if (longBypass_timer > long_press_limit) {longBypass_timer = long_press_limit;}
 }
 if (longTap_start == 1) {
 longTap_timer++;
@@ -5162,10 +5162,6 @@ LATBbits.LATB0 = 1;
 } else {
 LATBbits.LATB0 = 0;
 }
-
-
-
-PORTCbits.RC4 = 0;
 
 # 191
 mod_value = modArray[mod_counter];

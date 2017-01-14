@@ -22,6 +22,10 @@ void calcSinArray(void) {
 }
 
 void updateModulationArray(void) {
+    if (modArray[120] == bottom_push_state && modArray[121] == symmetry) {
+        //array params haven't changed.
+        return;
+    }
     for (char iAngle = 0; iAngle < 60; iAngle++) {
         int thisAngle = 6 * iAngle;
         switch (bottom_push_state) {
@@ -45,7 +49,8 @@ void updateModulationArray(void) {
                 break;
         }
     }
-    char x = 1;
+    modArray[120] = bottom_push_state;
+    modArray[121] = symmetry;
 }
 
 int modSin(double angle, double inflection) {

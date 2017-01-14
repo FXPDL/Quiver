@@ -5002,7 +5002,9 @@ char presetModeCnst = 1;
 char expressModeCnst = 2;
 
 
-int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
@@ -5027,7 +5029,38 @@ sinArray[iAngle] = tmpVal;
 char x = 1;
 }
 
-# 52
+void updateModulationArray(void) {
+if (modArray[120] == bottom_push_state && modArray[121] == symmetry) {
+
+return;
+}
+for (char iAngle = 0; iAngle < 60; iAngle++) {
+int thisAngle = 6 * iAngle;
+switch (bottom_push_state) {
+case 1:
+modArray[iAngle] = modSin(thisAngle, symmetry);
+break;
+case 2:
+modArray[iAngle] = modTri(thisAngle, symmetry);
+break;
+case 3:
+modArray[iAngle] = modSquare(thisAngle, symmetry);
+break;
+case 4:
+modArray[iAngle] = modSaw(thisAngle, symmetry);
+break;
+case 5:
+modArray[iAngle] = modSawRev(thisAngle, symmetry);
+break;
+default:
+modArray[iAngle] = 0;
+break;
+}
+}
+modArray[120] = bottom_push_state;
+modArray[121] = symmetry;
+}
+
 int modSin(double angle, double inflection) {
 double period = 1.0;
 double shift = 0.0;
@@ -5090,6 +5123,8 @@ return -1 * modSaw(angle, inflection);
 
 
 int modSquare(double angle, double inflection) {
+int tmpVal = modSin(angle, inflection);
+
 return (angle <= inflection) ? 100 : -100;
 }
 
