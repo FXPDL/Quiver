@@ -24,7 +24,7 @@ int switchBypass_toggle = 0;
 char longBypass_down = 0;
 uint8_t bypass_turning_on = 0;
 
-
+char longBypass_save = 0;
 
 void initSwitchBypass() {
     int initState = getSwitchBypassState();
@@ -78,8 +78,8 @@ void updateSwitchBypass(void) {
                 setDoublePressState(1);
             }
         }        
-        
-        if (doubleTap_state == 0 && longBypass_state == 0) {
+        LATDbits.LATD4 = 0;
+        if (doubleTap_state == 0 && longBypass_down == 0) {
             if (switchBypass_state == 1) {
                 //switch was on, so turn it off on release
                 if (switchBypass_up == 1) {
@@ -94,8 +94,9 @@ void updateSwitchBypass(void) {
                     bypass_turning_on = 1;
                     switchBypass_toggle = 0;
                     //setSwitchBypassState(1);
+                    longBypass_save = longBypass_state;
                     longBypass_state = 0;
-                    longBypass_start = 0;
+                    longBypass_start = 0;                    
                 }
             }
 
@@ -104,9 +105,17 @@ void updateSwitchBypass(void) {
     } else if (switchBypass_pressed >= debounce_limit) {
         if (doubleTap_state == 1) {
             setSwitchBypassState(currentBypassState);
-        } else if (bypass_turning_on == 1 || longBypass_state == 1) {
-            setSwitchBypassState(1);
-        } else if (switchBypass_toggle == 1 && longBypass_state == 0 && doubleTap_state == 0) {
+        } else if (bypass_turning_on == 1) { // || longBypass_state == 1
+            
+            if (longBypass_save == 1) {
+                LED_bypass_A = 0;
+                setLongBypassState(1);
+                setSwitchBypassRelays(1);
+            } else {
+                setSwitchBypassState(1);
+            }
+            
+        } else if (switchBypass_toggle == 1 && longBypass_down == 0 && doubleTap_state == 0) { // && longBypass_state == 0
             setSwitchBypassState(0);
         }
         
@@ -130,9 +139,14 @@ void updateSwitchBypass(void) {
 
 void setSwitchBypassState(int f_state) {
     if (switchBypass_state == f_state) {return;}
-    switchBypass_state = f_state;
+    
     LED_bypass_A = f_state;
     LED_bypass_B = 0;
+    setSwitchBypassRelays(f_state); 
+}
+
+void setSwitchBypassRelays(int f_state) {
+    switchBypass_state = f_state;
     Relay_2 = f_state;
     Relay_1 = !f_state;
     
@@ -144,6 +158,7 @@ void setSwitchBypassState(int f_state) {
     updateSwitchBypassState(switchBypass_state);  
     wait_ms(relay_delay); 
 }
+
 
 void setLongBypassState(int f_state) {
     if (longBypass_state == f_state) {return;}

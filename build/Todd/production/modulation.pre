@@ -5047,10 +5047,10 @@ case 3:
 modArray[iAngle] = modSquare(thisAngle, symmetry);
 break;
 case 4:
-modArray[iAngle] = modSaw(thisAngle, symmetry);
+modArray[iAngle] = modSawRev(thisAngle, symmetry);
 break;
 case 5:
-modArray[iAngle] = modSawRev(thisAngle, symmetry);
+modArray[iAngle] = modSaw(thisAngle, symmetry);
 break;
 default:
 modArray[iAngle] = 0;

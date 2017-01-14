@@ -7,10 +7,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _modTri `(i ~T0 @X0 0 ef2`d`d ]
 "32
 [v _modSquare `(i ~T0 @X0 0 ef2`d`d ]
-"30
-[v _modSaw `(i ~T0 @X0 0 ef2`d`d ]
 "31
 [v _modSawRev `(i ~T0 @X0 0 ef2`d`d ]
+"30
+[v _modSaw `(i ~T0 @X0 0 ef2`d`d ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -4285,18 +4285,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 41: case 4:
 "41
 [e :U 474 ]
-[; ;modulation.c: 42: modArray[iAngle] = modSaw(thisAngle, symmetry);
+[; ;modulation.c: 42: modArray[iAngle] = modSawRev(thisAngle, symmetry);
 "42
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSaw (2 , -> _thisAngle `d -> _symmetry `d ]
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSawRev (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 43: break;
 "43
 [e $U 469  ]
 [; ;modulation.c: 44: case 5:
 "44
 [e :U 475 ]
-[; ;modulation.c: 45: modArray[iAngle] = modSawRev(thisAngle, symmetry);
+[; ;modulation.c: 45: modArray[iAngle] = modSaw(thisAngle, symmetry);
 "45
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSawRev (2 , -> _thisAngle `d -> _symmetry `d ]
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSaw (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 46: break;
 "46
 [e $U 469  ]

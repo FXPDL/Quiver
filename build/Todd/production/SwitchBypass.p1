@@ -23,6 +23,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setLongBypassState `(v ~T0 @X0 0 ef1`i ]
 "25 preset_programming.h
 [v _setDoublePressState `(v ~T0 @X0 0 ef1`i ]
+"2571 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S120 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"2581
+[s S121 :8 `uc 1 ]
+[n S121 . LATD ]
+"2570
+[u S119 `S120 1 `S121 1 ]
+[n S119 . . . ]
+"2585
+[v _LATDbits `VS119 ~T0 @X0 0 e@271 ]
+"32 SwitchBypass.h
+[v _setSwitchBypassRelays `(v ~T0 @X0 0 ef1`i ]
 "6144 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S311 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S311 . LATG0 LATG1 LATG2 LATG3 LATG4 ]
@@ -4198,6 +4211,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
 [; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
 [; ;SwitchBypass.h: 31: void setLongBypassState(int);
+[; ;SwitchBypass.h: 32: void setSwitchBypassRelays(int);
 "19 SwitchBypass.c
 [v _currentBypassState `uc ~T0 @X0 1 e ]
 [i _currentBypassState
@@ -4234,6 +4248,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;SwitchBypass.c: 25: uint8_t bypass_turning_on = 0;
+"27
+[v _longBypass_save `uc ~T0 @X0 1 e ]
+[i _longBypass_save
+-> -> 0 `i `uc
+]
+[; ;SwitchBypass.c: 27: char longBypass_save = 0;
 "29
 [v _initSwitchBypass `(v ~T0 @X0 1 ef ]
 {
@@ -4373,9 +4393,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 469 ]
 [; ;SwitchBypass.c: 79: }
 [; ;SwitchBypass.c: 80: }
-[; ;SwitchBypass.c: 82: if (doubleTap_state == 0 && longBypass_state == 0) {
+[; ;SwitchBypass.c: 81: LATDbits.LATD4 = 0;
+"81
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 82: if (doubleTap_state == 0 && longBypass_down == 0) {
 "82
-[e $ ! && == -> _doubleTap_state `i -> 0 `i == -> _longBypass_state `i -> 0 `i 475  ]
+[e $ ! && == -> _doubleTap_state `i -> 0 `i == -> _longBypass_down `i -> 0 `i 475  ]
 {
 [; ;SwitchBypass.c: 83: if (switchBypass_state == 1) {
 "83
@@ -4414,180 +4437,220 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.c: 95: switchBypass_toggle = 0;
 "95
 [e = _switchBypass_toggle -> 0 `i ]
-[; ;SwitchBypass.c: 97: longBypass_state = 0;
+[; ;SwitchBypass.c: 97: longBypass_save = longBypass_state;
 "97
-[e = _longBypass_state -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 98: longBypass_start = 0;
+[e = _longBypass_save _longBypass_state ]
+[; ;SwitchBypass.c: 98: longBypass_state = 0;
 "98
-[e = _longBypass_start -> -> 0 `i `uc ]
+[e = _longBypass_state -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 99: longBypass_start = 0;
 "99
-}
-[e :U 479 ]
+[e = _longBypass_start -> -> 0 `i `uc ]
 "100
 }
+[e :U 479 ]
+"101
+}
 [e :U 478 ]
-"102
+"103
 }
 [e :U 475 ]
-[; ;SwitchBypass.c: 99: }
 [; ;SwitchBypass.c: 100: }
-[; ;SwitchBypass.c: 102: }
-[; ;SwitchBypass.c: 103: switchBypass_up = 0;
-"103
-[e = _switchBypass_up -> 0 `i ]
+[; ;SwitchBypass.c: 101: }
+[; ;SwitchBypass.c: 103: }
+[; ;SwitchBypass.c: 104: switchBypass_up = 0;
 "104
+[e = _switchBypass_up -> 0 `i ]
+"105
 }
-[; ;SwitchBypass.c: 104: } else if (switchBypass_pressed >= 25) {
+[; ;SwitchBypass.c: 105: } else if (switchBypass_pressed >= 25) {
 [e $U 480  ]
 [e :U 467 ]
 [e $ ! >= _switchBypass_pressed -> 25 `i 481  ]
 {
-[; ;SwitchBypass.c: 105: if (doubleTap_state == 1) {
-"105
+[; ;SwitchBypass.c: 106: if (doubleTap_state == 1) {
+"106
 [e $ ! == -> _doubleTap_state `i -> 1 `i 482  ]
 {
-[; ;SwitchBypass.c: 106: setSwitchBypassState(currentBypassState);
-"106
-[e ( _setSwitchBypassState (1 -> _currentBypassState `i ]
+[; ;SwitchBypass.c: 107: setSwitchBypassState(currentBypassState);
 "107
+[e ( _setSwitchBypassState (1 -> _currentBypassState `i ]
+"108
 }
-[; ;SwitchBypass.c: 107: } else if (bypass_turning_on == 1 || longBypass_state == 1) {
+[; ;SwitchBypass.c: 108: } else if (bypass_turning_on == 1) {
 [e $U 483  ]
 [e :U 482 ]
-[e $ ! || == -> _bypass_turning_on `i -> 1 `i == -> _longBypass_state `i -> 1 `i 484  ]
+[e $ ! == -> _bypass_turning_on `i -> 1 `i 484  ]
 {
-[; ;SwitchBypass.c: 108: setSwitchBypassState(1);
-"108
-[e ( _setSwitchBypassState (1 -> 1 `i ]
-"109
-}
-[; ;SwitchBypass.c: 109: } else if (switchBypass_toggle == 1 && longBypass_state == 0 && doubleTap_state == 0) {
-[e $U 485  ]
-[e :U 484 ]
-[e $ ! && && == _switchBypass_toggle -> 1 `i == -> _longBypass_state `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 486  ]
-{
-[; ;SwitchBypass.c: 110: setSwitchBypassState(0);
+[; ;SwitchBypass.c: 110: if (longBypass_save == 1) {
 "110
-[e ( _setSwitchBypassState (1 -> 0 `i ]
-"111
-}
-[e :U 486 ]
-"113
-[e :U 485 ]
-[e :U 483 ]
-[; ;SwitchBypass.c: 111: }
-[; ;SwitchBypass.c: 113: longBypass_down = 0;
-[e = _longBypass_down -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 114: if (longBypass_state == 0) {
-"114
-[e $ ! == -> _longBypass_state `i -> 0 `i 487  ]
+[e $ ! == -> _longBypass_save `i -> 1 `i 485  ]
 {
-[; ;SwitchBypass.c: 115: LATBbits.LATB2 = switchBypass_state;
+[; ;SwitchBypass.c: 111: LATBbits.LATB2 = 0;
+"111
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 112: setLongBypassState(1);
+"112
+[e ( _setLongBypassState (1 -> 1 `i ]
+[; ;SwitchBypass.c: 113: setSwitchBypassRelays(1);
+"113
+[e ( _setSwitchBypassRelays (1 -> 1 `i ]
+"114
+}
+[; ;SwitchBypass.c: 114: } else {
+[e $U 486  ]
+[e :U 485 ]
+{
+[; ;SwitchBypass.c: 115: setSwitchBypassState(1);
 "115
-[e = . . _LATBbits 0 2 _switchBypass_state ]
+[e ( _setSwitchBypassState (1 -> 1 `i ]
 "116
 }
-[e :U 487 ]
-[; ;SwitchBypass.c: 116: }
-[; ;SwitchBypass.c: 118: setDoublePressState(0);
+[e :U 486 ]
 "118
-[e ( _setDoublePressState (1 -> 0 `i ]
-[; ;SwitchBypass.c: 119: longBypass_start = 0;
+}
+[; ;SwitchBypass.c: 116: }
+[; ;SwitchBypass.c: 118: } else if (switchBypass_toggle == 1 && longBypass_down == 0 && doubleTap_state == 0) {
+[e $U 487  ]
+[e :U 484 ]
+[e $ ! && && == _switchBypass_toggle -> 1 `i == -> _longBypass_down `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 488  ]
+{
+[; ;SwitchBypass.c: 119: setSwitchBypassState(0);
 "119
-[e = _longBypass_start -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 120: bypass_turning_on = 0;
+[e ( _setSwitchBypassState (1 -> 0 `i ]
 "120
-[e = _bypass_turning_on -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 121: switchBypass_toggle = 0;
-"121
-[e = _switchBypass_toggle -> 0 `i ]
-[; ;SwitchBypass.c: 122: switchBypass_up = 1;
+}
+[e :U 488 ]
 "122
-[e = _switchBypass_up -> 1 `i ]
-[; ;SwitchBypass.c: 124: switchBypass_pressed = 25;
+[e :U 487 ]
+[e :U 483 ]
+[; ;SwitchBypass.c: 120: }
+[; ;SwitchBypass.c: 122: longBypass_down = 0;
+[e = _longBypass_down -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 123: if (longBypass_state == 0) {
+"123
+[e $ ! == -> _longBypass_state `i -> 0 `i 489  ]
+{
+[; ;SwitchBypass.c: 124: LATBbits.LATB2 = switchBypass_state;
 "124
-[e = _switchBypass_pressed -> 25 `i ]
+[e = . . _LATBbits 0 2 _switchBypass_state ]
 "125
 }
-[e :U 481 ]
-"128
-[e :U 480 ]
+[e :U 489 ]
 [; ;SwitchBypass.c: 125: }
-[; ;SwitchBypass.c: 128: }
+[; ;SwitchBypass.c: 127: setDoublePressState(0);
+"127
+[e ( _setDoublePressState (1 -> 0 `i ]
+[; ;SwitchBypass.c: 128: longBypass_start = 0;
+"128
+[e = _longBypass_start -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 129: bypass_turning_on = 0;
+"129
+[e = _bypass_turning_on -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 130: switchBypass_toggle = 0;
+"130
+[e = _switchBypass_toggle -> 0 `i ]
+[; ;SwitchBypass.c: 131: switchBypass_up = 1;
+"131
+[e = _switchBypass_up -> 1 `i ]
+[; ;SwitchBypass.c: 133: switchBypass_pressed = 25;
+"133
+[e = _switchBypass_pressed -> 25 `i ]
+"134
+}
+[e :U 481 ]
+"137
+[e :U 480 ]
+[; ;SwitchBypass.c: 134: }
+[; ;SwitchBypass.c: 137: }
 [e :UE 462 ]
 }
-"131
+"140
 [v _setSwitchBypassState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;SwitchBypass.c: 131: void setSwitchBypassState(int f_state) {
+[; ;SwitchBypass.c: 140: void setSwitchBypassState(int f_state) {
 [e :U _setSwitchBypassState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;SwitchBypass.c: 132: if (switchBypass_state == f_state) {return;}
-"132
-[e $ ! == -> _switchBypass_state `i _f_state 489  ]
-{
-[e $UE 488  ]
-}
-[e :U 489 ]
-[; ;SwitchBypass.c: 133: switchBypass_state = f_state;
-"133
-[e = _switchBypass_state -> _f_state `uc ]
-[; ;SwitchBypass.c: 134: LATBbits.LATB2 = f_state;
-"134
-[e = . . _LATBbits 0 2 -> _f_state `uc ]
-[; ;SwitchBypass.c: 135: LATBbits.LATB3 = 0;
-"135
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 136: LATGbits.LATG2 = f_state;
-"136
-[e = . . _LATGbits 0 2 -> _f_state `uc ]
-[; ;SwitchBypass.c: 137: LATGbits.LATG1 = !f_state;
-"137
-[e = . . _LATGbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;SwitchBypass.c: 139: wait_ms(20);
-"139
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 141: LATGbits.LATG2 = 0;
+[; ;SwitchBypass.c: 141: if (switchBypass_state == f_state) {return;}
 "141
-[e = . . _LATGbits 0 2 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 142: LATGbits.LATG1 = 0;
-"142
-[e = . . _LATGbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 144: updateSwitchBypassState(switchBypass_state);
-"144
-[e ( _updateSwitchBypassState (1 -> _switchBypass_state `i ]
-[; ;SwitchBypass.c: 145: wait_ms(20);
-"145
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;SwitchBypass.c: 146: }
-"146
-[e :UE 488 ]
-}
-"148
-[v _setLongBypassState `(v ~T0 @X0 1 ef1`i ]
-{
-[; ;SwitchBypass.c: 148: void setLongBypassState(int f_state) {
-[e :U _setLongBypassState ]
-[v _f_state `i ~T0 @X0 1 r1 ]
-[f ]
-[; ;SwitchBypass.c: 149: if (longBypass_state == f_state) {return;}
-"149
-[e $ ! == -> _longBypass_state `i _f_state 491  ]
+[e $ ! == -> _switchBypass_state `i _f_state 491  ]
 {
 [e $UE 490  ]
 }
 [e :U 491 ]
-[; ;SwitchBypass.c: 150: longBypass_state = f_state;
-"150
-[e = _longBypass_state -> _f_state `uc ]
-[; ;SwitchBypass.c: 151: LATBbits.LATB3 = f_state;
-"151
-[e = . . _LATBbits 0 3 -> _f_state `uc ]
-[; ;SwitchBypass.c: 152: PORTCbits.RC4 = f_state;
-"152
-[e = . . _PORTCbits 0 4 -> _f_state `uc ]
-[; ;SwitchBypass.c: 155: }
-"155
+[; ;SwitchBypass.c: 143: LATBbits.LATB2 = f_state;
+"143
+[e = . . _LATBbits 0 2 -> _f_state `uc ]
+[; ;SwitchBypass.c: 144: LATBbits.LATB3 = 0;
+"144
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 145: setSwitchBypassRelays(f_state);
+"145
+[e ( _setSwitchBypassRelays (1 _f_state ]
+[; ;SwitchBypass.c: 146: }
+"146
 [e :UE 490 ]
+}
+"148
+[v _setSwitchBypassRelays `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;SwitchBypass.c: 148: void setSwitchBypassRelays(int f_state) {
+[e :U _setSwitchBypassRelays ]
+[v _f_state `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;SwitchBypass.c: 149: switchBypass_state = f_state;
+"149
+[e = _switchBypass_state -> _f_state `uc ]
+[; ;SwitchBypass.c: 150: LATGbits.LATG2 = f_state;
+"150
+[e = . . _LATGbits 0 2 -> _f_state `uc ]
+[; ;SwitchBypass.c: 151: LATGbits.LATG1 = !f_state;
+"151
+[e = . . _LATGbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
+[; ;SwitchBypass.c: 153: wait_ms(20);
+"153
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;SwitchBypass.c: 155: LATGbits.LATG2 = 0;
+"155
+[e = . . _LATGbits 0 2 -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 156: LATGbits.LATG1 = 0;
+"156
+[e = . . _LATGbits 0 1 -> -> 0 `i `uc ]
+[; ;SwitchBypass.c: 158: updateSwitchBypassState(switchBypass_state);
+"158
+[e ( _updateSwitchBypassState (1 -> _switchBypass_state `i ]
+[; ;SwitchBypass.c: 159: wait_ms(20);
+"159
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;SwitchBypass.c: 160: }
+"160
+[e :UE 492 ]
+}
+"163
+[v _setLongBypassState `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;SwitchBypass.c: 163: void setLongBypassState(int f_state) {
+[e :U _setLongBypassState ]
+[v _f_state `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;SwitchBypass.c: 164: if (longBypass_state == f_state) {return;}
+"164
+[e $ ! == -> _longBypass_state `i _f_state 494  ]
+{
+[e $UE 493  ]
+}
+[e :U 494 ]
+[; ;SwitchBypass.c: 165: longBypass_state = f_state;
+"165
+[e = _longBypass_state -> _f_state `uc ]
+[; ;SwitchBypass.c: 166: LATBbits.LATB3 = f_state;
+"166
+[e = . . _LATBbits 0 3 -> _f_state `uc ]
+[; ;SwitchBypass.c: 167: PORTCbits.RC4 = f_state;
+"167
+[e = . . _PORTCbits 0 4 -> _f_state `uc ]
+[; ;SwitchBypass.c: 170: }
+"170
+[e :UE 493 ]
 }

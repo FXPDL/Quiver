@@ -39,10 +39,10 @@ void updateModulationArray(void) {
                 modArray[iAngle] = modSquare(thisAngle, symmetry);
                 break;
             case 4: //Saw
-                modArray[iAngle] = modSaw(thisAngle, symmetry); 
+                modArray[iAngle] = modSawRev(thisAngle, symmetry); 
                 break;
             case 5: //Reverse Saw
-                modArray[iAngle] = modSawRev(thisAngle, symmetry);            
+                modArray[iAngle] = modSaw(thisAngle, symmetry);            
                 break;
             default:
                 modArray[iAngle] = 0;

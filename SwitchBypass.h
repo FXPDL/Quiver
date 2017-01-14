@@ -29,3 +29,4 @@ void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
 void setLongBypassState(int);
+void setSwitchBypassRelays(int);

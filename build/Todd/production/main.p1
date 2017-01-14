@@ -4248,6 +4248,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.h: 29: void updateSwitchBypass(void);
 [; ;SwitchBypass.h: 30: void setSwitchBypassState(int);
 [; ;SwitchBypass.h: 31: void setLongBypassState(int);
+[; ;SwitchBypass.h: 32: void setSwitchBypassRelays(int);
 [; ;SwitchTap.h: 24: void initSwitchTap(void);
 [; ;SwitchTap.h: 25: void updateSwitchTap(void);
 [; ;SwitchTap.h: 26: void setSwitchTapState(int);

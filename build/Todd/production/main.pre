@@ -5023,6 +5023,7 @@ void initSwitchBypass(void);
 void updateSwitchBypass(void);
 void setSwitchBypassState(int);
 void setLongBypassState(int);
+void setSwitchBypassRelays(int);
 
 # 24 "SwitchTap.h"
 void initSwitchTap(void);
