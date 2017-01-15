@@ -181,9 +181,9 @@ void interrupt isr(void) {
            if (mod_counter >= subDiv) {
                 mod_counter = 0;
                 tmpModDelay = mod_delay_time;
-                LED_tap_Aux = 1;
+                /*LED_tap_Aux = 1;
             } else {
-                LED_tap_Aux = 0;
+                LED_tap_Aux = 0;*/
             }
 
            
