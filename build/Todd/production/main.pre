@@ -4948,6 +4948,9 @@ char mod_time_changed = 1;
 char reset_sub_delay = 0;
 char adjust_mod_delay = 0;
 
+int tmpModDelay = 0;
+
+
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int debounce_count = 0;
@@ -5059,7 +5062,8 @@ int modSaw(double, double);
 int modSawRev(double, double);
 int modSquare(double, double);
 
-# 38 "main.c"
+# 37 "main.c"
+char isInitialized = 0;
 volatile long mod_timer = 0;
 signed int adjusted_pot_value;
 int mod_delay_time = 2000;
@@ -5163,7 +5167,7 @@ LATBbits.LATB1 = 0;
 }
 }
 
-# 169
+# 167
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
@@ -5179,16 +5183,20 @@ adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
 
 
 
+
 if (mod_time_changed == 1) {
+
 delay_time = baseline_mod_time;
 delay_time = set_subdivision(baseline_mod_time, top_push_state);
 getModulationDelayTime();
-
-
+modulation_changed = 1;
+mod_time_changed = 0;
 }
 
-if (modulation_changed == 1 || mod_time_changed == 1) {
+
+if (modulation_changed == 1) {
 updateModulationArray();
+isInitialized = 1;
 }
 }
 }

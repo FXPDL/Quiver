@@ -3793,6 +3793,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 87: char adjust_mod_delay = 0;
 "89
+[v _tmpModDelay `i ~T0 @X0 1 e ]
+[i _tmpModDelay
+-> 0 `i
+]
+[; ;constants.h: 89: int tmpModDelay = 0;
+"92
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3809,104 +3815,104 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
+[; ;constants.h: 92: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"94
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
+[; ;constants.h: 94: int debounce_count = 0;
+"95
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
+[; ;constants.h: 95: int debounce_bypass = 0;
+"96
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
+[; ;constants.h: 96: int debounce_mode1 = 0;
+"97
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
+[; ;constants.h: 97: int debounce_mode2 = 0;
+"99
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
+[; ;constants.h: 99: volatile long tap_timer = 0;
+"100
 [v _double_timer `Vl ~T0 @X0 1 e ]
 [i _double_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 97: volatile long double_timer = 0;
-"99
+[; ;constants.h: 100: volatile long double_timer = 0;
+"102
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 99: char presetSaveMode = 0;
-"100
+[; ;constants.h: 102: char presetSaveMode = 0;
+"103
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 100: char presetChannel = 1;
-"101
+[; ;constants.h: 103: char presetChannel = 1;
+"104
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 101: char expressionChannel = 1;
-"103
+[; ;constants.h: 104: char expressionChannel = 1;
+"106
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 103: char switchBypass_state = -1;
-"104
+[; ;constants.h: 106: char switchBypass_state = -1;
+"107
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 104: char switchTap_state = -1;
-"105
+[; ;constants.h: 107: char switchTap_state = -1;
+"108
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 105: volatile char longTap_state = -1;
-"106
+[; ;constants.h: 108: volatile char longTap_state = -1;
+"109
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 106: volatile char longBypass_state = 0;
-"108
+[; ;constants.h: 109: volatile char longBypass_state = 0;
+"111
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: char expSwitchState = -1;
-"110
+[; ;constants.h: 111: char expSwitchState = -1;
+"113
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 110: char presetModeCnst = 1;
-"111
+[; ;constants.h: 113: char presetModeCnst = 1;
+"114
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 111: char expressModeCnst = 2;
-"116
+[; ;constants.h: 114: char expressModeCnst = 2;
+"119
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4036,8 +4042,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 116: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"117
+[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"120
 [v _sinArray `d ~T0 @X0 -> 0 `x e ]
 [i _sinArray
 :U ..
@@ -4165,13 +4171,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 117: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"119
+[; ;constants.h: 120: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"122
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 119: int symmetry = 180;
+[; ;constants.h: 122: int symmetry = 180;
 [; ;modulation.h: 25: void updateModulationArray(void);
 [; ;modulation.h: 26: void calcSinArray(void);
 [; ;modulation.h: 27: int getModulationSubdivision(void);
@@ -4281,17 +4287,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 38: mod_delay_time = (int)((float)delay_time/(float)subDiv);
 "38
 [e = _mod_delay_time -> / -> _delay_time `f -> _subDiv `f `i ]
-[; ;modulation.c: 39: if (mod_delay_time * subDiv != delay_time) {
-"39
-[e $ ! != -> * _mod_delay_time _subDiv `l _delay_time 470  ]
-{
-[; ;modulation.c: 40: adjust_mod_delay = 1;
-"40
-[e = _adjust_mod_delay -> -> 1 `i `uc ]
-"41
-}
-[e :U 470 ]
-[; ;modulation.c: 41: }
 [; ;modulation.c: 42: }
 "42
 [e :UE 469 ]
@@ -4308,14 +4303,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _subDiv ( _getModulationSubdivision ..  ]
 [; ;modulation.c: 46: if (modArray[120] == bottom_push_state && modArray[121] == symmetry && modArray[122] == subDiv) {
 "46
-[e $ ! && && == *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state == *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry == *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv 472  ]
+[e $ ! && && == *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state == *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry == *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv 471  ]
 {
 [; ;modulation.c: 48: return;
 "48
-[e $UE 471  ]
+[e $UE 470  ]
 "49
 }
-[e :U 472 ]
+[e :U 471 ]
 "51
 [v _angleFactor `i ~T0 @X0 1 a ]
 [; ;modulation.c: 49: }
@@ -4326,8 +4321,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _iAngle `uc ~T0 @X0 1 a ]
 [e = _iAngle -> -> 0 `i `uc ]
-[e $U 476  ]
-[e :U 473 ]
+[e $U 475  ]
+[e :U 472 ]
 {
 "53
 [v _thisAngle `i ~T0 @X0 1 a ]
@@ -4335,83 +4330,83 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _thisAngle * _angleFactor -> _iAngle `i ]
 [; ;modulation.c: 54: switch (bottom_push_state) {
 "54
-[e $U 478  ]
+[e $U 477  ]
 {
 [; ;modulation.c: 55: case 1:
 "55
-[e :U 479 ]
+[e :U 478 ]
 [; ;modulation.c: 56: modArray[iAngle] = modSin(thisAngle, symmetry);
 "56
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSin (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 57: break;
 "57
-[e $U 477  ]
+[e $U 476  ]
 [; ;modulation.c: 58: case 2:
 "58
-[e :U 480 ]
+[e :U 479 ]
 [; ;modulation.c: 59: modArray[iAngle] = modTri(thisAngle, symmetry);
 "59
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modTri (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 60: break;
 "60
-[e $U 477  ]
+[e $U 476  ]
 [; ;modulation.c: 61: case 3:
 "61
-[e :U 481 ]
+[e :U 480 ]
 [; ;modulation.c: 62: modArray[iAngle] = modSquare(thisAngle, symmetry);
 "62
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSquare (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 63: break;
 "63
-[e $U 477  ]
+[e $U 476  ]
 [; ;modulation.c: 64: case 4:
 "64
-[e :U 482 ]
+[e :U 481 ]
 [; ;modulation.c: 65: modArray[iAngle] = modSawRev(thisAngle, symmetry);
 "65
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSawRev (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 66: break;
 "66
-[e $U 477  ]
+[e $U 476  ]
 [; ;modulation.c: 67: case 5:
 "67
-[e :U 483 ]
+[e :U 482 ]
 [; ;modulation.c: 68: modArray[iAngle] = modSaw(thisAngle, symmetry);
 "68
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSaw (2 , -> _thisAngle `d -> _symmetry `d ]
 [; ;modulation.c: 69: break;
 "69
-[e $U 477  ]
+[e $U 476  ]
 [; ;modulation.c: 70: default:
 "70
-[e :U 484 ]
+[e :U 483 ]
 [; ;modulation.c: 71: modArray[iAngle] = 0;
 "71
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux -> 0 `i ]
 [; ;modulation.c: 72: break;
 "72
-[e $U 477  ]
+[e $U 476  ]
 "73
 }
 [; ;modulation.c: 73: }
-[e $U 477  ]
+[e $U 476  ]
 "54
-[e :U 478 ]
-[e [\ _bottom_push_state , $ -> 1 `i 479
- , $ -> 2 `i 480
- , $ -> 3 `i 481
- , $ -> 4 `i 482
- , $ -> 5 `i 483
- 484 ]
-"73
 [e :U 477 ]
+[e [\ _bottom_push_state , $ -> 1 `i 478
+ , $ -> 2 `i 479
+ , $ -> 3 `i 480
+ , $ -> 4 `i 481
+ , $ -> 5 `i 482
+ 483 ]
+"73
+[e :U 476 ]
 "74
 }
 "52
 [e ++ _iAngle -> -> 1 `i `uc ]
-[e :U 476 ]
-[e $ < -> _iAngle `i _subDiv 473  ]
-[e :U 474 ]
+[e :U 475 ]
+[e $ < -> _iAngle `i _subDiv 472  ]
+[e :U 473 ]
 "74
 }
 [; ;modulation.c: 74: }
@@ -4426,7 +4421,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv ]
 [; ;modulation.c: 78: }
 "78
-[e :UE 471 ]
+[e :UE 470 ]
 }
 "80
 [v _modSin `(i ~T0 @X0 1 ef2`d`d ]
@@ -4446,7 +4441,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _shift .0.0 ]
 [; ;modulation.c: 84: if(angle<=inflection) {
 "84
-[e $ ! <= _angle _inflection 486  ]
+[e $ ! <= _angle _inflection 485  ]
 {
 [; ;modulation.c: 85: period = 180.0/inflection;
 "85
@@ -4454,8 +4449,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "86
 }
 [; ;modulation.c: 86: } else {
-[e $U 487  ]
-[e :U 486 ]
+[e $U 486  ]
+[e :U 485 ]
 {
 [; ;modulation.c: 87: shift = -(360-inflection*2)*(180/(360-inflection));
 "87
@@ -4465,7 +4460,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
 "90
 }
-[e :U 487 ]
+[e :U 486 ]
 "91
 [v _tmpVal `d ~T0 @X0 1 a ]
 [; ;modulation.c: 90: }
@@ -4477,10 +4472,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 93: return (int)(100.0 * tmpVal);
 "93
 [e ) -> * .100.0 _tmpVal `i ]
-[e $UE 485  ]
+[e $UE 484  ]
 [; ;modulation.c: 94: }
 "94
-[e :UE 485 ]
+[e :UE 484 ]
 }
 "96
 [v _modTri `(i ~T0 @X0 1 ef2`d`d ]
@@ -4500,7 +4495,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _shift -> -> 0 `i `d ]
 [; ;modulation.c: 100: if(angle<=inflection) {
 "100
-[e $ ! <= _angle _inflection 489  ]
+[e $ ! <= _angle _inflection 488  ]
 {
 [; ;modulation.c: 101: period = 180.0/inflection;
 "101
@@ -4508,8 +4503,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "102
 }
 [; ;modulation.c: 102: } else {
-[e $U 490  ]
-[e :U 489 ]
+[e $U 489  ]
+[e :U 488 ]
 {
 [; ;modulation.c: 103: shift = -(360-inflection*2)*(180/(360-inflection));
 "103
@@ -4519,7 +4514,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
 "106
 }
-[e :U 490 ]
+[e :U 489 ]
 "107
 [v _tmpVal `d ~T0 @X0 1 a ]
 [; ;modulation.c: 106: }
@@ -4527,7 +4522,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _tmpVal - * _period _angle _shift ]
 [; ;modulation.c: 108: if (tmpVal > 270) {
 "108
-[e $ ! > _tmpVal -> -> 270 `i `d 491  ]
+[e $ ! > _tmpVal -> -> 270 `i `d 490  ]
 {
 [; ;modulation.c: 109: tmpVal = tmpVal - 360.0;
 "109
@@ -4535,28 +4530,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 "110
 }
 [; ;modulation.c: 110: } else if (tmpVal > 90) {
-[e $U 492  ]
-[e :U 491 ]
-[e $ ! > _tmpVal -> -> 90 `i `d 493  ]
+[e $U 491  ]
+[e :U 490 ]
+[e $ ! > _tmpVal -> -> 90 `i `d 492  ]
 {
 [; ;modulation.c: 111: tmpVal = 180 - tmpVal;
 "111
 [e = _tmpVal - -> -> 180 `i `d _tmpVal ]
 "112
 }
-[e :U 493 ]
-"113
 [e :U 492 ]
+"113
+[e :U 491 ]
 [; ;modulation.c: 112: }
 [; ;modulation.c: 113: tmpVal = tmpVal * 10/9;
 [e = _tmpVal / * _tmpVal -> -> 10 `i `d -> -> 9 `i `d ]
 [; ;modulation.c: 115: return (int)(tmpVal);
 "115
 [e ) -> _tmpVal `i ]
-[e $UE 488  ]
+[e $UE 487  ]
 [; ;modulation.c: 116: }
 "116
-[e :UE 488 ]
+[e :UE 487 ]
 }
 "119
 [v _modSaw `(i ~T0 @X0 1 ef2`d`d ]
@@ -4576,7 +4571,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _shift -> -> 0 `i `d ]
 [; ;modulation.c: 123: if(angle<=inflection) {
 "123
-[e $ ! <= _angle _inflection 495  ]
+[e $ ! <= _angle _inflection 494  ]
 {
 [; ;modulation.c: 124: period = 180.0/inflection;
 "124
@@ -4584,8 +4579,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "125
 }
 [; ;modulation.c: 125: } else {
-[e $U 496  ]
-[e :U 495 ]
+[e $U 495  ]
+[e :U 494 ]
 {
 [; ;modulation.c: 126: shift = -(360-inflection*2)*(180/(360-inflection)) + 360;
 "126
@@ -4595,7 +4590,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
 "128
 }
-[e :U 496 ]
+[e :U 495 ]
 "131
 [v _mod `i ~T0 @X0 1 a ]
 [; ;modulation.c: 128: }
@@ -4604,10 +4599,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 132: return mod;
 "132
 [e ) _mod ]
-[e $UE 494  ]
+[e $UE 493  ]
 [; ;modulation.c: 133: }
 "133
-[e :UE 494 ]
+[e :UE 493 ]
 }
 "135
 [v _modSawRev `(i ~T0 @X0 1 ef2`d`d ]
@@ -4620,10 +4615,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 136: return -1 * modSaw(angle, inflection);
 "136
 [e ) * -U -> 1 `i ( _modSaw (2 , _angle _inflection ]
-[e $UE 497  ]
+[e $UE 496  ]
 [; ;modulation.c: 137: }
 "137
-[e :UE 497 ]
+[e :UE 496 ]
 }
 "141
 [v _modSquare `(i ~T0 @X0 1 ef2`d`d ]
@@ -4640,8 +4635,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 144: return (angle <= inflection) ? 100 : -100;
 "144
 [e ) ? <= _angle _inflection : -> 100 `i -U -> 100 `i ]
-[e $UE 498  ]
+[e $UE 497  ]
 [; ;modulation.c: 145: }
 "145
-[e :UE 498 ]
+[e :UE 497 ]
 }

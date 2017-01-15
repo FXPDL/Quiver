@@ -34,7 +34,7 @@
 
 
 
-
+char isInitialized = 0;
 volatile long mod_timer = 0;
 signed int adjusted_pot_value;
 int mod_delay_time = 2000;
@@ -157,8 +157,6 @@ void main(void) {
             }
         }
         
-        
-
         //Rate
         //knob 4 action ----------------------------------
         //Delay MOD SPEED U11 U12 PWM6 PWM7
@@ -181,16 +179,20 @@ void main(void) {
 
         
         //subroutine to calculate led interval and PWM value if delay time has changed
-        if (mod_time_changed == 1) {   
+         
+        if (mod_time_changed == 1) { 
+//baseline_mod_time = 2820;           
             delay_time = baseline_mod_time;
             delay_time = set_subdivision(baseline_mod_time, top_push_state);
             getModulationDelayTime();
-            
-
+            modulation_changed = 1;
+            mod_time_changed = 0;
         } 
+
  
-        if (modulation_changed == 1 || mod_time_changed == 1) {
+        if (modulation_changed == 1) {
             updateModulationArray();
+            isInitialized = 1;
         }   
     }
 }

@@ -4981,6 +4981,9 @@ char mod_time_changed = 1;
 char reset_sub_delay = 0;
 char adjust_mod_delay = 0;
 
+int tmpModDelay = 0;
+
+
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int debounce_count = 0;
@@ -5090,13 +5093,13 @@ case 5:
 scalar = 0.25;
 break;
 case 6:
-x = x;
+scalar = 1.0;
 break;
 }
 
-tmpX = tmpX * scalar;
+tmpX = (int)((float)tmpX * scalar);
 
-if (trunc(tmpX) != tmpX) {
+if ((int)(tmpX) != tmpX) {
 adjust_mod_delay = 1;
 }
 

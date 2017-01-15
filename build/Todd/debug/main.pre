@@ -4948,6 +4948,9 @@ char mod_time_changed = 1;
 char reset_sub_delay = 0;
 char adjust_mod_delay = 0;
 
+int tmpModDelay = 0;
+
+
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int debounce_count = 0;
@@ -5059,7 +5062,8 @@ int modSaw(double, double);
 int modSawRev(double, double);
 int modSquare(double, double);
 
-# 38 "main.c"
+# 37 "main.c"
+char isInitialized = 0;
 volatile long mod_timer = 0;
 signed int adjusted_pot_value;
 int mod_delay_time = 2000;
@@ -5091,11 +5095,7 @@ void main(void) {
 
 calcSinArray();
 
-delay_time = 2600;
-updateModulationArray();
-__nop();
-
-# 83
+# 82
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5115,19 +5115,15 @@ ReadSavedSettings();
 updateModulationArray();
 while (1) {
 
-
-update_mode();
-update_selectMode();
-
-
+# 106
 updateSwitchBypass();
 if (presetSaveMode != 1) {
 updateSwitchTap();
 }
 
 if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
-read_bottom_tactile();
-read_top_tactile();
+
+
 }
 
 
@@ -5154,7 +5150,7 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 149
+# 148
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
@@ -5167,7 +5163,7 @@ LATBbits.LATB1 = 0;
 }
 }
 
-# 170
+# 167
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
@@ -5183,16 +5179,20 @@ adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
 
 
 
+
 if (mod_time_changed == 1) {
+baseline_mod_time = 2820;
 delay_time = baseline_mod_time;
 delay_time = set_subdivision(baseline_mod_time, top_push_state);
 getModulationDelayTime();
+modulation_changed = 1;
 mod_time_changed = 0;
-
 }
 
-if (modulation_changed == 1 || mod_time_changed == 1) {
+
+if (modulation_changed == 1) {
 updateModulationArray();
+isInitialized = 1;
 }
 }
 }

@@ -22,20 +22,20 @@
 
 /******************************************************************************/
 signed int mod_value = 0;
-int mod_counter = 0;
+int mod_counter = 1;
 
 
 void interrupt isr(void) {
-    int tmpModDelay = -1;
 
-    
+
+    extern char isInitialized; 
     extern volatile long timer;
     extern volatile long sub_timer;
     extern volatile long tap_timer;
     extern signed int adjusted_pot_value;
     extern int mod_delay_time;
 
-    extern volatile long baseline_mod_time;
+
 
     extern  int top_push_state;
     extern uint8_t longBypass_start;
@@ -44,7 +44,24 @@ void interrupt isr(void) {
     
     
     if (INTCONbits.TMR0IF == 1) {
-        tmpModDelay = mod_delay_time;
+        if (isInitialized == 0) {
+            //Pedal is not fully initialized yet!
+            //Clear the interrupt
+            INTCONbits.TMR0IF = 0;
+            return;
+        }
+        
+        /*longBypass_start = 0;
+        longTap_start  = 0;
+        longTap_state = 0;
+            doubleTap_state = 0;
+            presetSaveMode = 0;
+            baseline_mod_time = 2820;*/
+        
+        
+        if (timer == 0) {
+            tmpModDelay = mod_delay_time;
+        }
         timer = timer + 1;
         sub_timer = sub_timer + 1;
         tap_timer = tap_timer + 1;
@@ -54,7 +71,11 @@ void interrupt isr(void) {
         char subDiv = getModulationSubdivision();
 
 
-        
+
+
+        if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
+            tmpModDelay = (delay_time - sub_timer);
+        } 
         
         if (longBypass_start == 1) {
             longBypass_timer++;
@@ -65,16 +86,8 @@ void interrupt isr(void) {
             if (longTap_timer > long_press_limit) {
                 longTap_timer = long_press_limit;
             }
-        }
-             
-         
-
-        if ((mod_counter == subDiv) &&  (mod_delay_time == tmpModDelay)) {
-            tmpModDelay = (delay_time - timer);
-        } 
-
-
-    
+        }     
+           
         if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
             //Don't blink the tap if the tap is held down
             if (timer >= baseline_mod_time) { //delay_time
@@ -84,17 +97,21 @@ void interrupt isr(void) {
                 //}
                 timer = 0;
 
-                if (modulation_changed == 1 || mod_time_changed == 1) {
+                if (modulation_changed == 1) {
                     //Sync the delay to the led
                     //Sync the modulation to the delay
-                    /*mod_counter = 0;
                     modulation_changed = 0;
                     mod_time_changed = 0;
+                    sub_timer = delay_time;
+                    tmpModDelay = mod_delay_time;
+                    mod_timer = tmpModDelay;
+                    /*mod_counter = 0;
+                    
                     mod_timer = 0;
                     tmpModDelay = mod_delay_time;*/
 
-                    reset_sub_delay = 0;
-                    sub_timer = delay_time;
+                    //reset_sub_delay = 0;
+                    //sub_timer = delay_time;
                 }
             } 
 
@@ -105,6 +122,31 @@ void interrupt isr(void) {
             }
         } 
 
+        
+        /*if (subDiv * mod_delay_time  != delay_time) {
+            LED_bypass_Aux = 1;
+        } else {
+            LED_bypass_Aux = 0;
+        }*/
+        
+        if (presetSaveMode < 1 && mode2_state == 0) {
+            if (sub_timer >= delay_time ) { //sub_delay_time
+                if (suspend_blink == 0) {
+                    set_leds_top(top_push_state, 1);
+                }
+               // tmpModDelay = delay_time;
+                sub_timer = 0;
+            }
+
+            if (sub_timer >= 20) { //delay_time
+                if (suspend_blink == 0) {
+                    set_leds_top(top_push_state, 0);
+                }
+            }
+        }        
+        
+        
+        
 
         if (presetSaveMode == 1) { 
             if (double_timer >= 250) {
@@ -116,21 +158,8 @@ void interrupt isr(void) {
             }    
         } 
 
-        if (presetSaveMode < 1 && mode2_state == 0) {
-            if (sub_timer >= delay_time ) { //sub_delay_time
-                if (suspend_blink == 0) {
-                    set_leds_top(top_push_state, 1);
-                }
-                tmpModDelay = delay_time;
-                sub_timer = 0;
-            }
+                        
 
-            if (sub_timer >= 20) { //delay_time
-                if (suspend_blink == 0) {
-                    set_leds_top(top_push_state, 0);
-                }
-            }
-        }
 
                 //1 tick = 0.5119ms!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -146,17 +175,18 @@ void interrupt isr(void) {
 
 
 
-        if (mod_timer >= tmpModDelay) {        
-           mod_timer = 0;
-
-
-
+        if (mod_timer >= tmpModDelay) {    
+            mod_timer = 0;
+            
            if (mod_counter >= subDiv) {
                 mod_counter = 0;
+                tmpModDelay = mod_delay_time;
                 LED_tap_Aux = 1;
             } else {
                 LED_tap_Aux = 0;
             }
+
+           
 
            mod_value = modArray[mod_counter];
             /*if (mod_value > 90) {
@@ -169,7 +199,7 @@ void interrupt isr(void) {
             CCPR3 =  mod_value / 2;
             mod_counter++;
 
-        }
+        } 
 
         if (preset_programmning_on == 1) {
             preset_blink++;

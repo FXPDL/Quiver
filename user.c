@@ -99,13 +99,13 @@ int set_subdivision(int x, int y) {
             scalar = 0.25; //16th
             break;
         case 6:
-            x = x; // 1:1 ratio
+            scalar = 1.0; // 1:1 ratio
             break;
     }
     
-    tmpX = tmpX * scalar;
+    tmpX = (int)((float)tmpX * scalar);
     
-    if (trunc(tmpX) != tmpX) {
+    if ((int)(tmpX) != tmpX) {
         adjust_mod_delay = 1;
     }
 

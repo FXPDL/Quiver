@@ -3834,6 +3834,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 87: char adjust_mod_delay = 0;
 "89
+[v _tmpModDelay `i ~T0 @X0 1 e ]
+[i _tmpModDelay
+-> 0 `i
+]
+[; ;constants.h: 89: int tmpModDelay = 0;
+"92
 [v _tap `l ~T0 @X0 -> 11 `i e ]
 [i _tap
 :U ..
@@ -3850,104 +3856,104 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `l
 ..
 ]
-[; ;constants.h: 89: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-"91
+[; ;constants.h: 92: long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"94
 [v _debounce_count `i ~T0 @X0 1 e ]
 [i _debounce_count
 -> 0 `i
 ]
-[; ;constants.h: 91: int debounce_count = 0;
-"92
+[; ;constants.h: 94: int debounce_count = 0;
+"95
 [v _debounce_bypass `i ~T0 @X0 1 e ]
 [i _debounce_bypass
 -> 0 `i
 ]
-[; ;constants.h: 92: int debounce_bypass = 0;
-"93
+[; ;constants.h: 95: int debounce_bypass = 0;
+"96
 [v _debounce_mode1 `i ~T0 @X0 1 e ]
 [i _debounce_mode1
 -> 0 `i
 ]
-[; ;constants.h: 93: int debounce_mode1 = 0;
-"94
+[; ;constants.h: 96: int debounce_mode1 = 0;
+"97
 [v _debounce_mode2 `i ~T0 @X0 1 e ]
 [i _debounce_mode2
 -> 0 `i
 ]
-[; ;constants.h: 94: int debounce_mode2 = 0;
-"96
+[; ;constants.h: 97: int debounce_mode2 = 0;
+"99
 [v _tap_timer `Vl ~T0 @X0 1 e ]
 [i _tap_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 96: volatile long tap_timer = 0;
-"97
+[; ;constants.h: 99: volatile long tap_timer = 0;
+"100
 [v _double_timer `Vl ~T0 @X0 1 e ]
 [i _double_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 97: volatile long double_timer = 0;
-"99
+[; ;constants.h: 100: volatile long double_timer = 0;
+"102
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 99: char presetSaveMode = 0;
-"100
+[; ;constants.h: 102: char presetSaveMode = 0;
+"103
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 100: char presetChannel = 1;
-"101
+[; ;constants.h: 103: char presetChannel = 1;
+"104
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 101: char expressionChannel = 1;
-"103
+[; ;constants.h: 104: char expressionChannel = 1;
+"106
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 103: char switchBypass_state = -1;
-"104
+[; ;constants.h: 106: char switchBypass_state = -1;
+"107
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 104: char switchTap_state = -1;
-"105
+[; ;constants.h: 107: char switchTap_state = -1;
+"108
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 105: volatile char longTap_state = -1;
-"106
+[; ;constants.h: 108: volatile char longTap_state = -1;
+"109
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 106: volatile char longBypass_state = 0;
-"108
+[; ;constants.h: 109: volatile char longBypass_state = 0;
+"111
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: char expSwitchState = -1;
-"110
+[; ;constants.h: 111: char expSwitchState = -1;
+"113
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 110: char presetModeCnst = 1;
-"111
+[; ;constants.h: 113: char presetModeCnst = 1;
+"114
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 111: char expressModeCnst = 2;
-"116
+[; ;constants.h: 114: char expressModeCnst = 2;
+"119
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4077,8 +4083,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 116: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"117
+[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"120
 [v _sinArray `d ~T0 @X0 -> 0 `x e ]
 [i _sinArray
 :U ..
@@ -4206,13 +4212,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 117: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"119
+[; ;constants.h: 120: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"122
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 119: int symmetry = 180;
+[; ;constants.h: 122: int symmetry = 180;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4280,7 +4286,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.h: 32: int modSaw(double, double);
 [; ;modulation.h: 33: int modSawRev(double, double);
 [; ;modulation.h: 34: int modSquare(double, double);
-"38 main.c
+"37 main.c
+[v _isInitialized `uc ~T0 @X0 1 e ]
+[i _isInitialized
+-> -> 0 `i `uc
+]
+[; ;main.c: 37: char isInitialized = 0;
+"38
 [v _mod_timer `Vl ~T0 @X0 1 e ]
 [i _mod_timer
 -> -> 0 `i `l
@@ -4548,39 +4560,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 468 ]
 [; ;main.c: 157: }
 [; ;main.c: 158: }
-[; ;main.c: 169: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"169
+[; ;main.c: 167: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"167
 [e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 471  ]
 {
-[; ;main.c: 170: knob4_prev = knob_4_pos;
-"170
+[; ;main.c: 168: knob4_prev = knob_4_pos;
+"168
 [e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 171: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
-"171
+[; ;main.c: 169: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
+"169
 [e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
-[; ;main.c: 172: mod_time_changed = 1;
-"172
+[; ;main.c: 170: mod_time_changed = 1;
+"170
 [e = _mod_time_changed -> -> 1 `i `uc ]
-"174
+"172
 }
 [e :U 471 ]
-[; ;main.c: 174: }
-[; ;main.c: 177: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"177
+[; ;main.c: 172: }
+[; ;main.c: 175: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"175
 [e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 472  ]
 {
-[; ;main.c: 178: knob5_prev = knob_5_pos;
-"178
+[; ;main.c: 176: knob5_prev = knob_5_pos;
+"176
 [e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 179: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"179
+[; ;main.c: 177: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"177
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"180
+"178
 }
 [e :U 472 ]
-[; ;main.c: 180: }
-[; ;main.c: 184: if (mod_time_changed == 1) {
-"184
+[; ;main.c: 178: }
+[; ;main.c: 183: if (mod_time_changed == 1) {
+"183
 [e $ ! == -> _mod_time_changed `i -> 1 `i 473  ]
 {
 [; ;main.c: 185: delay_time = baseline_mod_time;
@@ -4592,29 +4604,38 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 187: getModulationDelayTime();
 "187
 [e ( _getModulationDelayTime ..  ]
+[; ;main.c: 188: modulation_changed = 1;
+"188
+[e = _modulation_changed -> -> 1 `i `uc ]
+[; ;main.c: 189: mod_time_changed = 0;
+"189
+[e = _mod_time_changed -> -> 0 `i `uc ]
 "190
 }
 [e :U 473 ]
 [; ;main.c: 190: }
-[; ;main.c: 192: if (modulation_changed == 1 || mod_time_changed == 1) {
-"192
-[e $ ! || == -> _modulation_changed `i -> 1 `i == -> _mod_time_changed `i -> 1 `i 474  ]
-{
-[; ;main.c: 193: updateModulationArray();
+[; ;main.c: 193: if (modulation_changed == 1) {
 "193
-[e ( _updateModulationArray ..  ]
+[e $ ! == -> _modulation_changed `i -> 1 `i 474  ]
+{
+[; ;main.c: 194: updateModulationArray();
 "194
+[e ( _updateModulationArray ..  ]
+[; ;main.c: 195: isInitialized = 1;
+"195
+[e = _isInitialized -> -> 1 `i `uc ]
+"196
 }
 [e :U 474 ]
-"195
+"197
 }
 [e :U 461 ]
 "99
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 194: }
-[; ;main.c: 195: }
 [; ;main.c: 196: }
-"196
+[; ;main.c: 197: }
+[; ;main.c: 198: }
+"198
 [e :UE 460 ]
 }

@@ -36,9 +36,9 @@ void getModulationDelayTime(void) {
     adjust_mod_delay = 0;
     int subDiv = getModulationSubdivision();
     mod_delay_time = (int)((float)delay_time/(float)subDiv);
-    if (mod_delay_time * subDiv != delay_time) {
-        adjust_mod_delay = 1;
-    }
+//    if ((mod_delay_time * subDiv) != delay_time) {
+//        adjust_mod_delay = 1;
+//    }
 }
 
 void updateModulationArray(void) {

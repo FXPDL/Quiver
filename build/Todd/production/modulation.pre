@@ -4976,6 +4976,9 @@ char mod_time_changed = 1;
 char reset_sub_delay = 0;
 char adjust_mod_delay = 0;
 
+int tmpModDelay = 0;
+
+
 long tap[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int debounce_count = 0;
@@ -5045,9 +5048,9 @@ void getModulationDelayTime(void) {
 adjust_mod_delay = 0;
 int subDiv = getModulationSubdivision();
 mod_delay_time = (int)((float)delay_time/(float)subDiv);
-if (mod_delay_time * subDiv != delay_time) {
-adjust_mod_delay = 1;
-}
+
+
+
 }
 
 void updateModulationArray(void) {
