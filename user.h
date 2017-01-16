@@ -23,3 +23,5 @@ int scaleA100kPot(double);
 int scaleiA100kPot(double);
 int scaleA10kPot(double);
 int scaleiA10kPot(double);
+int scaleA25kPot(double);
+int scaleiA25kPot(double);

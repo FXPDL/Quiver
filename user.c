@@ -194,7 +194,7 @@ int scaleA100kPot(double input) {
 
 int scaleiA100kPot(double input) {
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
-    if (input == 0.0) {input = 1.0;}  //Don't let it go to zero, it creates a div by zero error;
+    if (input < 1.0) {input = 1.0;}  //Don't let it go to zero, it creates a div by zero error;
     float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
     return (int)(pwm);
 }
@@ -202,7 +202,7 @@ int scaleiA100kPot(double input) {
 int scaleA10kPot(double input) {	
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
     if (input == 0.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
-    if (input == 1023.0) {return 0;} 
+    if (input >= 1022.0) {return 0;} 
     float pwm = 8.7428 * (pow((input/1023.0), -1.222));
     return (int)(pwm);
 }
@@ -211,14 +211,32 @@ int scaleA10kPot(double input) {
 int scaleiA10kPot(double input) {	
     //Reverse the axis for the inverse value
     //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
-     if (input == 0.0) {return 0;}  //Don't let it go to zero, it creates a div by zero error;
+     if (input < 1.0) {return 0;}  //Don't let it go to zero, it creates a div by zero error;
 
-    if (input == 1023.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
+    if (input >= 1022.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
 
     float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
     return (int)(pwm);
 }
 
+//25k equations DO NOT WORK!!!
+int scaleA25kPot(double input) {	
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    if (input < 1.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
+    if (input >= 1022.0) {return 0;} 
+    float pwm = 17.217 * (pow((input/1023.0), -1.112));
+    return (int)(pwm);
+}
+  
+ 
+int scaleiA25kPot(double input) {	
+    //Scale the pot input to a percentage of 1, then use a curve fit to get PWM
+    if (input < 1.0) {return 255;}  //Don't let it go to zero, it creates a div by zero error;
+    if (input >= 1022.0) {return 0;} 
+    float pwm = 15.395 * (pow((input/1023.0), -1.112));
+    return (int)(pwm);
+}
+ 
 long modulation(long x, long y) {
     //modulation(mod_value, adjusted_pot_value);
      

@@ -4237,6 +4237,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 23: int scaleiA100kPot(double);
 [; ;user.h: 24: int scaleA10kPot(double);
 [; ;user.h: 25: int scaleiA10kPot(double);
+[; ;user.h: 26: int scaleA25kPot(double);
+[; ;user.h: 27: int scaleiA25kPot(double);
 [; ;LEDs.h: 24: void star_tactiles(uint8_t);
 [; ;LEDs.h: 25: void ring_tactiles(void);
 [; ;LEDs.h: 26: void solidring_tactiles(void);
@@ -4557,47 +4559,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 150: symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 "150
 [e = _symmetry -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 45 `i `f -> -> 315 `i `f `i ]
-[; ;main.c: 152: if (symmetry > 174 && symmetry < 185) {
-"152
-[e $ ! && > _symmetry -> 174 `i < _symmetry -> 185 `i 469  ]
-{
-[; ;main.c: 153: LATBbits.LATB1 = 1;
-"153
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-"154
-}
-[; ;main.c: 154: } else {
-[e $U 470  ]
-[e :U 469 ]
-{
-[; ;main.c: 155: LATBbits.LATB1 = 0;
-"155
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"156
-}
-[e :U 470 ]
 "157
 }
 [e :U 468 ]
-[; ;main.c: 156: }
 [; ;main.c: 157: }
 [; ;main.c: 159: if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
 "159
-[e $ ! || >= - _oldSymmetry _symmetry -> 2 `i <= - _oldSymmetry _symmetry -U -> 2 `i 471  ]
+[e $ ! || >= - _oldSymmetry _symmetry -> 2 `i <= - _oldSymmetry _symmetry -U -> 2 `i 469  ]
 {
 [; ;main.c: 161: modulation_changed = 1;
 "161
 [e = _modulation_changed -> -> 1 `i `uc ]
 "162
 }
-[e :U 471 ]
+[e :U 469 ]
 [; ;main.c: 162: }
 [; ;main.c: 171: oldBaseTime = baseline_mod_time;
 "171
 [e = _oldBaseTime -> _baseline_mod_time `i ]
 [; ;main.c: 172: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 "172
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 472  ]
+[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 470  ]
 {
 [; ;main.c: 173: knob4_prev = knob_4_pos;
 "173
@@ -4607,22 +4589,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
 "175
 }
-[e :U 472 ]
+[e :U 470 ]
 [; ;main.c: 175: }
 [; ;main.c: 177: if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
 "177
-[e $ ! || >= - -> _oldBaseTime `l _baseline_mod_time -> -> 1 `i `l <= - -> _oldBaseTime `l _baseline_mod_time -> -U -> 1 `i `l 473  ]
+[e $ ! || >= - -> _oldBaseTime `l _baseline_mod_time -> -> 1 `i `l <= - -> _oldBaseTime `l _baseline_mod_time -> -U -> 1 `i `l 471  ]
 {
 [; ;main.c: 179: mod_time_changed = 1;
 "179
 [e = _mod_time_changed -> -> 1 `i `uc ]
 "181
 }
-[e :U 473 ]
+[e :U 471 ]
 [; ;main.c: 181: }
 [; ;main.c: 184: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 "184
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 474  ]
+[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 472  ]
 {
 [; ;main.c: 185: knob5_prev = knob_5_pos;
 "185
@@ -4632,11 +4614,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
 "187
 }
-[e :U 474 ]
+[e :U 472 ]
 [; ;main.c: 187: }
 [; ;main.c: 192: if (mod_time_changed == 1) {
 "192
-[e $ ! == -> _mod_time_changed `i -> 1 `i 475  ]
+[e $ ! == -> _mod_time_changed `i -> 1 `i 473  ]
 {
 [; ;main.c: 194: delay_time = baseline_mod_time;
 "194
@@ -4655,11 +4637,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mod_time_changed -> -> 0 `i `uc ]
 "200
 }
-[e :U 475 ]
+[e :U 473 ]
 [; ;main.c: 200: }
 [; ;main.c: 203: if (modulation_changed == 1) {
 "203
-[e $ ! == -> _modulation_changed `i -> 1 `i 476  ]
+[e $ ! == -> _modulation_changed `i -> 1 `i 474  ]
 {
 [; ;main.c: 204: updateModulationArray();
 "204
@@ -4669,7 +4651,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _isInitialized -> -> 1 `i `uc ]
 "207
 }
-[e :U 476 ]
+[e :U 474 ]
 "208
 }
 [e :U 461 ]

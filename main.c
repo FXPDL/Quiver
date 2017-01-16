@@ -149,11 +149,11 @@ LED_tap_B = 0;
             knob3_prev = knob_3_pos;
             symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);   
 
-            if (symmetry > 174 && symmetry < 185) {
+            /*if (symmetry > 174 && symmetry < 185) {
                 LED_bypass_Aux = 1;
             } else {
                 LED_bypass_Aux = 0;
-            }
+            }*/
         }
         
         if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {

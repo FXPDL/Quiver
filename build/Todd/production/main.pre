@@ -4999,6 +4999,8 @@ int scaleA100kPot(double);
 int scaleiA100kPot(double);
 int scaleA10kPot(double);
 int scaleiA10kPot(double);
+int scaleA25kPot(double);
+int scaleiA25kPot(double);
 
 # 24 "LEDs.h"
 void star_tactiles(uint8_t);
@@ -5166,11 +5168,7 @@ if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 
-if (symmetry > 174 && symmetry < 185) {
-LATBbits.LATB1 = 1;
-} else {
-LATBbits.LATB1 = 0;
-}
+# 157
 }
 
 if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {

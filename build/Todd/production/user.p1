@@ -3938,6 +3938,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 23: int scaleiA100kPot(double);
 [; ;user.h: 24: int scaleA10kPot(double);
 [; ;user.h: 25: int scaleiA10kPot(double);
+[; ;user.h: 26: int scaleA25kPot(double);
+[; ;user.h: 27: int scaleiA25kPot(double);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -4980,9 +4982,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _scaleiA100kPot ]
 [v _input `d ~T0 @X0 1 r1 ]
 [f ]
-[; ;user.c: 197: if (input == 0.0) {input = 1.0;}
+[; ;user.c: 197: if (input < 1.0) {input = 1.0;}
 "197
-[e $ ! == _input .0.0 484  ]
+[e $ ! < _input .1.0 484  ]
 {
 [e = _input .1.0 ]
 }
@@ -5014,9 +5016,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $UE 485  ]
 }
 [e :U 486 ]
-[; ;user.c: 205: if (input == 1023.0) {return 0;}
+[; ;user.c: 205: if (input >= 1022.0) {return 0;}
 "205
-[e $ ! == _input .1023.0 487  ]
+[e $ ! >= _input .1022.0 487  ]
 {
 [e ) -> 0 `i ]
 [e $UE 485  ]
@@ -5041,17 +5043,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _scaleiA10kPot ]
 [v _input `d ~T0 @X0 1 r1 ]
 [f ]
-[; ;user.c: 214: if (input == 0.0) {return 0;}
+[; ;user.c: 214: if (input < 1.0) {return 0;}
 "214
-[e $ ! == _input .0.0 489  ]
+[e $ ! < _input .1.0 489  ]
 {
 [e ) -> 0 `i ]
 [e $UE 488  ]
 }
 [e :U 489 ]
-[; ;user.c: 216: if (input == 1023.0) {return 255;}
+[; ;user.c: 216: if (input >= 1022.0) {return 255;}
 "216
-[e $ ! == _input .1023.0 490  ]
+[e $ ! >= _input .1022.0 490  ]
 {
 [e ) -> 255 `i ]
 [e $UE 488  ]
@@ -5069,118 +5071,188 @@ Version 3.2 HI-TECH Software Intermediate Code
 "220
 [e :UE 488 ]
 }
-"222
+"223
+[v _scaleA25kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 223: int scaleA25kPot(double input) {
+[e :U _scaleA25kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 225: if (input < 1.0) {return 255;}
+"225
+[e $ ! < _input .1.0 492  ]
+{
+[e ) -> 255 `i ]
+[e $UE 491  ]
+}
+[e :U 492 ]
+[; ;user.c: 226: if (input >= 1022.0) {return 0;}
+"226
+[e $ ! >= _input .1022.0 493  ]
+{
+[e ) -> 0 `i ]
+[e $UE 491  ]
+}
+[e :U 493 ]
+"227
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 227: float pwm = 17.217 * (pow((input/1023.0), -1.112));
+[e = _pwm -> * .17.217 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 228: return (int)(pwm);
+"228
+[e ) -> _pwm `i ]
+[e $UE 491  ]
+[; ;user.c: 229: }
+"229
+[e :UE 491 ]
+}
+"232
+[v _scaleiA25kPot `(i ~T0 @X0 1 ef1`d ]
+{
+[; ;user.c: 232: int scaleiA25kPot(double input) {
+[e :U _scaleiA25kPot ]
+[v _input `d ~T0 @X0 1 r1 ]
+[f ]
+[; ;user.c: 234: if (input < 1.0) {return 255;}
+"234
+[e $ ! < _input .1.0 495  ]
+{
+[e ) -> 255 `i ]
+[e $UE 494  ]
+}
+[e :U 495 ]
+[; ;user.c: 235: if (input >= 1022.0) {return 0;}
+"235
+[e $ ! >= _input .1022.0 496  ]
+{
+[e ) -> 0 `i ]
+[e $UE 494  ]
+}
+[e :U 496 ]
+"236
+[v _pwm `f ~T0 @X0 1 a ]
+[; ;user.c: 236: float pwm = 15.395 * (pow((input/1023.0), -1.112));
+[e = _pwm -> * .15.395 ( _pow (2 , / _input .1023.0 -U .1.112 `f ]
+[; ;user.c: 237: return (int)(pwm);
+"237
+[e ) -> _pwm `i ]
+[e $UE 494  ]
+[; ;user.c: 238: }
+"238
+[e :UE 494 ]
+}
+"240
 [v _modulation `(l ~T0 @X0 1 ef2`l`l ]
 {
-[; ;user.c: 222: long modulation(long x, long y) {
+[; ;user.c: 240: long modulation(long x, long y) {
 [e :U _modulation ]
 [v _x `l ~T0 @X0 1 r1 ]
 [v _y `l ~T0 @X0 1 r2 ]
 [f ]
-[; ;user.c: 225: return (127500 + (y * x)) / 1000;
-"225
+[; ;user.c: 243: return (127500 + (y * x)) / 1000;
+"243
 [e ) / + -> 127500 `l * _y _x -> -> 1000 `i `l ]
-[e $UE 491  ]
-[; ;user.c: 226: }
-"226
-[e :UE 491 ]
+[e $UE 497  ]
+[; ;user.c: 244: }
+"244
+[e :UE 497 ]
 }
-"228
+"246
 [v _InitializeTaps `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 228: void InitializeTaps(void) {
+[; ;user.c: 246: void InitializeTaps(void) {
 [e :U _InitializeTaps ]
 [f ]
-[; ;user.c: 229: for (int itap = 0; itap < 12; itap++) {
-"229
+[; ;user.c: 247: for (int itap = 0; itap < 12; itap++) {
+"247
 {
 [v _itap `i ~T0 @X0 1 a ]
 [e = _itap -> 0 `i ]
-[e $ < _itap -> 12 `i 493  ]
-[e $U 494  ]
-[e :U 493 ]
+[e $ < _itap -> 12 `i 499  ]
+[e $U 500  ]
+[e :U 499 ]
 {
-[; ;user.c: 230: tap[itap] = 0;
-"230
+[; ;user.c: 248: tap[itap] = 0;
+"248
 [e = *U + &U _tap * -> -> _itap `ui `ux -> -> # *U &U _tap `ui `ux -> -> 0 `i `l ]
-"231
+"249
 }
-"229
+"247
 [e ++ _itap -> 1 `i ]
-[e $ < _itap -> 12 `i 493  ]
-[e :U 494 ]
-"231
+[e $ < _itap -> 12 `i 499  ]
+[e :U 500 ]
+"249
 }
-[; ;user.c: 231: }
-[; ;user.c: 232: }
-"232
-[e :UE 492 ]
+[; ;user.c: 249: }
+[; ;user.c: 250: }
+"250
+[e :UE 498 ]
 }
-"234
+"252
 [v _ReadSavedSettings `(v ~T0 @X0 1 ef ]
 {
-[; ;user.c: 234: void ReadSavedSettings(void) {
+[; ;user.c: 252: void ReadSavedSettings(void) {
 [e :U _ReadSavedSettings ]
 [f ]
-[; ;user.c: 236: top_push_state = FLASH_ReadWord(0x1F81);
-"236
-[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
-[; ;user.c: 237: bottom_push_state = FLASH_ReadWord(0x1F82);
-"237
-[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 239: if (top_push_state > 6) {
-"239
-[e $ ! > _top_push_state -> 6 `i 497  ]
-{
-[; ;user.c: 241: top_push_state = 6;
-"241
-[e = _top_push_state -> 6 `i ]
-"242
-}
-[e :U 497 ]
-[; ;user.c: 242: }
-[; ;user.c: 243: if (bottom_push_state > 5) {
-"243
-[e $ ! > _bottom_push_state -> 5 `i 498  ]
-{
-[; ;user.c: 245: bottom_push_state = 1;
-"245
-[e = _bottom_push_state -> 1 `i ]
-"246
-}
-[e :U 498 ]
-[; ;user.c: 246: }
-[; ;user.c: 249: LATGbits.LATG1 = !switchBypass_state;
-"249
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 250: LATGbits.LATG2 = switchBypass_state;
-"250
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 251: LATBbits.LATB2 = 0;
-"251
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 252: LATBbits.LATB3 = 0;
-"252
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 254: LATBbits.LATB4 = 0;
+[; ;user.c: 254: top_push_state = FLASH_ReadWord(0x1F81);
 "254
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 255: LATBbits.LATB5 = 0;
+[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
+[; ;user.c: 255: bottom_push_state = FLASH_ReadWord(0x1F82);
 "255
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 257: LATBbits.LATB1 = 0;
+[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
+[; ;user.c: 257: if (top_push_state > 6) {
 "257
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 258: LATBbits.LATB0 = 0;
-"258
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 261: set_leds_top(top_push_state, 1);
+[e $ ! > _top_push_state -> 6 `i 503  ]
+{
+[; ;user.c: 259: top_push_state = 6;
+"259
+[e = _top_push_state -> 6 `i ]
+"260
+}
+[e :U 503 ]
+[; ;user.c: 260: }
+[; ;user.c: 261: if (bottom_push_state > 5) {
 "261
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 262: set_leds_bottom(bottom_push_state);
-"262
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 263: }
+[e $ ! > _bottom_push_state -> 5 `i 504  ]
+{
+[; ;user.c: 263: bottom_push_state = 1;
 "263
-[e :UE 496 ]
+[e = _bottom_push_state -> 1 `i ]
+"264
+}
+[e :U 504 ]
+[; ;user.c: 264: }
+[; ;user.c: 267: LATGbits.LATG1 = !switchBypass_state;
+"267
+[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;user.c: 268: LATGbits.LATG2 = switchBypass_state;
+"268
+[e = . . _LATGbits 0 2 _switchBypass_state ]
+[; ;user.c: 269: LATBbits.LATB2 = 0;
+"269
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;user.c: 270: LATBbits.LATB3 = 0;
+"270
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;user.c: 272: LATBbits.LATB4 = 0;
+"272
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;user.c: 273: LATBbits.LATB5 = 0;
+"273
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;user.c: 275: LATBbits.LATB1 = 0;
+"275
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;user.c: 276: LATBbits.LATB0 = 0;
+"276
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;user.c: 279: set_leds_top(top_push_state, 1);
+"279
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;user.c: 280: set_leds_bottom(bottom_push_state);
+"280
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;user.c: 281: }
+"281
+[e :UE 502 ]
 }
