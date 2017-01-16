@@ -5007,17 +5007,17 @@ char expressModeCnst = 2;
 
 
 int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5027,11 +5027,11 @@ int modSquare(double, double);
 extern volatile long delay_time;
 extern int mod_delay_time;
 
-void calcSinArray(void) {
+void calcCosArray(void) {
 for (char iAngle = 0; iAngle < 120; iAngle++) {
 double tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
-tmpVal = sin(tmpVal);
-sinArray[iAngle] = tmpVal;
+tmpVal = cos(tmpVal);
+cosArray[iAngle] = tmpVal;
 }
 }
 
@@ -5065,7 +5065,7 @@ for (char iAngle = 0; iAngle < subDiv; iAngle++) {
 int thisAngle = angleFactor * iAngle;
 switch (bottom_push_state) {
 case 1:
-modArray[iAngle] = modSin(thisAngle, symmetry);
+modArray[iAngle] = modCos(thisAngle, symmetry);
 break;
 case 2:
 modArray[iAngle] = modTri(thisAngle, symmetry);
@@ -5089,7 +5089,7 @@ modArray[121] = symmetry;
 modArray[122] = subDiv;
 }
 
-int modSin(double angle, double inflection) {
+int modCos(double angle, double inflection) {
 double period = 1.0;
 double shift = 0.0;
 
@@ -5101,8 +5101,8 @@ period = 180/(360-inflection);
 
 }
 double tmpVal = (period*angle-shift) /3;
-tmpVal = sinArray[(int)(tmpVal)];
-return (int)(100.0 * tmpVal);
+tmpVal = cosArray[(int)(tmpVal)];
+return (int)(-100.0 * tmpVal);
 }
 
 int modTri(double angle, double inflection) {
@@ -5117,12 +5117,12 @@ period = 180/(360-inflection);
 
 }
 double tmpVal = (period*angle-shift) ;
-if (tmpVal > 270) {
-tmpVal = tmpVal - 360.0;
-} else if (tmpVal > 90) {
-tmpVal = 180 - tmpVal;
+if (tmpVal > 180) {
+tmpVal = tmpVal - 270.0;
+} else {
+tmpVal = 90 - tmpVal;
 }
-tmpVal = tmpVal * 10/9;
+tmpVal = tmpVal * -10/9;
 
 return (int)(tmpVal);
 }
@@ -5139,8 +5139,7 @@ shift = -(360-inflection*2)*(180/(360-inflection)) + 360;
 period = 180/(360-inflection);
 }
 
-
-int mod = (int)((period*angle-shift)*5/9);
+int mod = (int)((period*angle-shift-180)*5/9);
 return mod;
 }
 
@@ -5149,10 +5148,8 @@ return -1 * modSaw(angle, inflection);
 }
 
 
-
 int modSquare(double angle, double inflection) {
-int tmpVal = modSin(angle, inflection);
-
-return (angle <= inflection) ? 100 : -100;
+int tmpVal = modCos(angle, inflection);
+return (angle <= inflection) ? -100 : 100;
 }
 

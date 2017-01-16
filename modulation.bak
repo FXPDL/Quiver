@@ -15,11 +15,11 @@
 extern volatile long delay_time;
 extern int mod_delay_time;
 
-void calcCosArray(void) {
+void calcSinArray(void) {
     for (char iAngle = 0; iAngle < 120; iAngle++) {
         double tmpVal = 3 * iAngle * M_PI/180.0;
-        tmpVal = cos(tmpVal);
-        cosArray[iAngle] = tmpVal;
+        tmpVal = sin(tmpVal);
+        sinArray[iAngle] = tmpVal;
     }
 }
 
@@ -53,7 +53,7 @@ void updateModulationArray(void) {
         int thisAngle = angleFactor * iAngle;
         switch (bottom_push_state) {
             case 1: //Sin
-                modArray[iAngle] = modCos(thisAngle, symmetry); 
+                modArray[iAngle] = modSin(thisAngle, symmetry); 
                 break;
             case 2: //tri
                 modArray[iAngle] = modTri(thisAngle, symmetry); 
@@ -77,7 +77,7 @@ void updateModulationArray(void) {
     modArray[122] = subDiv;
 }
 
-int modCos(double angle, double inflection) {
+int modSin(double angle, double inflection) {
     double period = 1.0;
     double shift = 0.0;
     
@@ -89,8 +89,8 @@ int modCos(double angle, double inflection) {
         
     }
     double tmpVal = (period*angle-shift) /3;
-    tmpVal = cosArray[(int)(tmpVal)]; 
-    return (int)(-100.0 * tmpVal);
+    tmpVal = sinArray[(int)(tmpVal)]; // sin(tmpVal);
+    return (int)(100.0 * tmpVal); //(int)trunc(100.0 * sin((period*angle-shift) * M_PI/180.0));   
 }
 
 int modTri(double angle, double inflection) {
@@ -105,13 +105,13 @@ int modTri(double angle, double inflection) {
         
     }
     double tmpVal = (period*angle-shift) ;//* M_PI/180.0;
-    if (tmpVal > 180) {
-        tmpVal = tmpVal - 270.0;
-    } else {
-        tmpVal = 90 - tmpVal;
+    if (tmpVal > 270) {
+        tmpVal = tmpVal - 360.0;
+    } else if (tmpVal > 90) {
+        tmpVal = 180 - tmpVal;
     } 
-    tmpVal = tmpVal * -10/9;  
-    
+    tmpVal = tmpVal * 10/9;  //tmpVal * M_PI/180.0 * 200.0/M_PI;
+
     return (int)(tmpVal);    
 }
 
@@ -127,7 +127,8 @@ int modSaw(double angle, double inflection) {
         period = 180/(360-inflection);  
     }
 
-    int mod = (int)((period*angle-shift-180)*5/9);
+    //int mod = (int)(-200.0/M_PI * atan(cot(((period*angle-shift)* M_PI/180.0 + M_PI)/2 )));
+    int mod = (int)((period*angle-shift)*5/9);
     return mod;   
 }
 
@@ -136,9 +137,11 @@ int modSawRev(double angle, double inflection) {
 }
 
 
+//=SIGN(SIN(F2*RADIANS(H2)-RADIANS(G2)))*100
 int modSquare(double angle, double inflection) {
-    int tmpVal = modCos(angle, inflection);
-    return (angle <= inflection) ? -100 : 100;
+    int tmpVal = modSin(angle, inflection);
+    //return (tmpVal > 0 ? 100 : -100);
+    return (angle <= inflection) ? 100 : -100;
 }
 
 

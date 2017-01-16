@@ -15,6 +15,8 @@
 [v ___awmod __awmod `(i  1 e 2 0 ]
 "32 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
+"13 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\cos.c
+[v _cos cos `(d  1 e 3 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\evalpoly.c
 [v _eval_poly eval_poly `(d  1 e 3 0 ]
 "12 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\exp.c
@@ -82,7 +84,7 @@
 "141
 [v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
 "18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
-[v _calcSinArray calcSinArray `(v  1 e 1 0 ]
+[v _calcCosArray calcCosArray `(v  1 e 1 0 ]
 "26
 [v _getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
 [v i1_getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
@@ -91,14 +93,14 @@
 "44
 [v _updateModulationArray updateModulationArray `(v  1 e 1 0 ]
 "80
-[v _modSin modSin `(i  1 e 2 0 ]
+[v _modCos modCos `(i  1 e 2 0 ]
 "96
 [v _modTri modTri `(i  1 e 2 0 ]
 "119
 [v _modSaw modSaw `(i  1 e 2 0 ]
-"135
+"134
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
-"141
+"139
 [v _modSquare modSquare `(i  1 e 2 0 ]
 "21 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
 [v _setDoublePressState setDoublePressState `(v  1 e 1 0 ]
@@ -777,7 +779,7 @@
 "119
 [v _modArray modArray `[124]i  1 e 248 @9098 ]
 "120
-[v _sinArray sinArray `[122]d  1 e 366 @9346 ]
+[v _cosArray cosArray `[122]d  1 e 366 @9346 ]
 "122
 [v _symmetry symmetry `i  1 e 2 0 ]
 "24 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
@@ -989,36 +991,36 @@
 [v modTri@inflection inflection `d  1 p 3 17 ]
 "116
 } 0
-"141
+"139
 [v _modSquare modSquare `(i  1 e 2 0 ]
 {
-"142
+"140
 [v modSquare@tmpVal tmpVal `i  1 a 2 46 ]
-"141
+"139
 [v modSquare@angle angle `d  1 p 3 40 ]
 [v modSquare@inflection inflection `d  1 p 3 43 ]
-"145
+"142
 } 0
 "80
-[v _modSin modSin `(i  1 e 2 0 ]
+[v _modCos modCos `(i  1 e 2 0 ]
 {
 "91
-[v modSin@tmpVal tmpVal `d  1 a 3 37 ]
+[v modCos@tmpVal tmpVal `d  1 a 3 37 ]
 "81
-[v modSin@period period `d  1 a 3 34 ]
+[v modCos@period period `d  1 a 3 34 ]
 "82
-[v modSin@shift shift `d  1 a 3 31 ]
+[v modCos@shift shift `d  1 a 3 31 ]
 "80
-[v modSin@angle angle `d  1 p 3 20 ]
-[v modSin@inflection inflection `d  1 p 3 23 ]
+[v modCos@angle angle `d  1 p 3 20 ]
+[v modCos@inflection inflection `d  1 p 3 23 ]
 "94
 } 0
-"135
+"134
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
 {
 [v modSawRev@angle angle `d  1 p 3 37 ]
 [v modSawRev@inflection inflection `d  1 p 3 40 ]
-"137
+"136
 } 0
 "119
 [v _modSaw modSaw `(i  1 e 2 0 ]
@@ -1027,12 +1029,12 @@
 [v modSaw@period period `d  1 a 3 34 ]
 "121
 [v modSaw@shift shift `d  1 a 3 31 ]
-"131
+"130
 [v modSaw@mod mod `i  1 a 2 29 ]
 "119
 [v modSaw@angle angle `d  1 p 3 14 ]
 [v modSaw@inflection inflection `d  1 p 3 17 ]
-"133
+"132
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -1220,12 +1222,18 @@
 "34
 } 0
 "18
-[v _calcSinArray calcSinArray `(v  1 e 1 0 ]
+[v _calcCosArray calcCosArray `(v  1 e 1 0 ]
 {
 "20
-[v calcSinArray@tmpVal tmpVal `d  1 a 3 48 ]
+[v calcCosArray@tmpVal tmpVal `d  1 a 3 54 ]
 "19
-[v calcSinArray@iAngle iAngle `uc  1 a 1 51 ]
+[v calcCosArray@iAngle iAngle `uc  1 a 1 57 ]
+"24
+} 0
+"13 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\cos.c
+[v _cos cos `(d  1 e 3 0 ]
+{
+[v cos@f f `d  1 p 3 44 ]
 "24
 } 0
 "13 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\sin.c

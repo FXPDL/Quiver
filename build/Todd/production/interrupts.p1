@@ -4029,8 +4029,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 "120
-[v _sinArray `d ~T0 @X0 -> 0 `x e ]
-[i _sinArray
+[v _cosArray `d ~T0 @X0 -> 0 `x e ]
+[i _cosArray
 :U ..
 -> -> 0 `i `d
 -> -> 0 `i `d
@@ -4156,7 +4156,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 120: double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+[; ;constants.h: 120: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 "122
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
@@ -4176,10 +4176,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.h: 24: int scaleA10kPot(double);
 [; ;user.h: 25: int scaleiA10kPot(double);
 [; ;modulation.h: 25: void updateModulationArray(void);
-[; ;modulation.h: 26: void calcSinArray(void);
+[; ;modulation.h: 26: void calcCosArray(void);
 [; ;modulation.h: 27: int getModulationSubdivision(void);
 [; ;modulation.h: 28: void getModulationDelayTime(void);
-[; ;modulation.h: 30: int modSin(double, double);
+[; ;modulation.h: 30: int modCos(double, double);
 [; ;modulation.h: 31: int modTri(double, double);
 [; ;modulation.h: 32: int modSaw(double, double);
 [; ;modulation.h: 33: int modSawRev(double, double);
@@ -4205,10 +4205,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;usart_pic16.h: 55: void USARTReadBuffer(char *buff,uint16_t len);
 [; ;usart_pic16.h: 56: void USARTFlushBuffer();
 [; ;modulation.h: 25: void updateModulationArray(void);
-[; ;modulation.h: 26: void calcSinArray(void);
+[; ;modulation.h: 26: void calcCosArray(void);
 [; ;modulation.h: 27: int getModulationSubdivision(void);
 [; ;modulation.h: 28: void getModulationDelayTime(void);
-[; ;modulation.h: 30: int modSin(double, double);
+[; ;modulation.h: 30: int modCos(double, double);
 [; ;modulation.h: 31: int modTri(double, double);
 [; ;modulation.h: 32: int modSaw(double, double);
 [; ;modulation.h: 33: int modSawRev(double, double);
@@ -4511,21 +4511,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 183: tmpModDelay = mod_delay_time;
 "183
 [e = _tmpModDelay _mod_delay_time ]
-[; ;interrupts.c: 184: LATBbits.LATB0 = 1;
-"184
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-"185
-}
-[; ;interrupts.c: 185: } else {
-[e $U 483  ]
-[e :U 482 ]
-{
-[; ;interrupts.c: 186: LATBbits.LATB0 = 0;
-"186
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
 "187
 }
-[e :U 483 ]
+[e :U 482 ]
 [; ;interrupts.c: 187: }
 [; ;interrupts.c: 191: mod_value = modArray[mod_counter];
 "191
@@ -4545,51 +4533,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupts.c: 202: }
 [; ;interrupts.c: 204: if (preset_programmning_on == 1) {
 "204
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 484  ]
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 483  ]
 {
 [; ;interrupts.c: 205: preset_blink++;
 "205
 [e ++ _preset_blink -> -> 1 `i `uc ]
 [; ;interrupts.c: 207: if (preset_blink >= blink_delay) {
 "207
-[e $ ! >= -> _preset_blink `i _blink_delay 485  ]
+[e $ ! >= -> _preset_blink `i _blink_delay 484  ]
 {
 [; ;interrupts.c: 208: LATBbits.LATB1 = 1;
 "208
 [e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
 [; ;interrupts.c: 209: if (preset_blink > blink_delay*2) {
 "209
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 486  ]
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 485  ]
 {
 [; ;interrupts.c: 210: preset_blink = 0;
 "210
 [e = _preset_blink -> -> 0 `i `uc ]
 "211
 }
-[e :U 486 ]
+[e :U 485 ]
 "213
 }
 [; ;interrupts.c: 211: }
 [; ;interrupts.c: 213: } else {
-[e $U 487  ]
-[e :U 485 ]
+[e $U 486  ]
+[e :U 484 ]
 {
 [; ;interrupts.c: 214: LATBbits.LATB1 = 0;
 "214
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "215
 }
-[e :U 487 ]
+[e :U 486 ]
 "217
 }
 [; ;interrupts.c: 215: }
 [; ;interrupts.c: 217: } else {
-[e $U 488  ]
-[e :U 484 ]
+[e $U 487  ]
+[e :U 483 ]
 {
 [; ;interrupts.c: 218: if (preset_blink > 0) {
 "218
-[e $ ! > -> _preset_blink `i -> 0 `i 489  ]
+[e $ ! > -> _preset_blink `i -> 0 `i 488  ]
 {
 [; ;interrupts.c: 219: preset_blink = 0;
 "219
@@ -4599,10 +4587,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "221
 }
-[e :U 489 ]
+[e :U 488 ]
 "222
 }
-[e :U 488 ]
+[e :U 487 ]
 [; ;interrupts.c: 221: }
 [; ;interrupts.c: 222: }
 [; ;interrupts.c: 226: INTCONbits.TMR0IF = 0;

@@ -23,11 +23,11 @@ extern "C" {
 
 
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);

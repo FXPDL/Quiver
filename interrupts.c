@@ -189,10 +189,10 @@ void interrupt isr(void) {
            
 
            mod_value = modArray[mod_counter];
-            /*if (mod_value > 90) {
-                LED_bypass_Aux = 1;
+           /* if (mod_value < -90) {
+                LED_tap_Aux = 1;
             } else {
-                LED_bypass_Aux = 0;
+                LED_tap_Aux = 0;
             }*/
 
             mod_value = modulation(mod_value, adjusted_pot_value);

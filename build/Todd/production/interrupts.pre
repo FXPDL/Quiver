@@ -4979,7 +4979,7 @@ char expressModeCnst = 2;
 
 
 int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
 
@@ -4999,11 +4999,11 @@ int scaleiA10kPot(double);
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5028,11 +5028,11 @@ void USARTFlushBuffer();
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5165,9 +5165,8 @@ mod_timer = 0;
 if (mod_counter >= subDiv) {
 mod_counter = 0;
 tmpModDelay = mod_delay_time;
-LATBbits.LATB0 = 1;
-} else {
-LATBbits.LATB0 = 0;
+
+# 187
 }
 
 

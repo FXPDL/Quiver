@@ -67,7 +67,7 @@ uint8_t iCnt;
 
 void main(void) {
 
-    calcSinArray();
+    calcCosArray();
 
     //updateModulationArray(); 
     //NOP();
