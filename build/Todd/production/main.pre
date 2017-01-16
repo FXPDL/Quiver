@@ -5096,7 +5096,7 @@ uint8_t iCnt;
 
 # 69
 void main(void) {
-
+LATBbits.LATB5 = 0;
 calcCosArray();
 
 # 79
@@ -5111,12 +5111,14 @@ PORTDbits.RD5 = 1;
 PORTCbits.RC0 = 1;
 PORTDbits.RD7 = 1;
 
+
+
 InitializeTaps();
 initSwitchBypass();
 
 
 ReadSavedSettings();
-
+LATBbits.LATB5 = 0;
 while (1) {
 
 
@@ -5158,7 +5160,7 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 145
+# 147
 oldSymmetry = symmetry;
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
@@ -5176,7 +5178,7 @@ if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
 modulation_changed = 1;
 }
 
-# 169
+# 171
 oldBaseTime = baseline_mod_time;
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;

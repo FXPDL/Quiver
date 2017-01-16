@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.37\dat\en_msgs.txt -cs \
   -h+dist/Todd/production\Quiver.X.production.sym \
   --cmf=dist/Todd/production\Quiver.X.production.cmf -z -Q16F1527 \
-  -oC:\Users\Nancy\AppData\Local\Temp\s1630.2 \
+  -oC:\Users\Nancy\AppData\Local\Temp\s13u4.2 \
   -Mdist/Todd/production/Quiver.X.production.map -E1 -ver=XC8 \
   -ASTACK=02270h-02389h -pstack=STACK -ACODE=00h-07FFhx8 \
   -ASTRCODE=00h-03FFFh -ASTRING=00h-0FFhx64 -ACONST=00h-0FFhx64 \
@@ -33,7 +33,7 @@ Linker command line:
   -ppowerup=CODE -pcinit=CODE -pfunctab=CODE -ACONFIG=08007h-08008h \
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Nancy\AppData\Local\Temp\s1630.obj \
+  C:\Users\Nancy\AppData\Local\Temp\s13u4.obj \
   dist/Todd/production\Quiver.X.production.obj 
 
 Object code version is 3.11
@@ -43,7 +43,7 @@ Machine type is 16F1527
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Nancy\AppData\Local\Temp\s1630.obj
+C:\Users\Nancy\AppData\Local\Temp\s13u4.obj
                 end_init                            2F3      2F3        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
@@ -56,10 +56,10 @@ dist/Todd/production\Quiver.X.production.obj
                 text77                             2413     2413       51     4826       0
                 text76                             2EA9     2EA9       2C     5D52       0
                 text75                             22E3     22E3       48     45C6       0
-                text73                             2CE0     2CE0        4     59C0       0
-                text72                             2D01     2D01        A     5A02       0
-                text71                             2CE8     2CE8        7     59D0       0
-                text70                             2CEF     2CEF        9     59DE       0
+                text73                             2CDB     2CDB        4     59B6       0
+                text72                             2CF5     2CF5        A     59EA       0
+                text71                              7F8      7F8        7        8       0
+                text70                             2CE3     2CE3        9     59C6       0
                 text69                             225E     225E       41     44BC       0
                 text68                             2F32     2F32       30     5E64       0
                 text67                             1800     1800       26     2CA8       0
@@ -72,7 +72,7 @@ dist/Todd/production\Quiver.X.production.obj
                 text60                             25B6     25B6       65     4B6C       0
                 text59                             2E3A     2E3A       22     5C74       0
                 text58                             1C74     1C74       A9     38E8       0
-                text57                             2CF8     2CF8        9     59F0       0
+                text57                             2CEC     2CEC        9     59D8       0
                 text56                             1035     1035       F6     206A       0
                 text55                             2ED5     2ED5       2E     5DAA       0
                 text54                             1E7B     1E7B       B4     3CF6       0
@@ -88,8 +88,8 @@ dist/Todd/production\Quiver.X.production.obj
                 text44                             277F     277F       81     4EFE       0
                 text43                             2F62     2F62       30     5EC4       0
                 text42                             24B6     24B6       53     496C       0
-                text41                             2CE4     2CE4        4     59C8       0
-                text40                                2        2        1        0       0
+                text41                             2CDF     2CDF        4     59BE       0
+                text40                                3        3        1        6       0
                 text39                             2005     2005       30     400A       0
                 text38                             1003     1003       32     2006       0
                 text37                             2F92     2F92       36     5F24       0
@@ -129,7 +129,7 @@ dist/Todd/production\Quiver.X.production.obj
                 text3                               BD2      BD2      1E8     17A4       0
                 text2                              2FC8     2FC8       38     5F90       0
                 text1                              255D     255D       59     4ABA       0
-                maintext                            376      376      47E        8       0
+                maintext                            376      376      482        8       0
                 cstackBANK0                          20       20       20       20       1
                 cstackCOMMON                         70       70        E       70       1
                 cstackBANK1                          A0       A0       50       A0       1
@@ -137,8 +137,8 @@ dist/Todd/production\Quiver.X.production.obj
                 cstackBANK3                         1E7      1E7        9      1A0       1
                 cstackBANK4                         25E      25E        8      220       1
                 cstackBANK5                         2CC      2CC        9      2A0       1
-                inittext                           2D0B     2D0B        C     5A16       0
-                clrtext                             7F4      7F4        C        8       0
+                inittext                           2CFF     2CFF        C     59FE       0
+                clrtext                            2D0B     2D0B        C     5A16       0
                 bssBANK7                            3A0      3A0       40      3A0       1
                 bssBANK6                            320      320       40      320       1
                 bssBANK5                            2A0      2A0       2C      2A0       1
@@ -153,7 +153,7 @@ dist/Todd/production\Quiver.X.production.obj
                 stringtext                         2800     2800       54     5000       0
                 idataBANK4                         2001     2001        4     4002       0
                 idataBANK3                         2DAB     2DAB       1A     5B56       0
-                idataBANK2                            3        3        1        6       0
+                idataBANK2                          7FF      7FF        1        8       0
                 idataBANK0                         2D26     2D26       12     5A4C       0
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -170,10 +170,10 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text77                             2413     2413       51         0
                 text76                             2EA9     2EA9       2C         0
                 text75                             22E3     22E3       48         0
-                text73                             2CE0     2CE0        4         0
-                text72                             2D01     2D01        A         0
-                text71                             2CE8     2CE8        7         0
-                text70                             2CEF     2CEF        9         0
+                text73                             2CDB     2CDB        4         0
+                text72                             2CF5     2CF5        A         0
+                text71                              7F8      7F8        7         0
+                text70                             2CE3     2CE3        9         0
                 text69                             225E     225E       41         0
                 text68                             2F32     2F32       30         0
                 text67                             1800     1800       26         0
@@ -186,7 +186,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text60                             25B6     25B6       65         0
                 text59                             2E3A     2E3A       22         0
                 text58                             1C74     1C74       A9         0
-                text57                             2CF8     2CF8        9         0
+                text57                             2CEC     2CEC        9         0
                 text56                             1035     1035       F6         0
                 text55                             2ED5     2ED5       2E         0
                 text54                             1E7B     1E7B       B4         0
@@ -202,8 +202,8 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text44                             277F     277F       81         0
                 text43                             2F62     2F62       30         0
                 text42                             24B6     24B6       53         0
-                text41                             2CE4     2CE4        4         0
-                text40                                2        2        1         0
+                text41                             2CDF     2CDF        4         0
+                text40                                3        3        1         0
                 text39                             2005     2005       30         0
                 text38                             1003     1003       32         0
                 text37                             2F92     2F92       36         0
@@ -243,12 +243,12 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text3                               BD2      BD2      1E8         0
                 text2                              2FC8     2FC8       38         0
                 text1                              255D     255D       59         0
-                maintext                            376      376      47E         0
-                inittext                           2D0B     2D0B        C         0
-                clrtext                             7F4      7F4        C         0
+                maintext                            376      376      482         0
+                inittext                           2CFF     2CFF        C         0
+                clrtext                            2D0B     2D0B        C         0
                 idataBANK4                         2001     2001        4         0
                 idataBANK3                         2DAB     2DAB       1A         0
-                idataBANK2                            3        3        1         0
+                idataBANK2                          7FF      7FF        1         0
                 idataBANK0                         2D26     2D26       12         0
 
         CLASS   STRCODE        
@@ -436,8 +436,8 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                reset_vec                      000000  000003  000003         0       0  CODE        2
-                idataBANK2                     000003  000001  000004         6       0  CODE        2
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                text40                         000003  000001  000004         6       0  CODE        2
                 intentry                       000004  0007FC  000800         8       0  CODE        2
                 cstackBANK0                    000020  000040  000060        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
@@ -501,13 +501,13 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 text45                         002703  00007C  00277F      4E06       0  CODE        2
                 text44                         00277F  000081  002800      4EFE       0  CODE        2
                 stringtext                     002800  000054  002854      5000       0  STRCODE     2
-                text73                         002CE0  000004  002CE4      59C0       0  CODE        2
-                text41                         002CE4  000004  002CE8      59C8       0  CODE        2
-                text71                         002CE8  000007  002CEF      59D0       0  CODE        2
-                text70                         002CEF  000009  002CF8      59DE       0  CODE        2
-                text57                         002CF8  000009  002D01      59F0       0  CODE        2
-                text72                         002D01  00000A  002D0B      5A02       0  CODE        2
-                inittext                       002D0B  00000C  002D17      5A16       0  CODE        2
+                text73                         002CDB  000004  002CDF      59B6       0  CODE        2
+                text41                         002CDF  000004  002CE3      59BE       0  CODE        2
+                text70                         002CE3  000009  002CEC      59C6       0  CODE        2
+                text57                         002CEC  000009  002CF5      59D8       0  CODE        2
+                text72                         002CF5  00000A  002CFF      59EA       0  CODE        2
+                inittext                       002CFF  00000C  002D0B      59FE       0  CODE        2
+                clrtext                        002D0B  00000C  002D17      5A16       0  CODE        2
                 text35                         002D17  00000F  002D26      5A2E       0  CODE        2
                 idataBANK0                     002D26  000012  002D38      5A4C       0  CODE        2
                 text61                         002D38  000013  002D4B      5A70       0  CODE        2
@@ -547,17 +547,20 @@ UNUSED ADDRESS RANGES
         BANK8            00420-0046F              50           1
         BANK9            004A0-004EF              50           1
         BIGRAM           02000-025EF             5F0           1
-        CODE             01000-01002               3           2
+        CODE             00002-00002               1           2
+                         01000-01002               3
                          02000-02000               1
-                         02854-02CDF             48C
+                         02854-02CDA             487
                          03000-03FFF             800
-        CONST            01000-01002               3           2
+        CONST            00002-00002               1           2
+                         01000-01002               3
                          02000-02000               1
-                         02854-02CDF             100
+                         02854-02CDA             100
                          03000-03FFF             100
-        ENTRY            01000-01002               3           2
+        ENTRY            00002-00002               1           2
+                         01000-01002               3
                          02000-02000               1
-                         02854-02CDF             100
+                         02854-02CDA             100
                          03000-03FFF             100
         IDLOC            08000-08003               4           2
         RAM              00060-0006F              10           1
@@ -603,13 +606,15 @@ UNUSED ADDRESS RANGES
         SFR8             00400-0041F              20           1
         SFR9             00480-0049F              20           1
         STACK            02270-02389             11A           1
-        STRCODE          01000-01002               3           2
+        STRCODE          00002-00002               1           2
+                         01000-01002               3
                          02000-02000               1
-                         02854-02CDF             48C
+                         02854-02CDA             487
                          03000-03FFF            1000
-        STRING           01000-01002               3           2
+        STRING           00002-00002               1           2
+                         01000-01002               3
                          02000-02000               1
-                         02854-02CDF             100
+                         02854-02CDA             100
                          03000-03FFF             100
 
                                   Symbol Table
@@ -686,7 +691,7 @@ _CCPR5                               (abs)        0031C
 _CCPTMRS0                            (abs)        0029D
 _CCPTMRS1                            (abs)        0029E
 _CCPTMRS2                            (abs)        0029F
-_ConfigureOscillator                 text73       02CE0
+_ConfigureOscillator                 text73       02CDB
 _FLASH_ReadWord                      text66       00800
 _GIE                                 (abs)        0005F
 _INTCONbits                          (abs)        0000B
@@ -1014,7 +1019,7 @@ ___ftmul@f1                          cstackBANK1  000AE
 ___ftmul@f2                          cstackBANK1  000B1
 ___ftmul@f3_as_product               cstackBANK1  000B9
 ___ftmul@sign                        cstackBANK1  000BD
-___ftneg                             text57       02CF8
+___ftneg                             text57       02CEC
 ___ftneg@f1                          cstackBANK1  000BE
 ___ftpack                            text60       025B6
 ___ftpack@arg                        cstackBANK1  000A0
@@ -1042,7 +1047,7 @@ ___wmul                              text53       02DC5
 ___wmul@multiplicand                 cstackBANK2  00130
 ___wmul@multiplier                   cstackBANK2  0012E
 ___wmul@product                      cstackBANK2  00132
-__end_of_ConfigureOscillator         text73       02CE4
+__end_of_ConfigureOscillator         text73       02CDF
 __end_of_FLASH_ReadWord              text66       00820
 __end_of_InitApp                     text68       02F62
 __end_of_InitializeTaps              text67       01826
@@ -1056,7 +1061,7 @@ __end_of___ftadd                     text56       0112B
 __end_of___ftdiv                     text58       01D1D
 __end_of___ftge                      text50       020E6
 __end_of___ftmul                     text54       01F2F
-__end_of___ftneg                     text57       02D01
+__end_of___ftneg                     text57       02CF5
 __end_of___ftpack                    text60       0261B
 __end_of___ftsub                     text55       02F03
 __end_of___fttol                     text49       01A36
@@ -1073,16 +1078,16 @@ __end_of_floor                       text47       01E7B
 __end_of_frexp                       text48       021DD
 __end_of_getModulationDelayTime      text42       02509
 __end_of_getModulationSubdivision    text43       02F92
-__end_of_getSwitchBypassState        text41       02CE8
+__end_of_getSwitchBypassState        text41       02CE3
 __end_of_initSwitchBypass            text35       02D26
-__end_of_init_adc                    text72       02D0B
+__end_of_init_adc                    text72       02CFF
 __end_of_init_pwm                    text69       0229F
-__end_of_init_timer0                 text71       02CEF
-__end_of_init_timer2                 text70       02CF8
+__end_of_init_timer0                 text71       007FF
+__end_of_init_timer2                 text70       02CEC
 __end_of_isr                         intentry     002F3
 __end_of_ldexp                       text30       01C74
 __end_of_log                         text28       02000
-__end_of_main                        maintext     007F4
+__end_of_main                        maintext     007F8
 __end_of_map                         text34       01AC1
 __end_of_modCos                      text19       01800
 __end_of_modSaw                      text21       01654
@@ -1114,7 +1119,7 @@ __end_of_sin                         text46       009EF
 __end_of_solidring_tactiles          text10       0221D
 __end_of_updateModulationArray       text16       01000
 __end_of_updateSwitchBypass          text6        01363
-__end_of_updateSwitchBypassState     text40       00003
+__end_of_updateSwitchBypassState     text40       00004
 __end_of_updateSwitchTap             text3        00DBA
 __end_of_update_mode                 text2        03000
 __end_of_update_selectMode           text1        025B6
@@ -1149,7 +1154,7 @@ __pdataBANK2                         dataBANK2    0016C
 __pdataBANK3                         dataBANK3    001CD
 __pdataBANK4                         dataBANK4    00266
 __pidataBANK0                        idataBANK0   02D26
-__pidataBANK2                        idataBANK2   00003
+__pidataBANK2                        idataBANK2   007FF
 __pidataBANK3                        idataBANK3   02DAB
 __pidataBANK4                        idataBANK4   02001
 __pintentry                          intentry     00004
@@ -1189,8 +1194,8 @@ __ptext37                            text37       02F92
 __ptext38                            text38       01003
 __ptext39                            text39       02005
 __ptext4                             text4        02D91
-__ptext40                            text40       00002
-__ptext41                            text41       02CE4
+__ptext40                            text40       00003
+__ptext41                            text41       02CDF
 __ptext42                            text42       024B6
 __ptext43                            text43       02F62
 __ptext44                            text44       0277F
@@ -1207,7 +1212,7 @@ __ptext53                            text53       02DC5
 __ptext54                            text54       01E7B
 __ptext55                            text55       02ED5
 __ptext56                            text56       01035
-__ptext57                            text57       02CF8
+__ptext57                            text57       02CEC
 __ptext58                            text58       01C74
 __ptext59                            text59       02E3A
 __ptext6                             text6        01241
@@ -1222,10 +1227,10 @@ __ptext67                            text67       01800
 __ptext68                            text68       02F32
 __ptext69                            text69       0225E
 __ptext7                             text7        02E19
-__ptext70                            text70       02CEF
-__ptext71                            text71       02CE8
-__ptext72                            text72       02D01
-__ptext73                            text73       02CE0
+__ptext70                            text70       02CE3
+__ptext71                            text71       007F8
+__ptext72                            text72       02CF5
+__ptext73                            text73       02CDB
 __ptext75                            text75       022E3
 __ptext76                            text76       02EA9
 __ptext77                            text77       02413
@@ -1346,12 +1351,12 @@ _floor                               text47       01DC8
 _frexp                               text48       0219D
 _getModulationDelayTime              text42       024B6
 _getModulationSubdivision            text43       02F62
-_getSwitchBypassState                text41       02CE4
+_getSwitchBypassState                text41       02CDF
 _initSwitchBypass                    text35       02D17
-_init_adc                            text72       02D01
+_init_adc                            text72       02CF5
 _init_pwm                            text69       0225E
-_init_timer0                         text71       02CE8
-_init_timer2                         text70       02CEF
+_init_timer0                         text71       007F8
+_init_timer2                         text70       02CE3
 _isInitialized                       bssBANK3     001C1
 _isr                                 intentry     00004
 _knob1_prev                          dataBANK3    001CD
@@ -1462,7 +1467,7 @@ _topTactile_pressed                  bssBANK3     001CC
 _top_push_state                      dataBANK0    0004C
 _updateModulationArray               text16       00DBA
 _updateSwitchBypass                  text6        01241
-_updateSwitchBypassState             text40       00002
+_updateSwitchBypassState             text40       00003
 _updateSwitchTap                     text3        00BD2
 _update_mode                         text2        02FC8
 _update_selectMode                   text1        0255D
@@ -1471,7 +1476,7 @@ adc_convert@channel                  cstackBANK1  000A3
 btemp                                (abs)        0007E
 calcCosArray@iAngle                  cstackBANK2  00159
 calcCosArray@tmpVal                  cstackBANK2  00156
-clear_ram0                           clrtext      007F4
+clear_ram0                           clrtext      02D0B
 cos@f                                cstackBANK2  0014C
 end_of_initialization                cinit        00372
 eval_poly@d                          cstackBANK2  00137
@@ -1509,7 +1514,7 @@ i1_set_leds_top                      text75       022E3
 i1set_leds_top@ledState              cstackCOMMON 00072
 i1set_leds_top@x                     cstackCOMMON 00070
 initSwitchBypass@initState           cstackBANK1  000BA
-init_ram                             inittext     02D0B
+init_ram                             inittext     02CFF
 int$flags                            (abs)        0007E
 intlevel0                            functab      00000
 intlevel1                            functab      00000
@@ -4422,8 +4427,8 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\exp.c
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\exp.c estimated size: 346
 
 state_manager.c
-		_updateSwitchBypassState		CODE           	0002	0000	2
-		_getSwitchBypassState		CODE           	2CE4	0000	5
+		_updateSwitchBypassState		CODE           	0003	0000	2
+		_getSwitchBypassState		CODE           	2CDF	0000	5
 
 state_manager.c estimated size: 7
 
@@ -4502,7 +4507,7 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c estimated size: 49
 
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-		___ftneg       		CODE           	2CF8	0000	10
+		___ftneg       		CODE           	2CEC	0000	10
 
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c estimated size: 10
 
@@ -4568,9 +4573,9 @@ user.c
 		_scaleA10kPot  		CODE           	1B4C	0000	146
 		_InitApp       		CODE           	2F32	0000	49
 		_scaleA100kPot 		CODE           	192A	0000	134
-		_init_timer0   		CODE           	2CE8	0000	8
-		_init_timer2   		CODE           	2CEF	0000	10
-		_init_adc      		CODE           	2D01	0000	11
+		_init_timer0   		CODE           	07F8	0000	8
+		_init_timer2   		CODE           	2CE3	0000	10
+		_init_adc      		CODE           	2CF5	0000	11
 		_adc_convert   		CODE           	2D38	0000	20
 		_set_subdivision		CODE           	1AC1	0000	140
 		_InitializeTaps		CODE           	1800	0000	39
@@ -4596,9 +4601,9 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c estimated size: 102
 
 main.c
-		_main          		CODE           	0376	0000	1151
+		_main          		CODE           	0376	0000	1155
 
-main.c estimated size: 1151
+main.c estimated size: 1155
 
 memory.c
 		_FLASH_ReadWord		CODE           	0800	0000	33
@@ -4606,7 +4611,7 @@ memory.c
 memory.c estimated size: 33
 
 system.c
-		_ConfigureOscillator		CODE           	2CE0	0000	5
+		_ConfigureOscillator		CODE           	2CDB	0000	5
 		_wait_ms       		CODE           	1003	0000	51
 
 system.c estimated size: 56

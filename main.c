@@ -67,7 +67,7 @@ uint8_t iCnt;
 /******************************************************************************/
 
 void main(void) {
-
+LED_tap_B = 0;
     calcCosArray();
     /*bottom_push_state = 4;
     symmetry = 180;
@@ -87,12 +87,14 @@ void main(void) {
     mode_2 = 1;
     mode_1 = 1;
     
+    
+    
     InitializeTaps();
     initSwitchBypass();
     
     //showBootSequence();    
     ReadSavedSettings();
-    //updateModulationArray(); 
+ LED_tap_B = 0;
     while (1) {
 
         
