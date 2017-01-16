@@ -4223,10 +4223,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "31
 }
 [; ;tactiles.c: 30: }
-[; ;tactiles.c: 31: } else if (bottomTactile_pressed < 25) {
+[; ;tactiles.c: 31: } else if (bottomTactile_pressed < 25*5) {
 [e $U 463  ]
 [e :U 461 ]
-[e $ ! < -> _bottomTactile_pressed `i -> 25 `i 464  ]
+[e $ ! < -> _bottomTactile_pressed `i * -> 25 `i -> 5 `i 464  ]
 {
 [; ;tactiles.c: 32: bottomTactile_pressed++;
 "32
@@ -4306,10 +4306,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "64
 }
 [; ;tactiles.c: 63: }
-[; ;tactiles.c: 64: } else if (topTactile_pressed < 25) {
+[; ;tactiles.c: 64: } else if (topTactile_pressed < 25*5) {
 [e $U 473  ]
 [e :U 471 ]
-[e $ ! < -> _topTactile_pressed `i -> 25 `i 474  ]
+[e $ ! < -> _topTactile_pressed `i * -> 25 `i -> 5 `i 474  ]
 {
 [; ;tactiles.c: 65: topTactile_pressed++;
 "65

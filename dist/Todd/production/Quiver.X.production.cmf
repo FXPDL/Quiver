@@ -118,7 +118,7 @@ dataBANK2 BANK2 1 16F 16F 1 1
 dataBANK3 BANK3 1 1C7 1C7 20 1
 dataBANK4 BANK4 1 263 263 2 1
 clrtext CODE 0 2DCF 2DCF C 2
-$C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+$C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 2DD 2DD 2 2
 config CONFIG 0 8007 8007 2 2
@@ -215,112 +215,112 @@ STRING 3000-3FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/Todd/production\Quiver.X.production.obj
-2DF cinit CODE >7446:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DF cinit CODE >7449:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DF cinit CODE >7843:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E0 cinit CODE >7844:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E1 cinit CODE >7845:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E2 cinit CODE >7846:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E3 cinit CODE >7847:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E4 cinit CODE >7848:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E5 cinit CODE >7849:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E6 cinit CODE >7850:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2E7 cinit CODE >7851:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2EA cinit CODE >7855:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2EB cinit CODE >7856:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2EC cinit CODE >7857:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2ED cinit CODE >7858:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2EE cinit CODE >7859:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2EF cinit CODE >7860:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F0 cinit CODE >7861:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F1 cinit CODE >7862:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F2 cinit CODE >7863:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F5 cinit CODE >7867:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F6 cinit CODE >7868:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F7 cinit CODE >7869:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F8 cinit CODE >7870:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2F9 cinit CODE >7871:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FA cinit CODE >7872:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FB cinit CODE >7876:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FC cinit CODE >7877:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FD cinit CODE >7878:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FE cinit CODE >7879:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2FF cinit CODE >7880:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-300 cinit CODE >7881:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-301 cinit CODE >7882:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-302 cinit CODE >7883:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-303 cinit CODE >7884:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-306 cinit CODE >7888:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-307 cinit CODE >7889:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-308 cinit CODE >7890:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-309 cinit CODE >7891:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-30A cinit CODE >7892:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-30B cinit CODE >7893:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-30C cinit CODE >7894:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-30D cinit CODE >7895:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-30E cinit CODE >7896:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-311 cinit CODE >7900:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-312 cinit CODE >7901:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-313 cinit CODE >7902:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-314 cinit CODE >7903:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-315 cinit CODE >7904:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-316 cinit CODE >7905:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-317 cinit CODE >7906:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-318 cinit CODE >7907:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-319 cinit CODE >7908:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-31C cinit CODE >7912:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-31D cinit CODE >7913:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-31E cinit CODE >7914:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-31F cinit CODE >7915:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-320 cinit CODE >7916:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-321 cinit CODE >7917:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-322 cinit CODE >7918:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-323 cinit CODE >7919:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-324 cinit CODE >7920:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-327 cinit CODE >7924:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-328 cinit CODE >7925:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-329 cinit CODE >7926:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32A cinit CODE >7927:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32B cinit CODE >7928:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32C cinit CODE >7929:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32D cinit CODE >7930:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32E cinit CODE >7931:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-32F cinit CODE >7932:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-332 cinit CODE >7953:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-333 cinit CODE >7954:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-334 cinit CODE >7955:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-335 cinit CODE >7956:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-336 cinit CODE >7957:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-337 cinit CODE >7958:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-338 cinit CODE >7959:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-339 cinit CODE >7960:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-33A cinit CODE >7961:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-33B cinit CODE >7962:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-33C cinit CODE >7963:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-33D cinit CODE >7964:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-340 cinit CODE >7968:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-343 cinit CODE >7969:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-344 cinit CODE >7973:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-345 cinit CODE >7974:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-346 cinit CODE >7975:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-347 cinit CODE >7976:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-348 cinit CODE >7977:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-349 cinit CODE >7978:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34A cinit CODE >7979:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34B cinit CODE >7980:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34C cinit CODE >7981:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34D cinit CODE >7982:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34E cinit CODE >7983:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-34F cinit CODE >7984:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-352 cinit CODE >7988:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-353 cinit CODE >7989:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-356 cinit CODE >7990:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-357 cinit CODE >7991:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-359 cinit CODE >7992:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-35A cinit CODE >7998:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-35A cinit CODE >8000:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-35B cinit CODE >8001:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-35C cinit CODE >8002:C:\Users\Nancy\AppData\Local\Temp\s13nk.
+2DF cinit CODE >7446:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DF cinit CODE >7449:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DF cinit CODE >7843:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E0 cinit CODE >7844:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E1 cinit CODE >7845:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E2 cinit CODE >7846:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E3 cinit CODE >7847:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E4 cinit CODE >7848:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E5 cinit CODE >7849:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E6 cinit CODE >7850:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2E7 cinit CODE >7851:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2EA cinit CODE >7855:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2EB cinit CODE >7856:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2EC cinit CODE >7857:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2ED cinit CODE >7858:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2EE cinit CODE >7859:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2EF cinit CODE >7860:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F0 cinit CODE >7861:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F1 cinit CODE >7862:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F2 cinit CODE >7863:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F5 cinit CODE >7867:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F6 cinit CODE >7868:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F7 cinit CODE >7869:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F8 cinit CODE >7870:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2F9 cinit CODE >7871:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FA cinit CODE >7872:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FB cinit CODE >7876:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FC cinit CODE >7877:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FD cinit CODE >7878:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FE cinit CODE >7879:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2FF cinit CODE >7880:C:\Users\Nancy\AppData\Local\Temp\s1668.
+300 cinit CODE >7881:C:\Users\Nancy\AppData\Local\Temp\s1668.
+301 cinit CODE >7882:C:\Users\Nancy\AppData\Local\Temp\s1668.
+302 cinit CODE >7883:C:\Users\Nancy\AppData\Local\Temp\s1668.
+303 cinit CODE >7884:C:\Users\Nancy\AppData\Local\Temp\s1668.
+306 cinit CODE >7888:C:\Users\Nancy\AppData\Local\Temp\s1668.
+307 cinit CODE >7889:C:\Users\Nancy\AppData\Local\Temp\s1668.
+308 cinit CODE >7890:C:\Users\Nancy\AppData\Local\Temp\s1668.
+309 cinit CODE >7891:C:\Users\Nancy\AppData\Local\Temp\s1668.
+30A cinit CODE >7892:C:\Users\Nancy\AppData\Local\Temp\s1668.
+30B cinit CODE >7893:C:\Users\Nancy\AppData\Local\Temp\s1668.
+30C cinit CODE >7894:C:\Users\Nancy\AppData\Local\Temp\s1668.
+30D cinit CODE >7895:C:\Users\Nancy\AppData\Local\Temp\s1668.
+30E cinit CODE >7896:C:\Users\Nancy\AppData\Local\Temp\s1668.
+311 cinit CODE >7900:C:\Users\Nancy\AppData\Local\Temp\s1668.
+312 cinit CODE >7901:C:\Users\Nancy\AppData\Local\Temp\s1668.
+313 cinit CODE >7902:C:\Users\Nancy\AppData\Local\Temp\s1668.
+314 cinit CODE >7903:C:\Users\Nancy\AppData\Local\Temp\s1668.
+315 cinit CODE >7904:C:\Users\Nancy\AppData\Local\Temp\s1668.
+316 cinit CODE >7905:C:\Users\Nancy\AppData\Local\Temp\s1668.
+317 cinit CODE >7906:C:\Users\Nancy\AppData\Local\Temp\s1668.
+318 cinit CODE >7907:C:\Users\Nancy\AppData\Local\Temp\s1668.
+319 cinit CODE >7908:C:\Users\Nancy\AppData\Local\Temp\s1668.
+31C cinit CODE >7912:C:\Users\Nancy\AppData\Local\Temp\s1668.
+31D cinit CODE >7913:C:\Users\Nancy\AppData\Local\Temp\s1668.
+31E cinit CODE >7914:C:\Users\Nancy\AppData\Local\Temp\s1668.
+31F cinit CODE >7915:C:\Users\Nancy\AppData\Local\Temp\s1668.
+320 cinit CODE >7916:C:\Users\Nancy\AppData\Local\Temp\s1668.
+321 cinit CODE >7917:C:\Users\Nancy\AppData\Local\Temp\s1668.
+322 cinit CODE >7918:C:\Users\Nancy\AppData\Local\Temp\s1668.
+323 cinit CODE >7919:C:\Users\Nancy\AppData\Local\Temp\s1668.
+324 cinit CODE >7920:C:\Users\Nancy\AppData\Local\Temp\s1668.
+327 cinit CODE >7924:C:\Users\Nancy\AppData\Local\Temp\s1668.
+328 cinit CODE >7925:C:\Users\Nancy\AppData\Local\Temp\s1668.
+329 cinit CODE >7926:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32A cinit CODE >7927:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32B cinit CODE >7928:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32C cinit CODE >7929:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32D cinit CODE >7930:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32E cinit CODE >7931:C:\Users\Nancy\AppData\Local\Temp\s1668.
+32F cinit CODE >7932:C:\Users\Nancy\AppData\Local\Temp\s1668.
+332 cinit CODE >7953:C:\Users\Nancy\AppData\Local\Temp\s1668.
+333 cinit CODE >7954:C:\Users\Nancy\AppData\Local\Temp\s1668.
+334 cinit CODE >7955:C:\Users\Nancy\AppData\Local\Temp\s1668.
+335 cinit CODE >7956:C:\Users\Nancy\AppData\Local\Temp\s1668.
+336 cinit CODE >7957:C:\Users\Nancy\AppData\Local\Temp\s1668.
+337 cinit CODE >7958:C:\Users\Nancy\AppData\Local\Temp\s1668.
+338 cinit CODE >7959:C:\Users\Nancy\AppData\Local\Temp\s1668.
+339 cinit CODE >7960:C:\Users\Nancy\AppData\Local\Temp\s1668.
+33A cinit CODE >7961:C:\Users\Nancy\AppData\Local\Temp\s1668.
+33B cinit CODE >7962:C:\Users\Nancy\AppData\Local\Temp\s1668.
+33C cinit CODE >7963:C:\Users\Nancy\AppData\Local\Temp\s1668.
+33D cinit CODE >7964:C:\Users\Nancy\AppData\Local\Temp\s1668.
+340 cinit CODE >7968:C:\Users\Nancy\AppData\Local\Temp\s1668.
+343 cinit CODE >7969:C:\Users\Nancy\AppData\Local\Temp\s1668.
+344 cinit CODE >7973:C:\Users\Nancy\AppData\Local\Temp\s1668.
+345 cinit CODE >7974:C:\Users\Nancy\AppData\Local\Temp\s1668.
+346 cinit CODE >7975:C:\Users\Nancy\AppData\Local\Temp\s1668.
+347 cinit CODE >7976:C:\Users\Nancy\AppData\Local\Temp\s1668.
+348 cinit CODE >7977:C:\Users\Nancy\AppData\Local\Temp\s1668.
+349 cinit CODE >7978:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34A cinit CODE >7979:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34B cinit CODE >7980:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34C cinit CODE >7981:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34D cinit CODE >7982:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34E cinit CODE >7983:C:\Users\Nancy\AppData\Local\Temp\s1668.
+34F cinit CODE >7984:C:\Users\Nancy\AppData\Local\Temp\s1668.
+352 cinit CODE >7988:C:\Users\Nancy\AppData\Local\Temp\s1668.
+353 cinit CODE >7989:C:\Users\Nancy\AppData\Local\Temp\s1668.
+356 cinit CODE >7990:C:\Users\Nancy\AppData\Local\Temp\s1668.
+357 cinit CODE >7991:C:\Users\Nancy\AppData\Local\Temp\s1668.
+359 cinit CODE >7992:C:\Users\Nancy\AppData\Local\Temp\s1668.
+35A cinit CODE >7998:C:\Users\Nancy\AppData\Local\Temp\s1668.
+35A cinit CODE >8000:C:\Users\Nancy\AppData\Local\Temp\s1668.
+35B cinit CODE >8001:C:\Users\Nancy\AppData\Local\Temp\s1668.
+35C cinit CODE >8002:C:\Users\Nancy\AppData\Local\Temp\s1668.
 4 intentry CODE >28:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 9 intentry CODE >46:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 B intentry CODE >47:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
@@ -1472,93 +1472,93 @@ DB9 text3 CODE >153:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code
 1855 text1 CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 35E maintext CODE >68:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
 35E maintext CODE >70:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-361 maintext CODE >84:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-369 maintext CODE >85:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-36C maintext CODE >86:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-36F maintext CODE >88:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-371 maintext CODE >89:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-372 maintext CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-373 maintext CODE >91:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-374 maintext CODE >92:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-375 maintext CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-376 maintext CODE >95:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-379 maintext CODE >96:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-37C maintext CODE >99:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-37F maintext CODE >100:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-382 maintext CODE >104:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-385 maintext CODE >105:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-388 maintext CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-38B maintext CODE >109:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-38F maintext CODE >110:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-392 maintext CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-39B maintext CODE >114:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-39E maintext CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3A1 maintext CODE >119:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3AD maintext CODE >120:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3B9 maintext CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3C5 maintext CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3D1 maintext CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-3DD maintext CODE >127:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-41C maintext CODE >128:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-421 maintext CODE >129:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-44D maintext CODE >130:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-47A maintext CODE >136:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-4BA maintext CODE >137:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-4BF maintext CODE >138:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-4F7 maintext CODE >139:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-530 maintext CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-570 maintext CODE >151:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-575 maintext CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5BA maintext CODE >154:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5BC maintext CODE >155:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5D7 maintext CODE >156:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5D9 maintext CODE >157:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5DA maintext CODE >158:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-5DC maintext CODE >169:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-61C maintext CODE >170:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-621 maintext CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-66B maintext CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-66D maintext CODE >177:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-6AD maintext CODE >178:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-6B2 maintext CODE >179:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-6F7 maintext CODE >185:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-6FB maintext CODE >187:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-70A maintext CODE >188:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-72A maintext CODE >189:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-72D maintext CODE >190:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-730 maintext CODE >191:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-731 maintext CODE >195:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-734 maintext CODE >196:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-737 maintext CODE >197:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-73A maintext CODE >101:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
-2DC3 inittext CODE >7936:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC3 inittext CODE >7937:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC4 inittext CODE >7938:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC4 inittext CODE >7939:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC5 inittext CODE >7940:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC6 inittext CODE >7941:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC7 inittext CODE >7942:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC8 inittext CODE >7943:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DC9 inittext CODE >7944:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCA inittext CODE >7945:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCB inittext CODE >7946:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCC inittext CODE >7947:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCD inittext CODE >7949:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCE inittext CODE >7948:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCF clrtext CODE >7826:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DCF clrtext CODE >7827:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD0 clrtext CODE >7828:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD0 clrtext CODE >7829:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD1 clrtext CODE >7830:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD2 clrtext CODE >7831:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD3 clrtext CODE >7832:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD4 clrtext CODE >7833:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD5 clrtext CODE >7834:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD6 clrtext CODE >7835:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD7 clrtext CODE >7836:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD8 clrtext CODE >7837:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DD9 clrtext CODE >7839:C:\Users\Nancy\AppData\Local\Temp\s13nk.
-2DDA clrtext CODE >7838:C:\Users\Nancy\AppData\Local\Temp\s13nk.
+361 maintext CODE >78:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+369 maintext CODE >79:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+36C maintext CODE >80:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+36F maintext CODE >82:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+371 maintext CODE >83:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+372 maintext CODE >84:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+373 maintext CODE >85:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+374 maintext CODE >86:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+375 maintext CODE >87:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+376 maintext CODE >89:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+379 maintext CODE >90:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+37C maintext CODE >93:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+37F maintext CODE >94:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+382 maintext CODE >98:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+385 maintext CODE >99:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+388 maintext CODE >102:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+38B maintext CODE >103:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+38F maintext CODE >104:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+392 maintext CODE >107:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+39B maintext CODE >108:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+39E maintext CODE >109:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3A1 maintext CODE >113:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3AD maintext CODE >114:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3B9 maintext CODE >115:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3C5 maintext CODE >116:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3D1 maintext CODE >117:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+3DD maintext CODE >121:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+41C maintext CODE >122:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+421 maintext CODE >123:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+44D maintext CODE >124:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+47A maintext CODE >130:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+4BA maintext CODE >131:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+4BF maintext CODE >132:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+4F7 maintext CODE >133:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+530 maintext CODE >144:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+570 maintext CODE >145:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+575 maintext CODE >146:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5BA maintext CODE >148:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5BC maintext CODE >149:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5D7 maintext CODE >150:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5D9 maintext CODE >151:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5DA maintext CODE >152:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+5DC maintext CODE >163:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+61C maintext CODE >164:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+621 maintext CODE >165:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+66B maintext CODE >166:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+66D maintext CODE >171:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+6AD maintext CODE >172:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+6B2 maintext CODE >173:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+6F7 maintext CODE >179:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+6FB maintext CODE >181:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+70A maintext CODE >182:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+72A maintext CODE >183:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+72D maintext CODE >184:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+730 maintext CODE >185:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+731 maintext CODE >189:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+734 maintext CODE >190:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+737 maintext CODE >191:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+73A maintext CODE >95:C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+2DC3 inittext CODE >7936:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC3 inittext CODE >7937:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC4 inittext CODE >7938:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC4 inittext CODE >7939:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC5 inittext CODE >7940:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC6 inittext CODE >7941:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC7 inittext CODE >7942:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC8 inittext CODE >7943:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DC9 inittext CODE >7944:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCA inittext CODE >7945:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCB inittext CODE >7946:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCC inittext CODE >7947:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCD inittext CODE >7949:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCE inittext CODE >7948:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCF clrtext CODE >7826:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DCF clrtext CODE >7827:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD0 clrtext CODE >7828:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD0 clrtext CODE >7829:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD1 clrtext CODE >7830:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD2 clrtext CODE >7831:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD3 clrtext CODE >7832:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD4 clrtext CODE >7833:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD5 clrtext CODE >7834:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD6 clrtext CODE >7835:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD7 clrtext CODE >7836:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD8 clrtext CODE >7837:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DD9 clrtext CODE >7839:C:\Users\Nancy\AppData\Local\Temp\s1668.
+2DDA clrtext CODE >7838:C:\Users\Nancy\AppData\Local\Temp\s1668.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1621,7 +1621,7 @@ __end_of_ring_tactiles 49DA 0 CODE 0 text11 dist/Todd/production\Quiver.X.produc
 __Hstrings 0 0 ABS 0 strings -
 _PEIE 5E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 _RCIE 48D 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+___sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 _main 6BC 0 CODE 0 maintext dist/Todd/production\Quiver.X.production.obj
 btemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 cos@f 14C 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
@@ -1636,7 +1636,7 @@ pow@x 155 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
 pow@y 158 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
 sin@f 13E 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
 sin@y 142 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
-start 5BA 0 CODE 0 init C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+start 5BA 0 CODE 0 init C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 ttemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 wtemp 7E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 __size_ofi1_getModulationSubdivision 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
@@ -1699,12 +1699,12 @@ _presetChannel 16F 0 BANK2 1 dataBANK2 dist/Todd/production\Quiver.X.production.
 _expressModeCnst 1E2 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
 __end_ofi1_set_leds_top 480A 0 CODE 0 text75 dist/Todd/production\Quiver.X.production.obj
 ?_modSawRev 142 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-intlevel1 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-intlevel2 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-intlevel3 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-intlevel4 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-intlevel5 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+intlevel0 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+intlevel1 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+intlevel2 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+intlevel3 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+intlevel4 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+intlevel5 0 0 CODE 0 functab C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 ?_modSquare 148 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
 set_subdivision@tmpX 135 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
 __end_oflog@coeff 5072 0 STRCODE 0 stringtext dist/Todd/production\Quiver.X.production.obj
@@ -1878,7 +1878,7 @@ ___ftpack@arg A0 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.
 ___ftpack@exp A3 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
 i1___awdiv@counter 75 0 COMMON 1 cstackCOMMON dist/Todd/production\Quiver.X.production.obj
 __size_of_setPresetDisplay 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+___int_sp 0 0 STACK 2 stack C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 i1___lmul 5FA2 0 CODE 0 text79 dist/Todd/production\Quiver.X.production.obj
 __end_of___ftpack 4D38 0 CODE 0 text60 dist/Todd/production\Quiver.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
@@ -2126,7 +2126,7 @@ __Lintentry 8 0 CODE 0 intentry -
 __size_of_modSquare 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 __end_of_setLongBypassState 1042 0 CODE 0 text7 dist/Todd/production\Quiver.X.production.obj
 _knob4_prev 1D3 0 BANK3 1 dataBANK3 dist/Todd/production\Quiver.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 __size_ofi1_set_leds_top 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 __size_of_modulation 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 modCos@tmpVal 145 0 BANK2 1 cstackBANK2 dist/Todd/production\Quiver.X.production.obj
@@ -2310,8 +2310,8 @@ _isInitialized 1BE 0 BANK3 1 bssBANK3 dist/Todd/production\Quiver.X.production.o
 _top_push_state 5A 0 BANK0 1 dataBANK0 dist/Todd/production\Quiver.X.production.obj
 _CCP5CONbits 31E 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
 __CFG_VCAPEN$OFF 0 0 ABS 0 - dist/Todd/production\Quiver.X.production.obj
-stackhi 2389 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
-stacklo 2270 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+stackhi 2389 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s1668.obj
+stacklo 2270 0 ABS 0 - C:\Users\Nancy\AppData\Local\Temp\s1668.obj
 ?___lltoft A8 0 BANK1 1 cstackBANK1 dist/Todd/production\Quiver.X.production.obj
 USARTWriteInt@F3536 234 0 BANK4 1 bssBANK4 dist/Todd/production\Quiver.X.production.obj
 __end_of_set_leds_top 4C6E 0 CODE 0 text64 dist/Todd/production\Quiver.X.production.obj

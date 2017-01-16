@@ -5014,7 +5014,7 @@ if (PORTDbits.RD6 == 0) {
 if (bottomTactile_pressed > 0) {
 bottomTactile_pressed--;
 }
-} else if (bottomTactile_pressed < 25) {
+} else if (bottomTactile_pressed < 25*5) {
 bottomTactile_pressed++;
 }
 
@@ -5040,7 +5040,7 @@ if (PORTDbits.RD5 == 0) {
 if (topTactile_pressed > 0) {
 topTactile_pressed--;
 }
-} else if (topTactile_pressed < 25) {
+} else if (topTactile_pressed < 25*5) {
 topTactile_pressed++;
 }
 

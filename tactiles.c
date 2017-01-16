@@ -28,7 +28,7 @@ void read_bottom_tactile(void) {
         if (bottomTactile_pressed > 0) {
             bottomTactile_pressed--;
         }
-    } else if (bottomTactile_pressed < debounce_limit) {
+    } else if (bottomTactile_pressed < debounce_limit*5) {  //extend debounce limit b/c these tactiles are hinky
         bottomTactile_pressed++;
     }
     
@@ -61,7 +61,7 @@ void read_top_tactile(void) {
         if (topTactile_pressed > 0) {
             topTactile_pressed--;
         }
-    } else if (topTactile_pressed < debounce_limit) {
+    } else if (topTactile_pressed < debounce_limit*5) {  //extend debounce limit b/c these tactiles are hinky
         topTactile_pressed++;
     }
     

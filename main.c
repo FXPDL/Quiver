@@ -74,13 +74,7 @@ void main(void) {
     updateModulationArray(); 
     NOP();*/
        
-    /*symmetry = 25;
-    updateModulationArray(); 
-    
-        
-    symmetry = 235;
-    updateModulationArray();*/
-    
+   
     USARTInit(31250);
     ConfigureOscillator();
     InitApp();

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.37\dat\en_msgs.txt -cs \
   -h+dist/Todd/production\Quiver.X.production.sym \
   --cmf=dist/Todd/production\Quiver.X.production.cmf -z -Q16F1527 \
-  -oC:\Users\Nancy\AppData\Local\Temp\s13nk.2 \
+  -oC:\Users\Nancy\AppData\Local\Temp\s1668.2 \
   -Mdist/Todd/production/Quiver.X.production.map -E1 -ver=XC8 \
   -ASTACK=02270h-02389h -pstack=STACK -ACODE=00h-07FFhx8 \
   -ASTRCODE=00h-03FFFh -ASTRING=00h-0FFhx64 -ACONST=00h-0FFhx64 \
@@ -33,7 +33,7 @@ Linker command line:
   -ppowerup=CODE -pcinit=CODE -pfunctab=CODE -ACONFIG=08007h-08008h \
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Nancy\AppData\Local\Temp\s13nk.obj \
+  C:\Users\Nancy\AppData\Local\Temp\s1668.obj \
   dist/Todd/production\Quiver.X.production.obj 
 
 Object code version is 3.11
@@ -43,7 +43,7 @@ Machine type is 16F1527
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Nancy\AppData\Local\Temp\s13nk.obj
+C:\Users\Nancy\AppData\Local\Temp\s1668.obj
                 end_init                            2DD      2DD        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
