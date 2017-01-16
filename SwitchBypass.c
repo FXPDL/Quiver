@@ -78,7 +78,8 @@ void updateSwitchBypass(void) {
                 setDoublePressState(1);
             }
         }        
-        LATDbits.LATD4 = 0;
+
+        
         if (doubleTap_state == 0 && longBypass_down == 0) {
             if (switchBypass_state == 1) {
                 //switch was on, so turn it off on release

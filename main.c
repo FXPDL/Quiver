@@ -157,9 +157,6 @@ void main(void) {
         if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
             //"Debounce" the symmetry knob; make sure the scaled value has changed, and eliminate "noise"
             modulation_changed = 1;
-            LATDbits.LATD1 = 1;
-        } else {
-            LATDbits.LATD1 = 0;
         }
         
         //Rate

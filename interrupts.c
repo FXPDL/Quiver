@@ -72,16 +72,7 @@ void interrupt isr(void) {
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
         double_timer++;
-        test_timer++;
-    
-        
-        
-        if (test_timer > 30) {
-            LATDbits.LATD4 = 0;
-            LATDbits.LATD3 = 0;
-            LATDbits.LATD2 = 0;
-            test_timer = 1;
-        }
+
         
         char subDiv = getModulationSubdivision();
 

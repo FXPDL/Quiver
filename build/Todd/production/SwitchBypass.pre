@@ -5071,7 +5071,8 @@ LATBbits.LATB2 = 1;
 setDoublePressState(1);
 }
 }
-LATDbits.LATD4 = 0;
+
+
 if (doubleTap_state == 0 && longBypass_down == 0) {
 if (switchBypass_state == 1) {
 

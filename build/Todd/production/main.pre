@@ -5174,12 +5174,9 @@ LATBbits.LATB1 = 0;
 if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
 
 modulation_changed = 1;
-LATDbits.LATD1 = 1;
-} else {
-LATDbits.LATD1 = 0;
 }
 
-# 172
+# 169
 oldBaseTime = baseline_mod_time;
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;

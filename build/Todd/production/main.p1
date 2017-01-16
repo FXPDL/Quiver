@@ -76,17 +76,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S115 . . ]
 "2460
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
-"2571
-[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S120 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"2581
-[s S121 :8 `uc 1 ]
-[n S121 . LATD ]
-"2570
-[u S119 `S120 1 `S121 1 ]
-[n S119 . . . ]
-"2585
-[v _LATDbits `VS119 ~T0 @X0 0 e@271 ]
 "25 system.h
 [v _set_subdivision `(i ~T0 @X0 0 ef2`i`i ]
 "28 modulation.h
@@ -4593,109 +4582,97 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 159: modulation_changed = 1;
 "159
 [e = _modulation_changed -> -> 1 `i `uc ]
-[; ;main.c: 160: LATDbits.LATD1 = 1;
 "160
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-"161
 }
-[; ;main.c: 161: } else {
-[e $U 472  ]
 [e :U 471 ]
+[; ;main.c: 160: }
+[; ;main.c: 169: oldBaseTime = baseline_mod_time;
+"169
+[e = _oldBaseTime -> _baseline_mod_time `i ]
+[; ;main.c: 170: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"170
+[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 472  ]
 {
-[; ;main.c: 162: LATDbits.LATD1 = 0;
-"162
-[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
-"163
+[; ;main.c: 171: knob4_prev = knob_4_pos;
+"171
+[e = _knob4_prev _knob_4_pos ]
+[; ;main.c: 172: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
+"172
+[e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
+"173
 }
 [e :U 472 ]
-[; ;main.c: 163: }
-[; ;main.c: 172: oldBaseTime = baseline_mod_time;
-"172
-[e = _oldBaseTime -> _baseline_mod_time `i ]
-[; ;main.c: 173: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"173
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 473  ]
-{
-[; ;main.c: 174: knob4_prev = knob_4_pos;
-"174
-[e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 175: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
+[; ;main.c: 173: }
+[; ;main.c: 175: if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
 "175
-[e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
-"176
+[e $ ! || >= - -> _oldBaseTime `l _baseline_mod_time -> -> 1 `i `l <= - -> _oldBaseTime `l _baseline_mod_time -> -U -> 1 `i `l 473  ]
+{
+[; ;main.c: 177: mod_time_changed = 1;
+"177
+[e = _mod_time_changed -> -> 1 `i `uc ]
+"179
 }
 [e :U 473 ]
-[; ;main.c: 176: }
-[; ;main.c: 178: if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
-"178
-[e $ ! || >= - -> _oldBaseTime `l _baseline_mod_time -> -> 1 `i `l <= - -> _oldBaseTime `l _baseline_mod_time -> -U -> 1 `i `l 474  ]
-{
-[; ;main.c: 180: mod_time_changed = 1;
-"180
-[e = _mod_time_changed -> -> 1 `i `uc ]
+[; ;main.c: 179: }
+[; ;main.c: 182: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
 "182
+[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 474  ]
+{
+[; ;main.c: 183: knob5_prev = knob_5_pos;
+"183
+[e = _knob5_prev _knob_5_pos ]
+[; ;main.c: 184: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"184
+[e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
+"185
 }
 [e :U 474 ]
-[; ;main.c: 182: }
-[; ;main.c: 185: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"185
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 475  ]
+[; ;main.c: 185: }
+[; ;main.c: 190: if (mod_time_changed == 1) {
+"190
+[e $ ! == -> _mod_time_changed `i -> 1 `i 475  ]
 {
-[; ;main.c: 186: knob5_prev = knob_5_pos;
-"186
-[e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 187: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"187
-[e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"188
+[; ;main.c: 192: delay_time = baseline_mod_time;
+"192
+[e = _delay_time _baseline_mod_time ]
+[; ;main.c: 193: delay_time = set_subdivision(baseline_mod_time, top_push_state);
+"193
+[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_mod_time `i _top_push_state `l ]
+[; ;main.c: 194: getModulationDelayTime();
+"194
+[e ( _getModulationDelayTime ..  ]
+[; ;main.c: 195: modulation_changed = 1;
+"195
+[e = _modulation_changed -> -> 1 `i `uc ]
+[; ;main.c: 196: mod_time_changed = 0;
+"196
+[e = _mod_time_changed -> -> 0 `i `uc ]
+"198
 }
 [e :U 475 ]
-[; ;main.c: 188: }
-[; ;main.c: 193: if (mod_time_changed == 1) {
-"193
-[e $ ! == -> _mod_time_changed `i -> 1 `i 476  ]
-{
-[; ;main.c: 195: delay_time = baseline_mod_time;
-"195
-[e = _delay_time _baseline_mod_time ]
-[; ;main.c: 196: delay_time = set_subdivision(baseline_mod_time, top_push_state);
-"196
-[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_mod_time `i _top_push_state `l ]
-[; ;main.c: 197: getModulationDelayTime();
-"197
-[e ( _getModulationDelayTime ..  ]
-[; ;main.c: 198: modulation_changed = 1;
-"198
-[e = _modulation_changed -> -> 1 `i `uc ]
-[; ;main.c: 199: mod_time_changed = 0;
-"199
-[e = _mod_time_changed -> -> 0 `i `uc ]
+[; ;main.c: 198: }
+[; ;main.c: 201: if (modulation_changed == 1) {
 "201
+[e $ ! == -> _modulation_changed `i -> 1 `i 476  ]
+{
+[; ;main.c: 202: updateModulationArray();
+"202
+[e ( _updateModulationArray ..  ]
+[; ;main.c: 203: isInitialized = 1;
+"203
+[e = _isInitialized -> -> 1 `i `uc ]
+"205
 }
 [e :U 476 ]
-[; ;main.c: 201: }
-[; ;main.c: 204: if (modulation_changed == 1) {
-"204
-[e $ ! == -> _modulation_changed `i -> 1 `i 477  ]
-{
-[; ;main.c: 205: updateModulationArray();
-"205
-[e ( _updateModulationArray ..  ]
-[; ;main.c: 206: isInitialized = 1;
 "206
-[e = _isInitialized -> -> 1 `i `uc ]
-"208
-}
-[e :U 477 ]
-"209
 }
 [e :U 461 ]
 "96
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 208: }
-[; ;main.c: 209: }
-[; ;main.c: 210: }
-"210
+[; ;main.c: 205: }
+[; ;main.c: 206: }
+[; ;main.c: 207: }
+"207
 [e :UE 460 ]
 }
