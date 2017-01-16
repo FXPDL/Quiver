@@ -4961,6 +4961,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long test_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -5086,16 +5089,17 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-
+int oldSymmetry = 0;
+int oldBaseTime = 0;
 
 uint8_t iCnt;
 
-# 68
+# 69
 void main(void) {
 
 calcCosArray();
 
-# 78
+# 79
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5112,7 +5116,7 @@ initSwitchBypass();
 
 
 ReadSavedSettings();
-updateModulationArray();
+
 while (1) {
 
 
@@ -5154,12 +5158,12 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 144
+# 145
+oldSymmetry = symmetry;
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 
-modulation_changed = 1;
 if (symmetry > 174 && symmetry < 185) {
 LATBbits.LATB1 = 1;
 } else {
@@ -5167,10 +5171,23 @@ LATBbits.LATB1 = 0;
 }
 }
 
-# 163
+if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
+
+modulation_changed = 1;
+LATDbits.LATD1 = 1;
+} else {
+LATDbits.LATD1 = 0;
+}
+
+# 172
+oldBaseTime = baseline_mod_time;
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
+}
+
+if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
+
 mod_time_changed = 1;
 
 }
@@ -5191,12 +5208,14 @@ delay_time = set_subdivision(baseline_mod_time, top_push_state);
 getModulationDelayTime();
 modulation_changed = 1;
 mod_time_changed = 0;
+
 }
 
 
 if (modulation_changed == 1) {
 updateModulationArray();
 isInitialized = 1;
+
 }
 }
 }

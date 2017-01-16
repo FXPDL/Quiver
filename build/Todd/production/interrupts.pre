@@ -4961,6 +4961,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long test_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -5073,11 +5076,25 @@ return;
 if (timer == 0) {
 tmpModDelay = mod_delay_time;
 }
+
+
+
+
 timer = timer + 1;
 sub_timer = sub_timer + 1;
 tap_timer = tap_timer + 1;
 mod_timer = mod_timer + 1;
 double_timer++;
+test_timer++;
+
+
+
+if (test_timer > 30) {
+LATDbits.LATD4 = 0;
+LATDbits.LATD3 = 0;
+LATDbits.LATD2 = 0;
+test_timer = 1;
+}
 
 char subDiv = getModulationSubdivision();
 
@@ -5117,7 +5134,7 @@ sub_timer = delay_time;
 tmpModDelay = mod_delay_time;
 mod_timer = tmpModDelay;
 
-# 116
+# 130
 }
 }
 
@@ -5128,7 +5145,7 @@ LATBbits.LATB4 = 0;
 }
 }
 
-# 133
+# 147
 if (presetSaveMode < 1 && mode2_state == 0) {
 if (sub_timer >= delay_time ) {
 if (suspend_blink == 0) {
@@ -5158,7 +5175,7 @@ LATBbits.LATB0 = 0;
 }
 }
 
-# 179
+# 193
 if (mod_timer >= tmpModDelay) {
 mod_timer = 0;
 
@@ -5166,14 +5183,14 @@ if (mod_counter >= subDiv) {
 mod_counter = 0;
 tmpModDelay = mod_delay_time;
 
-# 188
+# 202
 }
 
 
 
 mod_value = modArray[mod_counter];
 
-# 199
+# 213
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR3 = mod_value / 2;
 mod_counter++;

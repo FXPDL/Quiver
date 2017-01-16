@@ -99,6 +99,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long test_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;

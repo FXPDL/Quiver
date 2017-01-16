@@ -38,8 +38,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _initSwitchBypass `(v ~T0 @X0 0 ef ]
 "20 user.h
 [v _ReadSavedSettings `(v ~T0 @X0 0 ef ]
-"25 modulation.h
-[v _updateModulationArray `(v ~T0 @X0 0 ef ]
 "26 tactiles.h
 [v _update_mode `(v ~T0 @X0 0 ef ]
 "27
@@ -78,10 +76,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S115 . . ]
 "2460
 [v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
+"2571
+[s S120 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S120 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"2581
+[s S121 :8 `uc 1 ]
+[n S121 . LATD ]
+"2570
+[u S119 `S120 1 `S121 1 ]
+[n S119 . . . ]
+"2585
+[v _LATDbits `VS119 ~T0 @X0 0 e@271 ]
 "25 system.h
 [v _set_subdivision `(i ~T0 @X0 0 ef2`i`i ]
 "28 modulation.h
 [v _getModulationDelayTime `(v ~T0 @X0 0 ef ]
+"25
+[v _updateModulationArray `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3894,66 +3905,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
+[v _test_timer `Vl ~T0 @X0 1 e ]
+[i _test_timer
+-> -> 0 `i `l
+]
+[; ;constants.h: 102: volatile long test_timer = 0;
+"105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 102: char presetSaveMode = 0;
-"103
+[; ;constants.h: 105: char presetSaveMode = 0;
+"106
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 103: char presetChannel = 1;
-"104
+[; ;constants.h: 106: char presetChannel = 1;
+"107
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 104: char expressionChannel = 1;
-"106
+[; ;constants.h: 107: char expressionChannel = 1;
+"109
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: char switchBypass_state = -1;
-"107
+[; ;constants.h: 109: char switchBypass_state = -1;
+"110
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: char switchTap_state = -1;
-"108
+[; ;constants.h: 110: char switchTap_state = -1;
+"111
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: volatile char longTap_state = -1;
-"109
+[; ;constants.h: 111: volatile char longTap_state = -1;
+"112
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 109: volatile char longBypass_state = 0;
-"111
+[; ;constants.h: 112: volatile char longBypass_state = 0;
+"114
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 111: char expSwitchState = -1;
-"113
+[; ;constants.h: 114: char expSwitchState = -1;
+"116
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 113: char presetModeCnst = 1;
-"114
+[; ;constants.h: 116: char presetModeCnst = 1;
+"117
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 114: char expressModeCnst = 2;
-"119
+[; ;constants.h: 117: char expressModeCnst = 2;
+"122
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4083,8 +4100,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"120
+[; ;constants.h: 122: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"123
 [v _cosArray `d ~T0 @X0 -> 0 `x e ]
 [i _cosArray
 :U ..
@@ -4212,13 +4229,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 120: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"122
+[; ;constants.h: 123: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"125
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 122: int symmetry = 180;
+[; ;constants.h: 125: int symmetry = 180;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4385,257 +4402,300 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 2000 `i
 ]
 [; ;main.c: 58: volatile int knob5_prev = 2000;
-"62
+"60
+[v _oldSymmetry `i ~T0 @X0 1 e ]
+[i _oldSymmetry
+-> 0 `i
+]
+[; ;main.c: 60: int oldSymmetry = 0;
+"61
+[v _oldBaseTime `i ~T0 @X0 1 e ]
+[i _oldBaseTime
+-> 0 `i
+]
+[; ;main.c: 61: int oldBaseTime = 0;
+"63
 [v _iCnt `uc ~T0 @X0 1 e ]
-[; ;main.c: 62: uint8_t iCnt;
-"68
+[; ;main.c: 63: uint8_t iCnt;
+"69
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 68: void main(void) {
+[; ;main.c: 69: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 70: calcCosArray();
-"70
+[; ;main.c: 71: calcCosArray();
+"71
 [e ( _calcCosArray ..  ]
-[; ;main.c: 78: USARTInit(31250);
-"78
-[e ( _USARTInit (1 -> -> 31250 `i `ui ]
-[; ;main.c: 79: ConfigureOscillator();
+[; ;main.c: 79: USARTInit(31250);
 "79
-[e ( _ConfigureOscillator ..  ]
-[; ;main.c: 80: InitApp();
+[e ( _USARTInit (1 -> -> 31250 `i `ui ]
+[; ;main.c: 80: ConfigureOscillator();
 "80
+[e ( _ConfigureOscillator ..  ]
+[; ;main.c: 81: InitApp();
+"81
 [e ( _InitApp ..  ]
-[; ;main.c: 82: PORTEbits.RE0 = 1;
-"82
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 83: PORTEbits.RE1 = 1;
+[; ;main.c: 83: PORTEbits.RE0 = 1;
 "83
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 84: PORTDbits.RD6 = 1;
+[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 84: PORTEbits.RE1 = 1;
 "84
-[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 85: PORTDbits.RD5 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 85: PORTDbits.RD6 = 1;
 "85
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 86: PORTCbits.RC0 = 1;
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 86: PORTDbits.RD5 = 1;
 "86
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 87: PORTDbits.RD7 = 1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 87: PORTCbits.RC0 = 1;
 "87
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 88: PORTDbits.RD7 = 1;
+"88
 [e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 89: InitializeTaps();
-"89
-[e ( _InitializeTaps ..  ]
-[; ;main.c: 90: initSwitchBypass();
+[; ;main.c: 90: InitializeTaps();
 "90
+[e ( _InitializeTaps ..  ]
+[; ;main.c: 91: initSwitchBypass();
+"91
 [e ( _initSwitchBypass ..  ]
-[; ;main.c: 93: ReadSavedSettings();
-"93
-[e ( _ReadSavedSettings ..  ]
-[; ;main.c: 94: updateModulationArray();
+[; ;main.c: 94: ReadSavedSettings();
 "94
-[e ( _updateModulationArray ..  ]
-[; ;main.c: 95: while (1) {
-"95
+[e ( _ReadSavedSettings ..  ]
+[; ;main.c: 96: while (1) {
+"96
 [e :U 462 ]
 {
-[; ;main.c: 98: update_mode();
-"98
-[e ( _update_mode ..  ]
-[; ;main.c: 99: update_selectMode();
+[; ;main.c: 99: update_mode();
 "99
+[e ( _update_mode ..  ]
+[; ;main.c: 100: update_selectMode();
+"100
 [e ( _update_selectMode ..  ]
-[; ;main.c: 102: updateSwitchBypass();
-"102
-[e ( _updateSwitchBypass ..  ]
-[; ;main.c: 103: if (presetSaveMode != 1) {
+[; ;main.c: 103: updateSwitchBypass();
 "103
+[e ( _updateSwitchBypass ..  ]
+[; ;main.c: 104: if (presetSaveMode != 1) {
+"104
 [e $ ! != -> _presetSaveMode `i -> 1 `i 464  ]
 {
-[; ;main.c: 104: updateSwitchTap();
-"104
-[e ( _updateSwitchTap ..  ]
+[; ;main.c: 105: updateSwitchTap();
 "105
+[e ( _updateSwitchTap ..  ]
+"106
 }
 [e :U 464 ]
-[; ;main.c: 105: }
-[; ;main.c: 107: if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
-"107
+[; ;main.c: 106: }
+[; ;main.c: 108: if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
+"108
 [e $ ! && != -> _presetSaveMode `i -> 1 `i != -> _mode2_state `i -> _presetModeCnst `i 465  ]
 {
-[; ;main.c: 108: read_bottom_tactile();
-"108
-[e ( _read_bottom_tactile ..  ]
-[; ;main.c: 109: read_top_tactile();
+[; ;main.c: 109: read_bottom_tactile();
 "109
-[e ( _read_top_tactile ..  ]
+[e ( _read_bottom_tactile ..  ]
+[; ;main.c: 110: read_top_tactile();
 "110
+[e ( _read_top_tactile ..  ]
+"111
 }
 [e :U 465 ]
-[; ;main.c: 110: }
-[; ;main.c: 113: knob_1_pos = adc_convert(0);
-"113
-[e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
-[; ;main.c: 114: knob_2_pos = adc_convert(1);
+[; ;main.c: 111: }
+[; ;main.c: 114: knob_1_pos = adc_convert(0);
 "114
-[e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
-[; ;main.c: 115: knob_3_pos = adc_convert(2);
+[e = _knob_1_pos -> ( _adc_convert (1 -> -> 0 `i `uc `i ]
+[; ;main.c: 115: knob_2_pos = adc_convert(1);
 "115
-[e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
-[; ;main.c: 116: knob_4_pos = adc_convert(3);
+[e = _knob_2_pos -> ( _adc_convert (1 -> -> 1 `i `uc `i ]
+[; ;main.c: 116: knob_3_pos = adc_convert(2);
 "116
-[e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
-[; ;main.c: 117: knob_5_pos = adc_convert(4);
+[e = _knob_3_pos -> ( _adc_convert (1 -> -> 2 `i `uc `i ]
+[; ;main.c: 117: knob_4_pos = adc_convert(3);
 "117
+[e = _knob_4_pos -> ( _adc_convert (1 -> -> 3 `i `uc `i ]
+[; ;main.c: 118: knob_5_pos = adc_convert(4);
+"118
 [e = _knob_5_pos -> ( _adc_convert (1 -> -> 4 `i `uc `i ]
-[; ;main.c: 121: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
-"121
+[; ;main.c: 122: if ((knob_1_pos - knob1_prev) >= 4 || (knob_1_pos - knob1_prev) <= -4) {
+"122
 [e $ ! || >= - _knob_1_pos _knob1_prev -> 4 `i <= - _knob_1_pos _knob1_prev -U -> 4 `i 466  ]
 {
-[; ;main.c: 122: knob1_prev = knob_1_pos;
-"122
-[e = _knob1_prev _knob_1_pos ]
-[; ;main.c: 123: CCPR4 = scaleA10kPot(knob1_prev);
+[; ;main.c: 123: knob1_prev = knob_1_pos;
 "123
-[e = _CCPR4 -> ( _scaleA10kPot (1 -> _knob1_prev `d `us ]
-[; ;main.c: 124: CCPR5 = scaleiA10kPot(knob1_prev);
+[e = _knob1_prev _knob_1_pos ]
+[; ;main.c: 124: CCPR4 = scaleA10kPot(knob1_prev);
 "124
+[e = _CCPR4 -> ( _scaleA10kPot (1 -> _knob1_prev `d `us ]
+[; ;main.c: 125: CCPR5 = scaleiA10kPot(knob1_prev);
+"125
 [e = _CCPR5 -> ( _scaleiA10kPot (1 -> _knob1_prev `d `us ]
-"126
+"127
 }
 [e :U 466 ]
-[; ;main.c: 126: }
-[; ;main.c: 130: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
-"130
+[; ;main.c: 127: }
+[; ;main.c: 131: if (knob_2_pos - knob2_prev >= 4 || knob_2_pos - knob2_prev <= -4) {
+"131
 [e $ ! || >= - _knob_2_pos _knob2_prev -> 4 `i <= - _knob_2_pos _knob2_prev -U -> 4 `i 467  ]
 {
-[; ;main.c: 131: knob2_prev = knob_2_pos;
-"131
-[e = _knob2_prev _knob_2_pos ]
-[; ;main.c: 132: CCPR1 = scaleA100kPot(1023-knob2_prev);
+[; ;main.c: 132: knob2_prev = knob_2_pos;
 "132
-[e = _CCPR1 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
-[; ;main.c: 133: CCPR2 = scaleA100kPot(1023-knob2_prev);
+[e = _knob2_prev _knob_2_pos ]
+[; ;main.c: 133: CCPR1 = scaleA100kPot(1023-knob2_prev);
 "133
-[e = _CCPR2 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
+[e = _CCPR1 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
+[; ;main.c: 134: CCPR2 = scaleA100kPot(1023-knob2_prev);
 "134
+[e = _CCPR2 -> ( _scaleA100kPot (1 -> - -> 1023 `i _knob2_prev `d `us ]
+"135
 }
 [e :U 467 ]
-[; ;main.c: 134: }
-[; ;main.c: 144: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
-"144
+[; ;main.c: 135: }
+[; ;main.c: 145: oldSymmetry = symmetry;
+"145
+[e = _oldSymmetry _symmetry ]
+[; ;main.c: 146: if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
+"146
 [e $ ! || >= - _knob_3_pos _knob3_prev -> 4 `i <= - _knob_3_pos _knob3_prev -U -> 4 `i 468  ]
 {
-[; ;main.c: 145: knob3_prev = knob_3_pos;
-"145
+[; ;main.c: 147: knob3_prev = knob_3_pos;
+"147
 [e = _knob3_prev _knob_3_pos ]
-[; ;main.c: 146: symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
-"146
-[e = _symmetry -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 45 `i `f -> -> 315 `i `f `i ]
-[; ;main.c: 148: modulation_changed = 1;
+[; ;main.c: 148: symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
 "148
-[e = _modulation_changed -> -> 1 `i `uc ]
-[; ;main.c: 149: if (symmetry > 174 && symmetry < 185) {
-"149
+[e = _symmetry -> ( _map (4 , , , , -> _knob3_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 45 `i `f -> -> 315 `i `f `i ]
+[; ;main.c: 150: if (symmetry > 174 && symmetry < 185) {
+"150
 [e $ ! && > _symmetry -> 174 `i < _symmetry -> 185 `i 469  ]
 {
-[; ;main.c: 150: LATBbits.LATB1 = 1;
-"150
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 151: LATBbits.LATB1 = 1;
 "151
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+"152
 }
-[; ;main.c: 151: } else {
+[; ;main.c: 152: } else {
 [e $U 470  ]
 [e :U 469 ]
 {
-[; ;main.c: 152: LATBbits.LATB1 = 0;
-"152
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 153: LATBbits.LATB1 = 0;
 "153
-}
-[e :U 470 ]
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
 "154
 }
-[e :U 468 ]
-[; ;main.c: 153: }
-[; ;main.c: 154: }
-[; ;main.c: 163: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
-"163
-[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 471  ]
-{
-[; ;main.c: 164: knob4_prev = knob_4_pos;
-"164
-[e = _knob4_prev _knob_4_pos ]
-[; ;main.c: 165: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
-"165
-[e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
-[; ;main.c: 166: mod_time_changed = 1;
-"166
-[e = _mod_time_changed -> -> 1 `i `uc ]
-"168
+[e :U 470 ]
+"155
 }
-[e :U 471 ]
-[; ;main.c: 168: }
-[; ;main.c: 171: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
-"171
-[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 472  ]
+[e :U 468 ]
+[; ;main.c: 154: }
+[; ;main.c: 155: }
+[; ;main.c: 157: if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
+"157
+[e $ ! || >= - _oldSymmetry _symmetry -> 2 `i <= - _oldSymmetry _symmetry -U -> 2 `i 471  ]
 {
-[; ;main.c: 172: knob5_prev = knob_5_pos;
-"172
-[e = _knob5_prev _knob_5_pos ]
-[; ;main.c: 173: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
-"173
-[e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
-"174
+[; ;main.c: 159: modulation_changed = 1;
+"159
+[e = _modulation_changed -> -> 1 `i `uc ]
+[; ;main.c: 160: LATDbits.LATD1 = 1;
+"160
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+"161
+}
+[; ;main.c: 161: } else {
+[e $U 472  ]
+[e :U 471 ]
+{
+[; ;main.c: 162: LATDbits.LATD1 = 0;
+"162
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+"163
 }
 [e :U 472 ]
-[; ;main.c: 174: }
-[; ;main.c: 179: if (mod_time_changed == 1) {
-"179
-[e $ ! == -> _mod_time_changed `i -> 1 `i 473  ]
+[; ;main.c: 163: }
+[; ;main.c: 172: oldBaseTime = baseline_mod_time;
+"172
+[e = _oldBaseTime -> _baseline_mod_time `i ]
+[; ;main.c: 173: if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
+"173
+[e $ ! || >= - _knob_4_pos _knob4_prev -> 4 `i <= - _knob_4_pos _knob4_prev -U -> 4 `i 473  ]
 {
-[; ;main.c: 181: delay_time = baseline_mod_time;
-"181
-[e = _delay_time _baseline_mod_time ]
-[; ;main.c: 182: delay_time = set_subdivision(baseline_mod_time, top_push_state);
-"182
-[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_mod_time `i _top_push_state `l ]
-[; ;main.c: 183: getModulationDelayTime();
-"183
-[e ( _getModulationDelayTime ..  ]
-[; ;main.c: 184: modulation_changed = 1;
-"184
-[e = _modulation_changed -> -> 1 `i `uc ]
-[; ;main.c: 185: mod_time_changed = 0;
-"185
-[e = _mod_time_changed -> -> 0 `i `uc ]
-"186
+[; ;main.c: 174: knob4_prev = knob_4_pos;
+"174
+[e = _knob4_prev _knob_4_pos ]
+[; ;main.c: 175: baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
+"175
+[e = _baseline_mod_time -> -> ( _map (4 , , , , -> _knob4_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 180 `i `f -> -> 2820 `i `f `i `l ]
+"176
 }
 [e :U 473 ]
-[; ;main.c: 186: }
-[; ;main.c: 189: if (modulation_changed == 1) {
-"189
-[e $ ! == -> _modulation_changed `i -> 1 `i 474  ]
+[; ;main.c: 176: }
+[; ;main.c: 178: if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
+"178
+[e $ ! || >= - -> _oldBaseTime `l _baseline_mod_time -> -> 1 `i `l <= - -> _oldBaseTime `l _baseline_mod_time -> -U -> 1 `i `l 474  ]
 {
-[; ;main.c: 190: updateModulationArray();
-"190
-[e ( _updateModulationArray ..  ]
-[; ;main.c: 191: isInitialized = 1;
-"191
-[e = _isInitialized -> -> 1 `i `uc ]
-"192
+[; ;main.c: 180: mod_time_changed = 1;
+"180
+[e = _mod_time_changed -> -> 1 `i `uc ]
+"182
 }
 [e :U 474 ]
+[; ;main.c: 182: }
+[; ;main.c: 185: if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
+"185
+[e $ ! || >= - _knob_5_pos _knob5_prev -> 4 `i <= - _knob_5_pos _knob5_prev -U -> 4 `i 475  ]
+{
+[; ;main.c: 186: knob5_prev = knob_5_pos;
+"186
+[e = _knob5_prev _knob_5_pos ]
+[; ;main.c: 187: adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
+"187
+[e = _adjusted_pot_value -> ( _map (4 , , , , -> _knob5_prev `f -> -> 0 `i `f -> -> 1023 `i `f -> -> 1275 `i `f -> -> 0 `i `f `i ]
+"188
+}
+[e :U 475 ]
+[; ;main.c: 188: }
+[; ;main.c: 193: if (mod_time_changed == 1) {
 "193
+[e $ ! == -> _mod_time_changed `i -> 1 `i 476  ]
+{
+[; ;main.c: 195: delay_time = baseline_mod_time;
+"195
+[e = _delay_time _baseline_mod_time ]
+[; ;main.c: 196: delay_time = set_subdivision(baseline_mod_time, top_push_state);
+"196
+[e = _delay_time -> ( _set_subdivision (2 , -> _baseline_mod_time `i _top_push_state `l ]
+[; ;main.c: 197: getModulationDelayTime();
+"197
+[e ( _getModulationDelayTime ..  ]
+[; ;main.c: 198: modulation_changed = 1;
+"198
+[e = _modulation_changed -> -> 1 `i `uc ]
+[; ;main.c: 199: mod_time_changed = 0;
+"199
+[e = _mod_time_changed -> -> 0 `i `uc ]
+"201
+}
+[e :U 476 ]
+[; ;main.c: 201: }
+[; ;main.c: 204: if (modulation_changed == 1) {
+"204
+[e $ ! == -> _modulation_changed `i -> 1 `i 477  ]
+{
+[; ;main.c: 205: updateModulationArray();
+"205
+[e ( _updateModulationArray ..  ]
+[; ;main.c: 206: isInitialized = 1;
+"206
+[e = _isInitialized -> -> 1 `i `uc ]
+"208
+}
+[e :U 477 ]
+"209
 }
 [e :U 461 ]
-"95
+"96
 [e $U 462  ]
 [e :U 463 ]
-[; ;main.c: 192: }
-[; ;main.c: 193: }
-[; ;main.c: 194: }
-"194
+[; ;main.c: 208: }
+[; ;main.c: 209: }
+[; ;main.c: 210: }
+"210
 [e :UE 460 ]
 }

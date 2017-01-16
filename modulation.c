@@ -47,7 +47,13 @@ void updateModulationArray(void) {
         //array params haven't changed.
         return;
     }
-
+    test_timer = 0;
+    if (modArray[121] != symmetry) {
+        LATDbits.LATD3 = 1;
+    }
+    if (modArray[122] != subDiv) {
+        LATDbits.LATD2 = 1;
+    }  
     int angleFactor = 360/subDiv;
     for (char iAngle = 0; iAngle < subDiv; iAngle++) {
         int thisAngle = angleFactor * iAngle;
@@ -78,6 +84,9 @@ void updateModulationArray(void) {
     modArray[120] = bottom_push_state;
     modArray[121] = symmetry;
     modArray[122] = subDiv;
+    
+
+    LATDbits.LATD4 = 1;
 }
 
 int modCos(double angle, double inflection) {

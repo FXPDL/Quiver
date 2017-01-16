@@ -57,7 +57,8 @@ volatile int knob3_prev = 2000;
 volatile int knob4_prev = 2000;
 volatile int knob5_prev = 2000;
 
-
+int oldSymmetry = 0;
+int oldBaseTime = 0;
 
 uint8_t iCnt;
 /******************************************************************************/
@@ -91,7 +92,7 @@ void main(void) {
     
     //showBootSequence();    
     ReadSavedSettings();
-    updateModulationArray(); 
+    //updateModulationArray(); 
     while (1) {
 
         
@@ -141,16 +142,24 @@ void main(void) {
         //  2) Map knob to 0-39 for array
         //  3) Set CCP to calibrated value
         //------------------------------------------------
+        oldSymmetry = symmetry;
         if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
             knob3_prev = knob_3_pos;
             symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);   
-            
-            modulation_changed = 1;
+
             if (symmetry > 174 && symmetry < 185) {
                 LED_bypass_Aux = 1;
             } else {
                 LED_bypass_Aux = 0;
             }
+        }
+        
+        if (oldSymmetry - symmetry >= 2 || oldSymmetry - symmetry <= -2) {
+            //"Debounce" the symmetry knob; make sure the scaled value has changed, and eliminate "noise"
+            modulation_changed = 1;
+            LATDbits.LATD1 = 1;
+        } else {
+            LATDbits.LATD1 = 0;
         }
         
         //Rate
@@ -160,13 +169,18 @@ void main(void) {
         //  2) Map knob to 20-1000 for array
         //  3) Set new time interval for modulation
         //------------------------------------------------
+        oldBaseTime = baseline_mod_time;
         if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
             knob4_prev = knob_4_pos;
             baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);    
-            mod_time_changed = 1;
-           // mod_delay_time = (int)map(knob4_prev, 0, 1023, 3, 47); 
         }
+        
+        if (oldBaseTime - baseline_mod_time >= 1 || oldBaseTime - baseline_mod_time <= -1) {
+            //"Debounce" the rate knob; make sure the scaled value has changed, and eliminate "noise"
+            mod_time_changed = 1;
 
+        }
+        
         //Depth ----------------------------------
         if (knob_5_pos - knob5_prev >= 4 || knob_5_pos - knob5_prev <= -4) {
             knob5_prev = knob_5_pos;
@@ -183,12 +197,14 @@ void main(void) {
             getModulationDelayTime();
             modulation_changed = 1;
             mod_time_changed = 0;
+                        
         } 
 
  
         if (modulation_changed == 1) {
             updateModulationArray();
             isInitialized = 1;
+            
         }   
     }
 }
