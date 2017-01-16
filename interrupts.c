@@ -56,7 +56,8 @@ void interrupt isr(void) {
         longTap_state = 0;
             doubleTap_state = 0;
             presetSaveMode = 0;
-            baseline_mod_time = 2820;*/
+            baseline_mod_time = 2400;
+            bottom_push_state = 4;*/
         
         
         if (timer == 0) {

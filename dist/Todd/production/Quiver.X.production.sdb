@@ -92,15 +92,15 @@
 [v _getModulationDelayTime getModulationDelayTime `(v  1 e 1 0 ]
 "44
 [v _updateModulationArray updateModulationArray `(v  1 e 1 0 ]
-"80
+"83
 [v _modCos modCos `(i  1 e 2 0 ]
-"96
+"99
 [v _modTri modTri `(i  1 e 2 0 ]
-"119
+"122
 [v _modSaw modSaw `(i  1 e 2 0 ]
-"134
+"137
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
-"139
+"142
 [v _modSquare modSquare `(i  1 e 2 0 ]
 "21 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
 [v _setDoublePressState setDoublePressState `(v  1 e 1 0 ]
@@ -860,7 +860,7 @@
 "68 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"198
+"200
 } 0
 "139 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _update_selectMode update_selectMode `(v  1 e 1 0 ]
@@ -968,73 +968,75 @@
 [v _updateModulationArray updateModulationArray `(v  1 e 1 0 ]
 {
 "53
-[v updateModulationArray@thisAngle thisAngle `i  1 a 2 56 ]
+[v updateModulationArray@thisAngle thisAngle `i  1 a 2 57 ]
+"75
+[v updateModulationArray@iAngle_2349 iAngle `uc  1 a 1 54 ]
 "52
-[v updateModulationArray@iAngle iAngle `uc  1 a 1 58 ]
+[v updateModulationArray@iAngle iAngle `uc  1 a 1 59 ]
 "45
-[v updateModulationArray@subDiv subDiv `i  1 a 2 54 ]
+[v updateModulationArray@subDiv subDiv `i  1 a 2 55 ]
 "51
 [v updateModulationArray@angleFactor angleFactor `i  1 a 2 52 ]
-"78
+"81
 } 0
-"96
+"99
 [v _modTri modTri `(i  1 e 2 0 ]
 {
-"107
+"110
 [v modTri@tmpVal tmpVal `d  1 a 3 29 ]
-"97
+"100
 [v modTri@period period `d  1 a 3 26 ]
-"98
+"101
 [v modTri@shift shift `d  1 a 3 23 ]
-"96
+"99
 [v modTri@angle angle `d  1 p 3 14 ]
 [v modTri@inflection inflection `d  1 p 3 17 ]
-"116
+"119
 } 0
-"139
+"142
 [v _modSquare modSquare `(i  1 e 2 0 ]
 {
-"140
+"143
 [v modSquare@tmpVal tmpVal `i  1 a 2 46 ]
-"139
+"142
 [v modSquare@angle angle `d  1 p 3 40 ]
 [v modSquare@inflection inflection `d  1 p 3 43 ]
-"142
+"145
 } 0
-"80
+"83
 [v _modCos modCos `(i  1 e 2 0 ]
 {
-"91
+"94
 [v modCos@tmpVal tmpVal `d  1 a 3 37 ]
-"81
+"84
 [v modCos@period period `d  1 a 3 34 ]
-"82
+"85
 [v modCos@shift shift `d  1 a 3 31 ]
-"80
+"83
 [v modCos@angle angle `d  1 p 3 20 ]
 [v modCos@inflection inflection `d  1 p 3 23 ]
-"94
+"97
 } 0
-"134
+"137
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
 {
-[v modSawRev@angle angle `d  1 p 3 37 ]
-[v modSawRev@inflection inflection `d  1 p 3 40 ]
-"136
+[v modSawRev@angle angle `d  1 p 3 34 ]
+[v modSawRev@inflection inflection `d  1 p 3 37 ]
+"139
 } 0
-"119
+"122
 [v _modSaw modSaw `(i  1 e 2 0 ]
 {
-"120
-[v modSaw@period period `d  1 a 3 34 ]
-"121
-[v modSaw@shift shift `d  1 a 3 31 ]
-"130
-[v modSaw@mod mod `i  1 a 2 29 ]
-"119
+"123
+[v modSaw@period period `d  1 a 3 31 ]
+"124
+[v modSaw@shift shift `d  1 a 3 28 ]
+"133
+[v modSaw@mod mod `i  1 a 2 26 ]
+"122
 [v modSaw@angle angle `d  1 p 3 14 ]
 [v modSaw@inflection inflection `d  1 p 3 17 ]
-"132
+"135
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -1471,9 +1473,9 @@
 "28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"71
+"72
 [v isr@subDiv subDiv `uc  1 a 1 13 ]
-"228
+"229
 } 0
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v i1_set_leds_top set_leds_top `(v  1 e 1 0 ]

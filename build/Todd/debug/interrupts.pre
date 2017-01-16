@@ -4979,7 +4979,7 @@ char expressModeCnst = 2;
 
 
 int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
 
@@ -4999,11 +4999,11 @@ int scaleiA10kPot(double);
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5028,11 +5028,11 @@ void USARTFlushBuffer();
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5069,14 +5069,7 @@ INTCONbits.TMR0IF = 0;
 return;
 }
 
-longBypass_start = 0;
-longTap_start = 0;
-longTap_state = 0;
-doubleTap_state = 0;
-presetSaveMode = 0;
-baseline_mod_time = 2820;
-
-
+# 63
 if (timer == 0) {
 tmpModDelay = mod_delay_time;
 }
@@ -5092,7 +5085,7 @@ char subDiv = getModulationSubdivision();
 
 
 if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
-tmpModDelay = (delay_time - timer);
+tmpModDelay = (delay_time - sub_timer);
 }
 
 if (longBypass_start == 1) {
@@ -5124,7 +5117,7 @@ sub_timer = delay_time;
 tmpModDelay = mod_delay_time;
 mod_timer = tmpModDelay;
 
-# 115
+# 116
 }
 }
 
@@ -5135,7 +5128,7 @@ LATBbits.LATB4 = 0;
 }
 }
 
-# 132
+# 133
 if (presetSaveMode < 1 && mode2_state == 0) {
 if (sub_timer >= delay_time ) {
 if (suspend_blink == 0) {
@@ -5165,23 +5158,22 @@ LATBbits.LATB0 = 0;
 }
 }
 
-# 178
+# 179
 if (mod_timer >= tmpModDelay) {
 mod_timer = 0;
 
 if (mod_counter >= subDiv) {
 mod_counter = 0;
 tmpModDelay = mod_delay_time;
-LATBbits.LATB0 = 1;
-} else {
-LATBbits.LATB0 = 0;
+
+# 188
 }
 
 
 
 mod_value = modArray[mod_counter];
 
-# 198
+# 199
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR3 = mod_value / 2;
 mod_counter++;

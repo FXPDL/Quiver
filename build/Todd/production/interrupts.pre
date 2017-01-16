@@ -5069,7 +5069,7 @@ INTCONbits.TMR0IF = 0;
 return;
 }
 
-# 62
+# 63
 if (timer == 0) {
 tmpModDelay = mod_delay_time;
 }
@@ -5117,7 +5117,7 @@ sub_timer = delay_time;
 tmpModDelay = mod_delay_time;
 mod_timer = tmpModDelay;
 
-# 115
+# 116
 }
 }
 
@@ -5128,7 +5128,7 @@ LATBbits.LATB4 = 0;
 }
 }
 
-# 132
+# 133
 if (presetSaveMode < 1 && mode2_state == 0) {
 if (sub_timer >= delay_time ) {
 if (suspend_blink == 0) {
@@ -5158,7 +5158,7 @@ LATBbits.LATB0 = 0;
 }
 }
 
-# 178
+# 179
 if (mod_timer >= tmpModDelay) {
 mod_timer = 0;
 
@@ -5166,14 +5166,14 @@ if (mod_counter >= subDiv) {
 mod_counter = 0;
 tmpModDelay = mod_delay_time;
 
-# 187
+# 188
 }
 
 
 
 mod_value = modArray[mod_counter];
 
-# 198
+# 199
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR3 = mod_value / 2;
 mod_counter++;

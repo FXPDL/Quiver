@@ -68,9 +68,11 @@ uint8_t iCnt;
 void main(void) {
 
     calcCosArray();
-
-    //updateModulationArray(); 
-    //NOP();
+    /*bottom_push_state = 4;
+    symmetry = 180;
+    delay_time = 2400;
+    updateModulationArray(); 
+    NOP();*/
        
     /*symmetry = 25;
     updateModulationArray(); 
@@ -181,7 +183,7 @@ void main(void) {
         //subroutine to calculate led interval and PWM value if delay time has changed
          
         if (mod_time_changed == 1) { 
-//baseline_mod_time = 2820;           
+//baseline_mod_time = 2400;           
             delay_time = baseline_mod_time;
             delay_time = set_subdivision(baseline_mod_time, top_push_state);
             getModulationDelayTime();

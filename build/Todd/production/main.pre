@@ -5095,7 +5095,7 @@ void main(void) {
 
 calcCosArray();
 
-# 82
+# 84
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5154,7 +5154,7 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 148
+# 150
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
@@ -5167,7 +5167,7 @@ LATBbits.LATB1 = 0;
 }
 }
 
-# 167
+# 169
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);

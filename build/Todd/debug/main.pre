@@ -4979,7 +4979,7 @@ char expressModeCnst = 2;
 
 
 int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-double sinArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
 
@@ -5052,11 +5052,11 @@ void USARTFlushBuffer();
 
 # 25 "modulation.h"
 void updateModulationArray(void);
-void calcSinArray(void);
+void calcCosArray(void);
 int getModulationSubdivision(void);
 void getModulationDelayTime(void);
 
-int modSin(double, double);
+int modCos(double, double);
 int modTri(double, double);
 int modSaw(double, double);
 int modSawRev(double, double);
@@ -5093,9 +5093,14 @@ uint8_t iCnt;
 # 68
 void main(void) {
 
-calcSinArray();
+calcCosArray();
+bottom_push_state = 4;
+symmetry = 180;
+delay_time = 2400;
+updateModulationArray();
+__nop();
 
-# 82
+# 84
 USARTInit(31250);
 ConfigureOscillator();
 InitApp();
@@ -5115,15 +5120,19 @@ ReadSavedSettings();
 updateModulationArray();
 while (1) {
 
-# 106
+
+update_mode();
+update_selectMode();
+
+
 updateSwitchBypass();
 if (presetSaveMode != 1) {
 updateSwitchTap();
 }
 
 if (presetSaveMode != 1 && mode2_state != presetModeCnst) {
-
-
+read_bottom_tactile();
+read_top_tactile();
 }
 
 
@@ -5150,7 +5159,7 @@ CCPR1 = scaleA100kPot(1023-knob2_prev);
 CCPR2 = scaleA100kPot(1023-knob2_prev);
 }
 
-# 148
+# 150
 if (knob_3_pos - knob3_prev >= 4 || knob_3_pos - knob3_prev <= -4) {
 knob3_prev = knob_3_pos;
 symmetry = (int) map(knob3_prev, 0, 1023, 45, 315);
@@ -5163,7 +5172,7 @@ LATBbits.LATB1 = 0;
 }
 }
 
-# 167
+# 169
 if (knob_4_pos - knob4_prev >= 4 || knob_4_pos - knob4_prev <= -4) {
 knob4_prev = knob_4_pos;
 baseline_mod_time = (int)map(knob4_prev, 0, 1023, 180, 2820);
@@ -5181,7 +5190,7 @@ adjusted_pot_value = (int)map(knob5_prev, 0, 1023, 1275, 0);
 
 
 if (mod_time_changed == 1) {
-baseline_mod_time = 2820;
+
 delay_time = baseline_mod_time;
 delay_time = set_subdivision(baseline_mod_time, top_push_state);
 getModulationDelayTime();

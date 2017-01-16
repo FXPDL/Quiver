@@ -72,6 +72,9 @@ void updateModulationArray(void) {
                 break;
         }
     }
+    for (char iAngle = subDiv; iAngle < 120; iAngle++) {
+       modArray[iAngle] = 0 ; 
+    }
     modArray[120] = bottom_push_state;
     modArray[121] = symmetry;
     modArray[122] = subDiv;
@@ -123,7 +126,7 @@ int modSaw(double angle, double inflection) {
     if(angle<=inflection) {
         period = 180.0/inflection;
     } else {
-        shift = -(360-inflection*2)*(180/(360-inflection)) + 360;
+        shift = -(360-inflection*2)*(180/(360-inflection));
         period = 180/(360-inflection);  
     }
 
