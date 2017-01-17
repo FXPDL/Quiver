@@ -4180,6 +4180,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 180 `i
 ]
 [; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;tactiles.h: 24: void read_bottom_tactile(void);
 [; ;tactiles.h: 25: void read_top_tactile(void);
 [; ;tactiles.h: 26: void update_mode(void);

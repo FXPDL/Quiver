@@ -4169,6 +4169,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 180 `i
 ]
 [; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4233,9 +4236,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 1 `i
 ]
 [; ;interrupts.c: 25: int mod_counter = 1;
-[v F3684 `(v ~T0 @X0 1 tf ]
+[v F3685 `(v ~T0 @X0 1 tf ]
 "28
-[v _isr `IF3684 ~T0 @X0 1 e ]
+[v _isr `IF3685 ~T0 @X0 1 e ]
 {
 [; ;interrupts.c: 28: void interrupt isr(void) {
 [e :U _isr ]

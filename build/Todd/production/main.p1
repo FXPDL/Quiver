@@ -4225,6 +4225,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 180 `i
 ]
 [; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;user.h: 14: void InitApp(void);
 [; ;user.h: 15: void init_adc(void);
 [; ;user.h: 16: void init_pwm(void);
@@ -4639,9 +4642,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 473 ]
 [; ;main.c: 200: }
-[; ;main.c: 203: if (modulation_changed == 1) {
+[; ;main.c: 203: if ((modArray[120] != bottom_push_state || modArray[121] != symmetry || modArray[122] != modulationSubdivision)) {
 "203
-[e $ ! == -> _modulation_changed `i -> 1 `i 474  ]
+[e $ ! || || != *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state != *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry != *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _modulationSubdivision 474  ]
 {
 [; ;main.c: 204: updateModulationArray();
 "204

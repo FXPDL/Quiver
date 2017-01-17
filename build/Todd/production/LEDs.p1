@@ -4186,6 +4186,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 180 `i
 ]
 [; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;state_manager.h: 28: typedef struct {
 [; ;state_manager.h: 29: unsigned uint8_t tap_A;
 [; ;state_manager.h: 30: unsigned uint8_t tap_B;

@@ -200,7 +200,7 @@ LED_tap_B = 0;
         } 
 
  
-        if (modulation_changed == 1) {
+        if ((modArray[120] != bottom_push_state || modArray[121] != symmetry || modArray[122] != modulationSubdivision)) {
             updateModulationArray();
             isInitialized = 1;
             

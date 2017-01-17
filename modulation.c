@@ -25,17 +25,18 @@ void calcCosArray(void) {
 
 int getModulationSubdivision(void) {
     if (delay_time >= 2400) {
-        return 120;
+        modulationSubdivision = 120;
     } else if (delay_time >= 600) {
-        return 60;
+        modulationSubdivision = 60;
     } else {
-        return 30;
+        modulationSubdivision = 30;
     }
+    return modulationSubdivision;
 }
 void getModulationDelayTime(void) {
     adjust_mod_delay = 0;
-    int subDiv = getModulationSubdivision();
-    mod_delay_time = (int)((float)delay_time/(float)subDiv);
+    getModulationSubdivision();
+    mod_delay_time = (int)((float)delay_time/(float)modulationSubdivision);
 //    if ((mod_delay_time * subDiv) != delay_time) {
 //        adjust_mod_delay = 1;
 //    }

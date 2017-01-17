@@ -4171,6 +4171,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 180 `i
 ]
 [; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;SwitchTap.h: 24: void initSwitchTap(void);
 [; ;SwitchTap.h: 25: void updateSwitchTap(void);
 [; ;SwitchTap.h: 26: void setSwitchTapState(int);
