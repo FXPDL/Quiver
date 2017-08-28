@@ -26,3 +26,5 @@ void read_top_tactile(void);
 void update_mode(void);
 void update_selectMode(void);
 void setPedalMode(void);
+void InitWaveform(void);
+void InitSubdivision(void);

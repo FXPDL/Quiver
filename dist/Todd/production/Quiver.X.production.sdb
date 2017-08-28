@@ -43,6 +43,8 @@
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
 "44 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
 "35 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\lltoft.c
 [v ___lltoft __lltoft `(f  1 e 3 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\log.c
@@ -53,75 +55,137 @@
 [v _sin sin `(d  1 e 3 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 [v i1___lmul __lmul `(ul  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+[v i1___bmul __bmul `(uc  1 e 1 0 ]
 "25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\expressTap.c
 [v _initExpModeState initExpModeState `(v  1 e 1 0 ]
 "31
 [v _initTapeModeState initTapeModeState `(v  1 e 1 0 ]
-"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+"12 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\HEF.c
+[v _HEF_ByteArrayWrite HEF_ByteArrayWrite `(c  1 e 1 0 ]
+"53
+[v _HEF_ByteArrayRead HEF_ByteArrayRead `(c  1 e 1 0 ]
+[v i1_HEF_ByteArrayRead HEF_ByteArrayRead `(c  1 e 1 0 ]
+"30 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
-"16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+"25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\knobs.c
+[v _setVolume setVolume `(v  1 e 1 0 ]
+"31
+[v _setFrequency setFrequency `(v  1 e 1 0 ]
+"38
+[v _setSymmetry setSymmetry `(v  1 e 1 0 ]
+"43
+[v _setDepth setDepth `(v  1 e 1 0 ]
+"18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v _set_leds_top set_leds_top `(v  1 e 1 0 ]
 [v i1_set_leds_top set_leds_top `(v  1 e 1 0 ]
-"51
+"53
 [v _set_leds_bottom set_leds_bottom `(v  1 e 1 0 ]
-"112
+"114
 [v _showSave showSave `(v  1 e 1 0 ]
-"179
+"181
 [v _star_tactiles star_tactiles `(v  1 e 1 0 ]
-"196
+"198
 [v _ring_tactiles ring_tactiles `(v  1 e 1 0 ]
-"208
+"210
 [v _solidring_tactiles solidring_tactiles `(v  1 e 1 0 ]
-"69 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+"80 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
 [v _main main `(v  1 e 1 0 ]
 "58 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
+[v i1_FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
 "91
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
 "141
 [v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
 "18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
 [v _calcCosArray calcCosArray `(v  1 e 1 0 ]
-"26
+"27
 [v _getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
 [v i1_getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
-"36
+"37
 [v _getModulationDelayTime getModulationDelayTime `(v  1 e 1 0 ]
-"45
+"46
 [v _updateModulationArray updateModulationArray `(v  1 e 1 0 ]
-"85
+"86
 [v _modCos modCos `(i  1 e 2 0 ]
-"101
+"102
 [v _modTri modTri `(i  1 e 2 0 ]
-"124
+"125
 [v _modSaw modSaw `(i  1 e 2 0 ]
-"139
+"140
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
-"144
+"145
 [v _modSquare modSquare `(i  1 e 2 0 ]
-"21 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+"22 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
 [v _setDoublePressState setDoublePressState `(v  1 e 1 0 ]
-"51
+"52
 [v _setPresetDisplay setPresetDisplay `(v  1 e 1 0 ]
-"61
+"62
 [v _resetRingLEDs resetRingLEDs `(v  1 e 1 0 ]
-"66
+"67
 [v _setExpressionDisplay setExpressionDisplay `(v  1 e 1 0 ]
-"83 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+"23 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _initStateManager initStateManager `(v  1 e 1 0 ]
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.h
+[s S1739 . 15 `uc 1 tap 1 0 `ui 1 baseTapTime 2 1 `uc 1 bypass 1 3 `uc 1 subdivision 1 4 `uc 1 waveForm 1 5 `ui 1 volume 2 6 `ui 1 frequency 2 8 `ui 1 symmetry 2 10 `ui 1 depth 2 12 `uc 1 pedalMode 1 14 ]
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getCurrentState getCurrentState `(S1739  1 e 15 0 ]
+"88
+[v _savePreset savePreset `(v  1 e 1 0 ]
+"129
+[v _saveState saveState `(i  1 e 2 0 ]
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.h
+[s S1739 . 15 `uc 1 tap 1 0 `ui 1 baseTapTime 2 1 `uc 1 bypass 1 3 `uc 1 subdivision 1 4 `uc 1 waveForm 1 5 `ui 1 volume 2 6 `ui 1 frequency 2 8 `ui 1 symmetry 2 10 `ui 1 depth 2 12 `uc 1 pedalMode 1 14 ]
+"139 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getPreset getPreset `(S1739  1 e 15 0 ]
+"208
 [v _getCurrentLEDState getCurrentLEDState `(v  1 e 1 0 ]
-"89
+"216
 [v _restoreLEDState restoreLEDState `(v  1 e 1 0 ]
-"96
+"225
 [v _updateSwitchBypassState updateSwitchBypassState `(v  1 e 1 0 ]
-"103
+"232
 [v _getSwitchBypassState getSwitchBypassState `(i  1 e 2 0 ]
-"113
+"240
+[v _updatePedalMode updatePedalMode `(v  1 e 1 0 ]
+"253
+[v _updateVolume updateVolume `(v  1 e 1 0 ]
+"259
+[v _getVolume getVolume `(i  1 e 2 0 ]
+"266
+[v _updateFrequency updateFrequency `(v  1 e 1 0 ]
+"273
+[v _getFrequency getFrequency `(i  1 e 2 0 ]
+"285
+[v _getSymmetry getSymmetry `(i  1 e 2 0 ]
+"294
+[v _updateDepth updateDepth `(v  1 e 1 0 ]
+"301
+[v _getDepth getDepth `(i  1 e 2 0 ]
+"308
+[v _updateTapTime updateTapTime `(v  1 e 1 0 ]
+"313
+[v _getTapTime getTapTime `(l  1 e 4 0 ]
+"327
+[v _updateSubdivisionState updateSubdivisionState `(v  1 e 1 0 ]
+"332
+[v _getSubdivisionState getSubdivisionState `(i  1 e 2 0 ]
+"340
+[v _updateWaveFormState updateWaveFormState `(v  1 e 1 0 ]
+"345
+[v _getWaveFormState getWaveFormState `(i  1 e 2 0 ]
+"352
 [v _updateSwitchTapState updateSwitchTapState `(v  1 e 1 0 ]
-"120
-[v _getSwitchTapState getSwitchTapState `(i  1 e 2 0 ]
+"377
+[v _SetBitMask SetBitMask `(i  1 e 2 0 ]
+"387
+[v _GetBitMask GetBitMask `(i  1 e 2 0 ]
 "29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
 [v _initSwitchBypass initSwitchBypass `(v  1 e 1 0 ]
 "34
@@ -132,34 +196,44 @@
 [v _setSwitchBypassRelays setSwitchBypassRelays `(v  1 e 1 0 ]
 "164
 [v _setLongBypassState setLongBypassState `(v  1 e 1 0 ]
-"48 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+"29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+[v _initSwitchTap initSwitchTap `(v  1 e 1 0 ]
+"52
 [v _updateSwitchTap updateSwitchTap `(v  1 e 1 0 ]
-"167
+"172
 [v _setLongTapState setLongTapState `(v  1 e 1 0 ]
 "18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
 "23
 [v _wait_ms wait_ms `(v  1 e 1 0 ]
-"18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+"20 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+[v _InitWaveform InitWaveform `(v  1 e 1 0 ]
+"29
 [v _read_bottom_tactile read_bottom_tactile `(v  1 e 1 0 ]
-"50
+"62
+[v _InitSubdivision InitSubdivision `(v  1 e 1 0 ]
+"71
 [v _read_top_tactile read_top_tactile `(v  1 e 1 0 ]
-"87
+"109
 [v _update_mode update_mode `(v  1 e 1 0 ]
-"119
+"141
 [v _setPedalMode setPedalMode `(v  1 e 1 0 ]
-"139
+"162
 [v _update_selectMode update_selectMode `(v  1 e 1 0 ]
 "31 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
 [v _USARTInit USARTInit `(v  1 e 1 0 ]
 "71
 [v _USARTWriteChar USARTWriteChar `(v  1 e 1 0 ]
-"78
+"77
 [v _USARTWriteString USARTWriteString `(v  1 e 1 0 ]
+"91
+[v _USARTHandleRxInt USARTHandleRxInt `(v  1 e 1 0 ]
 "121
 [v _USARTReadData USARTReadData `(uc  1 e 1 0 ]
-"147
+"145
 [v _USARTDataAvailable USARTDataAvailable `(uc  1 e 1 0 ]
+"195
+[v _USARTReadBuffer USARTReadBuffer `(v  1 e 1 0 ]
 "23 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _InitApp InitApp `(v  1 e 1 0 ]
 "77
@@ -186,9 +260,7 @@
 [v _modulation modulation `(l  1 e 4 0 ]
 "246
 [v _InitializeTaps InitializeTaps `(v  1 e 1 0 ]
-"252
-[v _ReadSavedSettings ReadSavedSettings `(v  1 e 1 0 ]
-[s S19 . 1 `uc 1 IOCIF 1 0 :1:0 
+[s S25 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -198,14 +270,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "360 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S28 . 1 `uc 1 . 1 0 :2:0 
+[s S34 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S33 . 1 `S19 1 . 1 0 `S28 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES33  1 e 1 @11 ]
-[s S2037 . 1 `uc 1 RA0 1 0 :1:0 
+[u S39 . 1 `S25 1 . 1 0 `S34 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES39  1 e 1 @11 ]
+[s S2269 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -215,9 +287,9 @@
 `uc 1 RA7 1 0 :1:7 
 ]
 "431
-[u S2046 . 1 `S2037 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES2046  1 e 1 @12 ]
-[s S240 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2278 . 1 `S2269 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES2278  1 e 1 @12 ]
+[s S251 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -227,9 +299,9 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "553
-[u S249 . 1 `S240 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES249  1 e 1 @14 ]
-[s S219 . 1 `uc 1 RD0 1 0 :1:0 
+[u S260 . 1 `S251 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES260  1 e 1 @14 ]
+[s S230 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -239,9 +311,9 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "614
-[u S228 . 1 `S219 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES228  1 e 1 @15 ]
-[s S198 . 1 `uc 1 RE0 1 0 :1:0 
+[u S239 . 1 `S230 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES239  1 e 1 @15 ]
+[s S209 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
@@ -251,9 +323,9 @@
 `uc 1 RE7 1 0 :1:7 
 ]
 "675
-[u S207 . 1 `S198 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES207  1 e 1 @16 ]
-[s S2182 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S218 . 1 `S209 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES218  1 e 1 @16 ]
+[s S2415 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -263,21 +335,21 @@
 `uc 1 TMR1GIF 1 0 :1:7 
 ]
 "742
-[s S2191 . 1 `uc 1 . 1 0 :3:0 
+[s S2424 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S2196 . 1 `S2182 1 . 1 0 `S2191 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES2196  1 e 1 @17 ]
+[u S2429 . 1 `S2415 1 . 1 0 `S2424 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES2429  1 e 1 @17 ]
 "1216
 [v _PR2 PR2 `VEuc  1 e 1 @27 ]
-[s S997 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S1099 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
 "1256
-[s S1001 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S1103 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -285,9 +357,9 @@
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[u S1009 . 1 `S997 1 . 1 0 `S1001 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES1009  1 e 1 @28 ]
-[s S473 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S1111 . 1 `S1099 1 . 1 0 `S1103 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES1111  1 e 1 @28 ]
+[s S575 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -297,9 +369,9 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "1383
-[u S482 . 1 `S473 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES482  1 e 1 @141 ]
-[s S494 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S584 . 1 `S575 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES584  1 e 1 @141 ]
+[s S596 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -309,9 +381,9 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1444
-[u S503 . 1 `S494 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES503  1 e 1 @142 ]
-[s S515 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S605 . 1 `S596 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES605  1 e 1 @142 ]
+[s S617 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -321,9 +393,9 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "1505
-[u S524 . 1 `S515 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES524  1 e 1 @143 ]
-[s S536 . 1 `uc 1 TRISE0 1 0 :1:0 
+[u S626 . 1 `S617 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES626  1 e 1 @143 ]
+[s S638 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 `uc 1 TRISE3 1 0 :1:3 
@@ -333,9 +405,9 @@
 `uc 1 TRISE7 1 0 :1:7 
 ]
 "1566
-[u S545 . 1 `S536 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES545  1 e 1 @144 ]
-[s S1026 . 1 `uc 1 PS 1 0 :3:0 
+[u S647 . 1 `S638 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES647  1 e 1 @144 ]
+[s S1128 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 TMR0SE 1 0 :1:4 
 `uc 1 TMR0CS 1 0 :1:5 
@@ -343,21 +415,21 @@
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1902
-[s S1033 . 1 `uc 1 PS0 1 0 :1:0 
+[s S1135 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S1040 . 1 `S1026 1 . 1 0 `S1033 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES1040  1 e 1 @149 ]
-[s S438 . 1 `uc 1 SCS 1 0 :2:0 
+[u S1142 . 1 `S1128 1 . 1 0 `S1135 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES1142  1 e 1 @149 ]
+[s S540 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
 "2096
-[s S442 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S544 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -365,18 +437,18 @@
 `uc 1 IRCF2 1 0 :1:5 
 `uc 1 IRCF3 1 0 :1:6 
 ]
-[u S450 . 1 `S438 1 . 1 0 `S442 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES450  1 e 1 @153 ]
+[u S552 . 1 `S540 1 . 1 0 `S544 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES552  1 e 1 @153 ]
 "2200
 [v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
 "2219
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
-[s S696 . 1 `uc 1 ADON 1 0 :1:0 
+[s S798 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
 "2263
-[s S700 . 1 `uc 1 . 1 0 :1:0 
+[s S802 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -384,27 +456,27 @@
 `uc 1 CHS3 1 0 :1:5 
 `uc 1 CHS4 1 0 :1:6 
 ]
-[s S708 . 1 `uc 1 . 1 0 :1:0 
+[s S810 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S711 . 1 `S696 1 . 1 0 `S700 1 . 1 0 `S708 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES711  1 e 1 @157 ]
-[s S668 . 1 `uc 1 ADPREF 1 0 :2:0 
+[u S813 . 1 `S798 1 . 1 0 `S802 1 . 1 0 `S810 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES813  1 e 1 @157 ]
+[s S770 . 1 `uc 1 ADPREF 1 0 :2:0 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS 1 0 :3:4 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2338
-[s S673 . 1 `uc 1 ADPREF0 1 0 :1:0 
+[s S775 . 1 `uc 1 ADPREF0 1 0 :1:0 
 `uc 1 ADPREF1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 ADCS0 1 0 :1:4 
 `uc 1 ADCS1 1 0 :1:5 
 `uc 1 ADCS2 1 0 :1:6 
 ]
-[u S680 . 1 `S668 1 . 1 0 `S673 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES680  1 e 1 @158 ]
-[s S55 . 1 `uc 1 LATB0 1 0 :1:0 
+[u S782 . 1 `S770 1 . 1 0 `S775 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES782  1 e 1 @158 ]
+[s S65 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -414,9 +486,9 @@
 `uc 1 LATB7 1 0 :1:7 
 ]
 "2460
-[u S64 . 1 `S55 1 . 1 0 ]
-[v _LATBbits LATBbits `VES64  1 e 1 @269 ]
-[s S1405 . 1 `uc 1 LATD0 1 0 :1:0 
+[u S74 . 1 `S65 1 . 1 0 ]
+[v _LATBbits LATBbits `VES74  1 e 1 @269 ]
+[s S1465 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -426,25 +498,27 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "2585
-[s S1414 . 1 `uc 1 LATD 1 0 :8:0 
+[s S1474 . 1 `uc 1 LATD 1 0 :8:0 
 ]
-[u S1416 . 1 `S1405 1 . 1 0 `S1414 1 . 1 0 ]
-[v _LATDbits LATDbits `VES1416  1 e 1 @271 ]
-[s S733 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+[u S1476 . 1 `S1465 1 . 1 0 `S1474 1 . 1 0 ]
+[v _LATDbits LATDbits `VES1476  1 e 1 @271 ]
+[s S835 . 1 `uc 1 CCP2SEL 1 0 :1:0 
 `uc 1 T3CKISEL 1 0 :1:1 
 ]
 "2796
-[u S736 . 1 `S733 1 . 1 0 ]
-[v _APFCONbits APFCONbits `VES736  1 e 1 @285 ]
-[s S557 . 1 `uc 1 ANSE0 1 0 :1:0 
+[u S838 . 1 `S835 1 . 1 0 ]
+[v _APFCONbits APFCONbits `VES838  1 e 1 @285 ]
+[s S659 . 1 `uc 1 ANSE0 1 0 :1:0 
 `uc 1 ANSE1 1 0 :1:1 
 `uc 1 ANSE2 1 0 :1:2 
 ]
 "2979
-[s S561 . 1 `uc 1 ANSELE 1 0 :3:0 
+[s S663 . 1 `uc 1 ANSELE 1 0 :3:0 
 ]
-[u S563 . 1 `S557 1 . 1 0 `S561 1 . 1 0 ]
-[v _ANSELEbits ANSELEbits `VES563  1 e 1 @400 ]
+[u S665 . 1 `S659 1 . 1 0 `S663 1 . 1 0 ]
+[v _ANSELEbits ANSELEbits `VES665  1 e 1 @400 ]
+"3003
+[v _PMADR PMADR `VEus  1 e 2 @401 ]
 "3009
 [v _PMADRL PMADRL `VEuc  1 e 1 @401 ]
 "3028
@@ -453,7 +527,7 @@
 [v _PMDATL PMDATL `VEuc  1 e 1 @403 ]
 "3072
 [v _PMDATH PMDATH `VEuc  1 e 1 @404 ]
-[s S1321 . 1 `uc 1 RD 1 0 :1:0 
+[s S1380 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -462,8 +536,8 @@
 `uc 1 CFGS 1 0 :1:6 
 ]
 "3107
-[u S1329 . 1 `S1321 1 . 1 0 ]
-[v _PMCON1bits PMCON1bits `VES1329  1 e 1 @405 ]
+[u S1388 . 1 `S1380 1 . 1 0 ]
+[v _PMCON1bits PMCON1bits `VES1388  1 e 1 @405 ]
 "3146
 [v _PMCON2 PMCON2 `VEuc  1 e 1 @406 ]
 "3190
@@ -472,7 +546,7 @@
 [v _TXREG TXREG `VEuc  1 e 1 @410 ]
 "3302
 [v _SPBRG SPBRG `VEuc  1 e 1 @411 ]
-[s S2158 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S2391 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -482,9 +556,9 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3500
-[u S2167 . 1 `S2158 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES2167  1 e 1 @413 ]
-[s S2137 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S2400 . 1 `S2391 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES2400  1 e 1 @413 ]
+[s S2370 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -494,45 +568,45 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3679
-[u S2146 . 1 `S2137 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES2146  1 e 1 @414 ]
+[u S2379 . 1 `S2370 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES2379  1 e 1 @414 ]
 "5213
 [v _CCPR1 CCPR1 `VEus  1 e 2 @657 ]
-[s S742 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S844 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
 "5276
-[s S745 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S847 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 DC1B0 1 0 :1:4 
 `uc 1 DC1B1 1 0 :1:5 
 ]
-[u S752 . 1 `S742 1 . 1 0 `S745 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES752  1 e 1 @659 ]
+[u S854 . 1 `S844 1 . 1 0 `S847 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES854  1 e 1 @659 ]
 "5320
 [v _CCPR2 CCPR2 `VEus  1 e 2 @664 ]
-[s S766 . 1 `uc 1 CCP2M 1 0 :4:0 
+[s S868 . 1 `uc 1 CCP2M 1 0 :4:0 
 `uc 1 DC2B 1 0 :2:4 
 ]
 "5383
-[s S769 . 1 `uc 1 CCP2M0 1 0 :1:0 
+[s S871 . 1 `uc 1 CCP2M0 1 0 :1:0 
 `uc 1 CCP2M1 1 0 :1:1 
 `uc 1 CCP2M2 1 0 :1:2 
 `uc 1 CCP2M3 1 0 :1:3 
 `uc 1 DC2B0 1 0 :1:4 
 `uc 1 DC2B1 1 0 :1:5 
 ]
-[u S776 . 1 `S766 1 . 1 0 `S769 1 . 1 0 ]
-[v _CCP2CONbits CCP2CONbits `VES776  1 e 1 @666 ]
+[u S878 . 1 `S868 1 . 1 0 `S871 1 . 1 0 ]
+[v _CCP2CONbits CCP2CONbits `VES878  1 e 1 @666 ]
 "5427
 [v _CCPTMRS0 CCPTMRS0 `VEuc  1 e 1 @669 ]
 "5514
 [v _CCPTMRS1 CCPTMRS1 `VEuc  1 e 1 @670 ]
 "5601
 [v _CCPTMRS2 CCPTMRS2 `VEuc  1 e 1 @671 ]
-[s S585 . 1 `uc 1 TRISF0 1 0 :1:0 
+[s S687 . 1 `uc 1 TRISF0 1 0 :1:0 
 `uc 1 TRISF1 1 0 :1:1 
 `uc 1 TRISF2 1 0 :1:2 
 `uc 1 TRISF3 1 0 :1:3 
@@ -542,63 +616,63 @@
 `uc 1 TRISF7 1 0 :1:7 
 ]
 "5669
-[u S594 . 1 `S585 1 . 1 0 ]
-[v _TRISFbits TRISFbits `VES594  1 e 1 @780 ]
-[s S627 . 1 `uc 1 TRISG0 1 0 :1:0 
+[u S696 . 1 `S687 1 . 1 0 ]
+[v _TRISFbits TRISFbits `VES696  1 e 1 @780 ]
+[s S729 . 1 `uc 1 TRISG0 1 0 :1:0 
 `uc 1 TRISG1 1 0 :1:1 
 `uc 1 TRISG2 1 0 :1:2 
 `uc 1 TRISG3 1 0 :1:3 
 `uc 1 TRISG4 1 0 :1:4 
 ]
 "5727
-[u S633 . 1 `S627 1 . 1 0 ]
-[v _TRISGbits TRISGbits `VES633  1 e 1 @781 ]
+[u S735 . 1 `S729 1 . 1 0 ]
+[v _TRISGbits TRISGbits `VES735  1 e 1 @781 ]
 "5756
 [v _CCPR3 CCPR3 `VEus  1 e 2 @785 ]
-[s S790 . 1 `uc 1 CCP3M 1 0 :4:0 
+[s S892 . 1 `uc 1 CCP3M 1 0 :4:0 
 `uc 1 DC3B 1 0 :2:4 
 ]
 "5819
-[s S793 . 1 `uc 1 CCP3M0 1 0 :1:0 
+[s S895 . 1 `uc 1 CCP3M0 1 0 :1:0 
 `uc 1 CCP3M1 1 0 :1:1 
 `uc 1 CCP3M2 1 0 :1:2 
 `uc 1 CCP3M3 1 0 :1:3 
 `uc 1 DC3B0 1 0 :1:4 
 `uc 1 DC3B1 1 0 :1:5 
 ]
-[u S800 . 1 `S790 1 . 1 0 `S793 1 . 1 0 ]
-[v _CCP3CONbits CCP3CONbits `VES800  1 e 1 @787 ]
+[u S902 . 1 `S892 1 . 1 0 `S895 1 . 1 0 ]
+[v _CCP3CONbits CCP3CONbits `VES902  1 e 1 @787 ]
 "5863
 [v _CCPR4 CCPR4 `VEus  1 e 2 @792 ]
-[s S814 . 1 `uc 1 CCP4M 1 0 :4:0 
+[s S916 . 1 `uc 1 CCP4M 1 0 :4:0 
 `uc 1 DC4B 1 0 :2:4 
 ]
 "5926
-[s S817 . 1 `uc 1 CCP4M0 1 0 :1:0 
+[s S919 . 1 `uc 1 CCP4M0 1 0 :1:0 
 `uc 1 CCP4M1 1 0 :1:1 
 `uc 1 CCP4M2 1 0 :1:2 
 `uc 1 CCP4M3 1 0 :1:3 
 `uc 1 DC4B0 1 0 :1:4 
 `uc 1 DC4B1 1 0 :1:5 
 ]
-[u S824 . 1 `S814 1 . 1 0 `S817 1 . 1 0 ]
-[v _CCP4CONbits CCP4CONbits `VES824  1 e 1 @794 ]
+[u S926 . 1 `S916 1 . 1 0 `S919 1 . 1 0 ]
+[v _CCP4CONbits CCP4CONbits `VES926  1 e 1 @794 ]
 "5970
 [v _CCPR5 CCPR5 `VEus  1 e 2 @796 ]
-[s S838 . 1 `uc 1 CCP5M 1 0 :4:0 
+[s S940 . 1 `uc 1 CCP5M 1 0 :4:0 
 `uc 1 DC5B 1 0 :2:4 
 ]
 "6033
-[s S841 . 1 `uc 1 CCP5M0 1 0 :1:0 
+[s S943 . 1 `uc 1 CCP5M0 1 0 :1:0 
 `uc 1 CCP5M1 1 0 :1:1 
 `uc 1 CCP5M2 1 0 :1:2 
 `uc 1 CCP5M3 1 0 :1:3 
 `uc 1 DC5B0 1 0 :1:4 
 `uc 1 DC5B1 1 0 :1:5 
 ]
-[u S848 . 1 `S838 1 . 1 0 `S841 1 . 1 0 ]
-[v _CCP5CONbits CCP5CONbits `VES848  1 e 1 @798 ]
-[s S1384 . 1 `uc 1 LATF0 1 0 :1:0 
+[u S950 . 1 `S940 1 . 1 0 `S943 1 . 1 0 ]
+[v _CCP5CONbits CCP5CONbits `VES950  1 e 1 @798 ]
+[s S1444 . 1 `uc 1 LATF0 1 0 :1:0 
 `uc 1 LATF1 1 0 :1:1 
 `uc 1 LATF2 1 0 :1:2 
 `uc 1 LATF3 1 0 :1:3 
@@ -608,18 +682,18 @@
 `uc 1 LATF7 1 0 :1:7 
 ]
 "6094
-[u S1393 . 1 `S1384 1 . 1 0 ]
-[v _LATFbits LATFbits `VES1393  1 e 1 @908 ]
-[s S1069 . 1 `uc 1 LATG0 1 0 :1:0 
+[u S1453 . 1 `S1444 1 . 1 0 ]
+[v _LATFbits LATFbits `VES1453  1 e 1 @908 ]
+[s S2000 . 1 `uc 1 LATG0 1 0 :1:0 
 `uc 1 LATG1 1 0 :1:1 
 `uc 1 LATG2 1 0 :1:2 
 `uc 1 LATG3 1 0 :1:3 
 `uc 1 LATG4 1 0 :1:4 
 ]
 "6152
-[u S1075 . 1 `S1069 1 . 1 0 ]
-[v _LATGbits LATGbits `VES1075  1 e 1 @909 ]
-[s S606 . 1 `uc 1 ANSF0 1 0 :1:0 
+[u S2006 . 1 `S2000 1 . 1 0 ]
+[v _LATGbits LATGbits `VES2006  1 e 1 @909 ]
+[s S708 . 1 `uc 1 ANSF0 1 0 :1:0 
 `uc 1 ANSF1 1 0 :1:1 
 `uc 1 ANSF2 1 0 :1:2 
 `uc 1 ANSF3 1 0 :1:3 
@@ -629,84 +703,86 @@
 `uc 1 ANSF7 1 0 :1:7 
 ]
 "6405
-[u S615 . 1 `S606 1 . 1 0 ]
-[v _ANSELFbits ANSELFbits `VES615  1 e 1 @1036 ]
-[s S862 . 1 `uc 1 CCP6M 1 0 :4:0 
+[u S717 . 1 `S708 1 . 1 0 ]
+[v _ANSELFbits ANSELFbits `VES717  1 e 1 @1036 ]
+[s S964 . 1 `uc 1 CCP6M 1 0 :4:0 
 `uc 1 DC6B 1 0 :2:4 
 ]
 "7879
-[s S865 . 1 `uc 1 CCP6M0 1 0 :1:0 
+[s S967 . 1 `uc 1 CCP6M0 1 0 :1:0 
 `uc 1 CCP6M1 1 0 :1:1 
 `uc 1 CCP6M2 1 0 :1:2 
 `uc 1 CCP6M3 1 0 :1:3 
 `uc 1 DC6B0 1 0 :1:4 
 `uc 1 DC6B1 1 0 :1:5 
 ]
-[u S872 . 1 `S862 1 . 1 0 `S865 1 . 1 0 ]
-[v _CCP6CONbits CCP6CONbits `VES872  1 e 1 @1555 ]
-[s S886 . 1 `uc 1 CCP7M 1 0 :4:0 
+[u S974 . 1 `S964 1 . 1 0 `S967 1 . 1 0 ]
+[v _CCP6CONbits CCP6CONbits `VES974  1 e 1 @1555 ]
+[s S988 . 1 `uc 1 CCP7M 1 0 :4:0 
 `uc 1 DC7B 1 0 :2:4 
 ]
 "7986
-[s S889 . 1 `uc 1 CCP7M0 1 0 :1:0 
+[s S991 . 1 `uc 1 CCP7M0 1 0 :1:0 
 `uc 1 CCP7M1 1 0 :1:1 
 `uc 1 CCP7M2 1 0 :1:2 
 `uc 1 CCP7M3 1 0 :1:3 
 `uc 1 DC7B0 1 0 :1:4 
 `uc 1 DC7B1 1 0 :1:5 
 ]
-[u S896 . 1 `S886 1 . 1 0 `S889 1 . 1 0 ]
-[v _CCP7CONbits CCP7CONbits `VES896  1 e 1 @1558 ]
-[s S910 . 1 `uc 1 CCP8M 1 0 :4:0 
+[u S998 . 1 `S988 1 . 1 0 `S991 1 . 1 0 ]
+[v _CCP7CONbits CCP7CONbits `VES998  1 e 1 @1558 ]
+[s S1012 . 1 `uc 1 CCP8M 1 0 :4:0 
 `uc 1 DC8B 1 0 :2:4 
 ]
 "8093
-[s S913 . 1 `uc 1 CCP8M0 1 0 :1:0 
+[s S1015 . 1 `uc 1 CCP8M0 1 0 :1:0 
 `uc 1 CCP8M1 1 0 :1:1 
 `uc 1 CCP8M2 1 0 :1:2 
 `uc 1 CCP8M3 1 0 :1:3 
 `uc 1 DC8B0 1 0 :1:4 
 `uc 1 DC8B1 1 0 :1:5 
 ]
-[u S920 . 1 `S910 1 . 1 0 `S913 1 . 1 0 ]
-[v _CCP8CONbits CCP8CONbits `VES920  1 e 1 @1561 ]
-[s S934 . 1 `uc 1 CCP9M 1 0 :4:0 
+[u S1022 . 1 `S1012 1 . 1 0 `S1015 1 . 1 0 ]
+[v _CCP8CONbits CCP8CONbits `VES1022  1 e 1 @1561 ]
+[s S1036 . 1 `uc 1 CCP9M 1 0 :4:0 
 `uc 1 DC9B 1 0 :2:4 
 ]
 "8200
-[s S937 . 1 `uc 1 CCP9M0 1 0 :1:0 
+[s S1039 . 1 `uc 1 CCP9M0 1 0 :1:0 
 `uc 1 CCP9M1 1 0 :1:1 
 `uc 1 CCP9M2 1 0 :1:2 
 `uc 1 CCP9M3 1 0 :1:3 
 `uc 1 DC9B0 1 0 :1:4 
 `uc 1 DC9B1 1 0 :1:5 
 ]
-[u S944 . 1 `S934 1 . 1 0 `S937 1 . 1 0 ]
-[v _CCP9CONbits CCP9CONbits `VES944  1 e 1 @1564 ]
-[s S958 . 1 `uc 1 CCP10M 1 0 :4:0 
+[u S1046 . 1 `S1036 1 . 1 0 `S1039 1 . 1 0 ]
+[v _CCP9CONbits CCP9CONbits `VES1046  1 e 1 @1564 ]
+[s S1060 . 1 `uc 1 CCP10M 1 0 :4:0 
 `uc 1 DC10B 1 0 :2:4 
 ]
 "8307
-[s S961 . 1 `uc 1 CCP10M0 1 0 :1:0 
+[s S1063 . 1 `uc 1 CCP10M0 1 0 :1:0 
 `uc 1 CCP10M1 1 0 :1:1 
 `uc 1 CCP10M2 1 0 :1:2 
 `uc 1 CCP10M3 1 0 :1:3 
 `uc 1 DC10B0 1 0 :1:4 
 `uc 1 DC10B1 1 0 :1:5 
 ]
-[u S968 . 1 `S958 1 . 1 0 `S961 1 . 1 0 ]
-[v _CCP10CONbits CCP10CONbits `VES968  1 e 1 @1567 ]
+[u S1070 . 1 `S1060 1 . 1 0 `S1063 1 . 1 0 ]
+[v _CCP10CONbits CCP10CONbits `VES1070  1 e 1 @1567 ]
 "8916
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "9108
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
-"9136
-[v _RB1 RB1 `VEb  1 e 0 @105 ]
 "9174
 [v _RCIE RCIE `VEb  1 e 0 @1165 ]
+"9176
+[v _RCIF RCIF `VEb  1 e 0 @141 ]
 "3 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\errno.c
 [v _errno errno `i  1 e 2 0 ]
-"56 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\constants.h
+"54 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\constants.h
+[v _adjusted_pot_value adjusted_pot_value `i  1 e 2 0 ]
+"56
 [v _timer timer `VEl  1 e 4 0 ]
 "57
 [v _sub_timer sub_timer `VEl  1 e 4 0 ]
@@ -717,7 +793,7 @@
 "62
 [v _long_press_limit long_press_limit `ui  1 e 2 0 ]
 "63
-[v _baseline_mod_time baseline_mod_time `VEl  1 e 4 0 ]
+[v _baseline_mod_time baseline_mod_time `VEi  1 e 2 0 ]
 "65
 [v _longBypass_start longBypass_start `uc  1 e 1 0 ]
 "66
@@ -757,7 +833,7 @@
 "100
 [v _double_timer double_timer `VEl  1 e 4 0 ]
 "102
-[v _test_timer test_timer `VEl  1 e 4 0 ]
+[v _save_timer save_timer `VEl  1 e 4 0 ]
 "105
 [v _presetSaveMode presetSaveMode `uc  1 e 1 0 ]
 "106
@@ -786,57 +862,70 @@
 [v _symmetry symmetry `i  1 e 2 0 ]
 "126
 [v _modulationSubdivision modulationSubdivision `i  1 e 2 0 ]
-"24 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+"25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 [v _mod_value mod_value `i  1 e 2 0 ]
-"25
+"26
 [v _mod_counter mod_counter `i  1 e 2 0 ]
+"27
+[v _save_counter save_counter `l  1 e 4 0 ]
 "14 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v _blink_rate blink_rate `uc  1 e 1 0 ]
-"37 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+"39 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
 [v _isInitialized isInitialized `uc  1 e 1 0 ]
-"38
-[v _mod_timer mod_timer `VEl  1 e 4 0 ]
-"39
-[v _adjusted_pot_value adjusted_pot_value `i  1 e 2 0 ]
 "40
-[v _mod_delay_time mod_delay_time `i  1 e 2 0 ]
+[v _mod_timer mod_timer `VEl  1 e 4 0 ]
 "42
+[v _mod_delay_time mod_delay_time `i  1 e 2 0 ]
+"44
 [v _delay_time delay_time `VEl  1 e 4 0 ]
-"49
-[v _knob_1_pos knob_1_pos `i  1 e 2 0 ]
-"50
-[v _knob_2_pos knob_2_pos `i  1 e 2 0 ]
 "51
-[v _knob_3_pos knob_3_pos `i  1 e 2 0 ]
+[v _knob_1_pos knob_1_pos `i  1 e 2 0 ]
 "52
-[v _knob_4_pos knob_4_pos `i  1 e 2 0 ]
+[v _knob_2_pos knob_2_pos `i  1 e 2 0 ]
 "53
-[v _knob_5_pos knob_5_pos `i  1 e 2 0 ]
+[v _knob_3_pos knob_3_pos `i  1 e 2 0 ]
 "54
-[v _knob1_prev knob1_prev `VEi  1 e 2 0 ]
+[v _knob_4_pos knob_4_pos `i  1 e 2 0 ]
 "55
-[v _knob2_prev knob2_prev `VEi  1 e 2 0 ]
+[v _knob_5_pos knob_5_pos `i  1 e 2 0 ]
 "56
-[v _knob3_prev knob3_prev `VEi  1 e 2 0 ]
+[v _knob1_prev knob1_prev `VEi  1 e 2 0 ]
 "57
-[v _knob4_prev knob4_prev `VEi  1 e 2 0 ]
+[v _knob2_prev knob2_prev `VEi  1 e 2 0 ]
 "58
-[v _knob5_prev knob5_prev `VEi  1 e 2 0 ]
+[v _knob3_prev knob3_prev `VEi  1 e 2 0 ]
+"59
+[v _knob4_prev knob4_prev `VEi  1 e 2 0 ]
 "60
+[v _knob5_prev knob5_prev `VEi  1 e 2 0 ]
+"62
 [v _oldSymmetry oldSymmetry `i  1 e 2 0 ]
-"61
+"63
 [v _oldBaseTime oldBaseTime `i  1 e 2 0 ]
-[s S1661 . 4 `uc 1 tap_A 1 0 `uc 1 tap_B 1 1 `uc 1 bypass_A 1 2 `uc 1 bypass_B 1 3 ]
+"65
+[v _iCnt iCnt `uc  1 e 1 0 ]
+"66
+[v _n n `uc  1 e 1 0 ]
+"67
+[v _midiBuff midiBuff `[64]uc  1 e 64 0 ]
+"68
+[v _midiLevel midiLevel `i  1 e 2 0 ]
+[s S1739 . 15 `uc 1 tap 1 0 `ui 1 baseTapTime 2 1 `uc 1 bypass 1 3 `uc 1 subdivision 1 4 `uc 1 waveForm 1 5 `ui 1 volume 2 6 `ui 1 frequency 2 8 `ui 1 symmetry 2 10 `ui 1 depth 2 12 `uc 1 pedalMode 1 14 ]
 "16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
-[v _ledState ledState `S1661  1 e 4 0 ]
-"19 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
-[v _currentBypassState currentBypassState `uc  1 e 1 0 ]
-"20
-[v _switchBypass_pressed switchBypass_pressed `i  1 e 2 0 ]
+[v _pedalState pedalState `S1739  1 e 15 0 ]
+[s S1750 . 6 `uc 1 tap_A 1 0 `uc 1 tap_B 1 1 `uc 1 tap_Aux 1 2 `uc 1 bypass_A 1 3 `uc 1 bypass_B 1 4 `uc 1 bypass_Aux 1 5 ]
+"19
+[v _ledState ledState `S1750  1 e 6 0 ]
 "21
-[v _switchBypass_up switchBypass_up `i  1 e 2 0 ]
+[v _isStateInitialized isStateInitialized `i  1 e 2 0 ]
+"19 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
+[v _currentBypassState currentBypassState `c  1 e 1 0 ]
+"20
+[v _switchBypass_pressed switchBypass_pressed `uc  1 e 1 0 ]
+"21
+[v _switchBypass_up switchBypass_up `uc  1 e 1 0 ]
 "22
-[v _switchBypass_toggle switchBypass_toggle `i  1 e 2 0 ]
+[v _switchBypass_toggle switchBypass_toggle `uc  1 e 1 0 ]
 "24
 [v _longBypass_down longBypass_down `uc  1 e 1 0 ]
 "25
@@ -855,9 +944,9 @@
 [v _switchTap_pressed switchTap_pressed `uc  1 e 1 0 ]
 "26
 [v _switchTap_down switchTap_down `uc  1 e 1 0 ]
-"15 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+"16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _topTactile_pressed topTactile_pressed `uc  1 e 1 0 ]
-"16
+"17
 [v _bottomTactile_pressed bottomTactile_pressed `uc  1 e 1 0 ]
 "42 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.h
 [v _URBuff URBuff `VE[64]uc  1 e 64 0 ]
@@ -865,35 +954,42 @@
 [v _UQFront UQFront `VEc  1 e 1 0 ]
 "44
 [v _UQEnd UQEnd `VEc  1 e 1 0 ]
-"69 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
+"80 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"209
+"176
+[v main@tapCntDivisor tapCntDivisor `i  1 a 2 61 ]
+"378
 } 0
-"139 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+"162 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _update_selectMode update_selectMode `(v  1 e 1 0 ]
 {
-"174
+"197
 } 0
-"87
+"109
 [v _update_mode update_mode `(v  1 e 1 0 ]
 {
-"117
+"139
 } 0
-"48 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+"52 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
 [v _updateSwitchTap updateSwitchTap `(v  1 e 1 0 ]
 {
-"117
+"121
 [v updateSwitchTap@tapCntDivisor tapCntDivisor `i  1 a 2 34 ]
-"49
+"53
 [v updateSwitchTap@iCnt iCnt `uc  1 a 1 36 ]
-"155
+"160
 } 0
-"167
+"308 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateTapTime updateTapTime `(v  1 e 1 0 ]
+{
+"311
+} 0
+"172 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
 [v _setLongTapState setLongTapState `(v  1 e 1 0 ]
 {
 [v setLongTapState@f_state f_state `i  1 p 2 0 ]
-"173
+"178
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
@@ -919,145 +1015,137 @@
 [v setLongBypassState@f_state f_state `i  1 p 2 0 ]
 "171
 } 0
-"21 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+"22 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
 [v _setDoublePressState setDoublePressState `(v  1 e 1 0 ]
 {
 [v setDoublePressState@f_state f_state `i  1 p 2 24 ]
-"49
+"50
 } 0
-"112 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+"114 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v _showSave showSave `(v  1 e 1 0 ]
 {
-"119
+"121
 } 0
-"208
+"210
 [v _solidring_tactiles solidring_tactiles `(v  1 e 1 0 ]
 {
-"209
+"211
 [v solidring_tactiles@ring_delay ring_delay `uc  1 a 1 20 ]
-"217
+"219
 } 0
-"196
+"198
 [v _ring_tactiles ring_tactiles `(v  1 e 1 0 ]
 {
-"201
-[v ring_tactiles@iLed_1548 iLed `i  1 a 2 21 ]
-"197
+"203
+[v ring_tactiles@iLed_1609 iLed `i  1 a 2 21 ]
+"199
 [v ring_tactiles@iLed iLed `i  1 a 2 19 ]
-"205
+"207
 } 0
-"119 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+"141 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _setPedalMode setPedalMode `(v  1 e 1 0 ]
 {
-"137
+"160
 } 0
-"51 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
+"240 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updatePedalMode updatePedalMode `(v  1 e 1 0 ]
+{
+"243
+} 0
+"52 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\preset_programming.c
 [v _setPresetDisplay setPresetDisplay `(v  1 e 1 0 ]
 {
 [v setPresetDisplay@ledChannel ledChannel `uc  1 a 1 wreg ]
 [v setPresetDisplay@ledChannel ledChannel `uc  1 a 1 wreg ]
 [v setPresetDisplay@ledChannel ledChannel `uc  1 a 1 6 ]
-"59
+"60
 } 0
-"66
+"67
 [v _setExpressionDisplay setExpressionDisplay `(v  1 e 1 0 ]
 {
 [v setExpressionDisplay@ledChannel ledChannel `uc  1 a 1 wreg ]
 [v setExpressionDisplay@ledChannel ledChannel `uc  1 a 1 wreg ]
 [v setExpressionDisplay@ledChannel ledChannel `uc  1 a 1 6 ]
-"69
+"70
 } 0
-"61
+"62
 [v _resetRingLEDs resetRingLEDs `(v  1 e 1 0 ]
 {
-"64
+"65
 } 0
-"45 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
+"46 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
 [v _updateModulationArray updateModulationArray `(v  1 e 1 0 ]
 {
-"54
+"55
 [v updateModulationArray@thisAngle thisAngle `i  1 a 2 57 ]
-"76
-[v updateModulationArray@iAngle_2363 iAngle `uc  1 a 1 54 ]
-"53
+"77
+[v updateModulationArray@iAngle_2595 iAngle `uc  1 a 1 54 ]
+"54
 [v updateModulationArray@iAngle iAngle `uc  1 a 1 59 ]
-"46
+"47
 [v updateModulationArray@subDiv subDiv `i  1 a 2 55 ]
-"52
+"53
 [v updateModulationArray@angleFactor angleFactor `i  1 a 2 52 ]
-"83
+"84
 } 0
-"101
+"102
 [v _modTri modTri `(i  1 e 2 0 ]
 {
-"112
+"113
 [v modTri@tmpVal tmpVal `d  1 a 3 29 ]
-"102
-[v modTri@period period `d  1 a 3 26 ]
 "103
+[v modTri@period period `d  1 a 3 26 ]
+"104
 [v modTri@shift shift `d  1 a 3 23 ]
-"101
+"102
 [v modTri@angle angle `d  1 p 3 14 ]
 [v modTri@inflection inflection `d  1 p 3 17 ]
-"121
+"122
 } 0
-"144
+"145
 [v _modSquare modSquare `(i  1 e 2 0 ]
 {
-"145
+"146
 [v modSquare@tmpVal tmpVal `i  1 a 2 46 ]
-"144
+"145
 [v modSquare@angle angle `d  1 p 3 40 ]
 [v modSquare@inflection inflection `d  1 p 3 43 ]
-"147
+"148
 } 0
-"85
+"86
 [v _modCos modCos `(i  1 e 2 0 ]
 {
-"96
+"97
 [v modCos@tmpVal tmpVal `d  1 a 3 37 ]
-"86
-[v modCos@period period `d  1 a 3 34 ]
 "87
+[v modCos@period period `d  1 a 3 34 ]
+"88
 [v modCos@shift shift `d  1 a 3 31 ]
-"85
+"86
 [v modCos@angle angle `d  1 p 3 20 ]
 [v modCos@inflection inflection `d  1 p 3 23 ]
-"99
+"100
 } 0
-"139
+"140
 [v _modSawRev modSawRev `(i  1 e 2 0 ]
 {
 [v modSawRev@angle angle `d  1 p 3 34 ]
 [v modSawRev@inflection inflection `d  1 p 3 37 ]
-"141
+"142
 } 0
-"124
+"125
 [v _modSaw modSaw `(i  1 e 2 0 ]
 {
-"125
-[v modSaw@period period `d  1 a 3 31 ]
 "126
+[v modSaw@period period `d  1 a 3 31 ]
+"127
 [v modSaw@shift shift `d  1 a 3 28 ]
-"135
+"136
 [v modSaw@mod mod `i  1 a 2 26 ]
-"124
+"125
 [v modSaw@angle angle `d  1 p 3 14 ]
 [v modSaw@inflection inflection `d  1 p 3 17 ]
-"137
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"11
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
-"12
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
-"6
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
-"42
+"138
 } 0
 "77 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _set_subdivision set_subdivision `(i  1 e 2 0 ]
@@ -1071,7 +1159,19 @@
 [v set_subdivision@y y `i  1 p 2 16 ]
 "113
 } 0
-"211
+"25 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\knobs.c
+[v _setVolume setVolume `(v  1 e 1 0 ]
+{
+[v setVolume@rawValue rawValue `i  1 p 2 74 ]
+"29
+} 0
+"253 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateVolume updateVolume `(v  1 e 1 0 ]
+{
+[v updateVolume@currentValue currentValue `i  1 p 2 0 ]
+"257
+} 0
+"211 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _scaleiA10kPot scaleiA10kPot `(i  1 e 2 0 ]
 {
 "218
@@ -1089,7 +1189,35 @@
 [v scaleA10kPot@input input `d  1 p 3 71 ]
 "208
 } 0
-"188
+"38 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\knobs.c
+[v _setSymmetry setSymmetry `(v  1 e 1 0 ]
+{
+[v setSymmetry@rawValue rawValue `i  1 p 2 14 ]
+"41
+} 0
+"177 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+[v _map map `(f  1 e 3 0 ]
+{
+[v map@x x `f  1 p 3 62 ]
+[v map@in_min in_min `f  1 p 3 65 ]
+[v map@in_max in_max `f  1 p 3 68 ]
+[v map@out_min out_min `f  1 p 3 71 ]
+[v map@out_max out_max `f  1 p 3 74 ]
+"179
+} 0
+"31 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\knobs.c
+[v _setFrequency setFrequency `(v  1 e 1 0 ]
+{
+[v setFrequency@rawValue rawValue `i  1 p 2 74 ]
+"35
+} 0
+"266 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateFrequency updateFrequency `(v  1 e 1 0 ]
+{
+[v updateFrequency@currentValue currentValue `i  1 p 2 0 ]
+"271
+} 0
+"188 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _scaleA100kPot scaleA100kPot `(i  1 e 2 0 ]
 {
 "191
@@ -1150,37 +1278,59 @@
 [v ___lltoft@c c `ul  1 p 4 8 ]
 "46
 } 0
-"50 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+"43 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\knobs.c
+[v _setDepth setDepth `(v  1 e 1 0 ]
+{
+[v setDepth@rawValue rawValue `i  1 p 2 2 ]
+"47
+} 0
+"294 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateDepth updateDepth `(v  1 e 1 0 ]
+{
+[v updateDepth@currentValue currentValue `i  1 p 2 0 ]
+"299
+} 0
+"71 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _read_top_tactile read_top_tactile `(v  1 e 1 0 ]
 {
-"85
+"107
 } 0
-"18
+"327 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateSubdivisionState updateSubdivisionState `(v  1 e 1 0 ]
+{
+"330
+} 0
+"29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
 [v _read_bottom_tactile read_bottom_tactile `(v  1 e 1 0 ]
 {
-"48
+"60
 } 0
-"177 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
-[v _map map `(f  1 e 3 0 ]
+"340 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _updateWaveFormState updateWaveFormState `(v  1 e 1 0 ]
 {
-[v map@x x `f  1 p 3 62 ]
-[v map@in_min in_min `f  1 p 3 65 ]
-[v map@in_max in_max `f  1 p 3 68 ]
-[v map@out_min out_min `f  1 p 3 71 ]
-[v map@out_max out_max `f  1 p 3 74 ]
-"179
+"343
+} 0
+"29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchTap.c
+[v _initSwitchTap initSwitchTap `(v  1 e 1 0 ]
+{
+"36
+} 0
+"313 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getTapTime getTapTime `(l  1 e 4 0 ]
+{
+"325
 } 0
 "29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\SwitchBypass.c
 [v _initSwitchBypass initSwitchBypass `(v  1 e 1 0 ]
 {
 "30
-[v initSwitchBypass@initState initState `i  1 a 2 26 ]
+[v initSwitchBypass@initState initState `i  1 a 2 56 ]
 "32
 } 0
 "141
 [v _setSwitchBypassState setSwitchBypassState `(v  1 e 1 0 ]
 {
-[v setSwitchBypassState@f_state f_state `i  1 p 2 22 ]
+[v setSwitchBypassState@f_state f_state `i  1 p 2 21 ]
 "147
 } 0
 "149
@@ -1208,35 +1358,57 @@
 [v ___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
 "129
 } 0
-"96 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+"225 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
 [v _updateSwitchBypassState updateSwitchBypassState `(v  1 e 1 0 ]
 {
-[v updateSwitchBypassState@state state `i  1 p 2 0 ]
-"101
+[v updateSwitchBypassState@state state `uc  1 a 1 wreg ]
+[v updateSwitchBypassState@state state `uc  1 a 1 wreg ]
+[v updateSwitchBypassState@state state `uc  1 a 1 1 ]
+"230
 } 0
-"103
+"232
 [v _getSwitchBypassState getSwitchBypassState `(i  1 e 2 0 ]
 {
-"110
+"237
 } 0
-"36 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
+"259
+[v _getVolume getVolume `(i  1 e 2 0 ]
+{
+"264
+} 0
+"285
+[v _getSymmetry getSymmetry `(i  1 e 2 0 ]
+{
+"291
+} 0
+"37 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
 [v _getModulationDelayTime getModulationDelayTime `(v  1 e 1 0 ]
 {
-"43
+"44
 } 0
-"26
+"27
 [v _getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
 {
-"35
+"36
 } 0
-"18
+"273 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getFrequency getFrequency `(i  1 e 2 0 ]
+{
+"278
+} 0
+"301
+[v _getDepth getDepth `(i  1 e 2 0 ]
+{
+"306
+} 0
+"18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
 [v _calcCosArray calcCosArray `(v  1 e 1 0 ]
 {
 "20
-[v calcCosArray@tmpVal tmpVal `d  1 a 3 54 ]
-"19
 [v calcCosArray@iAngle iAngle `uc  1 a 1 57 ]
-"24
+"19
+[v calcCosArray@tmpVal tmpVal `d  1 a 3 54 ]
+"25
 } 0
 "13 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\cos.c
 [v _cos cos `(d  1 e 3 0 ]
@@ -1318,16 +1490,6 @@
 [v eval_poly@n n `i  1 p 2 25 ]
 "12
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 18 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
-"53
-} 0
 "62 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 {
@@ -1390,14 +1552,6 @@
 [v ___awtoft@c c `i  1 p 2 8 ]
 "42
 } 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 0 ]
-[v ___ftpack@exp exp `uc  1 p 1 3 ]
-[v ___ftpack@sign sign `uc  1 p 1 4 ]
-"86
-} 0
 "122 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _adc_convert adc_convert `(ui  1 e 2 0 ]
 {
@@ -1406,29 +1560,165 @@
 [v adc_convert@channel channel `uc  1 a 1 3 ]
 "127
 } 0
-"31 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+"27 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+{
+[v ___lbtoft@c c `uc  1 a 1 wreg ]
+[v ___lbtoft@c c `uc  1 a 1 wreg ]
+"29
+[v ___lbtoft@c c `uc  1 a 1 15 ]
+"30
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
+"195 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+[v _USARTReadBuffer USARTReadBuffer `(v  1 e 1 0 ]
+{
+[v USARTReadBuffer@buff buff `*.7uc  1 a 1 wreg ]
+"196
+[v USARTReadBuffer@i i `ui  1 a 2 7 ]
+"195
+[v USARTReadBuffer@buff buff `*.7uc  1 a 1 wreg ]
+[v USARTReadBuffer@len len `ui  1 p 2 2 ]
+"197
+[v USARTReadBuffer@buff buff `*.7uc  1 a 1 6 ]
+"200
+} 0
+"121
+[v _USARTReadData USARTReadData `(uc  1 e 1 0 ]
+{
+"122
+[v USARTReadData@data data `uc  1 a 1 1 ]
+"143
+} 0
+"31
 [v _USARTInit USARTInit `(v  1 e 1 0 ]
 {
 [v USARTInit@baud_rate baud_rate `ui  1 p 2 0 ]
 "69
 } 0
-"252 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
-[v _ReadSavedSettings ReadSavedSettings `(v  1 e 1 0 ]
+"145
+[v _USARTDataAvailable USARTDataAvailable `(uc  1 e 1 0 ]
 {
-"281
+"154
 } 0
-"16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+"246 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
+[v _InitializeTaps InitializeTaps `(v  1 e 1 0 ]
+{
+"247
+[v InitializeTaps@itap itap `i  1 a 2 1 ]
+"250
+} 0
+"20 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+[v _InitWaveform InitWaveform `(v  1 e 1 0 ]
+{
+"27
+} 0
+"53 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+[v _set_leds_bottom set_leds_bottom `(v  1 e 1 0 ]
+{
+[v set_leds_bottom@x x `i  1 p 2 0 ]
+"85
+} 0
+"345 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getWaveFormState getWaveFormState `(i  1 e 2 0 ]
+{
+"351
+} 0
+"62 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\tactiles.c
+[v _InitSubdivision InitSubdivision `(v  1 e 1 0 ]
+{
+"69
+} 0
+"18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v _set_leds_top set_leds_top `(v  1 e 1 0 ]
 {
 [v set_leds_top@x x `i  1 p 2 0 ]
 [v set_leds_top@ledState ledState `i  1 p 2 2 ]
-"48
+"50
 } 0
-"51
-[v _set_leds_bottom set_leds_bottom `(v  1 e 1 0 ]
+"332 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getSubdivisionState getSubdivisionState `(i  1 e 2 0 ]
 {
-[v set_leds_bottom@x x `i  1 p 2 0 ]
-"83
+"338
+} 0
+"23
+[v _initStateManager initStateManager `(v  1 e 1 0 ]
+{
+"26
+} 0
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.h
+[s S1739 . 15 `uc 1 tap 1 0 `ui 1 baseTapTime 2 1 `uc 1 bypass 1 3 `uc 1 subdivision 1 4 `uc 1 waveForm 1 5 `ui 1 volume 2 6 `ui 1 frequency 2 8 `ui 1 symmetry 2 10 `ui 1 depth 2 12 `uc 1 pedalMode 1 14 ]
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getCurrentState getCurrentState `(S1739  1 e 15 0 ]
+{
+"33
+} 0
+"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.h
+[s S1739 . 15 `uc 1 tap 1 0 `ui 1 baseTapTime 2 1 `uc 1 bypass 1 3 `uc 1 subdivision 1 4 `uc 1 waveForm 1 5 `ui 1 volume 2 6 `ui 1 frequency 2 8 `ui 1 symmetry 2 10 `ui 1 depth 2 12 `uc 1 pedalMode 1 14 ]
+"139 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _getPreset getPreset `(S1739  1 e 15 0 ]
+{
+[v getPreset@presetChannel presetChannel `uc  1 a 1 wreg ]
+[s S1766 . 10 `ui 1 modeBypassSubdivWave 2 0 `ui 1 baseTapTime 2 2 `ui 1 volume 2 4 `ui 1 frequency 2 6 `uc 1 symmetry 1 8 `uc 1 depth 1 9 ]
+"140
+[v getPreset@presets presets `[3]S1766  1 a 30 3 ]
+"149
+[v getPreset@pedalPreset pedalPreset `S1739  1 a 15 34 ]
+"144
+[v getPreset@bankChannel bankChannel `uc  1 a 1 33 ]
+"143
+[v getPreset@bankID bankID `uc  1 a 1 2 ]
+"141
+[v getPreset@r r `uc  1 a 1 0 ]
+"139
+[v getPreset@presetChannel presetChannel `uc  1 a 1 wreg ]
+"143
+[v getPreset@presetChannel presetChannel `uc  1 a 1 1 ]
+"205
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 2 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
+} 0
+"53 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\HEF.c
+[v _HEF_ByteArrayRead HEF_ByteArrayRead `(c  1 e 1 0 ]
+{
+"56
+[v HEF_ByteArrayRead@wordAdd wordAdd `ui  1 a 2 9 ]
+"53
+[v HEF_ByteArrayRead@bArray bArray `*.39uc  1 p 2 3 ]
+[v HEF_ByteArrayRead@block block `uc  1 p 1 5 ]
+[v HEF_ByteArrayRead@count count `uc  1 p 1 6 ]
+"71
 } 0
 "58 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
@@ -1439,14 +1729,30 @@
 [v FLASH_ReadWord@flashAddr flashAddr `ui  1 p 2 0 ]
 "72
 } 0
-"246 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
-[v _InitializeTaps InitializeTaps `(v  1 e 1 0 ]
+"387 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _GetBitMask GetBitMask `(i  1 e 2 0 ]
 {
-"247
-[v InitializeTaps@itap itap `i  1 a 2 1 ]
-"250
+"388
+[v GetBitMask@shiftCount shiftCount `i  1 a 2 30 ]
+"389
+[v GetBitMask@mask mask `i  1 a 2 28 ]
+"387
+[v GetBitMask@storage storage `ui  1 p 2 20 ]
+[v GetBitMask@index index `uc  1 p 1 22 ]
+[v GetBitMask@shift shift `uc  1 p 1 23 ]
+"395
 } 0
-"23
+"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 18 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
+"53
+} 0
+"23 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _InitApp InitApp `(v  1 e 1 0 ]
 {
 "74
@@ -1476,24 +1782,63 @@
 {
 "21
 } 0
-"28 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
+"30 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\interrupts.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"77
-[v isr@subDiv subDiv `uc  1 a 1 13 ]
-"234
+"124
+[v isr@subDiv subDiv `uc  1 a 1 56 ]
+"292
 } 0
-"16 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
+"18 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\LEDs.c
 [v i1_set_leds_top set_leds_top `(v  1 e 1 0 ]
 {
 [v i1set_leds_top@x x `i  1 p 2 0 ]
 [v i1set_leds_top@ledState ledState `i  1 p 2 2 ]
-"48
+"50
 } 0
-"26 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
+"27 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\modulation.c
 [v i1_getModulationSubdivision getModulationSubdivision `(i  1 e 2 0 ]
 {
-"35
+"36
+} 0
+"129 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _saveState saveState `(i  1 e 2 0 ]
+{
+"136
+} 0
+"88
+[v _savePreset savePreset `(v  1 e 1 0 ]
+{
+[v savePreset@presetChannel presetChannel `uc  1 a 1 wreg ]
+[s S1766 . 10 `ui 1 modeBypassSubdivWave 2 0 `ui 1 baseTapTime 2 2 `ui 1 volume 2 4 `ui 1 frequency 2 6 `uc 1 symmetry 1 8 `uc 1 depth 1 9 ]
+"95
+[v savePreset@presets presets `[3]S1766  1 a 30 19 ]
+"98
+[v savePreset@bankChannel bankChannel `uc  1 a 1 49 ]
+"97
+[v savePreset@bankID bankID `uc  1 a 1 18 ]
+"120
+[v savePreset@dep dep `uc  1 a 1 16 ]
+"119
+[v savePreset@symm symm `uc  1 a 1 15 ]
+"94
+[v savePreset@r r `uc  1 a 1 14 ]
+"88
+[v savePreset@presetChannel presetChannel `uc  1 a 1 wreg ]
+"97
+[v savePreset@presetChannel presetChannel `uc  1 a 1 17 ]
+"126
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul8.c
+[v i1___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v i1___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v i1___bmul@product __bmul `uc  1 a 1 2 ]
+[v i1___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v i1___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v i1___bmul@multiplier multiplier `uc  1 a 1 3 ]
+"51
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\awdiv.c
 [v i1___awdiv __awdiv `(i  1 e 2 0 ]
@@ -1504,6 +1849,69 @@
 [v i1___awdiv@divisor divisor `i  1 p 2 0 ]
 [v i1___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
+} 0
+"53 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\HEF.c
+[v i1_HEF_ByteArrayRead HEF_ByteArrayRead `(c  1 e 1 0 ]
+{
+[v i1HEF_ByteArrayRead@wordAdd HEF_ByteArrayRead `ui  1 a 2 9 ]
+[v i1HEF_ByteArrayRead@bArray bArray `*.39uc  1 p 2 3 ]
+[v i1HEF_ByteArrayRead@block block `uc  1 p 1 5 ]
+[v i1HEF_ByteArrayRead@count count `uc  1 p 1 6 ]
+"71
+} 0
+"58 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+[v i1_FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
+{
+[v i1FLASH_ReadWord@GIEBitValue FLASH_ReadWord `uc  1 a 1 2 ]
+[v i1FLASH_ReadWord@flashAddr flashAddr `ui  1 p 2 0 ]
+"72
+} 0
+"377 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\state_manager.c
+[v _SetBitMask SetBitMask `(i  1 e 2 0 ]
+{
+"378
+[v SetBitMask@shiftCount shiftCount `i  1 a 2 8 ]
+"379
+[v SetBitMask@mask mask `i  1 a 2 6 ]
+"377
+[v SetBitMask@storage storage `i  1 p 2 6 ]
+[v SetBitMask@value value `i  1 p 2 8 ]
+[v SetBitMask@index index `i  1 p 2 10 ]
+[v SetBitMask@shift shift `i  1 p 2 12 ]
+"384
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
+[v i1___wmul __wmul `(ui  1 e 2 0 ]
+{
+[v i1___wmul@product __wmul `ui  1 a 2 4 ]
+[v i1___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v i1___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"12 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\HEF.c
+[v _HEF_ByteArrayWrite HEF_ByteArrayWrite `(c  1 e 1 0 ]
+{
+[v HEF_ByteArrayWrite@block block `uc  1 a 1 wreg ]
+"13
+[v HEF_ByteArrayWrite@blockAddr blockAddr `ui  1 a 2 9 ]
+"14
+[v HEF_ByteArrayWrite@GIEBitValue GIEBitValue `uc  1 a 1 7 ]
+"12
+[v HEF_ByteArrayWrite@block block `uc  1 a 1 wreg ]
+[v HEF_ByteArrayWrite@byteArray byteArray `*.4uc  1 p 1 3 ]
+[v HEF_ByteArrayWrite@count count `uc  1 p 1 4 ]
+"14
+[v HEF_ByteArrayWrite@block block `uc  1 a 1 8 ]
+"51
+} 0
+"141 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\memory.c
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+{
+"142
+[v FLASH_EraseBlock@GIEBitValue GIEBitValue `uc  1 a 1 2 ]
+"141
+[v FLASH_EraseBlock@startAddr startAddr `ui  1 p 2 0 ]
+"165
 } 0
 "240 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\user.c
 [v _modulation modulation `(l  1 e 4 0 ]
@@ -1529,4 +1937,11 @@
 [v i1___aldiv@divisor divisor `l  1 p 4 0 ]
 [v i1___aldiv@dividend dividend `l  1 p 4 4 ]
 "42
+} 0
+"91 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\Quiver.X\usart_pic16.c
+[v _USARTHandleRxInt USARTHandleRxInt `(v  1 e 1 0 ]
+{
+"100
+[v USARTHandleRxInt@data data `uc  1 a 1 4 ]
+"119
 } 0

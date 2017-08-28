@@ -1,6 +1,7 @@
  build/Todd/production/SwitchBypass.d  \
  build/Todd/production/SwitchBypass.p1:  \
  SwitchBypass.c  \
+HEF.h  \
 SwitchBypass.h  \
 memory.h  \
 preset_programming.h  \

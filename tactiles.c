@@ -11,10 +11,21 @@
 #include "tactiles.h"
 #include "LEDs.h"
 #include "preset_programming.h"
+#include "state_manager.h"
 
  uint8_t topTactile_pressed = 0;  
  uint8_t bottomTactile_pressed = 0;  
 
+ 
+void InitWaveform() {
+    bottom_push_state = getWaveFormState();
+    if (bottom_push_state < 1 || bottom_push_state > 5) {
+        bottom_push_state = 1;
+    }
+    modulation_changed = 1;
+    set_leds_bottom(bottom_push_state);
+}
+ 
 void read_bottom_tactile(void) {
     //read bottom tactile-----------------------------
     //  1) reset state if passed all states
@@ -40,11 +51,21 @@ void read_bottom_tactile(void) {
         }
         modulation_changed = 1;
         set_leds_bottom(bottom_push_state);
+        updateWaveFormState();
        // FLASH_WriteWord(0x1F82, myBuf, bottom_push_state);
         while (bottom_tactile == 0) { //wait for release
         }
         wait_ms(20);
     }
+}
+
+void InitSubdivision() {
+    top_push_state = getSubdivisionState();
+    if (top_push_state < 1 || top_push_state > 6) {
+        top_push_state = 6;
+    }
+    set_leds_top(top_push_state, 1);
+    mod_time_changed = 1;
 }
 
 void read_top_tactile(void) {
@@ -74,6 +95,7 @@ void read_top_tactile(void) {
         if (top_push_state >= 7) {
             top_push_state = 1;
         }
+        updateSubdivisionState();
         set_leds_top(top_push_state, 1);
         mod_time_changed = 1;
 
@@ -134,6 +156,7 @@ void setPedalMode(void) {
             setExpressionDisplay(expressionChannel); //restore the LEDs
             break;
     }
+    updatePedalMode();
 }
 
 void update_selectMode(void) {

@@ -280,28 +280,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _OPTION_REGbits `VS88 ~T0 @X0 0 e@149 ]
 "45 C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h
 [v _pow `(d ~T0 @X0 0 ef2`d`d ]
-"99 memory.h
-[v _FLASH_ReadWord `(ui ~T0 @X0 0 ef1`ui ]
-"6144 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
-[s S311 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S311 . LATG0 LATG1 LATG2 LATG3 LATG4 ]
-"6143
-[u S310 `S311 1 ]
-[n S310 . . ]
-"6152
-[v _LATGbits `VS310 ~T0 @X0 0 e@909 ]
-"2449
-[s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S116 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"2448
-[u S115 `S116 1 ]
-[n S115 . . ]
-"2460
-[v _LATBbits `VS115 ~T0 @X0 0 e@269 ]
-"22 system.h
-[v _set_leds_top `(v ~T0 @X0 0 ef2`i`i ]
-"21
-[v _set_leds_bottom `(v ~T0 @X0 0 ef1`i ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3951,7 +3929,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3982,11 +3963,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -4147,11 +4128,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 102: volatile long test_timer = 0;
+[; ;constants.h: 102: volatile long save_timer = 0;
 "105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
@@ -5190,72 +5171,4 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;user.c: 250: }
 "250
 [e :UE 498 ]
-}
-"252
-[v _ReadSavedSettings `(v ~T0 @X0 1 ef ]
-{
-[; ;user.c: 252: void ReadSavedSettings(void) {
-[e :U _ReadSavedSettings ]
-[f ]
-[; ;user.c: 254: top_push_state = FLASH_ReadWord(0x1F81);
-"254
-[e = _top_push_state -> ( _FLASH_ReadWord (1 -> -> 8065 `i `ui `i ]
-[; ;user.c: 255: bottom_push_state = FLASH_ReadWord(0x1F82);
-"255
-[e = _bottom_push_state -> ( _FLASH_ReadWord (1 -> -> 8066 `i `ui `i ]
-[; ;user.c: 257: if (top_push_state > 6) {
-"257
-[e $ ! > _top_push_state -> 6 `i 503  ]
-{
-[; ;user.c: 259: top_push_state = 6;
-"259
-[e = _top_push_state -> 6 `i ]
-"260
-}
-[e :U 503 ]
-[; ;user.c: 260: }
-[; ;user.c: 261: if (bottom_push_state > 5) {
-"261
-[e $ ! > _bottom_push_state -> 5 `i 504  ]
-{
-[; ;user.c: 263: bottom_push_state = 1;
-"263
-[e = _bottom_push_state -> 1 `i ]
-"264
-}
-[e :U 504 ]
-[; ;user.c: 264: }
-[; ;user.c: 267: LATGbits.LATG1 = !switchBypass_state;
-"267
-[e = . . _LATGbits 0 1 -> -> ! != -> _switchBypass_state `i -> -> -> 0 `i `uc `i `i `uc ]
-[; ;user.c: 268: LATGbits.LATG2 = switchBypass_state;
-"268
-[e = . . _LATGbits 0 2 _switchBypass_state ]
-[; ;user.c: 269: LATBbits.LATB2 = 0;
-"269
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;user.c: 270: LATBbits.LATB3 = 0;
-"270
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;user.c: 272: LATBbits.LATB4 = 0;
-"272
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;user.c: 273: LATBbits.LATB5 = 0;
-"273
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;user.c: 275: LATBbits.LATB1 = 0;
-"275
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;user.c: 276: LATBbits.LATB0 = 0;
-"276
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;user.c: 279: set_leds_top(top_push_state, 1);
-"279
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;user.c: 280: set_leds_bottom(bottom_push_state);
-"280
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;user.c: 281: }
-"281
-[e :UE 502 ]
 }

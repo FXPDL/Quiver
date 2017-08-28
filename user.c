@@ -248,7 +248,7 @@ void InitializeTaps(void) {
         tap[itap] = 0;
     }
 }
-
+/*
 void ReadSavedSettings(void) {
     //Pull startup conditions from FLASH
     top_push_state = FLASH_ReadWord(0x1F81);
@@ -278,4 +278,4 @@ void ReadSavedSettings(void) {
 
     set_leds_top(top_push_state, 1);
     set_leds_bottom(bottom_push_state);
-}
+}*/

@@ -4949,7 +4949,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4957,7 +4959,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4996,7 +4998,7 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
-volatile long test_timer = 0;
+volatile long save_timer = 0;
 
 
 char presetSaveMode = 0;
@@ -5249,33 +5251,3 @@ tap[itap] = 0;
 }
 }
 
-void ReadSavedSettings(void) {
-
-top_push_state = FLASH_ReadWord(0x1F81);
-bottom_push_state = FLASH_ReadWord(0x1F82);
-
-if (top_push_state > 6) {
-
-top_push_state = 6;
-}
-if (bottom_push_state > 5) {
-
-bottom_push_state = 1;
-}
-
-
-LATGbits.LATG1 = !switchBypass_state;
-LATGbits.LATG2 = switchBypass_state;
-LATBbits.LATB2 = 0;
-LATBbits.LATB3 = 0;
-
-LATBbits.LATB4 = 0;
-LATBbits.LATB5 = 0;
-
-LATBbits.LATB1 = 0;
-LATBbits.LATB0 = 0;
-
-
-set_leds_top(top_push_state, 1);
-set_leds_bottom(bottom_push_state);
-}

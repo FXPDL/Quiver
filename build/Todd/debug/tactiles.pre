@@ -4914,7 +4914,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4922,7 +4924,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4961,6 +4963,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long save_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -4982,6 +4987,7 @@ int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
+int modulationSubdivision;
 
 # 24 "tactiles.h"
 void read_bottom_tactile(void);
@@ -4989,6 +4995,8 @@ void read_top_tactile(void);
 void update_mode(void);
 void update_selectMode(void);
 void setPedalMode(void);
+void InitWaveform(void);
+void InitSubdivision(void);
 
 # 24 "LEDs.h"
 void star_tactiles(uint8_t);
@@ -5003,18 +5011,112 @@ void setPresetDisplay(char);
 void setExpressionDisplay(char);
 void resetRingLEDs(void);
 
-# 15 "tactiles.c"
+# 36 "HEF.h"
+int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+
+# 47
+int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+
+# 57
+uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+
+# 28 "state_manager.h"
+typedef struct {
+char tap;
+unsigned int baseTapTime;
+char bypass;
+char subdivision;
+char waveForm;
+unsigned int volume;
+unsigned int frequency;
+unsigned int symmetry;
+unsigned int depth;
+char pedalMode;
+} PedalState;
+
+typedef struct {
+unsigned int modeBypassSubdivWave;
+unsigned int baseTapTime;
+unsigned int volume;
+unsigned int frequency;
+unsigned char symmetry;
+unsigned char depth;
+
+} PedalStorage;
+
+
+typedef struct {
+unsigned uint8_t tap_A;
+unsigned uint8_t tap_B;
+unsigned uint8_t tap_Aux;
+
+unsigned uint8_t bypass_A;
+unsigned uint8_t bypass_B;
+unsigned uint8_t bypass_Aux;
+} LEDState;
+
+# 76
+void saveState(void);
+
+void initStateManager(void);
+PedalState getCurrentState(void);
+void getCurrentLEDState(void);
+void restoreLEDState(void);
+void updateSwitchBypassState(char);
+int getSwitchBypassState(void);
+void updateSwitchTapState(int);
+int getSwitchTapState(void);
+void updatePedalMode(void);
+char getPedalMode(void);
+
+
+void updateVolume(int);
+int getVolume(void);
+void updateFrequency(int);
+int getFrequency(void);
+void updateSymmetry(int);
+int getSymmetry(void);
+void updateDepth(int);
+int getDepth(void);
+
+
+
+void updateTapTime(void);
+long getTapTime(void);
+void updateSubdivisionState(void);
+int getSubdivisionState(void);
+void updateWaveFormState(void);
+int getWaveFormState(void);
+void savePreset(char);
+PedalState getPreset(char);
+void readPresets(void);
+PedalStorage setStorageState(PedalState);
+
+int GetBitMask(unsigned int, char, char);
+int SetBitMask(int, int, int, int);
+
+# 16 "tactiles.c"
 uint8_t topTactile_pressed = 0;
 uint8_t bottomTactile_pressed = 0;
 
+
+void InitWaveform() {
+bottom_push_state = getWaveFormState();
+if (bottom_push_state < 1 || bottom_push_state > 5) {
+bottom_push_state = 1;
+}
+modulation_changed = 1;
+set_leds_bottom(bottom_push_state);
+}
+
 void read_bottom_tactile(void) {
 
-# 27
+# 38
 if (PORTDbits.RD6 == 0) {
 if (bottomTactile_pressed > 0) {
 bottomTactile_pressed--;
 }
-} else if (bottomTactile_pressed < 25) {
+} else if (bottomTactile_pressed < 25*3) {
 bottomTactile_pressed++;
 }
 
@@ -5026,6 +5128,7 @@ bottom_push_state = 1;
 }
 modulation_changed = 1;
 set_leds_bottom(bottom_push_state);
+updateWaveFormState();
 
 while (PORTDbits.RD6 == 0) {
 }
@@ -5033,14 +5136,23 @@ wait_ms(20);
 }
 }
 
+void InitSubdivision() {
+top_push_state = getSubdivisionState();
+if (top_push_state < 1 || top_push_state > 6) {
+top_push_state = 6;
+}
+set_leds_top(top_push_state, 1);
+mod_time_changed = 1;
+}
+
 void read_top_tactile(void) {
 
-# 60
+# 81
 if (PORTDbits.RD5 == 0) {
 if (topTactile_pressed > 0) {
 topTactile_pressed--;
 }
-} else if (topTactile_pressed < 25) {
+} else if (topTactile_pressed < 25*3) {
 topTactile_pressed++;
 }
 
@@ -5053,6 +5165,7 @@ top_push_state = top_push_state + 1;
 if (top_push_state >= 7) {
 top_push_state = 1;
 }
+updateSubdivisionState();
 set_leds_top(top_push_state, 1);
 mod_time_changed = 1;
 
@@ -5113,6 +5226,7 @@ LATBbits.LATB0 = 0;
 setExpressionDisplay(expressionChannel);
 break;
 }
+updatePedalMode();
 }
 
 void update_selectMode(void) {
@@ -5138,7 +5252,7 @@ expressionChannel = 1;
 setExpressionDisplay(expressionChannel);
 }
 
-# 167
+# 190
 while (PORTDbits.RD7 == 0) {
 }
 }

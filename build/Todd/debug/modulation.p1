@@ -3657,7 +3657,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3688,11 +3691,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3853,66 +3856,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
+-> -> 0 `i `l
+]
+[; ;constants.h: 102: volatile long save_timer = 0;
+"105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 102: char presetSaveMode = 0;
-"103
+[; ;constants.h: 105: char presetSaveMode = 0;
+"106
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 103: char presetChannel = 1;
-"104
+[; ;constants.h: 106: char presetChannel = 1;
+"107
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 104: char expressionChannel = 1;
-"106
+[; ;constants.h: 107: char expressionChannel = 1;
+"109
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: char switchBypass_state = -1;
-"107
+[; ;constants.h: 109: char switchBypass_state = -1;
+"110
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: char switchTap_state = -1;
-"108
+[; ;constants.h: 110: char switchTap_state = -1;
+"111
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: volatile char longTap_state = -1;
-"109
+[; ;constants.h: 111: volatile char longTap_state = -1;
+"112
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 109: volatile char longBypass_state = 0;
-"111
+[; ;constants.h: 112: volatile char longBypass_state = 0;
+"114
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 111: char expSwitchState = -1;
-"113
+[; ;constants.h: 114: char expSwitchState = -1;
+"116
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 113: char presetModeCnst = 1;
-"114
+[; ;constants.h: 116: char presetModeCnst = 1;
+"117
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 114: char expressModeCnst = 2;
-"119
+[; ;constants.h: 117: char expressModeCnst = 2;
+"122
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4042,8 +4051,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"120
+[; ;constants.h: 122: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"123
 [v _cosArray `d ~T0 @X0 -> 0 `x e ]
 [i _cosArray
 :U ..
@@ -4171,13 +4180,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 120: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"122
+[; ;constants.h: 123: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"125
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 122: int symmetry = 180;
+[; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 [; ;modulation.h: 25: void updateModulationArray(void);
 [; ;modulation.h: 26: void calcCosArray(void);
 [; ;modulation.h: 27: int getModulationSubdivision(void);
@@ -4195,8 +4207,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.c: 18: void calcCosArray(void) {
 [e :U _calcCosArray ]
 [f ]
-[; ;modulation.c: 19: for (char iAngle = 0; iAngle < 120; iAngle++) {
 "19
+[v _tmpVal `d ~T0 @X0 1 a ]
+[; ;modulation.c: 19: double tmpVal;
+[; ;modulation.c: 20: for (char iAngle = 0; iAngle < 120; iAngle++) {
+"20
 {
 [v _iAngle `uc ~T0 @X0 1 a ]
 [e = _iAngle -> -> 0 `i `uc ]
@@ -4204,193 +4219,192 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 462  ]
 [e :U 461 ]
 {
-"20
-[v _tmpVal `d ~T0 @X0 1 a ]
-[; ;modulation.c: 20: double tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
-[e = _tmpVal / * -> * -> 3 `i -> _iAngle `i `d .3.14159265358979323846 .180.0 ]
-[; ;modulation.c: 21: tmpVal = cos(tmpVal);
+[; ;modulation.c: 21: tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
 "21
-[e = _tmpVal ( _cos (1 _tmpVal ]
-[; ;modulation.c: 22: cosArray[iAngle] = tmpVal;
+[e = _tmpVal / * -> * -> 3 `i -> _iAngle `i `d .3.14159265358979323846 .180.0 ]
+[; ;modulation.c: 22: tmpVal = cos(tmpVal);
 "22
-[e = *U + &U _cosArray * -> _iAngle `ux -> -> # *U &U _cosArray `ui `ux _tmpVal ]
+[e = _tmpVal ( _cos (1 _tmpVal ]
+[; ;modulation.c: 23: cosArray[iAngle] = tmpVal;
 "23
+[e = *U + &U _cosArray * -> _iAngle `ux -> -> # *U &U _cosArray `ui `ux _tmpVal ]
+"24
 }
-"19
+"20
 [e ++ _iAngle -> -> 1 `i `uc ]
 [e $ < -> _iAngle `i -> 120 `i 461  ]
 [e :U 462 ]
-"23
-}
-[; ;modulation.c: 23: }
-[; ;modulation.c: 24: }
 "24
+}
+[; ;modulation.c: 24: }
+[; ;modulation.c: 25: }
+"25
 [e :UE 460 ]
 }
-"26
+"27
 [v _getModulationSubdivision `(i ~T0 @X0 1 ef ]
 {
-[; ;modulation.c: 26: int getModulationSubdivision(void) {
+[; ;modulation.c: 27: int getModulationSubdivision(void) {
 [e :U _getModulationSubdivision ]
 [f ]
-[; ;modulation.c: 27: if (delay_time >= 2400) {
-"27
+[; ;modulation.c: 28: if (delay_time >= 2400) {
+"28
 [e $ ! >= _delay_time -> -> 2400 `i `l 465  ]
 {
-[; ;modulation.c: 28: return 120;
-"28
-[e ) -> 120 `i ]
-[e $UE 464  ]
+[; ;modulation.c: 29: modulationSubdivision = 120;
 "29
+[e = _modulationSubdivision -> 120 `i ]
+"30
 }
-[; ;modulation.c: 29: } else if (delay_time >= 600) {
+[; ;modulation.c: 30: } else if (delay_time >= 600) {
 [e $U 466  ]
 [e :U 465 ]
 [e $ ! >= _delay_time -> -> 600 `i `l 467  ]
 {
-[; ;modulation.c: 30: return 60;
-"30
-[e ) -> 60 `i ]
-[e $UE 464  ]
+[; ;modulation.c: 31: modulationSubdivision = 60;
 "31
+[e = _modulationSubdivision -> 60 `i ]
+"32
 }
-[; ;modulation.c: 31: } else {
+[; ;modulation.c: 32: } else {
 [e $U 468  ]
 [e :U 467 ]
 {
-[; ;modulation.c: 32: return 30;
-"32
-[e ) -> 30 `i ]
-[e $UE 464  ]
+[; ;modulation.c: 33: modulationSubdivision = 30;
 "33
+[e = _modulationSubdivision -> 30 `i ]
+"34
 }
 [e :U 468 ]
 [e :U 466 ]
-[; ;modulation.c: 33: }
 [; ;modulation.c: 34: }
-"34
+[; ;modulation.c: 35: return modulationSubdivision;
+"35
+[e ) _modulationSubdivision ]
+[e $UE 464  ]
+[; ;modulation.c: 36: }
+"36
 [e :UE 464 ]
 }
-"35
+"37
 [v _getModulationDelayTime `(v ~T0 @X0 1 ef ]
 {
-[; ;modulation.c: 35: void getModulationDelayTime(void) {
+[; ;modulation.c: 37: void getModulationDelayTime(void) {
 [e :U _getModulationDelayTime ]
 [f ]
-[; ;modulation.c: 36: adjust_mod_delay = 0;
-"36
-[e = _adjust_mod_delay -> -> 0 `i `uc ]
-"37
-[v _subDiv `i ~T0 @X0 1 a ]
-[; ;modulation.c: 37: int subDiv = getModulationSubdivision();
-[e = _subDiv ( _getModulationSubdivision ..  ]
-[; ;modulation.c: 38: mod_delay_time = (int)((float)delay_time/(float)subDiv);
+[; ;modulation.c: 38: adjust_mod_delay = 0;
 "38
-[e = _mod_delay_time -> / -> _delay_time `f -> _subDiv `f `i ]
-[; ;modulation.c: 42: }
-"42
+[e = _adjust_mod_delay -> -> 0 `i `uc ]
+[; ;modulation.c: 39: getModulationSubdivision();
+"39
+[e ( _getModulationSubdivision ..  ]
+[; ;modulation.c: 40: mod_delay_time = (int)((float)delay_time/(float)modulationSubdivision);
+"40
+[e = _mod_delay_time -> / -> _delay_time `f -> _modulationSubdivision `f `i ]
+[; ;modulation.c: 44: }
+"44
 [e :UE 469 ]
 }
-"44
+"46
 [v _updateModulationArray `(v ~T0 @X0 1 ef ]
 {
-[; ;modulation.c: 44: void updateModulationArray(void) {
+[; ;modulation.c: 46: void updateModulationArray(void) {
 [e :U _updateModulationArray ]
 [f ]
-"45
+"47
 [v _subDiv `i ~T0 @X0 1 a ]
-[; ;modulation.c: 45: int subDiv = getModulationSubdivision();
+[; ;modulation.c: 47: int subDiv = getModulationSubdivision();
 [e = _subDiv ( _getModulationSubdivision ..  ]
-[; ;modulation.c: 46: if (modArray[120] == bottom_push_state && modArray[121] == symmetry && modArray[122] == subDiv) {
-"46
+[; ;modulation.c: 48: if (modArray[120] == bottom_push_state && modArray[121] == symmetry && modArray[122] == subDiv) {
+"48
 [e $ ! && && == *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state == *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry == *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv 471  ]
 {
-[; ;modulation.c: 48: return;
-"48
+[; ;modulation.c: 50: return;
+"50
 [e $UE 470  ]
-"49
+"51
 }
 [e :U 471 ]
-"51
+"53
 [v _angleFactor `i ~T0 @X0 1 a ]
-[; ;modulation.c: 49: }
-[; ;modulation.c: 51: int angleFactor = 360/subDiv;
+[; ;modulation.c: 51: }
+[; ;modulation.c: 53: int angleFactor = 360/subDiv;
 [e = _angleFactor / -> 360 `i _subDiv ]
-[; ;modulation.c: 52: for (char iAngle = 0; iAngle < subDiv; iAngle++) {
-"52
+[; ;modulation.c: 54: for (char iAngle = 0; iAngle < subDiv; iAngle++) {
+"54
 {
 [v _iAngle `uc ~T0 @X0 1 a ]
 [e = _iAngle -> -> 0 `i `uc ]
 [e $U 475  ]
 [e :U 472 ]
 {
-"53
+"55
 [v _thisAngle `i ~T0 @X0 1 a ]
-[; ;modulation.c: 53: int thisAngle = angleFactor * iAngle;
+[; ;modulation.c: 55: int thisAngle = angleFactor * iAngle;
 [e = _thisAngle * _angleFactor -> _iAngle `i ]
-[; ;modulation.c: 54: switch (bottom_push_state) {
-"54
+[; ;modulation.c: 56: switch (bottom_push_state) {
+"56
 [e $U 477  ]
 {
-[; ;modulation.c: 55: case 1:
-"55
-[e :U 478 ]
-[; ;modulation.c: 56: modArray[iAngle] = modCos(thisAngle, symmetry);
-"56
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modCos (2 , -> _thisAngle `d -> _symmetry `d ]
-[; ;modulation.c: 57: break;
+[; ;modulation.c: 57: case 1:
 "57
-[e $U 476  ]
-[; ;modulation.c: 58: case 2:
+[e :U 478 ]
+[; ;modulation.c: 58: modArray[iAngle] = modCos(thisAngle, symmetry);
 "58
-[e :U 479 ]
-[; ;modulation.c: 59: modArray[iAngle] = modTri(thisAngle, symmetry);
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modCos (2 , -> _thisAngle `d -> _symmetry `d ]
+[; ;modulation.c: 59: break;
 "59
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modTri (2 , -> _thisAngle `d -> _symmetry `d ]
-[; ;modulation.c: 60: break;
+[e $U 476  ]
+[; ;modulation.c: 60: case 2:
 "60
-[e $U 476  ]
-[; ;modulation.c: 61: case 3:
+[e :U 479 ]
+[; ;modulation.c: 61: modArray[iAngle] = modTri(thisAngle, symmetry);
 "61
-[e :U 480 ]
-[; ;modulation.c: 62: modArray[iAngle] = modSquare(thisAngle, symmetry);
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modTri (2 , -> _thisAngle `d -> _symmetry `d ]
+[; ;modulation.c: 62: break;
 "62
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSquare (2 , -> _thisAngle `d -> _symmetry `d ]
-[; ;modulation.c: 63: break;
+[e $U 476  ]
+[; ;modulation.c: 63: case 3:
 "63
-[e $U 476  ]
-[; ;modulation.c: 64: case 4:
+[e :U 480 ]
+[; ;modulation.c: 64: modArray[iAngle] = modSquare(thisAngle, symmetry);
 "64
-[e :U 481 ]
-[; ;modulation.c: 65: modArray[iAngle] = modSawRev(thisAngle, symmetry);
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSquare (2 , -> _thisAngle `d -> _symmetry `d ]
+[; ;modulation.c: 65: break;
 "65
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSawRev (2 , -> _thisAngle `d -> _symmetry `d ]
-[; ;modulation.c: 66: break;
+[e $U 476  ]
+[; ;modulation.c: 66: case 4:
 "66
-[e $U 476  ]
-[; ;modulation.c: 67: case 5:
+[e :U 481 ]
+[; ;modulation.c: 67: modArray[iAngle] = modSawRev(thisAngle, symmetry);
 "67
-[e :U 482 ]
-[; ;modulation.c: 68: modArray[iAngle] = modSaw(thisAngle, symmetry);
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSawRev (2 , -> _thisAngle `d -> _symmetry `d ]
+[; ;modulation.c: 68: break;
 "68
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSaw (2 , -> _thisAngle `d -> _symmetry `d ]
-[; ;modulation.c: 69: break;
+[e $U 476  ]
+[; ;modulation.c: 69: case 5:
 "69
-[e $U 476  ]
-[; ;modulation.c: 70: default:
+[e :U 482 ]
+[; ;modulation.c: 70: modArray[iAngle] = modSaw(thisAngle, symmetry);
 "70
-[e :U 483 ]
-[; ;modulation.c: 71: modArray[iAngle] = 0;
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux ( _modSaw (2 , -> _thisAngle `d -> _symmetry `d ]
+[; ;modulation.c: 71: break;
 "71
-[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux -> 0 `i ]
-[; ;modulation.c: 72: break;
+[e $U 476  ]
+[; ;modulation.c: 72: default:
 "72
-[e $U 476  ]
+[e :U 483 ]
+[; ;modulation.c: 73: modArray[iAngle] = 0;
 "73
-}
-[; ;modulation.c: 73: }
+[e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux -> 0 `i ]
+[; ;modulation.c: 74: break;
+"74
 [e $U 476  ]
-"54
+"75
+}
+[; ;modulation.c: 75: }
+[e $U 476  ]
+"56
 [e :U 477 ]
 [e [\ _bottom_push_state , $ -> 1 `i 478
  , $ -> 2 `i 479
@@ -4398,20 +4412,20 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> 4 `i 481
  , $ -> 5 `i 482
  483 ]
-"73
+"75
 [e :U 476 ]
-"74
+"76
 }
-"52
+"54
 [e ++ _iAngle -> -> 1 `i `uc ]
 [e :U 475 ]
 [e $ < -> _iAngle `i _subDiv 472  ]
 [e :U 473 ]
-"74
+"76
 }
-[; ;modulation.c: 74: }
-[; ;modulation.c: 75: for (char iAngle = subDiv; iAngle < 120; iAngle++) {
-"75
+[; ;modulation.c: 76: }
+[; ;modulation.c: 77: for (char iAngle = subDiv; iAngle < 120; iAngle++) {
+"77
 {
 [v _iAngle `uc ~T0 @X0 1 a ]
 [e = _iAngle -> _subDiv `uc ]
@@ -4419,243 +4433,243 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 485  ]
 [e :U 484 ]
 {
-[; ;modulation.c: 76: modArray[iAngle] = 0 ;
-"76
+[; ;modulation.c: 78: modArray[iAngle] = 0 ;
+"78
 [e = *U + &U _modArray * -> _iAngle `ux -> -> # *U &U _modArray `ui `ux -> 0 `i ]
-"77
+"79
 }
-"75
+"77
 [e ++ _iAngle -> -> 1 `i `uc ]
 [e $ < -> _iAngle `i -> 120 `i 484  ]
 [e :U 485 ]
-"77
-}
-[; ;modulation.c: 77: }
-[; ;modulation.c: 78: modArray[120] = bottom_push_state;
-"78
-[e = *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state ]
-[; ;modulation.c: 79: modArray[121] = symmetry;
 "79
-[e = *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry ]
-[; ;modulation.c: 80: modArray[122] = subDiv;
+}
+[; ;modulation.c: 79: }
+[; ;modulation.c: 80: modArray[120] = bottom_push_state;
 "80
-[e = *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv ]
-[; ;modulation.c: 81: }
+[e = *U + &U _modArray * -> -> -> 120 `i `ui `ux -> -> # *U &U _modArray `ui `ux _bottom_push_state ]
+[; ;modulation.c: 81: modArray[121] = symmetry;
 "81
+[e = *U + &U _modArray * -> -> -> 121 `i `ui `ux -> -> # *U &U _modArray `ui `ux _symmetry ]
+[; ;modulation.c: 82: modArray[122] = subDiv;
+"82
+[e = *U + &U _modArray * -> -> -> 122 `i `ui `ux -> -> # *U &U _modArray `ui `ux _subDiv ]
+[; ;modulation.c: 84: }
+"84
 [e :UE 470 ]
 }
-"83
+"86
 [v _modCos `(i ~T0 @X0 1 ef2`d`d ]
 {
-[; ;modulation.c: 83: int modCos(double angle, double inflection) {
+[; ;modulation.c: 86: int modCos(double angle, double inflection) {
 [e :U _modCos ]
 [v _angle `d ~T0 @X0 1 r1 ]
 [v _inflection `d ~T0 @X0 1 r2 ]
 [f ]
-"84
-[v _period `d ~T0 @X0 1 a ]
-[; ;modulation.c: 84: double period = 1.0;
-[e = _period .1.0 ]
-"85
-[v _shift `d ~T0 @X0 1 a ]
-[; ;modulation.c: 85: double shift = 0.0;
-[e = _shift .0.0 ]
-[; ;modulation.c: 87: if(angle<=inflection) {
 "87
+[v _period `d ~T0 @X0 1 a ]
+[; ;modulation.c: 87: double period = 1.0;
+[e = _period .1.0 ]
+"88
+[v _shift `d ~T0 @X0 1 a ]
+[; ;modulation.c: 88: double shift = 0.0;
+[e = _shift .0.0 ]
+[; ;modulation.c: 90: if(angle<=inflection) {
+"90
 [e $ ! <= _angle _inflection 488  ]
 {
-[; ;modulation.c: 88: period = 180.0/inflection;
-"88
+[; ;modulation.c: 91: period = 180.0/inflection;
+"91
 [e = _period / .180.0 _inflection ]
-"89
+"92
 }
-[; ;modulation.c: 89: } else {
+[; ;modulation.c: 92: } else {
 [e $U 489  ]
 [e :U 488 ]
 {
-[; ;modulation.c: 90: shift = -(360-inflection*2)*(180/(360-inflection));
-"90
-[e = _shift * -U - -> -> 360 `i `d * _inflection -> -> 2 `i `d / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
-[; ;modulation.c: 91: period = 180/(360-inflection);
-"91
-[e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+[; ;modulation.c: 93: shift = -(360-inflection*2)*(180/(360-inflection));
 "93
+[e = _shift * -U - -> -> 360 `i `d * _inflection -> -> 2 `i `d / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+[; ;modulation.c: 94: period = 180/(360-inflection);
+"94
+[e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+"96
 }
 [e :U 489 ]
-"94
+"97
 [v _tmpVal `d ~T0 @X0 1 a ]
-[; ;modulation.c: 93: }
-[; ;modulation.c: 94: double tmpVal = (period*angle-shift) /3;
+[; ;modulation.c: 96: }
+[; ;modulation.c: 97: double tmpVal = (period*angle-shift) /3;
 [e = _tmpVal / - * _period _angle _shift -> -> 3 `i `d ]
-[; ;modulation.c: 95: tmpVal = cosArray[(int)(tmpVal)];
-"95
+[; ;modulation.c: 98: tmpVal = cosArray[(int)(tmpVal)];
+"98
 [e = _tmpVal *U + &U _cosArray * -> -> -> _tmpVal `i `ui `ux -> -> # *U &U _cosArray `ui `ux ]
-[; ;modulation.c: 96: return (int)(-100.0 * tmpVal);
-"96
+[; ;modulation.c: 99: return (int)(-100.0 * tmpVal);
+"99
 [e ) -> * -U .100.0 _tmpVal `i ]
 [e $UE 487  ]
-[; ;modulation.c: 97: }
-"97
+[; ;modulation.c: 100: }
+"100
 [e :UE 487 ]
 }
-"99
+"102
 [v _modTri `(i ~T0 @X0 1 ef2`d`d ]
 {
-[; ;modulation.c: 99: int modTri(double angle, double inflection) {
+[; ;modulation.c: 102: int modTri(double angle, double inflection) {
 [e :U _modTri ]
 [v _angle `d ~T0 @X0 1 r1 ]
 [v _inflection `d ~T0 @X0 1 r2 ]
 [f ]
-"100
-[v _period `d ~T0 @X0 1 a ]
-[; ;modulation.c: 100: double period = 1.0;
-[e = _period .1.0 ]
-"101
-[v _shift `d ~T0 @X0 1 a ]
-[; ;modulation.c: 101: double shift = 0;
-[e = _shift -> -> 0 `i `d ]
-[; ;modulation.c: 103: if(angle<=inflection) {
 "103
+[v _period `d ~T0 @X0 1 a ]
+[; ;modulation.c: 103: double period = 1.0;
+[e = _period .1.0 ]
+"104
+[v _shift `d ~T0 @X0 1 a ]
+[; ;modulation.c: 104: double shift = 0;
+[e = _shift -> -> 0 `i `d ]
+[; ;modulation.c: 106: if(angle<=inflection) {
+"106
 [e $ ! <= _angle _inflection 491  ]
 {
-[; ;modulation.c: 104: period = 180.0/inflection;
-"104
+[; ;modulation.c: 107: period = 180.0/inflection;
+"107
 [e = _period / .180.0 _inflection ]
-"105
+"108
 }
-[; ;modulation.c: 105: } else {
+[; ;modulation.c: 108: } else {
 [e $U 492  ]
 [e :U 491 ]
 {
-[; ;modulation.c: 106: shift = -(360-inflection*2)*(180/(360-inflection));
-"106
-[e = _shift * -U - -> -> 360 `i `d * _inflection -> -> 2 `i `d / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
-[; ;modulation.c: 107: period = 180/(360-inflection);
-"107
-[e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+[; ;modulation.c: 109: shift = -(360-inflection*2)*(180/(360-inflection));
 "109
+[e = _shift * -U - -> -> 360 `i `d * _inflection -> -> 2 `i `d / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+[; ;modulation.c: 110: period = 180/(360-inflection);
+"110
+[e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
+"112
 }
 [e :U 492 ]
-"110
+"113
 [v _tmpVal `d ~T0 @X0 1 a ]
-[; ;modulation.c: 109: }
-[; ;modulation.c: 110: double tmpVal = (period*angle-shift) ;
+[; ;modulation.c: 112: }
+[; ;modulation.c: 113: double tmpVal = (period*angle-shift) ;
 [e = _tmpVal - * _period _angle _shift ]
-[; ;modulation.c: 111: if (tmpVal > 180) {
-"111
+[; ;modulation.c: 114: if (tmpVal > 180) {
+"114
 [e $ ! > _tmpVal -> -> 180 `i `d 493  ]
 {
-[; ;modulation.c: 112: tmpVal = tmpVal - 270.0;
-"112
+[; ;modulation.c: 115: tmpVal = tmpVal - 270.0;
+"115
 [e = _tmpVal - _tmpVal .270.0 ]
-"113
+"116
 }
-[; ;modulation.c: 113: } else {
+[; ;modulation.c: 116: } else {
 [e $U 494  ]
 [e :U 493 ]
 {
-[; ;modulation.c: 114: tmpVal = 90 - tmpVal;
-"114
+[; ;modulation.c: 117: tmpVal = 90 - tmpVal;
+"117
 [e = _tmpVal - -> -> 90 `i `d _tmpVal ]
-"115
+"118
 }
 [e :U 494 ]
-[; ;modulation.c: 115: }
-[; ;modulation.c: 116: tmpVal = tmpVal * -10/9;
-"116
+[; ;modulation.c: 118: }
+[; ;modulation.c: 119: tmpVal = tmpVal * -10/9;
+"119
 [e = _tmpVal / * _tmpVal -> -U -> 10 `i `d -> -> 9 `i `d ]
-[; ;modulation.c: 118: return (int)(tmpVal);
-"118
+[; ;modulation.c: 121: return (int)(tmpVal);
+"121
 [e ) -> _tmpVal `i ]
 [e $UE 490  ]
-[; ;modulation.c: 119: }
-"119
+[; ;modulation.c: 122: }
+"122
 [e :UE 490 ]
 }
-"122
+"125
 [v _modSaw `(i ~T0 @X0 1 ef2`d`d ]
 {
-[; ;modulation.c: 122: int modSaw(double angle, double inflection) {
+[; ;modulation.c: 125: int modSaw(double angle, double inflection) {
 [e :U _modSaw ]
 [v _angle `d ~T0 @X0 1 r1 ]
 [v _inflection `d ~T0 @X0 1 r2 ]
 [f ]
-"123
-[v _period `d ~T0 @X0 1 a ]
-[; ;modulation.c: 123: double period = 1.0;
-[e = _period .1.0 ]
-"124
-[v _shift `d ~T0 @X0 1 a ]
-[; ;modulation.c: 124: double shift = 0;
-[e = _shift -> -> 0 `i `d ]
-[; ;modulation.c: 126: if(angle<=inflection) {
 "126
+[v _period `d ~T0 @X0 1 a ]
+[; ;modulation.c: 126: double period = 1.0;
+[e = _period .1.0 ]
+"127
+[v _shift `d ~T0 @X0 1 a ]
+[; ;modulation.c: 127: double shift = 0;
+[e = _shift -> -> 0 `i `d ]
+[; ;modulation.c: 129: if(angle<=inflection) {
+"129
 [e $ ! <= _angle _inflection 496  ]
 {
-[; ;modulation.c: 127: period = 180.0/inflection;
-"127
+[; ;modulation.c: 130: period = 180.0/inflection;
+"130
 [e = _period / .180.0 _inflection ]
-"128
+"131
 }
-[; ;modulation.c: 128: } else {
+[; ;modulation.c: 131: } else {
 [e $U 497  ]
 [e :U 496 ]
 {
-[; ;modulation.c: 129: shift = -(360-inflection*2)*(180/(360-inflection));
-"129
+[; ;modulation.c: 132: shift = -(360-inflection*2)*(180/(360-inflection));
+"132
 [e = _shift * -U - -> -> 360 `i `d * _inflection -> -> 2 `i `d / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
-[; ;modulation.c: 130: period = 180/(360-inflection);
-"130
+[; ;modulation.c: 133: period = 180/(360-inflection);
+"133
 [e = _period / -> -> 180 `i `d - -> -> 360 `i `d _inflection ]
-"131
+"134
 }
 [e :U 497 ]
-"133
+"136
 [v _mod `i ~T0 @X0 1 a ]
-[; ;modulation.c: 131: }
-[; ;modulation.c: 133: int mod = (int)((period*angle-shift-180)*5/9);
+[; ;modulation.c: 134: }
+[; ;modulation.c: 136: int mod = (int)((period*angle-shift-180)*5/9);
 [e = _mod -> / * - - * _period _angle _shift -> -> 180 `i `d -> -> 5 `i `d -> -> 9 `i `d `i ]
-[; ;modulation.c: 134: return mod;
-"134
+[; ;modulation.c: 137: return mod;
+"137
 [e ) _mod ]
 [e $UE 495  ]
-[; ;modulation.c: 135: }
-"135
+[; ;modulation.c: 138: }
+"138
 [e :UE 495 ]
 }
-"137
+"140
 [v _modSawRev `(i ~T0 @X0 1 ef2`d`d ]
 {
-[; ;modulation.c: 137: int modSawRev(double angle, double inflection) {
+[; ;modulation.c: 140: int modSawRev(double angle, double inflection) {
 [e :U _modSawRev ]
 [v _angle `d ~T0 @X0 1 r1 ]
 [v _inflection `d ~T0 @X0 1 r2 ]
 [f ]
-[; ;modulation.c: 138: return -1 * modSaw(angle, inflection);
-"138
+[; ;modulation.c: 141: return -1 * modSaw(angle, inflection);
+"141
 [e ) * -U -> 1 `i ( _modSaw (2 , _angle _inflection ]
 [e $UE 498  ]
-[; ;modulation.c: 139: }
-"139
+[; ;modulation.c: 142: }
+"142
 [e :UE 498 ]
 }
-"142
+"145
 [v _modSquare `(i ~T0 @X0 1 ef2`d`d ]
 {
-[; ;modulation.c: 142: int modSquare(double angle, double inflection) {
+[; ;modulation.c: 145: int modSquare(double angle, double inflection) {
 [e :U _modSquare ]
 [v _angle `d ~T0 @X0 1 r1 ]
 [v _inflection `d ~T0 @X0 1 r2 ]
 [f ]
-"143
+"146
 [v _tmpVal `i ~T0 @X0 1 a ]
-[; ;modulation.c: 143: int tmpVal = modCos(angle, inflection);
+[; ;modulation.c: 146: int tmpVal = modCos(angle, inflection);
 [e = _tmpVal ( _modCos (2 , _angle _inflection ]
-[; ;modulation.c: 144: return (angle <= inflection) ? -100 : 100;
-"144
+[; ;modulation.c: 147: return (angle <= inflection) ? -100 : 100;
+"147
 [e ) ? <= _angle _inflection : -U -> 100 `i -> 100 `i ]
 [e $UE 499  ]
-[; ;modulation.c: 145: }
-"145
+[; ;modulation.c: 148: }
+"148
 [e :UE 499 ]
 }

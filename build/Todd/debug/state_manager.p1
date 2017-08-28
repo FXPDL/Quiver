@@ -1,7 +1,25 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "28 state_manager.h
-[s S460 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S460 . tap_A tap_B bypass_A bypass_B ]
+[s S460 `uc 1 `ui 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 ]
+[n S460 . tap baseTapTime bypass subdivision waveForm volume frequency symmetry depth pedalMode ]
+"52
+[s S462 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S462 . tap_A tap_B tap_Aux bypass_A bypass_B bypass_Aux ]
+"79
+[v _getCurrentState `(S460 ~T0 @X0 0 ef ]
+"108
+[v _getPreset `(S460 ~T0 @X0 0 ef1`uc ]
+"41
+[s S461 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 ]
+[n S461 . modeBypassSubdivWave baseTapTime volume frequency symmetry depth ]
+"47 HEF.h
+[v _HEF_ByteArrayRead `(c ~T0 @X0 0 ef3`*uc`uc`uc ]
+"113 state_manager.h
+[v _SetBitMask `(i ~T0 @X0 0 ef4`i`i`i`i ]
+"36 HEF.h
+[v _HEF_ByteArrayWrite `(c ~T0 @X0 0 ef3`uc`*uc`uc ]
+"112 state_manager.h
+[v _GetBitMask `(i ~T0 @X0 0 ef3`ui`uc`uc ]
 "2449 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S116 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -3607,19 +3625,73 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;state_manager.h: 28: typedef struct {
-[; ;state_manager.h: 29: unsigned uint8_t tap_A;
-[; ;state_manager.h: 30: unsigned uint8_t tap_B;
-[; ;state_manager.h: 31: unsigned uint8_t bypass_A;
-[; ;state_manager.h: 32: unsigned uint8_t bypass_B;
-[; ;state_manager.h: 33: } LEDState;
-[; ;state_manager.h: 50: void getCurrentLEDState(void);
-[; ;state_manager.h: 51: void restoreLEDState(void);
-[; ;state_manager.h: 52: void updateSwitchBypassState(int);
-[; ;state_manager.h: 53: int getSwitchBypassState(void);
-[; ;state_manager.h: 54: void updateSwitchTapState(int);
-[; ;state_manager.h: 55: int getSwitchTapState(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
+[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
+[; ;HEF.h: 36: int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+[; ;HEF.h: 47: int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+[; ;HEF.h: 57: uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+[; ;state_manager.h: 28: typedef struct {
+[; ;state_manager.h: 29: char tap;
+[; ;state_manager.h: 30: unsigned int baseTapTime;
+[; ;state_manager.h: 31: char bypass;
+[; ;state_manager.h: 32: char subdivision;
+[; ;state_manager.h: 33: char waveForm;
+[; ;state_manager.h: 34: unsigned int volume;
+[; ;state_manager.h: 35: unsigned int frequency;
+[; ;state_manager.h: 36: unsigned int symmetry;
+[; ;state_manager.h: 37: unsigned int depth;
+[; ;state_manager.h: 38: char pedalMode;
+[; ;state_manager.h: 39: } PedalState;
+[; ;state_manager.h: 41: typedef struct {
+[; ;state_manager.h: 42: unsigned int modeBypassSubdivWave;
+[; ;state_manager.h: 43: unsigned int baseTapTime;
+[; ;state_manager.h: 44: unsigned int volume;
+[; ;state_manager.h: 45: unsigned int frequency;
+[; ;state_manager.h: 46: unsigned char symmetry;
+[; ;state_manager.h: 47: unsigned char depth;
+[; ;state_manager.h: 49: } PedalStorage;
+[; ;state_manager.h: 52: typedef struct {
+[; ;state_manager.h: 53: unsigned uint8_t tap_A;
+[; ;state_manager.h: 54: unsigned uint8_t tap_B;
+[; ;state_manager.h: 55: unsigned uint8_t tap_Aux;
+[; ;state_manager.h: 57: unsigned uint8_t bypass_A;
+[; ;state_manager.h: 58: unsigned uint8_t bypass_B;
+[; ;state_manager.h: 59: unsigned uint8_t bypass_Aux;
+[; ;state_manager.h: 60: } LEDState;
+[; ;state_manager.h: 76: void saveState(void);
+[; ;state_manager.h: 78: void initStateManager(void);
+[; ;state_manager.h: 79: PedalState getCurrentState(void);
+[; ;state_manager.h: 80: void getCurrentLEDState(void);
+[; ;state_manager.h: 81: void restoreLEDState(void);
+[; ;state_manager.h: 82: void updateSwitchBypassState(char);
+[; ;state_manager.h: 83: int getSwitchBypassState(void);
+[; ;state_manager.h: 84: void updateSwitchTapState(int);
+[; ;state_manager.h: 85: int getSwitchTapState(void);
+[; ;state_manager.h: 86: void updatePedalMode(void);
+[; ;state_manager.h: 87: char getPedalMode(void);
+[; ;state_manager.h: 90: void updateVolume(int);
+[; ;state_manager.h: 91: int getVolume(void);
+[; ;state_manager.h: 92: void updateFrequency(int);
+[; ;state_manager.h: 93: int getFrequency(void);
+[; ;state_manager.h: 94: void updateSymmetry(int);
+[; ;state_manager.h: 95: int getSymmetry(void);
+[; ;state_manager.h: 96: void updateDepth(int);
+[; ;state_manager.h: 97: int getDepth(void);
+[; ;state_manager.h: 101: void updateTapTime(void);
+[; ;state_manager.h: 102: long getTapTime(void);
+[; ;state_manager.h: 103: void updateSubdivisionState(void);
+[; ;state_manager.h: 104: int getSubdivisionState(void);
+[; ;state_manager.h: 105: void updateWaveFormState(void);
+[; ;state_manager.h: 106: int getWaveFormState(void);
+[; ;state_manager.h: 107: void savePreset(char);
+[; ;state_manager.h: 108: PedalState getPreset(char);
+[; ;state_manager.h: 109: void readPresets(void);
+[; ;state_manager.h: 110: PedalStorage setStorageState(PedalState);
+[; ;state_manager.h: 112: int GetBitMask(unsigned int, char, char);
+[; ;state_manager.h: 113: int SetBitMask(int, int, int, int);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3627,11 +3699,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
-[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3662,11 +3733,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3827,66 +3898,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
+-> -> 0 `i `l
+]
+[; ;constants.h: 102: volatile long save_timer = 0;
+"105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 102: char presetSaveMode = 0;
-"103
+[; ;constants.h: 105: char presetSaveMode = 0;
+"106
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 103: char presetChannel = 1;
-"104
+[; ;constants.h: 106: char presetChannel = 1;
+"107
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 104: char expressionChannel = 1;
-"106
+[; ;constants.h: 107: char expressionChannel = 1;
+"109
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: char switchBypass_state = -1;
-"107
+[; ;constants.h: 109: char switchBypass_state = -1;
+"110
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: char switchTap_state = -1;
-"108
+[; ;constants.h: 110: char switchTap_state = -1;
+"111
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: volatile char longTap_state = -1;
-"109
+[; ;constants.h: 111: volatile char longTap_state = -1;
+"112
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 109: volatile char longBypass_state = 0;
-"111
+[; ;constants.h: 112: volatile char longBypass_state = 0;
+"114
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 111: char expSwitchState = -1;
-"113
+[; ;constants.h: 114: char expSwitchState = -1;
+"116
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 113: char presetModeCnst = 1;
-"114
+[; ;constants.h: 116: char presetModeCnst = 1;
+"117
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 114: char expressModeCnst = 2;
-"119
+[; ;constants.h: 117: char expressModeCnst = 2;
+"122
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4016,8 +4093,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"120
+[; ;constants.h: 122: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"123
 [v _cosArray `d ~T0 @X0 -> 0 `x e ]
 [i _cosArray
 :U ..
@@ -4145,15 +4222,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 120: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"122
+[; ;constants.h: 123: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"125
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 122: int symmetry = 180;
+[; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
 "16 state_manager.c
-[v _ledState `S460 ~T0 @X0 1 e ]
+[v _pedalState `S460 ~T0 @X0 1 e ]
+[i _pedalState
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `ui
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `uc
+..
+..
+]
+[; ;state_manager.c: 16: PedalState pedalState = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+"19
+[v _ledState `S462 ~T0 @X0 1 e ]
 [i _ledState
 :U ..
 :U ..
@@ -4161,101 +4260,842 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 ..
 ..
 ]
-[; ;state_manager.c: 16: LEDState ledState = {0, 0, 0, 0};
-"83
-[v _getCurrentLEDState `(v ~T0 @X0 1 ef ]
+[; ;state_manager.c: 19: LEDState ledState = {0, 0, 0, 0, 0, 0};
+"21
+[v _isStateInitialized `i ~T0 @X0 1 e ]
+[i _isStateInitialized
+-> 0 `i
+]
+[; ;state_manager.c: 21: int isStateInitialized = 0;
+"23
+[v _initStateManager `(v ~T0 @X0 1 ef ]
 {
-[; ;state_manager.c: 83: void getCurrentLEDState(void) {
-[e :U _getCurrentLEDState ]
+[; ;state_manager.c: 23: void initStateManager(void) {
+[e :U _initStateManager ]
 [f ]
-[; ;state_manager.c: 84: ledState.tap_A = LATBbits.LATB4;
-"84
-[e = . _ledState 0 . . _LATBbits 0 4 ]
-[; ;state_manager.c: 85: ledState.bypass_A = LATBbits.LATB2 ;
-"85
-[e = . _ledState 2 . . _LATBbits 0 2 ]
-[; ;state_manager.c: 86: ledState.tap_B = LATBbits.LATB5 ;
-"86
-[e = . _ledState 1 . . _LATBbits 0 5 ]
-[; ;state_manager.c: 87: ledState.bypass_B = LATBbits.LATB3 ;
-"87
-[e = . _ledState 3 . . _LATBbits 0 3 ]
-[; ;state_manager.c: 88: }
-"88
-[e :UE 461 ]
-}
-"89
-[v _restoreLEDState `(v ~T0 @X0 1 ef ]
-{
-[; ;state_manager.c: 89: void restoreLEDState(void) {
-[e :U _restoreLEDState ]
-[f ]
-[; ;state_manager.c: 90: LATBbits.LATB4 = ledState.tap_A;
-"90
-[e = . . _LATBbits 0 4 . _ledState 0 ]
-[; ;state_manager.c: 91: LATBbits.LATB2 = ledState.bypass_A;
-"91
-[e = . . _LATBbits 0 2 . _ledState 2 ]
-[; ;state_manager.c: 92: LATBbits.LATB5 = ledState.tap_B;
-"92
-[e = . . _LATBbits 0 5 . _ledState 1 ]
-[; ;state_manager.c: 93: LATBbits.LATB3 = ledState.bypass_B;
-"93
-[e = . . _LATBbits 0 3 . _ledState 3 ]
-[; ;state_manager.c: 94: }
-"94
-[e :UE 462 ]
-}
-"96
-[v _updateSwitchBypassState `(v ~T0 @X0 1 ef1`i ]
-{
-[; ;state_manager.c: 96: void updateSwitchBypassState(int state) {
-[e :U _updateSwitchBypassState ]
-[v _state `i ~T0 @X0 1 r1 ]
-[f ]
-[; ;state_manager.c: 101: }
-"101
+[; ;state_manager.c: 24: isStateInitialized = 0;
+"24
+[e = _isStateInitialized -> 0 `i ]
+[; ;state_manager.c: 25: getCurrentState();
+"25
+[e ( _getCurrentState ..  ]
+[; ;state_manager.c: 26: }
+"26
 [e :UE 463 ]
 }
-"103
-[v _getSwitchBypassState `(i ~T0 @X0 1 ef ]
+"28
+[v _getCurrentState `(S460 ~T0 @X0 1 ef ]
 {
-[; ;state_manager.c: 103: int getSwitchBypassState() {
-[e :U _getSwitchBypassState ]
+[; ;state_manager.c: 28: PedalState getCurrentState(void) {
+[e :U _getCurrentState ]
 [f ]
-[; ;state_manager.c: 108: return 0;
-"108
-[e ) -> 0 `i ]
+[; ;state_manager.c: 30: pedalState = getPreset(0);
+"30
+[e = _pedalState ( _getPreset (1 -> -> 0 `i `uc ]
+[; ;state_manager.c: 31: isStateInitialized = 1;
+"31
+[e = _isStateInitialized -> 1 `i ]
+[; ;state_manager.c: 32: return pedalState;
+"32
+[e ) _pedalState ]
 [e $UE 464  ]
-[; ;state_manager.c: 110: }
-"110
+[; ;state_manager.c: 33: }
+"33
 [e :UE 464 ]
 }
-"113
+"88
+[v _savePreset `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;state_manager.c: 88: void savePreset(char presetChannel) {
+[e :U _savePreset ]
+[v _presetChannel `uc ~T0 @X0 1 r1 ]
+[f ]
+"94
+[v _r `uc ~T0 @X0 1 a ]
+"95
+[v _presets `S461 ~T0 @X0 -> 3 `i a ]
+"97
+[v _bankID `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 94: uint8_t r;
+[; ;state_manager.c: 95: PedalStorage presets[3];
+[; ;state_manager.c: 97: char bankID = (char) (presetChannel / 3);
+[e = _bankID -> / -> _presetChannel `i -> 3 `i `uc ]
+"98
+[v _bankChannel `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 98: char bankChannel = (char)(presetChannel - (bankID * 3));
+[e = _bankChannel -> - -> _presetChannel `i * -> _bankID `i -> 3 `i `uc ]
+[; ;state_manager.c: 100: r = HEF_ByteArrayRead((void *) presets, bankID, sizeof (presets));
+"100
+[e = _r -> ( _HEF_ByteArrayRead (3 , , -> -> &U _presets `*v `*uc _bankID -> -> # _presets `ui `uc `uc ]
+[; ;state_manager.c: 103: presets[bankChannel].modeBypassSubdivWave = SetBitMask(0, pedalState.pedalMode, 0, 4);
+"103
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> ( _SetBitMask (4 , , , -> 0 `i -> . _pedalState 9 `i -> 0 `i -> 4 `i `ui ]
+[; ;state_manager.c: 104: presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.bypass, 1, 4);
+"104
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> ( _SetBitMask (4 , , , -> . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 `i -> . _pedalState 2 `i -> 1 `i -> 4 `i `ui ]
+[; ;state_manager.c: 105: presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.subdivision, 2, 4);
+"105
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> ( _SetBitMask (4 , , , -> . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 `i -> . _pedalState 3 `i -> 2 `i -> 4 `i `ui ]
+[; ;state_manager.c: 106: presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.waveForm, 3, 4);
+"106
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> ( _SetBitMask (4 , , , -> . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 `i -> . _pedalState 4 `i -> 3 `i -> 4 `i `ui ]
+[; ;state_manager.c: 108: presets[bankChannel].baseTapTime = pedalState.baseTapTime;
+"108
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 1 . _pedalState 1 ]
+[; ;state_manager.c: 110: presets[bankChannel].volume = pedalState.volume;
+"110
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 2 . _pedalState 5 ]
+[; ;state_manager.c: 111: presets[bankChannel].frequency = pedalState.frequency;
+"111
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 3 . _pedalState 6 ]
+"119
+[v _symm `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 119: unsigned char symm = (unsigned char)(pedalState.symmetry/4);
+[e = _symm -> / . _pedalState 7 -> -> 4 `i `ui `uc ]
+"120
+[v _dep `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 120: unsigned char dep = (unsigned char)(pedalState.depth/4);
+[e = _dep -> / . _pedalState 8 -> -> 4 `i `ui `uc ]
+[; ;state_manager.c: 121: presets[bankChannel].symmetry = symm;
+"121
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 4 _symm ]
+[; ;state_manager.c: 122: presets[bankChannel].depth = dep;
+"122
+[e = . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 5 _dep ]
+[; ;state_manager.c: 124: HEF_ByteArrayWrite(bankID, (void *) &presets, sizeof (presets));
+"124
+[e ( _HEF_ByteArrayWrite (3 , , _bankID -> -> &U _presets `*v `*uc -> -> # _presets `ui `uc ]
+[; ;state_manager.c: 126: }
+"126
+[e :UE 465 ]
+}
+"129
+[v _saveState `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 129: void saveState(void) {
+[e :U _saveState ]
+[f ]
+[; ;state_manager.c: 130: if (isStateInitialized) {
+"130
+[e $ ! != _isStateInitialized -> 0 `i 467  ]
+{
+[; ;state_manager.c: 132: savePreset(0);
+"132
+[e ( _savePreset (1 -> -> 0 `i `uc ]
+"133
+}
+[e :U 467 ]
+[; ;state_manager.c: 133: }
+[; ;state_manager.c: 136: }
+"136
+[e :UE 466 ]
+}
+"139
+[v _getPreset `(S460 ~T0 @X0 1 ef1`uc ]
+{
+[; ;state_manager.c: 139: PedalState getPreset(char presetChannel) {
+[e :U _getPreset ]
+[v _presetChannel `uc ~T0 @X0 1 r1 ]
+[f ]
+"140
+[v _presets `S461 ~T0 @X0 -> 3 `i a ]
+"141
+[v _r `uc ~T0 @X0 1 a ]
+"143
+[v _bankID `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 140: PedalStorage presets[3];
+[; ;state_manager.c: 141: uint8_t r;
+[; ;state_manager.c: 143: char bankID = presetChannel / 3;
+[e = _bankID -> / -> _presetChannel `i -> 3 `i `uc ]
+"144
+[v _bankChannel `uc ~T0 @X0 1 a ]
+[; ;state_manager.c: 144: char bankChannel = presetChannel - (bankID * 3);
+[e = _bankChannel -> - -> _presetChannel `i * -> _bankID `i -> 3 `i `uc ]
+[; ;state_manager.c: 147: r = HEF_ByteArrayRead((void *) &presets, bankID, sizeof (presets));
+"147
+[e = _r -> ( _HEF_ByteArrayRead (3 , , -> -> &U _presets `*v `*uc _bankID -> -> # _presets `ui `uc `uc ]
+"149
+[v _pedalPreset `S460 ~T0 @X0 1 a ]
+[; ;state_manager.c: 149: PedalState pedalPreset;
+[; ;state_manager.c: 151: pedalPreset.pedalMode = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 0, 4);
+"151
+[e = . _pedalPreset 9 -> ( _GetBitMask (3 , , . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> -> 0 `i `uc -> -> 4 `i `uc `uc ]
+[; ;state_manager.c: 152: pedalPreset.bypass = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 1, 4);
+"152
+[e = . _pedalPreset 2 -> ( _GetBitMask (3 , , . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> -> 1 `i `uc -> -> 4 `i `uc `uc ]
+[; ;state_manager.c: 153: pedalPreset.subdivision = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 2, 4);
+"153
+[e = . _pedalPreset 3 -> ( _GetBitMask (3 , , . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> -> 2 `i `uc -> -> 4 `i `uc `uc ]
+[; ;state_manager.c: 154: pedalPreset.waveForm = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 3, 4);
+"154
+[e = . _pedalPreset 4 -> ( _GetBitMask (3 , , . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 0 -> -> 3 `i `uc -> -> 4 `i `uc `uc ]
+[; ;state_manager.c: 156: pedalPreset.baseTapTime = presets[bankChannel].baseTapTime;
+"156
+[e = . _pedalPreset 1 . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 1 ]
+[; ;state_manager.c: 158: pedalPreset.volume = presets[bankChannel].volume;
+"158
+[e = . _pedalPreset 5 . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 2 ]
+[; ;state_manager.c: 159: pedalPreset.frequency = presets[bankChannel].frequency;
+"159
+[e = . _pedalPreset 6 . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 3 ]
+[; ;state_manager.c: 161: pedalPreset.symmetry = (int)presets[bankChannel].symmetry * 4;
+"161
+[e = . _pedalPreset 7 -> * -> . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 4 `i -> 4 `i `ui ]
+[; ;state_manager.c: 163: pedalPreset.depth = (int)presets[bankChannel].depth * 4;
+"163
+[e = . _pedalPreset 8 -> * -> . *U + &U _presets * -> _bankChannel `ux -> -> # *U &U _presets `ui `ux 5 `i -> 4 `i `ui ]
+[; ;state_manager.c: 172: if (pedalPreset.tap != 1) {
+"172
+[e $ ! != -> . _pedalPreset 0 `i -> 1 `i 469  ]
+{
+[; ;state_manager.c: 173: pedalPreset.tap = 0;
+"173
+[e = . _pedalPreset 0 -> -> 0 `i `uc ]
+"174
+}
+[e :U 469 ]
+[; ;state_manager.c: 174: }
+[; ;state_manager.c: 175: if (pedalPreset.bypass != 1) {
+"175
+[e $ ! != -> . _pedalPreset 2 `i -> 1 `i 470  ]
+{
+[; ;state_manager.c: 176: pedalPreset.bypass = 0;
+"176
+[e = . _pedalPreset 2 -> -> 0 `i `uc ]
+"177
+}
+[e :U 470 ]
+[; ;state_manager.c: 177: }
+[; ;state_manager.c: 179: if (pedalPreset.subdivision < 0 || pedalPreset.subdivision > 6) {
+"179
+[e $ ! || < -> . _pedalPreset 3 `i -> 0 `i > -> . _pedalPreset 3 `i -> 6 `i 471  ]
+{
+[; ;state_manager.c: 180: pedalPreset.subdivision = 6;
+"180
+[e = . _pedalPreset 3 -> -> 6 `i `uc ]
+"181
+}
+[e :U 471 ]
+[; ;state_manager.c: 181: }
+[; ;state_manager.c: 183: if (pedalPreset.waveForm < 1 || pedalPreset.waveForm > 5) {
+"183
+[e $ ! || < -> . _pedalPreset 4 `i -> 1 `i > -> . _pedalPreset 4 `i -> 5 `i 472  ]
+{
+[; ;state_manager.c: 184: pedalPreset.waveForm = 1;
+"184
+[e = . _pedalPreset 4 -> -> 1 `i `uc ]
+"185
+}
+[e :U 472 ]
+[; ;state_manager.c: 185: }
+[; ;state_manager.c: 187: if (pedalPreset.volume < 1 || pedalPreset.volume > 1023) {
+"187
+[e $ ! || < . _pedalPreset 5 -> -> 1 `i `ui > . _pedalPreset 5 -> -> 1023 `i `ui 473  ]
+{
+[; ;state_manager.c: 188: pedalPreset.volume = 1000;
+"188
+[e = . _pedalPreset 5 -> -> 1000 `i `ui ]
+"189
+}
+[e :U 473 ]
+[; ;state_manager.c: 189: }
+[; ;state_manager.c: 191: if (pedalPreset.frequency < 1 || pedalPreset.frequency > 1023) {
+"191
+[e $ ! || < . _pedalPreset 6 -> -> 1 `i `ui > . _pedalPreset 6 -> -> 1023 `i `ui 474  ]
+{
+[; ;state_manager.c: 192: pedalPreset.frequency = 1000;
+"192
+[e = . _pedalPreset 6 -> -> 1000 `i `ui ]
+"193
+}
+[e :U 474 ]
+[; ;state_manager.c: 193: }
+[; ;state_manager.c: 195: if (pedalPreset.symmetry < 1 || pedalPreset.symmetry > 1023) {
+"195
+[e $ ! || < . _pedalPreset 7 -> -> 1 `i `ui > . _pedalPreset 7 -> -> 1023 `i `ui 475  ]
+{
+[; ;state_manager.c: 196: pedalPreset.symmetry = 1000;
+"196
+[e = . _pedalPreset 7 -> -> 1000 `i `ui ]
+"197
+}
+[e :U 475 ]
+[; ;state_manager.c: 197: }
+[; ;state_manager.c: 199: if (pedalPreset.depth < 1 || pedalPreset.depth > 1023) {
+"199
+[e $ ! || < . _pedalPreset 8 -> -> 1 `i `ui > . _pedalPreset 8 -> -> 1023 `i `ui 476  ]
+{
+[; ;state_manager.c: 200: pedalPreset.depth = 1000;
+"200
+[e = . _pedalPreset 8 -> -> 1000 `i `ui ]
+"201
+}
+[e :U 476 ]
+[; ;state_manager.c: 201: }
+[; ;state_manager.c: 204: return pedalPreset;
+"204
+[e ) _pedalPreset ]
+[e $UE 468  ]
+[; ;state_manager.c: 205: }
+"205
+[e :UE 468 ]
+}
+"208
+[v _getCurrentLEDState `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 208: void getCurrentLEDState(void) {
+[e :U _getCurrentLEDState ]
+[f ]
+[; ;state_manager.c: 209: ledState.tap_A = LATBbits.LATB4;
+"209
+[e = . _ledState 0 . . _LATBbits 0 4 ]
+[; ;state_manager.c: 210: ledState.bypass_A = LATBbits.LATB2 ;
+"210
+[e = . _ledState 3 . . _LATBbits 0 2 ]
+[; ;state_manager.c: 211: ledState.tap_B = LATBbits.LATB5 ;
+"211
+[e = . _ledState 1 . . _LATBbits 0 5 ]
+[; ;state_manager.c: 212: ledState.bypass_B = LATBbits.LATB3 ;
+"212
+[e = . _ledState 4 . . _LATBbits 0 3 ]
+[; ;state_manager.c: 213: ledState.tap_Aux = LATBbits.LATB0;
+"213
+[e = . _ledState 2 . . _LATBbits 0 0 ]
+[; ;state_manager.c: 214: ledState.bypass_Aux = LATBbits.LATB1 ;
+"214
+[e = . _ledState 5 . . _LATBbits 0 1 ]
+[; ;state_manager.c: 215: }
+"215
+[e :UE 477 ]
+}
+"216
+[v _restoreLEDState `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 216: void restoreLEDState(void) {
+[e :U _restoreLEDState ]
+[f ]
+[; ;state_manager.c: 217: LATBbits.LATB4 = ledState.tap_A;
+"217
+[e = . . _LATBbits 0 4 . _ledState 0 ]
+[; ;state_manager.c: 218: LATBbits.LATB2 = ledState.bypass_A;
+"218
+[e = . . _LATBbits 0 2 . _ledState 3 ]
+[; ;state_manager.c: 219: LATBbits.LATB5 = ledState.tap_B;
+"219
+[e = . . _LATBbits 0 5 . _ledState 1 ]
+[; ;state_manager.c: 220: LATBbits.LATB3 = ledState.bypass_B;
+"220
+[e = . . _LATBbits 0 3 . _ledState 4 ]
+[; ;state_manager.c: 221: LATBbits.LATB0 = ledState.tap_Aux;
+"221
+[e = . . _LATBbits 0 0 . _ledState 2 ]
+[; ;state_manager.c: 222: LATBbits.LATB1 = ledState.bypass_Aux;
+"222
+[e = . . _LATBbits 0 1 . _ledState 5 ]
+[; ;state_manager.c: 223: }
+"223
+[e :UE 478 ]
+}
+"225
+[v _updateSwitchBypassState `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;state_manager.c: 225: void updateSwitchBypassState(char state) {
+[e :U _updateSwitchBypassState ]
+[v _state `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;state_manager.c: 226: if (state != 1) {state = 0;}
+"226
+[e $ ! != -> _state `i -> 1 `i 480  ]
+{
+[e = _state -> -> 0 `i `uc ]
+}
+[e :U 480 ]
+[; ;state_manager.c: 228: pedalState.bypass = state;
+"228
+[e = . _pedalState 2 _state ]
+[; ;state_manager.c: 230: }
+"230
+[e :UE 479 ]
+}
+"232
+[v _getSwitchBypassState `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 232: int getSwitchBypassState() {
+[e :U _getSwitchBypassState ]
+[f ]
+[; ;state_manager.c: 233: if (isStateInitialized != 1) {
+"233
+[e $ ! != _isStateInitialized -> 1 `i 482  ]
+{
+[; ;state_manager.c: 234: initStateManager();
+"234
+[e ( _initStateManager ..  ]
+"235
+}
+[e :U 482 ]
+[; ;state_manager.c: 235: }
+[; ;state_manager.c: 236: return pedalState.bypass;
+"236
+[e ) -> . _pedalState 2 `i ]
+[e $UE 481  ]
+[; ;state_manager.c: 237: }
+"237
+[e :UE 481 ]
+}
+"240
+[v _updatePedalMode `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 240: void updatePedalMode() {
+[e :U _updatePedalMode ]
+[f ]
+[; ;state_manager.c: 241: pedalState.pedalMode = mode2_state;
+"241
+[e = . _pedalState 9 _mode2_state ]
+[; ;state_manager.c: 243: }
+"243
+[e :UE 483 ]
+}
+"245
+[v _getPedalMode `(uc ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 245: char getPedalMode() {
+[e :U _getPedalMode ]
+[f ]
+[; ;state_manager.c: 246: if (isStateInitialized != 1) {
+"246
+[e $ ! != _isStateInitialized -> 1 `i 485  ]
+{
+[; ;state_manager.c: 247: initStateManager();
+"247
+[e ( _initStateManager ..  ]
+"248
+}
+[e :U 485 ]
+[; ;state_manager.c: 248: }
+[; ;state_manager.c: 249: return pedalState.pedalMode;
+"249
+[e ) . _pedalState 9 ]
+[e $UE 484  ]
+[; ;state_manager.c: 250: }
+"250
+[e :UE 484 ]
+}
+"253
+[v _updateVolume `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;state_manager.c: 253: void updateVolume(int currentValue) {
+[e :U _updateVolume ]
+[v _currentValue `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;state_manager.c: 254: pedalState.volume = currentValue;
+"254
+[e = . _pedalState 5 -> _currentValue `ui ]
+[; ;state_manager.c: 257: }
+"257
+[e :UE 486 ]
+}
+"259
+[v _getVolume `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 259: int getVolume() {
+[e :U _getVolume ]
+[f ]
+[; ;state_manager.c: 260: if (isStateInitialized != 1) {
+"260
+[e $ ! != _isStateInitialized -> 1 `i 488  ]
+{
+[; ;state_manager.c: 261: initStateManager();
+"261
+[e ( _initStateManager ..  ]
+"262
+}
+[e :U 488 ]
+[; ;state_manager.c: 262: }
+[; ;state_manager.c: 263: return pedalState.volume;
+"263
+[e ) -> . _pedalState 5 `i ]
+[e $UE 487  ]
+[; ;state_manager.c: 264: }
+"264
+[e :UE 487 ]
+}
+"266
+[v _updateFrequency `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;state_manager.c: 266: void updateFrequency(int currentValue) {
+[e :U _updateFrequency ]
+[v _currentValue `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;state_manager.c: 267: pedalState.frequency = currentValue;
+"267
+[e = . _pedalState 6 -> _currentValue `ui ]
+[; ;state_manager.c: 271: }
+"271
+[e :UE 489 ]
+}
+"273
+[v _getFrequency `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 273: int getFrequency() {
+[e :U _getFrequency ]
+[f ]
+[; ;state_manager.c: 274: if (isStateInitialized != 1) {
+"274
+[e $ ! != _isStateInitialized -> 1 `i 491  ]
+{
+[; ;state_manager.c: 275: initStateManager();
+"275
+[e ( _initStateManager ..  ]
+"276
+}
+[e :U 491 ]
+[; ;state_manager.c: 276: }
+[; ;state_manager.c: 277: return pedalState.frequency;
+"277
+[e ) -> . _pedalState 6 `i ]
+[e $UE 490  ]
+[; ;state_manager.c: 278: }
+"278
+[e :UE 490 ]
+}
+"280
+[v _updateSymmetry `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;state_manager.c: 280: void updateSymmetry(int currentValue) {
+[e :U _updateSymmetry ]
+[v _currentValue `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;state_manager.c: 281: pedalState.symmetry = currentValue;
+"281
+[e = . _pedalState 7 -> _currentValue `ui ]
+[; ;state_manager.c: 283: }
+"283
+[e :UE 492 ]
+}
+"285
+[v _getSymmetry `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 285: int getSymmetry() {
+[e :U _getSymmetry ]
+[f ]
+[; ;state_manager.c: 286: if (isStateInitialized != 1) {
+"286
+[e $ ! != _isStateInitialized -> 1 `i 494  ]
+{
+[; ;state_manager.c: 287: initStateManager();
+"287
+[e ( _initStateManager ..  ]
+"288
+}
+[e :U 494 ]
+[; ;state_manager.c: 288: }
+[; ;state_manager.c: 289: if (pedalState.symmetry < 1 || pedalState.symmetry > 1023) {
+"289
+[e $ ! || < . _pedalState 7 -> -> 1 `i `ui > . _pedalState 7 -> -> 1023 `i `ui 495  ]
+{
+[; ;state_manager.c: 290: pedalState.symmetry = 1023;
+"290
+[e = . _pedalState 7 -> -> 1023 `i `ui ]
+"291
+}
+[e :U 495 ]
+[; ;state_manager.c: 291: }
+[; ;state_manager.c: 293: return pedalState.symmetry;
+"293
+[e ) -> . _pedalState 7 `i ]
+[e $UE 493  ]
+[; ;state_manager.c: 294: }
+"294
+[e :UE 493 ]
+}
+"297
+[v _updateDepth `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;state_manager.c: 297: void updateDepth(int currentValue) {
+[e :U _updateDepth ]
+[v _currentValue `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;state_manager.c: 298: pedalState.depth = currentValue;
+"298
+[e = . _pedalState 8 -> _currentValue `ui ]
+[; ;state_manager.c: 302: }
+"302
+[e :UE 496 ]
+}
+"304
+[v _getDepth `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 304: int getDepth() {
+[e :U _getDepth ]
+[f ]
+[; ;state_manager.c: 305: if (isStateInitialized != 1) {
+"305
+[e $ ! != _isStateInitialized -> 1 `i 498  ]
+{
+[; ;state_manager.c: 306: initStateManager();
+"306
+[e ( _initStateManager ..  ]
+"307
+}
+[e :U 498 ]
+[; ;state_manager.c: 307: }
+[; ;state_manager.c: 308: return pedalState.depth;
+"308
+[e ) -> . _pedalState 8 `i ]
+[e $UE 497  ]
+[; ;state_manager.c: 309: }
+"309
+[e :UE 497 ]
+}
+"311
+[v _updateTapTime `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 311: void updateTapTime() {
+[e :U _updateTapTime ]
+[f ]
+[; ;state_manager.c: 312: pedalState.baseTapTime = baseline_mod_time;
+"312
+[e = . _pedalState 1 -> _baseline_mod_time `ui ]
+[; ;state_manager.c: 314: }
+"314
+[e :UE 499 ]
+}
+"316
+[v _getTapTime `(l ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 316: long getTapTime() {
+[e :U _getTapTime ]
+[f ]
+[; ;state_manager.c: 317: if (isStateInitialized != 1) {
+"317
+[e $ ! != _isStateInitialized -> 1 `i 501  ]
+{
+[; ;state_manager.c: 318: initStateManager();
+"318
+[e ( _initStateManager ..  ]
+"319
+}
+[e :U 501 ]
+[; ;state_manager.c: 319: }
+[; ;state_manager.c: 321: if (pedalState.baseTapTime < 1 || pedalState.baseTapTime > 3000) {
+"321
+[e $ ! || < . _pedalState 1 -> -> 1 `i `ui > . _pedalState 1 -> -> 3000 `i `ui 502  ]
+{
+[; ;state_manager.c: 322: pedalState.baseTapTime = 3000;
+"322
+[e = . _pedalState 1 -> -> 3000 `i `ui ]
+"324
+}
+[e :U 502 ]
+[; ;state_manager.c: 324: }
+[; ;state_manager.c: 326: return pedalState.baseTapTime;
+"326
+[e ) -> . _pedalState 1 `l ]
+[e $UE 500  ]
+[; ;state_manager.c: 328: }
+"328
+[e :UE 500 ]
+}
+"330
+[v _updateSubdivisionState `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 330: void updateSubdivisionState() {
+[e :U _updateSubdivisionState ]
+[f ]
+[; ;state_manager.c: 331: pedalState.subdivision = top_push_state;
+"331
+[e = . _pedalState 3 -> _top_push_state `uc ]
+[; ;state_manager.c: 333: }
+"333
+[e :UE 503 ]
+}
+"335
+[v _getSubdivisionState `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 335: int getSubdivisionState() {
+[e :U _getSubdivisionState ]
+[f ]
+[; ;state_manager.c: 336: if (isStateInitialized != 1) {
+"336
+[e $ ! != _isStateInitialized -> 1 `i 505  ]
+{
+[; ;state_manager.c: 337: initStateManager();
+"337
+[e ( _initStateManager ..  ]
+"338
+}
+[e :U 505 ]
+[; ;state_manager.c: 338: }
+[; ;state_manager.c: 339: return pedalState.subdivision;
+"339
+[e ) -> . _pedalState 3 `i ]
+[e $UE 504  ]
+[; ;state_manager.c: 341: }
+"341
+[e :UE 504 ]
+}
+"343
+[v _updateWaveFormState `(v ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 343: void updateWaveFormState() {
+[e :U _updateWaveFormState ]
+[f ]
+[; ;state_manager.c: 344: pedalState.waveForm = bottom_push_state;
+"344
+[e = . _pedalState 4 -> _bottom_push_state `uc ]
+[; ;state_manager.c: 346: }
+"346
+[e :UE 506 ]
+}
+"348
+[v _getWaveFormState `(i ~T0 @X0 1 ef ]
+{
+[; ;state_manager.c: 348: int getWaveFormState() {
+[e :U _getWaveFormState ]
+[f ]
+[; ;state_manager.c: 349: if (isStateInitialized != 1) {
+"349
+[e $ ! != _isStateInitialized -> 1 `i 508  ]
+{
+[; ;state_manager.c: 350: initStateManager();
+"350
+[e ( _initStateManager ..  ]
+"351
+}
+[e :U 508 ]
+[; ;state_manager.c: 351: }
+[; ;state_manager.c: 352: return pedalState.waveForm;
+"352
+[e ) -> . _pedalState 4 `i ]
+[e $UE 507  ]
+[; ;state_manager.c: 354: }
+"354
+[e :UE 507 ]
+}
+"355
 [v _updateSwitchTapState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;state_manager.c: 113: void updateSwitchTapState(int state) {
+[; ;state_manager.c: 355: void updateSwitchTapState(int state) {
 [e :U _updateSwitchTapState ]
 [v _state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;state_manager.c: 118: }
-"118
-[e :UE 465 ]
+[; ;state_manager.c: 356: if (state != 1) {state = 0;}
+"356
+[e $ ! != _state -> 1 `i 510  ]
+{
+[e = _state -> 0 `i ]
 }
-"120
+[e :U 510 ]
+[; ;state_manager.c: 358: pedalState.tap = state;
+"358
+[e = . _pedalState 0 -> _state `uc ]
+[; ;state_manager.c: 359: saveState();
+"359
+[e ( _saveState ..  ]
+[; ;state_manager.c: 360: }
+"360
+[e :UE 509 ]
+}
+"362
 [v _getSwitchTapState `(i ~T0 @X0 1 ef ]
 {
-[; ;state_manager.c: 120: int getSwitchTapState() {
+[; ;state_manager.c: 362: int getSwitchTapState() {
 [e :U _getSwitchTapState ]
 [f ]
-[; ;state_manager.c: 125: return 0;
-"125
-[e ) -> 0 `i ]
-[e $UE 466  ]
-[; ;state_manager.c: 127: }
-"127
-[e :UE 466 ]
+[; ;state_manager.c: 363: if (isStateInitialized != 1) {
+"363
+[e $ ! != _isStateInitialized -> 1 `i 512  ]
+{
+[; ;state_manager.c: 364: initStateManager();
+"364
+[e ( _initStateManager ..  ]
+"365
+}
+[e :U 512 ]
+[; ;state_manager.c: 365: }
+[; ;state_manager.c: 366: return pedalState.tap;
+"366
+[e ) -> . _pedalState 0 `i ]
+[e $UE 511  ]
+[; ;state_manager.c: 367: }
+"367
+[e :UE 511 ]
+}
+"380
+[v _SetBitMask `(i ~T0 @X0 1 ef4`i`i`i`i ]
+{
+[; ;state_manager.c: 380: int SetBitMask(int storage, int value, int index, int shift) {
+[e :U _SetBitMask ]
+[v _storage `i ~T0 @X0 1 r1 ]
+[v _value `i ~T0 @X0 1 r2 ]
+[v _index `i ~T0 @X0 1 r3 ]
+[v _shift `i ~T0 @X0 1 r4 ]
+[f ]
+"381
+[v _shiftCount `i ~T0 @X0 1 a ]
+[; ;state_manager.c: 381: int shiftCount = index * shift;
+[e = _shiftCount * _index _shift ]
+"382
+[v _mask `i ~T0 @X0 1 a ]
+[; ;state_manager.c: 382: int mask = 0x0f << shiftCount;
+[e = _mask << -> 15 `i _shiftCount ]
+[; ;state_manager.c: 383: if (shift == 8) {
+"383
+[e $ ! == _shift -> 8 `i 514  ]
+{
+[; ;state_manager.c: 384: mask = 0xff << shiftCount;
+"384
+[e = _mask << -> 255 `i _shiftCount ]
+"385
+}
+[e :U 514 ]
+[; ;state_manager.c: 385: }
+[; ;state_manager.c: 386: return (storage & ~mask) | (value << shiftCount);
+"386
+[e ) | & _storage ~ _mask << _value _shiftCount ]
+[e $UE 513  ]
+[; ;state_manager.c: 387: }
+"387
+[e :UE 513 ]
+}
+"390
+[v _GetBitMask `(i ~T0 @X0 1 ef3`ui`uc`uc ]
+{
+[; ;state_manager.c: 390: int GetBitMask(unsigned int storage, char index, char shift) {
+[e :U _GetBitMask ]
+[v _storage `ui ~T0 @X0 1 r1 ]
+[v _index `uc ~T0 @X0 1 r2 ]
+[v _shift `uc ~T0 @X0 1 r3 ]
+[f ]
+"391
+[v _shiftCount `i ~T0 @X0 1 a ]
+[; ;state_manager.c: 391: int shiftCount = index * shift;
+[e = _shiftCount * -> _index `i -> _shift `i ]
+"392
+[v _mask `i ~T0 @X0 1 a ]
+[; ;state_manager.c: 392: int mask = 0x0f << shiftCount;
+[e = _mask << -> 15 `i _shiftCount ]
+[; ;state_manager.c: 393: if (shift == 8) {
+"393
+[e $ ! == -> _shift `i -> 8 `i 516  ]
+{
+[; ;state_manager.c: 394: mask = 0xff << shiftCount;
+"394
+[e = _mask << -> 255 `i _shiftCount ]
+"395
+}
+[e :U 516 ]
+[; ;state_manager.c: 395: }
+[; ;state_manager.c: 397: return (storage & mask) >> shiftCount;
+"397
+[e ) -> >> & _storage -> _mask `ui _shiftCount `i ]
+[e $UE 515  ]
+[; ;state_manager.c: 398: }
+"398
+[e :UE 515 ]
 }

@@ -16,10 +16,10 @@
 #include "SwitchBypass.h"
                        
 
-uint8_t currentBypassState = -1;
-int switchBypass_pressed = 0;  
-int switchBypass_up = 1;  
-int switchBypass_toggle = 0;
+signed char currentBypassState = -1;
+char switchBypass_pressed = 0;  
+char switchBypass_up = 1;  
+char switchBypass_toggle = 0;
 
 char longBypass_down = 0;
 uint8_t bypass_turning_on = 0;
@@ -156,7 +156,7 @@ void setSwitchBypassRelays(int f_state) {
     Relay_2 = 0;
     Relay_1 = 0;
 
-    updateSwitchBypassState(switchBypass_state);  
+    updateSwitchBypassState((char) switchBypass_state);  
     wait_ms(relay_delay); 
 }
 

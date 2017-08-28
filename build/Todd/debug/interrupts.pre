@@ -4914,7 +4914,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4922,7 +4924,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4961,6 +4963,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long save_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -4982,6 +4987,7 @@ int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
+int modulationSubdivision;
 
 # 14 "user.h"
 void InitApp(void);
@@ -4996,6 +5002,8 @@ int scaleA100kPot(double);
 int scaleiA100kPot(double);
 int scaleA10kPot(double);
 int scaleiA10kPot(double);
+int scaleA25kPot(double);
+int scaleiA25kPot(double);
 
 # 25 "modulation.h"
 void updateModulationArray(void);
@@ -5038,9 +5046,22 @@ int modSaw(double, double);
 int modSawRev(double, double);
 int modSquare(double, double);
 
-# 24 "interrupts.c"
+# 25
+void updateModulationArray(void);
+void calcCosArray(void);
+int getModulationSubdivision(void);
+void getModulationDelayTime(void);
+
+int modCos(double, double);
+int modTri(double, double);
+int modSaw(double, double);
+int modSawRev(double, double);
+int modSquare(double, double);
+
+# 25 "interrupts.c"
 signed int mod_value = 0;
 int mod_counter = 1;
+long save_counter = 0;
 
 
 void interrupt isr(void) {
@@ -5050,7 +5071,7 @@ extern char isInitialized;
 extern volatile long timer;
 extern volatile long sub_timer;
 extern volatile long tap_timer;
-extern signed int adjusted_pot_value;
+
 extern int mod_delay_time;
 
 
@@ -5061,7 +5082,18 @@ extern volatile long mod_timer;
 extern volatile long delay_time;
 
 
+if (RCIE && RCIF) {
+
+USARTHandleRxInt();
+
+# 76
+}
+
+
+
+
 if (INTCONbits.TMR0IF == 1) {
+
 if (isInitialized == 0) {
 
 
@@ -5069,19 +5101,33 @@ INTCONbits.TMR0IF = 0;
 return;
 }
 
-# 63
+# 105
 if (timer == 0) {
 tmpModDelay = mod_delay_time;
 }
+
+# 115
 timer = timer + 1;
 sub_timer = sub_timer + 1;
 tap_timer = tap_timer + 1;
 mod_timer = mod_timer + 1;
 double_timer++;
+save_timer++;
+save_counter++;
+
 
 char subDiv = getModulationSubdivision();
 
+if (save_counter > 1250) {
+saveState();
+save_counter = 0;
+LATBbits.LATB0 = 1;
+}
 
+if (save_counter == 10) {
+
+LATBbits.LATB0 = 0;
+}
 
 
 if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
@@ -5117,7 +5163,7 @@ sub_timer = delay_time;
 tmpModDelay = mod_delay_time;
 mod_timer = tmpModDelay;
 
-# 116
+# 177
 }
 }
 
@@ -5128,7 +5174,7 @@ LATBbits.LATB4 = 0;
 }
 }
 
-# 133
+# 194
 if (presetSaveMode < 1 && mode2_state == 0) {
 if (sub_timer >= delay_time ) {
 if (suspend_blink == 0) {
@@ -5158,7 +5204,7 @@ LATBbits.LATB0 = 0;
 }
 }
 
-# 179
+# 242
 if (mod_timer >= tmpModDelay) {
 mod_timer = 0;
 
@@ -5166,14 +5212,14 @@ if (mod_counter >= subDiv) {
 mod_counter = 0;
 tmpModDelay = mod_delay_time;
 
-# 188
+# 251
 }
 
 
 
 mod_value = modArray[mod_counter];
 
-# 199
+# 262
 mod_value = modulation(mod_value, adjusted_pot_value);
 CCPR3 = mod_value / 2;
 mod_counter++;

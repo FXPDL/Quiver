@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"53 state_manager.h
+"83 state_manager.h
 [v _getSwitchBypassState `(i ~T0 @X0 0 ef ]
 "30 SwitchBypass.h
 [v _setSwitchBypassState `(v ~T0 @X0 0 ef1`i ]
@@ -35,8 +35,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATGbits `VS310 ~T0 @X0 0 e@909 ]
 "20 system.h
 [v _wait_ms `(v ~T0 @X0 0 ef1`ui ]
-"52 state_manager.h
-[v _updateSwitchBypassState `(v ~T0 @X0 0 ef1`i ]
+"82 state_manager.h
+[v _updateSwitchBypassState `(v ~T0 @X0 0 ef1`uc ]
 "542 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S34 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
@@ -3642,19 +3642,73 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;state_manager.h: 28: typedef struct {
-[; ;state_manager.h: 29: unsigned uint8_t tap_A;
-[; ;state_manager.h: 30: unsigned uint8_t tap_B;
-[; ;state_manager.h: 31: unsigned uint8_t bypass_A;
-[; ;state_manager.h: 32: unsigned uint8_t bypass_B;
-[; ;state_manager.h: 33: } LEDState;
-[; ;state_manager.h: 50: void getCurrentLEDState(void);
-[; ;state_manager.h: 51: void restoreLEDState(void);
-[; ;state_manager.h: 52: void updateSwitchBypassState(int);
-[; ;state_manager.h: 53: int getSwitchBypassState(void);
-[; ;state_manager.h: 54: void updateSwitchTapState(int);
-[; ;state_manager.h: 55: int getSwitchTapState(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
+[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
+[; ;HEF.h: 36: int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+[; ;HEF.h: 47: int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+[; ;HEF.h: 57: uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+[; ;state_manager.h: 28: typedef struct {
+[; ;state_manager.h: 29: char tap;
+[; ;state_manager.h: 30: unsigned int baseTapTime;
+[; ;state_manager.h: 31: char bypass;
+[; ;state_manager.h: 32: char subdivision;
+[; ;state_manager.h: 33: char waveForm;
+[; ;state_manager.h: 34: unsigned int volume;
+[; ;state_manager.h: 35: unsigned int frequency;
+[; ;state_manager.h: 36: unsigned int symmetry;
+[; ;state_manager.h: 37: unsigned int depth;
+[; ;state_manager.h: 38: char pedalMode;
+[; ;state_manager.h: 39: } PedalState;
+[; ;state_manager.h: 41: typedef struct {
+[; ;state_manager.h: 42: unsigned int modeBypassSubdivWave;
+[; ;state_manager.h: 43: unsigned int baseTapTime;
+[; ;state_manager.h: 44: unsigned int volume;
+[; ;state_manager.h: 45: unsigned int frequency;
+[; ;state_manager.h: 46: unsigned char symmetry;
+[; ;state_manager.h: 47: unsigned char depth;
+[; ;state_manager.h: 49: } PedalStorage;
+[; ;state_manager.h: 52: typedef struct {
+[; ;state_manager.h: 53: unsigned uint8_t tap_A;
+[; ;state_manager.h: 54: unsigned uint8_t tap_B;
+[; ;state_manager.h: 55: unsigned uint8_t tap_Aux;
+[; ;state_manager.h: 57: unsigned uint8_t bypass_A;
+[; ;state_manager.h: 58: unsigned uint8_t bypass_B;
+[; ;state_manager.h: 59: unsigned uint8_t bypass_Aux;
+[; ;state_manager.h: 60: } LEDState;
+[; ;state_manager.h: 76: void saveState(void);
+[; ;state_manager.h: 78: void initStateManager(void);
+[; ;state_manager.h: 79: PedalState getCurrentState(void);
+[; ;state_manager.h: 80: void getCurrentLEDState(void);
+[; ;state_manager.h: 81: void restoreLEDState(void);
+[; ;state_manager.h: 82: void updateSwitchBypassState(char);
+[; ;state_manager.h: 83: int getSwitchBypassState(void);
+[; ;state_manager.h: 84: void updateSwitchTapState(int);
+[; ;state_manager.h: 85: int getSwitchTapState(void);
+[; ;state_manager.h: 86: void updatePedalMode(void);
+[; ;state_manager.h: 87: char getPedalMode(void);
+[; ;state_manager.h: 90: void updateVolume(int);
+[; ;state_manager.h: 91: int getVolume(void);
+[; ;state_manager.h: 92: void updateFrequency(int);
+[; ;state_manager.h: 93: int getFrequency(void);
+[; ;state_manager.h: 94: void updateSymmetry(int);
+[; ;state_manager.h: 95: int getSymmetry(void);
+[; ;state_manager.h: 96: void updateDepth(int);
+[; ;state_manager.h: 97: int getDepth(void);
+[; ;state_manager.h: 101: void updateTapTime(void);
+[; ;state_manager.h: 102: long getTapTime(void);
+[; ;state_manager.h: 103: void updateSubdivisionState(void);
+[; ;state_manager.h: 104: int getSubdivisionState(void);
+[; ;state_manager.h: 105: void updateWaveFormState(void);
+[; ;state_manager.h: 106: int getWaveFormState(void);
+[; ;state_manager.h: 107: void savePreset(char);
+[; ;state_manager.h: 108: PedalState getPreset(char);
+[; ;state_manager.h: 109: void readPresets(void);
+[; ;state_manager.h: 110: PedalStorage setStorageState(PedalState);
+[; ;state_manager.h: 112: int GetBitMask(unsigned int, char, char);
+[; ;state_manager.h: 113: int SetBitMask(int, int, int, int);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3662,11 +3716,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
-[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3697,11 +3750,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3862,11 +3915,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 102: volatile long test_timer = 0;
+[; ;constants.h: 102: volatile long save_timer = 0;
 "105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
@@ -4213,29 +4266,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.h: 31: void setLongBypassState(int);
 [; ;SwitchBypass.h: 32: void setSwitchBypassRelays(int);
 "19 SwitchBypass.c
-[v _currentBypassState `uc ~T0 @X0 1 e ]
+[v _currentBypassState `c ~T0 @X0 1 e ]
 [i _currentBypassState
--> -U -> 1 `i `uc
+-> -U -> 1 `i `c
 ]
-[; ;SwitchBypass.c: 19: uint8_t currentBypassState = -1;
+[; ;SwitchBypass.c: 19: signed char currentBypassState = -1;
 "20
-[v _switchBypass_pressed `i ~T0 @X0 1 e ]
+[v _switchBypass_pressed `uc ~T0 @X0 1 e ]
 [i _switchBypass_pressed
--> 0 `i
+-> -> 0 `i `uc
 ]
-[; ;SwitchBypass.c: 20: int switchBypass_pressed = 0;
+[; ;SwitchBypass.c: 20: char switchBypass_pressed = 0;
 "21
-[v _switchBypass_up `i ~T0 @X0 1 e ]
+[v _switchBypass_up `uc ~T0 @X0 1 e ]
 [i _switchBypass_up
--> 1 `i
+-> -> 1 `i `uc
 ]
-[; ;SwitchBypass.c: 21: int switchBypass_up = 1;
+[; ;SwitchBypass.c: 21: char switchBypass_up = 1;
 "22
-[v _switchBypass_toggle `i ~T0 @X0 1 e ]
+[v _switchBypass_toggle `uc ~T0 @X0 1 e ]
 [i _switchBypass_toggle
--> 0 `i
+-> -> 0 `i `uc
 ]
-[; ;SwitchBypass.c: 22: int switchBypass_toggle = 0;
+[; ;SwitchBypass.c: 22: char switchBypass_toggle = 0;
 "24
 [v _longBypass_down `uc ~T0 @X0 1 e ]
 [i _longBypass_down
@@ -4269,7 +4322,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setSwitchBypassState (1 _initState ]
 [; ;SwitchBypass.c: 32: }
 "32
-[e :UE 461 ]
+[e :UE 463 ]
 }
 "34
 [v _updateSwitchBypass `(v ~T0 @X0 1 ef ]
@@ -4279,41 +4332,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;SwitchBypass.c: 41: if (PORTEbits.RE1 == 0) {
 "41
-[e $ ! == -> . . _PORTEbits 0 1 `i -> 0 `i 463  ]
+[e $ ! == -> . . _PORTEbits 0 1 `i -> 0 `i 465  ]
 {
 [; ;SwitchBypass.c: 42: if (switchBypass_pressed > 0) {
 "42
-[e $ ! > _switchBypass_pressed -> 0 `i 464  ]
+[e $ ! > -> _switchBypass_pressed `i -> 0 `i 466  ]
 {
 [; ;SwitchBypass.c: 43: switchBypass_pressed--;
 "43
-[e -- _switchBypass_pressed -> 1 `i ]
+[e -- _switchBypass_pressed -> -> 1 `i `uc ]
 "44
 }
-[e :U 464 ]
+[e :U 466 ]
 "45
 }
 [; ;SwitchBypass.c: 44: }
 [; ;SwitchBypass.c: 45: } else if (switchBypass_pressed < 25) {
-[e $U 465  ]
-[e :U 463 ]
-[e $ ! < _switchBypass_pressed -> 25 `i 466  ]
+[e $U 467  ]
+[e :U 465 ]
+[e $ ! < -> _switchBypass_pressed `i -> 25 `i 468  ]
 {
 [; ;SwitchBypass.c: 46: switchBypass_pressed++;
 "46
-[e ++ _switchBypass_pressed -> 1 `i ]
+[e ++ _switchBypass_pressed -> -> 1 `i `uc ]
 "47
 }
-[e :U 466 ]
+[e :U 468 ]
 "53
-[e :U 465 ]
+[e :U 467 ]
 [; ;SwitchBypass.c: 47: }
 [; ;SwitchBypass.c: 53: if (switchBypass_pressed == 0) {
-[e $ ! == _switchBypass_pressed -> 0 `i 467  ]
+[e $ ! == -> _switchBypass_pressed `i -> 0 `i 469  ]
 {
 [; ;SwitchBypass.c: 56: if (longBypass_start == 0) {
 "56
-[e $ ! == -> _longBypass_start `i -> 0 `i 468  ]
+[e $ ! == -> _longBypass_start `i -> 0 `i 470  ]
 {
 [; ;SwitchBypass.c: 57: longBypass_start = 1;
 "57
@@ -4323,29 +4376,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _longBypass_timer -> -> 0 `i `ui ]
 "59
 }
-[e :U 468 ]
+[e :U 470 ]
 [; ;SwitchBypass.c: 59: }
 [; ;SwitchBypass.c: 61: if (longBypass_timer >= long_press_limit && longBypass_down == 0 && doubleTap_state == 0) {
 "61
-[e $ ! && && >= _longBypass_timer _long_press_limit == -> _longBypass_down `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 469  ]
+[e $ ! && && >= _longBypass_timer _long_press_limit == -> _longBypass_down `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 471  ]
 {
 [; ;SwitchBypass.c: 64: LATBbits.LATB2 = 0;
 "64
 [e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
 [; ;SwitchBypass.c: 65: if (longTap_start != 1 ) {
 "65
-[e $ ! != -> _longTap_start `i -> 1 `i 470  ]
+[e $ ! != -> _longTap_start `i -> 1 `i 472  ]
 {
 [; ;SwitchBypass.c: 66: if (switchBypass_state == 1) {
 "66
-[e $ ! == -> _switchBypass_state `i -> 1 `i 471  ]
+[e $ ! == -> _switchBypass_state `i -> 1 `i 473  ]
 {
 [; ;SwitchBypass.c: 67: longBypass_down = 1;
 "67
 [e = _longBypass_down -> -> 1 `i `uc ]
 [; ;SwitchBypass.c: 68: if (longBypass_state == 0) {
 "68
-[e $ ! == -> _longBypass_state `i -> 0 `i 472  ]
+[e $ ! == -> _longBypass_state `i -> 0 `i 474  ]
 {
 [; ;SwitchBypass.c: 69: LATBbits.LATB2 = 0;
 "69
@@ -4356,8 +4409,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "71
 }
 [; ;SwitchBypass.c: 71: } else {
-[e $U 473  ]
-[e :U 472 ]
+[e $U 475  ]
+[e :U 474 ]
 {
 [; ;SwitchBypass.c: 72: setSwitchBypassState(1);
 "72
@@ -4370,70 +4423,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
 "75
 }
-[e :U 473 ]
+[e :U 475 ]
 "76
 }
-[e :U 471 ]
+[e :U 473 ]
 "77
 }
 [; ;SwitchBypass.c: 75: }
 [; ;SwitchBypass.c: 76: }
 [; ;SwitchBypass.c: 77: } else {
-[e $U 474  ]
-[e :U 470 ]
+[e $U 476  ]
+[e :U 472 ]
 {
 [; ;SwitchBypass.c: 78: setDoublePressState(1);
 "78
 [e ( _setDoublePressState (1 -> 1 `i ]
 "79
 }
-[e :U 474 ]
+[e :U 476 ]
 "80
 }
-[e :U 469 ]
+[e :U 471 ]
 [; ;SwitchBypass.c: 79: }
 [; ;SwitchBypass.c: 80: }
 [; ;SwitchBypass.c: 83: if (doubleTap_state == 0 && longBypass_down == 0) {
 "83
-[e $ ! && == -> _doubleTap_state `i -> 0 `i == -> _longBypass_down `i -> 0 `i 475  ]
+[e $ ! && == -> _doubleTap_state `i -> 0 `i == -> _longBypass_down `i -> 0 `i 477  ]
 {
 [; ;SwitchBypass.c: 84: if (switchBypass_state == 1) {
 "84
-[e $ ! == -> _switchBypass_state `i -> 1 `i 476  ]
+[e $ ! == -> _switchBypass_state `i -> 1 `i 478  ]
 {
 [; ;SwitchBypass.c: 86: if (switchBypass_up == 1) {
 "86
-[e $ ! == _switchBypass_up -> 1 `i 477  ]
+[e $ ! == -> _switchBypass_up `i -> 1 `i 479  ]
 {
 [; ;SwitchBypass.c: 87: currentBypassState = 1;
 "87
-[e = _currentBypassState -> -> 1 `i `uc ]
+[e = _currentBypassState -> -> 1 `i `c ]
 [; ;SwitchBypass.c: 88: switchBypass_toggle = 1;
 "88
-[e = _switchBypass_toggle -> 1 `i ]
+[e = _switchBypass_toggle -> -> 1 `i `uc ]
 "89
 }
-[e :U 477 ]
+[e :U 479 ]
 "90
 }
 [; ;SwitchBypass.c: 89: }
 [; ;SwitchBypass.c: 90: } else {
-[e $U 478  ]
-[e :U 476 ]
+[e $U 480  ]
+[e :U 478 ]
 {
 [; ;SwitchBypass.c: 91: if (bypass_turning_on != 1) {
 "91
-[e $ ! != -> _bypass_turning_on `i -> 1 `i 479  ]
+[e $ ! != -> _bypass_turning_on `i -> 1 `i 481  ]
 {
 [; ;SwitchBypass.c: 93: currentBypassState = 0;
 "93
-[e = _currentBypassState -> -> 0 `i `uc ]
+[e = _currentBypassState -> -> 0 `i `c ]
 [; ;SwitchBypass.c: 95: bypass_turning_on = 1;
 "95
 [e = _bypass_turning_on -> -> 1 `i `uc ]
 [; ;SwitchBypass.c: 96: switchBypass_toggle = 0;
 "96
-[e = _switchBypass_toggle -> 0 `i ]
+[e = _switchBypass_toggle -> -> 0 `i `uc ]
 [; ;SwitchBypass.c: 98: longBypass_save = longBypass_state;
 "98
 [e = _longBypass_save _longBypass_state ]
@@ -4445,29 +4498,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _longBypass_start -> -> 0 `i `uc ]
 "101
 }
-[e :U 479 ]
+[e :U 481 ]
 "102
 }
-[e :U 478 ]
+[e :U 480 ]
 "104
 }
-[e :U 475 ]
+[e :U 477 ]
 [; ;SwitchBypass.c: 101: }
 [; ;SwitchBypass.c: 102: }
 [; ;SwitchBypass.c: 104: }
 [; ;SwitchBypass.c: 105: switchBypass_up = 0;
 "105
-[e = _switchBypass_up -> 0 `i ]
+[e = _switchBypass_up -> -> 0 `i `uc ]
 "106
 }
 [; ;SwitchBypass.c: 106: } else if (switchBypass_pressed >= 25) {
-[e $U 480  ]
-[e :U 467 ]
-[e $ ! >= _switchBypass_pressed -> 25 `i 481  ]
+[e $U 482  ]
+[e :U 469 ]
+[e $ ! >= -> _switchBypass_pressed `i -> 25 `i 483  ]
 {
 [; ;SwitchBypass.c: 107: if (doubleTap_state == 1) {
 "107
-[e $ ! == -> _doubleTap_state `i -> 1 `i 482  ]
+[e $ ! == -> _doubleTap_state `i -> 1 `i 484  ]
 {
 [; ;SwitchBypass.c: 108: setSwitchBypassState(currentBypassState);
 "108
@@ -4475,13 +4528,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "109
 }
 [; ;SwitchBypass.c: 109: } else if (bypass_turning_on == 1) {
-[e $U 483  ]
-[e :U 482 ]
-[e $ ! == -> _bypass_turning_on `i -> 1 `i 484  ]
+[e $U 485  ]
+[e :U 484 ]
+[e $ ! == -> _bypass_turning_on `i -> 1 `i 486  ]
 {
 [; ;SwitchBypass.c: 111: if (longBypass_save == 1) {
 "111
-[e $ ! == -> _longBypass_save `i -> 1 `i 485  ]
+[e $ ! == -> _longBypass_save `i -> 1 `i 487  ]
 {
 [; ;SwitchBypass.c: 112: LATBbits.LATB2 = 0;
 "112
@@ -4495,45 +4548,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 "115
 }
 [; ;SwitchBypass.c: 115: } else {
-[e $U 486  ]
-[e :U 485 ]
+[e $U 488  ]
+[e :U 487 ]
 {
 [; ;SwitchBypass.c: 116: setSwitchBypassState(1);
 "116
 [e ( _setSwitchBypassState (1 -> 1 `i ]
 "117
 }
-[e :U 486 ]
+[e :U 488 ]
 "119
 }
 [; ;SwitchBypass.c: 117: }
 [; ;SwitchBypass.c: 119: } else if (switchBypass_toggle == 1 && longBypass_down == 0 && doubleTap_state == 0) {
-[e $U 487  ]
-[e :U 484 ]
-[e $ ! && && == _switchBypass_toggle -> 1 `i == -> _longBypass_down `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 488  ]
+[e $U 489  ]
+[e :U 486 ]
+[e $ ! && && == -> _switchBypass_toggle `i -> 1 `i == -> _longBypass_down `i -> 0 `i == -> _doubleTap_state `i -> 0 `i 490  ]
 {
 [; ;SwitchBypass.c: 120: setSwitchBypassState(0);
 "120
 [e ( _setSwitchBypassState (1 -> 0 `i ]
 "121
 }
-[e :U 488 ]
+[e :U 490 ]
 "123
-[e :U 487 ]
-[e :U 483 ]
+[e :U 489 ]
+[e :U 485 ]
 [; ;SwitchBypass.c: 121: }
 [; ;SwitchBypass.c: 123: longBypass_down = 0;
 [e = _longBypass_down -> -> 0 `i `uc ]
 [; ;SwitchBypass.c: 124: if (longBypass_state == 0) {
 "124
-[e $ ! == -> _longBypass_state `i -> 0 `i 489  ]
+[e $ ! == -> _longBypass_state `i -> 0 `i 491  ]
 {
 [; ;SwitchBypass.c: 125: LATBbits.LATB2 = switchBypass_state;
 "125
 [e = . . _LATBbits 0 2 _switchBypass_state ]
 "126
 }
-[e :U 489 ]
+[e :U 491 ]
 [; ;SwitchBypass.c: 126: }
 [; ;SwitchBypass.c: 128: setDoublePressState(0);
 "128
@@ -4546,21 +4599,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _bypass_turning_on -> -> 0 `i `uc ]
 [; ;SwitchBypass.c: 131: switchBypass_toggle = 0;
 "131
-[e = _switchBypass_toggle -> 0 `i ]
+[e = _switchBypass_toggle -> -> 0 `i `uc ]
 [; ;SwitchBypass.c: 132: switchBypass_up = 1;
 "132
-[e = _switchBypass_up -> 1 `i ]
+[e = _switchBypass_up -> -> 1 `i `uc ]
 [; ;SwitchBypass.c: 134: switchBypass_pressed = 25;
 "134
-[e = _switchBypass_pressed -> 25 `i ]
+[e = _switchBypass_pressed -> -> 25 `i `uc ]
 "135
 }
-[e :U 481 ]
+[e :U 483 ]
 "138
-[e :U 480 ]
+[e :U 482 ]
 [; ;SwitchBypass.c: 135: }
 [; ;SwitchBypass.c: 138: }
-[e :UE 462 ]
+[e :UE 464 ]
 }
 "141
 [v _setSwitchBypassState `(v ~T0 @X0 1 ef1`i ]
@@ -4571,11 +4624,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;SwitchBypass.c: 142: if (switchBypass_state == f_state) {return;}
 "142
-[e $ ! == -> _switchBypass_state `i _f_state 491  ]
+[e $ ! == -> _switchBypass_state `i _f_state 493  ]
 {
-[e $UE 490  ]
+[e $UE 492  ]
 }
-[e :U 491 ]
+[e :U 493 ]
 [; ;SwitchBypass.c: 144: LATBbits.LATB2 = f_state;
 "144
 [e = . . _LATBbits 0 2 -> _f_state `uc ]
@@ -4587,7 +4640,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setSwitchBypassRelays (1 _f_state ]
 [; ;SwitchBypass.c: 147: }
 "147
-[e :UE 490 ]
+[e :UE 492 ]
 }
 "149
 [v _setSwitchBypassRelays `(v ~T0 @X0 1 ef1`i ]
@@ -4614,15 +4667,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SwitchBypass.c: 157: LATGbits.LATG1 = 0;
 "157
 [e = . . _LATGbits 0 1 -> -> 0 `i `uc ]
-[; ;SwitchBypass.c: 159: updateSwitchBypassState(switchBypass_state);
+[; ;SwitchBypass.c: 159: updateSwitchBypassState((char) switchBypass_state);
 "159
-[e ( _updateSwitchBypassState (1 -> _switchBypass_state `i ]
+[e ( _updateSwitchBypassState (1 _switchBypass_state ]
 [; ;SwitchBypass.c: 160: wait_ms(20);
 "160
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
 [; ;SwitchBypass.c: 161: }
 "161
-[e :UE 492 ]
+[e :UE 494 ]
 }
 "164
 [v _setLongBypassState `(v ~T0 @X0 1 ef1`i ]
@@ -4633,11 +4686,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;SwitchBypass.c: 165: if (longBypass_state == f_state) {return;}
 "165
-[e $ ! == -> _longBypass_state `i _f_state 494  ]
+[e $ ! == -> _longBypass_state `i _f_state 496  ]
 {
-[e $UE 493  ]
+[e $UE 495  ]
 }
-[e :U 494 ]
+[e :U 496 ]
 [; ;SwitchBypass.c: 166: longBypass_state = f_state;
 "166
 [e = _longBypass_state -> _f_state `uc ]
@@ -4649,5 +4702,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTCbits 0 4 -> _f_state `uc ]
 [; ;SwitchBypass.c: 171: }
 "171
-[e :UE 493 ]
+[e :UE 495 ]
 }

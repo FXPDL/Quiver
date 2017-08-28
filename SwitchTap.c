@@ -27,8 +27,12 @@ uint8_t switchTap_down = 0;
 
 
 void initSwitchTap() {
-    int initState = getSwitchTapState();
-   // setSwitchTapState(initState);
+    baseline_mod_time = getTapTime();
+
+   /* int initState = getSwitchTapState();
+    setSwitchTapState(initState);*/
+    
+
 }
 
 
@@ -134,6 +138,7 @@ void updateSwitchTap(void) {
             tap_timer = 0;
             
             tap_iteration++;
+            updateTapTime();
         }
 
     } else if (switchTap_pressed >= debounce_limit) {

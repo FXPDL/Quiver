@@ -16,6 +16,7 @@
 #include "modulation.h"    /* Modulation constants*/
 #include "usart_pic16.h"
 #include "modulation.h"
+#include "modulation.h"
 
 /******************************************************************************/
 /* Interrupt Routines                                                         */
@@ -23,7 +24,8 @@
 /******************************************************************************/
 signed int mod_value = 0;
 int mod_counter = 1;
-
+long save_counter = 0;
+ 
 
 void interrupt isr(void) {
 
@@ -32,7 +34,7 @@ void interrupt isr(void) {
     extern volatile long timer;
     extern volatile long sub_timer;
     extern volatile long tap_timer;
-    extern signed int adjusted_pot_value;
+    //extern signed int adjusted_pot_value;
     extern int mod_delay_time;
 
 
@@ -43,7 +45,41 @@ void interrupt isr(void) {
     extern volatile long delay_time;
     
     
+    if (RCIE && RCIF) {
+
+        USARTHandleRxInt();
+        
+        
+//        if (URBuff[0] == 189) {
+//            LED_bypass_A = 1;
+//        } else {
+//            
+//            LED_bypass_B = 1;
+//        }
+//
+//        if (URBuff[1] == 102) {
+//            LED_tap_A = 1;
+//        } else {
+//
+//            LED_tap_B = 1;
+//        }
+//        
+//
+//        if (URBuff[2] == 65) {
+//            LED_tap_Aux = 1;
+//        } else {
+//
+//            LED_tap_Aux = 0;
+//        }
+//        
+//        return;
+    }
+    
+    
+    
+    
     if (INTCONbits.TMR0IF == 1) {
+        
         if (isInitialized == 0) {
             //Pedal is not fully initialized yet!
             //Clear the interrupt
@@ -60,11 +96,20 @@ void interrupt isr(void) {
             bottom_push_state = 4;*/
         
         
+        /*if (baseline_mod_time < 50) {
+            LED_bypass_Aux = 1;
+        } else {
+            LED_bypass_Aux = 0;
+        }*/
+        
         if (timer == 0) {
             tmpModDelay = mod_delay_time;
         }
 
-
+        /*if (test_timer > 50) {
+            LED_bypass_Aux = 0;
+            test_timer = 60;
+        }*/
         
         
         timer = timer + 1;
@@ -72,11 +117,22 @@ void interrupt isr(void) {
         tap_timer = tap_timer + 1;
         mod_timer = mod_timer + 1;
         double_timer++;
+        save_timer++;
+        save_counter++;
 
         
         char subDiv = getModulationSubdivision();
 
-
+        if (save_counter > 1250) {
+            saveState();
+            save_counter = 0;
+            LED_tap_Aux = 1;
+        }
+        
+        if (save_counter == 10) {
+            //LED_bypass_B = 0;
+            LED_tap_Aux = 0; 
+        }
 
 
         if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
@@ -180,6 +236,8 @@ void interrupt isr(void) {
         //--------------------------------------------------
 
 
+        
+        
 
         if (mod_timer >= tmpModDelay) {    
             mod_timer = 0;

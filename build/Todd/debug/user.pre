@@ -4925,6 +4925,8 @@ int scaleA100kPot(double);
 int scaleiA100kPot(double);
 int scaleA10kPot(double);
 int scaleiA10kPot(double);
+int scaleA25kPot(double);
+int scaleiA25kPot(double);
 
 # 19 "system.h"
 void ConfigureOscillator(void);
@@ -4947,7 +4949,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4955,7 +4959,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4994,6 +4998,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long save_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -5015,6 +5022,7 @@ int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
+int modulationSubdivision;
 
 # 23 "user.c"
 void InitApp(void) {
@@ -5188,7 +5196,7 @@ return (int)(pwm);
 
 int scaleiA100kPot(double input) {
 
-if (input == 0.0) {input = 1.0;}
+if (input < 1.0) {input = 1.0;}
 float pwm = 3.5755 * (pow((input / 1023.0), -1.112));
 return (int)(pwm);
 }
@@ -5196,7 +5204,7 @@ return (int)(pwm);
 int scaleA10kPot(double input) {
 
 if (input == 0.0) {return 255;}
-if (input == 1023.0) {return 0;}
+if (input >= 1022.0) {return 0;}
 float pwm = 8.7428 * (pow((input/1023.0), -1.222));
 return (int)(pwm);
 }
@@ -5205,11 +5213,29 @@ return (int)(pwm);
 int scaleiA10kPot(double input) {
 
 
-if (input == 0.0) {return 0;}
+if (input < 1.0) {return 0;}
 
-if (input == 1023.0) {return 255;}
+if (input >= 1022.0) {return 255;}
 
 float pwm = 8.7428 * (pow((1-(input/1023.0)), -1.222));
+return (int)(pwm);
+}
+
+
+int scaleA25kPot(double input) {
+
+if (input < 1.0) {return 255;}
+if (input >= 1022.0) {return 0;}
+float pwm = 17.217 * (pow((input/1023.0), -1.112));
+return (int)(pwm);
+}
+
+
+int scaleiA25kPot(double input) {
+
+if (input < 1.0) {return 255;}
+if (input >= 1022.0) {return 0;}
+float pwm = 15.395 * (pow((input/1023.0), -1.112));
 return (int)(pwm);
 }
 
@@ -5225,33 +5251,3 @@ tap[itap] = 0;
 }
 }
 
-void ReadSavedSettings(void) {
-
-top_push_state = FLASH_ReadWord(0x1F81);
-bottom_push_state = FLASH_ReadWord(0x1F82);
-
-if (top_push_state > 6) {
-
-top_push_state = 6;
-}
-if (bottom_push_state > 5) {
-
-bottom_push_state = 1;
-}
-
-
-LATGbits.LATG1 = !switchBypass_state;
-LATGbits.LATG2 = switchBypass_state;
-LATBbits.LATB2 = 0;
-LATBbits.LATB3 = 0;
-
-LATBbits.LATB4 = 0;
-LATBbits.LATB5 = 0;
-
-LATBbits.LATB1 = 0;
-LATBbits.LATB0 = 0;
-
-
-set_leds_top(top_push_state, 1);
-set_leds_bottom(bottom_push_state);
-}

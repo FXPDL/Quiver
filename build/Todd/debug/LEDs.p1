@@ -18,7 +18,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S119 . . . ]
 "2585
 [v _LATDbits `VS119 ~T0 @X0 0 e@271 ]
-"50 state_manager.h
+"80 state_manager.h
 [v _getCurrentLEDState `(v ~T0 @X0 0 ef ]
 "2449 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -32,7 +32,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _star_tactiles `(v ~T0 @X0 0 ef1`uc ]
 "26
 [v _solidring_tactiles `(v ~T0 @X0 0 ef ]
-"51 state_manager.h
+"81 state_manager.h
 [v _restoreLEDState `(v ~T0 @X0 0 ef ]
 "25 LEDs.h
 [v _ring_tactiles `(v ~T0 @X0 0 ef ]
@@ -3659,7 +3659,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3690,11 +3693,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3855,66 +3858,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
+-> -> 0 `i `l
+]
+[; ;constants.h: 102: volatile long save_timer = 0;
+"105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 102: char presetSaveMode = 0;
-"103
+[; ;constants.h: 105: char presetSaveMode = 0;
+"106
 [v _presetChannel `uc ~T0 @X0 1 e ]
 [i _presetChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 103: char presetChannel = 1;
-"104
+[; ;constants.h: 106: char presetChannel = 1;
+"107
 [v _expressionChannel `uc ~T0 @X0 1 e ]
 [i _expressionChannel
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 104: char expressionChannel = 1;
-"106
+[; ;constants.h: 107: char expressionChannel = 1;
+"109
 [v _switchBypass_state `uc ~T0 @X0 1 e ]
 [i _switchBypass_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 106: char switchBypass_state = -1;
-"107
+[; ;constants.h: 109: char switchBypass_state = -1;
+"110
 [v _switchTap_state `uc ~T0 @X0 1 e ]
 [i _switchTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 107: char switchTap_state = -1;
-"108
+[; ;constants.h: 110: char switchTap_state = -1;
+"111
 [v _longTap_state `Vuc ~T0 @X0 1 e ]
 [i _longTap_state
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 108: volatile char longTap_state = -1;
-"109
+[; ;constants.h: 111: volatile char longTap_state = -1;
+"112
 [v _longBypass_state `Vuc ~T0 @X0 1 e ]
 [i _longBypass_state
 -> -> 0 `i `uc
 ]
-[; ;constants.h: 109: volatile char longBypass_state = 0;
-"111
+[; ;constants.h: 112: volatile char longBypass_state = 0;
+"114
 [v _expSwitchState `uc ~T0 @X0 1 e ]
 [i _expSwitchState
 -> -U -> 1 `i `uc
 ]
-[; ;constants.h: 111: char expSwitchState = -1;
-"113
+[; ;constants.h: 114: char expSwitchState = -1;
+"116
 [v _presetModeCnst `uc ~T0 @X0 1 e ]
 [i _presetModeCnst
 -> -> 1 `i `uc
 ]
-[; ;constants.h: 113: char presetModeCnst = 1;
-"114
+[; ;constants.h: 116: char presetModeCnst = 1;
+"117
 [v _expressModeCnst `uc ~T0 @X0 1 e ]
 [i _expressModeCnst
 -> -> 2 `i `uc
 ]
-[; ;constants.h: 114: char expressModeCnst = 2;
-"119
+[; ;constants.h: 117: char expressModeCnst = 2;
+"122
 [v _modArray `i ~T0 @X0 -> 0 `x e ]
 [i _modArray
 :U ..
@@ -4044,8 +4053,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ..
 ]
-[; ;constants.h: 119: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"120
+[; ;constants.h: 122: int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"123
 [v _cosArray `d ~T0 @X0 -> 0 `x e ]
 [i _cosArray
 :U ..
@@ -4173,712 +4182,765 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `d
 ..
 ]
-[; ;constants.h: 120: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-"122
+[; ;constants.h: 123: double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+"125
 [v _symmetry `i ~T0 @X0 1 e ]
 [i _symmetry
 -> 180 `i
 ]
-[; ;constants.h: 122: int symmetry = 180;
+[; ;constants.h: 125: int symmetry = 180;
+"126
+[v _modulationSubdivision `i ~T0 @X0 1 e ]
+[; ;constants.h: 126: int modulationSubdivision;
+[; ;HEF.h: 36: int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+[; ;HEF.h: 47: int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+[; ;HEF.h: 57: uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
 [; ;state_manager.h: 28: typedef struct {
-[; ;state_manager.h: 29: unsigned uint8_t tap_A;
-[; ;state_manager.h: 30: unsigned uint8_t tap_B;
-[; ;state_manager.h: 31: unsigned uint8_t bypass_A;
-[; ;state_manager.h: 32: unsigned uint8_t bypass_B;
-[; ;state_manager.h: 33: } LEDState;
-[; ;state_manager.h: 50: void getCurrentLEDState(void);
-[; ;state_manager.h: 51: void restoreLEDState(void);
-[; ;state_manager.h: 52: void updateSwitchBypassState(int);
-[; ;state_manager.h: 53: int getSwitchBypassState(void);
-[; ;state_manager.h: 54: void updateSwitchTapState(int);
-[; ;state_manager.h: 55: int getSwitchTapState(void);
+[; ;state_manager.h: 29: char tap;
+[; ;state_manager.h: 30: unsigned int baseTapTime;
+[; ;state_manager.h: 31: char bypass;
+[; ;state_manager.h: 32: char subdivision;
+[; ;state_manager.h: 33: char waveForm;
+[; ;state_manager.h: 34: unsigned int volume;
+[; ;state_manager.h: 35: unsigned int frequency;
+[; ;state_manager.h: 36: unsigned int symmetry;
+[; ;state_manager.h: 37: unsigned int depth;
+[; ;state_manager.h: 38: char pedalMode;
+[; ;state_manager.h: 39: } PedalState;
+[; ;state_manager.h: 41: typedef struct {
+[; ;state_manager.h: 42: unsigned int modeBypassSubdivWave;
+[; ;state_manager.h: 43: unsigned int baseTapTime;
+[; ;state_manager.h: 44: unsigned int volume;
+[; ;state_manager.h: 45: unsigned int frequency;
+[; ;state_manager.h: 46: unsigned char symmetry;
+[; ;state_manager.h: 47: unsigned char depth;
+[; ;state_manager.h: 49: } PedalStorage;
+[; ;state_manager.h: 52: typedef struct {
+[; ;state_manager.h: 53: unsigned uint8_t tap_A;
+[; ;state_manager.h: 54: unsigned uint8_t tap_B;
+[; ;state_manager.h: 55: unsigned uint8_t tap_Aux;
+[; ;state_manager.h: 57: unsigned uint8_t bypass_A;
+[; ;state_manager.h: 58: unsigned uint8_t bypass_B;
+[; ;state_manager.h: 59: unsigned uint8_t bypass_Aux;
+[; ;state_manager.h: 60: } LEDState;
+[; ;state_manager.h: 76: void saveState(void);
+[; ;state_manager.h: 78: void initStateManager(void);
+[; ;state_manager.h: 79: PedalState getCurrentState(void);
+[; ;state_manager.h: 80: void getCurrentLEDState(void);
+[; ;state_manager.h: 81: void restoreLEDState(void);
+[; ;state_manager.h: 82: void updateSwitchBypassState(char);
+[; ;state_manager.h: 83: int getSwitchBypassState(void);
+[; ;state_manager.h: 84: void updateSwitchTapState(int);
+[; ;state_manager.h: 85: int getSwitchTapState(void);
+[; ;state_manager.h: 86: void updatePedalMode(void);
+[; ;state_manager.h: 87: char getPedalMode(void);
+[; ;state_manager.h: 90: void updateVolume(int);
+[; ;state_manager.h: 91: int getVolume(void);
+[; ;state_manager.h: 92: void updateFrequency(int);
+[; ;state_manager.h: 93: int getFrequency(void);
+[; ;state_manager.h: 94: void updateSymmetry(int);
+[; ;state_manager.h: 95: int getSymmetry(void);
+[; ;state_manager.h: 96: void updateDepth(int);
+[; ;state_manager.h: 97: int getDepth(void);
+[; ;state_manager.h: 101: void updateTapTime(void);
+[; ;state_manager.h: 102: long getTapTime(void);
+[; ;state_manager.h: 103: void updateSubdivisionState(void);
+[; ;state_manager.h: 104: int getSubdivisionState(void);
+[; ;state_manager.h: 105: void updateWaveFormState(void);
+[; ;state_manager.h: 106: int getWaveFormState(void);
+[; ;state_manager.h: 107: void savePreset(char);
+[; ;state_manager.h: 108: PedalState getPreset(char);
+[; ;state_manager.h: 109: void readPresets(void);
+[; ;state_manager.h: 110: PedalStorage setStorageState(PedalState);
+[; ;state_manager.h: 112: int GetBitMask(unsigned int, char, char);
+[; ;state_manager.h: 113: int SetBitMask(int, int, int, int);
 "14 LEDs.c
 [v _blink_rate `uc ~T0 @X0 1 e ]
 [i _blink_rate
 -> -> 20 `i `uc
 ]
 [; ;LEDs.c: 14: uint8_t blink_rate = 20;
-"16
+"18
 [v _set_leds_top `(v ~T0 @X0 1 ef2`i`i ]
 {
-[; ;LEDs.c: 16: void set_leds_top(int x, int ledState) {
+[; ;LEDs.c: 18: void set_leds_top(int x, int ledState) {
 [e :U _set_leds_top ]
 [v _x `i ~T0 @X0 1 r1 ]
 [v _ledState `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;LEDs.c: 17: LATFbits.LATF0 = 0;
-"17
-[e = . . _LATFbits 0 0 -> -> 0 `i `uc ]
-[; ;LEDs.c: 18: LATFbits.LATF1 = 0;
-"18
-[e = . . _LATFbits 0 1 -> -> 0 `i `uc ]
-[; ;LEDs.c: 19: LATFbits.LATF2 = 0;
+[; ;LEDs.c: 19: LATFbits.LATF0 = 0;
 "19
-[e = . . _LATFbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 20: LATFbits.LATF3 = 0;
+[e = . . _LATFbits 0 0 -> -> 0 `i `uc ]
+[; ;LEDs.c: 20: LATFbits.LATF1 = 0;
 "20
-[e = . . _LATFbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 21: LATFbits.LATF4 = 0;
+[e = . . _LATFbits 0 1 -> -> 0 `i `uc ]
+[; ;LEDs.c: 21: LATFbits.LATF2 = 0;
 "21
-[e = . . _LATFbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 22: switch (x) {
+[e = . . _LATFbits 0 2 -> -> 0 `i `uc ]
+[; ;LEDs.c: 22: LATFbits.LATF3 = 0;
 "22
-[e $U 463  ]
-{
-[; ;LEDs.c: 23: case 1:
+[e = . . _LATFbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 23: LATFbits.LATF4 = 0;
 "23
-[e :U 464 ]
-[; ;LEDs.c: 24: LATFbits.LATF0 = ledState;
+[e = . . _LATFbits 0 4 -> -> 0 `i `uc ]
+[; ;LEDs.c: 24: switch (x) {
 "24
-[e = . . _LATFbits 0 0 -> _ledState `uc ]
-[; ;LEDs.c: 25: break;
+[e $U 465  ]
+{
+[; ;LEDs.c: 25: case 1:
 "25
-[e $U 462  ]
-[; ;LEDs.c: 26: case 2:
-"26
-[e :U 465 ]
-[; ;LEDs.c: 27: LATFbits.LATF1 = ledState;
-"27
-[e = . . _LATFbits 0 1 -> _ledState `uc ]
-[; ;LEDs.c: 28: break;
-"28
-[e $U 462  ]
-[; ;LEDs.c: 29: case 3:
-"29
 [e :U 466 ]
-[; ;LEDs.c: 30: LATFbits.LATF2 = ledState;
-"30
-[e = . . _LATFbits 0 2 -> _ledState `uc ]
-[; ;LEDs.c: 31: break;
-"31
-[e $U 462  ]
-[; ;LEDs.c: 32: case 4:
-"32
+[; ;LEDs.c: 26: LATFbits.LATF0 = ledState;
+"26
+[e = . . _LATFbits 0 0 -> _ledState `uc ]
+[; ;LEDs.c: 27: break;
+"27
+[e $U 464  ]
+[; ;LEDs.c: 28: case 2:
+"28
 [e :U 467 ]
-[; ;LEDs.c: 33: LATFbits.LATF3 = ledState;
-"33
-[e = . . _LATFbits 0 3 -> _ledState `uc ]
-[; ;LEDs.c: 34: break;
-"34
-[e $U 462  ]
-[; ;LEDs.c: 35: case 5:
-"35
+[; ;LEDs.c: 29: LATFbits.LATF1 = ledState;
+"29
+[e = . . _LATFbits 0 1 -> _ledState `uc ]
+[; ;LEDs.c: 30: break;
+"30
+[e $U 464  ]
+[; ;LEDs.c: 31: case 3:
+"31
 [e :U 468 ]
-[; ;LEDs.c: 36: LATFbits.LATF4 = ledState;
-"36
-[e = . . _LATFbits 0 4 -> _ledState `uc ]
-[; ;LEDs.c: 37: break;
-"37
-[e $U 462  ]
-[; ;LEDs.c: 38: case 6:
-"38
+[; ;LEDs.c: 32: LATFbits.LATF2 = ledState;
+"32
+[e = . . _LATFbits 0 2 -> _ledState `uc ]
+[; ;LEDs.c: 33: break;
+"33
+[e $U 464  ]
+[; ;LEDs.c: 34: case 4:
+"34
 [e :U 469 ]
+[; ;LEDs.c: 35: LATFbits.LATF3 = ledState;
+"35
+[e = . . _LATFbits 0 3 -> _ledState `uc ]
+[; ;LEDs.c: 36: break;
+"36
+[e $U 464  ]
+[; ;LEDs.c: 37: case 5:
+"37
+[e :U 470 ]
+[; ;LEDs.c: 38: LATFbits.LATF4 = ledState;
+"38
+[e = . . _LATFbits 0 4 -> _ledState `uc ]
 [; ;LEDs.c: 39: break;
 "39
-[e $U 462  ]
-[; ;LEDs.c: 40: case 100:
+[e $U 464  ]
+[; ;LEDs.c: 40: case 6:
 "40
-[e :U 470 ]
-[; ;LEDs.c: 41: LATFbits.LATF0 = 1;
+[e :U 471 ]
+[; ;LEDs.c: 41: break;
 "41
-[e = . . _LATFbits 0 0 -> -> 1 `i `uc ]
-[; ;LEDs.c: 42: LATFbits.LATF1 = 1;
+[e $U 464  ]
+[; ;LEDs.c: 42: case 100:
 "42
-[e = . . _LATFbits 0 1 -> -> 1 `i `uc ]
-[; ;LEDs.c: 43: LATFbits.LATF2 = 1;
+[e :U 472 ]
+[; ;LEDs.c: 43: LATFbits.LATF0 = 1;
 "43
-[e = . . _LATFbits 0 2 -> -> 1 `i `uc ]
-[; ;LEDs.c: 44: LATFbits.LATF3 = 1;
+[e = . . _LATFbits 0 0 -> -> 1 `i `uc ]
+[; ;LEDs.c: 44: LATFbits.LATF1 = 1;
 "44
-[e = . . _LATFbits 0 3 -> -> 1 `i `uc ]
-[; ;LEDs.c: 45: LATFbits.LATF4 = 1;
+[e = . . _LATFbits 0 1 -> -> 1 `i `uc ]
+[; ;LEDs.c: 45: LATFbits.LATF2 = 1;
 "45
-[e = . . _LATFbits 0 4 -> -> 1 `i `uc ]
-[; ;LEDs.c: 46: break;
+[e = . . _LATFbits 0 2 -> -> 1 `i `uc ]
+[; ;LEDs.c: 46: LATFbits.LATF3 = 1;
 "46
-[e $U 462  ]
+[e = . . _LATFbits 0 3 -> -> 1 `i `uc ]
+[; ;LEDs.c: 47: LATFbits.LATF4 = 1;
 "47
-}
-[; ;LEDs.c: 47: }
-[e $U 462  ]
-"22
-[e :U 463 ]
-[e [\ _x , $ -> 1 `i 464
- , $ -> 2 `i 465
- , $ -> 3 `i 466
- , $ -> 4 `i 467
- , $ -> 5 `i 468
- , $ -> 6 `i 469
- , $ -> 100 `i 470
- 462 ]
-"47
-[e :U 462 ]
-[; ;LEDs.c: 48: }
+[e = . . _LATFbits 0 4 -> -> 1 `i `uc ]
+[; ;LEDs.c: 48: break;
 "48
-[e :UE 461 ]
+[e $U 464  ]
+"49
 }
-"51
+[; ;LEDs.c: 49: }
+[e $U 464  ]
+"24
+[e :U 465 ]
+[e [\ _x , $ -> 1 `i 466
+ , $ -> 2 `i 467
+ , $ -> 3 `i 468
+ , $ -> 4 `i 469
+ , $ -> 5 `i 470
+ , $ -> 6 `i 471
+ , $ -> 100 `i 472
+ 464 ]
+"49
+[e :U 464 ]
+[; ;LEDs.c: 50: }
+"50
+[e :UE 463 ]
+}
+"53
 [v _set_leds_bottom `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;LEDs.c: 51: void set_leds_bottom(int x) {
+[; ;LEDs.c: 53: void set_leds_bottom(int x) {
 [e :U _set_leds_bottom ]
 [v _x `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;LEDs.c: 52: LATDbits.LATD0 = 0;
-"52
-[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
-[; ;LEDs.c: 53: LATDbits.LATD1 = 0;
-"53
-[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
-[; ;LEDs.c: 54: LATDbits.LATD2 = 0;
+[; ;LEDs.c: 54: LATDbits.LATD0 = 0;
 "54
-[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 55: LATDbits.LATD3 = 0;
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;LEDs.c: 55: LATDbits.LATD1 = 0;
 "55
-[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 56: LATDbits.LATD4 = 0;
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;LEDs.c: 56: LATDbits.LATD2 = 0;
 "56
-[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 57: switch (x) {
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;LEDs.c: 57: LATDbits.LATD3 = 0;
 "57
-[e $U 473  ]
-{
-[; ;LEDs.c: 58: case 1:
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 58: LATDbits.LATD4 = 0;
 "58
-[e :U 474 ]
-[; ;LEDs.c: 59: LATDbits.LATD0 = 1;
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;LEDs.c: 59: switch (x) {
 "59
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;LEDs.c: 60: break;
+[e $U 475  ]
+{
+[; ;LEDs.c: 60: case 1:
 "60
-[e $U 472  ]
-[; ;LEDs.c: 61: case 2:
-"61
-[e :U 475 ]
-[; ;LEDs.c: 62: LATDbits.LATD1 = 1;
-"62
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-[; ;LEDs.c: 63: break;
-"63
-[e $U 472  ]
-[; ;LEDs.c: 64: case 3:
-"64
 [e :U 476 ]
-[; ;LEDs.c: 65: LATDbits.LATD2 = 1;
-"65
-[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
-[; ;LEDs.c: 66: break;
-"66
-[e $U 472  ]
-[; ;LEDs.c: 67: case 4:
-"67
+[; ;LEDs.c: 61: LATDbits.LATD0 = 1;
+"61
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;LEDs.c: 62: break;
+"62
+[e $U 474  ]
+[; ;LEDs.c: 63: case 2:
+"63
 [e :U 477 ]
-[; ;LEDs.c: 68: LATDbits.LATD3 = 1;
-"68
-[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
-[; ;LEDs.c: 69: break;
-"69
-[e $U 472  ]
-[; ;LEDs.c: 70: case 5:
-"70
+[; ;LEDs.c: 64: LATDbits.LATD1 = 1;
+"64
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;LEDs.c: 65: break;
+"65
+[e $U 474  ]
+[; ;LEDs.c: 66: case 3:
+"66
 [e :U 478 ]
-[; ;LEDs.c: 71: LATDbits.LATD4 = 1;
-"71
-[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
-[; ;LEDs.c: 72: break;
-"72
-[e $U 472  ]
-[; ;LEDs.c: 73: case 6:
-"73
+[; ;LEDs.c: 67: LATDbits.LATD2 = 1;
+"67
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[; ;LEDs.c: 68: break;
+"68
+[e $U 474  ]
+[; ;LEDs.c: 69: case 4:
+"69
 [e :U 479 ]
+[; ;LEDs.c: 70: LATDbits.LATD3 = 1;
+"70
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[; ;LEDs.c: 71: break;
+"71
+[e $U 474  ]
+[; ;LEDs.c: 72: case 5:
+"72
+[e :U 480 ]
+[; ;LEDs.c: 73: LATDbits.LATD4 = 1;
+"73
+[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
 [; ;LEDs.c: 74: break;
 "74
-[e $U 472  ]
-[; ;LEDs.c: 75: case 100:
+[e $U 474  ]
+[; ;LEDs.c: 75: case 6:
 "75
-[e :U 480 ]
-[; ;LEDs.c: 76: LATDbits.LATD0 = 1;
+[e :U 481 ]
+[; ;LEDs.c: 76: break;
 "76
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;LEDs.c: 77: LATDbits.LATD1 = 1;
+[e $U 474  ]
+[; ;LEDs.c: 77: case 100:
 "77
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-[; ;LEDs.c: 78: LATDbits.LATD2 = 1;
+[e :U 482 ]
+[; ;LEDs.c: 78: LATDbits.LATD0 = 1;
 "78
-[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
-[; ;LEDs.c: 79: LATDbits.LATD3 = 1;
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;LEDs.c: 79: LATDbits.LATD1 = 1;
 "79
-[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
-[; ;LEDs.c: 80: LATDbits.LATD4 = 1;
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;LEDs.c: 80: LATDbits.LATD2 = 1;
 "80
-[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
-[; ;LEDs.c: 81: break;
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[; ;LEDs.c: 81: LATDbits.LATD3 = 1;
 "81
-[e $U 472  ]
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[; ;LEDs.c: 82: LATDbits.LATD4 = 1;
 "82
-}
-[; ;LEDs.c: 82: }
-[e $U 472  ]
-"57
-[e :U 473 ]
-[e [\ _x , $ -> 1 `i 474
- , $ -> 2 `i 475
- , $ -> 3 `i 476
- , $ -> 4 `i 477
- , $ -> 5 `i 478
- , $ -> 6 `i 479
- , $ -> 100 `i 480
- 472 ]
-"82
-[e :U 472 ]
-[; ;LEDs.c: 83: }
+[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
+[; ;LEDs.c: 83: break;
 "83
-[e :UE 471 ]
+[e $U 474  ]
+"84
 }
-"86
+[; ;LEDs.c: 84: }
+[e $U 474  ]
+"59
+[e :U 475 ]
+[e [\ _x , $ -> 1 `i 476
+ , $ -> 2 `i 477
+ , $ -> 3 `i 478
+ , $ -> 4 `i 479
+ , $ -> 5 `i 480
+ , $ -> 6 `i 481
+ , $ -> 100 `i 482
+ 474 ]
+"84
+[e :U 474 ]
+[; ;LEDs.c: 85: }
+"85
+[e :UE 473 ]
+}
+"88
 [v _showBootSequence `(v ~T0 @X0 1 ef ]
 {
-[; ;LEDs.c: 86: void showBootSequence(void) {
+[; ;LEDs.c: 88: void showBootSequence(void) {
 [e :U _showBootSequence ]
 [f ]
-[; ;LEDs.c: 87: getCurrentLEDState();
-"87
+[; ;LEDs.c: 89: getCurrentLEDState();
+"89
 [e ( _getCurrentLEDState ..  ]
-[; ;LEDs.c: 88: suspend_blink = 1;
-"88
-[e = _suspend_blink -> -> 1 `i `uc ]
-[; ;LEDs.c: 90: LATBbits.LATB4 = 0;
+[; ;LEDs.c: 90: suspend_blink = 1;
 "90
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 91: LATBbits.LATB2 = 0;
-"91
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 92: LATBbits.LATB5 = 0;
+[e = _suspend_blink -> -> 1 `i `uc ]
+[; ;LEDs.c: 92: LATBbits.LATB4 = 0;
 "92
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;LEDs.c: 93: LATBbits.LATB3 = 0;
-"93
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 94: LATBbits.LATB0 = 0;
-"94
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;LEDs.c: 95: LATBbits.LATB1 = 0;
-"95
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;LEDs.c: 98: star_tactiles(0);
-"98
-[e ( _star_tactiles (1 -> -> 0 `i `uc ]
-[; ;LEDs.c: 99: star_tactiles(0);
-"99
-[e ( _star_tactiles (1 -> -> 0 `i `uc ]
-[; ;LEDs.c: 100: star_tactiles(1);
-"100
-[e ( _star_tactiles (1 -> -> 1 `i `uc ]
-[; ;LEDs.c: 101: star_tactiles(1);
-"101
-[e ( _star_tactiles (1 -> -> 1 `i `uc ]
-[; ;LEDs.c: 103: solidring_tactiles();
-"103
-[e ( _solidring_tactiles ..  ]
-[; ;LEDs.c: 104: solidring_tactiles();
-"104
-[e ( _solidring_tactiles ..  ]
-[; ;LEDs.c: 107: suspend_blink = 0;
-"107
-[e = _suspend_blink -> -> 0 `i `uc ]
-[; ;LEDs.c: 108: restoreLEDState();
-"108
-[e ( _restoreLEDState ..  ]
-[; ;LEDs.c: 109: }
-"109
-[e :UE 481 ]
-}
-"112
-[v _showSave `(v ~T0 @X0 1 ef ]
-{
-[; ;LEDs.c: 112: void showSave(void) {
-[e :U _showSave ]
-[f ]
-[; ;LEDs.c: 113: suspend_blink = 1;
-"113
-[e = _suspend_blink -> -> 1 `i `uc ]
-[; ;LEDs.c: 114: ring_tactiles();
-"114
-[e ( _ring_tactiles ..  ]
-[; ;LEDs.c: 115: ring_tactiles();
-"115
-[e ( _ring_tactiles ..  ]
-[; ;LEDs.c: 116: solidring_tactiles();
-"116
-[e ( _solidring_tactiles ..  ]
-[; ;LEDs.c: 117: solidring_tactiles();
-"117
-[e ( _solidring_tactiles ..  ]
-[; ;LEDs.c: 118: suspend_blink = 0;
-"118
-[e = _suspend_blink -> -> 0 `i `uc ]
-[; ;LEDs.c: 119: }
-"119
-[e :UE 482 ]
-}
-"121
-[v _showError_Alternating `(v ~T0 @X0 1 ef ]
-{
-[; ;LEDs.c: 121: void showError_Alternating(void) {
-[e :U _showError_Alternating ]
-[f ]
-[; ;LEDs.c: 122: suspend_blink = 1;
-"122
-[e = _suspend_blink -> -> 1 `i `uc ]
-[; ;LEDs.c: 123: getCurrentLEDState();
-"123
-[e ( _getCurrentLEDState ..  ]
-[; ;LEDs.c: 124: LATBbits.LATB4 = 0;
-"124
 [e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 125: LATBbits.LATB2 = 0;
-"125
+[; ;LEDs.c: 93: LATBbits.LATB2 = 0;
+"93
 [e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 127: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
-"127
-{
-[v _iFlash `uc ~T0 @X0 1 a ]
-[e = _iFlash -> -> 0 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 484  ]
-[e $U 485  ]
-[e :U 484 ]
-{
-[; ;LEDs.c: 128: LATBbits.LATB5 = 1;
-"128
-[e = . . _LATBbits 0 5 -> -> 1 `i `uc ]
-[; ;LEDs.c: 129: LATBbits.LATB3 = 0;
-"129
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 130: wait_ms(blink_rate);
-"130
-[e ( _wait_ms (1 -> _blink_rate `ui ]
-[; ;LEDs.c: 131: LATBbits.LATB5 = 0;
-"131
+[; ;LEDs.c: 94: LATBbits.LATB5 = 0;
+"94
 [e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;LEDs.c: 132: LATBbits.LATB3 = 1;
-"132
-[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
-[; ;LEDs.c: 133: wait_ms(blink_rate);
-"133
-[e ( _wait_ms (1 -> _blink_rate `ui ]
-"134
-}
-"127
-[e ++ _iFlash -> -> 1 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 484  ]
-[e :U 485 ]
-"134
-}
-[; ;LEDs.c: 134: }
-[; ;LEDs.c: 135: restoreLEDState();
-"135
-[e ( _restoreLEDState ..  ]
-[; ;LEDs.c: 136: suspend_blink = 0;
-"136
+[; ;LEDs.c: 95: LATBbits.LATB3 = 0;
+"95
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 96: LATBbits.LATB0 = 0;
+"96
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;LEDs.c: 97: LATBbits.LATB1 = 0;
+"97
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;LEDs.c: 100: star_tactiles(0);
+"100
+[e ( _star_tactiles (1 -> -> 0 `i `uc ]
+[; ;LEDs.c: 101: star_tactiles(0);
+"101
+[e ( _star_tactiles (1 -> -> 0 `i `uc ]
+[; ;LEDs.c: 102: star_tactiles(1);
+"102
+[e ( _star_tactiles (1 -> -> 1 `i `uc ]
+[; ;LEDs.c: 103: star_tactiles(1);
+"103
+[e ( _star_tactiles (1 -> -> 1 `i `uc ]
+[; ;LEDs.c: 105: solidring_tactiles();
+"105
+[e ( _solidring_tactiles ..  ]
+[; ;LEDs.c: 106: solidring_tactiles();
+"106
+[e ( _solidring_tactiles ..  ]
+[; ;LEDs.c: 109: suspend_blink = 0;
+"109
 [e = _suspend_blink -> -> 0 `i `uc ]
-[; ;LEDs.c: 137: }
-"137
+[; ;LEDs.c: 110: restoreLEDState();
+"110
+[e ( _restoreLEDState ..  ]
+[; ;LEDs.c: 111: }
+"111
 [e :UE 483 ]
 }
-"140
+"114
+[v _showSave `(v ~T0 @X0 1 ef ]
+{
+[; ;LEDs.c: 114: void showSave(void) {
+[e :U _showSave ]
+[f ]
+[; ;LEDs.c: 115: suspend_blink = 1;
+"115
+[e = _suspend_blink -> -> 1 `i `uc ]
+[; ;LEDs.c: 116: ring_tactiles();
+"116
+[e ( _ring_tactiles ..  ]
+[; ;LEDs.c: 117: ring_tactiles();
+"117
+[e ( _ring_tactiles ..  ]
+[; ;LEDs.c: 118: solidring_tactiles();
+"118
+[e ( _solidring_tactiles ..  ]
+[; ;LEDs.c: 119: solidring_tactiles();
+"119
+[e ( _solidring_tactiles ..  ]
+[; ;LEDs.c: 120: suspend_blink = 0;
+"120
+[e = _suspend_blink -> -> 0 `i `uc ]
+[; ;LEDs.c: 121: }
+"121
+[e :UE 484 ]
+}
+"123
+[v _showError_Alternating `(v ~T0 @X0 1 ef ]
+{
+[; ;LEDs.c: 123: void showError_Alternating(void) {
+[e :U _showError_Alternating ]
+[f ]
+[; ;LEDs.c: 124: suspend_blink = 1;
+"124
+[e = _suspend_blink -> -> 1 `i `uc ]
+[; ;LEDs.c: 125: getCurrentLEDState();
+"125
+[e ( _getCurrentLEDState ..  ]
+[; ;LEDs.c: 126: LATBbits.LATB4 = 0;
+"126
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;LEDs.c: 127: LATBbits.LATB2 = 0;
+"127
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;LEDs.c: 129: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
+"129
+{
+[v _iFlash `uc ~T0 @X0 1 a ]
+[e = _iFlash -> -> 0 `i `uc ]
+[e $ < -> _iFlash `i -> 4 `i 486  ]
+[e $U 487  ]
+[e :U 486 ]
+{
+[; ;LEDs.c: 130: LATBbits.LATB5 = 1;
+"130
+[e = . . _LATBbits 0 5 -> -> 1 `i `uc ]
+[; ;LEDs.c: 131: LATBbits.LATB3 = 0;
+"131
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 132: wait_ms(blink_rate);
+"132
+[e ( _wait_ms (1 -> _blink_rate `ui ]
+[; ;LEDs.c: 133: LATBbits.LATB5 = 0;
+"133
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;LEDs.c: 134: LATBbits.LATB3 = 1;
+"134
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;LEDs.c: 135: wait_ms(blink_rate);
+"135
+[e ( _wait_ms (1 -> _blink_rate `ui ]
+"136
+}
+"129
+[e ++ _iFlash -> -> 1 `i `uc ]
+[e $ < -> _iFlash `i -> 4 `i 486  ]
+[e :U 487 ]
+"136
+}
+[; ;LEDs.c: 136: }
+[; ;LEDs.c: 137: restoreLEDState();
+"137
+[e ( _restoreLEDState ..  ]
+[; ;LEDs.c: 138: suspend_blink = 0;
+"138
+[e = _suspend_blink -> -> 0 `i `uc ]
+[; ;LEDs.c: 139: }
+"139
+[e :UE 485 ]
+}
+"142
 [v _show_error `(v ~T0 @X0 1 ef ]
 {
-[; ;LEDs.c: 140: void show_error(void) {
+[; ;LEDs.c: 142: void show_error(void) {
 [e :U _show_error ]
 [f ]
-[; ;LEDs.c: 142: suspend_blink = 1;
-"142
-[e = _suspend_blink -> -> 1 `i `uc ]
-[; ;LEDs.c: 143: getCurrentLEDState();
-"143
-[e ( _getCurrentLEDState ..  ]
-[; ;LEDs.c: 144: LATBbits.LATB4 = 0;
+[; ;LEDs.c: 144: suspend_blink = 1;
 "144
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 145: LATBbits.LATB2 = 0;
+[e = _suspend_blink -> -> 1 `i `uc ]
+[; ;LEDs.c: 145: getCurrentLEDState();
 "145
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 147: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
+[e ( _getCurrentLEDState ..  ]
+[; ;LEDs.c: 146: LATBbits.LATB4 = 0;
+"146
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;LEDs.c: 147: LATBbits.LATB2 = 0;
 "147
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;LEDs.c: 149: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
+"149
 {
 [v _iFlash `uc ~T0 @X0 1 a ]
 [e = _iFlash -> -> 0 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 488  ]
-[e $U 489  ]
-[e :U 488 ]
+[e $ < -> _iFlash `i -> 4 `i 490  ]
+[e $U 491  ]
+[e :U 490 ]
 {
-[; ;LEDs.c: 148: LATBbits.LATB5 = 1;
-"148
-[e = . . _LATBbits 0 5 -> -> 1 `i `uc ]
-[; ;LEDs.c: 149: LATBbits.LATB3 = 1;
-"149
-[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
-[; ;LEDs.c: 150: wait_ms(blink_rate);
+[; ;LEDs.c: 150: LATBbits.LATB5 = 1;
 "150
-[e ( _wait_ms (1 -> _blink_rate `ui ]
-[; ;LEDs.c: 151: LATBbits.LATB5 = 0;
+[e = . . _LATBbits 0 5 -> -> 1 `i `uc ]
+[; ;LEDs.c: 151: LATBbits.LATB3 = 1;
 "151
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;LEDs.c: 152: LATBbits.LATB3 = 0;
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;LEDs.c: 152: wait_ms(blink_rate);
 "152
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 153: wait_ms(blink_rate);
-"153
 [e ( _wait_ms (1 -> _blink_rate `ui ]
+[; ;LEDs.c: 153: LATBbits.LATB5 = 0;
+"153
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;LEDs.c: 154: LATBbits.LATB3 = 0;
 "154
-}
-"147
-[e ++ _iFlash -> -> 1 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 488  ]
-[e :U 489 ]
-"154
-}
-[; ;LEDs.c: 154: }
-[; ;LEDs.c: 155: restoreLEDState();
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 155: wait_ms(blink_rate);
 "155
-[e ( _restoreLEDState ..  ]
-[; ;LEDs.c: 156: suspend_blink = 0;
+[e ( _wait_ms (1 -> _blink_rate `ui ]
 "156
-[e = _suspend_blink -> -> 0 `i `uc ]
-[; ;LEDs.c: 157: }
-"157
-[e :UE 487 ]
 }
-"160
+"149
+[e ++ _iFlash -> -> 1 `i `uc ]
+[e $ < -> _iFlash `i -> 4 `i 490  ]
+[e :U 491 ]
+"156
+}
+[; ;LEDs.c: 156: }
+[; ;LEDs.c: 157: restoreLEDState();
+"157
+[e ( _restoreLEDState ..  ]
+[; ;LEDs.c: 158: suspend_blink = 0;
+"158
+[e = _suspend_blink -> -> 0 `i `uc ]
+[; ;LEDs.c: 159: }
+"159
+[e :UE 489 ]
+}
+"162
 [v _show_cancel `(v ~T0 @X0 1 ef ]
 {
-[; ;LEDs.c: 160: void show_cancel(void) {
+[; ;LEDs.c: 162: void show_cancel(void) {
 [e :U _show_cancel ]
 [f ]
-[; ;LEDs.c: 161: suspend_blink = 1;
-"161
-[e = _suspend_blink -> -> 1 `i `uc ]
-[; ;LEDs.c: 162: getCurrentLEDState();
-"162
-[e ( _getCurrentLEDState ..  ]
-[; ;LEDs.c: 163: LATBbits.LATB5 = 0;
+[; ;LEDs.c: 163: suspend_blink = 1;
 "163
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-[; ;LEDs.c: 164: LATBbits.LATB3 = 0;
+[e = _suspend_blink -> -> 1 `i `uc ]
+[; ;LEDs.c: 164: getCurrentLEDState();
 "164
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
-[; ;LEDs.c: 166: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
+[e ( _getCurrentLEDState ..  ]
+[; ;LEDs.c: 165: LATBbits.LATB5 = 0;
+"165
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+[; ;LEDs.c: 166: LATBbits.LATB3 = 0;
 "166
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;LEDs.c: 168: for (uint8_t iFlash = 0; iFlash < 4; iFlash++) {
+"168
 {
 [v _iFlash `uc ~T0 @X0 1 a ]
 [e = _iFlash -> -> 0 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 492  ]
-[e $U 493  ]
-[e :U 492 ]
+[e $ < -> _iFlash `i -> 4 `i 494  ]
+[e $U 495  ]
+[e :U 494 ]
 {
-[; ;LEDs.c: 167: LATBbits.LATB4 = 1;
-"167
-[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
-[; ;LEDs.c: 168: LATBbits.LATB2 = 1;
-"168
-[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
-[; ;LEDs.c: 169: wait_ms(blink_rate);
+[; ;LEDs.c: 169: LATBbits.LATB4 = 1;
 "169
-[e ( _wait_ms (1 -> _blink_rate `ui ]
-[; ;LEDs.c: 170: LATBbits.LATB4 = 0;
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;LEDs.c: 170: LATBbits.LATB2 = 1;
 "170
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;LEDs.c: 171: LATBbits.LATB2 = 0;
+[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
+[; ;LEDs.c: 171: wait_ms(blink_rate);
 "171
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-[; ;LEDs.c: 172: wait_ms(blink_rate);
-"172
 [e ( _wait_ms (1 -> _blink_rate `ui ]
+[; ;LEDs.c: 172: LATBbits.LATB4 = 0;
+"172
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;LEDs.c: 173: LATBbits.LATB2 = 0;
 "173
-}
-"166
-[e ++ _iFlash -> -> 1 `i `uc ]
-[e $ < -> _iFlash `i -> 4 `i 492  ]
-[e :U 493 ]
-"173
-}
-[; ;LEDs.c: 173: }
-[; ;LEDs.c: 174: restoreLEDState();
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
+[; ;LEDs.c: 174: wait_ms(blink_rate);
 "174
-[e ( _restoreLEDState ..  ]
-[; ;LEDs.c: 175: suspend_blink = 0;
+[e ( _wait_ms (1 -> _blink_rate `ui ]
 "175
-[e = _suspend_blink -> -> 0 `i `uc ]
-[; ;LEDs.c: 176: }
-"176
-[e :UE 491 ]
 }
-"179
+"168
+[e ++ _iFlash -> -> 1 `i `uc ]
+[e $ < -> _iFlash `i -> 4 `i 494  ]
+[e :U 495 ]
+"175
+}
+[; ;LEDs.c: 175: }
+[; ;LEDs.c: 176: restoreLEDState();
+"176
+[e ( _restoreLEDState ..  ]
+[; ;LEDs.c: 177: suspend_blink = 0;
+"177
+[e = _suspend_blink -> -> 0 `i `uc ]
+[; ;LEDs.c: 178: }
+"178
+[e :UE 493 ]
+}
+"181
 [v _star_tactiles `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;LEDs.c: 179: void star_tactiles(uint8_t reverse) {
+[; ;LEDs.c: 181: void star_tactiles(uint8_t reverse) {
 [e :U _star_tactiles ]
 [v _reverse `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;LEDs.c: 180: if (reverse == 1) {
-"180
-[e $ ! == -> _reverse `i -> 1 `i 496  ]
+[; ;LEDs.c: 182: if (reverse == 1) {
+"182
+[e $ ! == -> _reverse `i -> 1 `i 498  ]
 {
-[; ;LEDs.c: 181: for (int iLed = 5; iLed > -1; iLed--) {
-"181
+[; ;LEDs.c: 183: for (int iLed = 5; iLed > -1; iLed--) {
+"183
 {
 [v _iLed `i ~T0 @X0 1 a ]
 [e = _iLed -> 5 `i ]
-[e $ > _iLed -U -> 1 `i 497  ]
-[e $U 498  ]
-[e :U 497 ]
-{
-[; ;LEDs.c: 182: set_leds_top(iLed, 1);
-"182
-[e ( _set_leds_top (2 , _iLed -> 1 `i ]
-[; ;LEDs.c: 183: set_leds_bottom(6 - iLed);
-"183
-[e ( _set_leds_bottom (1 - -> 6 `i _iLed ]
-[; ;LEDs.c: 184: wait_ms(5);
-"184
-[e ( _wait_ms (1 -> -> 5 `i `ui ]
-"185
-}
-"181
-[e -- _iLed -> 1 `i ]
-[e $ > _iLed -U -> 1 `i 497  ]
-[e :U 498 ]
-"185
-}
-"186
-}
-[; ;LEDs.c: 185: }
-[; ;LEDs.c: 186: } else {
+[e $ > _iLed -U -> 1 `i 499  ]
 [e $U 500  ]
-[e :U 496 ]
+[e :U 499 ]
 {
-[; ;LEDs.c: 187: for (int iLed = 1; iLed < 7; iLed++) {
+[; ;LEDs.c: 184: set_leds_top(iLed, 1);
+"184
+[e ( _set_leds_top (2 , _iLed -> 1 `i ]
+[; ;LEDs.c: 185: set_leds_bottom(6 - iLed);
+"185
+[e ( _set_leds_bottom (1 - -> 6 `i _iLed ]
+[; ;LEDs.c: 186: wait_ms(5);
+"186
+[e ( _wait_ms (1 -> -> 5 `i `ui ]
 "187
+}
+"183
+[e -- _iLed -> 1 `i ]
+[e $ > _iLed -U -> 1 `i 499  ]
+[e :U 500 ]
+"187
+}
+"188
+}
+[; ;LEDs.c: 187: }
+[; ;LEDs.c: 188: } else {
+[e $U 502  ]
+[e :U 498 ]
+{
+[; ;LEDs.c: 189: for (int iLed = 1; iLed < 7; iLed++) {
+"189
 {
 [v _iLed `i ~T0 @X0 1 a ]
 [e = _iLed -> 1 `i ]
-[e $ < _iLed -> 7 `i 501  ]
-[e $U 502  ]
-[e :U 501 ]
+[e $ < _iLed -> 7 `i 503  ]
+[e $U 504  ]
+[e :U 503 ]
 {
-[; ;LEDs.c: 188: set_leds_top(iLed, 1);
-"188
-[e ( _set_leds_top (2 , _iLed -> 1 `i ]
-[; ;LEDs.c: 189: set_leds_bottom(6 - iLed);
-"189
-[e ( _set_leds_bottom (1 - -> 6 `i _iLed ]
-[; ;LEDs.c: 190: wait_ms(5);
+[; ;LEDs.c: 190: set_leds_top(iLed, 1);
 "190
-[e ( _wait_ms (1 -> -> 5 `i `ui ]
+[e ( _set_leds_top (2 , _iLed -> 1 `i ]
+[; ;LEDs.c: 191: set_leds_bottom(6 - iLed);
 "191
-}
-"187
-[e ++ _iLed -> 1 `i ]
-[e $ < _iLed -> 7 `i 501  ]
-[e :U 502 ]
-"191
-}
+[e ( _set_leds_bottom (1 - -> 6 `i _iLed ]
+[; ;LEDs.c: 192: wait_ms(5);
 "192
+[e ( _wait_ms (1 -> -> 5 `i `ui ]
+"193
 }
-[e :U 500 ]
-[; ;LEDs.c: 191: }
-[; ;LEDs.c: 192: }
-[; ;LEDs.c: 194: }
+"189
+[e ++ _iLed -> 1 `i ]
+[e $ < _iLed -> 7 `i 503  ]
+[e :U 504 ]
+"193
+}
 "194
-[e :UE 495 ]
 }
+[e :U 502 ]
+[; ;LEDs.c: 193: }
+[; ;LEDs.c: 194: }
+[; ;LEDs.c: 196: }
 "196
+[e :UE 497 ]
+}
+"198
 [v _ring_tactiles `(v ~T0 @X0 1 ef ]
 {
-[; ;LEDs.c: 196: void ring_tactiles(void) {
+[; ;LEDs.c: 198: void ring_tactiles(void) {
 [e :U _ring_tactiles ]
 [f ]
-[; ;LEDs.c: 197: for (int iLed = 1; iLed < 7; iLed++) {
-"197
+[; ;LEDs.c: 199: for (int iLed = 1; iLed < 7; iLed++) {
+"199
 {
 [v _iLed `i ~T0 @X0 1 a ]
 [e = _iLed -> 1 `i ]
-[e $ < _iLed -> 7 `i 505  ]
-[e $U 506  ]
-[e :U 505 ]
+[e $ < _iLed -> 7 `i 507  ]
+[e $U 508  ]
+[e :U 507 ]
 {
-[; ;LEDs.c: 198: set_leds_top(iLed, 1);
-"198
+[; ;LEDs.c: 200: set_leds_top(iLed, 1);
+"200
 [e ( _set_leds_top (2 , _iLed -> 1 `i ]
-[; ;LEDs.c: 199: wait_ms(5);
-"199
-[e ( _wait_ms (1 -> -> 5 `i `ui ]
-"200
-}
-"197
-[e ++ _iLed -> 1 `i ]
-[e $ < _iLed -> 7 `i 505  ]
-[e :U 506 ]
-"200
-}
-[; ;LEDs.c: 200: }
-[; ;LEDs.c: 201: for (int iLed = 5; iLed > -1; iLed--) {
+[; ;LEDs.c: 201: wait_ms(5);
 "201
+[e ( _wait_ms (1 -> -> 5 `i `ui ]
+"202
+}
+"199
+[e ++ _iLed -> 1 `i ]
+[e $ < _iLed -> 7 `i 507  ]
+[e :U 508 ]
+"202
+}
+[; ;LEDs.c: 202: }
+[; ;LEDs.c: 203: for (int iLed = 5; iLed > -1; iLed--) {
+"203
 {
 [v _iLed `i ~T0 @X0 1 a ]
 [e = _iLed -> 5 `i ]
-[e $ > _iLed -U -> 1 `i 508  ]
-[e $U 509  ]
-[e :U 508 ]
+[e $ > _iLed -U -> 1 `i 510  ]
+[e $U 511  ]
+[e :U 510 ]
 {
-[; ;LEDs.c: 202: set_leds_bottom(iLed);
-"202
+[; ;LEDs.c: 204: set_leds_bottom(iLed);
+"204
 [e ( _set_leds_bottom (1 _iLed ]
-[; ;LEDs.c: 203: wait_ms(5);
-"203
-[e ( _wait_ms (1 -> -> 5 `i `ui ]
-"204
-}
-"201
-[e -- _iLed -> 1 `i ]
-[e $ > _iLed -U -> 1 `i 508  ]
-[e :U 509 ]
-"204
-}
-[; ;LEDs.c: 204: }
-[; ;LEDs.c: 205: }
+[; ;LEDs.c: 205: wait_ms(5);
 "205
-[e :UE 504 ]
+[e ( _wait_ms (1 -> -> 5 `i `ui ]
+"206
 }
-"208
+"203
+[e -- _iLed -> 1 `i ]
+[e $ > _iLed -U -> 1 `i 510  ]
+[e :U 511 ]
+"206
+}
+[; ;LEDs.c: 206: }
+[; ;LEDs.c: 207: }
+"207
+[e :UE 506 ]
+}
+"210
 [v _solidring_tactiles `(v ~T0 @X0 1 ef ]
 {
-[; ;LEDs.c: 208: void solidring_tactiles(void) {
+[; ;LEDs.c: 210: void solidring_tactiles(void) {
 [e :U _solidring_tactiles ]
 [f ]
-"209
-[v _ring_delay `uc ~T0 @X0 1 a ]
-[; ;LEDs.c: 209: uint8_t ring_delay = 30;
-[e = _ring_delay -> -> 30 `i `uc ]
-[; ;LEDs.c: 210: set_leds_top(100, 1);
-"210
-[e ( _set_leds_top (2 , -> 100 `i -> 1 `i ]
-[; ;LEDs.c: 211: set_leds_bottom(100);
 "211
-[e ( _set_leds_bottom (1 -> 100 `i ]
-[; ;LEDs.c: 212: wait_ms(ring_delay);
+[v _ring_delay `uc ~T0 @X0 1 a ]
+[; ;LEDs.c: 211: uint8_t ring_delay = 30;
+[e = _ring_delay -> -> 30 `i `uc ]
+[; ;LEDs.c: 212: set_leds_top(100, 1);
 "212
-[e ( _wait_ms (1 -> _ring_delay `ui ]
-[; ;LEDs.c: 214: set_leds_top(0, 1);
+[e ( _set_leds_top (2 , -> 100 `i -> 1 `i ]
+[; ;LEDs.c: 213: set_leds_bottom(100);
+"213
+[e ( _set_leds_bottom (1 -> 100 `i ]
+[; ;LEDs.c: 214: wait_ms(ring_delay);
 "214
-[e ( _set_leds_top (2 , -> 0 `i -> 1 `i ]
-[; ;LEDs.c: 215: set_leds_bottom(0);
-"215
-[e ( _set_leds_bottom (1 -> 0 `i ]
-[; ;LEDs.c: 216: wait_ms(ring_delay);
-"216
 [e ( _wait_ms (1 -> _ring_delay `ui ]
-[; ;LEDs.c: 217: }
+[; ;LEDs.c: 216: set_leds_top(0, 1);
+"216
+[e ( _set_leds_top (2 , -> 0 `i -> 1 `i ]
+[; ;LEDs.c: 217: set_leds_bottom(0);
 "217
-[e :UE 511 ]
+[e ( _set_leds_bottom (1 -> 0 `i ]
+[; ;LEDs.c: 218: wait_ms(ring_delay);
+"218
+[e ( _wait_ms (1 -> _ring_delay `ui ]
+[; ;LEDs.c: 219: }
+"219
+[e :UE 513 ]
 }

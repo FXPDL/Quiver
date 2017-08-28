@@ -16,8 +16,9 @@ extern volatile long delay_time;
 extern int mod_delay_time;
 
 void calcCosArray(void) {
+    double tmpVal;
     for (char iAngle = 0; iAngle < 120; iAngle++) {
-        double tmpVal = 3 * iAngle * M_PI/180.0;
+        tmpVal = 3 * iAngle * M_PI/180.0;
         tmpVal = cos(tmpVal);
         cosArray[iAngle] = tmpVal;
     }

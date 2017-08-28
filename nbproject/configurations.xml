@@ -17,6 +17,8 @@
       <itemPath>preset_programming.h</itemPath>
       <itemPath>expressTap.h</itemPath>
       <itemPath>usart_pic16.h</itemPath>
+      <itemPath>HEF.h</itemPath>
+      <itemPath>knobs.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -36,6 +38,8 @@
       <itemPath>expressTap.c</itemPath>
       <itemPath>usart_pic16.c</itemPath>
       <itemPath>modulation.c</itemPath>
+      <itemPath>HEF.c</itemPath>
+      <itemPath>knobs.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -446,6 +450,7 @@
         <property key="opt-xc8-linker-link_startup" value="false"/>
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
+        <appendMe value="--ROM=default,-1f80-1fff"/>
       </HI-TECH-LINK>
       <PICkit3PlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>

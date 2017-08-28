@@ -13,8 +13,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setPedalMode `(v ~T0 @X0 0 ef ]
 "28 preset_programming.h
 [v _resetRingLEDs `(v ~T0 @X0 0 ef ]
-"42 preset_programming.c
-[v _showSave `(i ~T0 @X0 0 ef ]
+"27 LEDs.h
+[v _showSave `(v ~T0 @X0 0 ef ]
 "20 system.h
 [v _wait_ms `(v ~T0 @X0 0 ef1`ui ]
 "22
@@ -3618,19 +3618,73 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;state_manager.h: 28: typedef struct {
-[; ;state_manager.h: 29: unsigned uint8_t tap_A;
-[; ;state_manager.h: 30: unsigned uint8_t tap_B;
-[; ;state_manager.h: 31: unsigned uint8_t bypass_A;
-[; ;state_manager.h: 32: unsigned uint8_t bypass_B;
-[; ;state_manager.h: 33: } LEDState;
-[; ;state_manager.h: 50: void getCurrentLEDState(void);
-[; ;state_manager.h: 51: void restoreLEDState(void);
-[; ;state_manager.h: 52: void updateSwitchBypassState(int);
-[; ;state_manager.h: 53: int getSwitchBypassState(void);
-[; ;state_manager.h: 54: void updateSwitchTapState(int);
-[; ;state_manager.h: 55: int getSwitchTapState(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
+[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
+[; ;HEF.h: 36: int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+[; ;HEF.h: 47: int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+[; ;HEF.h: 57: uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+[; ;state_manager.h: 28: typedef struct {
+[; ;state_manager.h: 29: char tap;
+[; ;state_manager.h: 30: unsigned int baseTapTime;
+[; ;state_manager.h: 31: char bypass;
+[; ;state_manager.h: 32: char subdivision;
+[; ;state_manager.h: 33: char waveForm;
+[; ;state_manager.h: 34: unsigned int volume;
+[; ;state_manager.h: 35: unsigned int frequency;
+[; ;state_manager.h: 36: unsigned int symmetry;
+[; ;state_manager.h: 37: unsigned int depth;
+[; ;state_manager.h: 38: char pedalMode;
+[; ;state_manager.h: 39: } PedalState;
+[; ;state_manager.h: 41: typedef struct {
+[; ;state_manager.h: 42: unsigned int modeBypassSubdivWave;
+[; ;state_manager.h: 43: unsigned int baseTapTime;
+[; ;state_manager.h: 44: unsigned int volume;
+[; ;state_manager.h: 45: unsigned int frequency;
+[; ;state_manager.h: 46: unsigned char symmetry;
+[; ;state_manager.h: 47: unsigned char depth;
+[; ;state_manager.h: 49: } PedalStorage;
+[; ;state_manager.h: 52: typedef struct {
+[; ;state_manager.h: 53: unsigned uint8_t tap_A;
+[; ;state_manager.h: 54: unsigned uint8_t tap_B;
+[; ;state_manager.h: 55: unsigned uint8_t tap_Aux;
+[; ;state_manager.h: 57: unsigned uint8_t bypass_A;
+[; ;state_manager.h: 58: unsigned uint8_t bypass_B;
+[; ;state_manager.h: 59: unsigned uint8_t bypass_Aux;
+[; ;state_manager.h: 60: } LEDState;
+[; ;state_manager.h: 76: void saveState(void);
+[; ;state_manager.h: 78: void initStateManager(void);
+[; ;state_manager.h: 79: PedalState getCurrentState(void);
+[; ;state_manager.h: 80: void getCurrentLEDState(void);
+[; ;state_manager.h: 81: void restoreLEDState(void);
+[; ;state_manager.h: 82: void updateSwitchBypassState(char);
+[; ;state_manager.h: 83: int getSwitchBypassState(void);
+[; ;state_manager.h: 84: void updateSwitchTapState(int);
+[; ;state_manager.h: 85: int getSwitchTapState(void);
+[; ;state_manager.h: 86: void updatePedalMode(void);
+[; ;state_manager.h: 87: char getPedalMode(void);
+[; ;state_manager.h: 90: void updateVolume(int);
+[; ;state_manager.h: 91: int getVolume(void);
+[; ;state_manager.h: 92: void updateFrequency(int);
+[; ;state_manager.h: 93: int getFrequency(void);
+[; ;state_manager.h: 94: void updateSymmetry(int);
+[; ;state_manager.h: 95: int getSymmetry(void);
+[; ;state_manager.h: 96: void updateDepth(int);
+[; ;state_manager.h: 97: int getDepth(void);
+[; ;state_manager.h: 101: void updateTapTime(void);
+[; ;state_manager.h: 102: long getTapTime(void);
+[; ;state_manager.h: 103: void updateSubdivisionState(void);
+[; ;state_manager.h: 104: int getSubdivisionState(void);
+[; ;state_manager.h: 105: void updateWaveFormState(void);
+[; ;state_manager.h: 106: int getWaveFormState(void);
+[; ;state_manager.h: 107: void savePreset(char);
+[; ;state_manager.h: 108: PedalState getPreset(char);
+[; ;state_manager.h: 109: void readPresets(void);
+[; ;state_manager.h: 110: PedalStorage setStorageState(PedalState);
+[; ;state_manager.h: 112: int GetBitMask(unsigned int, char, char);
+[; ;state_manager.h: 113: int SetBitMask(int, int, int, int);
 [; ;system.h: 19: void ConfigureOscillator(void);
 [; ;system.h: 20: void wait_ms(uint16_t);
 [; ;system.h: 21: void set_leds_bottom(int);
@@ -3638,11 +3692,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 23: uint16_t adc_convert(uint8_t);
 [; ;system.h: 24: float map(float, float, float, float, float);
 [; ;system.h: 25: int set_subdivision(int,int);
-[; ;memory.h: 99: uint16_t FLASH_ReadWord(uint16_t flashAddr);
-[; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
-[; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
-[; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3673,11 +3726,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3838,11 +3891,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 102: volatile long test_timer = 0;
+[; ;constants.h: 102: volatile long save_timer = 0;
 "105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
@@ -4181,154 +4234,161 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tactiles.h: 26: void update_mode(void);
 [; ;tactiles.h: 27: void update_selectMode(void);
 [; ;tactiles.h: 28: void setPedalMode(void);
-"21 preset_programming.c
+[; ;tactiles.h: 29: void InitWaveform(void);
+[; ;tactiles.h: 30: void InitSubdivision(void);
+[; ;LEDs.h: 24: void star_tactiles(uint8_t);
+[; ;LEDs.h: 25: void ring_tactiles(void);
+[; ;LEDs.h: 26: void solidring_tactiles(void);
+[; ;LEDs.h: 27: void showSave(void);
+[; ;LEDs.h: 28: void showBootSequence(void);
+"22 preset_programming.c
 [v _setDoublePressState `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;preset_programming.c: 21: void setDoublePressState(int f_state) {
+[; ;preset_programming.c: 22: void setDoublePressState(int f_state) {
 [e :U _setDoublePressState ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;preset_programming.c: 22: if (doubleTap_state == f_state) {return;}
-"22
-[e $ ! == -> _doubleTap_state `i _f_state 462  ]
-{
-[e $UE 461  ]
-}
-[e :U 462 ]
-[; ;preset_programming.c: 23: doubleTap_state = f_state;
+[; ;preset_programming.c: 23: if (doubleTap_state == f_state) {return;}
 "23
-[e = _doubleTap_state -> _f_state `uc ]
-[; ;preset_programming.c: 24: if (f_state == 1) {
-"24
-[e $ ! == _f_state -> 1 `i 463  ]
+[e $ ! == -> _doubleTap_state `i _f_state 464  ]
 {
-[; ;preset_programming.c: 25: LATBbits.LATB4 = 0;
-"25
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-[; ;preset_programming.c: 27: LATBbits.LATB5 = 0;
-"27
-[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
-"30
-}
-[e :U 463 ]
-[; ;preset_programming.c: 30: }
-[; ;preset_programming.c: 32: if (doubleTap_state == 1) {
-"32
-[e $ ! == -> _doubleTap_state `i -> 1 `i 464  ]
-{
-[; ;preset_programming.c: 33: if (presetSaveMode == 0) {
-"33
-[e $ ! == -> _presetSaveMode `i -> 0 `i 465  ]
-{
-[; ;preset_programming.c: 34: presetSaveMode = 1;
-"34
-[e = _presetSaveMode -> -> 1 `i `uc ]
-[; ;preset_programming.c: 35: LATBbits.LATB1 = 0;
-"35
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;preset_programming.c: 36: setPresetDisplay(presetChannel);
-"36
-[e ( _setPresetDisplay (1 _presetChannel ]
-"37
-}
-[; ;preset_programming.c: 37: } else {
-[e $U 466  ]
-[e :U 465 ]
-{
-[; ;preset_programming.c: 39: presetSaveMode = 0;
-"39
-[e = _presetSaveMode -> -> 0 `i `uc ]
-[; ;preset_programming.c: 40: setPedalMode();
-"40
-[e ( _setPedalMode ..  ]
-[; ;preset_programming.c: 41: resetRingLEDs();
-"41
-[e ( _resetRingLEDs ..  ]
-[; ;preset_programming.c: 42: showSave();
-"42
-[e ( _showSave ..  ]
-"44
-}
-[e :U 466 ]
-"45
+[e $UE 463  ]
 }
 [e :U 464 ]
-[; ;preset_programming.c: 44: }
-[; ;preset_programming.c: 45: }
-[; ;preset_programming.c: 47: wait_ms(20);
-"47
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;preset_programming.c: 49: }
-"49
-[e :UE 461 ]
+[; ;preset_programming.c: 24: doubleTap_state = f_state;
+"24
+[e = _doubleTap_state -> _f_state `uc ]
+[; ;preset_programming.c: 25: if (f_state == 1) {
+"25
+[e $ ! == _f_state -> 1 `i 465  ]
+{
+[; ;preset_programming.c: 26: LATBbits.LATB4 = 0;
+"26
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;preset_programming.c: 28: LATBbits.LATB5 = 0;
+"28
+[e = . . _LATBbits 0 5 -> -> 0 `i `uc ]
+"31
 }
-"51
+[e :U 465 ]
+[; ;preset_programming.c: 31: }
+[; ;preset_programming.c: 33: if (doubleTap_state == 1) {
+"33
+[e $ ! == -> _doubleTap_state `i -> 1 `i 466  ]
+{
+[; ;preset_programming.c: 34: if (presetSaveMode == 0) {
+"34
+[e $ ! == -> _presetSaveMode `i -> 0 `i 467  ]
+{
+[; ;preset_programming.c: 35: presetSaveMode = 1;
+"35
+[e = _presetSaveMode -> -> 1 `i `uc ]
+[; ;preset_programming.c: 36: LATBbits.LATB1 = 0;
+"36
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;preset_programming.c: 37: setPresetDisplay(presetChannel);
+"37
+[e ( _setPresetDisplay (1 _presetChannel ]
+"38
+}
+[; ;preset_programming.c: 38: } else {
+[e $U 468  ]
+[e :U 467 ]
+{
+[; ;preset_programming.c: 40: presetSaveMode = 0;
+"40
+[e = _presetSaveMode -> -> 0 `i `uc ]
+[; ;preset_programming.c: 41: setPedalMode();
+"41
+[e ( _setPedalMode ..  ]
+[; ;preset_programming.c: 42: resetRingLEDs();
+"42
+[e ( _resetRingLEDs ..  ]
+[; ;preset_programming.c: 43: showSave();
+"43
+[e ( _showSave ..  ]
+"45
+}
+[e :U 468 ]
+"46
+}
+[e :U 466 ]
+[; ;preset_programming.c: 45: }
+[; ;preset_programming.c: 46: }
+[; ;preset_programming.c: 48: wait_ms(20);
+"48
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;preset_programming.c: 50: }
+"50
+[e :UE 463 ]
+}
+"52
 [v _setPresetDisplay `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;preset_programming.c: 51: void setPresetDisplay(char ledChannel) {
+[; ;preset_programming.c: 52: void setPresetDisplay(char ledChannel) {
 [e :U _setPresetDisplay ]
 [v _ledChannel `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;preset_programming.c: 52: if (ledChannel < 6) {
-"52
-[e $ ! < -> _ledChannel `i -> 6 `i 468  ]
-{
-[; ;preset_programming.c: 53: set_leds_top(ledChannel, 1);
+[; ;preset_programming.c: 53: if (ledChannel < 6) {
 "53
-[e ( _set_leds_top (2 , -> _ledChannel `i -> 1 `i ]
-[; ;preset_programming.c: 54: set_leds_bottom(6);
-"54
-[e ( _set_leds_bottom (1 -> 6 `i ]
-"55
-}
-[; ;preset_programming.c: 55: } else {
-[e $U 469  ]
-[e :U 468 ]
+[e $ ! < -> _ledChannel `i -> 6 `i 470  ]
 {
-[; ;preset_programming.c: 56: set_leds_top(6, 1);
+[; ;preset_programming.c: 54: set_leds_top(ledChannel, 1);
+"54
+[e ( _set_leds_top (2 , -> _ledChannel `i -> 1 `i ]
+[; ;preset_programming.c: 55: set_leds_bottom(6);
+"55
+[e ( _set_leds_bottom (1 -> 6 `i ]
 "56
-[e ( _set_leds_top (2 , -> 6 `i -> 1 `i ]
-[; ;preset_programming.c: 57: set_leds_bottom(10 - ledChannel + 1);
+}
+[; ;preset_programming.c: 56: } else {
+[e $U 471  ]
+[e :U 470 ]
+{
+[; ;preset_programming.c: 57: set_leds_top(6, 1);
 "57
-[e ( _set_leds_bottom (1 + - -> 10 `i -> _ledChannel `i -> 1 `i ]
+[e ( _set_leds_top (2 , -> 6 `i -> 1 `i ]
+[; ;preset_programming.c: 58: set_leds_bottom(10 - ledChannel + 1);
 "58
-}
-[e :U 469 ]
-[; ;preset_programming.c: 58: }
-[; ;preset_programming.c: 59: }
+[e ( _set_leds_bottom (1 + - -> 10 `i -> _ledChannel `i -> 1 `i ]
 "59
-[e :UE 467 ]
 }
-"61
+[e :U 471 ]
+[; ;preset_programming.c: 59: }
+[; ;preset_programming.c: 60: }
+"60
+[e :UE 469 ]
+}
+"62
 [v _resetRingLEDs `(v ~T0 @X0 1 ef ]
 {
-[; ;preset_programming.c: 61: void resetRingLEDs(void) {
+[; ;preset_programming.c: 62: void resetRingLEDs(void) {
 [e :U _resetRingLEDs ]
 [f ]
-[; ;preset_programming.c: 62: set_leds_top(top_push_state, 1);
-"62
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;preset_programming.c: 63: set_leds_bottom(bottom_push_state);
+[; ;preset_programming.c: 63: set_leds_top(top_push_state, 1);
 "63
-[e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;preset_programming.c: 64: }
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;preset_programming.c: 64: set_leds_bottom(bottom_push_state);
 "64
-[e :UE 470 ]
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;preset_programming.c: 65: }
+"65
+[e :UE 472 ]
 }
-"66
+"67
 [v _setExpressionDisplay `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;preset_programming.c: 66: void setExpressionDisplay(char ledChannel) {
+[; ;preset_programming.c: 67: void setExpressionDisplay(char ledChannel) {
 [e :U _setExpressionDisplay ]
 [v _ledChannel `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;preset_programming.c: 67: set_leds_top(ledChannel, 1);
-"67
-[e ( _set_leds_top (2 , -> _ledChannel `i -> 1 `i ]
-[; ;preset_programming.c: 68: set_leds_bottom(6);
+[; ;preset_programming.c: 68: set_leds_top(ledChannel, 1);
 "68
-[e ( _set_leds_bottom (1 -> 6 `i ]
-[; ;preset_programming.c: 69: }
+[e ( _set_leds_top (2 , -> _ledChannel `i -> 1 `i ]
+[; ;preset_programming.c: 69: set_leds_bottom(6);
 "69
-[e :UE 471 ]
+[e ( _set_leds_bottom (1 -> 6 `i ]
+[; ;preset_programming.c: 70: }
+"70
+[e :UE 473 ]
 }

@@ -51,7 +51,7 @@ extern "C" {
 #define debounce_limit  25
 #define tap_reset  1563
 
- 
+signed int adjusted_pot_value;
 
 volatile long timer = 0;
 volatile long sub_timer = 0;
@@ -60,7 +60,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000; 
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -99,7 +99,7 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
-volatile long test_timer = 0;
+volatile long save_timer = 0;
 
 
 char presetSaveMode = 0;

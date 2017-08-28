@@ -4942,7 +4942,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4950,7 +4952,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4989,7 +4991,7 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
-volatile long test_timer = 0;
+volatile long save_timer = 0;
 
 
 char presetSaveMode = 0;
@@ -5032,8 +5034,9 @@ extern volatile long delay_time;
 extern int mod_delay_time;
 
 void calcCosArray(void) {
+double tmpVal;
 for (char iAngle = 0; iAngle < 120; iAngle++) {
-double tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
+tmpVal = 3 * iAngle * 3.14159265358979323846/180.0;
 tmpVal = cos(tmpVal);
 cosArray[iAngle] = tmpVal;
 }

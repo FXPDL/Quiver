@@ -4881,33 +4881,8 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 28 "state_manager.h"
-typedef struct {
-unsigned uint8_t tap_A;
-unsigned uint8_t tap_B;
-unsigned uint8_t bypass_A;
-unsigned uint8_t bypass_B;
-} LEDState;
-
-# 50
-void getCurrentLEDState(void);
-void restoreLEDState(void);
-void updateSwitchBypassState(int);
-int getSwitchBypassState(void);
-void updateSwitchTapState(int);
-int getSwitchTapState(void);
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
-
-# 19 "system.h"
-void ConfigureOscillator(void);
-void wait_ms(uint16_t);
-void set_leds_bottom(int);
-void set_leds_top(int, int);
-uint16_t adc_convert(uint8_t);
-float map(float, float, float, float, float);
-int set_subdivision(int,int);
 
 # 99 "memory.h"
 uint16_t FLASH_ReadWord(uint16_t flashAddr);
@@ -4921,7 +4896,102 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 36 "HEF.h"
+int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+
+# 47
+int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+
+# 57
+uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+
+# 28 "state_manager.h"
+typedef struct {
+char tap;
+unsigned int baseTapTime;
+char bypass;
+char subdivision;
+char waveForm;
+unsigned int volume;
+unsigned int frequency;
+unsigned int symmetry;
+unsigned int depth;
+char pedalMode;
+} PedalState;
+
+typedef struct {
+unsigned int modeBypassSubdivWave;
+unsigned int baseTapTime;
+unsigned int volume;
+unsigned int frequency;
+unsigned char symmetry;
+unsigned char depth;
+
+} PedalStorage;
+
+
+typedef struct {
+unsigned uint8_t tap_A;
+unsigned uint8_t tap_B;
+unsigned uint8_t tap_Aux;
+
+unsigned uint8_t bypass_A;
+unsigned uint8_t bypass_B;
+unsigned uint8_t bypass_Aux;
+} LEDState;
+
+# 76
+void saveState(void);
+
+void initStateManager(void);
+PedalState getCurrentState(void);
+void getCurrentLEDState(void);
+void restoreLEDState(void);
+void updateSwitchBypassState(char);
+int getSwitchBypassState(void);
+void updateSwitchTapState(int);
+int getSwitchTapState(void);
+void updatePedalMode(void);
+char getPedalMode(void);
+
+
+void updateVolume(int);
+int getVolume(void);
+void updateFrequency(int);
+int getFrequency(void);
+void updateSymmetry(int);
+int getSymmetry(void);
+void updateDepth(int);
+int getDepth(void);
+
+
+
+void updateTapTime(void);
+long getTapTime(void);
+void updateSubdivisionState(void);
+int getSubdivisionState(void);
+void updateWaveFormState(void);
+int getWaveFormState(void);
+void savePreset(char);
+PedalState getPreset(char);
+void readPresets(void);
+PedalStorage setStorageState(PedalState);
+
+int GetBitMask(unsigned int, char, char);
+int SetBitMask(int, int, int, int);
+
+# 19 "system.h"
+void ConfigureOscillator(void);
+void wait_ms(uint16_t);
+void set_leds_bottom(int);
+void set_leds_top(int, int);
+uint16_t adc_convert(uint8_t);
+float map(float, float, float, float, float);
+int set_subdivision(int,int);
+
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4929,7 +4999,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4968,7 +5038,7 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
-volatile long test_timer = 0;
+volatile long save_timer = 0;
 
 
 char presetSaveMode = 0;
@@ -5019,15 +5089,16 @@ uint8_t switchTap_down = 0;
 
 
 void initSwitchTap() {
-int initState = getSwitchTapState();
+baseline_mod_time = getTapTime();
 
+# 36
 }
 
-# 48
+# 52
 void updateSwitchTap(void) {
 uint8_t iCnt = 0;
 
-# 57
+# 61
 if (PORTEbits.RE0 == 0) {
 if (switchTap_pressed > 0) {
 switchTap_pressed--;
@@ -5036,7 +5107,7 @@ switchTap_pressed--;
 switchTap_pressed++;
 }
 
-# 69
+# 73
 if (switchTap_pressed == 0) {
 
 
@@ -5105,13 +5176,14 @@ mod_time_changed = 1;
 tap_timer = 0;
 
 tap_iteration++;
+updateTapTime();
 }
 
 } else if (switchTap_pressed >= 25) {
 switchTap_down = 0;
 switchTap_state = 0;
 
-# 147
+# 152
 setLongTapState(0);
 
 longTap_timer = 0;

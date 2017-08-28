@@ -13,6 +13,8 @@
 
 uint8_t blink_rate = 20;
 
+
+
 void set_leds_top(int x, int ledState) {
     LATFbits.LATF0 = 0;
     LATFbits.LATF1 = 0;

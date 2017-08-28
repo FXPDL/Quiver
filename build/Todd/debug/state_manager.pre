@@ -4881,33 +4881,8 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 28 "state_manager.h"
-typedef struct {
-unsigned uint8_t tap_A;
-unsigned uint8_t tap_B;
-unsigned uint8_t bypass_A;
-unsigned uint8_t bypass_B;
-} LEDState;
-
-# 50
-void getCurrentLEDState(void);
-void restoreLEDState(void);
-void updateSwitchBypassState(int);
-int getSwitchBypassState(void);
-void updateSwitchTapState(int);
-int getSwitchTapState(void);
-
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\stdbool.h"
 typedef unsigned char bool;
-
-# 19 "system.h"
-void ConfigureOscillator(void);
-void wait_ms(uint16_t);
-void set_leds_bottom(int);
-void set_leds_top(int, int);
-uint16_t adc_convert(uint8_t);
-float map(float, float, float, float, float);
-int set_subdivision(int,int);
 
 # 99 "memory.h"
 uint16_t FLASH_ReadWord(uint16_t flashAddr);
@@ -4921,7 +4896,102 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 36 "HEF.h"
+int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+
+# 47
+int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+
+# 57
+uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+
+# 28 "state_manager.h"
+typedef struct {
+char tap;
+unsigned int baseTapTime;
+char bypass;
+char subdivision;
+char waveForm;
+unsigned int volume;
+unsigned int frequency;
+unsigned int symmetry;
+unsigned int depth;
+char pedalMode;
+} PedalState;
+
+typedef struct {
+unsigned int modeBypassSubdivWave;
+unsigned int baseTapTime;
+unsigned int volume;
+unsigned int frequency;
+unsigned char symmetry;
+unsigned char depth;
+
+} PedalStorage;
+
+
+typedef struct {
+unsigned uint8_t tap_A;
+unsigned uint8_t tap_B;
+unsigned uint8_t tap_Aux;
+
+unsigned uint8_t bypass_A;
+unsigned uint8_t bypass_B;
+unsigned uint8_t bypass_Aux;
+} LEDState;
+
+# 76
+void saveState(void);
+
+void initStateManager(void);
+PedalState getCurrentState(void);
+void getCurrentLEDState(void);
+void restoreLEDState(void);
+void updateSwitchBypassState(char);
+int getSwitchBypassState(void);
+void updateSwitchTapState(int);
+int getSwitchTapState(void);
+void updatePedalMode(void);
+char getPedalMode(void);
+
+
+void updateVolume(int);
+int getVolume(void);
+void updateFrequency(int);
+int getFrequency(void);
+void updateSymmetry(int);
+int getSymmetry(void);
+void updateDepth(int);
+int getDepth(void);
+
+
+
+void updateTapTime(void);
+long getTapTime(void);
+void updateSubdivisionState(void);
+int getSubdivisionState(void);
+void updateWaveFormState(void);
+int getWaveFormState(void);
+void savePreset(char);
+PedalState getPreset(char);
+void readPresets(void);
+PedalStorage setStorageState(PedalState);
+
+int GetBitMask(unsigned int, char, char);
+int SetBitMask(int, int, int, int);
+
+# 19 "system.h"
+void ConfigureOscillator(void);
+void wait_ms(uint16_t);
+void set_leds_bottom(int);
+void set_leds_top(int, int);
+uint16_t adc_convert(uint8_t);
+float map(float, float, float, float, float);
+int set_subdivision(int,int);
+
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4929,7 +4999,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4968,6 +5038,9 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
+volatile long save_timer = 0;
+
+
 char presetSaveMode = 0;
 char presetChannel = 1;
 char expressionChannel = 1;
@@ -4989,45 +5062,313 @@ int modArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 int symmetry = 180;
+int modulationSubdivision;
 
 # 16 "state_manager.c"
-LEDState ledState = {0, 0, 0, 0};
+PedalState pedalState = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-# 83
+
+LEDState ledState = {0, 0, 0, 0, 0, 0};
+
+int isStateInitialized = 0;
+
+void initStateManager(void) {
+isStateInitialized = 0;
+getCurrentState();
+}
+
+PedalState getCurrentState(void) {
+
+pedalState = getPreset(0);
+isStateInitialized = 1;
+return pedalState;
+}
+
+# 88
+void savePreset(char presetChannel) {
+
+# 94
+uint8_t r;
+PedalStorage presets[3];
+
+char bankID = (char) (presetChannel / 3);
+char bankChannel = (char)(presetChannel - (bankID * 3));
+
+r = HEF_ByteArrayRead((void *) presets, bankID, sizeof (presets));
+
+
+presets[bankChannel].modeBypassSubdivWave = SetBitMask(0, pedalState.pedalMode, 0, 4);
+presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.bypass, 1, 4);
+presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.subdivision, 2, 4);
+presets[bankChannel].modeBypassSubdivWave = SetBitMask(presets[bankChannel].modeBypassSubdivWave, pedalState.waveForm, 3, 4);
+
+presets[bankChannel].baseTapTime = pedalState.baseTapTime;
+
+presets[bankChannel].volume = pedalState.volume;
+presets[bankChannel].frequency = pedalState.frequency;
+
+# 119
+unsigned char symm = (unsigned char)(pedalState.symmetry/4);
+unsigned char dep = (unsigned char)(pedalState.depth/4);
+presets[bankChannel].symmetry = symm;
+presets[bankChannel].depth = dep;
+
+HEF_ByteArrayWrite(bankID, (void *) &presets, sizeof (presets));
+
+}
+
+
+void saveState(void) {
+if (isStateInitialized) {
+
+savePreset(0);
+}
+
+
+}
+
+
+PedalState getPreset(char presetChannel) {
+PedalStorage presets[3];
+uint8_t r;
+
+char bankID = presetChannel / 3;
+char bankChannel = presetChannel - (bankID * 3);
+
+
+r = HEF_ByteArrayRead((void *) &presets, bankID, sizeof (presets));
+
+PedalState pedalPreset;
+
+pedalPreset.pedalMode = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 0, 4);
+pedalPreset.bypass = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 1, 4);
+pedalPreset.subdivision = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 2, 4);
+pedalPreset.waveForm = GetBitMask(presets[bankChannel].modeBypassSubdivWave, 3, 4);
+
+pedalPreset.baseTapTime = presets[bankChannel].baseTapTime;
+
+pedalPreset.volume = presets[bankChannel].volume;
+pedalPreset.frequency = presets[bankChannel].frequency;
+
+pedalPreset.symmetry = (int)presets[bankChannel].symmetry * 4;
+
+pedalPreset.depth = (int)presets[bankChannel].depth * 4;
+
+# 172
+if (pedalPreset.tap != 1) {
+pedalPreset.tap = 0;
+}
+if (pedalPreset.bypass != 1) {
+pedalPreset.bypass = 0;
+}
+
+if (pedalPreset.subdivision < 0 || pedalPreset.subdivision > 6) {
+pedalPreset.subdivision = 6;
+}
+
+if (pedalPreset.waveForm < 1 || pedalPreset.waveForm > 5) {
+pedalPreset.waveForm = 1;
+}
+
+if (pedalPreset.volume < 1 || pedalPreset.volume > 1023) {
+pedalPreset.volume = 1000;
+}
+
+if (pedalPreset.frequency < 1 || pedalPreset.frequency > 1023) {
+pedalPreset.frequency = 1000;
+}
+
+if (pedalPreset.symmetry < 1 || pedalPreset.symmetry > 1023) {
+pedalPreset.symmetry = 1000;
+}
+
+if (pedalPreset.depth < 1 || pedalPreset.depth > 1023) {
+pedalPreset.depth = 1000;
+}
+
+
+return pedalPreset;
+}
+
+
 void getCurrentLEDState(void) {
 ledState.tap_A = LATBbits.LATB4;
 ledState.bypass_A = LATBbits.LATB2 ;
 ledState.tap_B = LATBbits.LATB5 ;
 ledState.bypass_B = LATBbits.LATB3 ;
+ledState.tap_Aux = LATBbits.LATB0;
+ledState.bypass_Aux = LATBbits.LATB1 ;
 }
 void restoreLEDState(void) {
 LATBbits.LATB4 = ledState.tap_A;
 LATBbits.LATB2 = ledState.bypass_A;
 LATBbits.LATB5 = ledState.tap_B;
 LATBbits.LATB3 = ledState.bypass_B;
+LATBbits.LATB0 = ledState.tap_Aux;
+LATBbits.LATB1 = ledState.bypass_Aux;
 }
 
-void updateSwitchBypassState(int state) {
+void updateSwitchBypassState(char state) {
+if (state != 1) {state = 0;}
 
-# 101
+pedalState.bypass = state;
+
 }
 
 int getSwitchBypassState() {
-
-# 108
-return 0;
-
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.bypass;
 }
 
 
-void updateSwitchTapState(int state) {
+void updatePedalMode() {
+pedalState.pedalMode = mode2_state;
 
-# 118
+}
+
+char getPedalMode() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.pedalMode;
+}
+
+
+void updateVolume(int currentValue) {
+pedalState.volume = currentValue;
+
+
+}
+
+int getVolume() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.volume;
+}
+
+void updateFrequency(int currentValue) {
+pedalState.frequency = currentValue;
+
+
+
+}
+
+int getFrequency() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.frequency;
+}
+
+void updateSymmetry(int currentValue) {
+pedalState.symmetry = currentValue;
+
+}
+
+int getSymmetry() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+if (pedalState.symmetry < 1 || pedalState.symmetry > 1023) {
+pedalState.symmetry = 1023;
+}
+
+return pedalState.symmetry;
+}
+
+
+void updateDepth(int currentValue) {
+pedalState.depth = currentValue;
+
+# 302
+}
+
+int getDepth() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.depth;
+}
+
+void updateTapTime() {
+pedalState.baseTapTime = baseline_mod_time;
+
+}
+
+long getTapTime() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+
+if (pedalState.baseTapTime < 1 || pedalState.baseTapTime > 3000) {
+pedalState.baseTapTime = 3000;
+
+}
+
+return pedalState.baseTapTime;
+
+}
+
+void updateSubdivisionState() {
+pedalState.subdivision = top_push_state;
+
+}
+
+int getSubdivisionState() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.subdivision;
+
+}
+
+void updateWaveFormState() {
+pedalState.waveForm = bottom_push_state;
+
+}
+
+int getWaveFormState() {
+if (isStateInitialized != 1) {
+initStateManager();
+}
+return pedalState.waveForm;
+
+}
+void updateSwitchTapState(int state) {
+if (state != 1) {state = 0;}
+
+pedalState.tap = state;
+saveState();
 }
 
 int getSwitchTapState() {
-
-# 125
-return 0;
-
+if (isStateInitialized != 1) {
+initStateManager();
 }
+return pedalState.tap;
+}
+
+# 380
+int SetBitMask(int storage, int value, int index, int shift) {
+int shiftCount = index * shift;
+int mask = 0x0f << shiftCount;
+if (shift == 8) {
+mask = 0xff << shiftCount;
+}
+return (storage & ~mask) | (value << shiftCount);
+}
+
+
+int GetBitMask(unsigned int storage, char index, char shift) {
+int shiftCount = index * shift;
+int mask = 0x0f << shiftCount;
+if (shift == 8) {
+mask = 0xff << shiftCount;
+}
+
+return (storage & mask) >> shiftCount;
+}
+

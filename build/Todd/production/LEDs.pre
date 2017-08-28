@@ -4921,7 +4921,9 @@ int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 # 189
 void FLASH_EraseBlock(uint16_t startAddr);
 
-# 56 "constants.h"
+# 54 "constants.h"
+signed int adjusted_pot_value;
+
 volatile long timer = 0;
 volatile long sub_timer = 0;
 volatile uint16_t longBypass_timer = 0;
@@ -4929,7 +4931,7 @@ volatile uint16_t longTap_timer = 0;
 
 
 uint16_t long_press_limit = 1000;
-volatile long baseline_mod_time = 2000;
+volatile int baseline_mod_time = 2000;
 
 uint8_t longBypass_start = 0;
 uint8_t longTap_start = 0;
@@ -4968,7 +4970,7 @@ int debounce_mode2 = 0;
 volatile long tap_timer = 0;
 volatile long double_timer = 0;
 
-volatile long test_timer = 0;
+volatile long save_timer = 0;
 
 
 char presetSaveMode = 0;
@@ -4994,24 +4996,94 @@ double cosArray[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 int symmetry = 180;
 int modulationSubdivision;
 
+# 36 "HEF.h"
+int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+
+# 47
+int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+
+# 57
+uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+
 # 28 "state_manager.h"
+typedef struct {
+char tap;
+unsigned int baseTapTime;
+char bypass;
+char subdivision;
+char waveForm;
+unsigned int volume;
+unsigned int frequency;
+unsigned int symmetry;
+unsigned int depth;
+char pedalMode;
+} PedalState;
+
+typedef struct {
+unsigned int modeBypassSubdivWave;
+unsigned int baseTapTime;
+unsigned int volume;
+unsigned int frequency;
+unsigned char symmetry;
+unsigned char depth;
+
+} PedalStorage;
+
+
 typedef struct {
 unsigned uint8_t tap_A;
 unsigned uint8_t tap_B;
+unsigned uint8_t tap_Aux;
+
 unsigned uint8_t bypass_A;
 unsigned uint8_t bypass_B;
+unsigned uint8_t bypass_Aux;
 } LEDState;
 
-# 50
+# 76
+void saveState(void);
+
+void initStateManager(void);
+PedalState getCurrentState(void);
 void getCurrentLEDState(void);
 void restoreLEDState(void);
-void updateSwitchBypassState(int);
+void updateSwitchBypassState(char);
 int getSwitchBypassState(void);
 void updateSwitchTapState(int);
 int getSwitchTapState(void);
+void updatePedalMode(void);
+char getPedalMode(void);
+
+
+void updateVolume(int);
+int getVolume(void);
+void updateFrequency(int);
+int getFrequency(void);
+void updateSymmetry(int);
+int getSymmetry(void);
+void updateDepth(int);
+int getDepth(void);
+
+
+
+void updateTapTime(void);
+long getTapTime(void);
+void updateSubdivisionState(void);
+int getSubdivisionState(void);
+void updateWaveFormState(void);
+int getWaveFormState(void);
+void savePreset(char);
+PedalState getPreset(char);
+void readPresets(void);
+PedalStorage setStorageState(PedalState);
+
+int GetBitMask(unsigned int, char, char);
+int SetBitMask(int, int, int, int);
 
 # 14 "LEDs.c"
 uint8_t blink_rate = 20;
+
+
 
 void set_leds_top(int x, int ledState) {
 LATFbits.LATF0 = 0;

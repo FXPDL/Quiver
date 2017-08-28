@@ -1,4 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"106 state_manager.h
+[v _getWaveFormState `(i ~T0 @X0 0 ef ]
+"21 system.h
+[v _set_leds_bottom `(v ~T0 @X0 0 ef1`i ]
 "603 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S36 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
@@ -7,12 +11,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S35 . . ]
 "614
 [v _PORTDbits `VS35 ~T0 @X0 0 e@15 ]
-"21 system.h
-[v _set_leds_bottom `(v ~T0 @X0 0 ef1`i ]
-"20
+"105 state_manager.h
+[v _updateWaveFormState `(v ~T0 @X0 0 ef ]
+"20 system.h
 [v _wait_ms `(v ~T0 @X0 0 ef1`ui ]
-"22
+"104 state_manager.h
+[v _getSubdivisionState `(i ~T0 @X0 0 ef ]
+"22 system.h
 [v _set_leds_top `(v ~T0 @X0 0 ef2`i`i ]
+"103 state_manager.h
+[v _updateSubdivisionState `(v ~T0 @X0 0 ef ]
 "542 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S34 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
@@ -37,6 +45,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setPresetDisplay `(v ~T0 @X0 0 ef1`uc ]
 "27
 [v _setExpressionDisplay `(v ~T0 @X0 0 ef1`uc ]
+"86 state_manager.h
+[v _updatePedalMode `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3653,7 +3663,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3684,11 +3697,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3849,11 +3862,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 102: volatile long test_timer = 0;
+[; ;constants.h: 102: volatile long save_timer = 0;
 "105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
@@ -4188,6 +4201,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tactiles.h: 26: void update_mode(void);
 [; ;tactiles.h: 27: void update_selectMode(void);
 [; ;tactiles.h: 28: void setPedalMode(void);
+[; ;tactiles.h: 29: void InitWaveform(void);
+[; ;tactiles.h: 30: void InitSubdivision(void);
 [; ;LEDs.h: 24: void star_tactiles(uint8_t);
 [; ;LEDs.h: 25: void ring_tactiles(void);
 [; ;LEDs.h: 26: void solidring_tactiles(void);
@@ -4197,456 +4212,587 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;preset_programming.h: 26: void setPresetDisplay(char);
 [; ;preset_programming.h: 27: void setExpressionDisplay(char);
 [; ;preset_programming.h: 28: void resetRingLEDs(void);
-"15 tactiles.c
+[; ;HEF.h: 36: int8_t HEF_ByteArrayWrite( uint8_t block, uint8_t *byteArray, uint8_t count);
+[; ;HEF.h: 47: int8_t HEF_ByteArrayRead( uint8_t *bArray, uint8_t block, uint8_t count);
+[; ;HEF.h: 57: uint8_t HEF_ByteRead( uint8_t block, uint8_t offset);
+[; ;state_manager.h: 28: typedef struct {
+[; ;state_manager.h: 29: char tap;
+[; ;state_manager.h: 30: unsigned int baseTapTime;
+[; ;state_manager.h: 31: char bypass;
+[; ;state_manager.h: 32: char subdivision;
+[; ;state_manager.h: 33: char waveForm;
+[; ;state_manager.h: 34: unsigned int volume;
+[; ;state_manager.h: 35: unsigned int frequency;
+[; ;state_manager.h: 36: unsigned int symmetry;
+[; ;state_manager.h: 37: unsigned int depth;
+[; ;state_manager.h: 38: char pedalMode;
+[; ;state_manager.h: 39: } PedalState;
+[; ;state_manager.h: 41: typedef struct {
+[; ;state_manager.h: 42: unsigned int modeBypassSubdivWave;
+[; ;state_manager.h: 43: unsigned int baseTapTime;
+[; ;state_manager.h: 44: unsigned int volume;
+[; ;state_manager.h: 45: unsigned int frequency;
+[; ;state_manager.h: 46: unsigned char symmetry;
+[; ;state_manager.h: 47: unsigned char depth;
+[; ;state_manager.h: 49: } PedalStorage;
+[; ;state_manager.h: 52: typedef struct {
+[; ;state_manager.h: 53: unsigned uint8_t tap_A;
+[; ;state_manager.h: 54: unsigned uint8_t tap_B;
+[; ;state_manager.h: 55: unsigned uint8_t tap_Aux;
+[; ;state_manager.h: 57: unsigned uint8_t bypass_A;
+[; ;state_manager.h: 58: unsigned uint8_t bypass_B;
+[; ;state_manager.h: 59: unsigned uint8_t bypass_Aux;
+[; ;state_manager.h: 60: } LEDState;
+[; ;state_manager.h: 76: void saveState(void);
+[; ;state_manager.h: 78: void initStateManager(void);
+[; ;state_manager.h: 79: PedalState getCurrentState(void);
+[; ;state_manager.h: 80: void getCurrentLEDState(void);
+[; ;state_manager.h: 81: void restoreLEDState(void);
+[; ;state_manager.h: 82: void updateSwitchBypassState(char);
+[; ;state_manager.h: 83: int getSwitchBypassState(void);
+[; ;state_manager.h: 84: void updateSwitchTapState(int);
+[; ;state_manager.h: 85: int getSwitchTapState(void);
+[; ;state_manager.h: 86: void updatePedalMode(void);
+[; ;state_manager.h: 87: char getPedalMode(void);
+[; ;state_manager.h: 90: void updateVolume(int);
+[; ;state_manager.h: 91: int getVolume(void);
+[; ;state_manager.h: 92: void updateFrequency(int);
+[; ;state_manager.h: 93: int getFrequency(void);
+[; ;state_manager.h: 94: void updateSymmetry(int);
+[; ;state_manager.h: 95: int getSymmetry(void);
+[; ;state_manager.h: 96: void updateDepth(int);
+[; ;state_manager.h: 97: int getDepth(void);
+[; ;state_manager.h: 101: void updateTapTime(void);
+[; ;state_manager.h: 102: long getTapTime(void);
+[; ;state_manager.h: 103: void updateSubdivisionState(void);
+[; ;state_manager.h: 104: int getSubdivisionState(void);
+[; ;state_manager.h: 105: void updateWaveFormState(void);
+[; ;state_manager.h: 106: int getWaveFormState(void);
+[; ;state_manager.h: 107: void savePreset(char);
+[; ;state_manager.h: 108: PedalState getPreset(char);
+[; ;state_manager.h: 109: void readPresets(void);
+[; ;state_manager.h: 110: PedalStorage setStorageState(PedalState);
+[; ;state_manager.h: 112: int GetBitMask(unsigned int, char, char);
+[; ;state_manager.h: 113: int SetBitMask(int, int, int, int);
+"16 tactiles.c
 [v _topTactile_pressed `uc ~T0 @X0 1 e ]
 [i _topTactile_pressed
 -> -> 0 `i `uc
 ]
-[; ;tactiles.c: 15: uint8_t topTactile_pressed = 0;
-"16
+[; ;tactiles.c: 16: uint8_t topTactile_pressed = 0;
+"17
 [v _bottomTactile_pressed `uc ~T0 @X0 1 e ]
 [i _bottomTactile_pressed
 -> -> 0 `i `uc
 ]
-[; ;tactiles.c: 16: uint8_t bottomTactile_pressed = 0;
-"18
-[v _read_bottom_tactile `(v ~T0 @X0 1 ef ]
+[; ;tactiles.c: 17: uint8_t bottomTactile_pressed = 0;
+"20
+[v _InitWaveform `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 18: void read_bottom_tactile(void) {
-[e :U _read_bottom_tactile ]
+[; ;tactiles.c: 20: void InitWaveform() {
+[e :U _InitWaveform ]
 [f ]
-[; ;tactiles.c: 27: if (PORTDbits.RD6 == 0) {
-"27
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 461  ]
+[; ;tactiles.c: 21: bottom_push_state = getWaveFormState();
+"21
+[e = _bottom_push_state ( _getWaveFormState ..  ]
+[; ;tactiles.c: 22: if (bottom_push_state < 1 || bottom_push_state > 5) {
+"22
+[e $ ! || < _bottom_push_state -> 1 `i > _bottom_push_state -> 5 `i 464  ]
 {
-[; ;tactiles.c: 28: if (bottomTactile_pressed > 0) {
-"28
-[e $ ! > -> _bottomTactile_pressed `i -> 0 `i 462  ]
-{
-[; ;tactiles.c: 29: bottomTactile_pressed--;
-"29
-[e -- _bottomTactile_pressed -> -> 1 `i `uc ]
-"30
-}
-[e :U 462 ]
-"31
-}
-[; ;tactiles.c: 30: }
-[; ;tactiles.c: 31: } else if (bottomTactile_pressed < 25*3) {
-[e $U 463  ]
-[e :U 461 ]
-[e $ ! < -> _bottomTactile_pressed `i * -> 25 `i -> 3 `i 464  ]
-{
-[; ;tactiles.c: 32: bottomTactile_pressed++;
-"32
-[e ++ _bottomTactile_pressed -> -> 1 `i `uc ]
-"33
+[; ;tactiles.c: 23: bottom_push_state = 1;
+"23
+[e = _bottom_push_state -> 1 `i ]
+"24
 }
 [e :U 464 ]
-"36
-[e :U 463 ]
-[; ;tactiles.c: 33: }
-[; ;tactiles.c: 36: if (bottomTactile_pressed == 0) {
-[e $ ! == -> _bottomTactile_pressed `i -> 0 `i 465  ]
-{
-[; ;tactiles.c: 37: bottom_push_state = bottom_push_state + 1;
-"37
-[e = _bottom_push_state + _bottom_push_state -> 1 `i ]
-[; ;tactiles.c: 38: if (bottom_push_state > 5) {
-"38
-[e $ ! > _bottom_push_state -> 5 `i 466  ]
-{
-[; ;tactiles.c: 39: bottom_push_state = 1;
-"39
-[e = _bottom_push_state -> 1 `i ]
-"40
-}
-[e :U 466 ]
-[; ;tactiles.c: 40: }
-[; ;tactiles.c: 41: modulation_changed = 1;
-"41
+[; ;tactiles.c: 24: }
+[; ;tactiles.c: 25: modulation_changed = 1;
+"25
 [e = _modulation_changed -> -> 1 `i `uc ]
-[; ;tactiles.c: 42: set_leds_bottom(bottom_push_state);
-"42
+[; ;tactiles.c: 26: set_leds_bottom(bottom_push_state);
+"26
 [e ( _set_leds_bottom (1 _bottom_push_state ]
-[; ;tactiles.c: 44: while (PORTDbits.RD6 == 0) {
-"44
-[e $U 467  ]
-[e :U 468 ]
+[; ;tactiles.c: 27: }
+"27
+[e :UE 463 ]
+}
+"29
+[v _read_bottom_tactile `(v ~T0 @X0 1 ef ]
 {
-"45
+[; ;tactiles.c: 29: void read_bottom_tactile(void) {
+[e :U _read_bottom_tactile ]
+[f ]
+[; ;tactiles.c: 38: if (PORTDbits.RD6 == 0) {
+"38
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 466  ]
+{
+[; ;tactiles.c: 39: if (bottomTactile_pressed > 0) {
+"39
+[e $ ! > -> _bottomTactile_pressed `i -> 0 `i 467  ]
+{
+[; ;tactiles.c: 40: bottomTactile_pressed--;
+"40
+[e -- _bottomTactile_pressed -> -> 1 `i `uc ]
+"41
 }
 [e :U 467 ]
+"42
+}
+[; ;tactiles.c: 41: }
+[; ;tactiles.c: 42: } else if (bottomTactile_pressed < 25*3) {
+[e $U 468  ]
+[e :U 466 ]
+[e $ ! < -> _bottomTactile_pressed `i * -> 25 `i -> 3 `i 469  ]
+{
+[; ;tactiles.c: 43: bottomTactile_pressed++;
+"43
+[e ++ _bottomTactile_pressed -> -> 1 `i `uc ]
 "44
-[e $ == -> . . _PORTDbits 0 6 `i -> 0 `i 468  ]
+}
 [e :U 469 ]
-[; ;tactiles.c: 45: }
-[; ;tactiles.c: 46: wait_ms(20);
-"46
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
 "47
-}
-[e :U 465 ]
-[; ;tactiles.c: 47: }
-[; ;tactiles.c: 48: }
+[e :U 468 ]
+[; ;tactiles.c: 44: }
+[; ;tactiles.c: 47: if (bottomTactile_pressed == 0) {
+[e $ ! == -> _bottomTactile_pressed `i -> 0 `i 470  ]
+{
+[; ;tactiles.c: 48: bottom_push_state = bottom_push_state + 1;
 "48
-[e :UE 460 ]
-}
+[e = _bottom_push_state + _bottom_push_state -> 1 `i ]
+[; ;tactiles.c: 49: if (bottom_push_state > 5) {
+"49
+[e $ ! > _bottom_push_state -> 5 `i 471  ]
+{
+[; ;tactiles.c: 50: bottom_push_state = 1;
 "50
-[v _read_top_tactile `(v ~T0 @X0 1 ef ]
+[e = _bottom_push_state -> 1 `i ]
+"51
+}
+[e :U 471 ]
+[; ;tactiles.c: 51: }
+[; ;tactiles.c: 52: modulation_changed = 1;
+"52
+[e = _modulation_changed -> -> 1 `i `uc ]
+[; ;tactiles.c: 53: set_leds_bottom(bottom_push_state);
+"53
+[e ( _set_leds_bottom (1 _bottom_push_state ]
+[; ;tactiles.c: 54: updateWaveFormState();
+"54
+[e ( _updateWaveFormState ..  ]
+[; ;tactiles.c: 56: while (PORTDbits.RD6 == 0) {
+"56
+[e $U 472  ]
+[e :U 473 ]
 {
-[; ;tactiles.c: 50: void read_top_tactile(void) {
-[e :U _read_top_tactile ]
-[f ]
-[; ;tactiles.c: 60: if (PORTDbits.RD5 == 0) {
-"60
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 471  ]
-{
-[; ;tactiles.c: 61: if (topTactile_pressed > 0) {
-"61
-[e $ ! > -> _topTactile_pressed `i -> 0 `i 472  ]
-{
-[; ;tactiles.c: 62: topTactile_pressed--;
-"62
-[e -- _topTactile_pressed -> -> 1 `i `uc ]
-"63
+"57
 }
 [e :U 472 ]
-"64
+"56
+[e $ == -> . . _PORTDbits 0 6 `i -> 0 `i 473  ]
+[e :U 474 ]
+[; ;tactiles.c: 57: }
+[; ;tactiles.c: 58: wait_ms(20);
+"58
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+"59
 }
-[; ;tactiles.c: 63: }
-[; ;tactiles.c: 64: } else if (topTactile_pressed < 25*3) {
-[e $U 473  ]
-[e :U 471 ]
-[e $ ! < -> _topTactile_pressed `i * -> 25 `i -> 3 `i 474  ]
+[e :U 470 ]
+[; ;tactiles.c: 59: }
+[; ;tactiles.c: 60: }
+"60
+[e :UE 465 ]
+}
+"62
+[v _InitSubdivision `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 65: topTactile_pressed++;
+[; ;tactiles.c: 62: void InitSubdivision() {
+[e :U _InitSubdivision ]
+[f ]
+[; ;tactiles.c: 63: top_push_state = getSubdivisionState();
+"63
+[e = _top_push_state ( _getSubdivisionState ..  ]
+[; ;tactiles.c: 64: if (top_push_state < 1 || top_push_state > 6) {
+"64
+[e $ ! || < _top_push_state -> 1 `i > _top_push_state -> 6 `i 476  ]
+{
+[; ;tactiles.c: 65: top_push_state = 6;
 "65
-[e ++ _topTactile_pressed -> -> 1 `i `uc ]
+[e = _top_push_state -> 6 `i ]
 "66
 }
-[e :U 474 ]
-"71
-[e :U 473 ]
-[; ;tactiles.c: 66: }
-[; ;tactiles.c: 71: if (topTactile_pressed == 0) {
-[e $ ! == -> _topTactile_pressed `i -> 0 `i 475  ]
-{
-[; ;tactiles.c: 73: top_push_state = top_push_state + 1;
-"73
-[e = _top_push_state + _top_push_state -> 1 `i ]
-[; ;tactiles.c: 74: if (top_push_state >= 7) {
-"74
-[e $ ! >= _top_push_state -> 7 `i 476  ]
-{
-[; ;tactiles.c: 75: top_push_state = 1;
-"75
-[e = _top_push_state -> 1 `i ]
-"76
-}
 [e :U 476 ]
-[; ;tactiles.c: 76: }
-[; ;tactiles.c: 77: set_leds_top(top_push_state, 1);
-"77
+[; ;tactiles.c: 66: }
+[; ;tactiles.c: 67: set_leds_top(top_push_state, 1);
+"67
 [e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-[; ;tactiles.c: 78: mod_time_changed = 1;
-"78
+[; ;tactiles.c: 68: mod_time_changed = 1;
+"68
 [e = _mod_time_changed -> -> 1 `i `uc ]
-[; ;tactiles.c: 81: while (PORTDbits.RD5 == 0) {
-"81
-[e $U 477  ]
-[e :U 478 ]
-{
-"82
+[; ;tactiles.c: 69: }
+"69
+[e :UE 475 ]
 }
-[e :U 477 ]
+"71
+[v _read_top_tactile `(v ~T0 @X0 1 ef ]
+{
+[; ;tactiles.c: 71: void read_top_tactile(void) {
+[e :U _read_top_tactile ]
+[f ]
+[; ;tactiles.c: 81: if (PORTDbits.RD5 == 0) {
 "81
-[e $ == -> . . _PORTDbits 0 5 `i -> 0 `i 478  ]
-[e :U 479 ]
-[; ;tactiles.c: 82: }
-[; ;tactiles.c: 83: wait_ms(20);
+[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 478  ]
+{
+[; ;tactiles.c: 82: if (topTactile_pressed > 0) {
+"82
+[e $ ! > -> _topTactile_pressed `i -> 0 `i 479  ]
+{
+[; ;tactiles.c: 83: topTactile_pressed--;
 "83
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[e -- _topTactile_pressed -> -> 1 `i `uc ]
 "84
 }
-[e :U 475 ]
-[; ;tactiles.c: 84: }
-[; ;tactiles.c: 85: }
+[e :U 479 ]
 "85
-[e :UE 470 ]
 }
+[; ;tactiles.c: 84: }
+[; ;tactiles.c: 85: } else if (topTactile_pressed < 25*3) {
+[e $U 480  ]
+[e :U 478 ]
+[e $ ! < -> _topTactile_pressed `i * -> 25 `i -> 3 `i 481  ]
+{
+[; ;tactiles.c: 86: topTactile_pressed++;
+"86
+[e ++ _topTactile_pressed -> -> 1 `i `uc ]
 "87
-[v _update_mode `(v ~T0 @X0 1 ef ]
-{
-[; ;tactiles.c: 87: void update_mode(void) {
-[e :U _update_mode ]
-[f ]
-[; ;tactiles.c: 92: if (PORTCbits.RC0 == 0) {
+}
+[e :U 481 ]
 "92
-[e $ ! == -> . . _PORTCbits 0 0 `i -> 0 `i 481  ]
+[e :U 480 ]
+[; ;tactiles.c: 87: }
+[; ;tactiles.c: 92: if (topTactile_pressed == 0) {
+[e $ ! == -> _topTactile_pressed `i -> 0 `i 482  ]
 {
-[; ;tactiles.c: 95: debounce_mode2++;
+[; ;tactiles.c: 94: top_push_state = top_push_state + 1;
+"94
+[e = _top_push_state + _top_push_state -> 1 `i ]
+[; ;tactiles.c: 95: if (top_push_state >= 7) {
 "95
-[e ++ _debounce_mode2 -> 1 `i ]
-[; ;tactiles.c: 96: if (debounce_mode2 > 25) {
+[e $ ! >= _top_push_state -> 7 `i 483  ]
+{
+[; ;tactiles.c: 96: top_push_state = 1;
 "96
-[e $ ! > _debounce_mode2 -> 25 `i 482  ]
-{
-[; ;tactiles.c: 97: debounce_mode2 = 25;
+[e = _top_push_state -> 1 `i ]
 "97
-[e = _debounce_mode2 -> 25 `i ]
-[; ;tactiles.c: 99: if (presetSaveMode == 1) {
-"99
-[e $ ! == -> _presetSaveMode `i -> 1 `i 483  ]
-{
-[; ;tactiles.c: 100: presetSaveMode = 0;
-"100
-[e = _presetSaveMode -> -> 0 `i `uc ]
-[; ;tactiles.c: 101: resetRingLEDs();
-"101
-[e ( _resetRingLEDs ..  ]
-"102
 }
-[; ;tactiles.c: 102: } else {
-[e $U 484  ]
 [e :U 483 ]
-{
-[; ;tactiles.c: 103: mode2_state++;
+[; ;tactiles.c: 97: }
+[; ;tactiles.c: 98: updateSubdivisionState();
+"98
+[e ( _updateSubdivisionState ..  ]
+[; ;tactiles.c: 99: set_leds_top(top_push_state, 1);
+"99
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+[; ;tactiles.c: 100: mod_time_changed = 1;
+"100
+[e = _mod_time_changed -> -> 1 `i `uc ]
+[; ;tactiles.c: 103: while (PORTDbits.RD5 == 0) {
 "103
-[e ++ _mode2_state -> -> 1 `i `uc ]
-[; ;tactiles.c: 104: if (mode2_state > 2) {
-"104
-[e $ ! > -> _mode2_state `i -> 2 `i 485  ]
-{
-[; ;tactiles.c: 105: mode2_state = 0;
-"105
-[e = _mode2_state -> -> 0 `i `uc ]
-"106
-}
+[e $U 484  ]
 [e :U 485 ]
-"107
+{
+"104
 }
 [e :U 484 ]
-[; ;tactiles.c: 106: }
-[; ;tactiles.c: 107: }
-[; ;tactiles.c: 109: setPedalMode();
-"109
-[e ( _setPedalMode ..  ]
-[; ;tactiles.c: 110: while (PORTCbits.RC0 == 0) {
-"110
-[e $U 486  ]
-[e :U 487 ]
-{
-"111
-}
+"103
+[e $ == -> . . _PORTDbits 0 5 `i -> 0 `i 485  ]
 [e :U 486 ]
-"110
-[e $ == -> . . _PORTCbits 0 0 `i -> 0 `i 487  ]
-[e :U 488 ]
-"112
+[; ;tactiles.c: 104: }
+[; ;tactiles.c: 105: wait_ms(20);
+"105
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+"106
 }
 [e :U 482 ]
-"113
+[; ;tactiles.c: 106: }
+[; ;tactiles.c: 107: }
+"107
+[e :UE 477 ]
 }
-[; ;tactiles.c: 111: }
-[; ;tactiles.c: 112: }
-[; ;tactiles.c: 113: } else {
-[e $U 489  ]
-[e :U 481 ]
+"109
+[v _update_mode `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 114: debounce_mode2 = 0;
+[; ;tactiles.c: 109: void update_mode(void) {
+[e :U _update_mode ]
+[f ]
+[; ;tactiles.c: 114: if (PORTCbits.RC0 == 0) {
 "114
-[e = _debounce_mode2 -> 0 `i ]
-"115
+[e $ ! == -> . . _PORTCbits 0 0 `i -> 0 `i 488  ]
+{
+[; ;tactiles.c: 117: debounce_mode2++;
+"117
+[e ++ _debounce_mode2 -> 1 `i ]
+[; ;tactiles.c: 118: if (debounce_mode2 > 25) {
+"118
+[e $ ! > _debounce_mode2 -> 25 `i 489  ]
+{
+[; ;tactiles.c: 119: debounce_mode2 = 25;
+"119
+[e = _debounce_mode2 -> 25 `i ]
+[; ;tactiles.c: 121: if (presetSaveMode == 1) {
+"121
+[e $ ! == -> _presetSaveMode `i -> 1 `i 490  ]
+{
+[; ;tactiles.c: 122: presetSaveMode = 0;
+"122
+[e = _presetSaveMode -> -> 0 `i `uc ]
+[; ;tactiles.c: 123: resetRingLEDs();
+"123
+[e ( _resetRingLEDs ..  ]
+"124
+}
+[; ;tactiles.c: 124: } else {
+[e $U 491  ]
+[e :U 490 ]
+{
+[; ;tactiles.c: 125: mode2_state++;
+"125
+[e ++ _mode2_state -> -> 1 `i `uc ]
+[; ;tactiles.c: 126: if (mode2_state > 2) {
+"126
+[e $ ! > -> _mode2_state `i -> 2 `i 492  ]
+{
+[; ;tactiles.c: 127: mode2_state = 0;
+"127
+[e = _mode2_state -> -> 0 `i `uc ]
+"128
+}
+[e :U 492 ]
+"129
+}
+[e :U 491 ]
+[; ;tactiles.c: 128: }
+[; ;tactiles.c: 129: }
+[; ;tactiles.c: 131: setPedalMode();
+"131
+[e ( _setPedalMode ..  ]
+[; ;tactiles.c: 132: while (PORTCbits.RC0 == 0) {
+"132
+[e $U 493  ]
+[e :U 494 ]
+{
+"133
+}
+[e :U 493 ]
+"132
+[e $ == -> . . _PORTCbits 0 0 `i -> 0 `i 494  ]
+[e :U 495 ]
+"134
 }
 [e :U 489 ]
-[; ;tactiles.c: 115: }
-[; ;tactiles.c: 117: }
-"117
-[e :UE 480 ]
+"135
 }
-"119
+[; ;tactiles.c: 133: }
+[; ;tactiles.c: 134: }
+[; ;tactiles.c: 135: } else {
+[e $U 496  ]
+[e :U 488 ]
+{
+[; ;tactiles.c: 136: debounce_mode2 = 0;
+"136
+[e = _debounce_mode2 -> 0 `i ]
+"137
+}
+[e :U 496 ]
+[; ;tactiles.c: 137: }
+[; ;tactiles.c: 139: }
+"139
+[e :UE 487 ]
+}
+"141
 [v _setPedalMode `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 119: void setPedalMode(void) {
+[; ;tactiles.c: 141: void setPedalMode(void) {
 [e :U _setPedalMode ]
 [f ]
-[; ;tactiles.c: 120: switch (mode2_state) {
-"120
-[e $U 492  ]
-{
-[; ;tactiles.c: 121: case 0:
-"121
-[e :U 493 ]
-[; ;tactiles.c: 122: LATBbits.LATB1 = 0;
-"122
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;tactiles.c: 123: LATBbits.LATB0 = 0;
-"123
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;tactiles.c: 124: resetRingLEDs();
-"124
-[e ( _resetRingLEDs ..  ]
-[; ;tactiles.c: 125: break;
-"125
-[e $U 491  ]
-[; ;tactiles.c: 126: case 1:
-"126
-[e :U 494 ]
-[; ;tactiles.c: 127: LATBbits.LATB1 = 0;
-"127
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-[; ;tactiles.c: 128: LATBbits.LATB0 = 1;
-"128
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;tactiles.c: 129: setPresetDisplay(presetChannel);
-"129
-[e ( _setPresetDisplay (1 _presetChannel ]
-[; ;tactiles.c: 130: break;
-"130
-[e $U 491  ]
-[; ;tactiles.c: 131: case 2:
-"131
-[e :U 495 ]
-[; ;tactiles.c: 132: LATBbits.LATB1 = 1;
-"132
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;tactiles.c: 133: LATBbits.LATB0 = 0;
-"133
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-[; ;tactiles.c: 134: setExpressionDisplay(expressionChannel);
-"134
-[e ( _setExpressionDisplay (1 _expressionChannel ]
-[; ;tactiles.c: 135: break;
-"135
-[e $U 491  ]
-"136
-}
-[; ;tactiles.c: 136: }
-[e $U 491  ]
-"120
-[e :U 492 ]
-[e [\ _mode2_state , $ -> -> 0 `i `uc 493
- , $ -> -> 1 `i `uc 494
- , $ -> -> 2 `i `uc 495
- 491 ]
-"136
-[e :U 491 ]
-[; ;tactiles.c: 137: }
-"137
-[e :UE 490 ]
-}
-"139
-[v _update_selectMode `(v ~T0 @X0 1 ef ]
-{
-[; ;tactiles.c: 139: void update_selectMode(void) {
-[e :U _update_selectMode ]
-[f ]
-[; ;tactiles.c: 140: if (mode2_state == 0 && presetSaveMode != 1) {
-"140
-[e $ ! && == -> _mode2_state `i -> 0 `i != -> _presetSaveMode `i -> 1 `i 497  ]
-{
-[; ;tactiles.c: 142: return;
+[; ;tactiles.c: 142: switch (mode2_state) {
 "142
-[e $UE 496  ]
+[e $U 499  ]
+{
+[; ;tactiles.c: 143: case 0:
 "143
-}
-[e :U 497 ]
-[; ;tactiles.c: 143: }
-[; ;tactiles.c: 144: if (PORTDbits.RD7 == 0) {
-"144
-[e $ ! == -> . . _PORTDbits 0 7 `i -> 0 `i 498  ]
-{
-[; ;tactiles.c: 145: debounce_mode1++;
-"145
-[e ++ _debounce_mode1 -> 1 `i ]
-[; ;tactiles.c: 146: if (debounce_mode1 > 25) {
-"146
-[e $ ! > _debounce_mode1 -> 25 `i 499  ]
-{
-[; ;tactiles.c: 147: debounce_mode1 = 25;
-"147
-[e = _debounce_mode1 -> 25 `i ]
-[; ;tactiles.c: 148: if (mode2_state == presetModeCnst || presetSaveMode == 1) {
-"148
-[e $ ! || == -> _mode2_state `i -> _presetModeCnst `i == -> _presetSaveMode `i -> 1 `i 500  ]
-{
-[; ;tactiles.c: 149: presetChannel++;
-"149
-[e ++ _presetChannel -> -> 1 `i `uc ]
-[; ;tactiles.c: 150: if (presetChannel > 10) {
-"150
-[e $ ! > -> _presetChannel `i -> 10 `i 501  ]
-{
-[; ;tactiles.c: 151: presetChannel = 1;
-"151
-[e = _presetChannel -> -> 1 `i `uc ]
-"152
-}
-[e :U 501 ]
-[; ;tactiles.c: 152: }
-[; ;tactiles.c: 153: setPresetDisplay(presetChannel);
-"153
-[e ( _setPresetDisplay (1 _presetChannel ]
-"154
-}
-[; ;tactiles.c: 154: } else if (mode2_state == expressModeCnst) {
-[e $U 502  ]
 [e :U 500 ]
-[e $ ! == -> _mode2_state `i -> _expressModeCnst `i 503  ]
-{
-[; ;tactiles.c: 155: expressionChannel++;
+[; ;tactiles.c: 144: LATBbits.LATB1 = 0;
+"144
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;tactiles.c: 145: LATBbits.LATB0 = 0;
+"145
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;tactiles.c: 146: resetRingLEDs();
+"146
+[e ( _resetRingLEDs ..  ]
+[; ;tactiles.c: 147: break;
+"147
+[e $U 498  ]
+[; ;tactiles.c: 148: case 1:
+"148
+[e :U 501 ]
+[; ;tactiles.c: 149: LATBbits.LATB1 = 0;
+"149
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[; ;tactiles.c: 150: LATBbits.LATB0 = 1;
+"150
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+[; ;tactiles.c: 151: setPresetDisplay(presetChannel);
+"151
+[e ( _setPresetDisplay (1 _presetChannel ]
+[; ;tactiles.c: 152: break;
+"152
+[e $U 498  ]
+[; ;tactiles.c: 153: case 2:
+"153
+[e :U 502 ]
+[; ;tactiles.c: 154: LATBbits.LATB1 = 1;
+"154
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[; ;tactiles.c: 155: LATBbits.LATB0 = 0;
 "155
-[e ++ _expressionChannel -> -> 1 `i `uc ]
-[; ;tactiles.c: 156: if (expressionChannel > 5) {
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;tactiles.c: 156: setExpressionDisplay(expressionChannel);
 "156
-[e $ ! > -> _expressionChannel `i -> 5 `i 504  ]
-{
-[; ;tactiles.c: 157: expressionChannel = 1;
+[e ( _setExpressionDisplay (1 _expressionChannel ]
+[; ;tactiles.c: 157: break;
 "157
-[e = _expressionChannel -> -> 1 `i `uc ]
+[e $U 498  ]
 "158
 }
-[e :U 504 ]
 [; ;tactiles.c: 158: }
-[; ;tactiles.c: 159: setExpressionDisplay(expressionChannel);
-"159
-[e ( _setExpressionDisplay (1 _expressionChannel ]
-"160
-}
-[e :U 503 ]
-"167
-[e :U 502 ]
-[; ;tactiles.c: 160: }
-[; ;tactiles.c: 167: while (PORTDbits.RD7 == 0) {
-[e $U 505  ]
-[e :U 506 ]
-{
-"168
-}
-[e :U 505 ]
-"167
-[e $ == -> . . _PORTDbits 0 7 `i -> 0 `i 506  ]
-[e :U 507 ]
-"169
-}
+[e $U 498  ]
+"142
 [e :U 499 ]
-"170
-}
-[; ;tactiles.c: 168: }
-[; ;tactiles.c: 169: }
-[; ;tactiles.c: 170: } else {
-[e $U 508  ]
+[e [\ _mode2_state , $ -> -> 0 `i `uc 500
+ , $ -> -> 1 `i `uc 501
+ , $ -> -> 2 `i `uc 502
+ 498 ]
+"158
 [e :U 498 ]
+[; ;tactiles.c: 159: updatePedalMode();
+"159
+[e ( _updatePedalMode ..  ]
+[; ;tactiles.c: 160: }
+"160
+[e :UE 497 ]
+}
+"162
+[v _update_selectMode `(v ~T0 @X0 1 ef ]
 {
-[; ;tactiles.c: 171: debounce_mode1 = 0;
+[; ;tactiles.c: 162: void update_selectMode(void) {
+[e :U _update_selectMode ]
+[f ]
+[; ;tactiles.c: 163: if (mode2_state == 0 && presetSaveMode != 1) {
+"163
+[e $ ! && == -> _mode2_state `i -> 0 `i != -> _presetSaveMode `i -> 1 `i 504  ]
+{
+[; ;tactiles.c: 165: return;
+"165
+[e $UE 503  ]
+"166
+}
+[e :U 504 ]
+[; ;tactiles.c: 166: }
+[; ;tactiles.c: 167: if (PORTDbits.RD7 == 0) {
+"167
+[e $ ! == -> . . _PORTDbits 0 7 `i -> 0 `i 505  ]
+{
+[; ;tactiles.c: 168: debounce_mode1++;
+"168
+[e ++ _debounce_mode1 -> 1 `i ]
+[; ;tactiles.c: 169: if (debounce_mode1 > 25) {
+"169
+[e $ ! > _debounce_mode1 -> 25 `i 506  ]
+{
+[; ;tactiles.c: 170: debounce_mode1 = 25;
+"170
+[e = _debounce_mode1 -> 25 `i ]
+[; ;tactiles.c: 171: if (mode2_state == presetModeCnst || presetSaveMode == 1) {
 "171
-[e = _debounce_mode1 -> 0 `i ]
+[e $ ! || == -> _mode2_state `i -> _presetModeCnst `i == -> _presetSaveMode `i -> 1 `i 507  ]
+{
+[; ;tactiles.c: 172: presetChannel++;
 "172
+[e ++ _presetChannel -> -> 1 `i `uc ]
+[; ;tactiles.c: 173: if (presetChannel > 10) {
+"173
+[e $ ! > -> _presetChannel `i -> 10 `i 508  ]
+{
+[; ;tactiles.c: 174: presetChannel = 1;
+"174
+[e = _presetChannel -> -> 1 `i `uc ]
+"175
 }
 [e :U 508 ]
-[; ;tactiles.c: 172: }
-[; ;tactiles.c: 174: }
-"174
-[e :UE 496 ]
+[; ;tactiles.c: 175: }
+[; ;tactiles.c: 176: setPresetDisplay(presetChannel);
+"176
+[e ( _setPresetDisplay (1 _presetChannel ]
+"177
+}
+[; ;tactiles.c: 177: } else if (mode2_state == expressModeCnst) {
+[e $U 509  ]
+[e :U 507 ]
+[e $ ! == -> _mode2_state `i -> _expressModeCnst `i 510  ]
+{
+[; ;tactiles.c: 178: expressionChannel++;
+"178
+[e ++ _expressionChannel -> -> 1 `i `uc ]
+[; ;tactiles.c: 179: if (expressionChannel > 5) {
+"179
+[e $ ! > -> _expressionChannel `i -> 5 `i 511  ]
+{
+[; ;tactiles.c: 180: expressionChannel = 1;
+"180
+[e = _expressionChannel -> -> 1 `i `uc ]
+"181
+}
+[e :U 511 ]
+[; ;tactiles.c: 181: }
+[; ;tactiles.c: 182: setExpressionDisplay(expressionChannel);
+"182
+[e ( _setExpressionDisplay (1 _expressionChannel ]
+"183
+}
+[e :U 510 ]
+"190
+[e :U 509 ]
+[; ;tactiles.c: 183: }
+[; ;tactiles.c: 190: while (PORTDbits.RD7 == 0) {
+[e $U 512  ]
+[e :U 513 ]
+{
+"191
+}
+[e :U 512 ]
+"190
+[e $ == -> . . _PORTDbits 0 7 `i -> 0 `i 513  ]
+[e :U 514 ]
+"192
+}
+[e :U 506 ]
+"193
+}
+[; ;tactiles.c: 191: }
+[; ;tactiles.c: 192: }
+[; ;tactiles.c: 193: } else {
+[e $U 515  ]
+[e :U 505 ]
+{
+[; ;tactiles.c: 194: debounce_mode1 = 0;
+"194
+[e = _debounce_mode1 -> 0 `i ]
+"195
+}
+[e :U 515 ]
+[; ;tactiles.c: 195: }
+[; ;tactiles.c: 197: }
+"197
+[e :UE 503 ]
 }

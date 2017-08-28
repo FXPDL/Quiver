@@ -1,4 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"9174 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
+[v _RCIE `Vb ~T0 @X0 0 e@1165 ]
+"9176
+[v _RCIF `Vb ~T0 @X0 0 e@141 ]
+"51 usart_pic16.h
+[v _USARTHandleRxInt `(v ~T0 @X0 0 ef ]
 "343 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S27 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
@@ -12,6 +18,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INTCONbits `VS26 ~T0 @X0 0 e@11 ]
 "27 modulation.h
 [v _getModulationSubdivision `(i ~T0 @X0 0 ef ]
+"127 interrupts.c
+[v _saveState `(i ~T0 @X0 0 ef ]
 "2449 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1527.h
 [s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S116 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -3642,7 +3650,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;memory.h: 128: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
 [; ;memory.h: 164: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
 [; ;memory.h: 189: void FLASH_EraseBlock(uint16_t startAddr);
-"56 constants.h
+"54 constants.h
+[v _adjusted_pot_value `i ~T0 @X0 1 e ]
+[; ;constants.h: 54: signed int adjusted_pot_value;
+"56
 [v _timer `Vl ~T0 @X0 1 e ]
 [i _timer
 -> -> 0 `i `l
@@ -3673,11 +3684,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 62: uint16_t long_press_limit = 1000;
 "63
-[v _baseline_mod_time `Vl ~T0 @X0 1 e ]
+[v _baseline_mod_time `Vi ~T0 @X0 1 e ]
 [i _baseline_mod_time
--> -> 2000 `i `l
+-> 2000 `i
 ]
-[; ;constants.h: 63: volatile long baseline_mod_time = 2000;
+[; ;constants.h: 63: volatile int baseline_mod_time = 2000;
 "65
 [v _longBypass_start `uc ~T0 @X0 1 e ]
 [i _longBypass_start
@@ -3838,11 +3849,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;constants.h: 100: volatile long double_timer = 0;
 "102
-[v _test_timer `Vl ~T0 @X0 1 e ]
-[i _test_timer
+[v _save_timer `Vl ~T0 @X0 1 e ]
+[i _save_timer
 -> -> 0 `i `l
 ]
-[; ;constants.h: 102: volatile long test_timer = 0;
+[; ;constants.h: 102: volatile long save_timer = 0;
 "105
 [v _presetSaveMode `uc ~T0 @X0 1 e ]
 [i _presetSaveMode
@@ -4224,394 +4235,451 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;modulation.h: 32: int modSaw(double, double);
 [; ;modulation.h: 33: int modSawRev(double, double);
 [; ;modulation.h: 34: int modSquare(double, double);
-"24 interrupts.c
+[; ;modulation.h: 25: void updateModulationArray(void);
+[; ;modulation.h: 26: void calcCosArray(void);
+[; ;modulation.h: 27: int getModulationSubdivision(void);
+[; ;modulation.h: 28: void getModulationDelayTime(void);
+[; ;modulation.h: 30: int modCos(double, double);
+[; ;modulation.h: 31: int modTri(double, double);
+[; ;modulation.h: 32: int modSaw(double, double);
+[; ;modulation.h: 33: int modSawRev(double, double);
+[; ;modulation.h: 34: int modSquare(double, double);
+"25 interrupts.c
 [v _mod_value `i ~T0 @X0 1 e ]
 [i _mod_value
 -> 0 `i
 ]
-[; ;interrupts.c: 24: signed int mod_value = 0;
-"25
+[; ;interrupts.c: 25: signed int mod_value = 0;
+"26
 [v _mod_counter `i ~T0 @X0 1 e ]
 [i _mod_counter
 -> 1 `i
 ]
-[; ;interrupts.c: 25: int mod_counter = 1;
-[v F3685 `(v ~T0 @X0 1 tf ]
-"28
-[v _isr `IF3685 ~T0 @X0 1 e ]
+[; ;interrupts.c: 26: int mod_counter = 1;
+"27
+[v _save_counter `l ~T0 @X0 1 e ]
+[i _save_counter
+-> -> 0 `i `l
+]
+[; ;interrupts.c: 27: long save_counter = 0;
+[v F3701 `(v ~T0 @X0 1 tf ]
+"30
+[v _isr `IF3701 ~T0 @X0 1 e ]
 {
-[; ;interrupts.c: 28: void interrupt isr(void) {
+[; ;interrupts.c: 30: void interrupt isr(void) {
 [e :U _isr ]
 [f ]
-"31
+"33
 [v _isInitialized `uc ~T0 @X0 0 e ]
 [v _timer `Vl ~T0 @X0 0 e ]
 [v _sub_timer `Vl ~T0 @X0 0 e ]
 [v _tap_timer `Vl ~T0 @X0 0 e ]
-"35
-[v _adjusted_pot_value `i ~T0 @X0 0 e ]
-"36
+"38
 [v _mod_delay_time `i ~T0 @X0 0 e ]
 [v _top_push_state `i ~T0 @X0 0 e ]
 [v _longBypass_start `uc ~T0 @X0 0 e ]
-"42
+"44
 [v _mod_timer `Vl ~T0 @X0 0 e ]
-"43
+"45
 [v _delay_time `Vl ~T0 @X0 0 e ]
-[; ;interrupts.c: 31: extern char isInitialized;
-[; ;interrupts.c: 32: extern volatile long timer;
-[; ;interrupts.c: 33: extern volatile long sub_timer;
-[; ;interrupts.c: 34: extern volatile long tap_timer;
-[; ;interrupts.c: 35: extern signed int adjusted_pot_value;
-[; ;interrupts.c: 36: extern int mod_delay_time;
-[; ;interrupts.c: 40: extern int top_push_state;
-[; ;interrupts.c: 41: extern uint8_t longBypass_start;
-[; ;interrupts.c: 42: extern volatile long mod_timer;
-[; ;interrupts.c: 43: extern volatile long delay_time;
-[; ;interrupts.c: 46: if (INTCONbits.TMR0IF == 1) {
-"46
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 461  ]
+[; ;interrupts.c: 33: extern char isInitialized;
+[; ;interrupts.c: 34: extern volatile long timer;
+[; ;interrupts.c: 35: extern volatile long sub_timer;
+[; ;interrupts.c: 36: extern volatile long tap_timer;
+[; ;interrupts.c: 38: extern int mod_delay_time;
+[; ;interrupts.c: 42: extern int top_push_state;
+[; ;interrupts.c: 43: extern uint8_t longBypass_start;
+[; ;interrupts.c: 44: extern volatile long mod_timer;
+[; ;interrupts.c: 45: extern volatile long delay_time;
+[; ;interrupts.c: 48: if (RCIE && RCIF) {
+"48
+[e $ ! && _RCIE _RCIF 461  ]
 {
-[; ;interrupts.c: 47: if (isInitialized == 0) {
-"47
-[e $ ! == -> _isInitialized `i -> 0 `i 462  ]
-{
-[; ;interrupts.c: 50: INTCONbits.TMR0IF = 0;
+[; ;interrupts.c: 50: USARTHandleRxInt();
 "50
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 51: return;
-"51
-[e $UE 460  ]
-"52
+[e ( _USARTHandleRxInt ..  ]
+"76
 }
-[e :U 462 ]
-[; ;interrupts.c: 52: }
-[; ;interrupts.c: 63: if (timer == 0) {
-"63
-[e $ ! == _timer -> -> 0 `i `l 463  ]
+[e :U 461 ]
+[; ;interrupts.c: 76: }
+[; ;interrupts.c: 81: if (INTCONbits.TMR0IF == 1) {
+"81
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 462  ]
 {
-[; ;interrupts.c: 64: tmpModDelay = mod_delay_time;
-"64
-[e = _tmpModDelay _mod_delay_time ]
-"65
+[; ;interrupts.c: 83: if (isInitialized == 0) {
+"83
+[e $ ! == -> _isInitialized `i -> 0 `i 463  ]
+{
+[; ;interrupts.c: 86: INTCONbits.TMR0IF = 0;
+"86
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;interrupts.c: 87: return;
+"87
+[e $UE 460  ]
+"88
 }
 [e :U 463 ]
-[; ;interrupts.c: 65: }
-[; ;interrupts.c: 70: timer = timer + 1;
-"70
-[e = _timer + _timer -> -> 1 `i `l ]
-[; ;interrupts.c: 71: sub_timer = sub_timer + 1;
-"71
-[e = _sub_timer + _sub_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 72: tap_timer = tap_timer + 1;
-"72
-[e = _tap_timer + _tap_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 73: mod_timer = mod_timer + 1;
-"73
-[e = _mod_timer + _mod_timer -> -> 1 `i `l ]
-[; ;interrupts.c: 74: double_timer++;
-"74
-[e ++ _double_timer -> -> 1 `i `l ]
-"77
-[v _subDiv `uc ~T0 @X0 1 a ]
-[; ;interrupts.c: 77: char subDiv = getModulationSubdivision();
-[e = _subDiv -> ( _getModulationSubdivision ..  `uc ]
-[; ;interrupts.c: 82: if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
-"82
-[e $ ! && && >= _mod_timer -> _tmpModDelay `l == _mod_counter -> _subDiv `i == _tmpModDelay _mod_delay_time 464  ]
+[; ;interrupts.c: 88: }
+[; ;interrupts.c: 105: if (timer == 0) {
+"105
+[e $ ! == _timer -> -> 0 `i `l 464  ]
 {
-[; ;interrupts.c: 83: tmpModDelay = (delay_time - sub_timer);
-"83
-[e = _tmpModDelay -> - _delay_time _sub_timer `i ]
-"84
+[; ;interrupts.c: 106: tmpModDelay = mod_delay_time;
+"106
+[e = _tmpModDelay _mod_delay_time ]
+"107
 }
 [e :U 464 ]
-[; ;interrupts.c: 84: }
-[; ;interrupts.c: 86: if (longBypass_start == 1) {
-"86
-[e $ ! == -> _longBypass_start `i -> 1 `i 465  ]
+[; ;interrupts.c: 107: }
+[; ;interrupts.c: 115: timer = timer + 1;
+"115
+[e = _timer + _timer -> -> 1 `i `l ]
+[; ;interrupts.c: 116: sub_timer = sub_timer + 1;
+"116
+[e = _sub_timer + _sub_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 117: tap_timer = tap_timer + 1;
+"117
+[e = _tap_timer + _tap_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 118: mod_timer = mod_timer + 1;
+"118
+[e = _mod_timer + _mod_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 119: double_timer++;
+"119
+[e ++ _double_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 120: save_timer++;
+"120
+[e ++ _save_timer -> -> 1 `i `l ]
+[; ;interrupts.c: 121: save_counter++;
+"121
+[e ++ _save_counter -> -> 1 `i `l ]
+"124
+[v _subDiv `uc ~T0 @X0 1 a ]
+[; ;interrupts.c: 124: char subDiv = getModulationSubdivision();
+[e = _subDiv -> ( _getModulationSubdivision ..  `uc ]
+[; ;interrupts.c: 126: if (save_counter > 1250) {
+"126
+[e $ ! > _save_counter -> -> 1250 `i `l 465  ]
 {
-[; ;interrupts.c: 87: longBypass_timer++;
-"87
+[; ;interrupts.c: 127: saveState();
+"127
+[e ( _saveState ..  ]
+[; ;interrupts.c: 128: save_counter = 0;
+"128
+[e = _save_counter -> -> 0 `i `l ]
+[; ;interrupts.c: 129: LATBbits.LATB0 = 1;
+"129
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+"130
+}
+[e :U 465 ]
+[; ;interrupts.c: 130: }
+[; ;interrupts.c: 132: if (save_counter == 10) {
+"132
+[e $ ! == _save_counter -> -> 10 `i `l 466  ]
+{
+[; ;interrupts.c: 134: LATBbits.LATB0 = 0;
+"134
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+"135
+}
+[e :U 466 ]
+[; ;interrupts.c: 135: }
+[; ;interrupts.c: 138: if ((mod_timer >= tmpModDelay) && (mod_counter == subDiv) && (tmpModDelay == mod_delay_time)) {
+"138
+[e $ ! && && >= _mod_timer -> _tmpModDelay `l == _mod_counter -> _subDiv `i == _tmpModDelay _mod_delay_time 467  ]
+{
+[; ;interrupts.c: 139: tmpModDelay = (delay_time - sub_timer);
+"139
+[e = _tmpModDelay -> - _delay_time _sub_timer `i ]
+"140
+}
+[e :U 467 ]
+[; ;interrupts.c: 140: }
+[; ;interrupts.c: 142: if (longBypass_start == 1) {
+"142
+[e $ ! == -> _longBypass_start `i -> 1 `i 468  ]
+{
+[; ;interrupts.c: 143: longBypass_timer++;
+"143
 [e ++ _longBypass_timer -> -> 1 `i `ui ]
-[; ;interrupts.c: 88: if (longBypass_timer > long_press_limit) {longBypass_timer = long_press_limit;}
-"88
-[e $ ! > _longBypass_timer _long_press_limit 466  ]
+[; ;interrupts.c: 144: if (longBypass_timer > long_press_limit) {longBypass_timer = long_press_limit;}
+"144
+[e $ ! > _longBypass_timer _long_press_limit 469  ]
 {
 [e = _longBypass_timer _long_press_limit ]
 }
-[e :U 466 ]
-"89
-}
-[e :U 465 ]
-[; ;interrupts.c: 89: }
-[; ;interrupts.c: 90: if (longTap_start == 1) {
-"90
-[e $ ! == -> _longTap_start `i -> 1 `i 467  ]
-{
-[; ;interrupts.c: 91: longTap_timer++;
-"91
-[e ++ _longTap_timer -> -> 1 `i `ui ]
-[; ;interrupts.c: 92: if (longTap_timer > long_press_limit) {
-"92
-[e $ ! > _longTap_timer _long_press_limit 468  ]
-{
-[; ;interrupts.c: 93: longTap_timer = long_press_limit;
-"93
-[e = _longTap_timer _long_press_limit ]
-"94
-}
-[e :U 468 ]
-"95
-}
-[e :U 467 ]
-[; ;interrupts.c: 94: }
-[; ;interrupts.c: 95: }
-[; ;interrupts.c: 97: if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
-"97
-[e $ ! && && < -> _longTap_state `i -> 1 `i < -> _doubleTap_state `i -> 1 `i < -> _presetSaveMode `i -> 1 `i 469  ]
-{
-[; ;interrupts.c: 99: if (timer >= baseline_mod_time) {
-"99
-[e $ ! >= _timer _baseline_mod_time 470  ]
-{
-[; ;interrupts.c: 102: LATBbits.LATB4 = 1;
-"102
-[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
-[; ;interrupts.c: 104: timer = 0;
-"104
-[e = _timer -> -> 0 `i `l ]
-[; ;interrupts.c: 106: if (modulation_changed == 1) {
-"106
-[e $ ! == -> _modulation_changed `i -> 1 `i 471  ]
-{
-[; ;interrupts.c: 109: modulation_changed = 0;
-"109
-[e = _modulation_changed -> -> 0 `i `uc ]
-[; ;interrupts.c: 110: mod_time_changed = 0;
-"110
-[e = _mod_time_changed -> -> 0 `i `uc ]
-[; ;interrupts.c: 111: sub_timer = delay_time;
-"111
-[e = _sub_timer _delay_time ]
-[; ;interrupts.c: 112: tmpModDelay = mod_delay_time;
-"112
-[e = _tmpModDelay _mod_delay_time ]
-[; ;interrupts.c: 113: mod_timer = tmpModDelay;
-"113
-[e = _mod_timer -> _tmpModDelay `l ]
-"121
-}
-[e :U 471 ]
-"122
-}
-[e :U 470 ]
-[; ;interrupts.c: 121: }
-[; ;interrupts.c: 122: }
-[; ;interrupts.c: 124: if (timer >= 30) {
-"124
-[e $ ! >= _timer -> -> 30 `i `l 472  ]
-{
-[; ;interrupts.c: 126: LATBbits.LATB4 = 0;
-"126
-[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
-"128
-}
-[e :U 472 ]
-"129
-}
 [e :U 469 ]
-[; ;interrupts.c: 128: }
-[; ;interrupts.c: 129: }
-[; ;interrupts.c: 138: if (presetSaveMode < 1 && mode2_state == 0) {
-"138
-[e $ ! && < -> _presetSaveMode `i -> 1 `i == -> _mode2_state `i -> 0 `i 473  ]
-{
-[; ;interrupts.c: 139: if (sub_timer >= delay_time ) {
-"139
-[e $ ! >= _sub_timer _delay_time 474  ]
-{
-[; ;interrupts.c: 140: if (suspend_blink == 0) {
-"140
-[e $ ! == -> _suspend_blink `i -> 0 `i 475  ]
-{
-[; ;interrupts.c: 141: set_leds_top(top_push_state, 1);
-"141
-[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
-"142
-}
-[e :U 475 ]
-[; ;interrupts.c: 142: }
-[; ;interrupts.c: 144: sub_timer = 0;
-"144
-[e = _sub_timer -> -> 0 `i `l ]
 "145
 }
-[e :U 474 ]
+[e :U 468 ]
 [; ;interrupts.c: 145: }
-[; ;interrupts.c: 147: if (sub_timer >= 20) {
+[; ;interrupts.c: 146: if (longTap_start == 1) {
+"146
+[e $ ! == -> _longTap_start `i -> 1 `i 470  ]
+{
+[; ;interrupts.c: 147: longTap_timer++;
 "147
-[e $ ! >= _sub_timer -> -> 20 `i `l 476  ]
-{
-[; ;interrupts.c: 148: if (suspend_blink == 0) {
+[e ++ _longTap_timer -> -> 1 `i `ui ]
+[; ;interrupts.c: 148: if (longTap_timer > long_press_limit) {
 "148
-[e $ ! == -> _suspend_blink `i -> 0 `i 477  ]
+[e $ ! > _longTap_timer _long_press_limit 471  ]
 {
-[; ;interrupts.c: 149: set_leds_top(top_push_state, 0);
+[; ;interrupts.c: 149: longTap_timer = long_press_limit;
 "149
-[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
+[e = _longTap_timer _long_press_limit ]
 "150
 }
-[e :U 477 ]
+[e :U 471 ]
 "151
 }
-[e :U 476 ]
-"152
-}
-[e :U 473 ]
+[e :U 470 ]
 [; ;interrupts.c: 150: }
 [; ;interrupts.c: 151: }
-[; ;interrupts.c: 152: }
-[; ;interrupts.c: 157: if (presetSaveMode == 1) {
-"157
-[e $ ! == -> _presetSaveMode `i -> 1 `i 478  ]
+[; ;interrupts.c: 153: if (longTap_state < 1 && doubleTap_state < 1 && presetSaveMode < 1) {
+"153
+[e $ ! && && < -> _longTap_state `i -> 1 `i < -> _doubleTap_state `i -> 1 `i < -> _presetSaveMode `i -> 1 `i 472  ]
 {
-[; ;interrupts.c: 158: if (double_timer >= 250) {
+[; ;interrupts.c: 155: if (timer >= baseline_mod_time) {
+"155
+[e $ ! >= _timer -> _baseline_mod_time `l 473  ]
+{
+[; ;interrupts.c: 158: LATBbits.LATB4 = 1;
 "158
-[e $ ! >= _double_timer -> -> 250 `i `l 479  ]
-{
-[; ;interrupts.c: 159: LATBbits.LATB0 = 1;
-"159
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 160: double_timer = 0;
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;interrupts.c: 160: timer = 0;
 "160
-[e = _double_timer -> -> 0 `i `l ]
-"161
-}
-[e :U 479 ]
-[; ;interrupts.c: 161: }
-[; ;interrupts.c: 162: if (double_timer >= 30) {
+[e = _timer -> -> 0 `i `l ]
+[; ;interrupts.c: 162: if (modulation_changed == 1) {
 "162
-[e $ ! >= _double_timer -> -> 30 `i `l 480  ]
+[e $ ! == -> _modulation_changed `i -> 1 `i 474  ]
 {
-[; ;interrupts.c: 163: LATBbits.LATB0 = 0;
-"163
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"164
-}
-[e :U 480 ]
+[; ;interrupts.c: 165: modulation_changed = 0;
 "165
+[e = _modulation_changed -> -> 0 `i `uc ]
+[; ;interrupts.c: 166: mod_time_changed = 0;
+"166
+[e = _mod_time_changed -> -> 0 `i `uc ]
+[; ;interrupts.c: 167: sub_timer = delay_time;
+"167
+[e = _sub_timer _delay_time ]
+[; ;interrupts.c: 168: tmpModDelay = mod_delay_time;
+"168
+[e = _tmpModDelay _mod_delay_time ]
+[; ;interrupts.c: 169: mod_timer = tmpModDelay;
+"169
+[e = _mod_timer -> _tmpModDelay `l ]
+"177
+}
+[e :U 474 ]
+"178
+}
+[e :U 473 ]
+[; ;interrupts.c: 177: }
+[; ;interrupts.c: 178: }
+[; ;interrupts.c: 180: if (timer >= 30) {
+"180
+[e $ ! >= _timer -> -> 30 `i `l 475  ]
+{
+[; ;interrupts.c: 182: LATBbits.LATB4 = 0;
+"182
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+"184
+}
+[e :U 475 ]
+"185
+}
+[e :U 472 ]
+[; ;interrupts.c: 184: }
+[; ;interrupts.c: 185: }
+[; ;interrupts.c: 194: if (presetSaveMode < 1 && mode2_state == 0) {
+"194
+[e $ ! && < -> _presetSaveMode `i -> 1 `i == -> _mode2_state `i -> 0 `i 476  ]
+{
+[; ;interrupts.c: 195: if (sub_timer >= delay_time ) {
+"195
+[e $ ! >= _sub_timer _delay_time 477  ]
+{
+[; ;interrupts.c: 196: if (suspend_blink == 0) {
+"196
+[e $ ! == -> _suspend_blink `i -> 0 `i 478  ]
+{
+[; ;interrupts.c: 197: set_leds_top(top_push_state, 1);
+"197
+[e ( _set_leds_top (2 , _top_push_state -> 1 `i ]
+"198
 }
 [e :U 478 ]
-[; ;interrupts.c: 164: }
-[; ;interrupts.c: 165: }
-[; ;interrupts.c: 184: if (mod_timer >= tmpModDelay) {
-"184
-[e $ ! >= _mod_timer -> _tmpModDelay `l 481  ]
-{
-[; ;interrupts.c: 185: mod_timer = 0;
-"185
-[e = _mod_timer -> -> 0 `i `l ]
-[; ;interrupts.c: 187: if (mod_counter >= subDiv) {
-"187
-[e $ ! >= _mod_counter -> _subDiv `i 482  ]
-{
-[; ;interrupts.c: 188: mod_counter = 0;
-"188
-[e = _mod_counter -> 0 `i ]
-[; ;interrupts.c: 189: tmpModDelay = mod_delay_time;
-"189
-[e = _tmpModDelay _mod_delay_time ]
-"193
+[; ;interrupts.c: 198: }
+[; ;interrupts.c: 200: sub_timer = 0;
+"200
+[e = _sub_timer -> -> 0 `i `l ]
+"201
 }
-[e :U 482 ]
-[; ;interrupts.c: 193: }
-[; ;interrupts.c: 197: mod_value = modArray[mod_counter];
-"197
-[e = _mod_value *U + &U _modArray * -> -> _mod_counter `ui `ux -> -> # *U &U _modArray `ui `ux ]
-[; ;interrupts.c: 204: mod_value = modulation(mod_value, adjusted_pot_value);
+[e :U 477 ]
+[; ;interrupts.c: 201: }
+[; ;interrupts.c: 203: if (sub_timer >= 20) {
+"203
+[e $ ! >= _sub_timer -> -> 20 `i `l 479  ]
+{
+[; ;interrupts.c: 204: if (suspend_blink == 0) {
 "204
-[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
-[; ;interrupts.c: 205: CCPR3 = mod_value / 2;
+[e $ ! == -> _suspend_blink `i -> 0 `i 480  ]
+{
+[; ;interrupts.c: 205: set_leds_top(top_push_state, 0);
 "205
-[e = _CCPR3 -> / _mod_value -> 2 `i `us ]
-[; ;interrupts.c: 206: mod_counter++;
+[e ( _set_leds_top (2 , _top_push_state -> 0 `i ]
 "206
-[e ++ _mod_counter -> 1 `i ]
+}
+[e :U 480 ]
+"207
+}
+[e :U 479 ]
 "208
 }
-[e :U 481 ]
+[e :U 476 ]
+[; ;interrupts.c: 206: }
+[; ;interrupts.c: 207: }
 [; ;interrupts.c: 208: }
-[; ;interrupts.c: 210: if (preset_programmning_on == 1) {
-"210
-[e $ ! == -> _preset_programmning_on `i -> 1 `i 483  ]
-{
-[; ;interrupts.c: 211: preset_blink++;
-"211
-[e ++ _preset_blink -> -> 1 `i `uc ]
-[; ;interrupts.c: 213: if (preset_blink >= blink_delay) {
+[; ;interrupts.c: 213: if (presetSaveMode == 1) {
 "213
-[e $ ! >= -> _preset_blink `i _blink_delay 484  ]
+[e $ ! == -> _presetSaveMode `i -> 1 `i 481  ]
 {
-[; ;interrupts.c: 214: LATBbits.LATB1 = 1;
+[; ;interrupts.c: 214: if (double_timer >= 250) {
 "214
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 215: if (preset_blink > blink_delay*2) {
-"215
-[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 485  ]
+[e $ ! >= _double_timer -> -> 250 `i `l 482  ]
 {
-[; ;interrupts.c: 216: preset_blink = 0;
+[; ;interrupts.c: 215: LATBbits.LATB0 = 1;
+"215
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+[; ;interrupts.c: 216: double_timer = 0;
 "216
-[e = _preset_blink -> -> 0 `i `uc ]
+[e = _double_timer -> -> 0 `i `l ]
 "217
 }
-[e :U 485 ]
-"219
-}
+[e :U 482 ]
 [; ;interrupts.c: 217: }
-[; ;interrupts.c: 219: } else {
-[e $U 486  ]
-[e :U 484 ]
+[; ;interrupts.c: 218: if (double_timer >= 30) {
+"218
+[e $ ! >= _double_timer -> -> 30 `i `l 483  ]
 {
-[; ;interrupts.c: 220: LATBbits.LATB1 = 0;
+[; ;interrupts.c: 219: LATBbits.LATB0 = 0;
+"219
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
 "220
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+}
+[e :U 483 ]
 "221
 }
-[e :U 486 ]
-"223
-}
+[e :U 481 ]
+[; ;interrupts.c: 220: }
 [; ;interrupts.c: 221: }
-[; ;interrupts.c: 223: } else {
-[e $U 487  ]
-[e :U 483 ]
+[; ;interrupts.c: 242: if (mod_timer >= tmpModDelay) {
+"242
+[e $ ! >= _mod_timer -> _tmpModDelay `l 484  ]
 {
-[; ;interrupts.c: 224: if (preset_blink > 0) {
-"224
-[e $ ! > -> _preset_blink `i -> 0 `i 488  ]
+[; ;interrupts.c: 243: mod_timer = 0;
+"243
+[e = _mod_timer -> -> 0 `i `l ]
+[; ;interrupts.c: 245: if (mod_counter >= subDiv) {
+"245
+[e $ ! >= _mod_counter -> _subDiv `i 485  ]
 {
-[; ;interrupts.c: 225: preset_blink = 0;
-"225
+[; ;interrupts.c: 246: mod_counter = 0;
+"246
+[e = _mod_counter -> 0 `i ]
+[; ;interrupts.c: 247: tmpModDelay = mod_delay_time;
+"247
+[e = _tmpModDelay _mod_delay_time ]
+"251
+}
+[e :U 485 ]
+[; ;interrupts.c: 251: }
+[; ;interrupts.c: 255: mod_value = modArray[mod_counter];
+"255
+[e = _mod_value *U + &U _modArray * -> -> _mod_counter `ui `ux -> -> # *U &U _modArray `ui `ux ]
+[; ;interrupts.c: 262: mod_value = modulation(mod_value, adjusted_pot_value);
+"262
+[e = _mod_value -> ( _modulation (2 , -> _mod_value `l -> _adjusted_pot_value `l `i ]
+[; ;interrupts.c: 263: CCPR3 = mod_value / 2;
+"263
+[e = _CCPR3 -> / _mod_value -> 2 `i `us ]
+[; ;interrupts.c: 264: mod_counter++;
+"264
+[e ++ _mod_counter -> 1 `i ]
+"266
+}
+[e :U 484 ]
+[; ;interrupts.c: 266: }
+[; ;interrupts.c: 268: if (preset_programmning_on == 1) {
+"268
+[e $ ! == -> _preset_programmning_on `i -> 1 `i 486  ]
+{
+[; ;interrupts.c: 269: preset_blink++;
+"269
+[e ++ _preset_blink -> -> 1 `i `uc ]
+[; ;interrupts.c: 271: if (preset_blink >= blink_delay) {
+"271
+[e $ ! >= -> _preset_blink `i _blink_delay 487  ]
+{
+[; ;interrupts.c: 272: LATBbits.LATB1 = 1;
+"272
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[; ;interrupts.c: 273: if (preset_blink > blink_delay*2) {
+"273
+[e $ ! > -> _preset_blink `i * _blink_delay -> 2 `i 488  ]
+{
+[; ;interrupts.c: 274: preset_blink = 0;
+"274
 [e = _preset_blink -> -> 0 `i `uc ]
-[; ;interrupts.c: 226: LATBbits.LATB1 = 0;
-"226
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
-"227
+"275
 }
 [e :U 488 ]
-"228
+"277
 }
+[; ;interrupts.c: 275: }
+[; ;interrupts.c: 277: } else {
+[e $U 489  ]
 [e :U 487 ]
-[; ;interrupts.c: 227: }
-[; ;interrupts.c: 228: }
-[; ;interrupts.c: 232: INTCONbits.TMR0IF = 0;
-"232
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"233
+{
+[; ;interrupts.c: 278: LATBbits.LATB1 = 0;
+"278
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"279
 }
-[e :U 461 ]
-[; ;interrupts.c: 233: }
-[; ;interrupts.c: 234: }
-"234
+[e :U 489 ]
+"281
+}
+[; ;interrupts.c: 279: }
+[; ;interrupts.c: 281: } else {
+[e $U 490  ]
+[e :U 486 ]
+{
+[; ;interrupts.c: 282: if (preset_blink > 0) {
+"282
+[e $ ! > -> _preset_blink `i -> 0 `i 491  ]
+{
+[; ;interrupts.c: 283: preset_blink = 0;
+"283
+[e = _preset_blink -> -> 0 `i `uc ]
+[; ;interrupts.c: 284: LATBbits.LATB1 = 0;
+"284
+[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+"285
+}
+[e :U 491 ]
+"286
+}
+[e :U 490 ]
+[; ;interrupts.c: 285: }
+[; ;interrupts.c: 286: }
+[; ;interrupts.c: 290: INTCONbits.TMR0IF = 0;
+"290
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"291
+}
+[e :U 462 ]
+[; ;interrupts.c: 291: }
+[; ;interrupts.c: 292: }
+"292
 [e :UE 460 ]
 }
